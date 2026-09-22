@@ -22,7 +22,7 @@ const css = read("simple-property.css");
 const pricing = read("pricing.html");
 const index = read("index.html");
 
-need("css v11", css.includes("v11") || css.includes("Isles palette"));
+need("css v12", css.includes("v12") || css.includes("Isles palette"));
 need("isles fjord token", css.includes("--fjord-deep"));
 need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
@@ -32,7 +32,7 @@ need("sleek price cards", css.includes(".price-card") && css.includes("price-car
 need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.js")));
 need("pricing card grid", pricing.includes("pricing-cards"));
 need("deposit receipt sample", index.includes("deposit-receipt") && index.includes("Move-in condition"));
-need("brand tag on pricing", pricing.includes("Deposit Desk · IL"));
+need("brand tag on pricing", pricing.includes("Keep the clock"));
 need("pro units 40 in pricing", pricing.includes("40"));
 
 console.log(fail ? `\nVisual brand audit FAILED (${fail})` : "\nVisual brand audit OK");

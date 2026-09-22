@@ -1,6 +1,6 @@
 # Simple Property Tools · llms.txt
 
-> Midwest deposit packets for mom-and-pop landlords (IL · IN · OH · MI · IA · MO): surrender clocks, move-in proof, itemized export · beats Excel, not a PM suite.
+> Midwest deposit packets for mom-and-pop landlords (IL · IN · OH · MI · IA · MO): **Itemize it. Date it. Keep the clock.** · surrender clocks, move-in proof, itemized export · beats Excel, not a PM suite.
 
 - https://simpleproperty.tools/
 - **Deposit Desk** · **765 ILCS 715/** IL **30-day** & **Chicago RLTO 45-day** · IN **45-day** · OH/MI/IA/MO **30-day** from surrender · move-in/move-out · .ics · Calendar/Sheets · print (per turn or Pro)

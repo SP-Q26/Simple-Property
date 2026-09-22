@@ -5,8 +5,8 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
-const BRAND_TAG = "Deposit Desk · IL · IN · OH · MI · IA · MO";
-const CSS = "simple-property.css?v=11";
+const BRAND_TAG = "Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO";
+const CSS = "simple-property.css?v=12";
 let fail = 0;
 
 function htmlFiles(dir) {
@@ -50,5 +50,5 @@ if (existsSync(join(web, "brand/shell-header.html"))) {
   }
 }
 
-console.log(fail ? `Brand audit FAILED (${fail})` : "Brand audit OK · shell v11");
+console.log(fail ? `Brand audit FAILED (${fail})` : "Brand audit OK · shell v12");
 process.exit(fail ? 1 : 0);

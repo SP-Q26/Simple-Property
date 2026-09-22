@@ -3,12 +3,12 @@
   "schema_version": "1.1",
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
-  "tagline": "Deposit Desk · IL & Chicago RLTO",
+  "tagline": "Itemize it. Date it. Keep the clock.",
   "site": "https://simpleproperty.tools",
   "contact": "hello@simpleproperty.tools",
   "lane": {
-    "is": "Illinois security deposit move-in/move-out documentation for mom-and-pop landlords (1–3 people; launch guidance 1–40 doors)",
-    "is_not": "Property management · legal advice · multi-state compliance platform · inspection photo SaaS"
+    "is": "Midwest security deposit move-in/move-out documentation for mom-and-pop landlords (IL · IN · OH · MI · IA · MO · up to 40 doors)",
+    "is_not": "Property management · legal advice · enterprise portfolio platform · inspection photo SaaS"
   },
   "deadlines": {
     "statewide": "30 days after surrender · 765 ILCS 715/",

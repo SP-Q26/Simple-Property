@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v11 · Isles palette (Innsegall) */
+/* Simple Property Tools · Deposit Desk · v12 · Isles palette (Innsegall) */
 :root {
   --fjord-deep: #0b1d2e;
   --fjord-mid: #122a42;
@@ -64,6 +64,16 @@ body {
   background-image: radial-gradient(ellipse 120% 80% at 50% -20%, var(--mist), transparent 55%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 a {
@@ -315,6 +325,17 @@ main > h1,
   text-transform: none;
 }
 
+.brand-promise {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--spirit-silver);
+  margin: 0 0 var(--space-4);
+  max-width: 32ch;
+  line-height: 1.35;
+}
+
 .brand-product {
   color: var(--success);
   font-weight: 600;
@@ -420,7 +441,21 @@ main > h1,
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+@media (hover: hover) {
+  .btn-primary:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn:focus-visible {
@@ -459,7 +494,7 @@ main > h1,
 .card-grid {
   display: grid;
   gap: var(--space-4);
-  margin: var(--space-6) 0;
+  margin: var(--space-5) 0 var(--space-7);
 }
 
 @media (min-width: 720px) {
@@ -474,6 +509,15 @@ main > h1,
   border-radius: var(--radius-md);
   padding: var(--space-5);
   box-shadow: var(--shadow-soft);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--gold-hairline), var(--shadow-soft);
+    transform: translateY(-2px);
+  }
 }
 
 .card h3 {
@@ -785,7 +829,7 @@ textarea {
 }
 
 .section {
-  padding: var(--space-6) 0 var(--space-5);
+  padding: var(--space-7) 0 var(--space-6);
 }
 
 .section-label {
@@ -1147,12 +1191,19 @@ textarea {
   flex-direction: column;
   gap: var(--space-2);
   min-height: 100%;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  .price-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
 }
 
 .price-card--highlight {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.18), var(--shadow-soft);
+  box-shadow: 0 0 0 1px var(--gold-hairline), var(--shadow-soft);
 }
 
 .price-card__badge {

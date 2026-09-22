@@ -3,10 +3,10 @@
 const BASE = process.env.SPT_SMOKE_URL || "https://simple-property-spq.vercel.app";
 const EM = "\u2014";
 const paths = [
-  { name: "home", path: "/", need: ["Deposit Desk · IL · IN", "simple-property.css?v=11", "deposit-receipt", "40 units"], absent: ["Homestead", EM] },
+  { name: "home", path: "/", need: ["Keep the clock", "simple-property.css?v=12", "deposit-receipt", "40 units"], absent: ["Homestead", EM] },
   { name: "pricing", path: "/pricing", need: ["pricing-finder", "pricing-cards", "pf-units", "40 units", "Print / Save as PDF"], absent: [EM] },
   { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance"], absent: [] },
-  { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Deposit Desk · IL"], absent: ["Homestead", EM] },
+  { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Keep the clock"], absent: ["Homestead", EM] },
   { name: "llms", path: "/llms.txt", need: ["40 units", "per-turn"], absent: [EM] },
 ];
 
