@@ -1,34 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Pro monthly - up to 40 doors, billed each month">
-  <rect width="512" height="512" rx="48" fill="#f4f0e6"/>
-  <rect x="32" y="32" width="448" height="448" rx="36" fill="#faf7f0" stroke="#c9a227" stroke-opacity="0.35" stroke-width="2"/>
-  <g transform="translate(256 200)">
-    <g transform="translate(-148 28) scale(0.62)" opacity="0.55">
-      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Deposit Desk Pro monthly subscription for many units">
+  <defs>
+    <linearGradient id="pm-card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf7f0"/>
+      <stop offset="1" stop-color="#f4f0e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
+  <rect x="56" y="56" width="400" height="400" rx="32" fill="url(#pm-card)" stroke="#c9a227" stroke-opacity="0.28" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 210)">
+    <g transform="translate(-132 18) scale(0.68)" opacity="0.45" stroke="#3d3429" stroke-width="2.8">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+      <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
     </g>
-    <g transform="translate(-78 14) scale(0.74)" opacity="0.72">
-      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+    <g transform="translate(-44 8) scale(0.82)" opacity="0.65" stroke="#3d3429" stroke-width="2.6">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+      <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
     </g>
-    <g transform="translate(-8 0) scale(0.88)" opacity="0.88">
-      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+    <g transform="translate(44 -2) scale(0.94)" opacity="0.85" stroke="#3d3429" stroke-width="2.4">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+      <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
     </g>
-    <g transform="translate(62 -10) scale(1.02)">
-      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
-      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
-      <circle cx="14" cy="48" r="3.5" fill="#c9a227"/>
+    <g transform="translate(132 -12) scale(1.05)" stroke="#3d3429" stroke-width="2.2">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+      <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
+      <circle cx="12" cy="38" r="3.2" fill="#c9a227" stroke="none"/>
     </g>
   </g>
-  <g transform="translate(256 368)">
-    <rect x="-72" y="-10" width="144" height="20" rx="10" fill="#eef2f6" stroke="#3b5a78" stroke-width="2"/>
-    <rect x="-56" y="-6" width="32" height="12" rx="6" fill="#3b5a78"/>
-    <rect x="-16" y="-6" width="32" height="12" rx="6" fill="#c9a227" opacity="0.45"/>
-    <rect x="24" y="-6" width="32" height="12" rx="6" fill="#3b5a78" opacity="0.35"/>
+  <g transform="translate(256 360)">
+    <rect x="-88" y="-8" width="176" height="16" rx="8" fill="#eef2f6" stroke="#3b5a78" stroke-width="1.5" stroke-opacity="0.5"/>
+    <rect x="-72" y="-4" width="40" height="8" rx="4" fill="#3b5a78"/>
+    <rect x="-20" y="-4" width="40" height="8" rx="4" fill="#c9a227" opacity="0.85"/>
+    <rect x="32" y="-4" width="40" height="8" rx="4" fill="#3b5a78" opacity="0.35"/>
   </g>
-  <circle cx="256" cy="420" r="6" fill="#c9a227"/>
 </svg>

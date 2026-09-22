@@ -1,21 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Move-out unlock - one surrender packet and PDF export">
-  <rect width="512" height="512" rx="48" fill="#f4f0e6"/>
-  <rect x="32" y="32" width="448" height="448" rx="36" fill="#faf7f0" stroke="#3b5a78" stroke-opacity="0.35" stroke-width="2"/>
-  <g transform="translate(200 248)">
-    <rect x="0" y="-20" width="72" height="100" rx="4" fill="#eef2f6" stroke="#3b5a78" stroke-width="2.5"/>
-    <path d="M36 -20V-34a18 18 0 0 1 36 0V-20" fill="none" stroke="#3b5a78" stroke-width="2.5"/>
-    <path d="M72 -8 L108 24 L108 88 L72 88 Z" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5" stroke-linejoin="round"/>
-    <circle cx="96" cy="52" r="4" fill="#c9a227"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Move-out packet unlock with deadline">
+  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
+  <rect x="56" y="56" width="400" height="400" rx="32" fill="#faf7f0" stroke="#3b5a78" stroke-opacity="0.32" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(188 248)">
+    <rect x="0" y="-8" width="52" height="72" rx="2" fill="#eef2f6" stroke="#3b5a78" stroke-width="2.2"/>
+    <path d="M26-8V-20a13 13 0 0 1 26 0V-8" stroke="#3b5a78" stroke-width="2.2"/>
+    <path d="M52 8l36 28v52H52V8z" fill="#faf7f0" stroke="#3d3429" stroke-width="2.2"/>
+    <circle cx="72" cy="44" r="3.5" fill="#c9a227" stroke="none"/>
   </g>
-  <g transform="translate(300 168)">
-    <rect x="0" y="0" width="120" height="152" rx="8" fill="#fff" stroke="#3d3429" stroke-width="2" opacity="0.95"/>
-    <path d="M16 32 H104" stroke="#6b5c4a" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-    <path d="M16 56 H88" stroke="#6b5c4a" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-    <path d="M16 80 H96" stroke="#6b5c4a" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-    <rect x="16" y="108" width="48" height="28" rx="6" fill="#c9a227" opacity="0.85"/>
-    <path d="M24 122 H56" stroke="#3d3429" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(292 176)" fill="none" stroke="#3d3429" stroke-width="2" stroke-linecap="round">
+    <rect x="0" y="0" width="108" height="136" rx="6" fill="#fff" stroke-opacity="0.85"/>
+    <path d="M16 28h76" opacity="0.35"/>
+    <path d="M16 52h60" opacity="0.35"/>
+    <path d="M16 76h68" opacity="0.35"/>
+    <rect x="16" y="100" width="44" height="22" rx="4" fill="#c9a227" fill-opacity="0.85" stroke="none"/>
   </g>
-  <path d="M256 96 A64 64 0 0 1 320 160" fill="none" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="256" cy="96" r="5" fill="#c9a227"/>
-  <path d="M312 156 L320 160 L316 168" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M320 108a72 72 0 0 1 72 72" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
+  <path d="M388 176l8 4-6 8" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

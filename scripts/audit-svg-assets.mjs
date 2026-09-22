@@ -60,20 +60,17 @@ for (const f of readdirSync(stripeDir).filter((x) => x.endsWith(".png"))) {
 }
 
 const og = readFileSync(join(web, "og/spt-card.svg"), "utf8");
-need("OG cascade doors", og.includes('transform="translate(720'));
+need("OG icon cluster", og.includes("translate(860") && og.includes("scale(1.08)"));
 need("OG ASCII states", og.includes("IL | IN | OH"));
 
 const monthly = readFileSync(join(web, "stripe/pro-monthly.svg"), "utf8");
 need("monthly cascade", (monthly.match(/scale\(/g) || []).length >= 3);
-
 const annual = readFileSync(join(web, "stripe/pro-annual.svg"), "utf8");
-need("annual year ring", annual.includes('r="118"'));
-
+need("annual year ring", annual.includes('r="108"'));
 const moveOut = readFileSync(join(web, "stripe/turn-move-out.svg"), "utf8");
-need("move-out swing door", moveOut.includes("L108 24"));
-
+need("move-out swing door", moveOut.includes("l36 28") || moveOut.includes("L36 28"));
 const full = readFileSync(join(web, "stripe/turn-full.svg"), "utf8");
-need("full tenancy two doors", full.includes(">IN<") && full.includes(">OUT<"));
+need("full tenancy two doors", full.includes("translate(-72") && full.includes("#7a4038"));
 
 console.log(fail ? `\nSVG audit FAILED (${fail})` : "\nSVG audit OK");
 process.exit(fail ? 1 : 0);

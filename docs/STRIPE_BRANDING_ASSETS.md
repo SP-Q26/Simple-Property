@@ -23,7 +23,8 @@ https://simple-property.com/stripe/pro-monthly.png as session icon today.
 
 ## Product images (one per SKU · PNG on site)
 
-Concept (icon-only art · no tiny labels · readable at 512px):
+- Design in git: **512px line icons** (2–2.5px stroke, round caps) · cream field `#faf7f0` · ink `#3d3429` · sage `#4a6741` · gold `#c9a227` · quant blue `#2c5282`.
+- Luxury multifamily pattern (Greystar / Bozzuto / Related-style sites): thin outline icons, one metaphor per tile, no micro-type at 512px; door = unit lifecycle, not clip-art houses.
 
 | SKU | Idea | SVG source |
 |-----|------|------------|
