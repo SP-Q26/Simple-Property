@@ -4,7 +4,7 @@
 **Voice:** plain dealing · receipts · timestamps · not legal advice  
 **Live site:** [simple-property-spq.vercel.app](https://simple-property-spq.vercel.app) · apex later `simpleproperty.tools`
 
-This doc is the **product spine** for the next builds: deposits stay core; everything else supports **provable condition**, **deadlines**, and **turnover** without becoming a PM suite.
+This doc is the **deposit-centric spine**. Full operator lanes (maintenance, notices, showings, contact logs): **`docs/SMALL_PM_LANE_MAP.md`**.
 
 ---
 

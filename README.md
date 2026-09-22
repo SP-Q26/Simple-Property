@@ -46,7 +46,9 @@ Or from repo root: `chmod +x scripts/preview.sh && ./scripts/preview.sh static|f
 ## Docs
 
 - `docs/SWARM_AUDIT.md` — nine-lane scores (gate ≥ 95) + maintenance tasks  
-- `docs/CHICAGO_IL_HYPERFOCUS.md` — IL/Chicago product spine (photos, damage write-ups, listings, reminders, showings)  
+- `docs/CHICAGO_IL_HYPERFOCUS.md` — IL/Chicago deposit + turnover pillars  
+- `docs/SMALL_PM_LANE_MAP.md` — product lane catalog  
+- `docs/BLOG_SEO_SWARM.md` — blog pillars · law watch · RSS · audit matrix  
 - `docs/GOOGLE_TOOLS_AUDIT.md` — Calendar / Sheets / Drive alignment · `audit-google-tools.mjs`  
 - `docs/AUDIT_INNSEGALL_LENS.md` — vs Innsegall discipline · customer-only surfaces  
 - `docs/LANE_COMPARE.md` · `docs/DEPLOY.md` — vs Innsegall · git/Vercel  

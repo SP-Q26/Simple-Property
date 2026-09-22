@@ -6,40 +6,139 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "DENY" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
       ]
     }
   ],
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.simpleproperty.tools" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.simpleproperty.tools"
+        }
+      ],
       "destination": "https://simpleproperty.tools/:path*",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/app", "destination": "/app.html" },
-    { "source": "/success", "destination": "/success.html" },
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/blog", "destination": "/blog/index.html" },
-    { "source": "/blog/illinois-security-deposit-checklist", "destination": "/blog/illinois-security-deposit-checklist.html" },
-    { "source": "/blog/chicago-45-day-deposit-deadline", "destination": "/blog/chicago-45-day-deposit-deadline.html" },
-    { "source": "/blog/illinois-deposit-itemization", "destination": "/blog/illinois-deposit-itemization.html" },
-    { "source": "/blog/deposit-desk-vs-inspection-apps", "destination": "/blog/deposit-desk-vs-inspection-apps.html" },
-    { "source": "/blog/deposit-desk-vs-spreadsheet", "destination": "/blog/deposit-desk-vs-spreadsheet.html" },
-    { "source": "/blog/surrender-date-illinois-deposit", "destination": "/blog/surrender-date-illinois-deposit.html" },
-    { "source": "/blog/illinois-deposit-return-by-mail", "destination": "/blog/illinois-deposit-return-by-mail.html" },
-    { "source": "/blog/landlord-tools-by-door-count", "destination": "/blog/landlord-tools-by-door-count.html" },
-    { "source": "/launch-stack", "destination": "/launch-stack.html" },
-    { "source": "/spt-ai-bus.json", "destination": "/spt-ai-bus.json" },
-    { "source": "/.well-known/spt-gospel.json", "destination": "/.well-known/spt-gospel.json" },
-    { "source": "/.well-known/ai-discovery.json", "destination": "/.well-known/ai-discovery.json" },
-    { "source": "/llms.txt", "destination": "/llms.txt" }
+    {
+      "source": "/pricing",
+      "destination": "/pricing.html"
+    },
+    {
+      "source": "/app",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/success",
+      "destination": "/success.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/launch-stack",
+      "destination": "/launch-stack.html"
+    },
+    {
+      "source": "/spt-ai-bus.json",
+      "destination": "/spt-ai-bus.json"
+    },
+    {
+      "source": "/.well-known/spt-gospel.json",
+      "destination": "/.well-known/spt-gospel.json"
+    },
+    {
+      "source": "/.well-known/ai-discovery.json",
+      "destination": "/.well-known/ai-discovery.json"
+    },
+    {
+      "source": "/llms.txt",
+      "destination": "/llms.txt"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/feed.rss",
+      "destination": "/blog/feed.rss"
+    },
+    {
+      "source": "/blog/illinois-security-deposit-checklist",
+      "destination": "/blog/illinois-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/chicago-45-day-deposit-deadline",
+      "destination": "/blog/chicago-45-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/illinois-deposit-itemization",
+      "destination": "/blog/illinois-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/surrender-date-illinois-deposit",
+      "destination": "/blog/surrender-date-illinois-deposit.html"
+    },
+    {
+      "source": "/blog/illinois-deposit-return-by-mail",
+      "destination": "/blog/illinois-deposit-return-by-mail.html"
+    },
+    {
+      "source": "/blog/normal-wear-vs-damage-illinois",
+      "destination": "/blog/normal-wear-vs-damage-illinois.html"
+    },
+    {
+      "source": "/blog/illinois-landlord-entry-notice",
+      "destination": "/blog/illinois-landlord-entry-notice.html"
+    },
+    {
+      "source": "/blog/illinois-renter-deposit-rights",
+      "destination": "/blog/illinois-renter-deposit-rights.html"
+    },
+    {
+      "source": "/blog/chicago-renter-deposit-timeline",
+      "destination": "/blog/chicago-renter-deposit-timeline.html"
+    },
+    {
+      "source": "/blog/deposit-desk-vs-inspection-apps",
+      "destination": "/blog/deposit-desk-vs-inspection-apps.html"
+    },
+    {
+      "source": "/blog/deposit-desk-vs-spreadsheet",
+      "destination": "/blog/deposit-desk-vs-spreadsheet.html"
+    },
+    {
+      "source": "/blog/landlord-tools-by-door-count",
+      "destination": "/blog/landlord-tools-by-door-count.html"
+    },
+    {
+      "source": "/blog/chicago-heat-season-landlord-reminder",
+      "destination": "/blog/chicago-heat-season-landlord-reminder.html"
+    },
+    {
+      "source": "/blog/illinois-rental-law-watch-sep-2026",
+      "destination": "/blog/illinois-rental-law-watch-sep-2026.html"
+    }
   ],
   "crons": [
     {

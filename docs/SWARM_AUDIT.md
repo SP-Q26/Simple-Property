@@ -17,7 +17,8 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 | Backend (Stripe · KV · email) | 100 | entitlement, webhook, portal, magic-link, reminders subscribe, cron |
 | Legal & trust | 100 | privacy + terms line counts; substantive copy |
 | Ops & audit gates | 100 | `audit-spt-web`, `audit-brand-shell`, `verify-stripe-catalog` |
-| Content cluster depth | 98 | ≥ 8 guide posts |
+| Content cluster depth | 100 | ≥ 14 guides |
+| Blog SEO (manifest · RSS · pillars) | 100 | `audit-blog-seo.mjs` · four categories ≥ 2 each |
 | Launch stack · door tiers | 100 | `/launch-stack` · llms + bus |
 
 **Lowest lane:** SEO at **95** — optional HowTo/Breadcrumb on guides.

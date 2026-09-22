@@ -1,0 +1,140 @@
+{
+  "site": "https://simpleproperty.tools",
+  "feedPath": "/blog/feed.rss",
+  "categories": {
+    "law": { "label": "Rules & law", "audience": "operators + counsel prep" },
+    "landlord": { "label": "Landlords", "audience": "mom-and-pop operators" },
+    "renter": { "label": "Renters", "audience": "tenant education · balanced facts" },
+    "news": { "label": "News & law watch", "audience": "IL rental policy roundup" }
+  },
+  "posts": [
+    {
+      "slug": "illinois-security-deposit-checklist",
+      "title": "Illinois security deposit checklist",
+      "description": "Move-in through move-out checklist for 765 ILCS 715/ and Chicago RLTO discipline.",
+      "category": "landlord",
+      "published": "2026-08-01",
+      "updated": "2026-09-01",
+      "statutes": ["765 ILCS 715/"]
+    },
+    {
+      "slug": "chicago-45-day-deposit-deadline",
+      "title": "Chicago RLTO 45-day deposit deadline",
+      "description": "Chicago RLTO 45 days vs Illinois 30 days after surrender.",
+      "category": "law",
+      "published": "2026-08-05",
+      "updated": "2026-09-01",
+      "statutes": ["765 ILCS 715/", "Chicago RLTO"]
+    },
+    {
+      "slug": "illinois-deposit-itemization",
+      "title": "Illinois deposit itemization",
+      "description": "Written statement when withholding from a security deposit.",
+      "category": "law",
+      "published": "2026-08-08",
+      "updated": "2026-09-01",
+      "statutes": ["765 ILCS 715/"]
+    },
+    {
+      "slug": "surrender-date-illinois-deposit",
+      "title": "Surrender date and the deposit clock",
+      "description": "When the 30- or 45-day timer starts after keys and possession.",
+      "category": "law",
+      "published": "2026-08-12",
+      "updated": "2026-09-10",
+      "statutes": ["765 ILCS 715/"]
+    },
+    {
+      "slug": "illinois-deposit-return-by-mail",
+      "title": "Returning deposit by mail",
+      "description": "Mailing remainder and itemization with a simple proof log.",
+      "category": "landlord",
+      "published": "2026-08-15",
+      "updated": "2026-09-10",
+      "statutes": ["765 ILCS 715/"]
+    },
+    {
+      "slug": "normal-wear-vs-damage-illinois",
+      "title": "Normal wear vs damage in Illinois",
+      "description": "How operators think about withhold lines without overreach.",
+      "category": "law",
+      "published": "2026-09-15",
+      "updated": "2026-09-15",
+      "statutes": ["765 ILCS 715/"]
+    },
+    {
+      "slug": "illinois-landlord-entry-notice",
+      "title": "Landlord entry notice basics (Illinois)",
+      "description": "Document planned access; lease and local rules still control.",
+      "category": "law",
+      "published": "2026-09-16",
+      "updated": "2026-09-16",
+      "statutes": []
+    },
+    {
+      "slug": "illinois-renter-deposit-rights",
+      "title": "Illinois renter guide: security deposits",
+      "description": "Plain facts on timelines, itemization, and what to keep on move-in.",
+      "category": "renter",
+      "published": "2026-09-17",
+      "updated": "2026-09-17",
+      "statutes": ["765 ILCS 715/", "Chicago RLTO"]
+    },
+    {
+      "slug": "chicago-renter-deposit-timeline",
+      "title": "Chicago renters: RLTO deposit timeline",
+      "description": "Chicago RLTO tenants — 45-day deposit return window and what to save at move-in.",
+      "category": "renter",
+      "published": "2026-09-19",
+      "updated": "2026-09-19",
+      "statutes": ["Chicago RLTO"]
+    },
+    {
+      "slug": "deposit-desk-vs-inspection-apps",
+      "title": "Deposit Desk vs inspection apps",
+      "description": "Deadline math and itemization vs photo-first SaaS.",
+      "category": "landlord",
+      "published": "2026-08-20",
+      "updated": "2026-09-01",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-vs-spreadsheet",
+      "title": "Deposit Desk vs spreadsheet",
+      "description": "When a packet beats a shared sheet for one turnover.",
+      "category": "landlord",
+      "published": "2026-08-22",
+      "updated": "2026-09-01",
+      "statutes": []
+    },
+    {
+      "slug": "landlord-tools-by-door-count",
+      "title": "Landlord tools by door count",
+      "description": "Launch stack for 1–10, 10–20, and 20–40 doors.",
+      "category": "landlord",
+      "published": "2026-08-25",
+      "updated": "2026-09-01",
+      "statutes": []
+    },
+    {
+      "slug": "chicago-heat-season-landlord-reminder",
+      "title": "Chicago heat season reminder for landlords",
+      "description": "Seasonal habitability awareness before cold weather disputes.",
+      "category": "news",
+      "published": "2026-09-18",
+      "updated": "2026-09-18",
+      "lawWatch": true,
+      "statutes": ["Chicago RLTO"]
+    },
+    {
+      "slug": "illinois-rental-law-watch-sep-2026",
+      "title": "Illinois rental law watch · September 2026",
+      "description": "What we are watching: deposit deadlines, RLTO, operator habits — not legal advice.",
+      "category": "news",
+      "published": "2026-09-20",
+      "updated": "2026-09-20",
+      "lawWatch": true,
+      "statutes": ["765 ILCS 715/", "Chicago RLTO"]
+    }
+  ]
+}

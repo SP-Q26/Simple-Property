@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Brand shell P0 — every public HTML page uses Homestead lockup + css v6 */
+/** Brand shell P0 — every public HTML page uses Homestead lockup + css v7 */
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";

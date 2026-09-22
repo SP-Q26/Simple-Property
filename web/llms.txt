@@ -1,15 +1,15 @@
 # Simple Property Tools · llms.txt
 
-> Illinois security deposit packets · mom-and-pop landlords · 1–40 doors (launch tiers).
+> Clean tools for Illinois deposit pain: missed deadlines, weak move-in proof, sloppy itemization. Not a PM suite.
 
 - https://simpleproperty.tools/
-- **Deposit Desk** — move-in checklist, move-out itemization, **765 ILCS 715/ 30-day** & **Chicago RLTO 45-day**, .ics, print/PDF (Pro)
+- **Deposit Desk** — move-in checklist, move-out **itemization**, **765 ILCS 715/ 30-day** & **Chicago RLTO 45-day** surrender clocks, .ics, Google Calendar/Sheets, print (Pro)
+- **Guides** — law · landlords · renters · IL news watch: https://simpleproperty.tools/blog · RSS https://simpleproperty.tools/blog/feed.rss
 - **Launch stack** — tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simpleproperty.tools/launch-stack
 - Agent bus: https://simpleproperty.tools/spt-ai-bus.json
 - Gospel: https://simpleproperty.tools/.well-known/spt-gospel.json
 - Pricing: $17/mo · $49/yr · https://simpleproperty.tools/pricing
 - App: https://simpleproperty.tools/app
-- Guides: https://simpleproperty.tools/blog
 - hello@simpleproperty.tools
 - Not: PM suite, legal advice, multi-state platform, inspection-photo SaaS
 

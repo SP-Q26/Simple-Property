@@ -865,3 +865,56 @@ textarea {
 .tier-table a {
   font-weight: 500;
 }
+
+.blog-cluster {
+  margin-top: 2rem;
+}
+
+.blog-cluster h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+}
+
+.muted {
+  color: var(--ink-muted, #5c6470);
+  font-size: 0.95rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--wash-accent, rgba(45, 106, 79, 0.12));
+  color: var(--forest, #2d6a4f);
+  vertical-align: middle;
+}
+
+.guides-hub .guide-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+}
+
+.guides-hub .guide-pills a {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface, #fff);
+}
+
+.guides-hub .guide-pills a:hover {
+  border-color: var(--forest, #2d6a4f);
+  color: var(--forest, #2d6a4f);
+}

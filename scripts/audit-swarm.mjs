@@ -5,6 +5,7 @@
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -47,16 +48,17 @@ function scoreSeo() {
   const sm = read("sitemap.xml");
   const posts = blogPosts();
   if (posts.every((f) => sm.includes(f.replace(".html", "")))) s += 10;
+  if (read("blog/feed.rss").includes("<rss")) s += 8;
   for (const p of ["index.html", "pricing.html", "blog/index.html"]) {
     const h = read(p);
     if (h.includes('rel="canonical"')) s += 3;
-    if (h.includes("og:image")) s += 3;
+    if (h.includes("og:image")) s += 2;
   }
   let art = 0;
   for (const f of posts) {
-    if (read(`blog/${f}`).includes('"@type": "Article"')) art++;
+    if (read(`blog/${f}`).match(/"@type"\s*:\s*"Article"/)) art++;
   }
-  s += Math.min(15, art * 3);
+  s += Math.min(12, art * 1);
   return Math.min(100, s);
 }
 
@@ -104,7 +106,7 @@ function scoreLegal() {
 
 function scoreOps() {
   let s = 70;
-  for (const script of ["audit-spt-web.mjs", "audit-brand-shell.mjs", "audit-swarm.mjs", "audit-git.mjs", "audit-google-tools.mjs", "verify-stripe-catalog.mjs"]) {
+  for (const script of ["audit-spt-web.mjs", "audit-brand-shell.mjs", "audit-swarm.mjs", "audit-git.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "verify-stripe-catalog.mjs"]) {
     if (existsSync(join(root, "scripts", script))) s += 10;
   }
   return Math.min(100, s);
@@ -112,8 +114,9 @@ function scoreOps() {
 
 function scoreContentDepth() {
   const n = blogPosts().length;
-  if (n >= 8) return 98;
-  if (n >= 7) return 96;
+  if (n >= 14) return 100;
+  if (n >= 12) return 98;
+  if (n >= 8) return 96;
   if (n >= 5) return 88;
   return 70;
 }
@@ -130,6 +133,16 @@ function scoreLaunchStack() {
   return Math.min(100, s);
 }
 
+function scoreBlogSeoLane() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-blog-seo.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const out = (r.stdout || "") + (r.stderr || "");
+  const m = out.match(/Blog SEO score: (\d+)/);
+  return m ? Number(m[1]) : 0;
+}
+
 const metrics = [
   ["Brand shell (mark · nav · v7)", scoreBrandShell],
   ["Visual system (tokens · proof)", scoreVisual],
@@ -140,10 +153,9 @@ const metrics = [
   ["Legal & trust", scoreLegal],
   ["Ops & audit gates", scoreOps],
   ["Content cluster depth", scoreContentDepth],
+  ["Blog SEO (manifest · RSS · pillars)", scoreBlogSeoLane],
   ["Launch stack · door tiers", scoreLaunchStack],
 ];
-
-console.log("── Simple Property · swarm audit ──\n");
 let fail = 0;
 const rows = [];
 for (const [name, fn] of metrics) {

@@ -1,17 +1,30 @@
-<!DOCTYPE html>
+function articleShell({ title, description, slug, published, bodyHtml }) {
+  const url = `https://simpleproperty.tools/blog/${slug}`;
+  const ld = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    datePublished: published,
+    dateModified: published,
+    author: { "@type": "Organization", name: "Simple Property Tools" },
+    publisher: { "@type": "Organization", name: "Simple Property Tools" },
+    mainEntityOfPage: url,
+    description,
+  });
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chicago RLTO 45-day deposit deadline · Simple Property Tools</title>
-  <meta name="description" content="Chicago RLTO 45 days vs Illinois 30 days after surrender — 765 ILCS 715/.">
+  <title>${title} · Simple Property Tools</title>
+  <meta name="description" content="${description.replace(/"/g, "&quot;")}">
   <meta property="og:image" content="https://simpleproperty.tools/og/spt-card.svg">
+  <link rel="canonical" href="${url}">
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
-  <link rel="canonical" href="https://simpleproperty.tools/blog/chicago-45-day-deposit-deadline">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/simple-property.css?v=7">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Chicago RLTO 45-day deposit deadline","datePublished":"2026-08-05","dateModified":"2026-08-05","author":{"@type":"Organization","name":"Simple Property Tools"},"publisher":{"@type":"Organization","name":"Simple Property Tools"},"mainEntityOfPage":"https://simpleproperty.tools/blog/chicago-45-day-deposit-deadline","description":"Chicago RLTO 45 days vs Illinois 30 days after surrender — 765 ILCS 715/."}</script>
+  <script type="application/ld+json">${ld}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,19 +45,11 @@
       </nav>
     </header>
     <main id="main" class="prose">
-      <h1>Chicago 45-day deposit clock</h1>
-      <dl class="fact-strip">
-        <div><dt>Chicago RLTO</dt><dd><strong>45 days</strong> after tenant vacates</dd></div>
-        <div><dt>Illinois</dt><dd><strong>30 days</strong> after surrender · 765 ILCS 715/</dd></div>
-        <div><dt>Start</dt><dd>Surrender date (keys returned)</dd></div>
-      </dl>
-      <p class="disclaimer">Not legal advice. Deposit Desk’s Chicago toggle counts from your surrender date.</p>
-      <p><a class="btn btn-primary" href="/app">Start packet</a></p>
+${bodyHtml}
     </main>
     <footer class="site-footer">
       <p class="footer-colophon"><img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22"><span>Homestead · plain dealing</span></p>
-      <nav class="footer-links"><a href="/launch-stack">Stack</a>
-        <a href="/blog">Guides</a><a href="/">Home</a></nav>
+      <nav class="footer-links"><a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/">Home</a></nav>
     </footer>
   </div>
   <script src="/sp-nav.js" defer></script>
@@ -52,3 +57,7 @@
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
+`;
+}
+
+export { articleShell };

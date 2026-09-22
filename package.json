@@ -9,7 +9,10 @@
     "preflight": "node scripts/audit-git.mjs && cd web && npm ci && npm run audit",
     "audit:git": "node scripts/audit-git.mjs",
     "verify-stripe": "node scripts/verify-stripe-catalog.mjs",
-    "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs",
+    "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs",
+    "build-blog": "node scripts/build-blog-seo.mjs",
+    "audit:blog": "node scripts/audit-blog-seo.mjs",
+    "audit:discovery": "node scripts/audit-discovery-seo.mjs",
     "sync-chrome": "node scripts/sync-site-chrome.mjs"
   },
   "engines": {

@@ -7,12 +7,15 @@ import { fileURLToPath } from "node:url";
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 let fail = 0;
 
+const manifest = JSON.parse(readFileSync(join(web, "data", "blog-manifest.json"), "utf8"));
+
 const ROUTES = new Set([
   "/",
   "/app",
   "/pricing",
   "/launch-stack",
   "/blog",
+  "/blog/feed.rss",
   "/privacy",
   "/terms",
   "/success",
@@ -20,15 +23,11 @@ const ROUTES = new Set([
   "/spt-ai-bus.json",
   "/.well-known/spt-gospel.json",
   "/.well-known/ai-discovery.json",
-  "/blog/illinois-security-deposit-checklist",
-  "/blog/chicago-45-day-deposit-deadline",
-  "/blog/illinois-deposit-itemization",
-  "/blog/deposit-desk-vs-inspection-apps",
-  "/blog/deposit-desk-vs-spreadsheet",
-  "/blog/surrender-date-illinois-deposit",
-  "/blog/illinois-deposit-return-by-mail",
-  "/blog/landlord-tools-by-door-count",
 ]);
+
+for (const p of manifest.posts) {
+  ROUTES.add(`/blog/${p.slug}`);
+}
 
 function walkHtml(dir, out = []) {
   for (const name of readdirSync(dir)) {
