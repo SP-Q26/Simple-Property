@@ -1,6 +1,6 @@
 /**
  * Simple Property Tools · Stripe catalog (Isles account · shared branding with Innsegall)
- * Dashboard setup: docs/STRIPE_ISLES_CATALOG.md
+ * Dashboard setup: docs/STRIPE_ISLES_CATALOG.md · live IDs provisioned 2026-09-22
  */
 import { PRO_UNITS_MAX } from "./pro-limits.mjs";
 
@@ -17,7 +17,17 @@ export const STRIPE_CATALOG = {
     mode: "subscription",
     recurring: { interval: "month" },
     lookup_key: "spt_deposit_monthly",
-    metadata: { spt_sku: "monthly", spt_plan: "pro", spt_units_max: UNITS_META, isles_product: "deposit_desk" },
+    live_product_id: "prod_VJ4quXggKOi2IH",
+    live_price_id: "price_1UISgaFDJKTJlxOcKl4GklhT",
+    metadata: {
+      spt_sku: "monthly",
+      spt_plan: "pro",
+      spt_units_max: UNITS_META,
+      isles_product: "deposit_desk",
+      isles_brand: "deposit_desk",
+      isles_portfolio: "the_isles",
+      isles_lane: "spt_pro_monthly",
+    },
   },
   annual: {
     sku: "annual",
@@ -29,7 +39,17 @@ export const STRIPE_CATALOG = {
     mode: "subscription",
     recurring: { interval: "year" },
     lookup_key: "spt_deposit_annual",
-    metadata: { spt_sku: "annual", spt_plan: "pro", spt_units_max: UNITS_META, isles_product: "deposit_desk" },
+    live_product_id: "prod_VJ4qakw2M82ks6",
+    live_price_id: "price_1UISgbFDJKTJlxOcrzEvEi1X",
+    metadata: {
+      spt_sku: "annual",
+      spt_plan: "pro",
+      spt_units_max: UNITS_META,
+      isles_product: "deposit_desk",
+      isles_brand: "deposit_desk",
+      isles_portfolio: "the_isles",
+      isles_lane: "spt_pro_annual",
+    },
   },
   turn_move_out: {
     sku: "turn_move_out",
@@ -40,7 +60,16 @@ export const STRIPE_CATALOG = {
     currency: "usd",
     mode: "payment",
     lookup_key: "spt_turn_move_out",
-    metadata: { spt_sku: "turn_move_out", spt_plan: "turn", isles_product: "deposit_desk" },
+    live_product_id: "prod_VJ4qJEUYugqYml",
+    live_price_id: "price_1UISgcFDJKTJlxOcQ6r3L6Xb",
+    metadata: {
+      spt_sku: "turn_move_out",
+      spt_plan: "turn",
+      isles_product: "deposit_desk",
+      isles_brand: "deposit_desk",
+      isles_portfolio: "the_isles",
+      isles_lane: "spt_turn_move_out",
+    },
   },
   turn_full: {
     sku: "turn_full",
@@ -51,7 +80,16 @@ export const STRIPE_CATALOG = {
     currency: "usd",
     mode: "payment",
     lookup_key: "spt_turn_full",
-    metadata: { spt_sku: "turn_full", spt_plan: "turn", isles_product: "deposit_desk" },
+    live_product_id: "prod_VJ4q8T0mIlJpM7",
+    live_price_id: "price_1UISgdFDJKTJlxOch3r5LixS",
+    metadata: {
+      spt_sku: "turn_full",
+      spt_plan: "turn",
+      isles_product: "deposit_desk",
+      isles_brand: "deposit_desk",
+      isles_portfolio: "the_isles",
+      isles_lane: "spt_turn_full",
+    },
   },
 };
 
@@ -85,6 +123,18 @@ export function priceEnvKeyForSku(sku) {
   if (key === "turn_full") return "STRIPE_PRICE_TURN_FULL";
   if (key === "turn_move_out") return "STRIPE_PRICE_TURN_MOVE_OUT";
   return "STRIPE_PRICE_ANNUAL";
+}
+
+/** Prefer Vercel STRIPE_PRICE_*; fall back to catalog live_price_id when using sk_live. */
+export function resolvePriceIdForSku(sku) {
+  const envKey = priceEnvKeyForSku(sku);
+  const fromEnv = (process.env[envKey] || "").trim();
+  if (fromEnv) return fromEnv;
+  const item = catalogForSku(sku);
+  if (process.env.STRIPE_SECRET_KEY?.startsWith("sk_live")) {
+    return item.live_price_id || "";
+  }
+  return "";
 }
 
 export const CANONICAL_SITE_ORIGIN = "https://simple-property.com";

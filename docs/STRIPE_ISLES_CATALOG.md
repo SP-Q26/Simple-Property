@@ -16,9 +16,11 @@ Matches `innsegall/web/innsegall.css` and `simple-property/web/simple-property.c
 
 ---
 
-## Products to create (test, then live)
+## Products (live provisioned 2026-09-22)
 
-Use **separate products** or one product with multiple prices. Metadata must include `isles_product: deposit_desk` and `spt_sku` as below.
+Live price IDs are in `web/lib/stripe-catalog.mjs` and `docs/STRIPE_ISLES_AUDIT_2026-09-22.md`. Create **test** parallels with `sk_test_` + `provision-stripe-deposit-desk.mjs --apply`.
+
+**Isles cross-brand** (same account as Innsegall): set `isles_portfolio=the_isles`, `isles_brand=deposit_desk`, `isles_lane=spt_*` on each product. Innsegall uses `isles_brand=innsegall` · never mix SKUs on one product. Audit: `docs/STRIPE_ISLES_AUDIT_2026-09-22.md` · provision: `node scripts/provision-stripe-deposit-desk.mjs --apply --set-lookup-keys`.
 
 | Env var | SKU | Mode | Amount | lookup_key (suggested) |
 |---------|-----|------|--------|-------------------------|

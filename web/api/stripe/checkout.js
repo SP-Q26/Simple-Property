@@ -3,7 +3,7 @@ import {
   catalogForSku,
   isTurnSku,
   normalizeCheckoutSku,
-  priceEnvKeyForSku,
+  resolvePriceIdForSku,
   siteOrigin,
 } from "../../lib/stripe-catalog.mjs";
 import { PRO_UNITS_MAX } from "../../lib/pro-limits.mjs";
@@ -14,7 +14,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
 
 function lineItemForSku(sku) {
   const catalog = catalogForSku(sku);
-  const priceId = process.env[priceEnvKeyForSku(sku)];
+  const priceId = resolvePriceIdForSku(sku);
   if (priceId) {
     return { price: priceId, quantity: 1 };
   }

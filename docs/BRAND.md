@@ -27,12 +27,12 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline — remove
 
 ## Visual
 
-- **Isles palette** (shared with Innsegall): fjord deep `#0b1d2e`, beam gold `#f4c95d`, aurora green accents · CSS **`simple-property.css?v=13`**
-- **Atmosphere** (`web/brand/atmosphere.html` · injected via `npm run sync-chrome`): gold **beam from above** (Innsegall kin) + **distant gold door** at end of hall · opens/closes on ~26s loop · `prefers-reduced-motion` holds door shut
-- **Cormorant Garamond** (display) + **DM Sans** (UI)
-- **Fact strip** (`.fact-strip`): statute / RLTO on marketing + guides
-- **Product proof** (`.product-proof`): sample packet on home hero
-- Shell templates: `web/brand/shell-header.html` + `shell-footer.html`
+- **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227` (not terracotta, not Innsegall fjord dark)
+- **Quant blue wash:** `--quant-blue-surface` on pricing cards and product proof (subtle, not full-page)
+- **Typography:** **Lora** (display) + **Inter** (UI) · CSS **`simple-property.css?v=14`**
+- **Atmosphere:** one **large gold door** (opens/closes) · **no beam from above** · `web/brand/atmosphere.html`
+- **Fact strip** · **product proof** · shell: `web/brand/shell-header.html` + `shell-footer.html`
+- Stripe Checkout branding stays Isles gold `#f4c95d` on fjord (Dashboard only) · site chrome is light quant lane
 
 ## Product name
 

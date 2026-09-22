@@ -22,12 +22,12 @@ const css = read("simple-property.css");
 const pricing = read("pricing.html");
 const index = read("index.html");
 
-need("css v13", css.includes("v13") || css.includes("Isles palette"));
-need("distant door atmosphere", css.includes(".spt-door-scene") && css.includes("spt-door-left"));
-need("isles fjord token", css.includes("--fjord-deep"));
+need("css v14", css.includes("v14") || css.includes("Chicago quant"));
+need("quant blue card wash", css.includes("--quant-blue-surface"));
+need("large door atmosphere", css.includes(".spt-door-scene") && !css.includes(".spt-beam"));
 need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
-need("display + UI fonts", css.includes("--font-display") && css.includes("DM Sans"));
+need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
 need("pricing wide layout", css.includes(".pricing-page"));
 need("sleek price cards", css.includes(".price-card") && css.includes("price-card__badge"));
 need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.js")));

@@ -22,6 +22,7 @@
 | **Vercel env table** | `docs/VERCEL_SETUP.md` §3 |
 | **Verify prices vs Dashboard** | `npm run verify-stripe` → `scripts/verify-stripe-catalog.mjs` |
 | **Pricing audit** | `npm run audit:pricing` → `scripts/audit-pricing.mjs` |
+| **Isles live sweep + provision** | `docs/STRIPE_ISLES_AUDIT_2026-09-22.md` · `scripts/provision-stripe-deposit-desk.mjs` |
 
 ## Products to create (Stripe Dashboard)
 
