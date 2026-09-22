@@ -1,5 +1,62 @@
 # Git & audit troubleshooting · Simple-Property
 
+## `Invalid username or token` · `https://SP-Q26@github.com`
+
+GitHub **does not accept account passwords** for git. The URL must **not** embed `SP-Q26` as the HTTPS user.
+
+**1. Reset remote (no username in URL):**
+
+```bash
+cd ~/SPQ/simple-property
+git remote -v
+git remote set-url origin https://github.com/SP-Q26/Simple-Property.git
+git remote -v
+```
+
+Correct fetch line:
+
+`https://github.com/SP-Q26/Simple-Property.git`
+
+Wrong:
+
+`https://SP-Q26@github.com/...`
+
+**2. Log in with GitHub CLI (recommended):**
+
+```bash
+gh auth login
+```
+
+Choose: **GitHub.com** → **HTTPS** → **Login with a web browser** → authorize **git** when asked.
+
+Then:
+
+```bash
+gh auth setup-git
+git push --force-with-lease origin main
+```
+
+**3. Or SSH (no HTTPS token):**
+
+```bash
+git remote set-url origin git@github.com:SP-Q26/Simple-Property.git
+ssh -T git@github.com
+git push --force-with-lease origin main
+```
+
+**4. If macOS keeps prompting with a bad password:** clear stale GitHub credentials in **Keychain Access** (search `github.com`) or:
+
+```bash
+git credential-osxkeychain erase
+host=github.com
+protocol=https
+
+```
+
+Press Enter twice after the blank line.
+
+---
+
 ## `fatal: ambiguous argument '#'` 
 
 The shell treats `#` as a comment **only when it is not quoted**. Do **not** paste comment text as its own command. Run **one line at a time**:

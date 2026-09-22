@@ -47,24 +47,22 @@ git fetch origin
 npm run audit:git
 ```
 
-Log in to GitHub (once):
+Log in to GitHub (once). If push says **`Invalid username or token`** or shows **`SP-Q26@github.com`**, fix the remote and use the CLI — see **`docs/GIT_TROUBLESHOOTING.md`**.
 
 ```bash
+git remote set-url origin https://github.com/SP-Q26/Simple-Property.git
 gh auth login
+gh auth setup-git
+git push --force-with-lease origin main
+git branch -u origin/main main
 ```
 
-Or use SSH:
+SSH instead of HTTPS:
 
 ```bash
 git remote set-url origin git@github.com:SP-Q26/Simple-Property.git
 ssh -T git@github.com
-```
-
-**Publish Deposit Desk to GitHub** (orphan history — normal after `git init`):
-
-```bash
 git push --force-with-lease origin main
-git branch -u origin/main main
 ```
 
 Verify:
