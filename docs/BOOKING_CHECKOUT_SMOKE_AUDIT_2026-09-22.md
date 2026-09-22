@@ -16,11 +16,11 @@
 | **Marketing / SEO shell** | **GREEN** | `scripts/smoke-prod.mjs` @ `https://simple-property.com` — all routes + Stripe PNGs 200 |
 | **Free funnel (wizard draft)** | **GREEN** | Home → `/app` → steps 1–5 without paywall on navigation |
 | **Step 5 monetization UX** | **GREEN** | Paywall + `$29` / `$49` unlock + Pro link; Print disabled until entitlement |
-| **Hosted Stripe Checkout** | **RED (P0)** | `POST /api/stripe/checkout` → **HTTP 500** `checkout_failed` (all SKUs probed) |
+| **Hosted Stripe Checkout** | **GREEN** | `POST /api/stripe/checkout` → `url` + `cs_live_…` (fix **9456072**) |
 | **Innsegall control (same Stripe)** | **GREEN** | `POST https://innsegall.com/api/stripe/checkout` → `url` + `cs_live_…` |
 | **Meta / ads pixel** | **N/A** | No `fbq` / InitiateCheckout on site (unlike WWL Meta dataset) |
 
-**Verdict:** Site is **ready to draft and educate**; **not ready to collect** until Vercel Production checkout is fixed. Isles brother can ship Innsegall payments while Deposit Desk env is reconciled.
+**Verdict:** Site is **ready to draft, educate, and collect** on hosted Checkout. Re-run browser step 5 + pricing after deploy; expire debug `cs_live_` sessions in Dashboard if needed.
 
 ---
 
@@ -151,6 +151,7 @@ curl -sS -X POST https://innsegall.com/api/stripe/checkout \
 2026-09-22  POST checkout annual/monthly/turn       FAIL 500 checkout_failed
 2026-09-22  POST innsegall checkout extra           OK cs_live session URL
 2026-09-22  browser pricing + app step 5             FAIL no Stripe redirect
+2026-09-22  POST checkout (after 9456072)            PASS cs_live URLs · smoke:checkout OK
 ```
 
 ## Code fix (post-audit)
