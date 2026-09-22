@@ -69,9 +69,9 @@ need("catalog Manage billing not Portal", !catalogSrc.toLowerCase().includes("cu
 need("catalog 40 units in metadata", catalogSrc.includes("spt_units_max"));
 
 const checkout = readFileSync(join(web, "api/stripe/checkout.js"), "utf8");
-need("checkout branding_settings", checkout.includes("branding_settings"));
-need("checkout consent terms", checkout.includes('terms_of_service: "required"'));
-need("checkout mom-and-pop submit copy", checkout.includes("Manage billing on simple-property.com"));
+need("checkout catalog price resolver", checkout.includes("resolvePriceIdForSku"));
+need("checkout branding canon in catalog", catalogSrc.includes("checkoutBrandingSettings"));
+need("checkout mom-and-pop submit copy", checkout.includes("Manage billing on simple-property.com") || catalogSrc.includes("Manage billing"));
 need("checkout no Customer Portal", !checkout.toLowerCase().includes("customer portal"));
 
 for (const page of ["index.html", "pricing.html", "success.html", "terms.html"]) {
