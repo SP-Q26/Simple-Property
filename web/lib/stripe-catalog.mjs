@@ -11,7 +11,7 @@ export const STRIPE_CATALOG = {
     sku: "monthly",
     name: "Deposit Desk Pro · Monthly",
     description:
-      "Illinois deposit packets · up to 4 units · move-in checklist, deadline tracker, print-ready export.",
+      "Illinois deposit packets · up to 40 units · move-in checklist, deadline tracker, print-ready export.",
     unit_amount: 2200,
     currency: "usd",
     mode: "subscription",

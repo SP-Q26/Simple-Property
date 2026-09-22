@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  /** Preview-only Pro bypass — not honored on production apex. */
+  /** Preview-only Pro bypass  ·  not honored on production apex. */
   window.sptIsDemoPro = function () {
     if (new URLSearchParams(location.search).get("demo") !== "pro") return false;
     var h = location.hostname;

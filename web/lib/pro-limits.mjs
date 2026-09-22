@@ -1,5 +1,5 @@
-/** Pro license · mom-and-pop cap (marketing + enforcement). */
-export const PRO_UNITS_MAX = 4;
+/** Pro license · small operator cap (marketing + enforcement). */
+export const PRO_UNITS_MAX = 40;
 
 export function parseUnitCount(raw) {
   const n = parseInt(raw, 10);

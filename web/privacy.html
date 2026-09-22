@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=8">
+  <link rel="stylesheet" href="/simple-property.css?v=9">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -36,9 +36,9 @@
 
       <h2>What we collect</h2>
       <p><strong>Packet contents</strong> (tenant names, addresses, checklists) are stored in your browser’s localStorage when you use the wizard. We do not receive those fields on our servers in the current release unless you email them to us.</p>
-      <p><strong>Payments</strong> are processed by Stripe. We receive subscription status, customer email from checkout metadata, and session identifiers — not your full card number.</p>
-      <p><strong>Subscription index (Pro)</strong> — When configured, we store Stripe customer id, subscription status, and checkout email in encrypted Redis (Vercel/Upstash) so you can restore Pro on a new device via magic link.</p>
-      <p><strong>Deadline reminders (optional)</strong> — If you schedule email reminders, we store your email, property label, and reminder dates until sent or expired.</p>
+      <p><strong>Payments</strong> are processed by Stripe. We receive subscription status, customer email from checkout metadata, and session identifiers  ·  not your full card number.</p>
+      <p><strong>Subscription index (Pro)</strong>  ·  When configured, we store Stripe customer id, subscription status, and checkout email in encrypted Redis (Vercel/Upstash) so you can restore Pro on a new device via magic link.</p>
+      <p><strong>Deadline reminders (optional)</strong>  ·  If you schedule email reminders, we store your email, property label, and reminder dates until sent or expired.</p>
 
       <h2>Usage analytics</h2>
       <p>On our hosted site we use <strong>Vercel Web Analytics</strong> and <strong>Speed Insights</strong> (first-party, cookie-light page views and performance). They do not receive your deposit packet fields from localStorage. You can block scripts with a browser extension; the app still works.</p>

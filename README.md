@@ -1,6 +1,6 @@
 # Simple Property Tools
 
-**Simple Property Tools** · **Deposit Desk** · Illinois deposit packets for mom-and-pop landlords (teams of 1–3, ≤4 doors Pro).
+**Simple Property Tools** · **Deposit Desk** · Illinois deposit packets for mom-and-pop landlords (teams of 1–3, up to 40 units Pro).
 
 **GitHub:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) · git: **`docs/GIT_AGENT_CONNECTION.md`**
 

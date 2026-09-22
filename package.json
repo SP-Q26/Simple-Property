@@ -14,6 +14,10 @@
     "audit:blog": "node scripts/audit-blog-seo.mjs",
     "audit:discovery": "node scripts/audit-discovery-seo.mjs",
     "audit:pricing": "node scripts/audit-pricing.mjs",
+    "audit:em-dash": "node scripts/audit-em-dash.mjs",
+    "audit:visual": "node scripts/audit-visual-brand.mjs",
+    "audit:mobile": "node scripts/audit-mobile-responsive.mjs",
+    "smoke:prod": "node scripts/smoke-prod.mjs",
     "sync-chrome": "node scripts/sync-site-chrome.mjs"
   },
   "engines": {

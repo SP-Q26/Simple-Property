@@ -1,6 +1,6 @@
 /**
  * Illinois deposit deadline helpers (alpha).
- * Not legal advice · confirm statutes for your property.
+ * Not legal advice. Confirm statutes for your property.
  */
 
 export const IL_STATE_RETURN_DAYS = 30;
@@ -29,7 +29,7 @@ export function computeDeadline({ surrenderDate, inChicago }) {
 }
 
 export function formatUsDate(iso) {
-  if (!iso) return "—";
+  if (!iso) return "n/a";
   const d = new Date(iso + "T12:00:00");
   if (Number.isNaN(d.getTime())) return iso;
   return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });

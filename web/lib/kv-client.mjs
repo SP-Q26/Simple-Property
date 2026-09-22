@@ -1,4 +1,4 @@
-/** Optional Vercel KV / Upstash — no-op when env unset. */
+/** Optional Vercel KV / Upstash  ·  no-op when env unset. */
 let kvPromise;
 
 export function kvConfigured() {

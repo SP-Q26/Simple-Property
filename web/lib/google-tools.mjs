@@ -34,9 +34,9 @@ export function googleCalendarReminderUrls({ titleBase, deadlineIso, reminderDay
     d.setDate(d.getDate() - days);
     const iso = d.toISOString().slice(0, 10);
     const url = googleCalendarAddUrl({
-      title: `${titleBase} — ${days} days out`,
+      title: `${titleBase}  ·  ${days} days out`,
       startIso: iso,
-      details: `Reminder ${days} day(s) before deposit return/itemize deadline. Deposit Desk · not legal advice.`,
+      details: `Reminder ${days} day(s) before deposit return/itemize deadline. Deposit Desk. Not legal advice.`,
     });
     if (url) out.push({ days, iso, url });
   }

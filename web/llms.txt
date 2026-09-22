@@ -1,12 +1,12 @@
 # Simple Property Tools · llms.txt
 
-> Illinois deposit packets for mom-and-pop landlords: surrender clocks, move-in proof, itemized export — beats Excel, not a PM suite.
+> Illinois deposit packets for mom-and-pop landlords: surrender clocks, move-in proof, itemized export · beats Excel, not a PM suite.
 
 - https://simpleproperty.tools/
-- **Deposit Desk** — 765 ILCS 715/ **30-day** & **Chicago RLTO 45-day** from surrender · move-in/move-out · .ics · Google Calendar/Sheets · print (Pro)
-- **Pricing** — free draft · **per-turn** pass-through like screening ($29 move · $49 tenancy, checkout coming) · Pro **$22/mo** · **$99/yr** (≤4 units): https://simpleproperty.tools/pricing
-- **Guides** — law · landlords · renters · IL news: https://simpleproperty.tools/blog · RSS https://simpleproperty.tools/blog/feed.rss
-- **Launch stack** — tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simpleproperty.tools/launch-stack
+- **Deposit Desk** · 765 ILCS 715/ **30-day** & **Chicago RLTO 45-day** from surrender · move-in/move-out · .ics · Google Calendar/Sheets · print (Pro)
+- **Pricing** · free draft · **per-turn** pass-through like screening ($29 move · $49 tenancy, checkout coming) · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simpleproperty.tools/pricing
+- **Guides** · law · landlords · renters · IL news: https://simpleproperty.tools/blog · RSS https://simpleproperty.tools/blog/feed.rss
+- **Launch stack** · tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simpleproperty.tools/launch-stack
 - Agent bus: https://simpleproperty.tools/spt-ai-bus.json
 - Gospel: https://simpleproperty.tools/.well-known/spt-gospel.json
 - App: https://simpleproperty.tools/app

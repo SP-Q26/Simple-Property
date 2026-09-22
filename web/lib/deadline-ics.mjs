@@ -26,7 +26,7 @@ export function buildDeadlineIcs({ title, deadlineIso, reminderDaysBefore = [7, 
       `UID:${uid}-rem-${days}`,
       `DTSTAMP:${r}T120000Z`,
       `DTSTART;VALUE=DATE:${r}`,
-      `SUMMARY:${title} — ${days} days out`,
+      `SUMMARY:${title}  ·  ${days} days out`,
       "END:VEVENT"
     );
   }

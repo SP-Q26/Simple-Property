@@ -9,7 +9,7 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 
 | Metric | Score | What the gate checks |
 |--------|------:|----------------------|
-| Brand shell (mark · nav · v8) | 100 | `brand-mark`, Deposit Desk tag, `simple-property.css?v=8` on index, pricing, app, all blog posts |
+| Brand shell (mark · nav · v9) | 100 | `brand-mark`, Deposit Desk tag, `simple-property.css?v=9` |
 | Visual system (tokens · proof) | 100 | CSS tokens, radial wash, `product-proof` on home + stylesheet |
 | SEO (canonical · OG · Article) | 100 | robots → sitemap; feed.rss; Article JSON-LD on all guides |
 | Agent lane (llms · bus · gospel) | 100 | `llms.txt`, `spt-ai-bus.json`, `.well-known/spt-gospel.json`, home link to bus |

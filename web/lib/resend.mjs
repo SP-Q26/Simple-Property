@@ -39,7 +39,7 @@ export async function sendMagicLinkEmail(to, token, sig) {
     url,
     "",
     "Link expires in 15 minutes. Not legal advice.",
-    "— Simple Property Tools",
+    " ·  Simple Property Tools",
   ].join("\n");
   return sendResendEmail({
     to,

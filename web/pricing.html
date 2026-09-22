@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing · free · per turn · Pro · Deposit Desk</title>
-  <meta name="description" content="Free Illinois deposit wizard. Per-turn pass-through like screening ($29 move · $49 tenancy coming). Pro $22/mo or $99/yr print packet · up to 4 units.">
+  <meta name="description" content="Free Illinois deposit wizard. Per-turn pass-through like screening ($29 move · $49 tenancy coming). Pro $22/mo or $99/yr · print packet · up to 40 units.">
   <link rel="canonical" href="https://simpleproperty.tools/pricing">
   <meta property="og:title" content="Deposit Desk pricing · Illinois">
   <meta property="og:url" content="https://simpleproperty.tools/pricing">
@@ -13,7 +13,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=8">
+  <link rel="stylesheet" href="/simple-property.css?v=9">
 </head>
 <body>
   <div class="page">
@@ -33,101 +33,115 @@
       </nav>
     </header>
 
-    <main class="prose">
-      <h1>Pricing</h1>
-      <p class="hero-lead">Solve the deposit pain: <strong>deadline</strong>, <strong>move-in proof</strong>, <strong>itemized export</strong>. Not a PM suite.</p>
+    <main class="pricing-page">
+      <div class="pricing-intro">
+        <h1>Pricing</h1>
+        <p class="hero-lead">Deadline math, move-in proof, itemized export. Not a PM suite.</p>
+      </div>
 
-      <section class="tier-block" aria-labelledby="free-title">
-        <h2 id="free-title">Free · draft in your browser</h2>
-        <p><strong>Who it is for:</strong> You have a turnover coming and want to see the full packet before you pay — or you run <strong>one unit</strong> and live in spreadsheets today.</p>
-        <ul class="bullet-tight">
-          <li>Full 5-step wizard · autosave</li>
-          <li><strong>30 / 45-day</strong> deadline on screen (765 ILCS 715/ · Chicago RLTO)</li>
-          <li>Move-in rooms · photos · move-out line items</li>
-          <li>Save packets in this browser</li>
-          <li>Google Calendar · <strong>.ics</strong> · Sheets row export</li>
-        </ul>
-        <p><a class="btn btn-secondary" href="/app">Open Deposit Desk free</a></p>
-      </section>
-
-      <section class="tier-block" aria-labelledby="turn-title">
-        <h2 id="turn-title">Per turn · pass-through (like screening)</h2>
-        <p><strong>Who it is for:</strong> Seasonal turnover, one door, or operators who line-item move fees on the lease ledger instead of a monthly sub.</p>
-        <p><strong>Pain it fixes:</strong> Excel until surrender-date math and a print packet matter — then pay once for this tenancy.</p>
-        <ul class="bullet-tight">
-          <li><strong>$29</strong> · one move-in or move-out print unlock (planned checkout)</li>
-          <li><strong>$49</strong> · full tenancy · move-in + move-out on one packet</li>
-          <li>Charge tenant or absorb — same mental bucket as application screening</li>
-          <li>Break-even vs Pro: about <strong>3–4 turns per year</strong> → annual Pro wins</li>
-        </ul>
-        <p class="field-hint">Per-turn checkout ships next. Today: start free, subscribe to Pro for print, or email hello@ for early access.</p>
-        <p><a class="btn btn-secondary" href="/blog/deposit-desk-vs-spreadsheet">Deposit Desk vs spreadsheet</a></p>
-      </section>
-
-      <section class="tier-block" aria-labelledby="pro-title">
-        <h2 id="pro-title">Pro · up to 4 units</h2>
-        <p><strong>Who it is for:</strong> Mom-and-pop teams (<strong>1–3 people</strong>) juggling <strong>2–4 doors</strong> — you need a <strong>print-ready packet</strong> when the clock is running, not another dashboard.</p>
-        <p><strong>Pain it fixes:</strong> late return/itemization, withhold you cannot document, move-out week with no named photos from move-in.</p>
-        <p class="field-hint">Same Pro features whether you bill monthly or annually. Pick billing for your turnover rhythm.</p>
-
-        <div class="pricing-grid">
-          <article class="price-card">
-            <p class="period">Monthly</p>
-            <p class="amount">$22</p>
-            <p class="period">per month</p>
-            <p class="field-hint"><strong>Best for:</strong> one heavy season, trying Pro through a single move-out, or you cancel between tenants.</p>
-            <ul class="bullet-tight">
-              <li>Everything in Free</li>
-              <li><strong>Print / Save as PDF</strong> packet</li>
-              <li>Email deadline reminders when enabled on site</li>
-              <li>License: <strong>≤ 4 units</strong> on your account</li>
-            </ul>
-            <button type="button" class="btn btn-secondary spt-checkout" data-sku="monthly" style="margin-top:1rem">Subscribe monthly</button>
-          </article>
-          <article class="price-card featured">
-            <p class="period">Annual</p>
-            <p class="amount">$99</p>
-            <p class="period">per year (~$8.25/mo)</p>
-            <p class="field-hint"><strong>Best for:</strong> year-round operators — multiple turns, Chicago + suburban mix, set-and-forget cost.</p>
-            <ul class="bullet-tight">
-              <li>Same Pro features as monthly</li>
-              <li><strong>Save $165/yr</strong> vs paying monthly</li>
-              <li>One receipt · less mental overhead</li>
-              <li>License: <strong>≤ 4 units</strong></li>
-            </ul>
-            <button type="button" class="btn btn-primary spt-checkout" data-sku="annual" style="margin-top:1rem">Subscribe annual</button>
-          </article>
+      <section class="pricing-finder" aria-labelledby="finder-title">
+        <h2 id="finder-title">Find your lane</h2>
+        <p class="field-hint">Two questions. We highlight the plan that fits mom-and-pop turnover up to <strong>40 units</strong>.</p>
+        <div class="pricing-finder__grid">
+          <label class="field-stack">
+            <span>Units you manage</span>
+            <select id="pf-units">
+              <option value="1">1 unit</option>
+              <option value="3" selected>2–4 units</option>
+              <option value="8">5–10 units</option>
+              <option value="25">11–40 units</option>
+            </select>
+          </label>
+          <label class="field-stack">
+            <span>Turnovers per year (all units)</span>
+            <select id="pf-turns">
+              <option value="2">1–2</option>
+              <option value="4" selected>3–6</option>
+              <option value="10">7+</option>
+            </select>
+          </label>
         </div>
+        <p class="pricing-finder__result" id="pf-result" aria-live="polite"></p>
       </section>
 
-      <h2>Monthly vs annual (same Pro)</h2>
-      <table class="tier-table">
-        <thead>
-          <tr><th></th><th>Monthly $22</th><th>Annual $99</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Print / PDF export</td><td>Yes</td><td>Yes</td></tr>
-          <tr><td>Deadline + calendar tools</td><td>Yes (Free tier)</td><td>Yes</td></tr>
-          <tr><td>Unit cap</td><td>4</td><td>4</td></tr>
-          <tr><td>Billing</td><td>Cancel anytime in portal</td><td>Renew yearly · same portal</td></tr>
-          <tr><td>Typical buyer</td><td>One turnover trial</td><td>Multi-turn year</td></tr>
-        </tbody>
-      </table>
+      <div class="pricing-cards">
+        <article class="price-card" data-pricing-tier="free">
+          <p class="price-card__badge">Free</p>
+          <p class="amount">$0</p>
+          <p class="price-card__tagline">Draft in your browser</p>
+          <ul class="bullet-tight">
+            <li>Full 5-step wizard · autosave</li>
+            <li>30 / 45-day deadline on screen</li>
+            <li>Calendar · .ics · Sheets export</li>
+          </ul>
+          <a class="btn btn-secondary btn-block" href="/app">Open free</a>
+        </article>
 
-      <h2>More than 4 units?</h2>
-      <p>Deposit Desk Pro is capped at <strong>four units</strong> per subscription. The wizard still drafts free; export unlocks when your “units you manage” on step 1 is ≤ 4. Larger portfolios: <a href="mailto:hello@simpleproperty.tools">hello@simpleproperty.tools</a> (Operator tier on the roadmap).</p>
+        <article class="price-card" data-pricing-tier="per-turn">
+          <p class="price-card__badge">Per turn</p>
+          <p class="amount">$29<span class="amount-suffix"> / $49</span></p>
+          <p class="price-card__tagline">Pass-through like screening</p>
+          <ul class="bullet-tight">
+            <li><strong>$29</strong> single move print unlock</li>
+            <li><strong>$49</strong> full tenancy on one packet</li>
+            <li>Checkout coming · start free today</li>
+          </ul>
+          <a class="btn btn-secondary btn-block" href="/blog/deposit-desk-vs-spreadsheet">Vs spreadsheet</a>
+        </article>
 
-      <p><button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button></p>
+        <article class="price-card featured" data-pricing-tier="pro-annual">
+          <p class="price-card__badge">Pro monthly</p>
+          <p class="amount">$22</p>
+          <p class="price-card__tagline">Per month · cancel anytime</p>
+          <ul class="bullet-tight">
+            <li>Print / Save as PDF packet</li>
+            <li>Email deadline reminders</li>
+            <li>Up to <strong>40 units</strong> on one license</li>
+          </ul>
+          <button type="button" class="btn btn-secondary btn-block spt-checkout" data-sku="monthly">Subscribe monthly</button>
+        </article>
 
-      <h2>Restore on new device</h2>
-      <p class="field-hint">Magic link to the email on your Stripe subscription (15 minutes).</p>
-      <form class="form-grid two" data-spt-magic-form style="max-width:28rem;align-items:end">
-        <div><label for="magic-email">Email</label><input id="magic-email" type="email" name="email" required autocomplete="email" /></div>
-        <div><button type="submit" class="btn btn-secondary">Send link</button></div>
-      </form>
-      <p class="field-hint" data-spt-magic-status aria-live="polite"></p>
+        <article class="price-card featured price-card--annual" data-pricing-tier="pro-annual">
+          <p class="price-card__badge">Pro annual</p>
+          <p class="amount">$99</p>
+          <p class="price-card__tagline">~$8.25/mo · best for steady turns</p>
+          <ul class="bullet-tight">
+            <li>Same Pro features as monthly</li>
+            <li>Save $165/yr vs monthly</li>
+            <li>Up to <strong>40 units</strong></li>
+          </ul>
+          <button type="button" class="btn btn-primary btn-block spt-checkout" data-sku="annual">Subscribe annual</button>
+        </article>
+      </div>
 
-      <p class="disclaimer">Not legal advice. Documentation software only.</p>
+      <div class="pricing-foot prose">
+        <h2>Compare Pro billing</h2>
+        <table class="tier-table">
+          <thead>
+            <tr><th></th><th>Monthly $22</th><th>Annual $99</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Print / PDF export</td><td>Yes</td><td>Yes</td></tr>
+            <tr><td>Unit cap</td><td>40</td><td>40</td></tr>
+            <tr><td>Typical buyer</td><td>One heavy season</td><td>Year-round operator</td></tr>
+          </tbody>
+        </table>
+
+        <h2>More than 40 units?</h2>
+        <p>Deposit Desk Pro covers up to <strong>40 units</strong> per subscription. The wizard still drafts free; print unlocks when step 1 is within cap. Larger portfolios: <a href="mailto:hello@simpleproperty.tools">hello@simpleproperty.tools</a>.</p>
+
+        <p><button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button></p>
+
+        <h2>Restore on new device</h2>
+        <p class="field-hint">Magic link to the email on your Stripe subscription (15 minutes).</p>
+        <form class="form-grid two" data-spt-magic-form style="max-width:28rem;align-items:end">
+          <div><label for="magic-email">Email</label><input id="magic-email" type="email" name="email" required autocomplete="email" /></div>
+          <div><button type="submit" class="btn btn-secondary">Send link</button></div>
+        </form>
+        <p class="field-hint" data-spt-magic-status aria-live="polite"></p>
+
+        <p class="disclaimer">Not legal advice. Documentation software only.</p>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -145,6 +159,7 @@
     </footer>
   </div>
   <script src="/sp-nav.js" defer></script>
+  <script src="/sp-pricing-finder.js" defer></script>
   <script src="/sp-checkout.js" defer></script>
   <script src="/sp-billing.js" defer></script>
   <script src="/sp-entitlement.js"></script>

@@ -27,13 +27,13 @@ function need(label, ok) {
 const maxMatch = limits.match(/PRO_UNITS_MAX\s*=\s*(\d+)/);
 const cap = maxMatch ? Number(maxMatch[1]) : 0;
 
-need("PRO_UNITS_MAX defined", cap === 4);
-need("catalog metadata spt_units_max", catalog.includes("spt_units_max: UNITS_META") || catalog.includes('spt_units_max: "4"'));
+need("PRO_UNITS_MAX defined", cap === 40);
+need("catalog metadata spt_units_max", catalog.includes("spt_units_max: UNITS_META") || catalog.includes('spt_units_max: "40"'));
 need("app imports pro-limits", app.includes("pro-limits.mjs"));
 need("app canExportPro gate", app.includes("canExportPro"));
-need("pricing states 4 units", pricing.includes("4 units") || pricing.includes("≤ 4"));
-need("pricing free vs pro sections", pricing.includes("Free · draft") && pricing.includes("Pro · up to"));
-need("pricing monthly who-for", pricing.includes("Best for:"));
+need("pricing states 40 units", pricing.includes("40 units") || pricing.includes("40</td>"));
+need("pricing card deck", pricing.includes("pricing-cards") && pricing.includes("price-card"));
+need("pricing finder UI", pricing.includes("pricing-finder") && pricing.includes("pf-units"));
 need("pricing annual value", pricing.includes("$99"));
 need("pricing monthly $22", pricing.includes("$22"));
 need("pricing print export", pricing.includes("Print / Save as PDF"));

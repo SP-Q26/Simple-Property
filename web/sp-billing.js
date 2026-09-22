@@ -9,7 +9,7 @@
       sub = null;
     }
     if (!sub || !sub.stripe_customer) {
-      alert("Subscribe first — then you can manage billing from this button or your Stripe receipt email.");
+      alert("Subscribe first  ·  then you can manage billing from this button or your Stripe receipt email.");
       return;
     }
     try {

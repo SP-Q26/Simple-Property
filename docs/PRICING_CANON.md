@@ -8,7 +8,7 @@
 |------|-------|-----|-------------|
 | **Free draft** | $0 | Testing one turnover · single unit · “show me the packet” | No commitment; see deadline + checklist |
 | **Pro monthly** | $22/mo | One busy season · try through one move-out | Print packet when clock is live; cancel after turn |
-| **Pro annual** | $99/yr (~$8.25/mo) | 2–4 doors all year · multiple turns | Same export; save $165 vs 12× monthly |
+| **Pro annual** | $99/yr (~$8.25/mo) | 2–40 doors all year · multiple turns | Same export; save $165 vs 12× monthly |
 
 ## Per-turn (planned · pass-through to tenant)
 
@@ -24,8 +24,8 @@ Landlord lists fee on move-in ledger like screening; tenant-paid checkout link i
 
 ## Unit cap
 
-- **4 units** per Pro subscription (`web/lib/pro-limits.mjs` · Stripe `spt_units_max`).
-- Enforcement: **export (print/PDF)** requires active Pro **and** step 1 “units you manage” ≤ 4.
+- **40 units** per Pro subscription (`web/lib/pro-limits.mjs` · Stripe `spt_units_max`).
+- Enforcement: **export (print/PDF)** requires active Pro **and** step 1 “units you manage” ≤ 40.
 - Wizard, calendar, `.ics`, Sheets remain free (hook before paywall).
 - **5+ units:** draft free; email hello@ for Operator tier (roadmap).
 

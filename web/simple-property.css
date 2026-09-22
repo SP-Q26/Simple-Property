@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v8 shell */
+/* Simple Property Tools · Deposit Desk · v9 shell */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -313,6 +313,7 @@ main > h1,
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
+  min-height: 2.75rem;
   padding: 0.65rem 1.15rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
@@ -920,3 +921,212 @@ textarea {
   border-color: var(--forest, #2d6a4f);
   color: var(--forest, #2d6a4f);
 }
+
+/* Pricing page · questionnaire + card deck */
+.pricing-page {
+  max-width: none;
+}
+
+.pricing-intro {
+  max-width: var(--measure-wide);
+  margin-bottom: var(--space-5);
+}
+
+.pricing-intro h1 {
+  max-width: none;
+}
+
+.pricing-finder {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: var(--space-6);
+}
+
+.pricing-finder h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 var(--space-3);
+}
+
+.pricing-finder__grid {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .pricing-finder__grid {
+    grid-template-columns: 1fr 1fr;
+    max-width: 36rem;
+  }
+}
+
+.field-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.field-stack select {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.pricing-finder__result {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--success-soft);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-size: 0.95rem;
+  min-height: 3rem;
+}
+
+.pricing-cards {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+@media (min-width: 720px) {
+  .pricing-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .pricing-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 100%;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.price-card--highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.18), var(--shadow-soft);
+}
+
+.price-card__badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--success);
+  margin: 0;
+}
+
+.price-card__tagline {
+  margin: 0 0 var(--space-2);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.price-card .amount-suffix {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.price-card ul {
+  flex: 1;
+  margin: var(--space-3) 0;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+
+.pricing-foot {
+  max-width: var(--measure-wide);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-6);
+}
+
+/* Sample deposit receipt (marketing + print preview parity) */
+.deposit-receipt__head {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.deposit-receipt__brand {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--success);
+  margin: 0 0 var(--space-1);
+}
+
+.deposit-receipt__id {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.deposit-receipt__meta {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 480px) {
+  .deposit-receipt__meta {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.deposit-receipt__meta dt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.deposit-receipt__meta dd {
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+}
+
+.deposit-receipt__section {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: var(--space-4) 0 var(--space-2);
+}
+
+.deposit-receipt__totals {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: 0.92rem;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--border);
+}
+
+.product-proof-table thead th {
+  background: var(--success-soft);
+}
+

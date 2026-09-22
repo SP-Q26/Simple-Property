@@ -70,7 +70,7 @@ function listSavedPackets() {
 function saveCurrentToLibrary() {
   readStepIntoDraft();
   const list = listSavedPackets();
-  const label = [draft.property.street, draft.tenant.name].filter(Boolean).join(" · ") || "Packet " + new Date().toLocaleDateString();
+  const label = [draft.property.street, draft.tenant.name].filter(Boolean).join("n/a") || "Packet " + new Date().toLocaleDateString();
   const entry = { id: draft.id, label, updatedAt: new Date().toISOString(), data: draft };
   const idx = list.findIndex((p) => p.id === draft.id);
   if (idx >= 0) list[idx] = entry;
@@ -353,7 +353,7 @@ function bindStepEvents() {
       const file = input.files?.[0];
       if (!file) return;
       if (file.size > MAX_PHOTO_BYTES) {
-        alert("Photo too large — use a smaller image (max ~400KB).");
+        alert("Photo too large  ·  use a smaller image (max ~400KB).");
         input.value = "";
         return;
       }
@@ -385,7 +385,7 @@ function bindStepEvents() {
       title: `Deposit return/itemize · ${draft.property.street || "rental"}`,
       startIso: deadline.deadline,
       location: addr,
-      details: `${deadline.jurisdiction}. Surrender ${draft.surrenderDate || "—"}. Deposit Desk · not legal advice.`,
+      details: `${deadline.jurisdiction}. Surrender ${draft.surrenderDate || "n/a"}. Deposit Desk. Not legal advice.`,
     });
     openGoogleCalendar(url);
     const reminders = googleCalendarReminderUrls({
@@ -451,12 +451,12 @@ function bindStepEvents() {
           status.textContent =
             data.error === "email_not_configured"
               ? "Email reminders not enabled on this host yet."
-              : "Could not schedule — check deadline and email.";
+              : "Could not schedule  ·  check deadline and email.";
         return;
       }
       if (status) status.textContent = `Scheduled ${data.scheduled} reminder(s).`;
     } catch {
-      if (status) status.textContent = "Network error — try again.";
+      if (status) status.textContent = "Network error  ·  try again.";
     }
   });
 }
@@ -481,7 +481,7 @@ function renderPrintPacket() {
   const dep = parseFloat(draft.deposit.amount) || 0;
   const withheld = sumDeductions(draft.deductions);
   const roomRows = draft.rooms
-    .map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.condition)}</td><td>${esc(r.notes) || "—"}</td></tr>`)
+    .map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.condition)}</td><td>${esc(r.notes) || "n/a"}</td></tr>`)
     .join("");
   const photoBlock = draft.rooms
     .filter((r) => r.photo)
@@ -489,14 +489,14 @@ function renderPrintPacket() {
     .join("");
   const dedRows = draft.deductions
     .filter((d) => d.amount || d.description)
-    .map((d) => `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "—"}</td><td>$${esc(d.amount) || "0"}</td></tr>`)
+    .map((d) => `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "n/a"}</td><td>$${esc(d.amount) || "0"}</td></tr>`)
     .join("");
   els.printRoot.innerHTML = `
     <h2>Deposit Desk · Illinois deposit packet</h2>
     <p style="font-size:10pt;color:#6b5c4a">Simple Property Tools · Deposit Desk · ${formatUsDate(draft.signatures.date)}</p>
     <p><strong>Property:</strong> ${esc(addr)}<br/>
     <strong>Tenant:</strong> ${esc(draft.tenant.name)} · <strong>Lease:</strong> ${formatUsDate(draft.lease.start)} – ${formatUsDate(draft.lease.end)}<br/>
-    <strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Held:</strong> ${esc(draft.deposit.heldAt) || "—"}</p>
+    <strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Held:</strong> ${esc(draft.deposit.heldAt) || "n/a"}</p>
     <p><strong>Landlord:</strong> ${esc(draft.landlord.name)} · ${esc(draft.landlord.email)}</p>
     ${deadline.deadline ? `<p><strong>Deadline (${esc(deadline.jurisdiction)}):</strong> ${formatUsDate(deadline.deadline)}</p>` : ""}
     <h3>Move-in condition</h3>
@@ -508,7 +508,7 @@ function renderPrintPacket() {
     <p><strong>Total withheld:</strong> $${withheld.toFixed(2)} · <strong>Return to tenant:</strong> $${Math.max(0, dep - withheld).toFixed(2)}</p>`
         : ""
     }
-    <p style="font-size:9pt">Documentation only · not legal advice.</p>
+    <p style="font-size:9pt">Documentation only. Not legal advice.</p>
     <div style="display:flex;gap:3rem;margin-top:2rem">
       <div><div class="signature-line">Landlord: ${esc(draft.signatures.landlordPrinted || draft.landlord.name)}</div></div>
       <div><div class="signature-line">Tenant: ${esc(draft.signatures.tenantPrinted || draft.tenant.name)}</div></div>
