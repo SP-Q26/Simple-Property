@@ -54,7 +54,8 @@ need("app wizard steps wrap", css.includes(".wizard-steps") && css.includes("fle
 need("header nav wraps", css.includes(".header-nav") && css.includes("flex-wrap"));
 need("pricing finder stacks on mobile", css.includes(".pricing-finder__grid"));
 need("locale bar mobile", css.includes(".locale-pill__name") && css.includes("locale-bar"));
-need("css regal single swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-monogram"));
+need("css weather speckle", css.includes(".spt-weather") && css.includes("spt-weather-drift"));
+need("css regal swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-frame::before"));
 need("css tablet spacing block", css.includes("@media (min-width: 640px) and (max-width: 1023px)"));
 
 const app = read("app.js");

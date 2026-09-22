@@ -464,7 +464,7 @@ function renderStep5() {
       deadline.deadline
         ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
         <p class="section-label" style="margin-bottom:0.5rem">Email reminders</p>
-        <p class="field-hint">7 days and 1 day before your deadline (requires Pro email on file at checkout).</p>
+        <p class="field-hint">7 days and 1 day before your deadline (uses the email from your Pro subscription).</p>
         <div class="form-grid two">
           <div><label for="rem-email">Email</label><input id="rem-email" type="email" value="${esc(draft.landlord.email)}" autocomplete="email" /></div>
           <div style="align-self:end"><button type="button" class="btn btn-secondary" id="btn-remind">Schedule emails</button></div>

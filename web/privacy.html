@@ -10,10 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=16">
+  <link rel="stylesheet" href="/simple-property.css?v=17">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
+    <div class="spt-weather"></div>
     <div class="spt-door-scene">
       <div class="spt-door-light"></div>
       <div class="spt-door-frame">
@@ -46,8 +47,8 @@
       <p><strong>Packet contents</strong> (tenant names, addresses, checklists) are stored in your browser’s localStorage when you use the wizard. We do not receive those fields on our servers unless you use optional email features below.</p>
       <p><strong>Operator logs</strong> (maintenance, tickets, inspections/complaints at <a href="/logs">/logs</a>) are also stored in localStorage on your device unless you export CSV or print.</p>
       <p><strong>Tenant copy email (Pro)</strong>  ·  If you send a statement copy to a tenant, we transmit the summary you submit (names, amounts, line items, deadline text) through our email provider (Resend) to the addresses you enter. We do not attach move-in photos in that email.</p>
-      <p><strong>Payments</strong> are processed by Stripe. We receive subscription status, customer email from checkout metadata, and session identifiers  ·  not your full card number.</p>
-      <p><strong>Subscription index (Pro)</strong>  ·  When configured, we store Stripe customer id, subscription status, and checkout email in encrypted Redis (Vercel/Upstash) so you can restore Pro on a new device via magic link.</p>
+      <p><strong>Payments</strong> go through Stripe (our payment processor). We see whether you are subscribed and the email you used at checkout · not your card number.</p>
+      <p><strong>Pro on a new device</strong> · If you use “Send link” on pricing, we keep your subscription email and status on our server (encrypted) so we can email you a one-time sign-in link.</p>
       <p><strong>Deadline reminders (optional)</strong>  ·  If you schedule email reminders, we store your email, property label, and reminder dates until sent or expired.</p>
 
       <h2>Usage analytics</h2>
@@ -60,8 +61,8 @@
         <li>We do not provide legal advice or review your packets.</li>
       </ul>
 
-      <h2>Entitlements</h2>
-      <p>After checkout, your browser calls <code>/api/entitlement</code> with your Stripe session id to confirm payment. We return a signed entitlement object stored locally to unlock export.</p>
+      <h2>Unlocking print and PDF</h2>
+      <p>After you pay, your browser confirms the purchase with our site and saves an unlock flag locally so step 5 can export.</p>
 
       <h2>Retention</h2>
       <p>Clear site data in your browser to remove local drafts. Stripe retains billing records per their policy.</p>

@@ -13,10 +13,11 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=16">
+  <link rel="stylesheet" href="/simple-property.css?v=17">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
+    <div class="spt-weather"></div>
     <div class="spt-door-scene">
       <div class="spt-door-light"></div>
       <div class="spt-door-frame">
@@ -24,7 +25,7 @@
       </div>
     </div>
   </div>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="page">
     <header class="site-header">
       <a class="brand-lockup" href="/">
@@ -93,7 +94,7 @@
           <ul class="bullet-tight">
             <li><strong>$29</strong> move-out print unlock</li>
             <li><strong>$49</strong> full tenancy on one packet</li>
-            <li>Pay at step 5 · same Stripe as Isles products</li>
+            <li>Secure checkout at step 5 · one packet at a time</li>
           </ul>
           <a class="btn btn-primary btn-block" href="/app">Open wizard · unlock at export</a>
         </article>
@@ -142,7 +143,7 @@
         <p><button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button></p>
 
         <h2>Restore on new device</h2>
-        <p class="field-hint">Magic link to the email on your Stripe subscription (15 minutes).</p>
+        <p class="field-hint">We email a sign-in link to the address you used when you subscribed (link expires in 15 minutes).</p>
         <form class="form-grid two" data-spt-magic-form style="max-width:28rem;align-items:end">
           <div><label for="magic-email">Email</label><input id="magic-email" type="email" name="email" required autocomplete="email" /></div>
           <div><button type="submit" class="btn btn-secondary">Send link</button></div>

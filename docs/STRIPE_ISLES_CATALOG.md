@@ -2,17 +2,18 @@
 
 **One Stripe account (Isles)** · shared Checkout branding (fjord + gold). Not legal advice.
 
-## Dashboard branding (once)
+## Checkout branding (two sites · one Stripe account)
 
-Settings → Branding:
+**Webhooks do not change Checkout appearance.** They only record payment events after the fact.
 
-| Field | Value |
-|-------|--------|
-| Primary | `#f4c95d` (beam gold) |
-| Background | `#0b1d2e` (fjord deep) |
-| Icon | Deposit Desk mark or Isles shared mark |
+| Layer | What the landlord sees |
+|-------|-------------------------|
+| **Dashboard default** | Settings → Branding · fallback when a session omits overrides (Innsegall fjord + gold if left as-is) |
+| **Per Checkout Session** | **Deposit Desk:** `checkoutBrandingSettings()` in `web/lib/stripe-catalog.mjs` → light quant background, blue pay button, SP icon, display name **Simple Property Tools** (`web/api/stripe/checkout.js`) |
+| **Innsegall** | Same pattern on `innsegall.com` checkout handler with Innsegall colors + name (do not reuse Deposit Desk settings) |
+| **Line items** | Product name + PNG from `simple-property.com/stripe/*.png` (already set on Stripe products) |
 
-Matches `innsegall/web/innsegall.css` and `simple-property/web/simple-property.css` v11.
+If Stripe rejects `branding_settings` on an older API version, checkout retries without it and falls back to Dashboard branding.
 
 ---
 

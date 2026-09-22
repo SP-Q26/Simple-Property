@@ -23,13 +23,14 @@ const pricing = read("pricing.html");
 const index = read("index.html");
 const app = read("app.js");
 
-need("css v16 linked", index.includes("simple-property.css?v=16"));
+need("css v17 linked", index.includes("simple-property.css?v=17"));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
 need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
 need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));
 need("wizard step gold active", css.includes(".wizard-steps span.active") && css.includes("var(--accent)"));
 need("form panel quant surface", css.includes(".form-panel") && css.includes("quant-blue-surface"));
 need("regal SP swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-monogram") && index.includes("spt-door-swing"));
+need("weather speckle layer", css.includes(".spt-weather") && index.includes("spt-weather"));
 need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
 need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));

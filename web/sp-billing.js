@@ -9,7 +9,7 @@
       sub = null;
     }
     if (!sub || !sub.stripe_customer) {
-      alert("Subscribe first  ·  then you can manage billing from this button or your Stripe receipt email.");
+      alert("Subscribe first, then use Manage billing on this page or the link in your receipt email.");
       return;
     }
     try {
@@ -22,7 +22,7 @@
       if (data.url) location.href = data.url;
       else throw new Error(data.error || "portal_failed");
     } catch (e) {
-      alert("Billing portal is unavailable right now. Use the link in your Stripe receipt email.");
+      alert("Manage billing is unavailable right now. Use the link in your receipt email, or email hello@simple-property.com.");
     }
   }
 

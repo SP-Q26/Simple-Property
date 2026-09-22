@@ -13,7 +13,7 @@ export const STRIPE_CATALOG = {
     description:
       "Midwest deposit packets · up to 40 units · move-in checklist, deadline tracker, print-ready export.",
     stripe_description:
-      "Deposit Desk Pro for Midwest small landlords (IL, IN, OH, MI, IA, MO): statutory deposit deadlines, move-in checklists, itemization helpers, and print-ready PDF export for up to 40 doors on one subscription. Billed monthly. Cancel anytime in the Stripe Customer Portal. Not legal advice · simple-property.com.",
+      "Deposit Desk Pro for Midwest small landlords (IL, IN, OH, MI, IA, MO): statutory deposit deadlines, move-in checklists, itemization helpers, and print-ready PDF export for up to 40 doors on one subscription. Billed monthly. Cancel anytime from Manage billing on simple-property.com. Not legal advice.",
     unit_amount: 2200,
     currency: "usd",
     mode: "subscription",
@@ -38,7 +38,7 @@ export const STRIPE_CATALOG = {
     description:
       "Same as monthly · billed once per year · best value for steady turnover.",
     stripe_description:
-      "Deposit Desk Pro annual plan: same Midwest deposit packet tools as monthly (deadline clocks, checklists, print/PDF export) for up to 40 units, billed once per year. Best value for steady turnover. Cancel anytime in the Stripe Customer Portal. Not legal advice · simple-property.com.",
+      "Deposit Desk Pro annual plan: same Midwest deposit packet tools as monthly (deadline clocks, checklists, print/PDF export) for up to 40 units, billed once per year. Best value for steady turnover. Cancel anytime from Manage billing on simple-property.com. Not legal advice.",
     unit_amount: 9900,
     currency: "usd",
     mode: "subscription",
@@ -179,4 +179,15 @@ export function stripeProductImageUrl(sku) {
 export function stripeProductDescription(sku) {
   const item = catalogForSku(sku);
   return (item.stripe_description || item.description || "").trim();
+}
+
+/** Hosted Checkout look · Deposit Desk quant + gold (overrides Isles Dashboard defaults per session). */
+export function checkoutBrandingSettings() {
+  const origin = siteOrigin();
+  return {
+    display_name: "Simple Property Tools",
+    icon: `${origin}/stripe/pro-monthly.png`,
+    background_color: "#eef2f6",
+    button_color: "#3b5a78",
+  };
 }

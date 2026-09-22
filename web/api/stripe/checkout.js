@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import {
   catalogForSku,
+  checkoutBrandingSettings,
   isTurnSku,
   normalizeCheckoutSku,
   resolvePriceIdForSku,
@@ -91,10 +92,11 @@ export default async function handler(req, res) {
       custom_text: {
         submit: {
           message: isTurnSku(sku)
-            ? "Documentation tool only · not legal advice. Unlocks print/PDF for this packet in your browser."
-            : "Documentation tool only · not legal advice. Cancel anytime in Stripe Customer Portal.",
+            ? "Documentation only · not legal advice. Unlocks print/PDF for this packet in your browser."
+            : "Documentation only · not legal advice. Cancel anytime from Manage billing on simple-property.com.",
         },
       },
+      branding_settings: checkoutBrandingSettings(),
     };
 
     if (catalog.mode === "subscription") {
@@ -103,7 +105,18 @@ export default async function handler(req, res) {
       };
     }
 
-    const session = await stripe.checkout.sessions.create(sessionParams);
+    let session;
+    try {
+      session = await stripe.checkout.sessions.create(sessionParams);
+    } catch (brandErr) {
+      const msg = String(brandErr?.message || brandErr);
+      if (sessionParams.branding_settings && /branding_settings|unknown parameter/i.test(msg)) {
+        delete sessionParams.branding_settings;
+        session = await stripe.checkout.sessions.create(sessionParams);
+      } else {
+        throw brandErr;
+      }
+    }
     return res.status(200).json({ url: session.url, id: session.id });
   } catch (e) {
     console.error("spt checkout", e);
