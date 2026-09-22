@@ -26,7 +26,7 @@ function scoreBrandShell() {
   for (const p of pages) {
     const h = read(p);
     if (!h.includes("brand-mark")) s -= 8;
-    if (!h.includes("simple-property.css?v=14")) s -= 5;
+    if (!h.includes("simple-property.css?v=16")) s -= 5;
     if (!h.includes("Keep the clock")) s -= 5;
     if (h.includes("Homestead")) s -= 10;
   }
@@ -81,6 +81,8 @@ function scoreProduct() {
   if (app.includes("btn-google-cal") && app.includes("google-tools.mjs")) s += 5;
   if (read("app.js").includes("saved_packets") || app.includes("PACKETS_KEY")) s += 5;
   if (read("success.html").includes("sptRefreshEntitlement")) s += 10;
+  if (app.includes("photoAlbumLink") && app.includes("room-photo-link")) s += 5;
+  if (read("logs.js").includes("photoLinks")) s += 5;
   return Math.min(100, s);
 }
 

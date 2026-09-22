@@ -66,6 +66,7 @@ function readFormMaintenance() {
     status: document.getElementById("mnt-status")?.value || "Open",
     priority: document.getElementById("mnt-priority")?.value || "Normal",
     notes: document.getElementById("mnt-notes")?.value?.trim() || "",
+    photoLinks: document.getElementById("mnt-photo-links")?.value?.trim() || "",
     createdAt: editingId
       ? loadEntries(LOG_KEYS.maintenance).find((e) => e.id === editingId)?.createdAt ||
         new Date().toISOString()
@@ -85,6 +86,7 @@ function readFormTicket() {
     assigned: document.getElementById("tkt-assigned")?.value?.trim() || "",
     status: document.getElementById("tkt-status")?.value || "New",
     resolvedDate: document.getElementById("tkt-resolved")?.value || "",
+    photoLinks: document.getElementById("tkt-photo-links")?.value?.trim() || "",
     createdAt: editingId
       ? loadEntries(LOG_KEYS.tickets).find((e) => e.id === editingId)?.createdAt ||
         new Date().toISOString()
@@ -103,6 +105,7 @@ function readFormInspection() {
     status: document.getElementById("ins-status")?.value || "Logged",
     followUp: Boolean(document.getElementById("ins-follow")?.checked),
     reference: document.getElementById("ins-ref")?.value?.trim() || "",
+    photoLinks: document.getElementById("ins-photo-links")?.value?.trim() || "",
     createdAt: editingId
       ? loadEntries(LOG_KEYS.inspections).find((e) => e.id === editingId)?.createdAt ||
         new Date().toISOString()
@@ -127,7 +130,8 @@ function renderForm() {
         <div><label for="mnt-vendor">Vendor</label><input id="mnt-vendor" type="text" /></div>
         <div><label for="mnt-cost">Cost ($)</label><input id="mnt-cost" type="number" min="0" step="0.01" /></div>
         <div><label for="mnt-status">Status</label><select id="mnt-status">${options(MAINTENANCE_STATUSES, "Open")}</select></div>
-        <div class="form-grid" style="grid-column:1/-1"><label for="mnt-notes">Notes</label><textarea id="mnt-notes" rows="2"></textarea></div>
+        <div class="form-grid" style="grid-column:1/-1"><label for="mnt-notes">Notes</label><textarea id="mnt-notes" rows="2" placeholder="Vendor follow-up, parts ordered…"></textarea></div>
+        <div class="form-grid" style="grid-column:1/-1"><label for="mnt-photo-links">Photo / folder links (Dropbox, Drive)</label><input id="mnt-photo-links" type="url" class="external-photo-link" placeholder="Optional share URL · paste in notes too if you prefer" inputmode="url" autocomplete="off" /></div>
       </div>
       <div class="log-form-actions">
         <button type="submit" class="btn btn-primary">${editingId ? "Update entry" : "Add maintenance log"}</button>
@@ -148,6 +152,7 @@ function renderForm() {
         <div><label for="tkt-assigned">Assigned to</label><input id="tkt-assigned" type="text" placeholder="You, vendor, …" /></div>
         <div><label for="tkt-status">Status</label><select id="tkt-status">${options(TICKET_STATUSES, "New")}</select></div>
         <div><label for="tkt-resolved">Resolved date</label><input id="tkt-resolved" type="date" /></div>
+        <div class="form-grid" style="grid-column:1/-1"><label for="tkt-photo-links">Photo / folder links (Dropbox, Drive)</label><input id="tkt-photo-links" type="url" class="external-photo-link" placeholder="Optional · damage photos, thread export" inputmode="url" autocomplete="off" /></div>
       </div>
       <div class="log-form-actions">
         <button type="submit" class="btn btn-primary">${editingId ? "Update ticket" : "Add ticket"}</button>
@@ -165,6 +170,7 @@ function renderForm() {
         <div><label for="ins-party">Who (tenant, inspector, city)</label><input id="ins-party" type="text" /></div>
         <div><label for="ins-ref">Reference # (311, case, …)</label><input id="ins-ref" type="text" /></div>
         <div class="form-grid" style="grid-column:1/-1"><label for="ins-summary">Summary</label><textarea id="ins-summary" rows="3"></textarea></div>
+        <div class="form-grid" style="grid-column:1/-1"><label for="ins-photo-links">Photo / folder links (Dropbox, Drive)</label><input id="ins-photo-links" type="url" class="external-photo-link" placeholder="Inspection photos, 311 attachments" inputmode="url" autocomplete="off" /></div>
         <div><label><input id="ins-follow" type="checkbox" /> Follow-up required</label></div>
       </div>
       <div class="log-form-actions">
@@ -273,6 +279,7 @@ function fillFormForEdit(entry) {
     document.getElementById("mnt-status").value = entry.status || "Open";
     document.getElementById("mnt-priority").value = entry.priority || "Normal";
     document.getElementById("mnt-notes").value = entry.notes || "";
+    document.getElementById("mnt-photo-links").value = entry.photoLinks || "";
   } else if (activeTab === "tickets") {
     document.getElementById("tkt-unit").value = entry.unit || "";
     document.getElementById("tkt-date").value = entry.reportedDate || todayIso();
@@ -283,6 +290,7 @@ function fillFormForEdit(entry) {
     document.getElementById("tkt-assigned").value = entry.assigned || "";
     document.getElementById("tkt-status").value = entry.status || "New";
     document.getElementById("tkt-resolved").value = entry.resolvedDate || "";
+    document.getElementById("tkt-photo-links").value = entry.photoLinks || "";
   } else {
     document.getElementById("ins-unit").value = entry.unit || "";
     document.getElementById("ins-date").value = entry.eventDate || todayIso();
@@ -292,6 +300,7 @@ function fillFormForEdit(entry) {
     document.getElementById("ins-status").value = entry.status || "Logged";
     document.getElementById("ins-follow").checked = Boolean(entry.followUp);
     document.getElementById("ins-ref").value = entry.reference || "";
+    document.getElementById("ins-photo-links").value = entry.photoLinks || "";
   }
 }
 
@@ -343,7 +352,7 @@ function exportCsv() {
   if (activeTab === "maintenance") {
     downloadCsv(
       "maintenance-log.csv",
-      ["reportedDate", "unit", "category", "description", "vendor", "cost", "status", "priority", "notes"],
+      ["reportedDate", "unit", "category", "description", "vendor", "cost", "status", "priority", "notes", "photoLinks"],
       entries.map((e) => [
         e.reportedDate,
         e.unit,
@@ -354,12 +363,13 @@ function exportCsv() {
         e.status,
         e.priority,
         e.notes,
+        e.photoLinks,
       ])
     );
   } else if (activeTab === "tickets") {
     downloadCsv(
       "tickets-log.csv",
-      ["reportedDate", "unit", "reportedBy", "channel", "subject", "detail", "assigned", "status", "resolvedDate"],
+      ["reportedDate", "unit", "reportedBy", "channel", "subject", "detail", "assigned", "status", "resolvedDate", "photoLinks"],
       entries.map((e) => [
         e.reportedDate,
         e.unit,
@@ -370,12 +380,13 @@ function exportCsv() {
         e.assigned,
         e.status,
         e.resolvedDate,
+        e.photoLinks,
       ])
     );
   } else {
     downloadCsv(
       "inspections-complaints-log.csv",
-      ["eventDate", "unit", "kind", "party", "summary", "status", "followUp", "reference"],
+      ["eventDate", "unit", "kind", "party", "summary", "status", "followUp", "reference", "photoLinks"],
       entries.map((e) => [
         e.eventDate,
         e.unit,
@@ -385,6 +396,7 @@ function exportCsv() {
         e.status,
         e.followUp ? "yes" : "no",
         e.reference,
+        e.photoLinks,
       ])
     );
   }

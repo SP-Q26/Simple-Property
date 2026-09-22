@@ -18,6 +18,7 @@ import {
   googleCalendarReminderUrls,
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
+import { buildPacketAiReport, copyTextForAi } from "./lib/packet-ai-report.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
 
 const DRAFT_KEY = "spt_draft";
@@ -34,6 +35,16 @@ const DEFAULT_ROOMS = [
   "Bathroom",
   "Hall / entry",
 ];
+
+function normalizeRoom(r) {
+  return {
+    name: r?.name || "Room",
+    condition: r?.condition || "Good",
+    notes: r?.notes || "",
+    photo: r?.photo || null,
+    photoLink: r?.photoLink || "",
+  };
+}
 
 function emptyDraft() {
   return {
@@ -52,7 +63,8 @@ function emptyDraft() {
     lease: { start: "", end: "" },
     deposit: { amount: "", heldAt: "" },
     surrenderDate: "",
-    rooms: DEFAULT_ROOMS.map((name) => ({ name, condition: "Good", notes: "", photo: null })),
+    photoAlbumLink: "",
+    rooms: DEFAULT_ROOMS.map((name) => ({ name, condition: "Good", notes: "", photo: null, photoLink: "" })),
     deductions: [{ category: "Unpaid rent", description: "", amount: "" }],
     signatures: { landlordPrinted: "", tenantPrinted: "", date: new Date().toISOString().slice(0, 10) },
   };
@@ -73,7 +85,8 @@ function loadDraft() {
         cityPreset: normalizeCityPresetId(parsed.property?.cityPreset),
       },
       deductions: parsed.deductions?.length ? parsed.deductions : emptyDraft().deductions,
-      rooms: parsed.rooms?.length ? parsed.rooms : emptyDraft().rooms,
+      rooms: parsed.rooms?.length ? parsed.rooms.map(normalizeRoom) : emptyDraft().rooms,
+      photoAlbumLink: parsed.photoAlbumLink || "",
     };
     if (!merged.property.cityPreset && merged.property.inChicago && merged.property.state === "IL") {
       merged.property.cityPreset = "chicago-il";
@@ -368,17 +381,26 @@ function renderStep3() {
           <option ${r.condition === "N/A" ? "selected" : ""}>N/A</option>
         </select>
       </div>
-      <div><label>Notes / existing damage</label><textarea class="room-notes">${esc(r.notes)}</textarea></div>
-      <div class="photo-cell"><label>Photo (optional)</label>
+      <div><label>Notes / existing damage</label><textarea class="room-notes" placeholder="Scratches, prior repairs, tenant acknowledgment…">${esc(r.notes)}</textarea></div>
+      <div class="photo-cell"><label>Photo upload (optional)</label>
         <input type="file" class="room-photo" accept="image/jpeg,image/png,image/webp" />
         ${r.photo ? `<img class="photo-thumb" src="${r.photo}" alt="" />` : ""}
+      </div>
+      <div class="room-photo-links">
+        <label>Photo link (Dropbox, Google Drive, iCloud share URL)</label>
+        <input type="url" class="room-photo-link external-photo-link" value="${esc(r.photoLink)}" placeholder="https://…" inputmode="url" autocomplete="off" />
       </div>
     </div>`
     )
     .join("");
   return `
     <h2 id="step-title" tabindex="-1">Move-in checklist</h2>
-    <p class="field-hint">Photos in-browser · ~400KB each.</p>
+    <div class="photo-album-panel">
+      <label for="photo-album">Whole-unit photo folder (optional)</label>
+      <input id="photo-album" class="external-photo-link" type="url" value="${esc(draft.photoAlbumLink)}" placeholder="Dropbox or Google Drive folder link for this move-in" inputmode="url" autocomplete="off" />
+      <p class="field-hint">Paste a view-only share link · stored in this browser with your packet · we do not upload your files.</p>
+    </div>
+    <p class="field-hint">Per-room: notes below · small photo upload (~400KB each) or paste a cloud link per room.</p>
     ${rows}
     <button type="button" class="btn btn-secondary" id="btn-add-room">Add room</button>`;
 }
@@ -428,6 +450,10 @@ function renderStep5() {
         <p class="field-hint">Opens Google in your browser. We do not connect to your Google account on our servers.</p></div>`
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
+    <p style="margin:var(--space-4) 0 var(--space-2)">
+      <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
+    </p>
+    <p class="field-hint">Markdown summary in your clipboard · Dropbox/Drive links included · no photo bytes · paste into ChatGPT, Claude, or any LLM you already pay for. Not legal advice.</p>
     <div class="form-grid two">
       <div><label for="sig-ll">Landlord printed name</label><input id="sig-ll" type="text" value="${esc(draft.signatures.landlordPrinted)}" /></div>
       <div><label for="sig-tn">Tenant printed name</label><input id="sig-tn" type="text" value="${esc(draft.signatures.tenantPrinted)}" /></div>
@@ -489,10 +515,12 @@ function readStepIntoDraft() {
     draft.surrenderDate = document.getElementById("surrender")?.value || "";
   }
   if (step === 3) {
+    draft.photoAlbumLink = document.getElementById("photo-album")?.value?.trim() || "";
     draft.rooms = [...document.querySelectorAll(".room-row-photos")].map((row, i) => ({
       name: row.querySelector(".room-name")?.value?.trim() || "Room",
       condition: row.querySelector(".room-condition")?.value || "Good",
       notes: row.querySelector(".room-notes")?.value?.trim() || "",
+      photoLink: row.querySelector(".room-photo-link")?.value?.trim() || "",
       photo: draft.rooms[i]?.photo || null,
     }));
   }
@@ -534,7 +562,7 @@ function bindStep1Events() {
 function bindStepEvents() {
   document.getElementById("btn-add-room")?.addEventListener("click", () => {
     readStepIntoDraft();
-    draft.rooms.push({ name: "Other", condition: "Good", notes: "", photo: null });
+    draft.rooms.push({ name: "Other", condition: "Good", notes: "", photo: null, photoLink: "" });
     render();
   });
   document.getElementById("btn-add-ded")?.addEventListener("click", () => {
@@ -556,7 +584,7 @@ function bindStepEvents() {
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = reader.result;
-        draft.rooms[i] = draft.rooms[i] || { name: "Room", condition: "Good", notes: "", photo: null };
+        draft.rooms[i] = draft.rooms[i] || { name: "Room", condition: "Good", notes: "", photo: null, photoLink: "" };
         const nextTotal = photoBytesTotal(draft.rooms) - (draft.rooms[i].photo?.length || 0) + dataUrl.length;
         if (nextTotal > MAX_PHOTOS_TOTAL) {
           alert("Total photo storage cap reached for this packet.");
@@ -597,6 +625,21 @@ function bindStepEvents() {
     const slug = (draft.property.street || "unit").replace(/[^\w]+/g, "-").slice(0, 40);
     downloadCsv(`deposit-desk-${slug}.csv`, csv);
     if (els.status) els.status.textContent = "CSV saved · Google Sheets → File → Import → Upload.";
+  });
+  document.getElementById("btn-copy-ai")?.addEventListener("click", async () => {
+    readStepIntoDraft();
+    const deadline = computeDeadline(deadlineInput());
+    const text = buildPacketAiReport(draft, deadline);
+    try {
+      const ok = await copyTextForAi(text);
+      if (els.status) {
+        els.status.textContent = ok
+          ? "Copied for AI · paste into ChatGPT, Claude, or your assistant."
+          : "Copy failed · select text manually from print preview.";
+      }
+    } catch {
+      if (els.status) els.status.textContent = "Clipboard blocked · allow paste or use Print / PDF.";
+    }
   });
   document.getElementById("btn-ics")?.addEventListener("click", () => {
     readStepIntoDraft();
@@ -726,7 +769,12 @@ function renderPrintPacket() {
   const dep = parseFloat(draft.deposit.amount) || 0;
   const withheld = sumDeductions(draft.deductions);
   const roomRows = draft.rooms
-    .map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.condition)}</td><td>${esc(r.notes) || "n/a"}</td></tr>`)
+    .map((r) => {
+      const noteParts = [r.notes || ""];
+      if (r.photoLink) noteParts.push(`Photo link: ${r.photoLink}`);
+      const noteCell = noteParts.filter(Boolean).join(" · ") || "n/a";
+      return `<tr><td>${esc(r.name)}</td><td>${esc(r.condition)}</td><td>${esc(noteCell)}</td></tr>`;
+    })
     .join("");
   const photoBlock = draft.rooms
     .filter((r) => r.photo)
@@ -744,6 +792,7 @@ function renderPrintPacket() {
     <strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Held:</strong> ${esc(draft.deposit.heldAt) || "n/a"}</p>
     <p><strong>Landlord:</strong> ${esc(draft.landlord.name)} · ${esc(draft.landlord.email)}</p>
     ${deadline.deadline ? `<p><strong>Deadline (${esc(deadline.jurisdiction)}):</strong> ${formatUsDate(deadline.deadline)}</p>` : ""}
+    ${draft.photoAlbumLink ? `<p><strong>Move-in photo folder:</strong> ${esc(draft.photoAlbumLink)}</p>` : ""}
     <h3>Move-in condition</h3>
     <table><thead><tr><th>Area</th><th>Condition</th><th>Notes</th></tr></thead><tbody>${roomRows}</tbody></table>
     ${photoBlock ? `<h3>Move-in photos</h3><div class="print-photos">${photoBlock}</div>` : ""}

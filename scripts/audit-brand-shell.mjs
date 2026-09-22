@@ -1,21 +1,26 @@
 #!/usr/bin/env node
 /** Brand shell P0 — lockup · Deposit Desk tag · css v8 */
-import { readFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const BRAND_TAG = "Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO";
-const CSS = "simple-property.css?v=14";
+const CSS = "simple-property.css?v=16";
 let fail = 0;
 
-function htmlFiles(dir) {
-  return readdirSync(dir)
-    .filter((f) => f.endsWith(".html"))
-    .map((f) => join(dir, f));
+function walkHtml(dir, out = []) {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (name === "brand" || name === "node_modules") continue;
+    const st = statSync(p);
+    if (st.isDirectory()) walkHtml(p, out);
+    else if (name.endsWith(".html")) out.push(p);
+  }
+  return out;
 }
 
-const files = [...htmlFiles(web), ...htmlFiles(join(web, "blog"))];
+const files = walkHtml(web);
 
 for (const file of files) {
   const rel = file.replace(web + "/", "");

@@ -1,3 +1,10 @@
+import { readFileSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
+const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
+
 function articleShell({ title, description, slug, published, bodyHtml }) {
   const url = `https://simple-property.com/blog/${slug}`;
   const ld = JSON.stringify({
@@ -23,10 +30,11 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=14">
+  <link rel="stylesheet" href="/simple-property.css?v=16">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>
+${atmosphereBlock}
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page">
     <header class="site-header">
@@ -38,8 +46,7 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
         </span>
       </a>
       <nav class="header-nav" aria-label="Primary">
-        <a href="/app">App</a>
-        <a href="/logs">Logs</a>
+        <a href="/app">App</a><a href="/logs">Logs</a>
         <a href="/pricing">Pricing</a>
         <a href="/launch-stack">Stack</a>
         <a href="/blog">Guides</a>

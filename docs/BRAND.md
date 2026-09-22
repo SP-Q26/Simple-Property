@@ -28,8 +28,9 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline — remove
 ## Visual
 
 - **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227` (not terracotta, not Innsegall fjord dark)
-- **Quant blue wash:** `--quant-blue-surface` on pricing cards and product proof (subtle, not full-page)
-- **Typography:** **Lora** (display) + **Inter** (UI) · CSS **`simple-property.css?v=14`**
+- **Quant blue wash:** `--quant-blue` / `--quant-blue-surface` on fact strip, form panels, pricing cards, product proof, deadline box (gold left rail)
+- **Gold accent:** `--beam-gold` on primary buttons, door atmosphere, nav hover, wizard active step hairline, paywall dashed border
+- **Typography:** **Lora** (display) + **Inter** (UI) · CSS **`simple-property.css?v=16`**
 - **Atmosphere:** one **large gold door** (opens/closes) · **no beam from above** · `web/brand/atmosphere.html`
 - **Fact strip** · **product proof** · shell: `web/brand/shell-header.html` + `shell-footer.html`
 - Stripe Checkout branding stays Isles gold `#f4c95d` on fjord (Dashboard only) · site chrome is light quant lane

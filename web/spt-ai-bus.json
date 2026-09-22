@@ -30,6 +30,14 @@
     "https://simple-property.com/launch-stack"
   ],
   "primary_cta": "https://simple-property.com/app",
+  "share_for_ai": {
+    "artifact": "markdown packet + operator prompt",
+    "in_app": "Wizard step 5 · Copy for AI assistant (clipboard · client-only)",
+    "context_urls": [
+      "https://simple-property.com/llms.txt",
+      "https://simple-property.com/spt-ai-bus.json"
+    ]
+  },
   "launch_stack": "https://simple-property.com/launch-stack",
   "guides": "https://simple-property.com/blog",
   "blog_feed": "https://simple-property.com/blog/feed.rss",

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Spacing · typography · pricing UX · receipt sample (Innsegall-style gates). */
+/** Spacing · typography · pricing UX · gold + quant blue gates. */
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,10 +21,15 @@ function need(label, ok) {
 const css = read("simple-property.css");
 const pricing = read("pricing.html");
 const index = read("index.html");
+const app = read("app.js");
 
-need("css v14", css.includes("v14") || css.includes("Chicago quant"));
+need("css v16 linked", index.includes("simple-property.css?v=16"));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
-need("large door atmosphere", css.includes(".spt-door-scene") && !css.includes(".spt-beam"));
+need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
+need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));
+need("wizard step gold active", css.includes(".wizard-steps span.active") && css.includes("var(--accent)"));
+need("form panel quant surface", css.includes(".form-panel") && css.includes("quant-blue-surface"));
+need("regal SP swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-monogram") && index.includes("spt-door-swing"));
 need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
 need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
@@ -35,6 +40,8 @@ need("pricing card grid", pricing.includes("pricing-cards"));
 need("deposit receipt sample", index.includes("deposit-receipt") && index.includes("Move-in condition"));
 need("brand tag on pricing", pricing.includes("Keep the clock"));
 need("pro units 40 in pricing", pricing.includes("40"));
+need("photo link fields app", app.includes("photoAlbumLink") && app.includes("room-photo-link"));
+need("photo link fields logs", read("logs.js").includes("photoLinks") && css.includes(".external-photo-link"));
 
 console.log(fail ? `\nVisual brand audit FAILED (${fail})` : "\nVisual brand audit OK");
 process.exit(fail ? 1 : 0);
