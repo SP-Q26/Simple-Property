@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suggest rulesets and improvements · Deposit Desk feedback</title>
+  <meta name="description" content="Tell us what to add: new state rulesets, wizard fields, guides, or product fixes. Midwest deposit documentation · not legal advice.">
+  <link rel="canonical" href="https://simple-property.com/feedback">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=20">
+</head>
+<body>
+  <div class="spt-atmosphere" aria-hidden="true">
+    <div class="spt-weather"></div>
+    <div class="spt-weather-mist"></div>
+    <div class="spt-door-scene">
+      <div class="spt-greystone-pilaster spt-greystone-pilaster--left"></div>
+      <div class="spt-greystone-pilaster spt-greystone-pilaster--right"></div>
+      <div class="spt-door-light"></div>
+      <div class="spt-door-lintel"></div>
+      <div class="spt-door-frame">
+        <div class="spt-door-swing"><span class="spt-door-monogram" aria-hidden="true">SP</span></div>
+      </div>
+      <div class="spt-greystone-stoop"></div>
+    </div>
+  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand-lockup" href="/">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-word">Simple Property Tools</span>
+          <span class="brand-tag">Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO</span>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/app">App</a><a href="/logs">Logs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/launch-stack">Stack</a>
+        <a href="/blog">Guides</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+    </header>
+    <main id="main" class="section">
+      <p class="hero-eyebrow">Product feedback</p>
+      <h1>Suggest rulesets and improvements</h1>
+      <p class="ps-problem">Deposit rules vary by state and city. We cannot guess every ordinance or workflow you need.</p>
+      <p class="ps-fix">Tell us what to add. We prioritize wizard rulesets, deadlines, and guides operators actually use.</p>
+      <p class="field-hint">Not legal advice. We do not provide counsel or guaranteed outcomes. For legal questions, talk to a licensed attorney.</p>
+
+      <form id="spt-feedback-form" class="form-panel feedback-form" style="max-width:36rem;margin-top:1.5rem">
+        <label class="field-stack">
+          <span>Category</span>
+          <select name="category" required>
+            <option value="ruleset">State or city ruleset (deadlines, RLTO, fields)</option>
+            <option value="wizard">Wizard or export improvement</option>
+            <option value="feature">New feature</option>
+            <option value="content">Guide or comparison page</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label class="field-stack">
+          <span>State or city (optional)</span>
+          <input name="state" type="text" maxlength="80" placeholder="e.g. Chicago RLTO, Indiana 45-day" autocomplete="off" />
+        </label>
+        <label class="field-stack">
+          <span>Your email (optional, for follow-up)</span>
+          <input name="email" type="email" maxlength="120" autocomplete="email" />
+        </label>
+        <label class="field-stack">
+          <span>Suggestion</span>
+          <textarea name="message" required rows="6" minlength="12" maxlength="4000" placeholder="What should Deposit Desk do differently? Include statute or ordinance cites if you have them."></textarea>
+        </label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="feedback-honeypot" />
+        <button type="submit" class="btn btn-primary">Send suggestion</button>
+        <p class="field-hint" id="spt-feedback-status" aria-live="polite"></p>
+      </form>
+
+      <p style="margin-top:1.5rem">Prefer email? <a href="mailto:hello@simple-property.com?subject=Deposit%20Desk%20feedback">hello@simple-property.com</a></p>
+      <p class="disclaimer">Documentation software only · not legal advice.</p>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-colophon">
+        <img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22">
+        <span>Simple Property Tools · not legal advice</span>
+      </p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/app">App</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/legal">Legal</a>
+        <a href="/feedback">Feedback</a>
+      </nav>
+    </footer>
+  </div>
+  <script src="/sp-nav.js" defer></script>
+  <script src="/sp-feedback.js" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

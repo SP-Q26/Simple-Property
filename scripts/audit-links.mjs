@@ -15,6 +15,7 @@ const ROUTES = new Set([
   "/logs",
   "/pricing",
   "/launch-stack",
+  "/feedback",
   "/blog",
   "/blog/feed.rss",
   "/privacy",

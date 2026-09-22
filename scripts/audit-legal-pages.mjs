@@ -29,11 +29,13 @@ const sm = read("sitemap.xml");
 need("sitemap privacy", sm.includes("/privacy"));
 need("sitemap terms", sm.includes("/terms"));
 need("sitemap legal", sm.includes("/legal"));
+need("sitemap feedback", sm.includes("/feedback"));
 
 const vercel = read("vercel.json");
 need("vercel rewrite privacy", vercel.includes('"/privacy"'));
 need("vercel rewrite terms", vercel.includes('"/terms"'));
 need("vercel rewrite legal", vercel.includes('"/legal"'));
+need("vercel rewrite feedback", vercel.includes('"/feedback"'));
 
 for (const page of ["index.html", "pricing.html", "app.html"]) {
   const h = read(page);

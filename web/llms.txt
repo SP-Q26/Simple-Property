@@ -1,16 +1,17 @@
 # Simple Property Tools · llms.txt
 
-> Midwest deposit packets for mom-and-pop landlords (IL · IN · OH · MI · IA · MO): **Itemize it. Date it. Keep the clock.** · surrender clocks, move-in proof, itemized export · beats Excel, not a PM suite.
+> Midwest mom-and-pop (IL · IN · OH · MI · IA · MO): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports a print-ready packet · **Itemize it. Date it. Keep the clock.** · not a PM suite.
 
 - https://simple-property.com/
 - **Deposit Desk** · **765 ILCS 715/** IL **30-day** & **Chicago RLTO 45-day** · IN **45-day** · OH/MI/IA/MO **30-day** from surrender · move-in/move-out · .ics · Calendar/Sheets · print (per turn or Pro)
 - **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simple-property.com/pricing
 - **Guides** · pain (missed deadline, dispute, spreadsheet) · law · landlords · renters · news: https://simple-property.com/blog · RSS https://simple-property.com/blog/feed.rss
-- **Pain hub** · missed clock, tenant dispute, Excel mistakes, surrender/keys: https://simple-property.com/blog#guides-pain
+- **Pain hub** · missed deadline, tenant dispute, Excel mistakes, surrender/keys: https://simple-property.com/blog#guides-pain
 - **City guides** · Chicago RLTO and major Midwest cities: https://simple-property.com/blog#guides-cities
-- **Launch stack** · tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simple-property.com/launch-stack
+- **Launch stack** · pain: portfolio outruns memory · solution: tools by door count: https://simple-property.com/launch-stack
 - Agent bus: https://simple-property.com/spt-ai-bus.json
 - Gospel: https://simple-property.com/.well-known/spt-gospel.json
+- **Feedback** · suggest state rulesets, wizard fields, guides: https://simple-property.com/feedback
 - App: https://simple-property.com/app
 - hello@simple-property.com
 - Not: PM suite, legal advice, enterprise portfolio platform, inspection-photo SaaS

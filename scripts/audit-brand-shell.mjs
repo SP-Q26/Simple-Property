@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const BRAND_TAG = "Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO";
-const CSS = "simple-property.css?v=18";
+const CSS = "simple-property.css?v=20";
 let fail = 0;
 
 function walkHtml(dir, out = []) {

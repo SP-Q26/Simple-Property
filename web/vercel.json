@@ -68,6 +68,10 @@
       "destination": "/launch-stack.html"
     },
     {
+      "source": "/feedback",
+      "destination": "/feedback.html"
+    },
+    {
       "source": "/spt-ai-bus.json",
       "destination": "/spt-ai-bus.json"
     },

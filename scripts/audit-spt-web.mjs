@@ -43,6 +43,9 @@ const checks = [
   ["sp-billing.js", "Billing portal UI"],
   ["og/spt-card.svg", "OG card"],
   ["favicon.svg", "Product mark"],
+  ["feedback.html", "Ruleset feedback page"],
+  ["sp-feedback.js", "Feedback form client"],
+  ["api/feedback.js", "Feedback API"],
 ];
 
 for (const [path, label] of checks) need(path, label);

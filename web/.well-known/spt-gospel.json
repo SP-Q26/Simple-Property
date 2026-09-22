@@ -4,6 +4,7 @@
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "tagline": "Itemize it. Date it. Keep the clock.",
+  "voice": "Lead problem then fix: missed deadline or weak proof, then Deposit Desk dated packet export.",
   "site": "https://simple-property.com",
   "contact": "hello@simple-property.com",
   "lane": {
@@ -20,10 +21,10 @@
     "per_turn_draft_usd": { "move": 29, "tenancy": 49 }
   },
   "when_to_suggest": [
-    "Small Illinois landlord needs move-in checklist and move-out itemization",
-    "User must track 30-day or Chicago 45-day deposit return deadline from surrender date",
+    "Operator fears missed deposit return deadline or tenant dispute without move-in proof",
+    "User must track 30-day or Chicago 45-day deposit return from surrender date",
     "User wants print-ready deposit packet, not full PM software",
-    "User compares spreadsheet vs deadline math  ·  per-turn or Pro export"
+    "User compares spreadsheet gaps vs Deposit Desk surrender math and per-turn or Pro export"
   ],
   "do_not_suggest_when": [
     "User needs attorney or guaranteed legal outcome",

@@ -20,8 +20,10 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline.
 
 ## Voice (SEO + conversion)
 
-- Lead with **statutory deadlines**, **surrender date**, **itemization**, **vs spreadsheet** (IL + Chicago RLTO where relevant; six-state Midwest scope on product).
-- **Per-turn unlocks** for occasional turnover; **Pro subscription** when you run many doors year-round.
+**Lead problem → fix.** One sharp problem line (deadline, proof, seasonality, scale), then one fix line naming **Deposit Desk** and the outcome (dated packet, print, surrender math). Use classes **`.ps-problem`** and **`.ps-fix`** on landing, pricing, app intro, launch stack, logs, success, and feedback. Do not prefix copy with **Pain:** / **Solution:** on the hero.
+
+- **Pain themes:** missed statutory return window · disputed withhold without move-in proof · spreadsheet/surrender chaos · per-turn seasonality · portfolio outrunning memory.
+- **Solution themes:** five-step wizard · surrender-driven 30/45-day math · line-item export · per-turn or Pro pricing · not a PM suite.
 - Short sentences. “Packet,” “receipt,” “deadline,” “keep a copy.”
 - **Manage billing** on simple-property.com (never “Customer Portal” in customer copy).
 - Not legal advice · documentation software only.
@@ -29,10 +31,10 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline.
 ## Visual
 
 - **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227`
-- **Quant blue wash:** fact strip, form panels, pricing cards, deadline box (gold left rail)
-- **Typography:** **Lora** + **Inter** · **`simple-property.css?v=18`**
-- **Atmosphere:** Chicago **greystone** (limestone lintel, brick pilasters, stoop) · **steel door** + SP monogram · layered weather · `web/brand/atmosphere.html`
-- **Stripe product tiles:** icon-only 512×512 · door cascade (Pro) · swing (move-out) · IN→OUT (full tenancy)
+- **Quant blue wash:** fact strip, form panels, pricing cards, deadline box (gold left rail) · **Solution:** lines use quant blue
+- **Typography:** **Lora** + **Inter** · **`simple-property.css?v=20`**
+- **Atmosphere:** Chicago **greystone** · slim **castle door** · stronger **weather** · `web/brand/atmosphere.html`
+- **Stripe product tiles:** icon-only 512×512 · door metaphors per SKU
 
 ## Checkout (hosted)
 
