@@ -1,8 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Simple Property Tools">
-  <rect width="1200" height="630" fill="#f4f0e6"/>
-  <rect x="80" y="80" width="1040" height="470" rx="16" fill="#faf7f0" stroke="#d9d0c0"/>
-  <text x="120" y="200" fill="#3d3429" font-family="Georgia, serif" font-size="56" font-weight="600">Simple Property Tools</text>
-  <text x="120" y="270" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="28">30-day IL · 45-day Chicago · deposit packet</text>
-  <path d="M900 380V280l80-50 80 50v100" fill="#faf7f0" stroke="#3d3429" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M980 230l-80 50 80-60 80 60-80-40z" fill="#4a6741" stroke="#3d3429" stroke-width="4"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Simple Property Tools - Midwest deposit documentation">
+  <defs>
+    <linearGradient id="og-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf7f0"/>
+      <stop offset="1" stop-color="#eef2f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-sky)"/>
+  <rect x="64" y="64" width="1072" height="502" rx="20" fill="#f4f0e6" stroke="#d9d0c0" stroke-width="2"/>
+  <text x="96" y="168" fill="#3d3429" font-family="Georgia, serif" font-size="52" font-weight="600">Simple Property Tools</text>
+  <text x="96" y="228" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="26">Itemize it. Date it. Keep the clock.</text>
+  <text x="96" y="268" fill="#3b5a78" font-family="system-ui, sans-serif" font-size="20">IL | IN | OH | MI | IA | MO</text>
+  <g transform="translate(720 120)" opacity="0.95">
+    <g transform="translate(0 80) scale(0.72)">
+      <rect x="0" y="36" width="56" height="88" rx="4" fill="#faf7f0" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 36V20a14 14 0 0 1 28 0v16" fill="none" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 22 L8 32 L28 26 L48 32 Z" fill="#4a6741" stroke="#3d3429" stroke-width="2"/>
+      <circle cx="42" cy="72" r="4" fill="#c9a227"/>
+    </g>
+    <g transform="translate(72 56) scale(0.86)">
+      <rect x="0" y="36" width="56" height="88" rx="4" fill="#faf7f0" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 36V20a14 14 0 0 1 28 0v16" fill="none" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 22 L8 32 L28 26 L48 32 Z" fill="#4a6741" stroke="#3d3429" stroke-width="2"/>
+      <circle cx="42" cy="72" r="4" fill="#c9a227"/>
+    </g>
+    <g transform="translate(156 32) scale(1)">
+      <rect x="0" y="36" width="56" height="88" rx="4" fill="#faf7f0" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 36V20a14 14 0 0 1 28 0v16" fill="none" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 22 L8 32 L28 26 L48 32 Z" fill="#4a6741" stroke="#3d3429" stroke-width="2"/>
+      <circle cx="42" cy="72" r="4" fill="#c9a227"/>
+    </g>
+    <g transform="translate(248 8) scale(1.12)">
+      <rect x="0" y="36" width="56" height="88" rx="4" fill="#faf7f0" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 36V20a14 14 0 0 1 28 0v16" fill="none" stroke="#3d3429" stroke-width="3"/>
+      <path d="M28 22 L8 32 L28 26 L48 32 Z" fill="#4a6741" stroke="#3d3429" stroke-width="2"/>
+      <text x="28" y="78" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="14" font-weight="600">SP</text>
+      <circle cx="42" cy="72" r="4" fill="#c9a227"/>
+    </g>
+  </g>
+  <path d="M96 320 H520" stroke="#c9a227" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+  <text x="96" y="360" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="22">Deposit Desk for small landlords</text>
 </svg>

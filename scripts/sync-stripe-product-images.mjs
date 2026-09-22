@@ -1,19 +1,16 @@
 #!/usr/bin/env node
 /**
- * Push catalog names, descriptions, and checkout_image URLs to Stripe products.
+ * Push catalog checkout_image URLs to Stripe products (test or live).
+ * Images only — use sync-stripe-products.mjs when name/description must change too.
+ *
  * Requires STRIPE_SECRET_KEY (sk_test_… or sk_live_…).
  *
  *   npm run export:stripe-images
- *   deploy simple-property.com so /stripe/*.png returns 200
- *   STRIPE_SECRET_KEY=sk_live_… npm run sync:stripe-products
- *
- * For images only (Innsegall pattern): npm run sync:stripe-images
+ *   deploy so https://simple-property.com/stripe/*.png returns 200
+ *   STRIPE_SECRET_KEY=sk_test_… npm run sync:stripe-images
+ *   STRIPE_SECRET_KEY=sk_live_… npm run sync:stripe-images
  */
-import {
-  STRIPE_CATALOG,
-  stripeProductDescription,
-  stripeProductImageUrl,
-} from "../web/lib/stripe-catalog.mjs";
+import { STRIPE_CATALOG, stripeProductImageUrl } from "../web/lib/stripe-catalog.mjs";
 
 const sk = process.env.STRIPE_SECRET_KEY || "";
 const live = sk.startsWith("sk_live_");
@@ -30,7 +27,6 @@ let failed = 0;
 for (const [sku, item] of Object.entries(STRIPE_CATALOG)) {
   const productId = item[idKey];
   const imageUrl = stripeProductImageUrl(sku);
-  const description = stripeProductDescription(sku);
   if (!productId) {
     console.error(`skip ${sku}: no ${idKey}`);
     failed++;
@@ -43,10 +39,7 @@ for (const [sku, item] of Object.entries(STRIPE_CATALOG)) {
   }
 
   const body = new URLSearchParams();
-  body.append("name", item.name);
-  body.append("description", description);
   body.append("images[0]", imageUrl);
-  body.append("url", "https://simple-property.com/pricing");
 
   const res = await fetch(`https://api.stripe.com/v1/products/${productId}`, {
     method: "POST",
@@ -62,9 +55,9 @@ for (const [sku, item] of Object.entries(STRIPE_CATALOG)) {
     failed++;
     continue;
   }
-  console.log(`ok ${sku} ${productId}`);
-  console.log(`   image ${(data.images?.[0] || "").slice(0, 80)}`);
+  const got = data.images?.[0] || "";
+  console.log(`ok ${sku} ${productId} → ${got.slice(0, 72)}…`);
 }
 
 if (failed) process.exit(1);
-console.log(`\nStripe products synced (${live ? "live" : "test"})`);
+console.log(`\nStripe product images synced (${live ? "live" : "test"})`);

@@ -97,6 +97,9 @@ export default async function handler(req, res) {
         },
       },
       branding_settings: checkoutBrandingSettings(),
+      consent_collection: {
+        terms_of_service: "required",
+      },
     };
 
     if (catalog.mode === "subscription") {
@@ -112,6 +115,12 @@ export default async function handler(req, res) {
       const msg = String(brandErr?.message || brandErr);
       if (sessionParams.branding_settings && /branding_settings|unknown parameter/i.test(msg)) {
         delete sessionParams.branding_settings;
+        session = await stripe.checkout.sessions.create(sessionParams);
+      } else if (
+        sessionParams.consent_collection &&
+        /consent_collection|terms_of_service|unknown parameter/i.test(msg)
+      ) {
+        delete sessionParams.consent_collection;
         session = await stripe.checkout.sessions.create(sessionParams);
       } else {
         throw brandErr;

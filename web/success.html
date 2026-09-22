@@ -9,16 +9,21 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=17">
+  <link rel="stylesheet" href="/simple-property.css?v=18">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
     <div class="spt-weather"></div>
+    <div class="spt-weather-mist"></div>
     <div class="spt-door-scene">
+      <div class="spt-greystone-pilaster spt-greystone-pilaster--left"></div>
+      <div class="spt-greystone-pilaster spt-greystone-pilaster--right"></div>
       <div class="spt-door-light"></div>
+      <div class="spt-door-lintel"></div>
       <div class="spt-door-frame">
         <div class="spt-door-swing"><span class="spt-door-monogram" aria-hidden="true">SP</span></div>
       </div>
+      <div class="spt-greystone-stoop"></div>
     </div>
   </div>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -39,10 +44,10 @@
       </nav>
     </header>
     <main id="main" class="section">
-      <p class="section-label">Plain dealing</p>
+      <p class="section-label">Payment confirmed</p>
       <h1>Pro is active</h1>
       <p class="hero-lead" id="status">Confirming your payment…</p>
-      <p class="field-hint">Cancel anytime from <strong>Manage billing</strong> on pricing or the link in your receipt email.</p>
+      <p class="field-hint">Documentation only · not legal advice. Cancel anytime from <strong>Manage billing</strong> on pricing or the link in your receipt email.</p>
 
       <div id="actions" hidden>
         <ol class="steps">
@@ -56,10 +61,15 @@
       <p id="error" hidden class="paywall">Verification failed. <a href="/pricing">Retry checkout</a> or email <a href="mailto:hello@simple-property.com">hello@simple-property.com</a>.</p>
     </main>
     <footer class="site-footer">
+      <p class="footer-colophon">
+        <img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22">
+        <span>Simple Property Tools · not legal advice</span>
+      </p>
       <nav class="footer-links" aria-label="Footer">
-        <a href="/app">App</a><a href="/logs">Logs</a>
-        <a href="/terms">Terms</a>
+        <a href="/app">App</a>
+        <a href="/pricing">Pricing</a>
         <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
       </nav>
     </footer>
   </div>

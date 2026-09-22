@@ -11,6 +11,7 @@
     "verify-stripe": "node scripts/verify-stripe-catalog.mjs",
     "provision-stripe": "node scripts/provision-stripe-deposit-desk.mjs",
     "export:stripe-images": "node scripts/export-stripe-product-images.mjs",
+    "sync:stripe-images": "node scripts/sync-stripe-product-images.mjs",
     "sync:stripe-products": "node scripts/sync-stripe-products.mjs",
     "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs",
     "build-blog": "node scripts/build-blog-seo.mjs",

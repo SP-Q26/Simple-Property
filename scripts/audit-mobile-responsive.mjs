@@ -55,7 +55,9 @@ need("header nav wraps", css.includes(".header-nav") && css.includes("flex-wrap"
 need("pricing finder stacks on mobile", css.includes(".pricing-finder__grid"));
 need("locale bar mobile", css.includes(".locale-pill__name") && css.includes("locale-bar"));
 need("css weather speckle", css.includes(".spt-weather") && css.includes("spt-weather-drift"));
-need("css regal swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-frame::before"));
+need("css weather mist", css.includes(".spt-weather-mist"));
+need("css greystone brick", css.includes(".spt-greystone-pilaster"));
+need("css metal swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-lintel"));
 need("css tablet spacing block", css.includes("@media (min-width: 640px) and (max-width: 1023px)"));
 
 const app = read("app.js");

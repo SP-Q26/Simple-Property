@@ -30,7 +30,7 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=17">
+  <link rel="stylesheet" href="/simple-property.css?v=18">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>
@@ -57,7 +57,7 @@ ${bodyHtml}
     </main>
     <footer class="site-footer">
       <p class="footer-colophon"><img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22"><span>Simple Property Tools · not legal advice</span></p>
-      <nav class="footer-links"><a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/">Home</a></nav>
+      <nav class="footer-links"><a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/">Home</a></nav>
     </footer>
   </div>
   <script src="/sp-nav.js" defer></script>

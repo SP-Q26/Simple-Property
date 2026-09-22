@@ -197,6 +197,7 @@ const staticUrls = [
   `${site}/blog`,
   `${site}/privacy`,
   `${site}/terms`,
+  `${site}/legal`,
   `${site}/launch-stack`,
 ];
 const blogUrls = manifest.posts.map((p) => `${site}/blog/${p.slug}`);

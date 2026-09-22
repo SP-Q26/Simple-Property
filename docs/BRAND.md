@@ -1,10 +1,10 @@
 # Brand · Simple Property Tools
 
-**Status:** locked · SEO lane brand · see `CANON.md` · pricing dive `PRICING_DIVE_PER_TURN.md`.
+**Status:** locked · Midwest mom-and-pop · see `CANON.md` · Stripe images `STRIPE_PRODUCT_IMAGES.md`.
 
 ## Who it’s for
 
-**Mom-and-pop operators** — usually **1–3 people** running a handful of doors (Pro cap **4 units**), not a property management company.
+**Mom-and-pop operators** — usually **1–3 people** running a handful of doors (Pro cap **40 units**), not a property management company.
 
 ## Lockup
 
@@ -12,30 +12,36 @@
 |---------|--------|
 | Umbrella | **Simple Property Tools** |
 | Product | **Deposit Desk** |
-| Header tag | **Deposit Desk · IL & Chicago RLTO** |
+| Header tag | **Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO** |
 | Footer | **Simple Property Tools · not legal advice** |
 | Mark | `/favicon.svg` only (no mascot) |
 
-Retired: **Homestead** farmhouse mark and “plain dealing” tagline — removed from site chrome 2026-09-22.
+Retired: **Homestead** farmhouse mark and “plain dealing” tagline.
 
 ## Voice (SEO + conversion)
 
-- Lead with **Illinois statute + RLTO deadlines**, **surrender date**, **itemization**, **vs spreadsheet**.
-- **Per-turn / pass-through** (like screening) for seasonal turnover; **Pro subscription** for 3+ turns/year.
+- Lead with **statutory deadlines**, **surrender date**, **itemization**, **vs spreadsheet** (IL + Chicago RLTO where relevant; six-state Midwest scope on product).
+- **Per-turn unlocks** for occasional turnover; **Pro subscription** when you run many doors year-round.
 - Short sentences. “Packet,” “receipt,” “deadline,” “keep a copy.”
+- **Manage billing** on simple-property.com (never “Customer Portal” in customer copy).
 - Not legal advice · documentation software only.
 
 ## Visual
 
-- **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227` (not terracotta, not Innsegall fjord dark)
-- **Quant blue wash:** `--quant-blue` / `--quant-blue-surface` on fact strip, form panels, pricing cards, product proof, deadline box (gold left rail)
-- **Gold accent:** `--beam-gold` on primary buttons, door atmosphere, nav hover, wizard active step hairline, paywall dashed border
-- **Typography:** **Lora** (display) + **Inter** (UI) · CSS **`simple-property.css?v=17`**
-- **Atmosphere:** one **large gold door** (opens/closes) · **no beam from above** · `web/brand/atmosphere.html`
-- **Fact strip** · **product proof** · shell: `web/brand/shell-header.html` + `shell-footer.html`
-- **Checkout:** per-session branding in `checkout.js` (quant light · SP icon) · Dashboard branding is fallback only · Innsegall sets its own session branding on its site
+- **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227`
+- **Quant blue wash:** fact strip, form panels, pricing cards, deadline box (gold left rail)
+- **Typography:** **Lora** + **Inter** · **`simple-property.css?v=18`**
+- **Atmosphere:** Chicago **greystone** (limestone lintel, brick pilasters, stoop) · **steel door** + SP monogram · layered weather · `web/brand/atmosphere.html`
+- **Stripe product tiles:** icon-only 512×512 · door cascade (Pro) · swing (move-out) · IN→OUT (full tenancy)
 
-## Product name
+## Checkout (hosted)
 
-- **Simple Property Tools** (umbrella)
-- **Deposit Desk** (Illinois deposit packet)
+- **Product images:** `https://simple-property.com/stripe/*.png` via `npm run sync:stripe-images`
+- **Session branding:** `checkoutBrandingSettings()` · quant light background · SP icon PNG
+- **Legal:** `/terms` · `/privacy` · consent on checkout session
+
+## Audit
+
+```bash
+npm run audit   # includes audit-branding-copy.mjs, audit-brand-shell.mjs, audit-svg-assets.mjs
+```

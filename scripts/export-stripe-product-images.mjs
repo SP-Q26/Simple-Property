@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 /**
  * Rasterize web/stripe/*.svg → 512×512 PNG for Stripe product images.
+ * Also copies PNGs to docs/stripe/upload-for-stripe/ for manual Dashboard drag-in.
  */
-import { readFileSync, writeFileSync, statSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, statSync, readdirSync, mkdirSync, copyFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const stripeDir = join(root, "web/stripe");
+const uploadDir = join(root, "docs/stripe/upload-for-stripe");
 
 let resvg;
 try {
@@ -23,14 +25,19 @@ if (!svgs.length) {
   process.exit(1);
 }
 
+mkdirSync(uploadDir, { recursive: true });
+
 for (const file of svgs) {
   const svgPath = join(stripeDir, file);
-  const pngPath = join(stripeDir, file.replace(/\.svg$/, ".png"));
+  const pngName = file.replace(/\.svg$/, ".png");
+  const pngPath = join(stripeDir, pngName);
   const svg = readFileSync(svgPath, "utf8");
   const renderer = new resvg.Resvg(svg, { fitTo: { mode: "width", value: 512 } });
   const pngBuffer = renderer.render().asPng();
   writeFileSync(pngPath, pngBuffer);
+  copyFileSync(pngPath, join(uploadDir, pngName));
   const kb = Math.round(statSync(pngPath).size / 1024);
-  console.log(`ok ${file} → ${file.replace(/\.svg$/, ".png")} (${kb} KB)`);
+  console.log(`ok ${file} → web/stripe/${pngName} (${kb} KB)`);
+  console.log(`   copy docs/stripe/upload-for-stripe/${pngName}`);
 }
 console.log("export-stripe-product-images OK");

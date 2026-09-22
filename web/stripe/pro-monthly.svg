@@ -1,10 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Deposit Desk Pro Monthly">
-  <rect width="512" height="512" fill="#f4f0e6"/>
-  <rect x="24" y="24" width="464" height="464" rx="32" fill="#faf7f0" stroke="#c9a227" stroke-opacity="0.45" stroke-width="2"/>
-  <rect x="196" y="120" width="120" height="200" rx="6" fill="#faf7f0" stroke="#3d3429" stroke-width="5"/>
-  <path d="M256 120v200M196 120h120" stroke="#3d3429" stroke-width="5"/>
-  <circle cx="256" cy="220" r="8" fill="#c9a227"/>
-  <text x="256" y="360" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="32" font-weight="600">Pro · Monthly</text>
-  <text x="256" y="400" text-anchor="middle" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="20">Up to 40 units</text>
-  <rect x="156" y="428" width="200" height="8" rx="4" fill="#c9a227"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Pro monthly - up to 40 doors, billed each month">
+  <rect width="512" height="512" rx="48" fill="#f4f0e6"/>
+  <rect x="32" y="32" width="448" height="448" rx="36" fill="#faf7f0" stroke="#c9a227" stroke-opacity="0.35" stroke-width="2"/>
+  <g transform="translate(256 200)">
+    <g transform="translate(-148 28) scale(0.62)" opacity="0.55">
+      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+    </g>
+    <g transform="translate(-78 14) scale(0.74)" opacity="0.72">
+      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+    </g>
+    <g transform="translate(-8 0) scale(0.88)" opacity="0.88">
+      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+    </g>
+    <g transform="translate(62 -10) scale(1.02)">
+      <rect x="-28" y="0" width="56" height="80" rx="3" fill="#faf7f0" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 0V-14a14 14 0 0 1 28 0V0" fill="none" stroke="#3d3429" stroke-width="2.5"/>
+      <path d="M0 -10 L-18 -2 L0 -6 L18 -2 Z" fill="#4a6741" stroke="#3d3429" stroke-width="1.8"/>
+      <circle cx="14" cy="48" r="3.5" fill="#c9a227"/>
+    </g>
+  </g>
+  <g transform="translate(256 368)">
+    <rect x="-72" y="-10" width="144" height="20" rx="10" fill="#eef2f6" stroke="#3b5a78" stroke-width="2"/>
+    <rect x="-56" y="-6" width="32" height="12" rx="6" fill="#3b5a78"/>
+    <rect x="-16" y="-6" width="32" height="12" rx="6" fill="#c9a227" opacity="0.45"/>
+    <rect x="24" y="-6" width="32" height="12" rx="6" fill="#3b5a78" opacity="0.35"/>
+  </g>
+  <circle cx="256" cy="420" r="6" fill="#c9a227"/>
 </svg>

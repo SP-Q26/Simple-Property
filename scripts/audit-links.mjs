@@ -19,6 +19,7 @@ const ROUTES = new Set([
   "/blog/feed.rss",
   "/privacy",
   "/terms",
+  "/legal",
   "/success",
   "/llms.txt",
   "/spt-ai-bus.json",

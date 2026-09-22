@@ -21,7 +21,7 @@
 
 Git mirror: `web/lib/stripe-catalog.mjs` (`live_product_id` / `live_price_id` / `checkout_image` / `stripe_description`).
 
-**Product images:** per-SKU PNG at `https://simple-property.com/stripe/*.png` (not SVG). After deploy: `STRIPE_SECRET_KEY=sk_live_… npm run sync:stripe-products`. See `docs/STRIPE_PRODUCT_IMAGES.md`.
+**Product images:** per-SKU PNG at `https://simple-property.com/stripe/*.png` (not SVG). After deploy: `STRIPE_SECRET_KEY=sk_live_… npm run sync:stripe-images`. See `docs/STRIPE_PRODUCT_IMAGES.md`.
 
 Innsegall live metadata pattern (Deposit Desk mirrors this):
 
