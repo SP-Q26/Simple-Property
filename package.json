@@ -10,6 +10,8 @@
     "audit:git": "node scripts/audit-git.mjs",
     "verify-stripe": "node scripts/verify-stripe-catalog.mjs",
     "provision-stripe": "node scripts/provision-stripe-deposit-desk.mjs",
+    "export:stripe-images": "node scripts/export-stripe-product-images.mjs",
+    "sync:stripe-products": "node scripts/sync-stripe-products.mjs",
     "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs",
     "build-blog": "node scripts/build-blog-seo.mjs",
     "generate-blog-p0": "node scripts/generate-state-blog-p0.mjs",
@@ -27,5 +29,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
   }
 }

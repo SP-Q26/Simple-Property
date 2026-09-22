@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Deposit Desk move-out unlock">
+  <rect width="512" height="512" fill="#f4f0e6"/>
+  <rect x="24" y="24" width="464" height="464" rx="32" fill="#faf7f0" stroke="#3d5a80" stroke-opacity="0.35" stroke-width="2"/>
+  <rect x="120" y="140" width="272" height="160" rx="8" fill="#eef3f8" stroke="#3d5a80" stroke-width="3"/>
+  <path d="M148 200h216M148 240h160" stroke="#6b5c4a" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <rect x="196" y="320" width="120" height="48" rx="8" fill="#c9a227" opacity="0.9"/>
+  <text x="256" y="352" text-anchor="middle" fill="#3d3429" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Print PDF</text>
+  <text x="256" y="420" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="28" font-weight="600">Move-out unlock</text>
+  <text x="256" y="456" text-anchor="middle" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="18">One surrender packet</text>
+</svg>

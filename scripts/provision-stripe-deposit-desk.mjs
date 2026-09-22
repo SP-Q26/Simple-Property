@@ -15,7 +15,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const mod = await import(join(root, "web/lib/stripe-catalog.mjs"));
-const { STRIPE_CATALOG } = mod;
+const { STRIPE_CATALOG, stripeProductImageUrl } = mod;
 
 const APPLY = process.argv.includes("--apply");
 const SET_LOOKUP = process.argv.includes("--set-lookup-keys");
@@ -29,7 +29,6 @@ if (!process.env.STRIPE_SECRET_KEY) {
 const Stripe = (await import("stripe")).default;
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" });
 
-const ISLES_IMAGE = "https://simple-property.com/og/spt-card.svg";
 const ISLES_URL = "https://simple-property.com/pricing";
 
 /** Cross-brand Isles metadata (parallel Innsegall isles_brand / isles_lane / isles_portfolio). */
@@ -77,9 +76,9 @@ async function ensureProduct(key, entry) {
 
   const payload = {
     name: entry.name,
-    description: entry.description,
+    description: entry.stripe_description || entry.description,
     url: ISLES_URL,
-    images: [ISLES_IMAGE],
+    images: [stripeProductImageUrl(key) || "https://simple-property.com/stripe/pro-monthly.png"],
     metadata: productMetadata(entry),
     default_price_data: {
       currency: entry.currency,

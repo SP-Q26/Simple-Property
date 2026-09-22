@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Deposit Desk full tenancy unlock">
+  <rect width="512" height="512" fill="#f4f0e6"/>
+  <rect x="24" y="24" width="464" height="464" rx="32" fill="#faf7f0" stroke="#3d5a80" stroke-opacity="0.35" stroke-width="2"/>
+  <rect x="100" y="130" width="140" height="120" rx="8" fill="#eef3f8" stroke="#4a6741" stroke-width="3"/>
+  <rect x="272" y="130" width="140" height="120" rx="8" fill="#eef3f8" stroke="#3d5a80" stroke-width="3"/>
+  <path d="M240 190h32" stroke="#c9a227" stroke-width="6" stroke-linecap="round"/>
+  <rect x="176" y="280" width="160" height="48" rx="8" fill="#c9a227" opacity="0.9"/>
+  <text x="256" y="312" text-anchor="middle" fill="#3d3429" font-family="system-ui, sans-serif" font-size="17" font-weight="600">Full turn PDF</text>
+  <text x="256" y="400" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="28" font-weight="600">Full tenancy</text>
+  <text x="256" y="436" text-anchor="middle" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="18">Move-in + move-out</text>
+</svg>

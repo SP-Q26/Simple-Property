@@ -12,11 +12,14 @@ export const STRIPE_CATALOG = {
     name: "Deposit Desk Pro · Monthly",
     description:
       "Midwest deposit packets · up to 40 units · move-in checklist, deadline tracker, print-ready export.",
+    stripe_description:
+      "Deposit Desk Pro for Midwest small landlords (IL, IN, OH, MI, IA, MO): statutory deposit deadlines, move-in checklists, itemization helpers, and print-ready PDF export for up to 40 doors on one subscription. Billed monthly. Cancel anytime in the Stripe Customer Portal. Not legal advice · simple-property.com.",
     unit_amount: 2200,
     currency: "usd",
     mode: "subscription",
     recurring: { interval: "month" },
     lookup_key: "spt_deposit_monthly",
+    checkout_image: "/stripe/pro-monthly.png",
     live_product_id: "prod_VJ4quXggKOi2IH",
     live_price_id: "price_1UISgaFDJKTJlxOcKl4GklhT",
     metadata: {
@@ -34,11 +37,14 @@ export const STRIPE_CATALOG = {
     name: "Deposit Desk Pro · Annual",
     description:
       "Same as monthly · billed once per year · best value for steady turnover.",
+    stripe_description:
+      "Deposit Desk Pro annual plan: same Midwest deposit packet tools as monthly (deadline clocks, checklists, print/PDF export) for up to 40 units, billed once per year. Best value for steady turnover. Cancel anytime in the Stripe Customer Portal. Not legal advice · simple-property.com.",
     unit_amount: 9900,
     currency: "usd",
     mode: "subscription",
     recurring: { interval: "year" },
     lookup_key: "spt_deposit_annual",
+    checkout_image: "/stripe/pro-annual.png",
     live_product_id: "prod_VJ4qakw2M82ks6",
     live_price_id: "price_1UISgbFDJKTJlxOcrzEvEi1X",
     metadata: {
@@ -56,10 +62,13 @@ export const STRIPE_CATALOG = {
     name: "Deposit Desk · Move-out print unlock",
     description:
       "One surrender packet · itemization + deadline + print/PDF for this tenancy event.",
+    stripe_description:
+      "One-time unlock: print and PDF export for a single move-out surrender packet (itemization, statutory deadline summary, and packet id you already built in Deposit Desk). Does not include Pro subscription. Not legal advice · simple-property.com.",
     unit_amount: 2900,
     currency: "usd",
     mode: "payment",
     lookup_key: "spt_turn_move_out",
+    checkout_image: "/stripe/turn-move-out.png",
     live_product_id: "prod_VJ4qJEUYugqYml",
     live_price_id: "price_1UISgcFDJKTJlxOcQ6r3L6Xb",
     metadata: {
@@ -76,10 +85,13 @@ export const STRIPE_CATALOG = {
     name: "Deposit Desk · Full tenancy print unlock",
     description:
       "Move-in and move-out on one packet id · print/PDF export for the full lease turn.",
+    stripe_description:
+      "One-time unlock: print and PDF export for the full tenancy on one packet id (move-in checklist plus move-out surrender in one flow). Does not include Pro subscription. Not legal advice · simple-property.com.",
     unit_amount: 4900,
     currency: "usd",
     mode: "payment",
     lookup_key: "spt_turn_full",
+    checkout_image: "/stripe/turn-full.png",
     live_product_id: "prod_VJ4q8T0mIlJpM7",
     live_price_id: "price_1UISgdFDJKTJlxOch3r5LixS",
     metadata: {
@@ -153,4 +165,18 @@ export function siteOrigin() {
     return `https://${vercel.replace(/\/$/, "")}`;
   }
   return CANONICAL_SITE_ORIGIN;
+}
+
+/** Public HTTPS URL for Stripe Product.images[] (same URL for test + live products). */
+export function stripeProductImageUrl(sku) {
+  const item = catalogForSku(sku);
+  const path = item?.checkout_image;
+  if (!path) return "";
+  return `${siteOrigin()}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+/** Dashboard / Checkout product copy (falls back to short description). */
+export function stripeProductDescription(sku) {
+  const item = catalogForSku(sku);
+  return (item.stripe_description || item.description || "").trim();
 }

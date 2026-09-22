@@ -19,7 +19,9 @@
 | `turn_move_out` | `prod_VJ4qJEUYugqYml` | `price_1UISgcFDJKTJlxOcQ6r3L6Xb` | `spt_turn_move_out` | $29 once |
 | `turn_full` | `prod_VJ4q8T0mIlJpM7` | `price_1UISgdFDJKTJlxOch3r5LixS` | `spt_turn_full` | $49 once |
 
-Git mirror: `web/lib/stripe-catalog.mjs` (`live_product_id` / `live_price_id`).
+Git mirror: `web/lib/stripe-catalog.mjs` (`live_product_id` / `live_price_id` / `checkout_image` / `stripe_description`).
+
+**Product images:** per-SKU PNG at `https://simple-property.com/stripe/*.png` (not SVG). After deploy: `STRIPE_SECRET_KEY=sk_live_… npm run sync:stripe-products`. See `docs/STRIPE_PRODUCT_IMAGES.md`.
 
 Innsegall live metadata pattern (Deposit Desk mirrors this):
 
