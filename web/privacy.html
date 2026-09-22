@@ -40,6 +40,9 @@
       <p><strong>Subscription index (Pro)</strong> — When configured, we store Stripe customer id, subscription status, and checkout email in encrypted Redis (Vercel/Upstash) so you can restore Pro on a new device via magic link.</p>
       <p><strong>Deadline reminders (optional)</strong> — If you schedule email reminders, we store your email, property label, and reminder dates until sent or expired.</p>
 
+      <h2>Usage analytics</h2>
+      <p>On our hosted site we use <strong>Vercel Web Analytics</strong> and <strong>Speed Insights</strong> (first-party, cookie-light page views and performance). They do not receive your deposit packet fields from localStorage. You can block scripts with a browser extension; the app still works.</p>
+
       <h2>What we do not do</h2>
       <ul>
         <li>We do not sell personal information.</li>
@@ -59,5 +62,7 @@
     <footer class="site-footer"><nav class="footer-links"><a href="/">Home</a><a href="/terms">Terms</a></nav></footer>
   </div>
   <script src="/sp-nav.js" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

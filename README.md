@@ -41,7 +41,7 @@ Or from repo root: `chmod +x scripts/preview.sh && ./scripts/preview.sh static|f
 
 ## Deploy
 
-Connect `web/` as Vercel project root (or repo root with `rootDirectory: web`). Set `SPT_SITE_URL` on preview; production uses `https://simpleproperty.tools` in catalog until overridden.
+**Vercel:** `docs/VERCEL_SETUP.md` — import repo, root `web`, enable Analytics + Speed Insights, preview deploy then apex. Set `SPT_SITE_URL` on preview; production uses `https://simpleproperty.tools` in catalog until overridden.
 
 ## Docs
 

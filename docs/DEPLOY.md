@@ -16,13 +16,22 @@ git push origin main
 
 ## Vercel
 
-1. Project → **SP-Q26/Simple-Property** · **Root directory:** `web`
-2. Env from `web/.env.example` (Stripe, `SPT_ENTITLEMENT_SECRET`, KV, Resend, cron)
-3. Stripe webhook → `https://simpleproperty.tools/api/stripe/webhook`
+Full checklist: **`docs/VERCEL_SETUP.md`** (tracking, env, preview vs prod).
+
+1. Import **SP-Q26/Simple-Property** · **Root directory:** `web`
+2. Enable **Web Analytics** + **Speed Insights** in project dashboard
+3. Env from `web/.env.example` (Preview + Production scopes)
+4. `npm run sync-chrome` before deploy if HTML changed
+5. Preview: push `main` or branch `preview` · Production apex: `simpleproperty.tools`
 
 ```bash
-cd web && npx vercel --prod
+npm run preflight
+git push origin main
+# or: cd web && npx vercel          # preview CLI
+# prod: cd web && npx vercel --prod  # after domain + live Stripe
 ```
+
+Stripe webhook (prod): `https://simpleproperty.tools/api/stripe/webhook`
 
 ## Post-deploy
 
