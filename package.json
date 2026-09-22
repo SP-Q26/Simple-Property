@@ -26,6 +26,7 @@
     "audit:visual": "node scripts/audit-visual-brand.mjs",
     "audit:mobile": "node scripts/audit-mobile-responsive.mjs",
     "smoke:prod": "node scripts/smoke-prod.mjs",
+    "smoke:checkout": "node scripts/smoke-checkout-live.mjs",
     "sync-chrome": "node scripts/sync-site-chrome.mjs"
   },
   "engines": {

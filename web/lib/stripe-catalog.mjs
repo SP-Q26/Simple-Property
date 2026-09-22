@@ -137,15 +137,25 @@ export function priceEnvKeyForSku(sku) {
   return "STRIPE_PRICE_ANNUAL";
 }
 
-/** Prefer Vercel STRIPE_PRICE_*; fall back to catalog live_price_id when using sk_live. */
-export function resolvePriceIdForSku(sku) {
+/** Prefer catalog live_price_id on sk_live; env overrides only when they match canon (avoids stale Vercel test IDs). */
+export function resolvePriceIdForSku(sku, opts = {}) {
+  const item = catalogForSku(sku);
   const envKey = priceEnvKeyForSku(sku);
   const fromEnv = (process.env[envKey] || "").trim();
-  if (fromEnv) return fromEnv;
-  const item = catalogForSku(sku);
-  if (process.env.STRIPE_SECRET_KEY?.startsWith("sk_live")) {
-    return item.live_price_id || "";
+  const isLive = process.env.STRIPE_SECRET_KEY?.startsWith("sk_live");
+
+  if (opts.forceCatalog && item.live_price_id) {
+    return item.live_price_id;
   }
+
+  if (isLive && item.live_price_id) {
+    if (fromEnv && fromEnv !== item.live_price_id) {
+      return item.live_price_id;
+    }
+    return item.live_price_id;
+  }
+
+  if (fromEnv) return fromEnv;
   return "";
 }
 

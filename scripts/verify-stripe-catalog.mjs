@@ -57,6 +57,24 @@ for (const envName of [
 ]) {
   const id = process.env[envName];
   if (!id) continue;
+  const skuKey = envName.replace("STRIPE_PRICE_", "").toLowerCase();
+  const catalogKey =
+    skuKey === "turn_move_out"
+      ? "turn_move_out"
+      : skuKey === "turn_full"
+        ? "turn_full"
+        : skuKey === "monthly"
+          ? "monthly"
+          : skuKey === "annual"
+            ? "annual"
+            : null;
+  const canon = catalogKey ? STRIPE_CATALOG[catalogKey]?.live_price_id : "";
+  if (canon && id !== canon) {
+    console.warn(
+      `WARN ${envName}=${id} differs from catalog live_price_id ${canon} (checkout uses catalog on sk_live)`,
+    );
+    warn++;
+  }
   try {
     const price = await stripe.prices.retrieve(id);
     console.log("OK", envName, price.id, price.unit_amount, price.currency, price.recurring?.interval);
