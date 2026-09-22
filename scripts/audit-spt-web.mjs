@@ -33,7 +33,7 @@ const checks = [
   ["lib/kv-client.mjs", "KV client"],
   ["lib/subscription-store.mjs", "Subscription KV store"],
   ["lib/entitlement.mjs", "Entitlement signing"],
-  ["lib/deadline-ics.mjs", "Calendar ICS export"],
+  ["lib/google-tools.mjs", "Google Calendar + Sheets export"],
   ["sp-billing.js", "Billing portal UI"],
   ["og/spt-card.svg", "OG card"],
   ["brand/sp-mascot.svg", "Homestead mascot"],
@@ -78,6 +78,7 @@ if (!fail) {
   for (const script of [
     "audit-brand-shell.mjs",
     "audit-vercel-tracking.mjs",
+    "audit-google-tools.mjs",
     "audit-swarm.mjs",
     "audit-links.mjs",
     "audit-customer-lane.mjs",

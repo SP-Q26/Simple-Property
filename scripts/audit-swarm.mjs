@@ -75,6 +75,7 @@ function scoreProduct() {
   const app = read("app.js");
   if (app.includes("MAX_STEPS = 5") && app.includes("btn-remind")) s += 10;
   if (app.includes("buildDeadlineIcs")) s += 5;
+  if (app.includes("btn-google-cal") && app.includes("google-tools.mjs")) s += 5;
   if (read("app.js").includes("saved_packets") || app.includes("PACKETS_KEY")) s += 5;
   if (read("success.html").includes("sptRefreshEntitlement")) s += 10;
   return Math.min(100, s);
@@ -103,7 +104,7 @@ function scoreLegal() {
 
 function scoreOps() {
   let s = 70;
-  for (const script of ["audit-spt-web.mjs", "audit-brand-shell.mjs", "audit-swarm.mjs", "audit-git.mjs", "verify-stripe-catalog.mjs"]) {
+  for (const script of ["audit-spt-web.mjs", "audit-brand-shell.mjs", "audit-swarm.mjs", "audit-git.mjs", "audit-google-tools.mjs", "verify-stripe-catalog.mjs"]) {
     if (existsSync(join(root, "scripts", script))) s += 10;
   }
   return Math.min(100, s);

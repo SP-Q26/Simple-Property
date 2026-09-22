@@ -1,5 +1,12 @@
 import { computeDeadline, formatUsDate } from "./lib/il-deposit-rules.mjs";
 import { buildDeadlineIcs, downloadIcs } from "./lib/deadline-ics.mjs";
+import {
+  buildPacketSheetsCsv,
+  downloadCsv,
+  googleCalendarAddUrl,
+  googleCalendarReminderUrls,
+  openGoogleCalendar,
+} from "./lib/google-tools.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
@@ -234,7 +241,12 @@ function renderStep5() {
       deadline.deadline
         ? `<div class="deadline-box"><strong>Return / itemize by:</strong> ${formatUsDate(deadline.deadline)} · ${deadline.days} days (${esc(deadline.jurisdiction)}).
         ${reminderLines ? `<ul class="reminder-list">${reminderLines}</ul>` : ""}
-        <button type="button" class="btn btn-secondary" id="btn-ics">Add deadlines to calendar (.ics)</button></div>`
+        <div class="calendar-actions" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
+          <button type="button" class="btn btn-secondary" id="btn-google-cal">Add to Google Calendar</button>
+          <button type="button" class="btn btn-secondary" id="btn-ics">Download .ics (import to Google)</button>
+          <button type="button" class="btn btn-secondary" id="btn-sheets-csv">Export row for Google Sheets</button>
+        </div>
+        <p class="field-hint">Opens Google in your browser. We do not connect to your Google account on our servers.</p></div>`
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
     <div class="form-grid two">
@@ -343,6 +355,41 @@ function bindStepEvents() {
       };
       reader.readAsDataURL(file);
     });
+  });
+  document.getElementById("btn-google-cal")?.addEventListener("click", () => {
+    readStepIntoDraft();
+    const deadline = computeDeadline({
+      surrenderDate: draft.surrenderDate,
+      inChicago: draft.property.inChicago,
+    });
+    if (!deadline.deadline) return;
+    const addr = [draft.property.street, draft.property.city].filter(Boolean).join(", ");
+    const url = googleCalendarAddUrl({
+      title: `Deposit return/itemize · ${draft.property.street || "rental"}`,
+      startIso: deadline.deadline,
+      location: addr,
+      details: `${deadline.jurisdiction}. Surrender ${draft.surrenderDate || "—"}. Deposit Desk · not legal advice.`,
+    });
+    openGoogleCalendar(url);
+    const reminders = googleCalendarReminderUrls({
+      titleBase: `Deposit deadline · ${draft.property.street || "rental"}`,
+      deadlineIso: deadline.deadline,
+    });
+    if (reminders.length && els.status) {
+      els.status.textContent =
+        "Main deadline opened in Google Calendar. Use Download .ics for 7/3/1-day reminders in one file.";
+    }
+  });
+  document.getElementById("btn-sheets-csv")?.addEventListener("click", () => {
+    readStepIntoDraft();
+    const deadline = computeDeadline({
+      surrenderDate: draft.surrenderDate,
+      inChicago: draft.property.inChicago,
+    });
+    const csv = buildPacketSheetsCsv(draft, deadline);
+    const slug = (draft.property.street || "unit").replace(/[^\w]+/g, "-").slice(0, 40);
+    downloadCsv(`deposit-desk-${slug}.csv`, csv);
+    if (els.status) els.status.textContent = "CSV saved · Google Sheets → File → Import → Upload.";
   });
   document.getElementById("btn-ics")?.addEventListener("click", () => {
     readStepIntoDraft();

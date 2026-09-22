@@ -5,7 +5,7 @@
 ## 1. Create or link project
 
 1. [vercel.com/new](https://vercel.com/new) → Import **SP-Q26/Simple-Property**
-2. **Root Directory:** `web` (Edit → set before first deploy)
+2. **Root Directory:** `web` (Edit → set before first deploy) — **required**. If unset, `https://…vercel.app/` returns **404** (repo root has no `index.html`).
 3. Framework: **Other** (static + `/api` serverless)
 4. Production branch: **`main`** · Preview: all other branches + PRs
 
