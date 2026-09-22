@@ -1,0 +1,16 @@
+{
+  "name": "simple-property-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node ../scripts/audit-spt-web.mjs",
+    "audit:swarm": "node ../scripts/audit-swarm.mjs",
+    "preview": "npx --yes serve . -l 4321",
+    "dev": "npx --yes vercel dev --listen 4321",
+    "verify-stripe": "node ../scripts/verify-stripe-catalog.mjs"
+  },
+  "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "stripe": "^17.7.0"
+  }
+}

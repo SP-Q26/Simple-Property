@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Simple Property Tools">
+  <rect width="1200" height="630" fill="#f4f0e6"/>
+  <rect x="80" y="80" width="1040" height="470" rx="16" fill="#faf7f0" stroke="#d9d0c0"/>
+  <text x="120" y="200" fill="#3d3429" font-family="Georgia, serif" font-size="56" font-weight="600">Simple Property Tools</text>
+  <text x="120" y="270" fill="#6b5c4a" font-family="system-ui, sans-serif" font-size="28">30-day IL · 45-day Chicago · deposit packet</text>
+  <path d="M900 380V280l80-50 80 50v100" fill="#faf7f0" stroke="#3d3429" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M980 230l-80 50 80-60 80 60-80-40z" fill="#4a6741" stroke="#3d3429" stroke-width="4"/>
+</svg>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deposit packet wizard · Simple Property Tools</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=7">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header no-print">
+      <a class="brand-lockup" href="/">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-word">Simple Property Tools</span>
+          <span class="brand-tag"><span class="brand-product">Deposit Desk</span> · Illinois packets</span>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Guides</a>
+      </nav>
+    </header>
+
+    <main class="no-print">
+      <div class="packet-bar">
+        <label for="packet-select">Saved packets</label>
+        <select id="packet-select" aria-label="Load saved packet"></select>
+        <button type="button" class="btn btn-secondary" id="btn-new-packet">New packet</button>
+        <button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button>
+      </div>
+      <div class="wizard-steps" id="wizard-step-labels" aria-label="Steps">
+        <span data-step="1">1 · Property</span>
+        <span data-step="2">2 · Tenant</span>
+        <span data-step="3">3 · Move-in</span>
+        <span data-step="4">4 · Move-out</span>
+        <span data-step="5">5 · Export</span>
+      </div>
+      <p class="field-hint" id="wizard-status" aria-live="polite"></p>
+      <div class="form-panel" id="wizard-panel"></div>
+      <div class="wizard-nav">
+        <button type="button" class="btn btn-secondary" id="btn-prev">Back</button>
+        <div style="display:flex;gap:0.5rem">
+          <button type="button" class="btn btn-secondary" id="btn-print">Print / Save PDF</button>
+          <button type="button" class="btn btn-primary" id="btn-next">Continue</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="print-packet page" id="print-packet"></div>
+
+    <footer class="site-footer no-print">
+      <p class="footer-colophon">
+        <img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22">
+        <span>Homestead · not legal advice</span>
+      </p>
+      <nav class="footer-links"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav>
+    </footer>
+  </div>
+  <script src="/sp-nav.js" defer></script>
+  <script src="/sp-entitlement.js"></script>
+  <script src="/sp-billing.js" defer></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+#!/usr/bin/env node
+/** Simple Property web · proud-ship audit (exit 1 on P0 fail) */
+import { readFileSync, existsSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const web = join(root, "web");
+let fail = 0;
+
+function need(path, label) {
+  const p = join(web, path);
+  if (!existsSync(p)) {
+    console.error("MISSING", label, path);
+    fail++;
+    return "";
+  }
+  return readFileSync(p, "utf8");
+}
+
+const checks = [
+  ["sitemap.xml", "SEO sitemap"],
+  ["site.webmanifest", "PWA manifest"],
+  ["spt-ai-bus.json", "AI agent bus"],
+  [".well-known/spt-gospel.json", "Agent gospel"],
+  ["api/entitlement.js", "Stripe entitlement verify"],
+  ["api/stripe/portal.js", "Stripe billing portal"],
+  ["api/auth/magic-link.js", "Magic link restore"],
+  ["api/reminders/subscribe.js", "Deadline email subscribe"],
+  ["api/cron/deadline-reminders.js", "Deadline reminder cron"],
+  ["lib/kv-client.mjs", "KV client"],
+  ["lib/subscription-store.mjs", "Subscription KV store"],
+  ["lib/entitlement.mjs", "Entitlement signing"],
+  ["lib/deadline-ics.mjs", "Calendar ICS export"],
+  ["sp-billing.js", "Billing portal UI"],
+  ["og/spt-card.svg", "OG card"],
+  ["brand/sp-mascot.svg", "Homestead mascot"],
+];
+
+for (const [path, label] of checks) need(path, label);
+
+const app = need("app.js", "app");
+if (app && !app.includes("renderStep4") && !app.includes("deduction")) {
+  console.error("FAIL app.js missing move-out itemization");
+  fail++;
+}
+if (app && !app.includes("MAX_STEPS = 5")) {
+  console.error("FAIL app.js expected 5-step wizard");
+  fail++;
+}
+
+const success = need("success.html", "success");
+if (success && !success.includes("sptRefreshEntitlement") && !success.includes("/api/entitlement")) {
+  console.error("FAIL success.html must verify via /api/entitlement");
+  fail++;
+}
+
+const privacy = need("privacy.html", "privacy");
+if (privacy && privacy.split("\n").length < 20) {
+  console.warn("WARN privacy.html still thin — expand before prod");
+}
+
+const robots = need("robots.txt", "robots");
+const sitemap = need("sitemap.xml", "sitemap");
+if (robots && sitemap && !existsSync(join(web, "sitemap.xml"))) {
+  console.error("FAIL robots points to missing sitemap");
+  fail++;
+}
+
+if (existsSync(join(web, "node_modules"))) {
+  console.warn("WARN node_modules present — ensure .gitignore excludes it");
+}
+
+console.log(fail ? `Audit FAILED (${fail} P0)` : "Audit OK · proud-ship P0 gates pass");
+if (!fail) {
+  for (const script of ["audit-brand-shell.mjs", "audit-swarm.mjs"]) {
+    const r = spawnSync(process.execPath, [join(root, "scripts", script)], { stdio: "inherit" });
+    if (r.status !== 0) process.exit(1);
+  }
+}
+process.exit(fail ? 1 : 0);

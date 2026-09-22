@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome · Deposit Desk Pro · Simple Property Tools</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f0e6">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=7">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand-lockup" href="/">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-word">Simple Property Tools</span>
+          <span class="brand-tag">Homestead · plain dealing</span>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/app">App</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/blog">Guides</a>
+      </nav>
+    </header>
+    <main id="main" class="section">
+      <p class="section-label">Plain dealing</p>
+      <h1>Pro is active</h1>
+      <p class="hero-lead" id="status">Verifying with Stripe…</p>
+      <p class="field-hint">Cancel anytime via Customer Portal or receipt email.</p>
+
+      <div id="actions" hidden>
+        <ol class="steps">
+          <li><span class="step-num" aria-hidden="true">1</span><div><a href="/app">Open wizard</a></div></li>
+          <li><span class="step-num" aria-hidden="true">2</span><div>Complete move-in / move-out steps</div></li>
+          <li><span class="step-num" aria-hidden="true">3</span><div>Step 5: <strong>Print / Save PDF</strong></div></li>
+        </ol>
+        <p style="margin-top:1.5rem"><a class="btn btn-primary" href="/app">Open Deposit Desk</a></p>
+        <p style="margin-top:1rem"><button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button></p>
+      </div>
+      <p id="error" hidden class="paywall">Verification failed. <a href="/pricing">Retry checkout</a> or email <a href="mailto:hello@simpleproperty.tools">hello@simpleproperty.tools</a>.</p>
+    </main>
+    <footer class="site-footer">
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/app">App</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </footer>
+  </div>
+  <script src="/sp-nav.js" defer></script>
+  <script src="/sp-entitlement.js"></script>
+  <script src="/sp-billing.js"></script>
+  <script>
+    (async function () {
+      var params = new URLSearchParams(location.search);
+      var sessionId = params.get("session_id");
+      var status = document.getElementById("status");
+      var actions = document.getElementById("actions");
+      var err = document.getElementById("error");
+      if (!sessionId) {
+        status.textContent = "Missing checkout session. Start from pricing if you have not paid yet.";
+        err.hidden = false;
+        return;
+      }
+      try {
+        await window.sptRefreshEntitlement(sessionId);
+        status.textContent =
+          "Pro is unlocked in this browser through " +
+          (JSON.parse(localStorage.getItem("spt_subscription") || "{}").valid_until
+            ? new Date(JSON.parse(localStorage.getItem("spt_subscription")).valid_until).toLocaleDateString()
+            : "your billing period") +
+          ".";
+        actions.hidden = false;
+      } catch (e) {
+        status.textContent = "Verification failed.";
+        err.hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

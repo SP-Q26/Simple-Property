@@ -1,0 +1,4 @@
+<!-- Paste inside blog post <head> after canonical · replace TITLE URL DESCRIPTION -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"TITLE","author":{"@type":"Organization","name":"Simple Property Tools"},"publisher":{"@type":"Organization","name":"Simple Property Tools"},"mainEntityOfPage":"URL","description":"DESCRIPTION"}
+</script>

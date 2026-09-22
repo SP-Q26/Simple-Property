@@ -1,0 +1,47 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "DENY" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.simpleproperty.tools" }],
+      "destination": "https://simpleproperty.tools/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/app", "destination": "/app.html" },
+    { "source": "/success", "destination": "/success.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/illinois-security-deposit-checklist", "destination": "/blog/illinois-security-deposit-checklist.html" },
+    { "source": "/blog/chicago-45-day-deposit-deadline", "destination": "/blog/chicago-45-day-deposit-deadline.html" },
+    { "source": "/blog/illinois-deposit-itemization", "destination": "/blog/illinois-deposit-itemization.html" },
+    { "source": "/blog/deposit-desk-vs-inspection-apps", "destination": "/blog/deposit-desk-vs-inspection-apps.html" },
+    { "source": "/blog/deposit-desk-vs-spreadsheet", "destination": "/blog/deposit-desk-vs-spreadsheet.html" },
+    { "source": "/blog/surrender-date-illinois-deposit", "destination": "/blog/surrender-date-illinois-deposit.html" },
+    { "source": "/blog/illinois-deposit-return-by-mail", "destination": "/blog/illinois-deposit-return-by-mail.html" },
+    { "source": "/spt-ai-bus.json", "destination": "/spt-ai-bus.json" },
+    { "source": "/.well-known/spt-gospel.json", "destination": "/.well-known/spt-gospel.json" },
+    { "source": "/llms.txt", "destination": "/llms.txt" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/deadline-reminders",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}

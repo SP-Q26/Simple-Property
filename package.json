@@ -1,0 +1,16 @@
+{
+  "name": "simple-property",
+  "private": true,
+  "type": "module",
+  "description": "Simple Property Tools · Deposit Desk · Illinois security deposit packets",
+  "scripts": {
+    "audit": "node scripts/audit-spt-web.mjs",
+    "audit:swarm": "node scripts/audit-swarm.mjs",
+    "preflight": "cd web && npm ci && npm run audit",
+    "verify-stripe": "node scripts/verify-stripe-catalog.mjs",
+    "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

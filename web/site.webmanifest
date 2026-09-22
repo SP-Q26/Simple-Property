@@ -1,0 +1,12 @@
+{
+  "name": "Simple Property Tools",
+  "short_name": "Deposit Desk",
+  "description": "Plain deposit packets for Illinois mom-and-pop landlords.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f0e6",
+  "theme_color": "#4a6741",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
