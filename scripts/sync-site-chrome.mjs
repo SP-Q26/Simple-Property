@@ -45,6 +45,11 @@ function injectBeforeBody(html, snippet, marker) {
   return html.replace("</body>", `${snippet}\n</body>`);
 }
 
+const VIEWPORT_CANON =
+  '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">';
+const VIEWPORT_LEGACY =
+  '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+
 let changed = 0;
 for (const file of walkHtml(web)) {
   let html = readFileSync(file, "utf8");
@@ -52,6 +57,9 @@ for (const file of walkHtml(web)) {
   html = syncAtmosphere(html, atmosphere);
   html = injectBeforeBody(html, VERCEL_WEB_ANALYTICS, "/_vercel/insights/script.js");
   html = injectBeforeBody(html, VERCEL_SPEED_INSIGHTS, "/_vercel/speed-insights/script.js");
+  if (html.includes(VIEWPORT_LEGACY) && !html.includes("viewport-fit=cover")) {
+    html = html.replace(VIEWPORT_LEGACY, VIEWPORT_CANON);
+  }
   if (html !== before) {
     writeFileSync(file, html);
     changed++;

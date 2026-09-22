@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v19 · slim castle door · stronger weather */
+/* Simple Property Tools · Deposit Desk · v21 · touch + safe-area */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -36,6 +36,11 @@
   --radius-pill: 999px;
   --font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --tap-min: 2.75rem;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
   color-scheme: light;
 }
 
@@ -47,6 +52,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -461,7 +468,11 @@ a:hover {
   z-index: 1;
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 0 clamp(var(--space-4), 4vw, var(--space-6)) var(--space-8);
+  padding:
+    0
+    max(clamp(var(--space-4), 4vw, var(--space-6)), var(--safe-right))
+    calc(var(--space-8) + var(--safe-bottom))
+    max(clamp(var(--space-4), 4vw, var(--space-6)), var(--safe-left));
 }
 
 main > h1,
@@ -559,7 +570,7 @@ main > h1,
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2) var(--space-3);
-  padding: var(--space-3) 0 var(--space-4);
+  padding: calc(var(--space-3) + var(--safe-top)) 0 var(--space-4);
   margin-bottom: var(--space-5);
   border-bottom: 1px solid var(--border);
   position: sticky;
@@ -590,17 +601,20 @@ main > h1,
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.65rem;
+  padding: 0.5rem 0.75rem;
+  min-height: var(--tap-min);
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--ink);
   text-decoration: none;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.2;
   cursor: pointer;
   box-shadow: var(--shadow-soft);
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.18);
+  touch-action: manipulation;
 }
 
 .locale-pill:hover {
@@ -778,12 +792,14 @@ main > h1,
   max-width: 40rem;
 }
 
-.pain-solution-lead .ps-pain {
+.pain-solution-lead .ps-pain,
+.pain-solution-lead .ps-problem {
   font-size: 1.05rem;
   display: block;
 }
 
-.pain-solution-lead .ps-solution {
+.pain-solution-lead .ps-solution,
+.pain-solution-lead .ps-fix {
   font-size: 1rem;
   display: block;
   margin-top: var(--space-3);
@@ -861,7 +877,7 @@ main > h1,
 .pathway-card {
   display: flex;
   flex-direction: column;
-  padding: var(--space-4);
+  padding: var(--space-5);
   border-radius: var(--radius-md);
   border: 1px solid var(--gold-hairline);
   background: rgba(255, 255, 255, 0.72);
@@ -870,6 +886,13 @@ main > h1,
   cursor: pointer;
   min-height: 100%;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.22);
+  touch-action: manipulation;
+}
+
+.pathway-card:active {
+  transform: scale(0.99);
+  border-color: var(--beam-gold);
 }
 
 .pathway-card:hover {
@@ -925,8 +948,13 @@ main > h1,
 .header-nav a {
   color: var(--muted);
   text-decoration: none;
-  padding: 0.35rem 0.5rem;
+  padding: 0.5rem 0.65rem;
   border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.18);
+  touch-action: manipulation;
 }
 
 .header-nav a:hover {
@@ -1006,15 +1034,17 @@ main > h1,
   justify-content: center;
   gap: 0.35rem;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  min-height: 2.75rem;
-  padding: 0.65rem 1.15rem;
+  min-height: var(--tap-min);
+  padding: 0.7rem 1.2rem;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
   transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease;
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.2);
+  touch-action: manipulation;
 }
 
 @media (hover: hover) {
@@ -1340,6 +1370,7 @@ textarea {
 .wizard-nav {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-5);
 }
@@ -1509,6 +1540,12 @@ textarea {
 .footer-links a {
   text-decoration: none;
   color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: 0.25rem 0;
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.15);
+  touch-action: manipulation;
 }
 
 .footer-links a:hover {
@@ -1748,7 +1785,9 @@ textarea {
 
 .field-stack select {
   font: inherit;
-  padding: 0.55rem 0.65rem;
+  font-size: 1rem;
+  padding: 0.65rem 0.75rem;
+  min-height: var(--tap-min);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--bg);
@@ -1915,7 +1954,11 @@ textarea {
 
 @media (min-width: 640px) and (max-width: 1023px) {
   .page {
-    padding: 0 clamp(var(--space-4), 3.5vw, var(--space-5)) var(--space-7);
+    padding:
+      0
+      max(clamp(var(--space-4), 3.5vw, var(--space-5)), var(--safe-right))
+      calc(var(--space-7) + var(--safe-bottom))
+      max(clamp(var(--space-4), 3.5vw, var(--space-5)), var(--safe-left));
   }
 
   .hero {
@@ -1946,12 +1989,22 @@ textarea {
 
 @media (max-width: 639px) {
   .page {
-    padding: 0 var(--space-3) var(--space-6);
+    padding:
+      0
+      max(var(--space-3), var(--safe-right))
+      calc(var(--space-6) + var(--safe-bottom))
+      max(var(--space-3), var(--safe-left));
   }
 
   .site-header {
-    padding: var(--space-3) 0 var(--space-2);
+    padding: calc(var(--space-3) + var(--safe-top)) 0 var(--space-2);
     gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .brand-lockup {
+    min-width: 0;
+    flex: 1 1 12rem;
   }
 
   .brand-tag {
@@ -1962,22 +2015,38 @@ textarea {
   .header-nav {
     width: 100%;
     justify-content: flex-start;
-    gap: var(--space-2);
+    gap: var(--space-1) var(--space-2);
   }
 
   .header-nav a {
-    padding: 0.4rem 0.65rem;
-    font-size: 0.8125rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.875rem;
   }
 
   .hero {
     padding: var(--space-4) 0 var(--space-4);
   }
 
+  .hero-mission,
+  main > h1,
+  .prose h1 {
+    max-width: none;
+  }
+
   .hero h1,
   .prose h1 {
     font-size: clamp(1.45rem, 6.5vw, 1.85rem);
     margin-bottom: var(--space-3);
+  }
+
+  .hero-rotate-line {
+    min-height: auto;
+    font-size: 1rem;
+  }
+
+  .hero-clock-gloss,
+  .hero-wedge {
+    font-size: 0.9rem;
   }
 
   .hero-lead {
@@ -1988,10 +2057,28 @@ textarea {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: var(--space-3);
   }
 
   .hero-actions .btn {
     width: 100%;
+  }
+
+  .pathway-deck {
+    margin: var(--space-5) 0;
+  }
+
+  .pathway-deck h2 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .pathway-grid {
+    gap: var(--space-3);
+  }
+
+  .pathway-card {
+    padding: var(--space-4) var(--space-4) var(--space-5);
   }
 
   .fact-strip {
@@ -2004,12 +2091,120 @@ textarea {
     gap: var(--space-3);
   }
 
+  .card {
+    padding: var(--space-4);
+  }
+
+  .pricing-mission {
+    margin-bottom: var(--space-5);
+  }
+
+  .pricing-finder {
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  .pricing-finder__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field-stack select {
+    min-height: var(--tap-min);
+    font-size: 1rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .pricing-cards {
+    gap: var(--space-3);
+  }
+
+  .price-card {
+    padding: var(--space-4);
+  }
+
+  .form-panel {
+    padding: var(--space-4);
+  }
+
+  .app-intro {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .packet-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .packet-bar select,
+  .packet-bar .btn {
+    width: 100%;
+    min-height: var(--tap-min);
+  }
+
+  .packet-bar select {
+    font-size: 1rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .wizard-nav {
+    flex-direction: column;
+  }
+
+  .wizard-nav .btn {
+    width: 100%;
+  }
+
+  .wizard-steps {
+    gap: var(--space-2);
+  }
+
+  .wizard-steps span {
+    font-size: 0.78rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 1rem;
+    min-height: var(--tap-min);
+    padding: 0.65rem 0.75rem;
+  }
+
+  textarea {
+    min-height: 5.5rem;
+  }
+
+  .feedback-form .btn-primary {
+    width: 100%;
+  }
+
+  .site-footer {
+    padding-bottom: calc(var(--space-5) + var(--safe-bottom));
+  }
+
+  .footer-links {
+    gap: var(--space-1) var(--space-3);
+  }
+
   .guides-hub {
     margin-bottom: var(--space-5);
   }
 
   .guides-hub > h2 {
     margin-top: var(--space-5);
+  }
+
+  .guides-hub .guide-pills a {
+    padding: 0.5rem 0.85rem;
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
   }
 
   .launch-live {
@@ -2020,7 +2215,7 @@ textarea {
 
   .locale-bar {
     gap: var(--space-2);
-    padding: var(--space-2) 0 var(--space-3);
+    padding: calc(var(--space-2) + var(--safe-top)) 0 var(--space-3);
     margin-bottom: var(--space-4);
   }
 
@@ -2029,7 +2224,7 @@ textarea {
   }
 
   .locale-pill {
-    min-width: 2.75rem;
+    min-width: var(--tap-min);
     justify-content: center;
   }
 
@@ -2041,6 +2236,28 @@ textarea {
   .log-toolbar-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .log-toolbar-actions .btn,
+  .log-form-actions .btn {
+    width: 100%;
+  }
+
+  .log-filter-label input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .btn-compact {
+    min-height: var(--tap-min);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .tier-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -2073,12 +2290,15 @@ textarea {
   font: inherit;
   font-size: 0.875rem;
   font-weight: 600;
-  padding: 0.45rem 0.85rem;
+  padding: 0.55rem 1rem;
+  min-height: var(--tap-min);
   border-radius: var(--radius-pill);
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--muted);
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.18);
+  touch-action: manipulation;
 }
 
 .log-tab:hover {

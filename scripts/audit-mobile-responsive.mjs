@@ -41,13 +41,19 @@ const key = ["index.html", "pricing.html", "app.html", "blog/index.html"];
 for (const p of key) {
   const h = read(p);
   need(`${p} viewport meta`, h.includes('name="viewport"') && h.includes("width=device-width"));
+  need(`${p} viewport-fit cover`, h.includes("viewport-fit=cover"));
 }
 
 need("css mobile stack @640 pricing cards", css.includes("@media (min-width: 640px)") && css.includes(".pricing-cards"));
 need("css tablet pricing 2-col @720", css.includes("@media (min-width: 720px)") && css.includes("grid-template-columns: repeat(2"));
 need("css desktop pricing 4-col @1024", css.includes("@media (min-width: 1024px)") && css.includes("repeat(4"));
 need("css hero single column default", css.includes(".hero-layout") && css.includes("820px"));
-need("css touch-friendly btn min height", css.includes(".btn") && (css.includes("min-height") || css.includes("padding")));
+need("css iOS safe-area tokens", css.includes("--safe-top") && css.includes("safe-area-inset"));
+need("css tap min height token", css.includes("--tap-min"));
+need("css iOS input 16px mobile", css.includes("@media (max-width: 639px)") && css.includes("font-size: 1rem") && css.includes("input[type=\"text\"]"));
+need("css packet-bar mobile stack", css.includes(".packet-bar") && css.includes("flex-direction: column"));
+need("css pathway touch active", css.includes(".pathway-card:active"));
+need("css touch-action buttons", css.includes("touch-action: manipulation") && css.includes(".btn"));
 need("css form inputs full width pattern", css.includes(".form-grid") || css.includes(".field-stack"));
 need("css skip link", css.includes(".skip-link"));
 need("app wizard steps wrap", css.includes(".wizard-steps") && css.includes("flex-wrap"));

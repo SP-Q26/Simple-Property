@@ -32,7 +32,7 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline.
 
 - **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227`
 - **Quant blue wash:** fact strip, form panels, pricing cards, deadline box (gold left rail) · **Solution:** lines use quant blue
-- **Typography:** **Lora** + **Inter** · **`simple-property.css?v=20`**
+- **Typography:** **Lora** + **Inter** · **`simple-property.css?v=21`**
 - **Atmosphere:** Chicago **greystone** · slim **castle door** · stronger **weather** · `web/brand/atmosphere.html`
 - **Stripe product tiles:** icon-only 512×512 · door metaphors per SKU
 
