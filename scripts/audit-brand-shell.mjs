@@ -1,10 +1,12 @@
 #!/usr/bin/env node
-/** Brand shell P0 — every public HTML page uses Homestead lockup + css v7 */
+/** Brand shell P0 — lockup · Deposit Desk tag · css v8 */
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
+const BRAND_TAG = "Deposit Desk · IL &amp; Chicago RLTO";
+const CSS = "simple-property.css?v=8";
 let fail = 0;
 
 function htmlFiles(dir) {
@@ -22,12 +24,16 @@ for (const file of files) {
     console.error("BRAND FAIL missing brand-mark:", rel);
     fail++;
   }
-  if (!html.includes("Homestead")) {
-    console.error("BRAND FAIL missing Homestead line:", rel);
+  if (!html.includes(BRAND_TAG)) {
+    console.error("BRAND FAIL missing brand tag:", rel);
     fail++;
   }
-  if (!html.includes("simple-property.css?v=7")) {
-    console.error("BRAND FAIL css not v7:", rel);
+  if (!html.includes(CSS)) {
+    console.error("BRAND FAIL css not v8:", rel);
+    fail++;
+  }
+  if (html.includes("Homestead")) {
+    console.error("BRAND FAIL legacy Homestead copy:", rel);
     fail++;
   }
   if (!html.includes("header-nav") && !rel.startsWith("brand/")) {
@@ -38,11 +44,11 @@ for (const file of files) {
 
 if (existsSync(join(web, "brand/shell-header.html"))) {
   const shell = readFileSync(join(web, "brand/shell-header.html"), "utf8");
-  if (!shell.includes("brand-text")) {
+  if (!shell.includes(BRAND_TAG)) {
     console.error("BRAND FAIL shell-header outdated");
     fail++;
   }
 }
 
-console.log(fail ? `Brand audit FAILED (${fail})` : "Brand audit OK · shell v7");
+console.log(fail ? `Brand audit FAILED (${fail})` : "Brand audit OK · shell v8");
 process.exit(fail ? 1 : 0);

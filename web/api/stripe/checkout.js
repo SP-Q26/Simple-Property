@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { catalogForSku, siteOrigin } from "../../lib/stripe-catalog.mjs";
+import { PRO_UNITS_MAX } from "../../lib/pro-limits.mjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2024-11-20.acacia",
@@ -60,9 +61,9 @@ export default async function handler(req, res) {
       line_items: [lineItemForSku(sku)],
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}&plan=${sku}`,
       cancel_url: `${origin}/pricing`,
-      metadata: { spt_sku: sku, spt_plan: "pro" },
+      metadata: { spt_sku: sku, spt_plan: "pro", spt_units_max: String(PRO_UNITS_MAX) },
       subscription_data: {
-        metadata: { spt_sku: sku, spt_plan: "pro" },
+        metadata: { spt_sku: sku, spt_plan: "pro", spt_units_max: String(PRO_UNITS_MAX) },
       },
       allow_promotion_codes: true,
       custom_text: {

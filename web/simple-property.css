@@ -1,4 +1,4 @@
-/* Simple Property Tools · Homestead · v6 shell */
+/* Simple Property Tools · Deposit Desk · v8 shell */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -266,26 +266,19 @@ main > h1,
 
 @media (min-width: 820px) {
   .hero-layout {
-    grid-template-columns: 1fr min(220px, 32vw);
+    grid-template-columns: 1fr min(280px, 36vw);
+  }
+  .hero-layout-single {
+    grid-template-columns: 1fr min(320px, 40vw);
   }
 }
 
-.hero-mascot {
+.hero-proof {
   margin: 0;
-  text-align: center;
 }
 
-.hero-mascot img {
-  width: min(200px, 55vw);
-  height: auto;
-  margin: 0 auto;
-}
-
-.hero-mascot figcaption {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: var(--space-3);
-  font-style: italic;
+.hero-proof .product-proof {
+  margin: 0;
 }
 
 .hero h1 {
@@ -645,6 +638,15 @@ textarea {
   }
   .print-packet {
     display: block !important;
+  }
+  body.spt-no-pro-print .print-packet {
+    display: none !important;
+  }
+  body.spt-no-pro-print::after {
+    content: "Deposit Desk Pro required for print export. simpleproperty.tools/pricing";
+    display: block;
+    font-size: 14pt;
+    padding: 2rem;
   }
 }
 

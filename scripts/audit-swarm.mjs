@@ -26,8 +26,9 @@ function scoreBrandShell() {
   for (const p of pages) {
     const h = read(p);
     if (!h.includes("brand-mark")) s -= 8;
-    if (!h.includes("simple-property.css?v=7")) s -= 5;
-    if (!h.includes("Homestead")) s -= 5;
+    if (!h.includes("simple-property.css?v=8")) s -= 5;
+    if (!h.includes("Deposit Desk · IL")) s -= 5;
+    if (h.includes("Homestead")) s -= 10;
   }
   return Math.max(0, s);
 }

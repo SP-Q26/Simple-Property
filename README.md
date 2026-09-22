@@ -1,12 +1,12 @@
 # Simple Property Tools
 
-**Homestead** · plain tools for mom-and-pop landlords (teams of 1–3). Product: **Deposit Desk** (Illinois alpha).
+**Simple Property Tools** · **Deposit Desk** · Illinois deposit packets for mom-and-pop landlords (teams of 1–3, ≤4 doors Pro).
 
 **GitHub:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) · git: **`docs/GIT_AGENT_CONNECTION.md`**
 
 Canon: `docs/CANON.md` · brand: `docs/BRAND.md` · quality: `docs/SWARM_AUDIT.md`.
 
-- **Umbrella:** Simple Property Tools · **mascot:** Homestead (plain homestead mark)  
+- **Umbrella:** Simple Property Tools · **tag:** Deposit Desk · IL & Chicago RLTO  
 - **Vibe:** Plain dealing · Amish-*adjacent* values (simple, honest, no flash) — not caricature  
 - **Product:** Deposit Desk · IL move-in / move-out deposit packets  
 - **Stack:** Static `web/` on Vercel · Stripe Checkout · localStorage packets · KV Pro index · Resend reminders  
@@ -28,7 +28,7 @@ Two modes — pick based on what you are testing.
 
 | Mode | Command | Use when |
 |------|---------|----------|
-| **UI fast** | `cd web && npm run preview` | Homestead, wizard, print with **`/app?demo=pro`** |
+| **UI fast** | `cd web && npm run preview` | Wizard, print with **`/app?demo=pro`** |
 | **Full stack** | `cd web && npm run dev` | Stripe checkout + **`/api/entitlement`** on success |
 
 Full stack needs `web/.env.local` from `.env.example` (`STRIPE_*`, `SPT_ENTITLEMENT_SECRET`; phase 3 adds `KV_REST_*`, `RESEND_API_KEY`, `SPT_CRON_SECRET`).

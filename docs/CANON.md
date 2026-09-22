@@ -1,17 +1,20 @@
 # Canon · Simple Property Tools
 
-**Locked brand (2026-09-20)**
+**Locked brand (2026-09-22)**
 
 | Layer | Name |
 |-------|------|
 | Company / site | **Simple Property Tools** |
-| Mascot | **Homestead** (`web/brand/sp-mascot.svg`) |
 | Product (IL v1 core) | **Deposit Desk** |
-| Product (roadmap) | **Simple Property Tools** · lanes in `docs/SMALL_PM_LANE_MAP.md` |
-| Audience | Mom-and-pop · **1–3 people** · up to ~4 doors |
+| Header tag | **Deposit Desk · IL & Chicago RLTO** |
+| Mark | `/favicon.svg` |
+| Product (roadmap) | Lanes in `docs/SMALL_PM_LANE_MAP.md` |
+| Audience | Mom-and-pop · **1–3 people** · Pro cap **4 doors** |
 
-**Voice:** plain dealing · receipts · deadlines · not legal advice.
+**Voice:** Illinois deadlines · receipts · per-turn or Pro · not legal advice.
 
-**Not in scope:** gangster aesthetic, PM-suite positioning, MLS/investor desk.
+**Pricing GTM:** per-turn primary (seasonal) · Pro subscription upsell — `docs/PRICING_DIVE_PER_TURN.md`.
 
-See `docs/BRAND.md` for voice and visual tokens.
+**Not in scope:** PM-suite positioning, MLS/investor desk, retired Homestead mascot.
+
+See `docs/BRAND.md` for lockup and visual tokens.

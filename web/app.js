@@ -7,6 +7,7 @@ import {
   googleCalendarReminderUrls,
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
+import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
@@ -102,6 +103,21 @@ function isSubscribed() {
   return typeof window.sptIsSubscribed === "function" && window.sptIsSubscribed();
 }
 
+/** Paid + within 4-unit Pro license. */
+function canExportPro() {
+  return isSubscribed() && unitsWithinProCap(draft.property.unitCount);
+}
+
+function proBlockMessage() {
+  if (!isSubscribed()) {
+    return `<div class="paywall" role="status"><strong>Pro required for print export.</strong> Draft free · <a href="/pricing">See who Pro is for</a></div>`;
+  }
+  if (!unitsWithinProCap(draft.property.unitCount)) {
+    return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simpleproperty.tools">email us</a> for larger portfolios.</div>`;
+  }
+  return "";
+}
+
 function sumDeductions(list) {
   return list.reduce((acc, row) => acc + (parseFloat(row.amount) || 0), 0);
 }
@@ -149,7 +165,8 @@ function renderStep1() {
       <div><label for="prop-street">Rental street address</label><input id="prop-street" type="text" value="${esc(d.property.street)}" /></div>
       <div><label for="prop-city">City</label><input id="prop-city" type="text" value="${esc(d.property.city)}" /></div>
       <div><label for="prop-zip">ZIP</label><input id="prop-zip" type="text" value="${esc(d.property.zip)}" /></div>
-      <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" /></div>
+      <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" aria-describedby="prop-units-hint" /></div>
+        <p class="field-hint" id="prop-units-hint">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription. More doors? Finish the draft free, then contact us before checkout.</p>
       <div>
         <label><input id="prop-chicago" type="checkbox" ${d.property.inChicago ? "checked" : ""} /> Property is in Chicago (RLTO)</label>
         <p class="field-hint">Chicago RLTO: <strong>45 days</strong> · elsewhere IL: <strong>30 days</strong> after surrender (765 ILCS 715/).</p>
@@ -230,7 +247,7 @@ function renderStep5() {
     surrenderDate: draft.surrenderDate,
     inChicago: draft.property.inChicago,
   });
-  const sub = isSubscribed();
+  const sub = canExportPro();
   const reminderLines = deadline.reminders
     .map((d) => `<li>${formatUsDate(d)}</li>`)
     .join("");
@@ -270,8 +287,8 @@ function renderStep5() {
     }
     ${
       sub
-        ? `<p class="field-hint" role="status">Pro active · Print / Save as PDF below.</p>`
-        : `<div class="paywall" role="status"><strong>Pro required for export.</strong> <a href="/pricing">Pricing</a></div>`
+        ? `<p class="field-hint" role="status">Pro active · up to ${PRO_UNITS_MAX} units · Print / Save as PDF below.</p>`
+        : proBlockMessage() || `<div class="paywall" role="status"><strong>Pro required for export.</strong> <a href="/pricing">Pricing</a></div>`
     }`;
 }
 
@@ -283,7 +300,7 @@ function readStepIntoDraft() {
     draft.property.street = document.getElementById("prop-street")?.value?.trim() || "";
     draft.property.city = document.getElementById("prop-city")?.value?.trim() || "";
     draft.property.zip = document.getElementById("prop-zip")?.value?.trim() || "";
-    draft.property.unitCount = parseInt(document.getElementById("prop-units")?.value, 10) || 1;
+    draft.property.unitCount = parseUnitCount(document.getElementById("prop-units")?.value);
     draft.property.inChicago = Boolean(document.getElementById("prop-chicago")?.checked);
   }
   if (step === 2) {
@@ -444,8 +461,18 @@ function bindStepEvents() {
   });
 }
 
+function syncPrintAccessClass() {
+  if (canExportPro()) document.body.classList.remove("spt-no-pro-print");
+  else document.body.classList.add("spt-no-pro-print");
+}
+
 function renderPrintPacket() {
   if (!els.printRoot) return;
+  syncPrintAccessClass();
+  if (!canExportPro()) {
+    els.printRoot.innerHTML = "";
+    return;
+  }
   const deadline = computeDeadline({
     surrenderDate: draft.surrenderDate,
     inChicago: draft.property.inChicago,
@@ -465,7 +492,7 @@ function renderPrintPacket() {
     .map((d) => `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "—"}</td><td>$${esc(d.amount) || "0"}</td></tr>`)
     .join("");
   els.printRoot.innerHTML = `
-    <h2>Homestead · Illinois deposit packet</h2>
+    <h2>Deposit Desk · Illinois deposit packet</h2>
     <p style="font-size:10pt;color:#6b5c4a">Simple Property Tools · Deposit Desk · ${formatUsDate(draft.signatures.date)}</p>
     <p><strong>Property:</strong> ${esc(addr)}<br/>
     <strong>Tenant:</strong> ${esc(draft.tenant.name)} · <strong>Lease:</strong> ${formatUsDate(draft.lease.start)} – ${formatUsDate(draft.lease.end)}<br/>
@@ -496,7 +523,7 @@ function render() {
   renderPrintPacket();
   els.prev.disabled = step <= 1;
   els.next.textContent = step >= MAX_STEPS ? "Done" : "Continue";
-  els.print.disabled = !isSubscribed() || step < MAX_STEPS;
+  els.print.disabled = !canExportPro() || step < MAX_STEPS;
   if (els.status) els.status.textContent = "Autosaved in this browser.";
 }
 
@@ -515,10 +542,11 @@ els.next?.addEventListener("click", () => {
 
 els.print?.addEventListener("click", () => {
   readStepIntoDraft();
-  if (!isSubscribed()) {
+  if (!canExportPro()) {
     els.panel.insertAdjacentHTML(
       "beforeend",
-      `<div class="paywall" role="alert">Subscribe on <a href="/pricing">pricing</a> to export.</div>`
+      proBlockMessage() ||
+        `<div class="paywall" role="alert">Subscribe on <a href="/pricing">pricing</a> to export.</div>`
     );
     return;
   }
@@ -541,3 +569,11 @@ document.getElementById("packet-select")?.addEventListener("change", (e) => {
 
 refreshPacketSelect();
 render();
+
+window.addEventListener("beforeprint", () => {
+  readStepIntoDraft();
+  renderPrintPacket();
+});
+window.addEventListener("afterprint", () => {
+  renderPrintPacket();
+});

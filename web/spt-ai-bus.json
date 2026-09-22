@@ -12,7 +12,17 @@
     "systems_10_20": "ledger · light PM · eSign · maintenance log · SOP",
     "automate_20_40": "autopay rent · bank-fed accounting · PM tickets · optional bookkeeper"
   },
-  "pricing": { "monthly": 17, "annual": 49, "currency": "USD" },
+  "pricing": {
+    "monthly": 22,
+    "annual": 99,
+    "currency": "USD",
+    "per_turn_draft": {
+      "move_in": 29,
+      "move_out": 29,
+      "full_tenancy": 49,
+      "note": "Planned pass-through model · see docs/PER_TURN_PRICING.md"
+    }
+  },
   "agent_read_order": [
     "https://simpleproperty.tools/llms.txt",
     "https://simpleproperty.tools/spt-ai-bus.json",

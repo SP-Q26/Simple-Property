@@ -80,7 +80,7 @@ if (!index.includes("feed.rss") && !read("blog/index.html").includes("feed.rss")
 if (!read("brand/shell-header.html").includes("Guides")) ding(3, "shell header missing Guides nav");
 else ok("shell Guides nav");
 
-const brandPhrase = "plain dealing";
+const brandPhrase = "Deposit Desk · IL";
 const pages = ["index.html", "pricing.html", "app.html", "blog/index.html"];
 for (const p of pages) {
   const h = read(p);
