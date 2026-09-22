@@ -9,7 +9,18 @@
 3. Framework: **Other** (static + `/api` serverless)
 4. Production branch: **`main`** · Preview: all other branches + PRs
 
-There is **no** Simple-Property project on the team until this step completes (Innsegall uses a separate project).
+**Dashboard:** [vercel.com/spq/simple-property](https://vercel.com/spq/simple-property)
+
+## 1b. Deployment Protection (public alpha)
+
+SPQ team defaults may enable **Vercel Authentication** on `*.vercel.app` URLs. Anonymous visitors then hit SSO instead of Deposit Desk.
+
+| Goal | Action |
+|------|--------|
+| Public smoke on `*.vercel.app` | Project → **Settings** → **Deployment Protection** → disable Vercel Authentication for this project, or limit to preview-only |
+| Public production on apex only | Add **`simpleproperty.tools`** — team policy `all_except_custom_domains` bypasses SSO on custom domains |
+
+Until fixed, only logged-in team members can open default deployment URLs.
 
 ## 2. Enable tracking (dashboard)
 
