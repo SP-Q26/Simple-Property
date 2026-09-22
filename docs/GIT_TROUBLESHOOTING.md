@@ -1,5 +1,11 @@
 # Git & audit troubleshooting · Simple-Property
 
+## Paste trap (you hit this)
+
+If you paste **several commands at once** while Git is waiting for a password, the **next line becomes the “username”** (e.g. `git remote set-url origin git@...`). **Ctrl+C**, then run **one command per line**.
+
+---
+
 ## `Invalid username or token` · `https://SP-Q26@github.com`
 
 GitHub **does not accept account passwords** for git. The URL must **not** embed `SP-Q26` as the HTTPS user.
@@ -36,12 +42,13 @@ gh auth setup-git
 git push --force-with-lease origin main
 ```
 
-**3. Or SSH (no HTTPS token):**
+**3. SSH (works without `gh` or Homebrew)** — repo is configured this way after 2026-09-22 push:
 
 ```bash
+cd ~/SPQ/simple-property
 git remote set-url origin git@github.com:SP-Q26/Simple-Property.git
 ssh -T git@github.com
-git push --force-with-lease origin main
+git push origin main
 ```
 
 **4. If macOS keeps prompting with a bad password:** clear stale GitHub credentials in **Keychain Access** (search `github.com`) or:

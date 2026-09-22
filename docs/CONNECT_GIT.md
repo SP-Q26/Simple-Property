@@ -39,33 +39,30 @@ Then **open `~/Simple-Property` in Cursor** (File → Open Folder), not `~/SPQ`.
 
 ---
 
-## Option B · Stay in `~/SPQ/simple-property`
+## Option B · Stay in `~/SPQ/simple-property` (SSH — no `gh` or `brew`)
+
+Your Mac already has a GitHub SSH key (`~/.ssh/id_ed25519`). Use **SSH remote** — do not use HTTPS prompts.
+
+**Run one line at a time.** If Git asks for `Username`/`Password`, press **Ctrl+C** — you pasted multiple commands or HTTPS is still configured.
 
 ```bash
 cd ~/SPQ/simple-property
-git fetch origin
+git remote set-url origin git@github.com:SP-Q26/Simple-Property.git
+ssh -T git@github.com
+```
+
+Expect: `Hi SP-Q26! You've successfully authenticated...`
+
+```bash
+git push --force-with-lease origin main
 npm run audit:git
 ```
 
-Log in to GitHub (once). If push says **`Invalid username or token`** or shows **`SP-Q26@github.com`**, fix the remote and use the CLI — see **`docs/GIT_TROUBLESHOOTING.md`**.
+Expect: **`ok: main matches origin/main`**
 
-```bash
-git remote set-url origin https://github.com/SP-Q26/Simple-Property.git
-gh auth login
-gh auth setup-git
-git push --force-with-lease origin main
-git branch -u origin/main main
-```
+HTTPS + **`gh auth login`** only if you install [GitHub CLI](https://cli.github.com) later. Cursor’s GitHub connection does **not** wire into Terminal `git` by itself.
 
-SSH instead of HTTPS:
-
-```bash
-git remote set-url origin git@github.com:SP-Q26/Simple-Property.git
-ssh -T git@github.com
-git push --force-with-lease origin main
-```
-
-Verify:
+**Do not** enter `SP-Q26` as HTTPS username — use your GitHub login, or switch to SSH above.
 
 ```bash
 git rev-parse main

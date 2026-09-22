@@ -65,7 +65,21 @@ if (!remote || !remote.includes("SP-Q26/Simple-Property")) {
   bad(`origin should be SP-Q26/Simple-Property (got ${remote || "none"})`);
 } else ok("origin → Simple-Property");
 
-  tryRun("git fetch origin --quiet") || tryRun("git fetch origin");
+const canonicalSsh = "git@github.com:SP-Q26/Simple-Property.git";
+if (remote === canonicalSsh) {
+  ok("origin uses SSH (agent + terminal push)");
+} else if (remote?.startsWith("https://")) {
+  bad("origin is HTTPS — use SSH to avoid SP-Q26@ password prompts (see docs/GIT_AGENT_CONNECTION.md)");
+  note(`git remote set-url origin ${canonicalSsh}`);
+}
+
+if (process.env.CI !== "true" && remote?.startsWith("git@")) {
+  const sshProbe = tryRun("ssh -o BatchMode=yes -T git@github.com 2>&1");
+  if (sshProbe?.includes("successfully authenticated")) ok("GitHub SSH auth");
+  else note("SSH key not available in this shell — agent push needs full permissions");
+}
+
+tryRun("git fetch origin --quiet") || tryRun("git fetch origin");
 
 const localSha = tryRun("git rev-parse main");
 const remoteSha = tryRun("git rev-parse origin/main");

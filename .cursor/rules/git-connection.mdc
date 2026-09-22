@@ -1,0 +1,32 @@
+---
+description: Simple-Property git · SSH remote · agent push law
+globs: "**/*"
+alwaysApply: true
+---
+
+# Simple-Property · git connection (Deposit Desk)
+
+**Repo:** `SP-Q26/Simple-Property` · work from **`~/SPQ/simple-property`** (or standalone clone), not SPQ `weweb-export`.
+
+## Canonical remote (HTTPS breaks Terminal)
+
+```text
+git@github.com:SP-Q26/Simple-Property.git
+```
+
+Never set `https://SP-Q26@github.com/...`. Do not use org name as HTTPS username.
+
+## Agent duty (push / fetch)
+
+1. Before push: `npm run audit:git` — must show **main matches origin/main** after push.
+2. Shell git over SSH needs **`required_permissions: ["all"]`** (sandbox blocks fetch/push).
+3. Commits: repo-local `S.P.` + `*@users.noreply.github.com` only.
+4. First-time orphan replace: `git push --force-with-lease origin main` once only when audit warns orphan.
+
+## Operator Terminal (no `gh` / no `brew`)
+
+One command per line. See `docs/GIT_AGENT_CONNECTION.md` · `docs/CONNECT_GIT.md`.
+
+## Cursor GitHub connect
+
+Integrated GitHub auth does **not** replace Terminal HTTPS credentials. **SSH remote** is the supported path on this machine.

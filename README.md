@@ -2,7 +2,7 @@
 
 **Homestead** · plain tools for mom-and-pop landlords (teams of 1–3). Product: **Deposit Desk** (Illinois alpha).
 
-**GitHub:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) · confused? → **`docs/CONNECT_GIT.md`**
+**GitHub:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) · git: **`docs/GIT_AGENT_CONNECTION.md`**
 
 Canon: `docs/CANON.md` · brand: `docs/BRAND.md` · quality: `docs/SWARM_AUDIT.md`.
 
