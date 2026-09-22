@@ -48,6 +48,24 @@ for (const p of painPosts) {
 }
 painSections += `        </ul>\n      </section>\n`;
 
+const cityPosts = manifest.posts
+  .filter((p) => p.intent === "city" || p.category === "city")
+  .sort((a, b) => a.title.localeCompare(b.title));
+const chicagoAnchor = manifest.posts.find((p) => p.slug === "chicago-45-day-deposit-deadline");
+
+let citySections = `\n      <section class="guides-hub blog-cluster--city" aria-labelledby="guides-cities">\n`;
+citySections += `        <h2 id="guides-cities">Major cities</h2>\n`;
+citySections += `        <p class="muted">Chicago RLTO · local fees · app city dropdown on step 1. Not legal advice.</p>\n`;
+citySections += `        <ul class="bullet-tight">\n`;
+if (chicagoAnchor) {
+  citySections += `          <li><a href="/blog/${chicagoAnchor.slug}">${chicagoAnchor.title}</a></li>\n`;
+}
+for (const p of cityPosts) {
+  if (p.slug === "chicago-45-day-deposit-deadline") continue;
+  citySections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+}
+citySections += `        </ul>\n      </section>\n`;
+
 const stateOrder = manifest.stateOrder || ["IL", "IN", "OH", "MI", "IA", "MO"];
 const stateLabels = manifest.stateLabels || {};
 
@@ -104,6 +122,8 @@ if (!indexHtml.includes(start)) {
 }
 const stateStart = "<!-- BLOG_STATE_START -->";
 const stateEnd = "<!-- BLOG_STATE_END -->";
+const cityStart = "<!-- BLOG_CITY_START -->";
+const cityEnd = "<!-- BLOG_CITY_END -->";
 const painStart = "<!-- BLOG_PAIN_START -->";
 const painEnd = "<!-- BLOG_PAIN_END -->";
 if (!indexHtml.includes(stateStart)) {
@@ -114,9 +134,17 @@ if (!indexHtml.includes(painStart)) {
   console.error("blog/index.html missing BLOG_PAIN markers");
   process.exit(1);
 }
+if (!indexHtml.includes(cityStart)) {
+  console.error("blog/index.html missing BLOG_CITY markers");
+  process.exit(1);
+}
 indexHtml = indexHtml.replace(
   new RegExp(`${painStart}[\\s\\S]*${painEnd}`),
   `${painStart}${painSections}      ${painEnd}`
+);
+indexHtml = indexHtml.replace(
+  new RegExp(`${cityStart}[\\s\\S]*${cityEnd}`),
+  `${cityStart}${citySections}      ${cityEnd}`
 );
 indexHtml = indexHtml.replace(
   new RegExp(`${stateStart}[\\s\\S]*${stateEnd}`),
@@ -128,7 +156,7 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<meta name="description" content="[^"]*">/,
-  `<meta name="description" content="Missed deposit deadlines, tenant disputes, bad itemization, and Midwest state guides. Not legal advice.">`
+  `<meta name="description" content="Major city deposit guides, missed deadlines, tenant disputes, fees, pets, and Midwest state law. Not legal advice.">`
 );
 indexHtml = indexHtml.replace(
   /<title>[^<]*<\/title>/,
@@ -136,7 +164,7 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<p class="hero-lead">[^<]*<\/p>/,
-  `<p class="hero-lead">Missed deadlines, deposit disputes, and spreadsheet traps · plus Midwest guides by state. Not legal advice.</p>`
+  `<p class="hero-lead">City guides · missed deadlines · fees and pets · spreadsheet traps · Midwest state law. Not legal advice.</p>`
 );
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");

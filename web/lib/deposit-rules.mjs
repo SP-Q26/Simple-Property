@@ -4,6 +4,14 @@
  * Wisconsin deferred (forwarding-address clock · separate spec).
  */
 
+import {
+  cityPresetFromLegacy,
+  inChicagoFromPreset,
+  resolveCityOverlay,
+} from "./city-overlays.mjs";
+
+export { citySelectOptions, cityPresetHint, normalizeCityPresetId, inChicagoFromPreset } from "./city-overlays.mjs";
+
 export const SUPPORTED_STATES = ["IL", "IN", "OH", "MI", "IA", "MO"];
 
 /** @typedef {{ code: string, label: string, returnDays: number, cite: string, chicagoOverlay?: boolean }} StatePack */
@@ -59,8 +67,13 @@ export function normalizeStateCode(raw) {
   return SUPPORTED_STATES.includes(code) ? code : "IL";
 }
 
-export function returnDeadlineDays({ state = "IL", inChicago = false }) {
-  const pack = STATE_PACKS[normalizeStateCode(state)];
+export function returnDeadlineDays({ state = "IL", inChicago = false, cityPreset = "" }) {
+  const code = normalizeStateCode(state);
+  const preset = cityPresetFromLegacy({ state: code, inChicago, cityPreset });
+  const overlay = resolveCityOverlay(code, preset);
+  if (overlay?.returnDays) return overlay.returnDays;
+  const pack = STATE_PACKS[code];
+  if (pack.chicagoOverlay && inChicagoFromPreset(preset)) return CHICAGO_RETURN_DAYS;
   if (pack.chicagoOverlay && inChicago) return CHICAGO_RETURN_DAYS;
   return pack.returnDays;
 }
@@ -74,15 +87,28 @@ export function addCalendarDays(isoDate, days) {
   return d.toISOString().slice(0, 10);
 }
 
-export function jurisdictionLabel({ state = "IL", inChicago = false }) {
-  const pack = STATE_PACKS[normalizeStateCode(state)];
-  if (pack.chicagoOverlay && inChicago) return "Chicago RLTO";
+export function jurisdictionLabel({ state = "IL", inChicago = false, cityPreset = "" }) {
+  const code = normalizeStateCode(state);
+  const preset = cityPresetFromLegacy({ state: code, inChicago, cityPreset });
+  const overlay = resolveCityOverlay(code, preset);
+  if (overlay?.jurisdiction) return overlay.jurisdiction;
+  if (overlay?.returnDays && overlay.cityName) {
+    return `${overlay.cityName} · ${overlay.returnDays}-day default (${STATE_PACKS[code].cite})`;
+  }
+  const pack = STATE_PACKS[code];
+  if (pack.chicagoOverlay && (inChicagoFromPreset(preset) || inChicago)) return "Chicago RLTO";
   return `${pack.label} (${pack.cite})`;
 }
 
-export function computeDeadline({ surrenderDate, state = "IL", inChicago = false }) {
+export function computeDeadline({
+  surrenderDate,
+  state = "IL",
+  inChicago = false,
+  cityPreset = "",
+}) {
   const code = normalizeStateCode(state);
-  const days = returnDeadlineDays({ state: code, inChicago });
+  const preset = cityPresetFromLegacy({ state: code, inChicago, cityPreset });
+  const days = returnDeadlineDays({ state: code, inChicago, cityPreset: preset });
   const deadline = addCalendarDays(surrenderDate, days);
   const reminders = deadline
     ? [7, 3, 1].map((n) => addCalendarDays(deadline, -n)).filter(Boolean)
@@ -92,7 +118,8 @@ export function computeDeadline({ surrenderDate, state = "IL", inChicago = false
     days,
     deadline,
     reminders,
-    jurisdiction: jurisdictionLabel({ state: code, inChicago }),
+    jurisdiction: jurisdictionLabel({ state: code, inChicago, cityPreset: preset }),
+    cityPreset: preset,
   };
 }
 

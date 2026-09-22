@@ -3,8 +3,13 @@ import {
   formatUsDate,
   normalizeStateCode,
   stateSelectOptions,
+  citySelectOptions,
+  cityPresetHint,
+  normalizeCityPresetId,
+  inChicagoFromPreset,
   STATE_PACKS,
 } from "./lib/deposit-rules.mjs";
+import { resolveCityOverlay } from "./lib/city-overlays.mjs";
 import { buildDeadlineIcs, downloadIcs } from "./lib/deadline-ics.mjs";
 import {
   buildPacketSheetsCsv,
@@ -34,7 +39,15 @@ function emptyDraft() {
   return {
     id: crypto.randomUUID?.() || "pkt-" + Date.now(),
     landlord: { name: "", email: "", address: "" },
-    property: { street: "", city: "", zip: "", state: "IL", inChicago: false, unitCount: 1 },
+    property: {
+      street: "",
+      city: "",
+      zip: "",
+      state: "IL",
+      inChicago: false,
+      cityPreset: "",
+      unitCount: 1,
+    },
     tenant: { name: "", email: "" },
     lease: { start: "", end: "" },
     deposit: { amount: "", heldAt: "" },
@@ -50,17 +63,22 @@ function loadDraft() {
     const raw = localStorage.getItem(DRAFT_KEY);
     if (!raw) return emptyDraft();
     const parsed = JSON.parse(raw);
-    return {
+    const merged = {
       ...emptyDraft(),
       ...parsed,
       property: {
         ...emptyDraft().property,
         ...parsed.property,
         state: normalizeStateCode(parsed.property?.state || "IL"),
+        cityPreset: normalizeCityPresetId(parsed.property?.cityPreset),
       },
       deductions: parsed.deductions?.length ? parsed.deductions : emptyDraft().deductions,
       rooms: parsed.rooms?.length ? parsed.rooms : emptyDraft().rooms,
     };
+    if (!merged.property.cityPreset && merged.property.inChicago && merged.property.state === "IL") {
+      merged.property.cityPreset = "chicago-il";
+    }
+    return merged;
   } catch {
     return emptyDraft();
   }
@@ -149,11 +167,18 @@ function proBlockMessage() {
   return "";
 }
 
+function syncChicagoFromPreset() {
+  draft.property.inChicago =
+    draft.property.state === "IL" && inChicagoFromPreset(draft.property.cityPreset);
+}
+
 function deadlineInput() {
+  syncChicagoFromPreset();
   return {
     surrenderDate: draft.surrenderDate,
     state: draft.property.state,
-    inChicago: draft.property.state === "IL" && draft.property.inChicago,
+    inChicago: draft.property.inChicago,
+    cityPreset: draft.property.cityPreset,
   };
 }
 
@@ -211,9 +236,24 @@ function applyPresetStateFromUrl() {
   }
   if (!code) return;
   const normalized = normalizeStateCode(code);
-  if (draft.property.state === normalized) return;
+  if (draft.property.state === normalized && !params.get("city")) return;
   draft.property.state = normalized;
-  if (normalized !== "IL") draft.property.inChicago = false;
+  if (normalized !== "IL") {
+    draft.property.inChicago = false;
+    if (resolveCityOverlay(normalized, draft.property.cityPreset)?.state !== normalized) {
+      draft.property.cityPreset = "";
+    }
+  }
+  const cityParam = params.get("city");
+  if (cityParam) {
+    const preset = normalizeCityPresetId(cityParam);
+    if (preset && resolveCityOverlay(normalized, preset)) {
+      draft.property.cityPreset = preset;
+      const row = resolveCityOverlay(normalized, preset);
+      if (row?.cityName) draft.property.city = row.cityName;
+      syncChicagoFromPreset();
+    }
+  }
   saveDraft(draft);
   try {
     sessionStorage.removeItem("spt_preset_state");
@@ -226,7 +266,8 @@ applyPresetStateFromUrl();
 window.addEventListener("spt-preset-state", (e) => {
   const code = normalizeStateCode(e.detail?.state);
   draft.property.state = code;
-  if (code !== "IL") draft.property.inChicago = false;
+  draft.property.cityPreset = "";
+  draft.property.inChicago = false;
   saveDraft(draft);
   if (step === 1) render();
   else {
@@ -264,13 +305,23 @@ function renderStep1() {
   const d = draft;
   const st = normalizeStateCode(d.property.state);
   const pack = STATE_PACKS[st];
-  const chicagoBlock =
-    st === "IL"
-      ? `<div>
-        <label><input id="prop-chicago" type="checkbox" ${d.property.inChicago ? "checked" : ""} /> Property is in Chicago (RLTO)</label>
-        <p class="field-hint">Chicago RLTO: <strong>45 days</strong> · elsewhere IL: <strong>30 days</strong> after surrender (${pack.cite}).</p>
-      </div>`
-      : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${pack.cite}). Local ordinances may differ · confirm with counsel.</p>`;
+  const preset = normalizeCityPresetId(d.property.cityPreset);
+  const overlay = resolveCityOverlay(st, preset);
+  const guideLink = overlay?.blogSlug
+    ? ` · <a href="/blog/${overlay.blogSlug}">City guide</a>`
+    : preset === "chicago-il"
+      ? ` · <a href="/blog/chicago-45-day-deposit-deadline">Chicago RLTO guide</a>`
+      : "";
+  const cityBlock = `
+      <div style="grid-column:1/-1">
+        <label for="prop-city-preset">Major city (if local rules may apply)</label>
+        <select id="prop-city-preset">${citySelectOptions(st, preset)}</select>
+        <p class="field-hint" id="prop-city-hint">${cityPresetHint(st, preset)}${guideLink}</p>
+      </div>`;
+  const clockHint =
+    preset === "chicago-il"
+      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender. Elsewhere in Illinois: <strong>30 days</strong> (${pack.cite}).</p>`
+      : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${pack.cite}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
   return `
     <h2 id="step-title" tabindex="-1">Landlord &amp; property</h2>
     <div class="form-grid two">
@@ -278,12 +329,13 @@ function renderStep1() {
       <div><label for="ll-email">Email</label><input id="ll-email" type="email" value="${esc(d.landlord.email)}" autocomplete="email" /></div>
       <div class="form-grid" style="grid-column:1/-1"><label for="ll-addr">Mailing address</label><input id="ll-addr" type="text" value="${esc(d.landlord.address)}" autocomplete="street-address" /></div>
       <div><label for="prop-state">State</label><select id="prop-state">${stateSelectOptions(st)}</select></div>
+      ${cityBlock}
       <div><label for="prop-street">Rental street address</label><input id="prop-street" type="text" value="${esc(d.property.street)}" /></div>
       <div><label for="prop-city">City</label><input id="prop-city" type="text" value="${esc(d.property.city)}" /></div>
       <div><label for="prop-zip">ZIP</label><input id="prop-zip" type="text" value="${esc(d.property.zip)}" /></div>
       <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" aria-describedby="prop-units-hint" /></div>
         <p class="field-hint" id="prop-units-hint">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription. More doors? Finish the draft free, then contact us before checkout.</p>
-      ${chicagoBlock}
+      ${clockHint}
     </div>`;
 }
 
@@ -424,8 +476,8 @@ function readStepIntoDraft() {
     draft.property.zip = document.getElementById("prop-zip")?.value?.trim() || "";
     draft.property.state = normalizeStateCode(document.getElementById("prop-state")?.value);
     draft.property.unitCount = parseUnitCount(document.getElementById("prop-units")?.value);
-    draft.property.inChicago =
-      draft.property.state === "IL" && Boolean(document.getElementById("prop-chicago")?.checked);
+    draft.property.cityPreset = normalizeCityPresetId(document.getElementById("prop-city-preset")?.value);
+    syncChicagoFromPreset();
   }
   if (step === 2) {
     draft.tenant.name = document.getElementById("tn-name")?.value?.trim() || "";
@@ -457,6 +509,26 @@ function readStepIntoDraft() {
     draft.signatures.date = document.getElementById("sig-date")?.value || draft.signatures.date;
   }
   saveDraft(draft);
+}
+
+function bindStep1Events() {
+  document.getElementById("prop-state")?.addEventListener("change", () => {
+    readStepIntoDraft();
+    draft.property.cityPreset = "";
+    draft.property.inChicago = false;
+    saveDraft(draft);
+    render();
+  });
+  document.getElementById("prop-city-preset")?.addEventListener("change", () => {
+    readStepIntoDraft();
+    const st = draft.property.state;
+    const preset = draft.property.cityPreset;
+    const row = resolveCityOverlay(st, preset);
+    if (row?.cityName) draft.property.city = row.cityName;
+    syncChicagoFromPreset();
+    saveDraft(draft);
+    render();
+  });
 }
 
 function bindStepEvents() {
@@ -692,6 +764,7 @@ function render() {
   setStepLabels();
   const renders = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
   els.panel.innerHTML = renders[step - 1]();
+  if (step === 1) bindStep1Events();
   if (step === 3 || step === 4 || step === 5) bindStepEvents();
   renderPrintPacket();
   els.prev.disabled = step <= 1;

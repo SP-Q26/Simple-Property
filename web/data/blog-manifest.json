@@ -37,6 +37,10 @@
     "pain": {
       "label": "Pain & turnover",
       "audience": "Missed clocks, disputes, spreadsheet traps"
+    },
+    "city": {
+      "label": "Major cities",
+      "audience": "Local ordinances, RLTO, and turnover documentation"
     }
   },
   "posts": [
@@ -196,7 +200,7 @@
     {
       "slug": "deposit-desk-vs-spreadsheet",
       "title": "Deposit Desk vs spreadsheet",
-      "description": "When a packet beats a shared sheet for one turnover.",
+      "description": "Surrender date, 30/45-day clocks, itemization lines, .ics, and print packet vs Excel at turnover. Midwest IL–MO. Not legal advice.",
       "category": "landlord",
       "states": [
         "IL",
@@ -207,7 +211,7 @@
         "MO"
       ],
       "published": "2026-08-22",
-      "updated": "2026-09-01",
+      "updated": "2026-09-22",
       "statutes": []
     },
     {
@@ -707,6 +711,252 @@
         "ORC 5321.16",
         "MCL 554.610"
       ]
+    },
+    {
+      "slug": "evanston-illinois-rental-deposit-guide",
+      "title": "Evanston deposit guide · Illinois operators",
+      "description": "Evanston turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "evanston-il",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "indianapolis-indiana-deposit-local-guide",
+      "title": "Indianapolis deposit guide · Indiana operators",
+      "description": "Indianapolis turnover: 45-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "indianapolis-in",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12 et seq."
+      ]
+    },
+    {
+      "slug": "fort-wayne-indiana-deposit-local-guide",
+      "title": "Fort Wayne deposit guide · Indiana operators",
+      "description": "Fort Wayne turnover: 45-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "fort-wayne-in",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12 et seq."
+      ]
+    },
+    {
+      "slug": "columbus-ohio-deposit-local-guide",
+      "title": "Columbus deposit guide · Ohio operators",
+      "description": "Columbus turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "columbus-oh",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "cleveland-ohio-deposit-local-guide",
+      "title": "Cleveland deposit guide · Ohio operators",
+      "description": "Cleveland turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "cleveland-oh",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "cincinnati-ohio-deposit-local-guide",
+      "title": "Cincinnati deposit guide · Ohio operators",
+      "description": "Cincinnati turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "cincinnati-oh",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "detroit-michigan-deposit-local-guide",
+      "title": "Detroit deposit guide · Michigan operators",
+      "description": "Detroit turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "detroit-mi",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "grand-rapids-michigan-deposit-local-guide",
+      "title": "Grand Rapids deposit guide · Michigan operators",
+      "description": "Grand Rapids turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "grand-rapids-mi",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "des-moines-iowa-deposit-local-guide",
+      "title": "Des Moines deposit guide · Iowa operators",
+      "description": "Des Moines turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "des-moines-ia",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "iowa-city-iowa-deposit-local-guide",
+      "title": "Iowa City deposit guide · Iowa operators",
+      "description": "Iowa City turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "iowa-city-ia",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "kansas-city-missouri-deposit-local-guide",
+      "title": "Kansas City deposit guide · Missouri operators",
+      "description": "Kansas City turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "kansas-city-mo",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "st-louis-missouri-deposit-local-guide",
+      "title": "St. Louis deposit guide · Missouri operators",
+      "description": "St. Louis turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "cityPreset": "st-louis-mo",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "move-in-move-out-fees-midwest-landlords",
+      "title": "Move-in and move-out fees vs the security deposit (Midwest)",
+      "description": "Cleaning fees, admin charges, and pass-through documentation costs. Keep them separate from the deposit ledger. IL · IN · OH · MI · IA · MO. Not legal advice.",
+      "category": "landlord",
+      "intent": "fees",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": []
+    },
+    {
+      "slug": "pet-deposits-security-deposit-midwest",
+      "title": "Pet deposits, pet rent, and security deposit withholds",
+      "description": "Separate pet charges from damage deductions at move-out. Midwest small landlords. Not legal advice.",
+      "category": "landlord",
+      "intent": "fees",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": []
+    },
+    {
+      "slug": "application-fees-vs-security-deposit-midwest",
+      "title": "Application fees vs security deposits (Midwest renters and landlords)",
+      "description": "Screening charges before lease signing are not move-out deposit returns. Plain-language split for IL · IN · OH · MI · IA · MO. Not legal advice.",
+      "category": "renter",
+      "intent": "fees",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": []
     }
   ]
 }

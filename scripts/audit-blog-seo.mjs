@@ -47,8 +47,8 @@ for (const f of htmlFiles) {
   check(`manifest row ${slug}`, manifestSlugs.has(slug));
 }
 
-for (const key of Object.keys(cats)) {
-  const min = key === "pain" ? 6 : 2;
+for (const key of ["law", "landlord", "renter", "news", "pain", "city"]) {
+  const min = key === "pain" ? 6 : key === "city" ? 8 : 2;
   const n = posts.filter((p) => p.category === key).length;
   check(`pillar ${key} ≥ ${min} posts`, n >= min, `count=${n}`);
 }
@@ -57,6 +57,7 @@ const painIntent = posts.filter((p) => p.intent === "pain" || p.category === "pa
 const index = read("blog/index.html");
 check("pain hub ≥ 6 posts", painIntent >= 6, `count=${painIntent}`);
 check("blog index pain section", index.includes("guides-pain") || index.includes("blog-cluster--pain"));
+check("blog index city section", index.includes("guides-cities") || index.includes("blog-cluster--city"));
 
 const lawWatch = posts.filter((p) => p.lawWatch).length;
 check("law watch / news lane ≥ 2", lawWatch >= 2, `count=${lawWatch}`);
@@ -77,7 +78,7 @@ for (const code of ["IL", "IN", "OH", "MI", "IA", "MO"]) {
   check(`state ${code} ≥ 1 guide`, n >= 1, `count=${n}`);
 }
 for (const key of Object.keys(cats)) {
-  check(`index cluster ${key}`, index.includes(`id="cluster-${key}"`));
+  check(`index cluster ${key}`, index.includes(`id="cluster-${key}"`) || (key === "city" && index.includes("guides-cities")));
 }
 
 let jsonLdOk = 0;

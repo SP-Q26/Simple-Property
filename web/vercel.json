@@ -266,6 +266,66 @@
     {
       "source": "/blog/missed-deposit-deadline-midwest-small-landlord",
       "destination": "/blog/missed-deposit-deadline-midwest-small-landlord.html"
+    },
+    {
+      "source": "/blog/evanston-illinois-rental-deposit-guide",
+      "destination": "/blog/evanston-illinois-rental-deposit-guide.html"
+    },
+    {
+      "source": "/blog/indianapolis-indiana-deposit-local-guide",
+      "destination": "/blog/indianapolis-indiana-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/fort-wayne-indiana-deposit-local-guide",
+      "destination": "/blog/fort-wayne-indiana-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/columbus-ohio-deposit-local-guide",
+      "destination": "/blog/columbus-ohio-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/cleveland-ohio-deposit-local-guide",
+      "destination": "/blog/cleveland-ohio-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/cincinnati-ohio-deposit-local-guide",
+      "destination": "/blog/cincinnati-ohio-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/detroit-michigan-deposit-local-guide",
+      "destination": "/blog/detroit-michigan-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/grand-rapids-michigan-deposit-local-guide",
+      "destination": "/blog/grand-rapids-michigan-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/des-moines-iowa-deposit-local-guide",
+      "destination": "/blog/des-moines-iowa-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/iowa-city-iowa-deposit-local-guide",
+      "destination": "/blog/iowa-city-iowa-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/kansas-city-missouri-deposit-local-guide",
+      "destination": "/blog/kansas-city-missouri-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/st-louis-missouri-deposit-local-guide",
+      "destination": "/blog/st-louis-missouri-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/move-in-move-out-fees-midwest-landlords",
+      "destination": "/blog/move-in-move-out-fees-midwest-landlords.html"
+    },
+    {
+      "source": "/blog/pet-deposits-security-deposit-midwest",
+      "destination": "/blog/pet-deposits-security-deposit-midwest.html"
+    },
+    {
+      "source": "/blog/application-fees-vs-security-deposit-midwest",
+      "destination": "/blog/application-fees-vs-security-deposit-midwest.html"
     }
   ],
   "crons": [
