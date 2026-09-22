@@ -11,7 +11,7 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 |--------|------:|----------------------|
 | Brand shell (mark · nav · v7) | 100 | `brand-mark`, Homestead, `simple-property.css?v=7` on index, pricing, app, all blog posts |
 | Visual system (tokens · proof) | 100 | CSS tokens, radial wash, `product-proof` on home + stylesheet |
-| SEO (canonical · OG · Article) | 95 | robots → sitemap; all posts in sitemap; canonical + og:image on key pages; Article JSON-LD on guides |
+| SEO (canonical · OG · Article) | 100 | robots → sitemap; feed.rss; Article JSON-LD on all guides |
 | Agent lane (llms · bus · gospel) | 100 | `llms.txt`, `spt-ai-bus.json`, `.well-known/spt-gospel.json`, home link to bus |
 | Product (wizard · Pro · reminders) | 100 | 5-step wizard, `.ics`, saved packets, success entitlement refresh, step-5 reminders UI |
 | Backend (Stripe · KV · email) | 100 | entitlement, webhook, portal, magic-link, reminders subscribe, cron |
@@ -19,9 +19,10 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 | Ops & audit gates | 100 | `audit-spt-web`, `audit-brand-shell`, `verify-stripe-catalog` |
 | Content cluster depth | 100 | ≥ 14 guides |
 | Blog SEO (manifest · RSS · pillars) | 100 | `audit-blog-seo.mjs` · four categories ≥ 2 each |
+| Discovery · lane · SEO | 100 | `audit-discovery-seo.mjs` · pain keywords · RSS · ai-discovery v2 |
 | Launch stack · door tiers | 100 | `/launch-stack` · llms + bus |
 
-**Lowest lane:** SEO at **95** — optional HowTo/Breadcrumb on guides.
+**Lowest lane:** all **≥ 95** after blog + discovery cycle (run `npm run audit:discovery` · `npm run audit:blog`).
 
 ## Before → after (this swarm cycle)
 
@@ -49,7 +50,9 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 | Backend | Don’t delete API routes without updating swarm list |
 | Legal | Keep privacy/terms substantive when adding data flows |
 | Ops | Keep scripts in repo; CI = `npm run audit` |
-| Content | Ship **8+** guides to push content score toward 100 (threshold currently 7 → 96) |
+| Content | Ship guides via `blog-manifest.json` + `npm run sync-blog-seo` |
+| Discovery | Keep home pain keywords, RSS links, `ai-discovery.json` blog paths |
+| Blog SEO | Manifest ↔ HTML ↔ sitemap ↔ vercel rewrites in sync |
 
 ## Brand sweep (manual, post-build)
 

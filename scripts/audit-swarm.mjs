@@ -143,6 +143,16 @@ function scoreBlogSeoLane() {
   return m ? Number(m[1]) : 0;
 }
 
+function scoreDiscoveryLane() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-discovery-seo.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const out = (r.stdout || "") + (r.stderr || "");
+  const m = out.match(/Discovery SEO score: (\d+)/);
+  return m ? Number(m[1]) : 0;
+}
+
 const metrics = [
   ["Brand shell (mark · nav · v7)", scoreBrandShell],
   ["Visual system (tokens · proof)", scoreVisual],
@@ -154,6 +164,7 @@ const metrics = [
   ["Ops & audit gates", scoreOps],
   ["Content cluster depth", scoreContentDepth],
   ["Blog SEO (manifest · RSS · pillars)", scoreBlogSeoLane],
+  ["Discovery · lane · SEO", scoreDiscoveryLane],
   ["Launch stack · door tiers", scoreLaunchStack],
 ];
 let fail = 0;
