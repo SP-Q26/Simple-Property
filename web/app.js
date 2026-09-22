@@ -114,17 +114,37 @@ function isSubscribed() {
   return typeof window.sptIsSubscribed === "function" && window.sptIsSubscribed();
 }
 
-/** Paid + within 4-unit Pro license. */
+function hasTurnUnlock() {
+  if (typeof window.sptHasTurnUnlock === "function") {
+    return window.sptHasTurnUnlock(draft.id);
+  }
+  return false;
+}
+
+/** Subscription Pro within unit cap, or per-turn unlock for this packet. */
 function canExportPro() {
+  if (typeof window.sptIsDemoPro === "function" && window.sptIsDemoPro()) return true;
+  if (hasTurnUnlock()) return true;
+  return isSubscribed() && unitsWithinProCap(draft.property.unitCount);
+}
+
+function isProSubscription() {
   return isSubscribed() && unitsWithinProCap(draft.property.unitCount);
 }
 
 function proBlockMessage() {
-  if (!isSubscribed()) {
-    return `<div class="paywall" role="status"><strong>Pro required for print export and tenant email.</strong> Draft free · <a href="/pricing">See who Pro is for</a></div>`;
-  }
-  if (!unitsWithinProCap(draft.property.unitCount)) {
-    return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simpleproperty.tools">email us</a> for larger portfolios.</div>`;
+  if (!canExportPro()) {
+    if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
+      return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simpleproperty.tools">email us</a> for larger portfolios.</div>`;
+    }
+    return `<div class="paywall" role="status">
+      <strong>Unlock print/PDF for this packet.</strong> Per turn ($29 move-out · $49 full tenancy) or Pro subscription.
+      <div class="paywall-actions" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
+        <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
+        <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
+        <a class="btn btn-secondary" href="/pricing">Pro pricing</a>
+      </div>
+    </div>`;
   }
   return "";
 }
@@ -376,7 +396,7 @@ function renderStep5() {
         : ""
     }
     ${
-      sub
+      isProSubscription()
         ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
         <p class="section-label" style="margin-bottom:0.5rem">Email copy to tenant</p>
         <p class="field-hint">Sends a plain-language statement summary (not photos). BCCs your landlord email when checked.</p>
@@ -389,8 +409,8 @@ function renderStep5() {
         </div>
         <p class="field-hint" id="tenant-email-status" aria-live="polite"></p>
       </div>
-      <p class="field-hint" role="status">Pro active · up to ${PRO_UNITS_MAX} units · Print / Save as PDF below.</p>`
-        : proBlockMessage() || `<div class="paywall" role="status"><strong>Pro required for export.</strong> <a href="/pricing">Pricing</a></div>`
+      <p class="field-hint" role="status">${hasTurnUnlock() && !isSubscribed() ? "Turn unlock active for this packet · " : ""}${isSubscribed() ? `Pro active · up to ${PRO_UNITS_MAX} units · ` : ""}Print / Save as PDF below.</p>`
+        : proBlockMessage() || `<div class="paywall" role="status"><strong>Unlock export below.</strong> <a href="/pricing">Pricing</a></div>`
     }`;
 }
 
@@ -608,6 +628,11 @@ function bindStepEvents() {
     } catch {
       if (status) status.textContent = "Network error  ·  try again.";
     }
+  });
+  document.querySelectorAll(".spt-checkout").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (typeof window.sptStartCheckout === "function") window.sptStartCheckout(btn);
+    });
   });
 }
 

@@ -114,9 +114,18 @@ if (porcelain) {
 
 const staged = tryRun("git diff --cached --name-only");
 if (staged) {
-  if (/node_modules|\.env/.test(staged)) bad("staged files include node_modules or .env");
+  if (/node_modules|(^|\/)\.env(?!\.example)/.test(staged)) bad("staged files include node_modules or .env");
   const diff = tryRun("git diff --cached");
-  if (/@gmail|@icloud|sk_live|whsec_/i.test(diff)) bad("staged diff may contain secrets or personal email");
+  const files = staged.split("\n").filter((f) => f && !f.endsWith("scripts/audit-git.mjs"));
+  const diffForSecrets = files
+    .map((f) => tryRun(`git diff --cached -- ${JSON.stringify(f).slice(1, -1)}`))
+    .join("\n");
+  if (
+    /@gmail|@icloud|sk_live/i.test(diffForSecrets) ||
+    /whsec_[a-zA-Z0-9]{10,}/i.test(diffForSecrets)
+  ) {
+    bad("staged diff may contain secrets or personal email");
+  }
 }
 
 if (existsSync(join(root, "../.git")) && tryRun("git -C .. rev-parse --show-toplevel") !== root) {

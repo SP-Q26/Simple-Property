@@ -48,9 +48,15 @@ for (const f of htmlFiles) {
 }
 
 for (const key of Object.keys(cats)) {
+  const min = key === "pain" ? 6 : 2;
   const n = posts.filter((p) => p.category === key).length;
-  check(`pillar ${key} ≥ 2 posts`, n >= 2, `count=${n}`);
+  check(`pillar ${key} ≥ ${min} posts`, n >= min, `count=${n}`);
 }
+
+const painIntent = posts.filter((p) => p.intent === "pain" || p.category === "pain").length;
+const index = read("blog/index.html");
+check("pain hub ≥ 6 posts", painIntent >= 6, `count=${painIntent}`);
+check("blog index pain section", index.includes("guides-pain") || index.includes("blog-cluster--pain"));
 
 const lawWatch = posts.filter((p) => p.lawWatch).length;
 check("law watch / news lane ≥ 2", lawWatch >= 2, `count=${lawWatch}`);
@@ -65,7 +71,6 @@ for (const p of posts) {
   check(`vercel rewrite ${p.slug}`, vercel.includes(`"/blog/${p.slug}"`));
 }
 
-const index = read("blog/index.html");
 check("blog index state locales", index.includes('id="locale-IL"') && index.includes("locale-IN"));
 for (const code of ["IL", "IN", "OH", "MI", "IA", "MO"]) {
   const n = posts.filter((p) => (p.states || []).includes(code)).length;

@@ -12,6 +12,7 @@
     "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs",
     "build-blog": "node scripts/build-blog-seo.mjs",
     "generate-blog-p0": "node scripts/generate-state-blog-p0.mjs",
+    "generate-pain-seo": "node scripts/generate-pain-seo-posts.mjs",
     "audit:blog": "node scripts/audit-blog-seo.mjs",
     "audit:discovery": "node scripts/audit-discovery-seo.mjs",
     "audit:pricing": "node scripts/audit-pricing.mjs",

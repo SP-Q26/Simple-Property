@@ -38,7 +38,14 @@ need("pricing annual value", pricing.includes("$99"));
 need("pricing monthly $22", pricing.includes("$22"));
 need("pricing print export", pricing.includes("Print / Save as PDF"));
 need("print gate in app", app.includes("spt-no-pro-print"));
-need("pricing per-turn section", pricing.includes("Per turn") && pricing.includes("$49"));
+need("pricing per-turn checkout", pricing.includes("Unlock at step 5") || pricing.includes("unlock at export"));
+need("catalog turn_move_out", catalog.includes("turn_move_out"));
+need("catalog turn_full", catalog.includes("turn_full"));
+need(
+  "checkout packet_id",
+  read("api/stripe/checkout.js").includes("spt_packet_id") &&
+    read("api/stripe/checkout.js").includes("catalog.mode")
+);
 need("home per-turn model", read("index.html").includes("per turn") || read("index.html").includes("Per turn"));
 need("gospel pricing 22/99", read(".well-known/spt-gospel.json").includes('"monthly_usd": 22'));
 need("terms mention prices", existsSync(join(web, "terms.html")) && read("terms.html").includes("$22"));

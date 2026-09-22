@@ -35,6 +35,19 @@ for (const cat of Object.values(byCat)) {
   cat.posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 }
 
+const painPosts = manifest.posts
+  .filter((p) => p.intent === "pain")
+  .sort((a, b) => (a.published < b.published ? 1 : -1));
+
+let painSections = `\n      <section class="guides-hub blog-cluster--pain" aria-labelledby="guides-pain">\n`;
+painSections += `        <h2 id="guides-pain">When something goes wrong</h2>\n`;
+painSections += `        <p class="muted">Missed clocks, withhold fights, spreadsheet traps · not legal advice.</p>\n`;
+painSections += `        <ul class="bullet-tight">\n`;
+for (const p of painPosts) {
+  painSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+}
+painSections += `        </ul>\n      </section>\n`;
+
 const stateOrder = manifest.stateOrder || ["IL", "IN", "OH", "MI", "IA", "MO"];
 const stateLabels = manifest.stateLabels || {};
 
@@ -91,10 +104,20 @@ if (!indexHtml.includes(start)) {
 }
 const stateStart = "<!-- BLOG_STATE_START -->";
 const stateEnd = "<!-- BLOG_STATE_END -->";
+const painStart = "<!-- BLOG_PAIN_START -->";
+const painEnd = "<!-- BLOG_PAIN_END -->";
 if (!indexHtml.includes(stateStart)) {
   console.error("blog/index.html missing BLOG_STATE markers");
   process.exit(1);
 }
+if (!indexHtml.includes(painStart)) {
+  console.error("blog/index.html missing BLOG_PAIN markers");
+  process.exit(1);
+}
+indexHtml = indexHtml.replace(
+  new RegExp(`${painStart}[\\s\\S]*${painEnd}`),
+  `${painStart}${painSections}      ${painEnd}`
+);
 indexHtml = indexHtml.replace(
   new RegExp(`${stateStart}[\\s\\S]*${stateEnd}`),
   `${stateStart}${stateSections}      ${stateEnd}`
@@ -105,15 +128,15 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<meta name="description" content="[^"]*">/,
-  `<meta name="description" content="Deposit guides for IL, IN, OH, MI, IA, and MO · deadlines, itemization, operators. Not legal advice.">`
+  `<meta name="description" content="Missed deposit deadlines, tenant disputes, bad itemization, and Midwest state guides. Not legal advice.">`
 );
 indexHtml = indexHtml.replace(
   /<title>[^<]*<\/title>/,
-  `<title>Deposit guides by state · Simple Property Tools</title>`
+  `<title>Deposit pain guides & state law · Simple Property Tools</title>`
 );
 indexHtml = indexHtml.replace(
   /<p class="hero-lead">[^<]*<\/p>/,
-  `<p class="hero-lead">Midwest deposit facts by state and topic · Illinois still includes Chicago RLTO. Not legal advice.</p>`
+  `<p class="hero-lead">Missed deadlines, deposit disputes, and spreadsheet traps · plus Midwest guides by state. Not legal advice.</p>`
 );
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");

@@ -22,10 +22,11 @@ const css = read("simple-property.css");
 const pricing = read("pricing.html");
 const index = read("index.html");
 
-need("css v10", css.includes("v10 shell") || css.includes("Deposit Desk · v10"));
+need("css v11", css.includes("v11") || css.includes("Isles palette"));
+need("isles fjord token", css.includes("--fjord-deep"));
 need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
-need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
+need("display + UI fonts", css.includes("--font-display") && css.includes("DM Sans"));
 need("pricing wide layout", css.includes(".pricing-page"));
 need("sleek price cards", css.includes(".price-card") && css.includes("price-card__badge"));
 need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.js")));

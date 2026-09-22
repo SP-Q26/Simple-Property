@@ -41,6 +41,9 @@ const painTerms = [
   "surrender",
   "itemiz",
   "deposit",
+  "spreadsheet",
+  "disput",
+  "missed",
 ];
 for (const t of painTerms) {
   if (!index.toLowerCase().includes(t.toLowerCase()) && !index.includes(t)) {
@@ -90,7 +93,7 @@ for (const p of pages) {
 if (manifest.posts?.length >= 12) ok("manifest ≥12 posts");
 else ding(6, "manifest thin for discovery");
 
-const pillars = ["law", "landlord", "renter", "news"];
+const pillars = ["law", "landlord", "renter", "news", "pain"];
 for (const p of pillars) {
   const n = (manifest.posts || []).filter((x) => x.category === p).length;
   if (n < 2) ding(4, `pillar ${p} thin (${n})`);

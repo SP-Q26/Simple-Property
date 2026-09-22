@@ -234,6 +234,38 @@
     {
       "source": "/blog/missouri-security-deposit-checklist",
       "destination": "/blog/missouri-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/missed-illinois-deposit-deadline-what-now",
+      "destination": "/blog/missed-illinois-deposit-deadline-what-now.html"
+    },
+    {
+      "source": "/blog/tenant-disputes-security-deposit-illinois",
+      "destination": "/blog/tenant-disputes-security-deposit-illinois.html"
+    },
+    {
+      "source": "/blog/one-line-cleaning-fee-deposit-illinois",
+      "destination": "/blog/one-line-cleaning-fee-deposit-illinois.html"
+    },
+    {
+      "source": "/blog/keys-not-returned-deposit-clock-illinois",
+      "destination": "/blog/keys-not-returned-deposit-clock-illinois.html"
+    },
+    {
+      "source": "/blog/pass-through-deposit-documentation-fee-illinois",
+      "destination": "/blog/pass-through-deposit-documentation-fee-illinois.html"
+    },
+    {
+      "source": "/blog/excel-deposit-spreadsheet-mistakes-illinois",
+      "destination": "/blog/excel-deposit-spreadsheet-mistakes-illinois.html"
+    },
+    {
+      "source": "/blog/forgot-move-in-photos-deposit-dispute-illinois",
+      "destination": "/blog/forgot-move-in-photos-deposit-dispute-illinois.html"
+    },
+    {
+      "source": "/blog/missed-deposit-deadline-midwest-small-landlord",
+      "destination": "/blog/missed-deposit-deadline-midwest-small-landlord.html"
     }
   ],
   "crons": [

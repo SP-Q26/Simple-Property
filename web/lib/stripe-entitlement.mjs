@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { buildEntitlement } from "./entitlement.mjs";
 import { getSubscriptionByCustomer, isProStatus, upsertSubscriptionRecord } from "./subscription-store.mjs";
+import { upsertTurnUnlock } from "./turn-store.mjs";
 
 const stripe = () =>
   new Stripe(process.env.STRIPE_SECRET_KEY || "", {
@@ -43,6 +44,28 @@ export async function recordFromCheckoutSession(session) {
     session.customer_details?.email ||
     session.customer_email ||
     null;
+  const sku = session.metadata?.spt_sku || "annual";
+  const packetId = session.metadata?.spt_packet_id || null;
+
+  if (session.mode === "payment" && packetId) {
+    await upsertTurnUnlock({
+      packet_id: packetId,
+      sku,
+      session_id: session.id,
+      customer_id: customerId,
+      paid_at: new Date().toISOString(),
+    });
+    return {
+      customer_id: customerId,
+      email,
+      subscription_id: null,
+      status: "paid",
+      sku,
+      packet_id: packetId,
+      updated_at: new Date().toISOString(),
+    };
+  }
+
   let sub = null;
   if (session.subscription) {
     sub =
@@ -50,7 +73,6 @@ export async function recordFromCheckoutSession(session) {
         ? await stripe().subscriptions.retrieve(session.subscription)
         : session.subscription;
   }
-  const sku = session.metadata?.spt_sku || sub?.metadata?.spt_sku || "annual";
   const record = {
     customer_id: customerId,
     email,
@@ -62,7 +84,7 @@ export async function recordFromCheckoutSession(session) {
     sku,
     updated_at: new Date().toISOString(),
   };
-  if (customerId) {
+  if (customerId && sub) {
     await attachCustomerEmail(record);
     await upsertSubscriptionRecord(record);
   }
@@ -105,6 +127,22 @@ export async function entitlementFromSession(sessionId) {
   }
   await recordFromCheckoutSession(session);
   const sku = session.metadata?.spt_sku || "annual";
+  const packetId = session.metadata?.spt_packet_id || null;
+  const customerId =
+    typeof session.customer === "string" ? session.customer : session.customer?.id || null;
+
+  if (session.mode === "payment" && packetId) {
+    return buildEntitlement({
+      plan: "turn",
+      sku,
+      valid_until: null,
+      stripe_session: session.id,
+      stripe_subscription: null,
+      stripe_customer: customerId,
+      packet_id: packetId,
+    });
+  }
+
   let validUntil = null;
   let subscriptionId = null;
   if (session.mode === "subscription" && session.subscription) {
@@ -121,7 +159,6 @@ export async function entitlementFromSession(sessionId) {
     valid_until: validUntil,
     stripe_session: session.id,
     stripe_subscription: subscriptionId,
-    stripe_customer:
-      typeof session.customer === "string" ? session.customer : session.customer?.id || null,
+    stripe_customer: customerId,
   });
 }

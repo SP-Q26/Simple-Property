@@ -33,6 +33,10 @@
     "news": {
       "label": "News & law watch",
       "audience": "Midwest rental policy roundup"
+    },
+    "pain": {
+      "label": "Pain & turnover",
+      "audience": "Missed clocks, disputes, spreadsheet traps"
     }
   },
   "posts": [
@@ -575,6 +579,133 @@
       "updated": "2026-09-22",
       "statutes": [
         "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "missed-illinois-deposit-deadline-what-now",
+      "title": "Missed the Illinois deposit deadline  ·  what landlords do next",
+      "description": "Past 30 or 45 days after surrender? Practical documentation steps, not legal advice. 765 ILCS 715/ and Chicago RLTO context.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "tenant-disputes-security-deposit-illinois",
+      "title": "Tenant disputes the security deposit withhold  ·  Illinois operators",
+      "description": "When the tenant says pre-existing damage or normal wear. Move-in proof, itemization, and surrender date. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "one-line-cleaning-fee-deposit-illinois",
+      "title": "One-line “cleaning fee” on a deposit return  ·  why it fails in Illinois",
+      "description": "Single lump withhold vs itemized deductions under 765 ILCS 715/. Operator checklist. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "keys-not-returned-deposit-clock-illinois",
+      "title": "Lease ended but tenant still has keys  ·  when the deposit clock starts",
+      "description": "Surrender date vs lease end date for 30/45-day Illinois deposit returns. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "pass-through-deposit-documentation-fee-illinois",
+      "title": "Pass-through deposit documentation fee (like screening)  ·  Illinois landlords",
+      "description": "How operators line-item move-in/move-out packet fees on the ledger. Disclosure and counsel review required. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "excel-deposit-spreadsheet-mistakes-illinois",
+      "title": "Excel deposit tracker mistakes at turnover (Illinois)",
+      "description": "Wrong surrender cell, broken formulas, and no print packet when the tenant disputes. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "forgot-move-in-photos-deposit-dispute-illinois",
+      "title": "No move-in photos when the tenant fights the withhold  ·  Illinois",
+      "description": "Recovery steps when move-in documentation was skipped. Prevention for the next lease. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "missed-deposit-deadline-midwest-small-landlord",
+      "title": "Missed deposit deadline stress  ·  Indiana, Ohio, Michigan, and neighbors",
+      "description": "Small landlords across the Midwest confuse lease end with surrender. 30- and 45-day windows by state. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12",
+        "ORC 5321.16",
+        "MCL 554.610"
       ]
     }
   ]

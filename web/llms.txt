@@ -4,7 +4,7 @@
 
 - https://simpleproperty.tools/
 - **Deposit Desk** · 765 ILCS 715/ **30-day** & **Chicago RLTO 45-day** from surrender · move-in/move-out · .ics · Google Calendar/Sheets · print (Pro)
-- **Pricing** · free draft · **per-turn** pass-through like screening ($29 move · $49 tenancy, checkout coming) · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simpleproperty.tools/pricing
+- **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simpleproperty.tools/pricing
 - **Guides** · law · landlords · renters · IL news: https://simpleproperty.tools/blog · RSS https://simpleproperty.tools/blog/feed.rss
 - **Launch stack** · tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simpleproperty.tools/launch-stack
 - Agent bus: https://simpleproperty.tools/spt-ai-bus.json

@@ -22,8 +22,8 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <link rel="canonical" href="${url}">
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=10">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=11">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>

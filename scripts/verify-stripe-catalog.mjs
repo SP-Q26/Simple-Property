@@ -24,7 +24,15 @@ for (const [key, item] of Object.entries(STRIPE_CATALOG)) {
   console.log(`  ${key}: $${(item.unit_amount / 100).toFixed(2)}/${item.recurring?.interval || "once"} · ${item.name}`);
 }
 
-const envKeys = ["STRIPE_SECRET_KEY", "STRIPE_WEBHOOK_SECRET", "SPT_ENTITLEMENT_SECRET", "STRIPE_PRICE_MONTHLY", "STRIPE_PRICE_ANNUAL"];
+const envKeys = [
+  "STRIPE_SECRET_KEY",
+  "STRIPE_WEBHOOK_SECRET",
+  "SPT_ENTITLEMENT_SECRET",
+  "STRIPE_PRICE_MONTHLY",
+  "STRIPE_PRICE_ANNUAL",
+  "STRIPE_PRICE_TURN_MOVE_OUT",
+  "STRIPE_PRICE_TURN_FULL",
+];
 let warn = 0;
 for (const k of envKeys) {
   if (!process.env[k]) {
@@ -41,7 +49,12 @@ if (!process.env.STRIPE_SECRET_KEY) {
 const Stripe = (await import("stripe")).default;
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-20.acacia" });
 
-for (const envName of ["STRIPE_PRICE_MONTHLY", "STRIPE_PRICE_ANNUAL"]) {
+for (const envName of [
+  "STRIPE_PRICE_MONTHLY",
+  "STRIPE_PRICE_ANNUAL",
+  "STRIPE_PRICE_TURN_MOVE_OUT",
+  "STRIPE_PRICE_TURN_FULL",
+]) {
   const id = process.env[envName];
   if (!id) continue;
   try {
