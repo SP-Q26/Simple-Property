@@ -54,6 +54,7 @@ export function buildPacketSheetsCsv(draft, deadline) {
   const headers = [
     "Property",
     "City",
+    "State",
     "Chicago RLTO",
     "Tenant",
     "Surrender date",
@@ -67,6 +68,7 @@ export function buildPacketSheetsCsv(draft, deadline) {
   const row = [
     draft.property?.street,
     draft.property?.city,
+    draft.property?.state || "IL",
     draft.property?.inChicago ? "yes" : "no",
     draft.tenant?.name,
     draft.surrenderDate,

@@ -1,4 +1,10 @@
-import { computeDeadline, formatUsDate } from "./lib/il-deposit-rules.mjs";
+import {
+  computeDeadline,
+  formatUsDate,
+  normalizeStateCode,
+  stateSelectOptions,
+  STATE_PACKS,
+} from "./lib/deposit-rules.mjs";
 import { buildDeadlineIcs, downloadIcs } from "./lib/deadline-ics.mjs";
 import {
   buildPacketSheetsCsv,
@@ -28,7 +34,7 @@ function emptyDraft() {
   return {
     id: crypto.randomUUID?.() || "pkt-" + Date.now(),
     landlord: { name: "", email: "", address: "" },
-    property: { street: "", city: "", zip: "", inChicago: false, unitCount: 1 },
+    property: { street: "", city: "", zip: "", state: "IL", inChicago: false, unitCount: 1 },
     tenant: { name: "", email: "" },
     lease: { start: "", end: "" },
     deposit: { amount: "", heldAt: "" },
@@ -47,6 +53,11 @@ function loadDraft() {
     return {
       ...emptyDraft(),
       ...parsed,
+      property: {
+        ...emptyDraft().property,
+        ...parsed.property,
+        state: normalizeStateCode(parsed.property?.state || "IL"),
+      },
       deductions: parsed.deductions?.length ? parsed.deductions : emptyDraft().deductions,
       rooms: parsed.rooms?.length ? parsed.rooms : emptyDraft().rooms,
     };
@@ -110,12 +121,53 @@ function canExportPro() {
 
 function proBlockMessage() {
   if (!isSubscribed()) {
-    return `<div class="paywall" role="status"><strong>Pro required for print export.</strong> Draft free · <a href="/pricing">See who Pro is for</a></div>`;
+    return `<div class="paywall" role="status"><strong>Pro required for print export and tenant email.</strong> Draft free · <a href="/pricing">See who Pro is for</a></div>`;
   }
   if (!unitsWithinProCap(draft.property.unitCount)) {
     return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simpleproperty.tools">email us</a> for larger portfolios.</div>`;
   }
   return "";
+}
+
+function deadlineInput() {
+  return {
+    surrenderDate: draft.surrenderDate,
+    state: draft.property.state,
+    inChicago: draft.property.state === "IL" && draft.property.inChicago,
+  };
+}
+
+function parseSubEntitlement() {
+  try {
+    return JSON.parse(localStorage.getItem("spt_subscription") || "null");
+  } catch {
+    return null;
+  }
+}
+
+function buildPacketEmailSummary(deadline) {
+  const dep = parseFloat(draft.deposit.amount) || 0;
+  const withheld = sumDeductions(draft.deductions);
+  return {
+    propertyStreet: draft.property.street,
+    propertyCity: draft.property.city,
+    propertyZip: draft.property.zip,
+    tenantName: draft.tenant.name,
+    landlordName: draft.landlord.name || draft.signatures.landlordPrinted,
+    depositAmount: draft.deposit.amount,
+    withheldTotal: withheld.toFixed(2),
+    returnAmount: Math.max(0, dep - withheld).toFixed(2),
+    surrenderDate: draft.surrenderDate,
+    deadline: deadline?.deadline,
+    jurisdiction: deadline?.jurisdiction,
+    documentDate: draft.signatures.date,
+    deductions: draft.deductions.map((d) => ({
+      category: d.category,
+      description: d.description,
+      amount: d.amount,
+    })),
+    rooms: draft.rooms.map((r) => ({ name: r.name, condition: r.condition })),
+  };
 }
 
 function sumDeductions(list) {
@@ -128,6 +180,40 @@ function photoBytesTotal(rooms) {
 
 let step = 1;
 let draft = loadDraft();
+
+function applyPresetStateFromUrl() {
+  const params = new URLSearchParams(location.search);
+  let code = params.get("state");
+  try {
+    if (!code) code = sessionStorage.getItem("spt_preset_state");
+  } catch {
+    /* ignore */
+  }
+  if (!code) return;
+  const normalized = normalizeStateCode(code);
+  if (draft.property.state === normalized) return;
+  draft.property.state = normalized;
+  if (normalized !== "IL") draft.property.inChicago = false;
+  saveDraft(draft);
+  try {
+    sessionStorage.removeItem("spt_preset_state");
+  } catch {
+    /* ignore */
+  }
+}
+
+applyPresetStateFromUrl();
+window.addEventListener("spt-preset-state", (e) => {
+  const code = normalizeStateCode(e.detail?.state);
+  draft.property.state = code;
+  if (code !== "IL") draft.property.inChicago = false;
+  saveDraft(draft);
+  if (step === 1) render();
+  else {
+    step = 1;
+    render();
+  }
+});
 
 const els = {
   steps: document.getElementById("wizard-step-labels"),
@@ -156,21 +242,28 @@ function esc(s) {
 
 function renderStep1() {
   const d = draft;
+  const st = normalizeStateCode(d.property.state);
+  const pack = STATE_PACKS[st];
+  const chicagoBlock =
+    st === "IL"
+      ? `<div>
+        <label><input id="prop-chicago" type="checkbox" ${d.property.inChicago ? "checked" : ""} /> Property is in Chicago (RLTO)</label>
+        <p class="field-hint">Chicago RLTO: <strong>45 days</strong> · elsewhere IL: <strong>30 days</strong> after surrender (${pack.cite}).</p>
+      </div>`
+      : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${pack.cite}). Local ordinances may differ · confirm with counsel.</p>`;
   return `
     <h2 id="step-title" tabindex="-1">Landlord &amp; property</h2>
     <div class="form-grid two">
       <div><label for="ll-name">Landlord name</label><input id="ll-name" type="text" value="${esc(d.landlord.name)}" autocomplete="name" /></div>
       <div><label for="ll-email">Email</label><input id="ll-email" type="email" value="${esc(d.landlord.email)}" autocomplete="email" /></div>
       <div class="form-grid" style="grid-column:1/-1"><label for="ll-addr">Mailing address</label><input id="ll-addr" type="text" value="${esc(d.landlord.address)}" autocomplete="street-address" /></div>
+      <div><label for="prop-state">State</label><select id="prop-state">${stateSelectOptions(st)}</select></div>
       <div><label for="prop-street">Rental street address</label><input id="prop-street" type="text" value="${esc(d.property.street)}" /></div>
       <div><label for="prop-city">City</label><input id="prop-city" type="text" value="${esc(d.property.city)}" /></div>
       <div><label for="prop-zip">ZIP</label><input id="prop-zip" type="text" value="${esc(d.property.zip)}" /></div>
       <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" aria-describedby="prop-units-hint" /></div>
         <p class="field-hint" id="prop-units-hint">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription. More doors? Finish the draft free, then contact us before checkout.</p>
-      <div>
-        <label><input id="prop-chicago" type="checkbox" ${d.property.inChicago ? "checked" : ""} /> Property is in Chicago (RLTO)</label>
-        <p class="field-hint">Chicago RLTO: <strong>45 days</strong> · elsewhere IL: <strong>30 days</strong> after surrender (765 ILCS 715/).</p>
-      </div>
+      ${chicagoBlock}
     </div>`;
 }
 
@@ -180,7 +273,7 @@ function renderStep2() {
     <h2 id="step-title" tabindex="-1">Tenant &amp; lease</h2>
     <div class="form-grid two">
       <div><label for="tn-name">Tenant name</label><input id="tn-name" type="text" value="${esc(d.tenant.name)}" /></div>
-      <div><label for="tn-email">Tenant email (optional)</label><input id="tn-email" type="email" value="${esc(d.tenant.email)}" /></div>
+      <div><label for="tn-email">Tenant email</label><input id="tn-email" type="email" value="${esc(d.tenant.email)}" autocomplete="email" /><p class="field-hint">Used for “Email copy to tenant” on export (Pro).</p></div>
       <div><label for="lease-start">Lease start</label><input id="lease-start" type="date" value="${esc(d.lease.start)}" /></div>
       <div><label for="lease-end">Lease end</label><input id="lease-end" type="date" value="${esc(d.lease.end)}" /></div>
       <div><label for="dep-amt">Security deposit ($)</label><input id="dep-amt" type="number" min="0" step="0.01" value="${esc(d.deposit.amount)}" /></div>
@@ -243,10 +336,7 @@ function renderStep4() {
 }
 
 function renderStep5() {
-  const deadline = computeDeadline({
-    surrenderDate: draft.surrenderDate,
-    inChicago: draft.property.inChicago,
-  });
+  const deadline = computeDeadline(deadlineInput());
   const sub = canExportPro();
   const reminderLines = deadline.reminders
     .map((d) => `<li>${formatUsDate(d)}</li>`)
@@ -287,7 +377,19 @@ function renderStep5() {
     }
     ${
       sub
-        ? `<p class="field-hint" role="status">Pro active · up to ${PRO_UNITS_MAX} units · Print / Save as PDF below.</p>`
+        ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
+        <p class="section-label" style="margin-bottom:0.5rem">Email copy to tenant</p>
+        <p class="field-hint">Sends a plain-language statement summary (not photos). BCCs your landlord email when checked.</p>
+        <div class="form-grid two">
+          <div><label for="tenant-email-send">Tenant email</label><input id="tenant-email-send" type="email" value="${esc(draft.tenant.email)}" autocomplete="email" /></div>
+          <div style="align-self:end;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
+            <label><input id="tenant-email-bcc" type="checkbox" checked /> BCC me (${esc(draft.landlord.email) || "landlord email on step 1"})</label>
+            <button type="button" class="btn btn-secondary" id="btn-email-tenant">Send tenant copy</button>
+          </div>
+        </div>
+        <p class="field-hint" id="tenant-email-status" aria-live="polite"></p>
+      </div>
+      <p class="field-hint" role="status">Pro active · up to ${PRO_UNITS_MAX} units · Print / Save as PDF below.</p>`
         : proBlockMessage() || `<div class="paywall" role="status"><strong>Pro required for export.</strong> <a href="/pricing">Pricing</a></div>`
     }`;
 }
@@ -300,8 +402,10 @@ function readStepIntoDraft() {
     draft.property.street = document.getElementById("prop-street")?.value?.trim() || "";
     draft.property.city = document.getElementById("prop-city")?.value?.trim() || "";
     draft.property.zip = document.getElementById("prop-zip")?.value?.trim() || "";
+    draft.property.state = normalizeStateCode(document.getElementById("prop-state")?.value);
     draft.property.unitCount = parseUnitCount(document.getElementById("prop-units")?.value);
-    draft.property.inChicago = Boolean(document.getElementById("prop-chicago")?.checked);
+    draft.property.inChicago =
+      draft.property.state === "IL" && Boolean(document.getElementById("prop-chicago")?.checked);
   }
   if (step === 2) {
     draft.tenant.name = document.getElementById("tn-name")?.value?.trim() || "";
@@ -375,10 +479,7 @@ function bindStepEvents() {
   });
   document.getElementById("btn-google-cal")?.addEventListener("click", () => {
     readStepIntoDraft();
-    const deadline = computeDeadline({
-      surrenderDate: draft.surrenderDate,
-      inChicago: draft.property.inChicago,
-    });
+    const deadline = computeDeadline(deadlineInput());
     if (!deadline.deadline) return;
     const addr = [draft.property.street, draft.property.city].filter(Boolean).join(", ");
     const url = googleCalendarAddUrl({
@@ -399,10 +500,7 @@ function bindStepEvents() {
   });
   document.getElementById("btn-sheets-csv")?.addEventListener("click", () => {
     readStepIntoDraft();
-    const deadline = computeDeadline({
-      surrenderDate: draft.surrenderDate,
-      inChicago: draft.property.inChicago,
-    });
+    const deadline = computeDeadline(deadlineInput());
     const csv = buildPacketSheetsCsv(draft, deadline);
     const slug = (draft.property.street || "unit").replace(/[^\w]+/g, "-").slice(0, 40);
     downloadCsv(`deposit-desk-${slug}.csv`, csv);
@@ -410,10 +508,7 @@ function bindStepEvents() {
   });
   document.getElementById("btn-ics")?.addEventListener("click", () => {
     readStepIntoDraft();
-    const deadline = computeDeadline({
-      surrenderDate: draft.surrenderDate,
-      inChicago: draft.property.inChicago,
-    });
+    const deadline = computeDeadline(deadlineInput());
     const ics = buildDeadlineIcs({
       title: `Deposit deadline · ${draft.property.street || "rental"}`,
       deadlineIso: deadline.deadline,
@@ -424,10 +519,7 @@ function bindStepEvents() {
   document.getElementById("btn-save-packet")?.addEventListener("click", saveCurrentToLibrary);
   document.getElementById("btn-remind")?.addEventListener("click", async () => {
     readStepIntoDraft();
-    const deadline = computeDeadline({
-      surrenderDate: draft.surrenderDate,
-      inChicago: draft.property.inChicago,
-    });
+    const deadline = computeDeadline(deadlineInput());
     const email = document.getElementById("rem-email")?.value?.trim();
     const status = document.getElementById("rem-status");
     if (!deadline.deadline || !email) {
@@ -443,6 +535,7 @@ function bindStepEvents() {
           email,
           deadline: deadline.deadline,
           label: draft.property.street || "Deposit deadline",
+          jurisdiction: deadline.jurisdiction,
         }),
       });
       const data = await res.json();
@@ -455,6 +548,63 @@ function bindStepEvents() {
         return;
       }
       if (status) status.textContent = `Scheduled ${data.scheduled} reminder(s).`;
+    } catch {
+      if (status) status.textContent = "Network error  ·  try again.";
+    }
+  });
+  document.getElementById("btn-email-tenant")?.addEventListener("click", async () => {
+    readStepIntoDraft();
+    if (!canExportPro()) return;
+    const deadline = computeDeadline(deadlineInput());
+    const to = document.getElementById("tenant-email-send")?.value?.trim() || draft.tenant.email;
+    const status = document.getElementById("tenant-email-status");
+    const ent = parseSubEntitlement();
+    if (!to?.includes("@")) {
+      if (status) status.textContent = "Add tenant email on step 2 or above.";
+      return;
+    }
+    if (!ent?.stripe_customer || !ent?.sig) {
+      if (status) status.textContent = "Pro subscription not verified in this browser. Open /pricing or use magic link.";
+      return;
+    }
+    if (status) status.textContent = "Sending…";
+    const ccLandlord = Boolean(document.getElementById("tenant-email-bcc")?.checked);
+    try {
+      const res = await fetch("/api/packet/email-tenant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to,
+          ccLandlord,
+          landlordEmail: draft.landlord.email,
+          packet: buildPacketEmailSummary(deadline),
+          entitlement: {
+            product: ent.product || "Simple Property Tools",
+            plan: ent.plan,
+            valid_until: ent.valid_until,
+            stripe_session: ent.stripe_session,
+            stripe_subscription: ent.stripe_subscription,
+            stripe_customer: ent.stripe_customer,
+            issued_at: ent.issued_at,
+            sig: ent.sig,
+          },
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        if (status) {
+          status.textContent =
+            data.error === "email_not_configured"
+              ? "Email not enabled on this host yet."
+              : data.error === "subscription_inactive"
+                ? "Pro inactive · renew on pricing."
+                : "Could not send · check email and try again.";
+        }
+        return;
+      }
+      if (status) status.textContent = "Tenant copy sent.";
+      draft.tenant.email = to;
+      saveDraft(draft);
     } catch {
       if (status) status.textContent = "Network error  ·  try again.";
     }
@@ -473,10 +623,8 @@ function renderPrintPacket() {
     els.printRoot.innerHTML = "";
     return;
   }
-  const deadline = computeDeadline({
-    surrenderDate: draft.surrenderDate,
-    inChicago: draft.property.inChicago,
-  });
+  const deadline = computeDeadline(deadlineInput());
+  const stLabel = STATE_PACKS[normalizeStateCode(draft.property.state)]?.label || "deposit";
   const addr = [draft.property.street, draft.property.city, draft.property.zip].filter(Boolean).join(", ");
   const dep = parseFloat(draft.deposit.amount) || 0;
   const withheld = sumDeductions(draft.deductions);
@@ -492,7 +640,7 @@ function renderPrintPacket() {
     .map((d) => `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "n/a"}</td><td>$${esc(d.amount) || "0"}</td></tr>`)
     .join("");
   els.printRoot.innerHTML = `
-    <h2>Deposit Desk · Illinois deposit packet</h2>
+    <h2>Deposit Desk · ${esc(stLabel)} deposit packet</h2>
     <p style="font-size:10pt;color:#6b5c4a">Simple Property Tools · Deposit Desk · ${formatUsDate(draft.signatures.date)}</p>
     <p><strong>Property:</strong> ${esc(addr)}<br/>
     <strong>Tenant:</strong> ${esc(draft.tenant.name)} · <strong>Lease:</strong> ${formatUsDate(draft.lease.start)} – ${formatUsDate(draft.lease.end)}<br/>

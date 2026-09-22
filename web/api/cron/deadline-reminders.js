@@ -38,6 +38,7 @@ export default async function handler(req, res) {
       label: job.label,
       deadlineIso: job.deadlineIso,
       daysLeft: job.daysLeft,
+      jurisdiction: job.jurisdiction,
     });
     if (result.ok) {
       sent += 1;

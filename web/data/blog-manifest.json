@@ -1,11 +1,39 @@
 {
   "site": "https://simpleproperty.tools",
   "feedPath": "/blog/feed.rss",
+  "stateOrder": [
+    "IL",
+    "IN",
+    "OH",
+    "MI",
+    "IA",
+    "MO"
+  ],
+  "stateLabels": {
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "OH": "Ohio",
+    "MI": "Michigan",
+    "IA": "Iowa",
+    "MO": "Missouri"
+  },
   "categories": {
-    "law": { "label": "Rules & law", "audience": "operators + counsel prep" },
-    "landlord": { "label": "Landlords", "audience": "mom-and-pop operators" },
-    "renter": { "label": "Renters", "audience": "tenant education · balanced facts" },
-    "news": { "label": "News & law watch", "audience": "IL rental policy roundup" }
+    "law": {
+      "label": "Rules & law",
+      "audience": "operators + counsel prep"
+    },
+    "landlord": {
+      "label": "Landlords",
+      "audience": "mom-and-pop operators"
+    },
+    "renter": {
+      "label": "Renters",
+      "audience": "tenant education · balanced facts"
+    },
+    "news": {
+      "label": "News & law watch",
+      "audience": "Midwest rental policy roundup"
+    }
   },
   "posts": [
     {
@@ -13,60 +41,104 @@
       "title": "Illinois security deposit checklist",
       "description": "Move-in through move-out checklist for 765 ILCS 715/ and Chicago RLTO discipline.",
       "category": "landlord",
+      "states": [
+        "IL"
+      ],
       "published": "2026-08-01",
       "updated": "2026-09-01",
-      "statutes": ["765 ILCS 715/"]
+      "statutes": [
+        "765 ILCS 715/"
+      ]
     },
     {
       "slug": "chicago-45-day-deposit-deadline",
       "title": "Chicago RLTO 45-day deposit deadline",
       "description": "Chicago RLTO 45 days vs Illinois 30 days after surrender.",
       "category": "law",
+      "states": [
+        "IL"
+      ],
       "published": "2026-08-05",
       "updated": "2026-09-01",
-      "statutes": ["765 ILCS 715/", "Chicago RLTO"]
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
     },
     {
       "slug": "illinois-deposit-itemization",
       "title": "Illinois deposit itemization",
       "description": "Written statement when withholding from a security deposit.",
       "category": "law",
+      "states": [
+        "IL"
+      ],
       "published": "2026-08-08",
       "updated": "2026-09-01",
-      "statutes": ["765 ILCS 715/"]
+      "statutes": [
+        "765 ILCS 715/"
+      ]
     },
     {
       "slug": "surrender-date-illinois-deposit",
       "title": "Surrender date and the deposit clock",
       "description": "When the 30- or 45-day timer starts after keys and possession.",
       "category": "law",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
       "published": "2026-08-12",
       "updated": "2026-09-10",
-      "statutes": ["765 ILCS 715/"]
+      "statutes": [
+        "765 ILCS 715/"
+      ]
     },
     {
       "slug": "illinois-deposit-return-by-mail",
       "title": "Returning deposit by mail",
       "description": "Mailing remainder and itemization with a simple proof log.",
       "category": "landlord",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
       "published": "2026-08-15",
       "updated": "2026-09-10",
-      "statutes": ["765 ILCS 715/"]
+      "statutes": [
+        "765 ILCS 715/"
+      ]
     },
     {
       "slug": "normal-wear-vs-damage-illinois",
       "title": "Normal wear vs damage in Illinois",
       "description": "How operators think about withhold lines without overreach.",
       "category": "law",
+      "states": [
+        "IL"
+      ],
       "published": "2026-09-15",
       "updated": "2026-09-15",
-      "statutes": ["765 ILCS 715/"]
+      "statutes": [
+        "765 ILCS 715/"
+      ]
     },
     {
       "slug": "illinois-landlord-entry-notice",
       "title": "Landlord entry notice basics (Illinois)",
       "description": "Document planned access; lease and local rules still control.",
       "category": "law",
+      "states": [
+        "IL"
+      ],
       "published": "2026-09-16",
       "updated": "2026-09-16",
       "statutes": []
@@ -76,24 +148,43 @@
       "title": "Illinois renter guide: security deposits",
       "description": "Plain facts on timelines, itemization, and what to keep on move-in.",
       "category": "renter",
+      "states": [
+        "IL"
+      ],
       "published": "2026-09-17",
       "updated": "2026-09-17",
-      "statutes": ["765 ILCS 715/", "Chicago RLTO"]
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
     },
     {
       "slug": "chicago-renter-deposit-timeline",
       "title": "Chicago renters: RLTO deposit timeline",
       "description": "Chicago RLTO tenants  ·  45-day deposit return window and what to save at move-in.",
       "category": "renter",
+      "states": [
+        "IL"
+      ],
       "published": "2026-09-19",
       "updated": "2026-09-19",
-      "statutes": ["Chicago RLTO"]
+      "statutes": [
+        "Chicago RLTO"
+      ]
     },
     {
       "slug": "deposit-desk-vs-inspection-apps",
       "title": "Deposit Desk vs inspection apps",
       "description": "Deadline math and itemization vs photo-first SaaS.",
       "category": "landlord",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
       "published": "2026-08-20",
       "updated": "2026-09-01",
       "statutes": []
@@ -103,6 +194,14 @@
       "title": "Deposit Desk vs spreadsheet",
       "description": "When a packet beats a shared sheet for one turnover.",
       "category": "landlord",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
       "published": "2026-08-22",
       "updated": "2026-09-01",
       "statutes": []
@@ -112,6 +211,14 @@
       "title": "Landlord tools by door count",
       "description": "Launch stack for 1–10, 10–20, and 20–40 doors.",
       "category": "landlord",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO"
+      ],
       "published": "2026-08-25",
       "updated": "2026-09-01",
       "statutes": []
@@ -121,20 +228,354 @@
       "title": "Chicago heat season reminder for landlords",
       "description": "Seasonal habitability awareness before cold weather disputes.",
       "category": "news",
+      "states": [
+        "IL"
+      ],
       "published": "2026-09-18",
       "updated": "2026-09-18",
       "lawWatch": true,
-      "statutes": ["Chicago RLTO"]
+      "statutes": [
+        "Chicago RLTO"
+      ]
     },
     {
       "slug": "illinois-rental-law-watch-sep-2026",
       "title": "Illinois rental law watch · September 2026",
       "description": "What we are watching: deposit deadlines, RLTO, operator habits  ·  not legal advice.",
       "category": "news",
+      "states": [
+        "IL"
+      ],
       "published": "2026-09-20",
       "updated": "2026-09-20",
       "lawWatch": true,
-      "statutes": ["765 ILCS 715/", "Chicago RLTO"]
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "indiana-45-day-deposit-deadline",
+      "title": "Indiana 45-day security deposit return",
+      "description": "Indiana landlords: typical 45-day return window after tenancy ends · IC 32-31-3-12. Not legal advice.",
+      "category": "law",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-21",
+      "updated": "2026-09-21",
+      "statutes": [
+        "IC 32-31-3-12"
+      ]
+    },
+    {
+      "slug": "ohio-30-day-deposit-deadline",
+      "title": "Ohio 30-day security deposit return",
+      "description": "Ohio return and itemization habits · ORC 5321.16. Not legal advice.",
+      "category": "law",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-21",
+      "updated": "2026-09-21",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "michigan-30-day-deposit-deadline",
+      "title": "Michigan 30-day security deposit return",
+      "description": "Michigan move-out statement timing · MCL 554.610. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-21",
+      "updated": "2026-09-21",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "iowa-30-day-deposit-deadline",
+      "title": "Iowa 30-day security deposit return",
+      "description": "Iowa deposit return after rental ends · Iowa Code 562A.12. Not legal advice.",
+      "category": "law",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-21",
+      "updated": "2026-09-21",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "missouri-30-day-deposit-deadline",
+      "title": "Missouri 30-day security deposit return",
+      "description": "Missouri withholding and return timing · RSMo 535.300. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-21",
+      "updated": "2026-09-21",
+      "statutes": [
+        "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "illinois-30-day-deposit-deadline",
+      "title": "Illinois 30-day security deposit return",
+      "description": "Statewide Illinois return window after surrender · 765 ILCS 715/ · not Chicago RLTO. Not legal advice.",
+      "category": "law",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "move-in-inspection-checklist-illinois",
+      "title": "Move-in inspection checklist for Illinois landlords",
+      "description": "Room condition, photos, and walkthrough habits that support later itemization · 765 ILCS 715/. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "illinois-return-and-itemization-letter",
+      "title": "Illinois deposit return and itemization letter",
+      "description": "Mail-ready structure for remainder, withhold lines, and proof log · 765 ILCS 715/. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "indiana-deposit-itemization",
+      "title": "Indiana security deposit itemization",
+      "description": "Written statement when withholding · typical 45-day window · IC 32-31-3-12. Not legal advice.",
+      "category": "law",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12"
+      ]
+    },
+    {
+      "slug": "indiana-security-deposit-checklist",
+      "title": "Indiana security deposit checklist",
+      "description": "Move-in through move-out checklist for Indiana operators · IC 32-31-3-12. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12"
+      ]
+    },
+    {
+      "slug": "indiana-surrender-date-deposit",
+      "title": "Indiana surrender date and the 45-day deposit clock",
+      "description": "When the Indiana return timer starts · IC 32-31-3-12. Not legal advice.",
+      "category": "law",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12"
+      ]
+    },
+    {
+      "slug": "ohio-deposit-itemization",
+      "title": "Ohio deposit itemization after move-out",
+      "description": "Written deductions and balance habits · ORC 5321.16 · 30-day window. Not legal advice.",
+      "category": "law",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "ohio-renter-deposit-rights",
+      "title": "Ohio renter guide: security deposits",
+      "description": "Plain facts on 30-day return, itemization, and move-in records · ORC 5321.16. Not legal advice.",
+      "category": "renter",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "ohio-security-deposit-checklist",
+      "title": "Ohio security deposit checklist",
+      "description": "Move-in through move-out for ORC 5321.16 timing and documentation. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "michigan-deposit-itemization",
+      "title": "Michigan deposit itemization",
+      "description": "Move-out accounting and withhold lines · MCL 554.610 · 30 days. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "michigan-renter-deposit-rights",
+      "title": "Michigan renter guide: security deposits",
+      "description": "30-day return window and move-in records · MCL 554.610. Not legal advice.",
+      "category": "renter",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "michigan-security-deposit-checklist",
+      "title": "Michigan security deposit checklist",
+      "description": "Operator checklist aligned with MCL 554.610 and Deposit Desk. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "iowa-deposit-itemization",
+      "title": "Iowa deposit itemization when you withhold",
+      "description": "Written breakdown habits · Iowa Code 562A.12 · 30-day window. Not legal advice.",
+      "category": "law",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "iowa-renter-deposit-timeline",
+      "title": "Iowa renters: security deposit return timeline",
+      "description": "Plain facts on 30-day return and move-in proof · Iowa Code 562A.12. Not legal advice.",
+      "category": "renter",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "iowa-security-deposit-checklist",
+      "title": "Iowa security deposit checklist for landlords",
+      "description": "Move-in through move-out · Iowa Code 562A.12. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "missouri-deposit-itemization",
+      "title": "Missouri deposit itemization after move-out",
+      "description": "Withhold lines and mailing habits · RSMo 535.300 · 30 days. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "missouri-renter-deposit-rights",
+      "title": "Missouri renter guide: security deposits",
+      "description": "30-day window, itemization, and move-in records · RSMo 535.300. Not legal advice.",
+      "category": "renter",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "missouri-security-deposit-checklist",
+      "title": "Missouri security deposit checklist",
+      "description": "Move-in through move-out for RSMo 535.300 discipline. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSMo 535.300"
+      ]
     }
   ]
 }

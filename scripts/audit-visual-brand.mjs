@@ -22,7 +22,8 @@ const css = read("simple-property.css");
 const pricing = read("pricing.html");
 const index = read("index.html");
 
-need("css v9", css.includes("v9 shell") || css.includes("Deposit Desk · v9"));
+need("css v10", css.includes("v10 shell") || css.includes("Deposit Desk · v10"));
+need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
 need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
 need("pricing wide layout", css.includes(".pricing-page"));

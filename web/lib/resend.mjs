@@ -4,24 +4,26 @@ export function resendConfigured() {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
-export async function sendResendEmail({ to, subject, text, html }) {
+export async function sendResendEmail({ to, subject, text, html, bcc }) {
   if (!resendConfigured()) {
     return { ok: false, error: "resend_not_configured" };
   }
   const from = process.env.SPT_EMAIL_FROM || "Deposit Desk <hello@simpleproperty.tools>";
+  const payload = {
+    from,
+    to: Array.isArray(to) ? to : [to],
+    subject,
+    text,
+    html: html || text.replace(/\n/g, "<br>"),
+  };
+  if (bcc?.length) payload.bcc = bcc;
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      subject,
-      text,
-      html: html || text.replace(/\n/g, "<br>"),
-    }),
+    body: JSON.stringify(payload),
   });
   if (!res.ok) {
     const err = await res.text();
@@ -48,10 +50,11 @@ export async function sendMagicLinkEmail(to, token, sig) {
   });
 }
 
-export async function sendDeadlineReminderEmail({ to, label, deadlineIso, daysLeft }) {
+export async function sendDeadlineReminderEmail({ to, label, deadlineIso, daysLeft, jurisdiction }) {
+  const law = jurisdiction ? String(jurisdiction).slice(0, 120) : "your state deadline rules";
   const text = [
     `Deposit deadline in ${daysLeft} day(s) · ${label || "Your rental"}`,
-    `Return or itemize by ${deadlineIso} (Illinois).`,
+    `Return or itemize by ${deadlineIso} (${law}).`,
     "",
     "Open your packet: " + siteOrigin() + "/app",
     "",

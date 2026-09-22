@@ -53,7 +53,7 @@ need("css skip link", css.includes(".skip-link"));
 need("app wizard steps wrap", css.includes(".wizard-steps") && css.includes("flex-wrap"));
 need("header nav wraps", css.includes(".header-nav") && css.includes("flex-wrap"));
 need("pricing finder stacks on mobile", css.includes(".pricing-finder__grid"));
-need("receipt meta 2-col @480", css.includes(".deposit-receipt__meta") && css.includes("480px"));
+need("locale bar mobile", css.includes(".locale-pill__name") && css.includes("locale-bar"));
 need("no horizontal overflow guard", css.includes("box-sizing: border-box") || css.includes("box-sizing"));
 
 const app = read("app.js");

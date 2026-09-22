@@ -1,11 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Simple Property Tools · Illinois rental guides</title>
+<title>Simple Property Tools · Midwest deposit guides</title>
 <link>https://simpleproperty.tools/blog</link>
-<description>Law, landlord ops, renter facts, and IL rental news watch. Not legal advice.</description>
+<description>State and topic guides for IL, IN, OH, MI, IA, MO landlords and renters. Not legal advice.</description>
 <language>en-us</language>
 <atom:link href="https://simpleproperty.tools/blog/feed.rss" rel="self" type="application/rss+xml"/>
+<item>
+<title>Missouri security deposit checklist</title>
+<link>https://simpleproperty.tools/blog/missouri-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/missouri-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out for RSMo 535.300 discipline. Not legal advice.</description>
+<category>Landlords</category>
+<category>MO</category>
+</item>
+<item>
+<title>Missouri renter guide: security deposits</title>
+<link>https://simpleproperty.tools/blog/missouri-renter-deposit-rights</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/missouri-renter-deposit-rights</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>30-day window, itemization, and move-in records · RSMo 535.300. Not legal advice.</description>
+<category>Renters</category>
+<category>MO</category>
+</item>
+<item>
+<title>Missouri deposit itemization after move-out</title>
+<link>https://simpleproperty.tools/blog/missouri-deposit-itemization</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/missouri-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Withhold lines and mailing habits · RSMo 535.300 · 30 days. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>MO</category>
+</item>
+<item>
+<title>Iowa security deposit checklist for landlords</title>
+<link>https://simpleproperty.tools/blog/iowa-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/iowa-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · Iowa Code 562A.12. Not legal advice.</description>
+<category>Landlords</category>
+<category>IA</category>
+</item>
+<item>
+<title>Iowa renters: security deposit return timeline</title>
+<link>https://simpleproperty.tools/blog/iowa-renter-deposit-timeline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/iowa-renter-deposit-timeline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Plain facts on 30-day return and move-in proof · Iowa Code 562A.12. Not legal advice.</description>
+<category>Renters</category>
+<category>IA</category>
+</item>
+<item>
+<title>Iowa deposit itemization when you withhold</title>
+<link>https://simpleproperty.tools/blog/iowa-deposit-itemization</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/iowa-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written breakdown habits · Iowa Code 562A.12 · 30-day window. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>IA</category>
+</item>
+<item>
+<title>Michigan security deposit checklist</title>
+<link>https://simpleproperty.tools/blog/michigan-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/michigan-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Operator checklist aligned with MCL 554.610 and Deposit Desk. Not legal advice.</description>
+<category>Landlords</category>
+<category>MI</category>
+</item>
+<item>
+<title>Michigan renter guide: security deposits</title>
+<link>https://simpleproperty.tools/blog/michigan-renter-deposit-rights</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/michigan-renter-deposit-rights</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>30-day return window and move-in records · MCL 554.610. Not legal advice.</description>
+<category>Renters</category>
+<category>MI</category>
+</item>
+<item>
+<title>Michigan deposit itemization</title>
+<link>https://simpleproperty.tools/blog/michigan-deposit-itemization</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/michigan-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-out accounting and withhold lines · MCL 554.610 · 30 days. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>MI</category>
+</item>
+<item>
+<title>Ohio security deposit checklist</title>
+<link>https://simpleproperty.tools/blog/ohio-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/ohio-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out for ORC 5321.16 timing and documentation. Not legal advice.</description>
+<category>Landlords</category>
+<category>OH</category>
+</item>
+<item>
+<title>Ohio renter guide: security deposits</title>
+<link>https://simpleproperty.tools/blog/ohio-renter-deposit-rights</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/ohio-renter-deposit-rights</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Plain facts on 30-day return, itemization, and move-in records · ORC 5321.16. Not legal advice.</description>
+<category>Renters</category>
+<category>OH</category>
+</item>
+<item>
+<title>Ohio deposit itemization after move-out</title>
+<link>https://simpleproperty.tools/blog/ohio-deposit-itemization</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/ohio-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written deductions and balance habits · ORC 5321.16 · 30-day window. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>OH</category>
+</item>
+<item>
+<title>Indiana surrender date and the 45-day deposit clock</title>
+<link>https://simpleproperty.tools/blog/indiana-surrender-date-deposit</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/indiana-surrender-date-deposit</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>When the Indiana return timer starts · IC 32-31-3-12. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>IN</category>
+</item>
+<item>
+<title>Indiana security deposit checklist</title>
+<link>https://simpleproperty.tools/blog/indiana-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/indiana-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out checklist for Indiana operators · IC 32-31-3-12. Not legal advice.</description>
+<category>Landlords</category>
+<category>IN</category>
+</item>
+<item>
+<title>Indiana security deposit itemization</title>
+<link>https://simpleproperty.tools/blog/indiana-deposit-itemization</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/indiana-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written statement when withholding · typical 45-day window · IC 32-31-3-12. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>IN</category>
+</item>
+<item>
+<title>Illinois deposit return and itemization letter</title>
+<link>https://simpleproperty.tools/blog/illinois-return-and-itemization-letter</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/illinois-return-and-itemization-letter</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Mail-ready structure for remainder, withhold lines, and proof log · 765 ILCS 715/. Not legal advice.</description>
+<category>Landlords</category>
+<category>IL</category>
+</item>
+<item>
+<title>Move-in inspection checklist for Illinois landlords</title>
+<link>https://simpleproperty.tools/blog/move-in-inspection-checklist-illinois</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/move-in-inspection-checklist-illinois</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Room condition, photos, and walkthrough habits that support later itemization · 765 ILCS 715/. Not legal advice.</description>
+<category>Landlords</category>
+<category>IL</category>
+</item>
+<item>
+<title>Illinois 30-day security deposit return</title>
+<link>https://simpleproperty.tools/blog/illinois-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/illinois-30-day-deposit-deadline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Statewide Illinois return window after surrender · 765 ILCS 715/ · not Chicago RLTO. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>IL</category>
+</item>
+<item>
+<title>Missouri 30-day security deposit return</title>
+<link>https://simpleproperty.tools/blog/missouri-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/missouri-30-day-deposit-deadline</guid>
+<pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
+<description>Missouri withholding and return timing · RSMo 535.300. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>MO</category>
+</item>
+<item>
+<title>Iowa 30-day security deposit return</title>
+<link>https://simpleproperty.tools/blog/iowa-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/iowa-30-day-deposit-deadline</guid>
+<pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
+<description>Iowa deposit return after rental ends · Iowa Code 562A.12. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>IA</category>
+</item>
+<item>
+<title>Michigan 30-day security deposit return</title>
+<link>https://simpleproperty.tools/blog/michigan-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/michigan-30-day-deposit-deadline</guid>
+<pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
+<description>Michigan move-out statement timing · MCL 554.610. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>MI</category>
+</item>
+<item>
+<title>Ohio 30-day security deposit return</title>
+<link>https://simpleproperty.tools/blog/ohio-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/ohio-30-day-deposit-deadline</guid>
+<pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
+<description>Ohio return and itemization habits · ORC 5321.16. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>OH</category>
+</item>
+<item>
+<title>Indiana 45-day security deposit return</title>
+<link>https://simpleproperty.tools/blog/indiana-45-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simpleproperty.tools/blog/indiana-45-day-deposit-deadline</guid>
+<pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
+<description>Indiana landlords: typical 45-day return window after tenancy ends · IC 32-31-3-12. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>IN</category>
+</item>
 <item>
 <title>Illinois rental law watch · September 2026</title>
 <link>https://simpleproperty.tools/blog/illinois-rental-law-watch-sep-2026</link>
@@ -13,6 +220,7 @@
 <pubDate>Sun, 20 Sep 2026 12:00:00 GMT</pubDate>
 <description>What we are watching: deposit deadlines, RLTO, operator habits  ·  not legal advice.</description>
 <category>News &amp; law watch</category>
+<category>IL</category>
 </item>
 <item>
 <title>Chicago renters: RLTO deposit timeline</title>
@@ -21,6 +229,7 @@
 <pubDate>Sat, 19 Sep 2026 12:00:00 GMT</pubDate>
 <description>Chicago RLTO tenants  ·  45-day deposit return window and what to save at move-in.</description>
 <category>Renters</category>
+<category>IL</category>
 </item>
 <item>
 <title>Chicago heat season reminder for landlords</title>
@@ -29,6 +238,7 @@
 <pubDate>Fri, 18 Sep 2026 12:00:00 GMT</pubDate>
 <description>Seasonal habitability awareness before cold weather disputes.</description>
 <category>News &amp; law watch</category>
+<category>IL</category>
 </item>
 <item>
 <title>Illinois renter guide: security deposits</title>
@@ -37,6 +247,7 @@
 <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
 <description>Plain facts on timelines, itemization, and what to keep on move-in.</description>
 <category>Renters</category>
+<category>IL</category>
 </item>
 <item>
 <title>Landlord entry notice basics (Illinois)</title>
@@ -45,6 +256,7 @@
 <pubDate>Wed, 16 Sep 2026 12:00:00 GMT</pubDate>
 <description>Document planned access; lease and local rules still control.</description>
 <category>Rules &amp; law</category>
+<category>IL</category>
 </item>
 <item>
 <title>Normal wear vs damage in Illinois</title>
@@ -53,6 +265,7 @@
 <pubDate>Tue, 15 Sep 2026 12:00:00 GMT</pubDate>
 <description>How operators think about withhold lines without overreach.</description>
 <category>Rules &amp; law</category>
+<category>IL</category>
 </item>
 <item>
 <title>Landlord tools by door count</title>
@@ -61,62 +274,7 @@
 <pubDate>Tue, 25 Aug 2026 12:00:00 GMT</pubDate>
 <description>Launch stack for 1–10, 10–20, and 20–40 doors.</description>
 <category>Landlords</category>
-</item>
-<item>
-<title>Deposit Desk vs spreadsheet</title>
-<link>https://simpleproperty.tools/blog/deposit-desk-vs-spreadsheet</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/deposit-desk-vs-spreadsheet</guid>
-<pubDate>Sat, 22 Aug 2026 12:00:00 GMT</pubDate>
-<description>When a packet beats a shared sheet for one turnover.</description>
-<category>Landlords</category>
-</item>
-<item>
-<title>Deposit Desk vs inspection apps</title>
-<link>https://simpleproperty.tools/blog/deposit-desk-vs-inspection-apps</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/deposit-desk-vs-inspection-apps</guid>
-<pubDate>Thu, 20 Aug 2026 12:00:00 GMT</pubDate>
-<description>Deadline math and itemization vs photo-first SaaS.</description>
-<category>Landlords</category>
-</item>
-<item>
-<title>Returning deposit by mail</title>
-<link>https://simpleproperty.tools/blog/illinois-deposit-return-by-mail</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/illinois-deposit-return-by-mail</guid>
-<pubDate>Sat, 15 Aug 2026 12:00:00 GMT</pubDate>
-<description>Mailing remainder and itemization with a simple proof log.</description>
-<category>Landlords</category>
-</item>
-<item>
-<title>Surrender date and the deposit clock</title>
-<link>https://simpleproperty.tools/blog/surrender-date-illinois-deposit</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/surrender-date-illinois-deposit</guid>
-<pubDate>Wed, 12 Aug 2026 12:00:00 GMT</pubDate>
-<description>When the 30- or 45-day timer starts after keys and possession.</description>
-<category>Rules &amp; law</category>
-</item>
-<item>
-<title>Illinois deposit itemization</title>
-<link>https://simpleproperty.tools/blog/illinois-deposit-itemization</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/illinois-deposit-itemization</guid>
-<pubDate>Sat, 08 Aug 2026 12:00:00 GMT</pubDate>
-<description>Written statement when withholding from a security deposit.</description>
-<category>Rules &amp; law</category>
-</item>
-<item>
-<title>Chicago RLTO 45-day deposit deadline</title>
-<link>https://simpleproperty.tools/blog/chicago-45-day-deposit-deadline</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/chicago-45-day-deposit-deadline</guid>
-<pubDate>Wed, 05 Aug 2026 12:00:00 GMT</pubDate>
-<description>Chicago RLTO 45 days vs Illinois 30 days after surrender.</description>
-<category>Rules &amp; law</category>
-</item>
-<item>
-<title>Illinois security deposit checklist</title>
-<link>https://simpleproperty.tools/blog/illinois-security-deposit-checklist</link>
-<guid isPermaLink="true">https://simpleproperty.tools/blog/illinois-security-deposit-checklist</guid>
-<pubDate>Sat, 01 Aug 2026 12:00:00 GMT</pubDate>
-<description>Move-in through move-out checklist for 765 ILCS 715/ and Chicago RLTO discipline.</description>
-<category>Landlords</category>
+<category>IL,IN,OH,MI,IA,MO</category>
 </item>
 </channel>
 </rss>

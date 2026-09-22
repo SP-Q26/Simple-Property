@@ -38,6 +38,7 @@ export default async function handler(req, res) {
       email,
       deadlineIso,
       label,
+      jurisdiction: body?.jurisdiction ? String(body.jurisdiction).slice(0, 160) : null,
       offsets: [7, 1],
     });
     if (!jobs.length) {

@@ -66,7 +66,11 @@ for (const p of posts) {
 }
 
 const index = read("blog/index.html");
-check("blog index manifest markers", index.includes("BLOG_MANIFEST_START"));
+check("blog index state locales", index.includes('id="locale-IL"') && index.includes("locale-IN"));
+for (const code of ["IL", "IN", "OH", "MI", "IA", "MO"]) {
+  const n = posts.filter((p) => (p.states || []).includes(code)).length;
+  check(`state ${code} ≥ 1 guide`, n >= 1, `count=${n}`);
+}
 for (const key of Object.keys(cats)) {
   check(`index cluster ${key}`, index.includes(`id="cluster-${key}"`));
 }

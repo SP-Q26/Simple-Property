@@ -12,6 +12,7 @@ const manifest = JSON.parse(readFileSync(join(web, "data", "blog-manifest.json")
 const ROUTES = new Set([
   "/",
   "/app",
+  "/logs",
   "/pricing",
   "/launch-stack",
   "/blog",

@@ -11,6 +11,7 @@
     "verify-stripe": "node scripts/verify-stripe-catalog.mjs",
     "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs",
     "build-blog": "node scripts/build-blog-seo.mjs",
+    "generate-blog-p0": "node scripts/generate-state-blog-p0.mjs",
     "audit:blog": "node scripts/audit-blog-seo.mjs",
     "audit:discovery": "node scripts/audit-discovery-seo.mjs",
     "audit:pricing": "node scripts/audit-pricing.mjs",

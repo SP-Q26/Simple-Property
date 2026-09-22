@@ -28,12 +28,14 @@
     localStorage.setItem(
       SUB_KEY,
       JSON.stringify({
+        product: ent.product,
         plan: ent.plan,
         sku: ent.sku,
         valid_until: ent.valid_until,
         stripe_session: ent.stripe_session,
         stripe_subscription: ent.stripe_subscription,
         stripe_customer: ent.stripe_customer,
+        issued_at: ent.issued_at,
         sig: ent.sig,
         activatedAt: new Date().toISOString(),
       })

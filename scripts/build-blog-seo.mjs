@@ -35,7 +35,40 @@ for (const cat of Object.values(byCat)) {
   cat.posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 }
 
-let indexSections = "";
+const stateOrder = manifest.stateOrder || ["IL", "IN", "OH", "MI", "IA", "MO"];
+const stateLabels = manifest.stateLabels || {};
+
+function postStates(post) {
+  if (Array.isArray(post.states) && post.states.length) return post.states;
+  if (/illinois|chicago|rlto/i.test(post.slug)) return ["IL"];
+  return stateOrder;
+}
+
+function postsForState(code) {
+  return manifest.posts
+    .filter((p) => postStates(p).includes(code))
+    .sort((a, b) => (a.published < b.published ? 1 : -1));
+}
+
+let stateSections = `\n      <section class="guides-hub" aria-labelledby="guides-by-state">\n`;
+stateSections += `        <h2 id="guides-by-state">Guides by state</h2>\n`;
+stateSections += `        <p class="muted">Jump from the bar above or pick a state · not legal advice.</p>\n`;
+for (const code of stateOrder) {
+  const list = postsForState(code);
+  const label = stateLabels[code] || code;
+  stateSections += `\n      <section class="blog-cluster blog-cluster--state" id="locale-${code}">\n`;
+  stateSections += `        <h3>${label}</h3>\n`;
+  stateSections += `        <p class="muted"><a href="/app?state=${code}">Open Deposit Desk for ${label}</a></p>\n`;
+  stateSections += `        <ul class="bullet-tight">\n`;
+  for (const p of list) {
+    stateSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+  }
+  stateSections += `        </ul>\n      </section>\n`;
+}
+stateSections += `      </section>\n`;
+
+let indexSections = `\n      <section class="guides-hub" aria-labelledby="guides-by-topic">\n`;
+indexSections += `        <h2 id="guides-by-topic">Guides by topic</h2>\n`;
 for (const [key, cat] of Object.entries(byCat)) {
   if (!cat.posts.length) continue;
   indexSections += `\n      <section class="blog-cluster" id="cluster-${key}">\n`;
@@ -46,6 +79,7 @@ for (const [key, cat] of Object.entries(byCat)) {
   }
   indexSections += "        </ul>\n      </section>\n";
 }
+indexSections += `      </section>\n`;
 
 const indexPath = join(web, "blog", "index.html");
 let indexHtml = readFileSync(indexPath, "utf8");
@@ -55,29 +89,50 @@ if (!indexHtml.includes(start)) {
   console.error("blog/index.html missing BLOG_MANIFEST markers — add them around generated block");
   process.exit(1);
 }
+const stateStart = "<!-- BLOG_STATE_START -->";
+const stateEnd = "<!-- BLOG_STATE_END -->";
+if (!indexHtml.includes(stateStart)) {
+  console.error("blog/index.html missing BLOG_STATE markers");
+  process.exit(1);
+}
+indexHtml = indexHtml.replace(
+  new RegExp(`${stateStart}[\\s\\S]*${stateEnd}`),
+  `${stateStart}${stateSections}      ${stateEnd}`
+);
 indexHtml = indexHtml.replace(
   new RegExp(`${start}[\\s\\S]*${end}`),
   `${start}${indexSections}      ${end}`
 );
 indexHtml = indexHtml.replace(
   /<meta name="description" content="[^"]*">/,
-  `<meta name="description" content="Illinois rental guides: law, landlords, renters, news watch — 765 ILCS 715/, Chicago RLTO. Not legal advice.">`
+  `<meta name="description" content="Deposit guides for IL, IN, OH, MI, IA, and MO · deadlines, itemization, operators. Not legal advice.">`
+);
+indexHtml = indexHtml.replace(
+  /<title>[^<]*<\/title>/,
+  `<title>Deposit guides by state · Simple Property Tools</title>`
+);
+indexHtml = indexHtml.replace(
+  /<p class="hero-lead">[^<]*<\/p>/,
+  `<p class="hero-lead">Midwest deposit facts by state and topic · Illinois still includes Chicago RLTO. Not legal advice.</p>`
 );
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");
 
 const sorted = [...manifest.posts].sort((a, b) => (a.published < b.published ? 1 : -1));
 let rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n`;
-rss += `<title>Simple Property Tools · Illinois rental guides</title>\n`;
+rss += `<title>Simple Property Tools · Midwest deposit guides</title>\n`;
 rss += `<link>${site}/blog</link>\n`;
-rss += `<description>Law, landlord ops, renter facts, and IL rental news watch. Not legal advice.</description>\n`;
+rss += `<description>State and topic guides for IL, IN, OH, MI, IA, MO landlords and renters. Not legal advice.</description>\n`;
 rss += `<language>en-us</language>\n`;
 rss += `<atom:link href="${site}/blog/feed.rss" rel="self" type="application/rss+xml"/>\n`;
 for (const p of sorted.slice(0, 30)) {
   const link = `${site}/blog/${p.slug}`;
   rss += `<item>\n<title>${escapeXml(p.title)}</title>\n<link>${link}</link>\n<guid isPermaLink="true">${link}</guid>\n`;
   rss += `<pubDate>${rfc822(p.published)}</pubDate>\n<description>${escapeXml(p.description)}</description>\n`;
-  rss += `<category>${escapeXml(manifest.categories[p.category].label)}</category>\n</item>\n`;
+  rss += `<category>${escapeXml(manifest.categories[p.category].label)}</category>\n`;
+  const states = postStates(p).join(",");
+  if (states) rss += `<category>${escapeXml(states)}</category>\n`;
+  rss += `</item>\n`;
 }
 rss += `</channel>\n</rss>\n`;
 writeFileSync(join(web, "blog", "feed.rss"), rss);
@@ -87,6 +142,7 @@ const staticUrls = [
   `${site}/`,
   `${site}/pricing`,
   `${site}/app`,
+  `${site}/logs`,
   `${site}/blog`,
   `${site}/privacy`,
   `${site}/terms`,

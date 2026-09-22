@@ -29,6 +29,12 @@ const checks = [
   ["api/stripe/portal.js", "Stripe billing portal"],
   ["api/auth/magic-link.js", "Magic link restore"],
   ["api/reminders/subscribe.js", "Deadline email subscribe"],
+  ["api/packet/email-tenant.js", "Tenant packet email (Pro)"],
+  ["lib/operator-logs.mjs", "Operator log storage"],
+  ["logs.html", "Operator logs page"],
+  ["logs.js", "Maintenance · tickets · inspections UI"],
+  ["lib/packet-email.mjs", "Tenant email body builder"],
+  ["lib/entitlement-verify.mjs", "Pro entitlement verify"],
   ["api/cron/deadline-reminders.js", "Deadline reminder cron"],
   ["lib/kv-client.mjs", "KV client"],
   ["lib/subscription-store.mjs", "Subscription KV store"],
@@ -41,13 +47,22 @@ const checks = [
 
 for (const [path, label] of checks) need(path, label);
 
+const nav = need("sp-nav.js", "locale bar nav");
+if (nav && !nav.includes("locale-bar")) {
+  console.error("FAIL sp-nav.js must inject locale bar");
+  fail++;
+}
 const app = need("app.js", "app");
 if (app && !app.includes("renderStep4") && !app.includes("deduction")) {
   console.error("FAIL app.js missing move-out itemization");
   fail++;
 }
-if (app && !app.includes("MAX_STEPS = 5")) {
-  console.error("FAIL app.js expected 5-step wizard");
+if (app && !app.includes("btn-email-tenant")) {
+  console.error("FAIL app.js missing tenant email send");
+  fail++;
+}
+if (app && !app.includes("prop-state")) {
+  console.error("FAIL app.js missing state selector");
   fail++;
 }
 

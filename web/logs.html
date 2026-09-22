@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operator logs · maintenance · tickets · inspections</title>
+  <meta name="description" content="Free browser logs for small landlords: maintenance, work tickets, inspections and complaints. Export CSV · print trail. Not legal advice.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://simpleproperty.tools/logs">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=10">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="site-header no-print">
+      <a class="brand-lockup" href="/">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-word">Simple Property Tools</span>
+          <span class="brand-tag">Deposit Desk · IL · IN · OH · MI · IA · MO</span>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/app">Deposit Desk</a>
+        <a href="/logs">Logs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/launch-stack">Stack</a>
+        <a href="/blog">Guides</a>
+      </nav>
+    </header>
+
+    <main id="main" class="no-print">
+      <header class="log-page-head">
+        <h1>Operator logs</h1>
+        <p class="hero-lead">Maintenance, tenant tickets, and inspection or complaint notes · stored in this browser · export to Sheets when you need a paper trail.</p>
+        <p class="field-hint"><a href="/app">Deposit Desk</a> handles move-in/out packets · logs handle day-to-day ops. Not legal advice.</p>
+      </header>
+
+      <div class="log-toolbar">
+        <div class="log-tabs" id="log-tabs" role="tablist" aria-label="Log type"></div>
+        <div class="log-toolbar-actions">
+          <label class="log-filter-label">Filter <input id="log-filter" type="search" placeholder="Unit, name, keyword…" autocomplete="off" /></label>
+          <button type="button" class="btn btn-secondary" id="btn-export-csv">Export CSV</button>
+          <button type="button" class="btn btn-secondary" id="btn-print-log">Print log</button>
+        </div>
+      </div>
+
+      <p class="field-hint" id="log-status" aria-live="polite"></p>
+
+      <div class="form-panel" id="log-panel"></div>
+      <section class="log-list-panel" id="log-list" aria-label="Saved entries"></section>
+    </main>
+
+    <div class="print-packet page" id="print-log"></div>
+
+    <footer class="site-footer no-print">
+      <p class="footer-colophon">
+        <img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22">
+        <span>Simple Property Tools · not legal advice</span>
+      </p>
+      <nav class="footer-links"><a href="/app">Deposit Desk</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav>
+    </footer>
+  </div>
+  <script src="/sp-nav.js" defer></script>
+  <script type="module" src="/logs.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

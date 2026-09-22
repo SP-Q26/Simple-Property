@@ -44,6 +44,10 @@
       "destination": "/app.html"
     },
     {
+      "source": "/logs",
+      "destination": "/logs.html"
+    },
+    {
       "source": "/success",
       "destination": "/success.html"
     },
@@ -138,6 +142,98 @@
     {
       "source": "/blog/illinois-rental-law-watch-sep-2026",
       "destination": "/blog/illinois-rental-law-watch-sep-2026.html"
+    },
+    {
+      "source": "/blog/indiana-45-day-deposit-deadline",
+      "destination": "/blog/indiana-45-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/ohio-30-day-deposit-deadline",
+      "destination": "/blog/ohio-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/michigan-30-day-deposit-deadline",
+      "destination": "/blog/michigan-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/iowa-30-day-deposit-deadline",
+      "destination": "/blog/iowa-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/missouri-30-day-deposit-deadline",
+      "destination": "/blog/missouri-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/illinois-30-day-deposit-deadline",
+      "destination": "/blog/illinois-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/move-in-inspection-checklist-illinois",
+      "destination": "/blog/move-in-inspection-checklist-illinois.html"
+    },
+    {
+      "source": "/blog/illinois-return-and-itemization-letter",
+      "destination": "/blog/illinois-return-and-itemization-letter.html"
+    },
+    {
+      "source": "/blog/indiana-deposit-itemization",
+      "destination": "/blog/indiana-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/indiana-security-deposit-checklist",
+      "destination": "/blog/indiana-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/indiana-surrender-date-deposit",
+      "destination": "/blog/indiana-surrender-date-deposit.html"
+    },
+    {
+      "source": "/blog/ohio-deposit-itemization",
+      "destination": "/blog/ohio-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/ohio-renter-deposit-rights",
+      "destination": "/blog/ohio-renter-deposit-rights.html"
+    },
+    {
+      "source": "/blog/ohio-security-deposit-checklist",
+      "destination": "/blog/ohio-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/michigan-deposit-itemization",
+      "destination": "/blog/michigan-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/michigan-renter-deposit-rights",
+      "destination": "/blog/michigan-renter-deposit-rights.html"
+    },
+    {
+      "source": "/blog/michigan-security-deposit-checklist",
+      "destination": "/blog/michigan-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/iowa-deposit-itemization",
+      "destination": "/blog/iowa-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/iowa-renter-deposit-timeline",
+      "destination": "/blog/iowa-renter-deposit-timeline.html"
+    },
+    {
+      "source": "/blog/iowa-security-deposit-checklist",
+      "destination": "/blog/iowa-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/missouri-deposit-itemization",
+      "destination": "/blog/missouri-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/missouri-renter-deposit-rights",
+      "destination": "/blog/missouri-renter-deposit-rights.html"
+    },
+    {
+      "source": "/blog/missouri-security-deposit-checklist",
+      "destination": "/blog/missouri-security-deposit-checklist.html"
     }
   ],
   "crons": [

@@ -3,7 +3,7 @@ import { kvGet, kvSet, kvZadd, kvZrangeByScore, kvZrem } from "./kv-client.mjs";
 const DUE_ZSET = "rem:due";
 const REM_PREFIX = "rem:job:";
 
-export async function scheduleDeadlineReminders({ email, deadlineIso, label, offsets = [7, 1] }) {
+export async function scheduleDeadlineReminders({ email, deadlineIso, label, jurisdiction, offsets = [7, 1] }) {
   const id = `r_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   const jobs = [];
   const deadlineMs = new Date(`${deadlineIso}T12:00:00`).getTime();
@@ -16,6 +16,7 @@ export async function scheduleDeadlineReminders({ email, deadlineIso, label, off
       email,
       deadlineIso,
       label: label || "Rental",
+      jurisdiction: jurisdiction || null,
       daysLeft: days,
       sendAt,
     };

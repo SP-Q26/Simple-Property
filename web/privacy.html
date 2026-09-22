@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=9">
+  <link rel="stylesheet" href="/simple-property.css?v=10">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,11 +20,11 @@
         <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
         <span class="brand-text">
           <span class="brand-word">Simple Property Tools</span>
-          <span class="brand-tag">Deposit Desk · IL &amp; Chicago RLTO</span>
+          <span class="brand-tag">Deposit Desk · IL · IN · OH · MI · IA · MO</span>
         </span>
       </a>
       <nav class="header-nav" aria-label="Primary">
-        <a href="/app">App</a>
+        <a href="/app">App</a><a href="/logs">Logs</a>
         <a href="/pricing">Pricing</a>
         <a href="/launch-stack">Stack</a>
         <a href="/blog">Guides</a>
@@ -35,7 +35,9 @@
       <p>Last updated: September 2026. Simple Property Tools (“we”) operates Deposit Desk at simpleproperty.tools.</p>
 
       <h2>What we collect</h2>
-      <p><strong>Packet contents</strong> (tenant names, addresses, checklists) are stored in your browser’s localStorage when you use the wizard. We do not receive those fields on our servers in the current release unless you email them to us.</p>
+      <p><strong>Packet contents</strong> (tenant names, addresses, checklists) are stored in your browser’s localStorage when you use the wizard. We do not receive those fields on our servers unless you use optional email features below.</p>
+      <p><strong>Operator logs</strong> (maintenance, tickets, inspections/complaints at <a href="/logs">/logs</a>) are also stored in localStorage on your device unless you export CSV or print.</p>
+      <p><strong>Tenant copy email (Pro)</strong>  ·  If you send a statement copy to a tenant, we transmit the summary you submit (names, amounts, line items, deadline text) through our email provider (Resend) to the addresses you enter. We do not attach move-in photos in that email.</p>
       <p><strong>Payments</strong> are processed by Stripe. We receive subscription status, customer email from checkout metadata, and session identifiers  ·  not your full card number.</p>
       <p><strong>Subscription index (Pro)</strong>  ·  When configured, we store Stripe customer id, subscription status, and checkout email in encrypted Redis (Vercel/Upstash) so you can restore Pro on a new device via magic link.</p>
       <p><strong>Deadline reminders (optional)</strong>  ·  If you schedule email reminders, we store your email, property label, and reminder dates until sent or expired.</p>

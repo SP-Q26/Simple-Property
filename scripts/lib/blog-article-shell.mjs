@@ -23,7 +23,7 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=9">
+  <link rel="stylesheet" href="/simple-property.css?v=10">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>
@@ -34,11 +34,12 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
         <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
         <span class="brand-text">
           <span class="brand-word">Simple Property Tools</span>
-          <span class="brand-tag">Deposit Desk · IL &amp; Chicago RLTO</span>
+          <span class="brand-tag">Deposit Desk · IL · IN · OH · MI · IA · MO</span>
         </span>
       </a>
       <nav class="header-nav" aria-label="Primary">
         <a href="/app">App</a>
+        <a href="/logs">Logs</a>
         <a href="/pricing">Pricing</a>
         <a href="/launch-stack">Stack</a>
         <a href="/blog">Guides</a>
