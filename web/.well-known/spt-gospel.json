@@ -7,7 +7,7 @@
   "site": "https://simpleproperty.tools",
   "contact": "hello@simpleproperty.tools",
   "lane": {
-    "is": "Illinois security deposit move-in/move-out documentation for mom-and-pop landlords (1–3 people, ~4 doors)",
+    "is": "Illinois security deposit move-in/move-out documentation for mom-and-pop landlords (1–3 people; launch guidance 1–40 doors)",
     "is_not": "Property management · legal advice · multi-state compliance platform · inspection photo SaaS"
   },
   "deadlines": {
@@ -28,6 +28,8 @@
   "surfaces": [
     "https://simpleproperty.tools/llms.txt",
     "https://simpleproperty.tools/spt-ai-bus.json",
+    "https://simpleproperty.tools/launch-stack",
     "https://simpleproperty.tools/app"
-  ]
+  ],
+  "door_tiers_url": "https://simpleproperty.tools/launch-stack"
 }

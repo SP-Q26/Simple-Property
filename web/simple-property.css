@@ -837,3 +837,31 @@ textarea {
   max-width: 100%;
   height: auto;
 }
+
+.tier-block {
+  margin: var(--space-6) 0;
+}
+
+.tier-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin-top: var(--space-3);
+}
+
+.tier-table th,
+.tier-table td {
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tier-table th {
+  background: var(--sage-wash, rgba(120, 140, 100, 0.12));
+  font-weight: 600;
+}
+
+.tier-table a {
+  font-weight: 500;
+}

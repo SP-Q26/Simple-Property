@@ -23,6 +23,7 @@ const checks = [
   ["sitemap.xml", "SEO sitemap"],
   ["site.webmanifest", "PWA manifest"],
   ["spt-ai-bus.json", "AI agent bus"],
+  ["launch-stack.html", "Launch stack page"],
   [".well-known/spt-gospel.json", "Agent gospel"],
   ["api/entitlement.js", "Stripe entitlement verify"],
   ["api/stripe/portal.js", "Stripe billing portal"],

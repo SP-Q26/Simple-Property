@@ -66,6 +66,7 @@ function scoreAgentLane() {
   if (existsSync(join(web, "spt-ai-bus.json"))) s += 15;
   if (existsSync(join(web, ".well-known/spt-gospel.json"))) s += 15;
   if (read("index.html").includes("spt-ai-bus.json")) s += 5;
+  if (read("llms.txt").includes("launch-stack")) s += 5;
   return Math.min(100, s);
 }
 
@@ -110,9 +111,22 @@ function scoreOps() {
 
 function scoreContentDepth() {
   const n = blogPosts().length;
+  if (n >= 8) return 98;
   if (n >= 7) return 96;
   if (n >= 5) return 88;
   return 70;
+}
+
+function scoreLaunchStack() {
+  const h = read("launch-stack.html");
+  if (!h) return 0;
+  let s = 40;
+  for (const tier of ["1–10", "10–20", "20–40"]) {
+    if (h.includes(tier)) s += 18;
+  }
+  if (read("llms.txt").includes("launch-stack")) s += 6;
+  if (existsSync(join(web, "launch-stack.html"))) s += 0;
+  return Math.min(100, s);
 }
 
 const metrics = [
@@ -125,6 +139,7 @@ const metrics = [
   ["Legal & trust", scoreLegal],
   ["Ops & audit gates", scoreOps],
   ["Content cluster depth", scoreContentDepth],
+  ["Launch stack · door tiers", scoreLaunchStack],
 ];
 
 console.log("── Simple Property · swarm audit ──\n");

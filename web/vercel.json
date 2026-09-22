@@ -34,6 +34,8 @@
     { "source": "/blog/deposit-desk-vs-spreadsheet", "destination": "/blog/deposit-desk-vs-spreadsheet.html" },
     { "source": "/blog/surrender-date-illinois-deposit", "destination": "/blog/surrender-date-illinois-deposit.html" },
     { "source": "/blog/illinois-deposit-return-by-mail", "destination": "/blog/illinois-deposit-return-by-mail.html" },
+    { "source": "/blog/landlord-tools-by-door-count", "destination": "/blog/landlord-tools-by-door-count.html" },
+    { "source": "/launch-stack", "destination": "/launch-stack.html" },
     { "source": "/spt-ai-bus.json", "destination": "/spt-ai-bus.json" },
     { "source": "/.well-known/spt-gospel.json", "destination": "/.well-known/spt-gospel.json" },
     { "source": "/llms.txt", "destination": "/llms.txt" }

@@ -1,18 +1,25 @@
 {
   "schema": "spt-ai-bus",
-  "version": 1,
+  "version": 2,
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "site": "https://simpleproperty.tools",
   "contact": "hello@simpleproperty.tools",
   "hook": "Hit the Illinois deposit return deadline.",
   "lane": "765 ILCS 715/ · Chicago RLTO · itemized withholding · print packet",
+  "door_tiers": {
+    "rough_1_10": "Deposit Desk · separate bank · cloud files · calendar · screening per lease",
+    "systems_10_20": "ledger · light PM · eSign · maintenance log · SOP",
+    "automate_20_40": "autopay rent · bank-fed accounting · PM tickets · optional bookkeeper"
+  },
   "pricing": { "monthly": 17, "annual": 49, "currency": "USD" },
   "agent_read_order": [
     "https://simpleproperty.tools/llms.txt",
     "https://simpleproperty.tools/spt-ai-bus.json",
-    "https://simpleproperty.tools/.well-known/spt-gospel.json"
+    "https://simpleproperty.tools/.well-known/spt-gospel.json",
+    "https://simpleproperty.tools/launch-stack"
   ],
   "primary_cta": "https://simpleproperty.tools/app",
+  "launch_stack": "https://simpleproperty.tools/launch-stack",
   "guides": "https://simpleproperty.tools/blog"
 }
