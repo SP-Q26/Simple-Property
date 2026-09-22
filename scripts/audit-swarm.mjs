@@ -103,7 +103,7 @@ function scoreLegal() {
 
 function scoreOps() {
   let s = 70;
-  for (const script of ["audit-spt-web.mjs", "audit-brand-shell.mjs", "verify-stripe-catalog.mjs"]) {
+  for (const script of ["audit-spt-web.mjs", "audit-brand-shell.mjs", "audit-swarm.mjs", "audit-git.mjs", "verify-stripe-catalog.mjs"]) {
     if (existsSync(join(root, "scripts", script))) s += 10;
   }
   return Math.min(100, s);

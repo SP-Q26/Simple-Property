@@ -10,6 +10,8 @@ This GitHub repo was created by **forking [SP-Q26/innsegall](https://github.com/
 
 After the first SPT push, **`main`** on Simple-Property must contain only this workspace (`docs/`, `scripts/`, `web/`).
 
+**Orphan local history:** If you ran `git init` and committed Deposit Desk without replacing remote, GitHub **`main` stays on the fork (`cfdb248`)** while local passes audit. Fix: **`docs/CONNECT_GIT.md`** · **`docs/GIT_TROUBLESHOOTING.md`**.
+
 ## Layout
 
 | Path | Role |
