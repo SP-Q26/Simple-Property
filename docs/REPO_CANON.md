@@ -24,7 +24,7 @@ After the first SPT push, **`main`** on Simple-Property must contain only this w
 
 | Branch | Use |
 |--------|-----|
-| `main` | Production · `simpleproperty.tools` |
+| `main` | Production · `simple-property.com` |
 | `preview` | Optional Vercel preview smoke |
 
 ## Git identity (repo-local)

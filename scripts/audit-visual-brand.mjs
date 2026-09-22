@@ -22,7 +22,8 @@ const css = read("simple-property.css");
 const pricing = read("pricing.html");
 const index = read("index.html");
 
-need("css v12", css.includes("v12") || css.includes("Isles palette"));
+need("css v13", css.includes("v13") || css.includes("Isles palette"));
+need("distant door atmosphere", css.includes(".spt-door-scene") && css.includes("spt-door-left"));
 need("isles fjord token", css.includes("--fjord-deep"));
 need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));

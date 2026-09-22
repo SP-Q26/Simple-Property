@@ -31,7 +31,7 @@
       btn.textContent = prev;
       if (e.message !== "packet_id_required") {
         alert(
-          "Checkout is unavailable right now. Email hello@simpleproperty.tools and we will send a checkout link."
+          "Checkout is unavailable right now. Email hello@simple-property.com and we will send a checkout link."
         );
       }
     }

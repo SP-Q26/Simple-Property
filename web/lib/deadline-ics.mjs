@@ -1,7 +1,7 @@
 /** Build .ics for deposit return deadline (client import). */
 export function buildDeadlineIcs({ title, deadlineIso, reminderDaysBefore = [7, 3, 1] }) {
   if (!deadlineIso) return null;
-  const uid = `spt-deadline-${deadlineIso}@simpleproperty.tools`;
+  const uid = `spt-deadline-${deadlineIso}@simple-property.com`;
   const dt = deadlineIso.replace(/-/g, "");
   const lines = [
     "BEGIN:VCALENDAR",

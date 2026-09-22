@@ -2,7 +2,7 @@
 
 **Audience:** mom-and-pop · 1–4 doors (Pro cap) · Chicago RLTO + statewide 765 ILCS 715/  
 **Voice:** plain dealing · receipts · timestamps · not legal advice  
-**Live site:** [simple-property-spq.vercel.app](https://simple-property-spq.vercel.app) · apex later `simpleproperty.tools`
+**Live site:** [simple-property-spq.vercel.app](https://simple-property-spq.vercel.app) · apex later `simple-property.com`
 
 This doc is the **deposit-centric spine**. Full operator lanes (maintenance, notices, showings, contact logs): **`docs/SMALL_PM_LANE_MAP.md`**.
 

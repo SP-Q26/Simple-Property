@@ -27,10 +27,11 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline — remove
 
 ## Visual
 
-- Cream / bark / sage / muted terracotta CTA
-- **Lora** (headings) + **Inter** (UI) · CSS **`?v=8`** in `web/simple-property.css`
-- **Fact strip** (`.fact-strip`): sage wash · 765 ILCS / RLTO on marketing + guides
-- **Product proof** (`.product-proof`): sample packet on home hero — not a mascot
+- **Isles palette** (shared with Innsegall): fjord deep `#0b1d2e`, beam gold `#f4c95d`, aurora green accents · CSS **`simple-property.css?v=13`**
+- **Atmosphere** (`web/brand/atmosphere.html` · injected via `npm run sync-chrome`): gold **beam from above** (Innsegall kin) + **distant gold door** at end of hall · opens/closes on ~26s loop · `prefers-reduced-motion` holds door shut
+- **Cormorant Garamond** (display) + **DM Sans** (UI)
+- **Fact strip** (`.fact-strip`): statute / RLTO on marketing + guides
+- **Product proof** (`.product-proof`): sample packet on home hero
 - Shell templates: `web/brand/shell-header.html` + `shell-footer.html`
 
 ## Product name

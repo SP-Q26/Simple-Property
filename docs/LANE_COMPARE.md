@@ -28,7 +28,7 @@ Innsegall: `cd innsegall && npm run audit` (multi-script stack).
 1. **One memorable asset** — Use Homestead on **OG image**, print header, and email templates (not only favicon). Same move Innsegall used with clan/boat art on Stripe products.
 2. **Voice lock** — Keep “packet · receipt · deadline”; add **one recurring colophon line** on every export PDF (product marketing inside the deliverable).
 3. **Social proof without hype** — “Built for teams who answer their own phone” is right; add **2–3 anonymized scenario cards** (Chicago 45-day, suburban 30-day) on home — not testimonials, **situations**.
-4. **Separate brand from SPQ** in customer minds — Domain `simpleproperty.tools`, product name **Deposit Desk**, umbrella **Simple Property Tools** (already correct). Avoid cross-linking SPQ terminal on marketing until IL lane stands alone.
+4. **Separate brand from SPQ** in customer minds — Domain `simple-property.com`, product name **Deposit Desk**, umbrella **Simple Property Tools** (already correct). Avoid cross-linking SPQ terminal on marketing until IL lane stands alone.
 5. **Do not Luxe-ify** — No splash theater; growth here is **trust + search + forums**, not motion.
 
 ## SEO (thoughts)

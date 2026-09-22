@@ -153,7 +153,7 @@ function isProSubscription() {
 function proBlockMessage() {
   if (!canExportPro()) {
     if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
-      return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simpleproperty.tools">email us</a> for larger portfolios.</div>`;
+      return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
     }
     return `<div class="paywall" role="status">
       <strong>Unlock print/PDF for this packet.</strong> Per turn ($29 move-out · $49 full tenancy) or Pro subscription.

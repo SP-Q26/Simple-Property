@@ -3,8 +3,8 @@
   "version": 2,
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
-  "site": "https://simpleproperty.tools",
-  "contact": "hello@simpleproperty.tools",
+  "site": "https://simple-property.com",
+  "contact": "hello@simple-property.com",
   "hook": "Hit the Illinois deposit return deadline.",
   "lane": "765 ILCS 715/ · Chicago RLTO · itemized withholding · print packet",
   "door_tiers": {
@@ -24,14 +24,14 @@
     }
   },
   "agent_read_order": [
-    "https://simpleproperty.tools/llms.txt",
-    "https://simpleproperty.tools/spt-ai-bus.json",
-    "https://simpleproperty.tools/.well-known/spt-gospel.json",
-    "https://simpleproperty.tools/launch-stack"
+    "https://simple-property.com/llms.txt",
+    "https://simple-property.com/spt-ai-bus.json",
+    "https://simple-property.com/.well-known/spt-gospel.json",
+    "https://simple-property.com/launch-stack"
   ],
-  "primary_cta": "https://simpleproperty.tools/app",
-  "launch_stack": "https://simpleproperty.tools/launch-stack",
-  "guides": "https://simpleproperty.tools/blog",
-  "blog_feed": "https://simpleproperty.tools/blog/feed.rss",
+  "primary_cta": "https://simple-property.com/app",
+  "launch_stack": "https://simple-property.com/launch-stack",
+  "guides": "https://simple-property.com/blog",
+  "blog_feed": "https://simple-property.com/blog/feed.rss",
   "blog_pillars": ["law", "landlord", "renter", "news"]
 }

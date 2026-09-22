@@ -1,5 +1,5 @@
 function articleShell({ title, description, slug, published, bodyHtml }) {
-  const url = `https://simpleproperty.tools/blog/${slug}`;
+  const url = `https://simple-property.com/blog/${slug}`;
   const ld = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
@@ -18,12 +18,12 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} · Simple Property Tools</title>
   <meta name="description" content="${description.replace(/"/g, "&quot;")}">
-  <meta property="og:image" content="https://simpleproperty.tools/og/spt-card.svg">
+  <meta property="og:image" content="https://simple-property.com/og/spt-card.svg">
   <link rel="canonical" href="${url}">
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=12">
+  <link rel="stylesheet" href="/simple-property.css?v=13">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>

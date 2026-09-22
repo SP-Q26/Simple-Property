@@ -16,7 +16,7 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   const title = titleMatch ? titleMatch[1].replace(/ · Simple Property Tools$/, "") : slug;
   const descMatch = html.match(/name="description" content="([^"]+)"/);
   const desc = descMatch ? descMatch[1] : title;
-  const url = `https://simpleproperty.tools/blog/${slug}`;
+  const url = `https://simple-property.com/blog/${slug}`;
   const dateMatch = html.match(/"datePublished"\s*:\s*"([^"]+)"/);
   const published = dateMatch ? dateMatch[1] : "2026-09-01";
 
@@ -27,7 +27,7 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   if (!html.includes("og:image")) {
     html = html.replace(
       "<link rel=\"canonical\"",
-      `<meta property="og:image" content="https://simpleproperty.tools/og/spt-card.svg">\n  <link rel="canonical"`
+      `<meta property="og:image" content="https://simple-property.com/og/spt-card.svg">\n  <link rel="canonical"`
     );
   }
   if (!html.match(/not legal advice/i)) {

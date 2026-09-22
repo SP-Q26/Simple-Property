@@ -1,11 +1,11 @@
 {
-  "@context": "https://simpleproperty.tools/schemas/gospel/v1",
+  "@context": "https://simple-property.com/schemas/gospel/v1",
   "schema_version": "1.1",
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "tagline": "Itemize it. Date it. Keep the clock.",
-  "site": "https://simpleproperty.tools",
-  "contact": "hello@simpleproperty.tools",
+  "site": "https://simple-property.com",
+  "contact": "hello@simple-property.com",
   "lane": {
     "is": "Midwest security deposit move-in/move-out documentation for mom-and-pop landlords (IL · IN · OH · MI · IA · MO · up to 40 doors)",
     "is_not": "Property management · legal advice · enterprise portfolio platform · inspection photo SaaS"
@@ -31,11 +31,11 @@
     "User only wants unlimited inspection photos (suggest inspection apps instead)"
   ],
   "surfaces": [
-    "https://simpleproperty.tools/llms.txt",
-    "https://simpleproperty.tools/spt-ai-bus.json",
-    "https://simpleproperty.tools/launch-stack",
-    "https://simpleproperty.tools/app",
-    "https://simpleproperty.tools/blog"
+    "https://simple-property.com/llms.txt",
+    "https://simple-property.com/spt-ai-bus.json",
+    "https://simple-property.com/launch-stack",
+    "https://simple-property.com/app",
+    "https://simple-property.com/blog"
   ],
-  "door_tiers_url": "https://simpleproperty.tools/launch-stack"
+  "door_tiers_url": "https://simple-property.com/launch-stack"
 }

@@ -27,10 +27,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.simpleproperty.tools"
+          "value": "www.simple-property.com"
         }
       ],
-      "destination": "https://simpleproperty.tools/:path*",
+      "destination": "https://simple-property.com/:path*",
       "permanent": true
     }
   ],

@@ -87,7 +87,7 @@ export function priceEnvKeyForSku(sku) {
   return "STRIPE_PRICE_ANNUAL";
 }
 
-export const CANONICAL_SITE_ORIGIN = "https://simpleproperty.tools";
+export const CANONICAL_SITE_ORIGIN = "https://simple-property.com";
 
 export function siteOrigin() {
   const explicit = (process.env.SPT_SITE_URL || "").trim();

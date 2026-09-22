@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Inject shared body scripts before deploy · run: npm run sync-chrome
+ * Inject shared atmosphere + body scripts before deploy · run: npm run sync-chrome
  * Vercel Web Analytics + Speed Insights — enable both in project dashboard (static site).
  */
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
@@ -8,6 +8,8 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
+const atmosphere = readFileSync(join(web, "brand/atmosphere.html"), "utf8").trimEnd();
+const ATMOSPHERE_MARKER = 'class="spt-atmosphere"';
 
 /** Dashboard: Analytics → Web Analytics → Enable */
 const VERCEL_WEB_ANALYTICS = `  <script defer src="/_vercel/insights/script.js"></script>`;
@@ -23,6 +25,12 @@ function walkHtml(dir) {
   return out;
 }
 
+function injectAfterBody(html, snippet, marker) {
+  if (html.includes(marker)) return html;
+  if (!html.includes("<body>")) return html;
+  return html.replace("<body>", `<body>\n${snippet}`);
+}
+
 function injectBeforeBody(html, snippet, marker) {
   if (html.includes(marker)) return html;
   if (!html.includes("</body>")) return html;
@@ -33,6 +41,7 @@ let changed = 0;
 for (const file of [...walkHtml(web), ...walkHtml(join(web, "blog"))]) {
   let html = readFileSync(file, "utf8");
   const before = html;
+  html = injectAfterBody(html, atmosphere, ATMOSPHERE_MARKER);
   html = injectBeforeBody(html, VERCEL_WEB_ANALYTICS, "/_vercel/insights/script.js");
   html = injectBeforeBody(html, VERCEL_SPEED_INSIGHTS, "/_vercel/speed-insights/script.js");
   if (html !== before) {

@@ -36,7 +36,7 @@ If env price IDs are unset, Checkout uses inline `price_data` (fine for test; se
 
 ## Webhook (Deposit Desk site)
 
-**URL:** `https://simpleproperty.tools/api/stripe/webhook`  
+**URL:** `https://simple-property.com/api/stripe/webhook`  
 (or Vercel preview URL during test)
 
 **Events:**
@@ -73,7 +73,7 @@ Innsegall webhook stays on `innsegall.com/api/stripe/webhook` with its own signi
 
 1. Test mode: one $29 turn + one $99 annual on preview URL.
 2. Create **live** prices (new IDs, not test IDs).
-3. Update Vercel Production env for **simpleproperty.tools**.
+3. Update Vercel Production env for **simple-property.com**.
 4. `npm run smoke:prod` · manual Checkout smoke.
 
 See Innsegall: `innsegall/docs/STRIPE_LIVE_FLIP.md` (parallel process, same account optional).

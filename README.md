@@ -37,11 +37,11 @@ Or from repo root: `chmod +x scripts/preview.sh && ./scripts/preview.sh static|f
 
 **Better than opening HTML in the editor:** static preview serves `cleanUrls` paths (`/pricing`, `/app`) on port **4321**.
 
-**Best match to production:** connect the repo to Vercel → every push gets a **Preview URL**. Production apex when you assign `simpleproperty.tools`.
+**Best match to production:** connect the repo to Vercel → every push gets a **Preview URL**. Production apex when you assign `simple-property.com`.
 
 ## Deploy
 
-**Vercel:** `docs/VERCEL_SETUP.md` — import repo, root `web`, enable Analytics + Speed Insights, preview deploy then apex. Set `SPT_SITE_URL` on preview; production uses `https://simpleproperty.tools` in catalog until overridden.
+**Vercel:** `docs/VERCEL_SETUP.md` — import repo, root `web`, enable Analytics + Speed Insights, preview deploy then apex. Set `SPT_SITE_URL` on preview; production uses `https://simple-property.com` in catalog until overridden.
 
 ## Docs
 

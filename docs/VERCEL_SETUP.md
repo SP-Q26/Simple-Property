@@ -18,7 +18,7 @@ SPQ team defaults may enable **Vercel Authentication** on `*.vercel.app` URLs. A
 | Goal | Action |
 |------|--------|
 | Public smoke on `*.vercel.app` | Project → **Settings** → **Deployment Protection** → disable Vercel Authentication for this project, or limit to preview-only |
-| Public production on apex only | Add **`simpleproperty.tools`** — team policy `all_except_custom_domains` bypasses SSO on custom domains |
+| Public production on apex only | Add **`simple-property.com`** — team policy `all_except_custom_domains` bypasses SSO on custom domains |
 
 Until fixed, only logged-in team members can open default deployment URLs.
 
@@ -45,10 +45,10 @@ Copy from `web/.env.example`. Set per **Preview** and **Production** in Vercel �
 | `STRIPE_WEBHOOK_SECRET` | Stripe CLI or test endpoint | Live webhook secret | See below |
 | `STRIPE_PRICE_MONTHLY` / `STRIPE_PRICE_ANNUAL` | Optional test price IDs | Live price IDs | Inline `price_data` fallback if unset |
 | `SPT_ENTITLEMENT_SECRET` | Random 32+ bytes | **Different** random value | HMAC for entitlement + magic links |
-| `SPT_SITE_URL` | `https://<preview-host>.vercel.app` | `https://simpleproperty.tools` | Checkout success/cancel URLs |
+| `SPT_SITE_URL` | `https://<preview-host>.vercel.app` | `https://simple-property.com` | Checkout success/cancel URLs |
 | `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Upstash via Marketplace | Same or prod store | Pro restore index |
 | `RESEND_API_KEY` | `re_…` | `re_…` | Magic link + reminders |
-| `SPT_EMAIL_FROM` | `Deposit Desk <hello@simpleproperty.tools>` | Same (domain verified) | |
+| `SPT_EMAIL_FROM` | `Deposit Desk <hello@simple-property.com>` | Same (domain verified) | |
 | `SPT_CRON_SECRET` | Optional | Optional | Vercel sets `CRON_SECRET` for cron routes |
 
 **Preview Stripe webhook:** Stripe Dashboard → Developers → Webhooks → Add endpoint:
@@ -57,7 +57,7 @@ Copy from `web/.env.example`. Set per **Preview** and **Production** in Vercel �
 
 Events: `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.paid`.
 
-**Production webhook:** `https://simpleproperty.tools/api/stripe/webhook`
+**Production webhook:** `https://simple-property.com/api/stripe/webhook`
 
 ## 4. Preview deploy (recommended first)
 
@@ -97,10 +97,10 @@ Cron (production): daily 14:00 UTC → `/api/cron/deadline-reminders` (`vercel.j
 
 When ready:
 
-1. Vercel → Domains → add `simpleproperty.tools` + `www` (www redirect already in `vercel.json`)
+1. Vercel → Domains → add `simple-property.com` + `www` (www redirect already in `vercel.json`)
 2. Namecheap DNS: `@` A `76.76.21.21` · `www` CNAME `cname.vercel-dns.com`
 3. Flip Stripe to live keys + live webhook on apex
-4. GSC sitemap: `https://simpleproperty.tools/sitemap.xml`
+4. GSC sitemap: `https://simple-property.com/sitemap.xml`
 
 ## Repo scripts
 

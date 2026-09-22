@@ -26,7 +26,7 @@ function scoreBrandShell() {
   for (const p of pages) {
     const h = read(p);
     if (!h.includes("brand-mark")) s -= 8;
-    if (!h.includes("simple-property.css?v=12")) s -= 5;
+    if (!h.includes("simple-property.css?v=13")) s -= 5;
     if (!h.includes("Keep the clock")) s -= 5;
     if (h.includes("Homestead")) s -= 10;
   }

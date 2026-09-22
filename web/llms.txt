@@ -2,17 +2,17 @@
 
 > Midwest deposit packets for mom-and-pop landlords (IL · IN · OH · MI · IA · MO): **Itemize it. Date it. Keep the clock.** · surrender clocks, move-in proof, itemized export · beats Excel, not a PM suite.
 
-- https://simpleproperty.tools/
+- https://simple-property.com/
 - **Deposit Desk** · **765 ILCS 715/** IL **30-day** & **Chicago RLTO 45-day** · IN **45-day** · OH/MI/IA/MO **30-day** from surrender · move-in/move-out · .ics · Calendar/Sheets · print (per turn or Pro)
-- **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simpleproperty.tools/pricing
-- **Guides** · pain (missed deadline, dispute, spreadsheet) · law · landlords · renters · news: https://simpleproperty.tools/blog · RSS https://simpleproperty.tools/blog/feed.rss
-- **Pain hub** · missed clock, tenant dispute, Excel mistakes, surrender/keys: https://simpleproperty.tools/blog#guides-pain
-- **City guides** · Chicago RLTO and major Midwest cities: https://simpleproperty.tools/blog#guides-cities
-- **Launch stack** · tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simpleproperty.tools/launch-stack
-- Agent bus: https://simpleproperty.tools/spt-ai-bus.json
-- Gospel: https://simpleproperty.tools/.well-known/spt-gospel.json
-- App: https://simpleproperty.tools/app
-- hello@simpleproperty.tools
+- **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simple-property.com/pricing
+- **Guides** · pain (missed deadline, dispute, spreadsheet) · law · landlords · renters · news: https://simple-property.com/blog · RSS https://simple-property.com/blog/feed.rss
+- **Pain hub** · missed clock, tenant dispute, Excel mistakes, surrender/keys: https://simple-property.com/blog#guides-pain
+- **City guides** · Chicago RLTO and major Midwest cities: https://simple-property.com/blog#guides-cities
+- **Launch stack** · tools by door count (1–10 rough · 10–20 systems · 20–40 automate): https://simple-property.com/launch-stack
+- Agent bus: https://simple-property.com/spt-ai-bus.json
+- Gospel: https://simple-property.com/.well-known/spt-gospel.json
+- App: https://simple-property.com/app
+- hello@simple-property.com
 - Not: PM suite, legal advice, enterprise portfolio platform, inspection-photo SaaS
 
 Door tiers: at 1–10 deploy deposit packet + bank + files + calendar; at 10–20 add ledger + light PM + eSign; at 20–40 automate rent + accounting + maintenance.

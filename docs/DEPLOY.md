@@ -22,7 +22,7 @@ Full checklist: **`docs/VERCEL_SETUP.md`** (tracking, env, preview vs prod).
 2. Enable **Web Analytics** + **Speed Insights** in project dashboard
 3. Env from `web/.env.example` (Preview + Production scopes)
 4. `npm run sync-chrome` before deploy if HTML changed
-5. Preview: push `main` or branch `preview` · Production apex: `simpleproperty.tools`
+5. Preview: push `main` or branch `preview` · Production apex: `simple-property.com`
 
 ```bash
 npm run preflight
@@ -31,7 +31,7 @@ git push origin main
 # prod: cd web && npx vercel --prod  # after domain + live Stripe
 ```
 
-Stripe webhook (prod): `https://simpleproperty.tools/api/stripe/webhook`
+Stripe webhook (prod): `https://simple-property.com/api/stripe/webhook`
 
 ## Post-deploy
 

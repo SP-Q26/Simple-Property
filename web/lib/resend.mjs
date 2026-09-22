@@ -8,7 +8,7 @@ export async function sendResendEmail({ to, subject, text, html, bcc }) {
   if (!resendConfigured()) {
     return { ok: false, error: "resend_not_configured" };
   }
-  const from = process.env.SPT_EMAIL_FROM || "Deposit Desk <hello@simpleproperty.tools>";
+  const from = process.env.SPT_EMAIL_FROM || "Deposit Desk <hello@simple-property.com>";
   const payload = {
     from,
     to: Array.isArray(to) ? to : [to],
