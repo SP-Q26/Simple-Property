@@ -20,7 +20,7 @@
   }
 
   function isSubscribed() {
-    if (new URLSearchParams(location.search).get("demo") === "pro") return true;
+    if (typeof global.sptIsDemoPro === "function" && global.sptIsDemoPro()) return true;
     return isActive(parseSub());
   }
 

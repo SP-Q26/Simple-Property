@@ -91,7 +91,7 @@ function refreshPacketSelect() {
 }
 
 function isSubscribed() {
-  if (new URLSearchParams(location.search).get("demo") === "pro") return true;
+  if (typeof window.sptIsDemoPro === "function" && window.sptIsDemoPro()) return true;
   return typeof window.sptIsSubscribed === "function" && window.sptIsSubscribed();
 }
 

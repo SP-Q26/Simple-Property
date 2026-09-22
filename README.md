@@ -46,6 +46,7 @@ Connect `web/` as Vercel project root (or repo root with `rootDirectory: web`). 
 ## Docs
 
 - `docs/SWARM_AUDIT.md` — nine-lane scores (gate ≥ 95) + maintenance tasks  
+- `docs/AUDIT_INNSEGALL_LENS.md` — vs Innsegall discipline · customer-only surfaces  
 - `docs/LANE_COMPARE.md` · `docs/DEPLOY.md` — vs Innsegall · git/Vercel  
 - `docs/SWARM_2026-09-20.md` — competitor + IL rules + MVP synthesis  
 - `docs/PHASE2.md` · `docs/PHASE3.md` — billing, portal, KV, magic link, reminders  

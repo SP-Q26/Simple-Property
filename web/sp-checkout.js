@@ -19,7 +19,7 @@
       btn.disabled = false;
       btn.textContent = prev;
       alert(
-        "Checkout is not configured on this host yet. Add STRIPE_SECRET_KEY in Vercel, or use /app in demo mode after setting a test subscription in dev tools."
+        "Checkout is unavailable right now. Email hello@simpleproperty.tools and we will send a checkout link."
       );
     }
   }

@@ -9,7 +9,7 @@
       sub = null;
     }
     if (!sub || !sub.stripe_customer) {
-      alert("Manage billing after you subscribe — checkout saves your Stripe customer id in this browser.");
+      alert("Subscribe first — then you can manage billing from this button or your Stripe receipt email.");
       return;
     }
     try {
@@ -22,7 +22,7 @@
       if (data.url) location.href = data.url;
       else throw new Error(data.error || "portal_failed");
     } catch (e) {
-      alert("Billing portal is not available on this host yet. Use the link in your Stripe receipt email.");
+      alert("Billing portal is unavailable right now. Use the link in your Stripe receipt email.");
     }
   }
 

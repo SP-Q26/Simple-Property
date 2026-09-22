@@ -38,6 +38,7 @@
     { "source": "/launch-stack", "destination": "/launch-stack.html" },
     { "source": "/spt-ai-bus.json", "destination": "/spt-ai-bus.json" },
     { "source": "/.well-known/spt-gospel.json", "destination": "/.well-known/spt-gospel.json" },
+    { "source": "/.well-known/ai-discovery.json", "destination": "/.well-known/ai-discovery.json" },
     { "source": "/llms.txt", "destination": "/llms.txt" }
   ],
   "crons": [

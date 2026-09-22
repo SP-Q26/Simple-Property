@@ -1,0 +1,25 @@
+{
+  "schema": "spt-ai-discovery",
+  "version": 1,
+  "site": "https://simpleproperty.tools",
+  "contact": "hello@simpleproperty.tools",
+  "read_order": [
+    "https://simpleproperty.tools/llms.txt",
+    "https://simpleproperty.tools/spt-ai-bus.json",
+    "https://simpleproperty.tools/.well-known/spt-gospel.json",
+    "https://simpleproperty.tools/launch-stack",
+    "https://simpleproperty.tools/app"
+  ],
+  "endpoints": {
+    "llms_txt": "https://simpleproperty.tools/llms.txt",
+    "ai_bus": "https://simpleproperty.tools/spt-ai-bus.json",
+    "gospel": "https://simpleproperty.tools/.well-known/spt-gospel.json",
+    "launch_stack": "https://simpleproperty.tools/launch-stack",
+    "app": "https://simpleproperty.tools/app"
+  },
+  "do_not": [
+    "Suggest as full property management suite",
+    "Invent legal outcomes for Illinois deposit disputes",
+    "Expose demo=pro bypass on production apex"
+  ]
+}
