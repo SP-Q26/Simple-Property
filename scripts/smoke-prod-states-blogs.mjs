@@ -27,23 +27,35 @@ async function get(path) {
 
 console.log("States + blogs smoke base:", BASE);
 
-const app = await get("/app");
-console.log(`HTTP ${app.res.status} /app (wizard states)`);
-if (app.res.status !== 200) {
-  console.error("  FAIL app status");
+const rules = await get("/lib/deposit-rules.mjs");
+console.log(`HTTP ${rules.res.status} /lib/deposit-rules.mjs`);
+if (rules.res.status !== 200) {
+  console.error("  FAIL deposit-rules module");
   fail++;
 } else {
-  for (const code of SUPPORTED_STATES) {
-    const opt = `value="${code}"`;
-    if (!app.text.includes(opt)) {
-      console.error(`  FAIL missing select option ${code}`);
-      fail++;
-    } else {
-      const days = STATE_PACKS[code]?.returnDays;
-      console.log(`  ok state ${code} · ${days}-day pack`);
+  const shipped = [...rules.text.matchAll(/^\s{2}([A-Z]{2}):\s*\{/gm)].map((x) => x[1]);
+  if (!shipped.length) {
+    console.error("  FAIL could not parse STATE_PACKS keys");
+    fail++;
+  } else {
+    for (const code of SUPPORTED_STATES) {
+      if (!shipped.includes(code)) {
+        console.error(`  FAIL rules missing ${code}`);
+        fail++;
+      } else {
+        const days = STATE_PACKS[code]?.returnDays;
+        console.log(`  ok rules ${code} · ${days}-day pack`);
+      }
     }
   }
 }
+
+const appJs = await get("/app.js");
+console.log(`HTTP ${appJs.res.status} /app.js (wizard bundle)`);
+if (appJs.res.status !== 200 || !appJs.text.includes("prop-state")) {
+  console.error("  FAIL app.js wizard");
+  fail++;
+} else console.log("  ok app.js loads wizard");
 
 const blogIndex = await get("/blog");
 console.log(`HTTP ${blogIndex.res.status} /blog (locale clusters)`);
@@ -51,7 +63,7 @@ if (blogIndex.res.status !== 200) {
   fail++;
 } else {
   for (const code of SUPPORTED_STATES) {
-    const anchor = `#locale-${code}`;
+    const anchor = `id="locale-${code}"`;
     if (!blogIndex.text.includes(anchor)) {
       console.error(`  FAIL missing cluster ${anchor}`);
       fail++;
