@@ -21,13 +21,13 @@ Not legal advice. Patterns from public threads (tenant-heavy on Reddit; operator
 
 ## Tagline (shipped)
 
-**Primary:** `Itemize it. Date it. Keep the clock.`
+**Primary:** `Itemize it. Date it. Beat the clock.`
 
 - **Itemize it** · answers "no itemized list" / vague text threads  
 - **Date it** · surrender + return deadline  
-- **Keep the clock** · calendar/ics · statute window visible  
+- **Beat the clock** · beat penalties · deadline on screen before the statute window closes  
 
-**Header sub-tag:** `Deposit Desk · itemized · clock · IL · IN · OH · MI · IA · MO`
+**Header sub-tag:** `Beat the clock · your state` (locale bar) · full tag includes Founded in Chicago · 18 states + DC
 
 **Hero H1 unchanged:** `Spreadsheets break at surrender date. The clock does not.`
 

@@ -6,7 +6,9 @@ import { STATUTE_URLS } from "./statute-urls.mjs";
 
 export const PACK_COUNT = SUPPORTED_STATES.length;
 export const STATE_ONLY_COUNT = SUPPORTED_STATES.filter((c) => c !== "DC").length;
-export const BRAND_TAG = `Itemize it. Date it. Keep the clock. · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`;
+/** Three-beat tagline · beat penalties, not “keep” the clock. */
+export const BRAND_TAGLINE = "Itemize it. Date it. Beat the clock.";
+export const BRAND_TAG = `${BRAND_TAGLINE} · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`;
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;

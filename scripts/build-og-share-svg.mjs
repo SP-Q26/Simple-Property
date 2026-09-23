@@ -7,7 +7,7 @@ import { writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { STATE_PACKS, SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
-import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+import { BRAND_TAGLINE, STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
 
 const ogDir = join(dirname(fileURLToPath(import.meta.url)), "..", "web", "og");
 const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
@@ -40,13 +40,22 @@ function chipGrid(startX, startY, cols, chipW, gap) {
 function doorScene() {
   return `  <rect x="700" y="72" width="56" height="420" fill="#7a4038" fill-opacity="0.14" rx="3"/>
   <rect x="1044" y="72" width="56" height="420" fill="#7a4038" fill-opacity="0.14" rx="3"/>
-  <rect x="756" y="104" width="288" height="360" rx="4" fill="#3d3429" fill-opacity="0.08"/>
+  <rect x="748" y="96" width="304" height="376" rx="5" fill="#3d3429" fill-opacity="0.05" stroke="#3d3429" stroke-width="1.5" stroke-opacity="0.35"/>
+  <rect x="756" y="104" width="288" height="360" rx="4" fill="#3d3429" fill-opacity="0.08" stroke="#3d3429" stroke-width="2.25"/>
   <rect x="768" y="116" width="120" height="336" rx="2" fill="url(#door-light)" stroke="#3d3429" stroke-width="2"/>
+  <g class="door-hinge" fill="#8a7a66" stroke="#3d3429" stroke-width="0.8">
+    <rect x="771" y="148" width="5" height="7" rx="1.2"/>
+    <rect x="771" y="228" width="5" height="7" rx="1.2"/>
+    <rect x="771" y="308" width="5" height="7" rx="1.2"/>
+  </g>
   <path d="M888 116 L888 452" stroke="#3d3429" stroke-width="2"/>
   <path d="M768 116 L888 184 L888 384 L768 452 Z" fill="#faf7f0" stroke="#3d3429" stroke-width="2" stroke-linejoin="round"/>
   <path d="M888 184 L1020 116 L1020 452 L888 384 Z" fill="#4a6741" fill-opacity="0.35" stroke="#3d3429" stroke-width="2"/>
+  <g class="door-rim-lock">
+    <rect x="876" y="278" width="12" height="16" rx="2.5" fill="#f4f0e6" stroke="#3d3429" stroke-width="1.2"/>
+    <circle cx="882" cy="286" r="4" fill="#c9a227" stroke="#3d3429" stroke-width="1"/>
+  </g>
   <text x="828" y="294" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="42" font-weight="600">SP</text>
-  <circle cx="852" cy="324" r="5" fill="#c9a227" stroke="none"/>
   <path d="M888 116 L1020 116" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>`;
 }
 
@@ -85,7 +94,7 @@ ${body}
 }
 
 const defaultBody = `  <text x="72" y="118" fill="#3d3429" font-family="Georgia, serif" font-size="44" font-weight="600">Simple Property Tools</text>
-  <text x="72" y="168" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="26">Itemize it. Date it. Keep the clock.</text>
+  <text x="72" y="168" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="26">${BRAND_TAGLINE}</text>
   <path d="M72 188h440" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
   <text x="72" y="228" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="24" font-weight="600">Deposit Desk · ${COVERAGE_LABEL}</text>
   <text x="72" y="262" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="19">Founded in Chicago · deposit return clocks on screen</text>

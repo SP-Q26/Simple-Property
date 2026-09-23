@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Simple Property Tools">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Simple Property Tools greystone door mark">
   <defs>
     <linearGradient id="spt-bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#faf7f0"/>
@@ -7,9 +7,19 @@
   </defs>
   <rect width="32" height="32" rx="9" fill="url(#spt-bg)"/>
   <rect x="1" y="1" width="30" height="30" rx="8" fill="none" stroke="#c9a227" stroke-width="0.75" opacity="0.55"/>
-  <path d="M16 7.5 7.5 12.25 16 8.75 24.5 12.25 16 7.5z" fill="#4a6741" stroke="#3d3429" stroke-width="0.85" stroke-linejoin="round"/>
-  <path d="M8.5 24V14.75c0-3.35 3.05-6.1 7.5-6.1s7.5 2.75 7.5 6.1V24" fill="#faf7f0" stroke="#3d3429" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M12.25 24V17.25h7.5V24" fill="none" stroke="#3b5a78" stroke-width="1.1" stroke-linecap="round"/>
-  <circle cx="18.75" cy="20.35" r="1.05" fill="#c9a227" stroke="#3d3429" stroke-width="0.5"/>
-  <text x="16" y="13.6" text-anchor="middle" font-family="Georgia, serif" font-size="5.2" font-weight="700" fill="#3d3429">SP</text>
+  <path d="M16 7.4 7.35 12.1 16 8.55 24.65 12.1 16 7.4z" fill="#4a6741" stroke="#3d3429" stroke-width="0.82" stroke-linejoin="round"/>
+  <rect x="7.15" y="13.1" width="17.7" height="11.15" rx="0.55" fill="#7a4038" fill-opacity="0.08" stroke="#3d3429" stroke-width="0.48"/>
+  <path d="M8.35 23.85V15.1c0-3.15 2.85-5.75 7.65-5.75s7.65 2.6 7.65 5.75v8.75" fill="#faf7f0" stroke="#3d3429" stroke-width="1.12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.35 23.85V15.1c0-3.15 2.85-5.75 7.65-5.75s7.65 2.6 7.65 5.75v8.75" fill="none" stroke="#3d3429" stroke-width="0.42" stroke-opacity="0.35"/>
+  <g class="door-hinge" fill="#8a7a66" stroke="#3d3429" stroke-width="0.28">
+    <rect x="8.42" y="15.35" width="0.92" height="1.02" rx="0.2"/>
+    <rect x="8.42" y="17.55" width="0.92" height="1.02" rx="0.2"/>
+    <rect x="8.42" y="19.75" width="0.92" height="1.02" rx="0.2"/>
+  </g>
+  <path d="M12.35 23.85V17.05h7.3V23.85" fill="none" stroke="#3b5a78" stroke-width="0.95" stroke-linecap="round"/>
+  <g class="door-rim-lock">
+    <rect x="20.55" y="19.15" width="1.95" height="2.45" rx="0.34" fill="#f4f0e6" stroke="#3d3429" stroke-width="0.4"/>
+    <circle cx="21.52" cy="20.35" r="0.68" fill="#c9a227" stroke="#3d3429" stroke-width="0.36"/>
+  </g>
+  <text x="16" y="13.45" text-anchor="middle" font-family="Georgia, serif" font-size="5" font-weight="700" fill="#3d3429">SP</text>
 </svg>

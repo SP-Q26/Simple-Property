@@ -5,7 +5,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BRAND_TAG, localeNavEntries, COVERAGE_MAP_XY } from "../web/lib/brand-locale.mjs";
+import { BRAND_TAG, BRAND_TAGLINE, localeNavEntries, COVERAGE_MAP_XY } from "../web/lib/brand-locale.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -36,6 +36,7 @@ for (const file of walkHtml(web)) {
   for (const old of OLD_TAGS) {
     next = next.split(old).join(BRAND_TAG);
   }
+  next = next.split("Itemize it. Date it. Keep the clock.").join(BRAND_TAGLINE);
   if (next !== html) {
     writeFileSync(file, next);
     htmlChanged++;
@@ -49,6 +50,7 @@ if (existsSync(shellHeader)) {
   for (const old of OLD_TAGS) {
     next = next.split(old).join(BRAND_TAG);
   }
+  next = next.split("Itemize it. Date it. Keep the clock.").join(BRAND_TAGLINE);
   if (next !== sh) {
     writeFileSync(shellHeader, next);
     console.log("updated brand/shell-header.html");

@@ -45,7 +45,7 @@ need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web
 need("pricing card grid", pricing.includes("pricing-cards"));
 need("pathway deck on home", index.includes("pathway-deck") && index.includes("/feedback"));
 need("deposit receipt sample", index.includes("deposit-receipt") && index.includes("Move-in condition"));
-need("brand tag on pricing", pricing.includes("Keep the clock"));
+need("brand tag on pricing", pricing.includes("Beat the clock"));
 need("pro units 40 in pricing", pricing.includes("40"));
 need("photo link fields app", app.includes("photoAlbumLink") && app.includes("room-photo-link"));
 need("photo link fields logs", read("logs.js").includes("photoLinks") && css.includes(".external-photo-link"));

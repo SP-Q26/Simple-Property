@@ -12,7 +12,7 @@
 |---------|--------|
 | Umbrella | **Simple Property Tools** |
 | Product | **Deposit Desk** |
-| Header tag | **Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO** |
+| Header tag | **Itemize it. Date it. Beat the clock. · Founded in Chicago · 18 states + DC** |
 | Footer | **Simple Property Tools · not legal advice** |
 | Mark | `/favicon.svg` only (no mascot) |
 

@@ -60,6 +60,10 @@ for (const f of readdirSync(stripeDir).filter((x) => x.endsWith(".png"))) {
   need(`upload-for-stripe/${f}`, existsSync(up));
 }
 
+const favicon = readFileSync(join(web, "favicon.svg"), "utf8");
+need("favicon door hinges", favicon.includes("door-hinge"));
+need("favicon rim lock plate", favicon.includes("door-rim-lock"));
+need("favicon no padlock arch", !favicon.includes('d="M26-8V-20'));
 const og = readFileSync(join(web, "og/spt-card.svg"), "utf8");
 need("OG coverage chips on card", (og.match(/class="coverage-chip"/g) || []).length === SUPPORTED_STATES.length);
 need("OG card 18 states copy", og.includes("18 states + DC"));

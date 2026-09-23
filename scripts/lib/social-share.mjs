@@ -3,7 +3,7 @@
 export const SITE = "https://simple-property.com";
 export const SITE_NAME = "Simple Property Tools";
 /** Bump when OG PNG art changes so Facebook Debugger picks up fresh previews. */
-export const OG_CACHE_VERSION = "20260923";
+export const OG_CACHE_VERSION = "20260923b";
 export const OG_IMAGE_PATH = "/og/spt-share-door.png";
 export const OG_IMAGE_COVERAGE_PATH = "/og/spt-share-coverage-expansion.png";
 export const OG_IMAGE = `${SITE}${OG_IMAGE_PATH}?v=${OG_CACHE_VERSION}`;
