@@ -19,13 +19,18 @@ function need(label, ok) {
 need("home hero-mission h1", index.includes('class="hero-mission"'));
 need("home no stale 6-state FAQ", !index.includes("Wisconsin and other states are not in the app"));
 need("home multistate FAQ", index.includes("18 states + DC") && index.includes("Which states"));
-need("home hero door svg", index.includes("spt-hero-door.svg"));
+const svgHero = readFileSync(join(web, "og", "spt-hero-door.svg"), "utf8");
+
+need("home hero door mark block", index.includes("hero-door-mark") && index.includes("sample packet below"));
+need("hero svg no tagline copy", !/Itemize/i.test(svgHero));
+need("hero img not repeating tagline in alt", !index.includes('alt="Deposit Desk · open door · Itemize'));
+need("css hero door mark", css.includes(".hero-door-mark__media") && css.includes(".hero-door-mark__label"));
 need("home canonical apex", index.includes('rel="canonical" href="https://simple-property.com/"'));
 need("home JSON-LD SoftwareApplication url", index.includes('"url": "https://simple-property.com/app"'));
 need("home JSON-LD WebSite", index.includes('"@type": "WebSite"'));
 need("css display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
 need("css desktop landing block", css.includes(".page > main .hero") && css.includes("text-wrap: balance"));
-need("css v31 header", css.includes("v31"));
+need("css v32 header", css.includes("v32"));
 
 const title = index.match(/<title>([^<]+)<\/title>/)?.[1] || "";
 need("title mentions deposit + states", /deposit/i.test(title) && /18 states|DC/i.test(title));

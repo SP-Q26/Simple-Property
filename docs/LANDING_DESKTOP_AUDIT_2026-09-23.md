@@ -34,7 +34,17 @@ Google Fonts link uses `display=swap`. Body `-webkit-font-smoothing: antialiased
 - [x] Internal links: `/app`, `/pricing`, `/blog`, pain guides
 - [x] Product proof + pathway deck
 
-## Post-deploy
+## Hero door mark (2026-09-23)
+
+| Problem | Fix |
+|---------|-----|
+| SVG was a **mini ad** (Deposit Desk + tagline + states + footer) stacked under header tagline | **Door-only** illustration in `spt-hero-door.svg` |
+| Figcaption repeated “Deposit Desk · start free” | **“Free draft · sample packet below”** points to receipt |
+| Poster-in-a-box CSS fought sample receipt | Compact **`.hero-door-mark`** (~12.5rem), no heavy shadow; **Open the wizard** in Inter |
+| Third “door” vs atmosphere + receipt | Mark is small visual anchor; **receipt is the hero proof** |
+
+Gate: hero SVG must not contain “Itemize”; `hero-door-mark` on home.
+
 
 ```bash
 npm run audit

@@ -23,7 +23,7 @@ const pricing = read("pricing.html");
 const index = read("index.html");
 const app = read("app.js");
 
-need("css v31 on home", index.includes("simple-property.css?v=31"));
+need("css v31 on home", index.includes("simple-property.css?v=32"));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
 need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
 need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));
@@ -33,7 +33,7 @@ need("greystone pilasters", css.includes(".spt-greystone-pilaster"));
 need("metal door panel", css.includes("#454b52") && css.includes(".spt-door-swing"));
 need("weather mist layer", css.includes(".spt-weather-mist"));
 need("regal SP swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-monogram") && index.includes("spt-greystone-pilaster"));
-need("hero door art asset", index.includes("spt-hero-door.svg") && index.includes("hero-share-art__media"));
+need("hero door art asset", index.includes("spt-hero-door.svg") && index.includes("hero-door-mark"));
 need("weather speckle layer", css.includes(".spt-weather") && index.includes("spt-weather-mist"));
 need("locale bar + coverage bubbles", css.includes(".locale-bar") && css.includes(".coverage-bubble--45"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));

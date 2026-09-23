@@ -3,7 +3,7 @@
 const BASE = (process.env.SPT_SMOKE_URL || "https://simple-property.com").replace(/\/$/, "");
 
 const pages = [
-  { path: "/app", need: ["wizard-steps", "packet-select", "Deposit packet", "simple-property.css?v=31"] },
+  { path: "/app", need: ["wizard-steps", "packet-select", "Deposit packet", "simple-property.css?v=32"] },
   { path: "/launch-stack", need: ["Launch stack", "Deposit Desk", "doors"] },
   { path: "/success", need: ["Payment confirmed", "session_id", "sptRefreshEntitlement"] },
   { path: "/blog", need: ["Guides", "blog"] },

@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v31 · touch + safe-area + iOS spacing */
+/* Simple Property Tools · Deposit Desk · v32 · touch + safe-area + iOS spacing */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1275,8 +1275,73 @@ main > h1,
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--border) 90%, transparent);
-  box-shadow: 0 6px 24px rgba(59, 90, 120, 0.08);
-  background: color-mix(in srgb, var(--surface) 92%, var(--bg));
+  box-shadow: none;
+  background: color-mix(in srgb, var(--surface) 88%, var(--bg));
+}
+
+.hero-door-mark {
+  max-width: 14rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-door-mark__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-door-mark__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 8 / 9;
+  max-height: 10.5rem;
+  width: 100%;
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero-door-mark__media img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.hero-door-mark__label {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--quant-blue);
+  border-top: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+  background: color-mix(in srgb, var(--quant-blue-surface) 55%, var(--surface));
+}
+
+.hero-door-mark__link:hover .hero-door-mark__label,
+.hero-door-mark__link:focus-visible .hero-door-mark__label {
+  color: var(--ink);
+}
+
+.hero-door-mark__cap {
+  margin-top: var(--space-2);
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--muted);
+  text-align: center;
 }
 
 .hero-share-art__link {
@@ -1290,6 +1355,12 @@ main > h1,
   max-height: min(22rem, 52vh);
   overflow: hidden;
   background: linear-gradient(165deg, var(--quant-blue-wash), var(--surface));
+}
+
+.hero-door-mark .hero-share-art__media {
+  aspect-ratio: auto;
+  max-height: none;
+  background: transparent;
 }
 
 .hero-share-art__link:focus-visible {
@@ -1383,6 +1454,19 @@ main > h1,
 
   .pathway-deck h2 {
     font-size: 1.5rem;
+  }
+
+  .hero-proof {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .hero-door-mark {
+    max-width: 12.5rem;
+    margin-left: auto;
+    margin-right: 0;
   }
 }
 

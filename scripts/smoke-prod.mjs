@@ -3,8 +3,8 @@
 const BASE = process.env.SPT_SMOKE_URL || "https://simple-property.com";
 const EM = "\u2014";
 const paths = [
-  { name: "home", path: "/", need: ["Keep the clock", "Avoid penalties", "pathway-deck", "Pick your path", "hero-rotate", "hero-share-art", "spt-share-door.png", "simple-property.css?v=31", "viewport-fit=cover", "spt-atmosphere", "spt-weather", "spt-weather-mist", "spt-greystone-pilaster", "spt-door-monogram", "deposit-receipt", "40 units", "765 ILCS", "/feedback", "Deposit Desk · start free"], absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:", "link previews"] },
-  { name: "feedback", path: "/feedback", need: ["Suggest rulesets", "spt-feedback-form", "simple-property.css?v=31", "viewport-fit=cover"], absent: [EM] },
+  { name: "home", path: "/", need: ["Keep the clock", "Avoid penalties", "pathway-deck", "Pick your path", "hero-rotate", "hero-share-art", "spt-share-door.png", "simple-property.css?v=32", "viewport-fit=cover", "spt-atmosphere", "spt-weather", "spt-weather-mist", "spt-greystone-pilaster", "spt-door-monogram", "deposit-receipt", "40 units", "765 ILCS", "/feedback", "Deposit Desk · start free"], absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:", "link previews"] },
+  { name: "feedback", path: "/feedback", need: ["Suggest rulesets", "spt-feedback-form", "simple-property.css?v=32", "viewport-fit=cover"], absent: [EM] },
   { name: "pricing", path: "/pricing", need: ["pricing-finder", "pricing-cards", "pf-units", "40 units", "Print / Save as PDF"], absent: [EM] },
   { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance"], absent: [] },
   { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Keep the clock"], absent: ["Homestead", EM] },
