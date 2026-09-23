@@ -5,7 +5,7 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BRAND_TAG, localeNavEntries } from "../web/lib/brand-locale.mjs";
+import { BRAND_TAG, localeNavEntries, COVERAGE_MAP_XY } from "../web/lib/brand-locale.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -59,6 +59,9 @@ let nav = readFileSync(navPath, "utf8");
 const localesJson = JSON.stringify(localeNavEntries(), null, 2).replace(/\n/g, "\n  ");
 const localesBlock = `  var LOCALES = ${localesJson.replace(/^  /, "")};`;
 nav = nav.replace(/  var LOCALES = \[[\s\S]*?\];/, localesBlock);
+const mapJson = JSON.stringify(COVERAGE_MAP_XY, null, 2).replace(/\n/g, "\n  ");
+const mapBlock = `  var MAP_XY = ${mapJson.replace(/^  /, "")};`;
+nav = nav.replace(/  var MAP_XY = \{[\s\S]*?\};/, mapBlock);
 writeFileSync(navPath, nav);
 
 const auditBrand = join(root, "scripts/audit-brand-shell.mjs");

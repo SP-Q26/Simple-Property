@@ -24,6 +24,7 @@
     "audit:pricing": "node scripts/audit-pricing.mjs",
     "audit:em-dash": "node scripts/audit-em-dash.mjs",
     "audit:visual": "node scripts/audit-visual-brand.mjs",
+    "audit:ios": "node scripts/audit-ios-brand-spacing.mjs",
     "audit:mobile": "node scripts/audit-mobile-responsive.mjs",
     "smoke:prod": "node scripts/smoke-prod.mjs",
     "smoke:checkout": "node scripts/smoke-checkout-live.mjs",

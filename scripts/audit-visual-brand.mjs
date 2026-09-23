@@ -23,7 +23,7 @@ const pricing = read("pricing.html");
 const index = read("index.html");
 const app = read("app.js");
 
-need("css v22 on home", index.includes("simple-property.css?v=22"));
+need("css v24 on home", index.includes("simple-property.css?v=24"));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
 need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
 need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));
@@ -34,7 +34,7 @@ need("metal door panel", css.includes("#454b52") && css.includes(".spt-door-swin
 need("weather mist layer", css.includes(".spt-weather-mist"));
 need("regal SP swing door", css.includes(".spt-door-swing") && css.includes(".spt-door-monogram") && index.includes("spt-greystone-pilaster"));
 need("weather speckle layer", css.includes(".spt-weather") && index.includes("spt-weather-mist"));
-need("locale bar styles", css.includes(".locale-bar") && css.includes(".locale-pill"));
+need("locale bar + coverage map", css.includes(".locale-bar") && css.includes(".coverage-map__dot--45"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
 need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
 need("pricing wide layout", css.includes(".pricing-page"));

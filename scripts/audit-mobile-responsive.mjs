@@ -59,7 +59,7 @@ need("css skip link", css.includes(".skip-link"));
 need("app wizard steps wrap", css.includes(".wizard-steps") && css.includes("flex-wrap"));
 need("header nav wraps", css.includes(".header-nav") && css.includes("flex-wrap"));
 need("pricing finder stacks on mobile", css.includes(".pricing-finder__grid"));
-need("locale bar mobile", css.includes(".locale-pill__name") && css.includes("locale-bar"));
+need("locale bar mobile", css.includes(".coverage-map") && css.includes("locale-bar"));
 need("css weather speckle", css.includes(".spt-weather") && css.includes("spt-weather-drift"));
 need("css weather mist", css.includes(".spt-weather-mist"));
 need("css greystone brick", css.includes(".spt-greystone-pilaster"));

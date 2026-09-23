@@ -83,7 +83,7 @@ function postsForState(code) {
 
 let stateSections = `\n      <section class="guides-hub" aria-labelledby="guides-by-state">\n`;
 stateSections += `        <h2 id="guides-by-state">Guides by state</h2>\n`;
-stateSections += `        <p class="muted">Jump from the bar above or pick a state · not legal advice.</p>\n`;
+  stateSections += `        <p class="muted">Jump from the map above or scroll · not legal advice.</p>\n`;
 for (const code of stateOrder) {
   const list = postsForState(code);
   const label = stateLabels[code] || code;
