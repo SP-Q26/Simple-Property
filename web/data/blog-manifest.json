@@ -970,6 +970,37 @@
       "statutes": []
     },
     {
+      "slug": "deposit-documentation-tax-deduction-landlords",
+      "title": "Tax write-off bucket for deposit documentation tools · landlords",
+      "description": "Schedule E, ordinary rental expenses, Pro vs per-turn, pass-through fees vs landlord-paid. Compliance cost framing · CPA required. Not tax advice.",
+      "category": "landlord",
+      "intent": "fees",
+      "states": [
+        "IL",
+        "IN",
+        "OH",
+        "MI",
+        "IA",
+        "MO",
+        "DC",
+        "GA",
+        "LA",
+        "MD",
+        "MS",
+        "NC",
+        "ND",
+        "NH",
+        "NJ",
+        "NV",
+        "UT",
+        "VA",
+        "WA"
+      ],
+      "published": "2026-09-23",
+      "updated": "2026-09-23",
+      "statutes": []
+    },
+    {
       "slug": "pet-deposits-security-deposit-midwest",
       "title": "Pet deposits, pet rent, and security deposit withholds",
       "description": "Separate pet charges from damage deductions at move-out. Midwest small landlords. Not legal advice.",
