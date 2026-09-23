@@ -4,3 +4,4 @@ web/node_modules/
 web/.vercel
 web/.env
 web/.env.*
+.tmp-statutes/
