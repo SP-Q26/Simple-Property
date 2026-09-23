@@ -60,6 +60,7 @@ need("app wizard steps wrap", css.includes(".wizard-steps") && css.includes("fle
 need("header nav wraps", css.includes(".header-nav") && css.includes("flex-wrap"));
 need("pricing finder stacks on mobile", css.includes(".pricing-finder__grid"));
 need("locale bar mobile", css.includes(".coverage-bubbles") && css.includes("locale-bar"));
+need("locale bar breakpoint gates", css.includes("@media (min-width: 900px)") && css.includes(".coverage-bubbles__track"));
 need("css weather speckle", css.includes(".spt-weather") && css.includes("spt-weather-drift"));
 need("css weather mist", css.includes(".spt-weather-mist"));
 need("css greystone brick", css.includes(".spt-greystone-pilaster"));

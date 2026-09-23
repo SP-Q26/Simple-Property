@@ -176,7 +176,7 @@
     a.href = href;
     a.setAttribute("data-code", loc.code);
     a.textContent = loc.code;
-    a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day · wrong clock costs");
+    a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day return · missed clock costs more");
     wireAppPreset(a, loc.code);
     parent.appendChild(a);
   }
@@ -185,24 +185,13 @@
     var wrap = document.createElement("div");
     wrap.className = "locale-bar__map-wrap";
 
-    var head = document.createElement("div");
-    head.className = "locale-bar__map-head";
-
-    var kicker = document.createElement("p");
-    kicker.className = "locale-bar__kicker field-hint";
-    kicker.textContent = onBlog
-      ? "One missed window or thin itemization costs more than tool fees · tap your state."
-      : "Wrong color = wrong deadline · tap your state before turnover.";
-    head.appendChild(kicker);
-
     var legend = document.createElement("div");
     legend.className = "coverage-map__legend";
     legend.innerHTML =
       '<span class="coverage-map__key coverage-map__key--30">30-day</span>' +
       '<span class="coverage-map__key coverage-map__key--45">45-day</span>' +
-      '<span class="coverage-map__key coverage-map__key--muted">Color bar · scroll · tap</span>';
-    head.appendChild(legend);
-    wrap.appendChild(head);
+      '<span class="coverage-map__key coverage-map__key--muted">Tap your state</span>';
+    wrap.appendChild(legend);
 
     var plate = document.createElement("div");
     plate.className = "coverage-bubbles coverage-bubbles--strip";

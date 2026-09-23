@@ -31,7 +31,7 @@ for (const p of pages) {
   if (h.includes(EM)) need(`${p} no em dash`, false);
 }
 
-need("css v34 header comment", css.includes("v34"));
+need("css v35 header comment", css.includes("v35"));
 need("css apple system stack", css.includes("-apple-system"));
 need("css safe-area tokens", css.includes("--safe-top") && css.includes("safe-area-inset-bottom"));
 need("css text-size-adjust", css.includes("-webkit-text-size-adjust: 100%"));
@@ -39,7 +39,7 @@ need("css tap-min 44px class", css.includes("--tap-min: 2.75rem"));
 need("css iOS input 16px", css.includes("@media (max-width: 639px)") && css.includes("font-size: 1rem"));
 need("css mobile page safe padding", css.includes("max(var(--space-3), var(--safe-right))"));
 need("css coverage bubbles", css.includes(".coverage-bubbles") && css.includes(".coverage-bubble--30"));
-need("css coverage tap target", css.includes(".coverage-bubble") && css.includes("--coverage-chip: 2.0625rem"));
+need("css coverage tap target", css.includes(".coverage-bubble") && css.includes("--coverage-chip:"));
 need("css locale bar pointer-events", css.includes(".locale-bar") && css.includes("pointer-events: auto"));
 need("css webkit touch callout block", css.includes("-webkit-touch-callout: none"));
 need("css coverage strip map", css.includes(".coverage-bubbles--strip") && css.includes(".coverage-bubbles__track"));

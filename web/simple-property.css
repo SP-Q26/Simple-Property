@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v34 · Source Sans + Source Serif */
+/* Simple Property Tools · Deposit Desk · v35 · locale bar breakpoints */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -599,28 +599,25 @@ main > h1,
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .locale-bar__map-head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.25rem;
-  min-width: 0;
+  display: none;
 }
 
 .locale-bar__kicker {
-  margin: 0;
-  max-width: 22rem;
-  line-height: 1.35;
+  display: none;
 }
 
 .coverage-map__legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.75rem;
+  gap: 0.25rem 0.45rem;
   align-items: center;
+  margin: 0;
+  font-size: 0.5625rem;
+  color: var(--muted);
 }
 
 .coverage-bubbles {
@@ -642,17 +639,17 @@ main > h1,
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.25rem;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
-  padding: 0.125rem 0 0.25rem;
+  padding: 0.0625rem 0 0.125rem;
   scrollbar-width: thin;
 }
 
 .coverage-bubble {
-  --coverage-chip: 2.0625rem;
+  --coverage-chip: 1.8125rem;
   position: relative;
   left: auto;
   top: auto;
@@ -662,10 +659,10 @@ main > h1,
   min-width: var(--coverage-chip);
   min-height: var(--coverage-chip);
   padding: 0;
-  border-radius: var(--radius-sm);
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  border-radius: 0.3rem;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1;
   text-decoration: none;
   display: inline-flex;
@@ -674,7 +671,7 @@ main > h1,
   cursor: pointer;
   touch-action: manipulation;
   z-index: 1;
-  border: 1px solid color-mix(in srgb, var(--ink) 10%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, var(--border));
   box-shadow: none;
   color: var(--ink);
   flex: 0 0 auto;
@@ -684,32 +681,57 @@ main > h1,
 
 @media (min-width: 640px) {
   .locale-bar {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
 
   .locale-bar__label {
     flex: 0 0 auto;
+    padding-top: 0.15rem;
   }
 
   .locale-bar__map-wrap {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-2);
-  }
-
-  .locale-bar__map-head {
-    flex: 0 0 auto;
-    order: 2;
+    flex: 1 1 18rem;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .coverage-bubbles--strip {
-    flex: 1 1 auto;
-    order: 1;
-    min-width: 0;
+    width: 100%;
   }
 
   .coverage-map__legend {
     margin: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .coverage-bubbles__track {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    overflow-y: visible;
+    row-gap: 0.2rem;
+    column-gap: 0.25rem;
+  }
+
+  .coverage-bubble {
+    --coverage-chip: 1.6875rem;
+    font-size: 0.53125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .locale-bar {
+    gap: var(--space-2) var(--space-3);
+    padding-bottom: var(--space-2);
+  }
+
+  .locale-bar__label {
+    font-size: 0.78125rem;
+  }
+
+  .coverage-bubbles__track {
+    max-width: 100%;
   }
 }
 
@@ -747,19 +769,6 @@ main > h1,
   outline: 2px solid var(--quant-blue);
   outline-offset: 1px;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--quant-blue) 25%, transparent);
-}
-
-.coverage-map__legend {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 0.35rem 0.55rem;
-  margin: 0;
-  font-size: 0.625rem;
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .coverage-map__key {
@@ -2485,6 +2494,21 @@ textarea {
   .guides-hub > h2 {
     margin-top: var(--space-6);
   }
+
+  .locale-bar__map-wrap {
+    flex: 1 1 100%;
+  }
+
+  .coverage-bubbles__track {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.28rem;
+  }
+
+  .coverage-bubble {
+    --coverage-chip: 1.75rem;
+    font-size: 0.5625rem;
+  }
 }
 
 .launch-live {
@@ -2741,6 +2765,7 @@ textarea {
   .locale-bar__label {
     flex: 1 1 100%;
     font-size: 0.75rem;
+    line-height: 1.3;
   }
 
   .locale-bar__map-wrap {
@@ -2749,7 +2774,19 @@ textarea {
   }
 
   .coverage-bubbles__track {
-    gap: 0.3rem;
+    gap: 0.35rem;
+    padding-bottom: 0.125rem;
+  }
+
+  .coverage-bubble {
+    --coverage-chip: var(--tap-min);
+    font-size: 0.6875rem;
+    letter-spacing: 0.03em;
+  }
+
+  .coverage-map__legend {
+    font-size: 0.625rem;
+    gap: 0.2rem 0.4rem;
   }
 
   .hero-share-art {

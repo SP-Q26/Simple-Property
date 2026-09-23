@@ -46,10 +46,10 @@ need("index pain blocks", painFixCount(index).problems >= 3 && painFixCount(inde
 need("index loss framing", LOSS.test(index));
 
 need("sp-nav color strip", nav.includes("coverage-bubbles--strip"));
-need("sp-nav locale pain kicker", nav.includes("locale-bar__kicker"));
-need("sp-nav legend mentions color bar", nav.includes("Color bar · scroll · tap"));
+need("sp-nav no wrong color kicker", !/Wrong color\s*=/.test(nav));
+need("sp-nav legend tap state", nav.includes("Tap your state"));
 need("sp-nav buildCoverageMap not geographic map copy", !nav.includes("Tap the map") && !nav.includes("state map"));
-need("sp-nav loss in kicker", LOSS.test(nav));
+need("sp-nav loss in locale bar", LOSS.test(nav));
 
 need("blog index loss or pain hub", /pain|missed|dispute/i.test(blogIndex));
 need("app.html pain + fix", appHtml.includes("ps-problem") && appHtml.includes("ps-fix"));

@@ -9,7 +9,7 @@ export const BRAND_TAG = `Itemize it. Date it. Keep the clock. · Founded in Chi
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 34;
+export const CSS_VERSION = 35;
 export const FONT_GOOGLE =
   "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap";
 export const FONT_LINK_HTML = `  <link rel="preconnect" href="https://fonts.googleapis.com">

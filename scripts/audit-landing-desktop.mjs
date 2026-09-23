@@ -30,7 +30,7 @@ need("home JSON-LD SoftwareApplication url", index.includes('"url": "https://sim
 need("home JSON-LD WebSite", index.includes('"@type": "WebSite"'));
 need("css display + UI fonts", css.includes("--font-display") && css.includes("Source Serif 4"));
 need("css desktop landing block", css.includes(".page > main .hero") && css.includes("text-wrap: balance"));
-need("css v34 header comment", css.includes("v34"));
+need("css v35 header comment", css.includes("v35"));
 need("home no tap the map", !index.includes("Tap the map"));
 need("home color bar coverage", /color bar/i.test(index));
 
