@@ -5,11 +5,11 @@
 import { readFileSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { BRAND_TAG } from "../web/lib/brand-locale.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
 const EM = "\u2014";
-const BRAND_TAG = "Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO";
 let fail = 0;
 
 function need(label, ok) {

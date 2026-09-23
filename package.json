@@ -28,9 +28,11 @@
     "smoke:prod": "node scripts/smoke-prod.mjs",
     "smoke:checkout": "node scripts/smoke-checkout-live.mjs",
     "smoke:extended": "node scripts/smoke-prod-extended.mjs",
-    "smoke:full": "node scripts/audit-spt-web.mjs && node scripts/smoke-prod.mjs && node scripts/smoke-prod-extended.mjs && node scripts/smoke-checkout-live.mjs",
+    "smoke:states-blogs": "node scripts/smoke-prod-states-blogs.mjs",
+    "smoke:full": "node scripts/audit-spt-web.mjs && node scripts/smoke-prod.mjs && node scripts/smoke-prod-extended.mjs && node scripts/smoke-prod-states-blogs.mjs && node scripts/smoke-checkout-live.mjs",
     "sync-chrome": "node scripts/sync-site-chrome.mjs",
     "sync:seo": "node scripts/export-og-share-images.mjs && node scripts/sync-social-meta.mjs",
+    "sync:locale": "node scripts/sync-brand-locale.mjs",
     "audit:social": "node scripts/audit-social-share.mjs"
   },
   "engines": {

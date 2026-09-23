@@ -1,280 +1,280 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Simple Property Tools · Midwest deposit guides</title>
+<title>Simple Property Tools · deposit guides</title>
 <link>https://simple-property.com/blog</link>
 <description>State and topic guides for IL, IN, OH, MI, IA, MO landlords and renters. Not legal advice.</description>
 <language>en-us</language>
 <atom:link href="https://simple-property.com/blog/feed.rss" rel="self" type="application/rss+xml"/>
 <item>
-<title>Application fees vs security deposits (Midwest renters and landlords)</title>
-<link>https://simple-property.com/blog/application-fees-vs-security-deposit-midwest</link>
-<guid isPermaLink="true">https://simple-property.com/blog/application-fees-vs-security-deposit-midwest</guid>
+<title>Missouri STL and KC deposit clocks on the same spreadsheet</title>
+<link>https://simple-property.com/blog/missouri-stl-kc-deposit-clock-two-market</link>
+<guid isPermaLink="true">https://simple-property.com/blog/missouri-stl-kc-deposit-clock-two-market</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Screening charges before lease signing are not move-out deposit returns. Plain-language split for IL · IN · OH · MI · IA · MO. Not legal advice.</description>
-<category>Renters</category>
-<category>IL,IN,OH,MI,IA,MO</category>
-</item>
-<item>
-<title>Pet deposits, pet rent, and security deposit withholds</title>
-<link>https://simple-property.com/blog/pet-deposits-security-deposit-midwest</link>
-<guid isPermaLink="true">https://simple-property.com/blog/pet-deposits-security-deposit-midwest</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Separate pet charges from damage deductions at move-out. Midwest small landlords. Not legal advice.</description>
-<category>Landlords</category>
-<category>IL,IN,OH,MI,IA,MO</category>
-</item>
-<item>
-<title>Move-in and move-out fees vs the security deposit (Midwest)</title>
-<link>https://simple-property.com/blog/move-in-move-out-fees-midwest-landlords</link>
-<guid isPermaLink="true">https://simple-property.com/blog/move-in-move-out-fees-midwest-landlords</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Cleaning fees, admin charges, and pass-through documentation costs. Keep them separate from the deposit ledger. IL · IN · OH · MI · IA · MO. Not legal advice.</description>
-<category>Landlords</category>
-<category>IL,IN,OH,MI,IA,MO</category>
-</item>
-<item>
-<title>St. Louis deposit guide · Missouri operators</title>
-<link>https://simple-property.com/blog/st-louis-missouri-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/st-louis-missouri-deposit-local-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>St. Louis turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
+<description>Two-market operators mix surrender dates across units. RSMo 535.300. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
 <category>MO</category>
 </item>
 <item>
-<title>Kansas City deposit guide · Missouri operators</title>
-<link>https://simple-property.com/blog/kansas-city-missouri-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/kansas-city-missouri-deposit-local-guide</guid>
+<title>Iowa rural turnover and the missing surrender date</title>
+<link>https://simple-property.com/blog/iowa-rural-turnover-surrender-date-gap</link>
+<guid isPermaLink="true">https://simple-property.com/blog/iowa-rural-turnover-surrender-date-gap</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Kansas City turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>MO</category>
-</item>
-<item>
-<title>Iowa City deposit guide · Iowa operators</title>
-<link>https://simple-property.com/blog/iowa-city-iowa-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/iowa-city-iowa-deposit-local-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Iowa City turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
+<description>Small-town operators lose the deposit clock when keys hand off informally. Iowa Code 562A.12. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
 <category>IA</category>
 </item>
 <item>
-<title>Des Moines deposit guide · Iowa operators</title>
-<link>https://simple-property.com/blog/des-moines-iowa-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/des-moines-iowa-deposit-local-guide</guid>
+<title>Michigan deposit fight when normal wear is charged</title>
+<link>https://simple-property.com/blog/michigan-detroit-normal-wear-deposit-fight</link>
+<guid isPermaLink="true">https://simple-property.com/blog/michigan-detroit-normal-wear-deposit-fight</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Des Moines turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>IA</category>
-</item>
-<item>
-<title>Grand Rapids deposit guide · Michigan operators</title>
-<link>https://simple-property.com/blog/grand-rapids-michigan-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/grand-rapids-michigan-deposit-local-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Grand Rapids turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
+<description>Detroit and Grand Rapids turns blur wear vs damage on the withhold sheet. MCL 554.610. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
 <category>MI</category>
 </item>
 <item>
-<title>Detroit deposit guide · Michigan operators</title>
-<link>https://simple-property.com/blog/detroit-michigan-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/detroit-michigan-deposit-local-guide</guid>
+<title>Ohio 30-day deposit mail after slow turnover vendors</title>
+<link>https://simple-property.com/blog/ohio-cleveland-columbus-turnover-mail-delay</link>
+<guid isPermaLink="true">https://simple-property.com/blog/ohio-cleveland-columbus-turnover-mail-delay</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Detroit turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>MI</category>
-</item>
-<item>
-<title>Cincinnati deposit guide · Ohio operators</title>
-<link>https://simple-property.com/blog/cincinnati-ohio-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/cincinnati-ohio-deposit-local-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Cincinnati turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
+<description>Vendor backlog pushes itemized mail past day 30. ORC 5321.16. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
 <category>OH</category>
 </item>
 <item>
-<title>Cleveland deposit guide · Ohio operators</title>
-<link>https://simple-property.com/blog/cleveland-ohio-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/cleveland-ohio-deposit-local-guide</guid>
+<title>Indiana 45-day clock vs lease end and forwarding address</title>
+<link>https://simple-property.com/blog/indiana-45-day-clock-forwarding-address-confusion</link>
+<guid isPermaLink="true">https://simple-property.com/blog/indiana-45-day-clock-forwarding-address-confusion</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Cleveland turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>OH</category>
-</item>
-<item>
-<title>Columbus deposit guide · Ohio operators</title>
-<link>https://simple-property.com/blog/columbus-ohio-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/columbus-ohio-deposit-local-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Columbus turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>OH</category>
-</item>
-<item>
-<title>Fort Wayne deposit guide · Indiana operators</title>
-<link>https://simple-property.com/blog/fort-wayne-indiana-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/fort-wayne-indiana-deposit-local-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Fort Wayne turnover: 45-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
+<description>Operators start the deposit timer on lease end instead of surrender. IC 32-31-3-12. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
 <category>IN</category>
 </item>
 <item>
-<title>Indianapolis deposit guide · Indiana operators</title>
-<link>https://simple-property.com/blog/indianapolis-indiana-deposit-local-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/indianapolis-indiana-deposit-local-guide</guid>
+<title>Washington security deposit checklist</title>
+<link>https://simple-property.com/blog/washington-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/washington-security-deposit-checklist</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Indianapolis turnover: 45-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>IN</category>
-</item>
-<item>
-<title>Evanston deposit guide · Illinois operators</title>
-<link>https://simple-property.com/blog/evanston-illinois-rental-deposit-guide</link>
-<guid isPermaLink="true">https://simple-property.com/blog/evanston-illinois-rental-deposit-guide</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Evanston turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.</description>
-<category>Major cities</category>
-<category>IL</category>
-</item>
-<item>
-<title>Missed deposit deadline stress  ·  Indiana, Ohio, Michigan, and neighbors</title>
-<link>https://simple-property.com/blog/missed-deposit-deadline-midwest-small-landlord</link>
-<guid isPermaLink="true">https://simple-property.com/blog/missed-deposit-deadline-midwest-small-landlord</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Small landlords across the Midwest confuse lease end with surrender. 30- and 45-day windows by state. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IN,OH,MI,IA,MO</category>
-</item>
-<item>
-<title>No move-in photos when the tenant fights the withhold  ·  Illinois</title>
-<link>https://simple-property.com/blog/forgot-move-in-photos-deposit-dispute-illinois</link>
-<guid isPermaLink="true">https://simple-property.com/blog/forgot-move-in-photos-deposit-dispute-illinois</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Recovery steps when move-in documentation was skipped. Prevention for the next lease. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>Excel deposit tracker mistakes at turnover (Illinois)</title>
-<link>https://simple-property.com/blog/excel-deposit-spreadsheet-mistakes-illinois</link>
-<guid isPermaLink="true">https://simple-property.com/blog/excel-deposit-spreadsheet-mistakes-illinois</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Wrong surrender cell, broken formulas, and no print packet when the tenant disputes. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>Pass-through deposit documentation fee (like screening)  ·  Illinois landlords</title>
-<link>https://simple-property.com/blog/pass-through-deposit-documentation-fee-illinois</link>
-<guid isPermaLink="true">https://simple-property.com/blog/pass-through-deposit-documentation-fee-illinois</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>How operators line-item move-in/move-out packet fees on the ledger. Disclosure and counsel review required. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>Lease ended but tenant still has keys  ·  when the deposit clock starts</title>
-<link>https://simple-property.com/blog/keys-not-returned-deposit-clock-illinois</link>
-<guid isPermaLink="true">https://simple-property.com/blog/keys-not-returned-deposit-clock-illinois</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Surrender date vs lease end date for 30/45-day Illinois deposit returns. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>One-line “cleaning fee” on a deposit return  ·  why it fails in Illinois</title>
-<link>https://simple-property.com/blog/one-line-cleaning-fee-deposit-illinois</link>
-<guid isPermaLink="true">https://simple-property.com/blog/one-line-cleaning-fee-deposit-illinois</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Single lump withhold vs itemized deductions under 765 ILCS 715/. Operator checklist. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>Tenant disputes the security deposit withhold  ·  Illinois operators</title>
-<link>https://simple-property.com/blog/tenant-disputes-security-deposit-illinois</link>
-<guid isPermaLink="true">https://simple-property.com/blog/tenant-disputes-security-deposit-illinois</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>When the tenant says pre-existing damage or normal wear. Move-in proof, itemization, and surrender date. Not legal advice.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>Missed the Illinois deposit deadline  ·  what landlords do next</title>
-<link>https://simple-property.com/blog/missed-illinois-deposit-deadline-what-now</link>
-<guid isPermaLink="true">https://simple-property.com/blog/missed-illinois-deposit-deadline-what-now</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Past 30 or 45 days after surrender? Practical documentation steps, not legal advice. 765 ILCS 715/ and Chicago RLTO context.</description>
-<category>Pain &amp; turnover</category>
-<category>IL</category>
-</item>
-<item>
-<title>Missouri security deposit checklist</title>
-<link>https://simple-property.com/blog/missouri-security-deposit-checklist</link>
-<guid isPermaLink="true">https://simple-property.com/blog/missouri-security-deposit-checklist</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Move-in through move-out for RSMo 535.300 discipline. Not legal advice.</description>
+<description>Move-in through move-out · RCW 59.18.280. Not legal advice.</description>
 <category>Landlords</category>
-<category>MO</category>
+<category>WA</category>
 </item>
 <item>
-<title>Missouri renter guide: security deposits</title>
-<link>https://simple-property.com/blog/missouri-renter-deposit-rights</link>
-<guid isPermaLink="true">https://simple-property.com/blog/missouri-renter-deposit-rights</guid>
+<title>Washington deposit itemization</title>
+<link>https://simple-property.com/blog/washington-deposit-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/washington-deposit-itemization</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>30-day window, itemization, and move-in records · RSMo 535.300. Not legal advice.</description>
-<category>Renters</category>
-<category>MO</category>
-</item>
-<item>
-<title>Missouri deposit itemization after move-out</title>
-<link>https://simple-property.com/blog/missouri-deposit-itemization</link>
-<guid isPermaLink="true">https://simple-property.com/blog/missouri-deposit-itemization</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Withhold lines and mailing habits · RSMo 535.300 · 30 days. Not legal advice.</description>
+<description>Written withhold lines · RCW 59.18.280. Not legal advice.</description>
 <category>Rules &amp; law</category>
-<category>MO</category>
+<category>WA</category>
 </item>
 <item>
-<title>Iowa security deposit checklist for landlords</title>
-<link>https://simple-property.com/blog/iowa-security-deposit-checklist</link>
-<guid isPermaLink="true">https://simple-property.com/blog/iowa-security-deposit-checklist</guid>
+<title>Washington 30-day deposit return window</title>
+<link>https://simple-property.com/blog/washington-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simple-property.com/blog/washington-30-day-deposit-deadline</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Move-in through move-out · Iowa Code 562A.12. Not legal advice.</description>
-<category>Landlords</category>
-<category>IA</category>
-</item>
-<item>
-<title>Iowa renters: security deposit return timeline</title>
-<link>https://simple-property.com/blog/iowa-renter-deposit-timeline</link>
-<guid isPermaLink="true">https://simple-property.com/blog/iowa-renter-deposit-timeline</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Plain facts on 30-day return and move-in proof · Iowa Code 562A.12. Not legal advice.</description>
-<category>Renters</category>
-<category>IA</category>
-</item>
-<item>
-<title>Iowa deposit itemization when you withhold</title>
-<link>https://simple-property.com/blog/iowa-deposit-itemization</link>
-<guid isPermaLink="true">https://simple-property.com/blog/iowa-deposit-itemization</guid>
-<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Written breakdown habits · Iowa Code 562A.12 · 30-day window. Not legal advice.</description>
+<description>30-day return default from surrender · RCW 59.18.280. Not legal advice.</description>
 <category>Rules &amp; law</category>
-<category>IA</category>
+<category>WA</category>
 </item>
 <item>
-<title>Michigan security deposit checklist</title>
-<link>https://simple-property.com/blog/michigan-security-deposit-checklist</link>
-<guid isPermaLink="true">https://simple-property.com/blog/michigan-security-deposit-checklist</guid>
+<title>Washington deposit withhold substantiation</title>
+<link>https://simple-property.com/blog/washington-deposit-invoices-substantiation</link>
+<guid isPermaLink="true">https://simple-property.com/blog/washington-deposit-invoices-substantiation</guid>
 <pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
-<description>Operator checklist aligned with MCL 554.610 and Deposit Desk. Not legal advice.</description>
+<description>Withholding requires detailed statements and backup. RCW 59.18.280. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
+<category>WA</category>
+</item>
+<item>
+<title>Virginia security deposit checklist</title>
+<link>https://simple-property.com/blog/virginia-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/virginia-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · Va. Code § 55.1-1226. Not legal advice.</description>
 <category>Landlords</category>
-<category>MI</category>
+<category>VA</category>
+</item>
+<item>
+<title>Virginia deposit itemization</title>
+<link>https://simple-property.com/blog/virginia-deposit-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/virginia-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written withhold lines · Va. Code § 55.1-1226. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>VA</category>
+</item>
+<item>
+<title>Virginia 45-day deposit return window</title>
+<link>https://simple-property.com/blog/virginia-45-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simple-property.com/blog/virginia-45-day-deposit-deadline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>45-day return default from surrender · Va. Code § 55.1-1226. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>VA</category>
+</item>
+<item>
+<title>Virginia 45-day itemization and mail proof</title>
+<link>https://simple-property.com/blog/virginia-45-day-itemization-mail-proof</link>
+<guid isPermaLink="true">https://simple-property.com/blog/virginia-45-day-itemization-mail-proof</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Late or thin itemization under Va. Code § 55.1-1226. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
+<category>VA</category>
+</item>
+<item>
+<title>Utah security deposit checklist</title>
+<link>https://simple-property.com/blog/utah-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/utah-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · Utah Code § 57-17-3. Not legal advice.</description>
+<category>Landlords</category>
+<category>UT</category>
+</item>
+<item>
+<title>Utah deposit itemization</title>
+<link>https://simple-property.com/blog/utah-deposit-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/utah-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written withhold lines · Utah Code § 57-17-3. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>UT</category>
+</item>
+<item>
+<title>Utah 30-day deposit return window</title>
+<link>https://simple-property.com/blog/utah-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simple-property.com/blog/utah-30-day-deposit-deadline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>30-day return default from surrender · Utah Code § 57-17-3. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>UT</category>
+</item>
+<item>
+<title>Utah missed deposit deadline and penalty notices</title>
+<link>https://simple-property.com/blog/utah-missed-deposit-deadline-penalty-track</link>
+<guid isPermaLink="true">https://simple-property.com/blog/utah-missed-deposit-deadline-penalty-track</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Tenants can trigger a short penalty track after a missed deadline. Utah Code § 57-17-3. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
+<category>UT</category>
+</item>
+<item>
+<title>Nevada security deposit checklist</title>
+<link>https://simple-property.com/blog/nevada-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/nevada-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · NRS 118A.242. Not legal advice.</description>
+<category>Landlords</category>
+<category>NV</category>
+</item>
+<item>
+<title>Nevada deposit itemization</title>
+<link>https://simple-property.com/blog/nevada-deposit-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/nevada-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written withhold lines · NRS 118A.242. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>NV</category>
+</item>
+<item>
+<title>Nevada 30-day deposit return window</title>
+<link>https://simple-property.com/blog/nevada-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simple-property.com/blog/nevada-30-day-deposit-deadline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>30-day return default from surrender · NRS 118A.242. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>NV</category>
+</item>
+<item>
+<title>Nevada return and itemization in the same mailing</title>
+<link>https://simple-property.com/blog/nevada-return-and-itemization-same-mailing</link>
+<guid isPermaLink="true">https://simple-property.com/blog/nevada-return-and-itemization-same-mailing</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>NRS 118A.242 expects accounting with the balance. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
+<category>NV</category>
+</item>
+<item>
+<title>New Jersey security deposit checklist</title>
+<link>https://simple-property.com/blog/new-jersey-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-jersey-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · N.J.S.A. 46:8-21.1. Not legal advice.</description>
+<category>Landlords</category>
+<category>NJ</category>
+</item>
+<item>
+<title>New Jersey deposit itemization</title>
+<link>https://simple-property.com/blog/new-jersey-deposit-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-jersey-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written withhold lines · N.J.S.A. 46:8-21.1. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>NJ</category>
+</item>
+<item>
+<title>New Jersey 30-day deposit return window</title>
+<link>https://simple-property.com/blog/new-jersey-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-jersey-30-day-deposit-deadline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>30-day return default from surrender · N.J.S.A. 46:8-21.1. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>NJ</category>
+</item>
+<item>
+<title>New Jersey move-in disclosure vs return clock confusion</title>
+<link>https://simple-property.com/blog/new-jersey-disclosure-clock-vs-return-clock</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-jersey-disclosure-clock-vs-return-clock</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Two different 30-day habits in one statute chapter. N.J.S.A. 46:8-21.1. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
+<category>NJ</category>
+</item>
+<item>
+<title>New Hampshire security deposit checklist</title>
+<link>https://simple-property.com/blog/new-hampshire-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-hampshire-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · RSA 540-A:7. Not legal advice.</description>
+<category>Landlords</category>
+<category>NH</category>
+</item>
+<item>
+<title>New Hampshire deposit itemization</title>
+<link>https://simple-property.com/blog/new-hampshire-deposit-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-hampshire-deposit-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Written withhold lines · RSA 540-A:7. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>NH</category>
+</item>
+<item>
+<title>New Hampshire 30-day deposit return window</title>
+<link>https://simple-property.com/blog/new-hampshire-30-day-deposit-deadline</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-hampshire-30-day-deposit-deadline</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>30-day return default from surrender · RSA 540-A:7. Not legal advice.</description>
+<category>Rules &amp; law</category>
+<category>NH</category>
+</item>
+<item>
+<title>New Hampshire deposit interest and itemization</title>
+<link>https://simple-property.com/blog/new-hampshire-deposit-interest-itemization</link>
+<guid isPermaLink="true">https://simple-property.com/blog/new-hampshire-deposit-interest-itemization</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Returning principal without interest math invites disputes. RSA 540-A:7. Not legal advice.</description>
+<category>Pain &amp; turnover</category>
+<category>NH</category>
+</item>
+<item>
+<title>North Dakota security deposit checklist</title>
+<link>https://simple-property.com/blog/north-dakota-security-deposit-checklist</link>
+<guid isPermaLink="true">https://simple-property.com/blog/north-dakota-security-deposit-checklist</guid>
+<pubDate>Tue, 22 Sep 2026 12:00:00 GMT</pubDate>
+<description>Move-in through move-out · N.D.C.C. § 47-16-07.1. Not legal advice.</description>
+<category>Landlords</category>
+<category>ND</category>
 </item>
 </channel>
 </rss>

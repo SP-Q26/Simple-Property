@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://simple-property.com/</loc></url>
   <url><loc>https://simple-property.com/pricing</loc></url>
+  <url><loc>https://simple-property.com/pricing</loc></url>
+  <url><loc>https://simple-property.com/feedback</loc></url>
   <url><loc>https://simple-property.com/app</loc></url>
   <url><loc>https://simple-property.com/logs</loc></url>
   <url><loc>https://simple-property.com/blog</loc></url>
@@ -9,7 +11,6 @@
   <url><loc>https://simple-property.com/terms</loc></url>
   <url><loc>https://simple-property.com/legal</loc></url>
   <url><loc>https://simple-property.com/launch-stack</loc></url>
-  <url><loc>https://simple-property.com/feedback</loc></url>
   <url><loc>https://simple-property.com/blog/illinois-security-deposit-checklist</loc></url>
   <url><loc>https://simple-property.com/blog/chicago-45-day-deposit-deadline</loc></url>
   <url><loc>https://simple-property.com/blog/illinois-deposit-itemization</loc></url>
@@ -70,4 +71,61 @@
   <url><loc>https://simple-property.com/blog/move-in-move-out-fees-midwest-landlords</loc></url>
   <url><loc>https://simple-property.com/blog/pet-deposits-security-deposit-midwest</loc></url>
   <url><loc>https://simple-property.com/blog/application-fees-vs-security-deposit-midwest</loc></url>
+  <url><loc>https://simple-property.com/blog/dc-rhca-deposit-clock-rowhouse-investor</loc></url>
+  <url><loc>https://simple-property.com/blog/dc-45-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/dc-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/dc-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/georgia-cleaning-fee-lump-sum-deposit</loc></url>
+  <url><loc>https://simple-property.com/blog/georgia-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/georgia-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/georgia-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/louisiana-withhold-without-itemized-accounting</loc></url>
+  <url><loc>https://simple-property.com/blog/louisiana-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/louisiana-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/louisiana-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/maryland-45-day-belt-investor-missed-clock</loc></url>
+  <url><loc>https://simple-property.com/blog/maryland-45-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/maryland-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/maryland-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/mississippi-possession-still-occupied-deposit</loc></url>
+  <url><loc>https://simple-property.com/blog/mississippi-45-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/mississippi-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/mississippi-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/north-carolina-interim-30-final-60-deposit</loc></url>
+  <url><loc>https://simple-property.com/blog/north-carolina-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/north-carolina-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/north-carolina-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/north-dakota-pet-deposit-vs-security-deposit</loc></url>
+  <url><loc>https://simple-property.com/blog/north-dakota-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/north-dakota-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/north-dakota-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/new-hampshire-deposit-interest-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/new-hampshire-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/new-hampshire-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/new-hampshire-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/new-jersey-disclosure-clock-vs-return-clock</loc></url>
+  <url><loc>https://simple-property.com/blog/new-jersey-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/new-jersey-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/new-jersey-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/nevada-return-and-itemization-same-mailing</loc></url>
+  <url><loc>https://simple-property.com/blog/nevada-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/nevada-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/nevada-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/utah-missed-deposit-deadline-penalty-track</loc></url>
+  <url><loc>https://simple-property.com/blog/utah-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/utah-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/utah-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/virginia-45-day-itemization-mail-proof</loc></url>
+  <url><loc>https://simple-property.com/blog/virginia-45-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/virginia-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/virginia-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/washington-deposit-invoices-substantiation</loc></url>
+  <url><loc>https://simple-property.com/blog/washington-30-day-deposit-deadline</loc></url>
+  <url><loc>https://simple-property.com/blog/washington-deposit-itemization</loc></url>
+  <url><loc>https://simple-property.com/blog/washington-security-deposit-checklist</loc></url>
+  <url><loc>https://simple-property.com/blog/indiana-45-day-clock-forwarding-address-confusion</loc></url>
+  <url><loc>https://simple-property.com/blog/ohio-cleveland-columbus-turnover-mail-delay</loc></url>
+  <url><loc>https://simple-property.com/blog/michigan-detroit-normal-wear-deposit-fight</loc></url>
+  <url><loc>https://simple-property.com/blog/iowa-rural-turnover-surrender-date-gap</loc></url>
+  <url><loc>https://simple-property.com/blog/missouri-stl-kc-deposit-clock-two-market</loc></url>
 </urlset>

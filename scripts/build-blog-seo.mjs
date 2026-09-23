@@ -156,7 +156,7 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<meta name="description" content="[^"]*">/,
-  `<meta name="description" content="Major city deposit guides, missed deadlines, tenant disputes, fees, pets, and Midwest state law. Not legal advice.">`
+  `<meta name="description" content="State and city deposit guides, missed deadlines, tenant disputes, and itemization. 18 states + DC. Not legal advice.">`
 );
 indexHtml = indexHtml.replace(
   /<title>[^<]*<\/title>/,
@@ -164,14 +164,14 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<p class="hero-lead">[^<]*<\/p>/,
-  `<p class="hero-lead">City guides · missed deadlines · fees and pets · spreadsheet traps · Midwest state law. Not legal advice.</p>`
+  `<p class="hero-lead">City guides · missed deadlines · fees and pets · spreadsheet traps · state law by wizard pack. Not legal advice.</p>`
 );
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");
 
 const sorted = [...manifest.posts].sort((a, b) => (a.published < b.published ? 1 : -1));
 let rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n`;
-rss += `<title>Simple Property Tools · Midwest deposit guides</title>\n`;
+rss += `<title>Simple Property Tools · deposit guides</title>\n`;
 rss += `<link>${site}/blog</link>\n`;
 rss += `<description>State and topic guides for IL, IN, OH, MI, IA, MO landlords and renters. Not legal advice.</description>\n`;
 rss += `<language>en-us</language>\n`;
@@ -192,6 +192,8 @@ console.log("wrote blog/feed.rss");
 const staticUrls = [
   `${site}/`,
   `${site}/pricing`,
+  `${site}/pricing`,
+  `${site}/feedback`,
   `${site}/app`,
   `${site}/logs`,
   `${site}/blog`,

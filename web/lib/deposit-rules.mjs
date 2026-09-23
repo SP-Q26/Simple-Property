@@ -12,12 +12,29 @@ import {
 
 export { citySelectOptions, cityPresetHint, normalizeCityPresetId, inChicagoFromPreset } from "./city-overlays.mjs";
 
-export const SUPPORTED_STATES = ["IL", "IN", "OH", "MI", "IA", "MO"];
-
-/** @typedef {{ code: string, label: string, returnDays: number, cite: string, chicagoOverlay?: boolean }} StatePack */
+/** @typedef {{ code: string, label: string, returnDays: number, cite: string, chicagoOverlay?: boolean, isDistrict?: boolean }} StatePack */
 
 /** @type {Record<string, StatePack>} */
 export const STATE_PACKS = {
+  DC: {
+    code: "DC",
+    label: "District of Columbia",
+    returnDays: 45,
+    cite: "D.C. Code § 42-3508.11",
+    isDistrict: true,
+  },
+  GA: {
+    code: "GA",
+    label: "Georgia",
+    returnDays: 30,
+    cite: "O.C.G.A. 44-7-34",
+  },
+  IA: {
+    code: "IA",
+    label: "Iowa",
+    returnDays: 30,
+    cite: "Iowa Code 562A.12",
+  },
   IL: {
     code: "IL",
     label: "Illinois",
@@ -31,11 +48,17 @@ export const STATE_PACKS = {
     returnDays: 45,
     cite: "IC 32-31-3-12 et seq.",
   },
-  OH: {
-    code: "OH",
-    label: "Ohio",
+  LA: {
+    code: "LA",
+    label: "Louisiana",
     returnDays: 30,
-    cite: "ORC 5321.16",
+    cite: "La. R.S. 9:3251",
+  },
+  MD: {
+    code: "MD",
+    label: "Maryland",
+    returnDays: 45,
+    cite: "Md. Real Prop. § 8-203",
   },
   MI: {
     code: "MI",
@@ -43,19 +66,75 @@ export const STATE_PACKS = {
     returnDays: 30,
     cite: "MCL 554.610",
   },
-  IA: {
-    code: "IA",
-    label: "Iowa",
-    returnDays: 30,
-    cite: "Iowa Code 562A.12",
-  },
   MO: {
     code: "MO",
     label: "Missouri",
     returnDays: 30,
     cite: "RSMo 535.300",
   },
+  MS: {
+    code: "MS",
+    label: "Mississippi",
+    returnDays: 45,
+    cite: "Miss. Code § 89-8-21",
+  },
+  NC: {
+    code: "NC",
+    label: "North Carolina",
+    returnDays: 30,
+    cite: "N.C.G.S. § 42-52",
+  },
+  ND: {
+    code: "ND",
+    label: "North Dakota",
+    returnDays: 30,
+    cite: "N.D.C.C. § 47-16-07.1",
+  },
+  NH: {
+    code: "NH",
+    label: "New Hampshire",
+    returnDays: 30,
+    cite: "RSA 540-A:7",
+  },
+  NJ: {
+    code: "NJ",
+    label: "New Jersey",
+    returnDays: 30,
+    cite: "N.J.S.A. 46:8-21.1",
+  },
+  NV: {
+    code: "NV",
+    label: "Nevada",
+    returnDays: 30,
+    cite: "NRS 118A.242",
+  },
+  OH: {
+    code: "OH",
+    label: "Ohio",
+    returnDays: 30,
+    cite: "ORC 5321.16",
+  },
+  UT: {
+    code: "UT",
+    label: "Utah",
+    returnDays: 30,
+    cite: "Utah Code § 57-17-3",
+  },
+  VA: {
+    code: "VA",
+    label: "Virginia",
+    returnDays: 45,
+    cite: "Va. Code § 55.1-1226",
+  },
+  WA: {
+    code: "WA",
+    label: "Washington",
+    returnDays: 30,
+    cite: "RCW 59.18.280",
+  },
 };
+
+export const SUPPORTED_STATES = Object.keys(STATE_PACKS).sort();
 
 export const IL_STATE_RETURN_DAYS = STATE_PACKS.IL.returnDays;
 export const CHICAGO_RETURN_DAYS = 45;

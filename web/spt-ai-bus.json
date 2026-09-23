@@ -5,8 +5,8 @@
   "company": "Simple Property Tools",
   "site": "https://simple-property.com",
   "contact": "hello@simple-property.com",
-  "hook": "Hit the Illinois deposit return deadline.",
-  "lane": "765 ILCS 715/ · Chicago RLTO · itemized withholding · print packet",
+  "hook": "Hit the deposit return deadline · 18 states + DC.",
+  "lane": "765 ILCS 715/ · 30/45-day packs · Chicago RLTO · itemized withholding · print packet",
   "door_tiers": {
     "rough_1_10": "Deposit Desk · separate bank · cloud files · calendar · screening per lease",
     "systems_10_20": "ledger · light PM · eSign · maintenance log · SOP",

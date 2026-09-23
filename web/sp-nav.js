@@ -2,12 +2,120 @@
   "use strict";
 
   var LOCALES = [
-    { code: "IL", name: "Illinois", blog: "/blog#locale-IL", app: "/app?state=IL" },
-    { code: "IN", name: "Indiana", blog: "/blog#locale-IN", app: "/app?state=IN" },
-    { code: "OH", name: "Ohio", blog: "/blog#locale-OH", app: "/app?state=OH" },
-    { code: "MI", name: "Michigan", blog: "/blog#locale-MI", app: "/app?state=MI" },
-    { code: "IA", name: "Iowa", blog: "/blog#locale-IA", app: "/app?state=IA" },
-    { code: "MO", name: "Missouri", blog: "/blog#locale-MO", app: "/app?state=MO" },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "blog": "/blog#locale-DC",
+      "app": "/app?state=DC"
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "blog": "/blog#locale-GA",
+      "app": "/app?state=GA"
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "blog": "/blog#locale-IA",
+      "app": "/app?state=IA"
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "blog": "/blog#locale-IL",
+      "app": "/app?state=IL"
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "blog": "/blog#locale-IN",
+      "app": "/app?state=IN"
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "blog": "/blog#locale-LA",
+      "app": "/app?state=LA"
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "blog": "/blog#locale-MD",
+      "app": "/app?state=MD"
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "blog": "/blog#locale-MI",
+      "app": "/app?state=MI"
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "blog": "/blog#locale-MO",
+      "app": "/app?state=MO"
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "blog": "/blog#locale-MS",
+      "app": "/app?state=MS"
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "blog": "/blog#locale-NC",
+      "app": "/app?state=NC"
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "blog": "/blog#locale-ND",
+      "app": "/app?state=ND"
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "blog": "/blog#locale-NH",
+      "app": "/app?state=NH"
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "blog": "/blog#locale-NJ",
+      "app": "/app?state=NJ"
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "blog": "/blog#locale-NV",
+      "app": "/app?state=NV"
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "blog": "/blog#locale-OH",
+      "app": "/app?state=OH"
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "blog": "/blog#locale-UT",
+      "app": "/app?state=UT"
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "blog": "/blog#locale-VA",
+      "app": "/app?state=VA"
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "blog": "/blog#locale-WA",
+      "app": "/app?state=WA"
+    }
   ];
 
   var path = location.pathname.replace(/\/$/, "") || "/";

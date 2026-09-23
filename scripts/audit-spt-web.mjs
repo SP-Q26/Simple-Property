@@ -52,6 +52,11 @@ const checks = [
 
 for (const [path, label] of checks) need(path, label);
 
+const r = spawnSync(process.execPath, [join(root, "scripts", "verify-deposit-states.mjs")], { stdio: "inherit" });
+if (r.status !== 0) {
+  fail++;
+}
+
 const nav = need("sp-nav.js", "locale bar nav");
 if (nav && !nav.includes("locale-bar")) {
   console.error("FAIL sp-nav.js must inject locale bar");
@@ -95,7 +100,7 @@ if (existsSync(join(web, "node_modules"))) {
 
 console.log(fail ? `Audit FAILED (${fail} P0)` : "Audit OK · proud-ship P0 gates pass");
 if (!fail) {
-  for (const script of ["audit-brand-shell.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs"]) {
+  for (const script of ["audit-brand-shell.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-state-blog-coverage.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs"]) {
     const r = spawnSync(process.execPath, [join(root, "scripts", script)], { stdio: "inherit" });
     if (r.status !== 0) process.exit(1);
   }

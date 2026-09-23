@@ -2,20 +2,46 @@
   "site": "https://simple-property.com",
   "feedPath": "/blog/feed.rss",
   "stateOrder": [
+    "DC",
+    "GA",
+    "IA",
     "IL",
     "IN",
-    "OH",
+    "LA",
+    "MD",
     "MI",
-    "IA",
-    "MO"
+    "MO",
+    "MS",
+    "NC",
+    "ND",
+    "NH",
+    "NJ",
+    "NV",
+    "OH",
+    "UT",
+    "VA",
+    "WA"
   ],
   "stateLabels": {
+    "DC": "District of Columbia",
+    "GA": "Georgia",
+    "IA": "Iowa",
     "IL": "Illinois",
     "IN": "Indiana",
-    "OH": "Ohio",
+    "LA": "Louisiana",
+    "MD": "Maryland",
     "MI": "Michigan",
-    "IA": "Iowa",
-    "MO": "Missouri"
+    "MO": "Missouri",
+    "MS": "Mississippi",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NV": "Nevada",
+    "OH": "Ohio",
+    "UT": "Utah",
+    "VA": "Virginia",
+    "WA": "Washington"
   },
   "categories": {
     "law": {
@@ -957,6 +983,822 @@
       "published": "2026-09-22",
       "updated": "2026-09-22",
       "statutes": []
+    },
+    {
+      "slug": "dc-rhca-deposit-clock-rowhouse-investor",
+      "title": "DC RHCA deposit clock on rowhouses and ADUs",
+      "description": "Small landlords confuse DC RHCA timing with Maryland habits. 45-day return discipline. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "D.C. Code § 42-3508.11"
+      ]
+    },
+    {
+      "slug": "dc-45-day-deposit-deadline",
+      "title": "District of Columbia 45-day deposit return window",
+      "description": "45-day return default from surrender · D.C. Code § 42-3508.11. Not legal advice.",
+      "category": "law",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "D.C. Code § 42-3508.11"
+      ]
+    },
+    {
+      "slug": "dc-deposit-itemization",
+      "title": "District of Columbia deposit itemization",
+      "description": "Written withhold lines · D.C. Code § 42-3508.11. Not legal advice.",
+      "category": "law",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "D.C. Code § 42-3508.11"
+      ]
+    },
+    {
+      "slug": "dc-security-deposit-checklist",
+      "title": "District of Columbia security deposit checklist",
+      "description": "Move-in through move-out · D.C. Code § 42-3508.11. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "D.C. Code § 42-3508.11"
+      ]
+    },
+    {
+      "slug": "georgia-cleaning-fee-lump-sum-deposit",
+      "title": "Georgia cleaning fee lump sums vs deposit itemization",
+      "description": "One-line cleaning withholds fail when move-in proof is thin. O.C.G.A. 44-7-34. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "GA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "O.C.G.A. 44-7-34"
+      ]
+    },
+    {
+      "slug": "georgia-30-day-deposit-deadline",
+      "title": "Georgia 30-day deposit return window",
+      "description": "30-day return default from surrender · O.C.G.A. 44-7-34. Not legal advice.",
+      "category": "law",
+      "states": [
+        "GA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "O.C.G.A. 44-7-34"
+      ]
+    },
+    {
+      "slug": "georgia-deposit-itemization",
+      "title": "Georgia deposit itemization",
+      "description": "Written withhold lines · O.C.G.A. 44-7-34. Not legal advice.",
+      "category": "law",
+      "states": [
+        "GA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "O.C.G.A. 44-7-34"
+      ]
+    },
+    {
+      "slug": "georgia-security-deposit-checklist",
+      "title": "Georgia security deposit checklist",
+      "description": "Move-in through move-out · O.C.G.A. 44-7-34. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "GA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "O.C.G.A. 44-7-34"
+      ]
+    },
+    {
+      "slug": "louisiana-withhold-without-itemized-accounting",
+      "title": "Louisiana withhold without itemized accounting",
+      "description": "Partial returns without a written accounting trigger disputes. La. R.S. 9:3251. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "LA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "La. R.S. 9:3251"
+      ]
+    },
+    {
+      "slug": "louisiana-30-day-deposit-deadline",
+      "title": "Louisiana 30-day deposit return window",
+      "description": "30-day return default from surrender · La. R.S. 9:3251. Not legal advice.",
+      "category": "law",
+      "states": [
+        "LA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "La. R.S. 9:3251"
+      ]
+    },
+    {
+      "slug": "louisiana-deposit-itemization",
+      "title": "Louisiana deposit itemization",
+      "description": "Written withhold lines · La. R.S. 9:3251. Not legal advice.",
+      "category": "law",
+      "states": [
+        "LA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "La. R.S. 9:3251"
+      ]
+    },
+    {
+      "slug": "louisiana-security-deposit-checklist",
+      "title": "Louisiana security deposit checklist",
+      "description": "Move-in through move-out · La. R.S. 9:3251. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "LA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "La. R.S. 9:3251"
+      ]
+    },
+    {
+      "slug": "maryland-45-day-belt-investor-missed-clock",
+      "title": "Maryland 45-day clock for belt investors",
+      "description": "DC and Virginia neighbors confuse Maryland return timing. Md. Real Prop. § 8-203. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "MD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Md. Real Prop. § 8-203"
+      ]
+    },
+    {
+      "slug": "maryland-45-day-deposit-deadline",
+      "title": "Maryland 45-day deposit return window",
+      "description": "45-day return default from surrender · Md. Real Prop. § 8-203. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Md. Real Prop. § 8-203"
+      ]
+    },
+    {
+      "slug": "maryland-deposit-itemization",
+      "title": "Maryland deposit itemization",
+      "description": "Written withhold lines · Md. Real Prop. § 8-203. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Md. Real Prop. § 8-203"
+      ]
+    },
+    {
+      "slug": "maryland-security-deposit-checklist",
+      "title": "Maryland security deposit checklist",
+      "description": "Move-in through move-out · Md. Real Prop. § 8-203. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "MD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Md. Real Prop. § 8-203"
+      ]
+    },
+    {
+      "slug": "mississippi-possession-still-occupied-deposit",
+      "title": "Mississippi possession disputes and the deposit clock",
+      "description": "Stuff left in the unit delays surrender math. Miss. Code § 89-8-21. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "MS"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Miss. Code § 89-8-21"
+      ]
+    },
+    {
+      "slug": "mississippi-45-day-deposit-deadline",
+      "title": "Mississippi 45-day deposit return window",
+      "description": "45-day return default from surrender · Miss. Code § 89-8-21. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MS"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Miss. Code § 89-8-21"
+      ]
+    },
+    {
+      "slug": "mississippi-deposit-itemization",
+      "title": "Mississippi deposit itemization",
+      "description": "Written withhold lines · Miss. Code § 89-8-21. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MS"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Miss. Code § 89-8-21"
+      ]
+    },
+    {
+      "slug": "mississippi-security-deposit-checklist",
+      "title": "Mississippi security deposit checklist",
+      "description": "Move-in through move-out · Miss. Code § 89-8-21. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "MS"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Miss. Code § 89-8-21"
+      ]
+    },
+    {
+      "slug": "north-carolina-interim-30-final-60-deposit",
+      "title": "North Carolina interim 30-day vs final 60-day accounting",
+      "description": "Heavy turns need interim accounting at 30 days. N.C.G.S. § 42-52. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "NC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.C.G.S. § 42-52"
+      ]
+    },
+    {
+      "slug": "north-carolina-30-day-deposit-deadline",
+      "title": "North Carolina 30-day deposit return window",
+      "description": "30-day return default from surrender · N.C.G.S. § 42-52. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.C.G.S. § 42-52"
+      ]
+    },
+    {
+      "slug": "north-carolina-deposit-itemization",
+      "title": "North Carolina deposit itemization",
+      "description": "Written withhold lines · N.C.G.S. § 42-52. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.C.G.S. § 42-52"
+      ]
+    },
+    {
+      "slug": "north-carolina-security-deposit-checklist",
+      "title": "North Carolina security deposit checklist",
+      "description": "Move-in through move-out · N.C.G.S. § 42-52. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "NC"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.C.G.S. § 42-52"
+      ]
+    },
+    {
+      "slug": "north-dakota-pet-deposit-vs-security-deposit",
+      "title": "North Dakota pet deposit vs security deposit confusion",
+      "description": "Separate ledgers and return timing. N.D.C.C. § 47-16-07.1. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "ND"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.D.C.C. § 47-16-07.1"
+      ]
+    },
+    {
+      "slug": "north-dakota-30-day-deposit-deadline",
+      "title": "North Dakota 30-day deposit return window",
+      "description": "30-day return default from surrender · N.D.C.C. § 47-16-07.1. Not legal advice.",
+      "category": "law",
+      "states": [
+        "ND"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.D.C.C. § 47-16-07.1"
+      ]
+    },
+    {
+      "slug": "north-dakota-deposit-itemization",
+      "title": "North Dakota deposit itemization",
+      "description": "Written withhold lines · N.D.C.C. § 47-16-07.1. Not legal advice.",
+      "category": "law",
+      "states": [
+        "ND"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.D.C.C. § 47-16-07.1"
+      ]
+    },
+    {
+      "slug": "north-dakota-security-deposit-checklist",
+      "title": "North Dakota security deposit checklist",
+      "description": "Move-in through move-out · N.D.C.C. § 47-16-07.1. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "ND"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.D.C.C. § 47-16-07.1"
+      ]
+    },
+    {
+      "slug": "new-hampshire-deposit-interest-itemization",
+      "title": "New Hampshire deposit interest and itemization",
+      "description": "Returning principal without interest math invites disputes. RSA 540-A:7. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "NH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSA 540-A:7"
+      ]
+    },
+    {
+      "slug": "new-hampshire-30-day-deposit-deadline",
+      "title": "New Hampshire 30-day deposit return window",
+      "description": "30-day return default from surrender · RSA 540-A:7. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSA 540-A:7"
+      ]
+    },
+    {
+      "slug": "new-hampshire-deposit-itemization",
+      "title": "New Hampshire deposit itemization",
+      "description": "Written withhold lines · RSA 540-A:7. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSA 540-A:7"
+      ]
+    },
+    {
+      "slug": "new-hampshire-security-deposit-checklist",
+      "title": "New Hampshire security deposit checklist",
+      "description": "Move-in through move-out · RSA 540-A:7. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "NH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSA 540-A:7"
+      ]
+    },
+    {
+      "slug": "new-jersey-disclosure-clock-vs-return-clock",
+      "title": "New Jersey move-in disclosure vs return clock confusion",
+      "description": "Two different 30-day habits in one statute chapter. N.J.S.A. 46:8-21.1. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "NJ"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.J.S.A. 46:8-21.1"
+      ]
+    },
+    {
+      "slug": "new-jersey-30-day-deposit-deadline",
+      "title": "New Jersey 30-day deposit return window",
+      "description": "30-day return default from surrender · N.J.S.A. 46:8-21.1. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NJ"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.J.S.A. 46:8-21.1"
+      ]
+    },
+    {
+      "slug": "new-jersey-deposit-itemization",
+      "title": "New Jersey deposit itemization",
+      "description": "Written withhold lines · N.J.S.A. 46:8-21.1. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NJ"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.J.S.A. 46:8-21.1"
+      ]
+    },
+    {
+      "slug": "new-jersey-security-deposit-checklist",
+      "title": "New Jersey security deposit checklist",
+      "description": "Move-in through move-out · N.J.S.A. 46:8-21.1. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "NJ"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "N.J.S.A. 46:8-21.1"
+      ]
+    },
+    {
+      "slug": "nevada-return-and-itemization-same-mailing",
+      "title": "Nevada return and itemization in the same mailing",
+      "description": "NRS 118A.242 expects accounting with the balance. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "NV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "NRS 118A.242"
+      ]
+    },
+    {
+      "slug": "nevada-30-day-deposit-deadline",
+      "title": "Nevada 30-day deposit return window",
+      "description": "30-day return default from surrender · NRS 118A.242. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "NRS 118A.242"
+      ]
+    },
+    {
+      "slug": "nevada-deposit-itemization",
+      "title": "Nevada deposit itemization",
+      "description": "Written withhold lines · NRS 118A.242. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "NRS 118A.242"
+      ]
+    },
+    {
+      "slug": "nevada-security-deposit-checklist",
+      "title": "Nevada security deposit checklist",
+      "description": "Move-in through move-out · NRS 118A.242. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "NV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "NRS 118A.242"
+      ]
+    },
+    {
+      "slug": "utah-missed-deposit-deadline-penalty-track",
+      "title": "Utah missed deposit deadline and penalty notices",
+      "description": "Tenants can trigger a short penalty track after a missed deadline. Utah Code § 57-17-3. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "UT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Utah Code § 57-17-3"
+      ]
+    },
+    {
+      "slug": "utah-30-day-deposit-deadline",
+      "title": "Utah 30-day deposit return window",
+      "description": "30-day return default from surrender · Utah Code § 57-17-3. Not legal advice.",
+      "category": "law",
+      "states": [
+        "UT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Utah Code § 57-17-3"
+      ]
+    },
+    {
+      "slug": "utah-deposit-itemization",
+      "title": "Utah deposit itemization",
+      "description": "Written withhold lines · Utah Code § 57-17-3. Not legal advice.",
+      "category": "law",
+      "states": [
+        "UT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Utah Code § 57-17-3"
+      ]
+    },
+    {
+      "slug": "utah-security-deposit-checklist",
+      "title": "Utah security deposit checklist",
+      "description": "Move-in through move-out · Utah Code § 57-17-3. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "UT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Utah Code § 57-17-3"
+      ]
+    },
+    {
+      "slug": "virginia-45-day-itemization-mail-proof",
+      "title": "Virginia 45-day itemization and mail proof",
+      "description": "Late or thin itemization under Va. Code § 55.1-1226. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "VA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "virginia-45-day-deposit-deadline",
+      "title": "Virginia 45-day deposit return window",
+      "description": "45-day return default from surrender · Va. Code § 55.1-1226. Not legal advice.",
+      "category": "law",
+      "states": [
+        "VA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "virginia-deposit-itemization",
+      "title": "Virginia deposit itemization",
+      "description": "Written withhold lines · Va. Code § 55.1-1226. Not legal advice.",
+      "category": "law",
+      "states": [
+        "VA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "virginia-security-deposit-checklist",
+      "title": "Virginia security deposit checklist",
+      "description": "Move-in through move-out · Va. Code § 55.1-1226. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "VA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "washington-deposit-invoices-substantiation",
+      "title": "Washington deposit withhold substantiation",
+      "description": "Withholding requires detailed statements and backup. RCW 59.18.280. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "WA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RCW 59.18.280"
+      ]
+    },
+    {
+      "slug": "washington-30-day-deposit-deadline",
+      "title": "Washington 30-day deposit return window",
+      "description": "30-day return default from surrender · RCW 59.18.280. Not legal advice.",
+      "category": "law",
+      "states": [
+        "WA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RCW 59.18.280"
+      ]
+    },
+    {
+      "slug": "washington-deposit-itemization",
+      "title": "Washington deposit itemization",
+      "description": "Written withhold lines · RCW 59.18.280. Not legal advice.",
+      "category": "law",
+      "states": [
+        "WA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RCW 59.18.280"
+      ]
+    },
+    {
+      "slug": "washington-security-deposit-checklist",
+      "title": "Washington security deposit checklist",
+      "description": "Move-in through move-out · RCW 59.18.280. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "WA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RCW 59.18.280"
+      ]
+    },
+    {
+      "slug": "indiana-45-day-clock-forwarding-address-confusion",
+      "title": "Indiana 45-day clock vs lease end and forwarding address",
+      "description": "Operators start the deposit timer on lease end instead of surrender. IC 32-31-3-12. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "IC 32-31-3-12 et seq."
+      ]
+    },
+    {
+      "slug": "ohio-cleveland-columbus-turnover-mail-delay",
+      "title": "Ohio 30-day deposit mail after slow turnover vendors",
+      "description": "Vendor backlog pushes itemized mail past day 30. ORC 5321.16. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "michigan-detroit-normal-wear-deposit-fight",
+      "title": "Michigan deposit fight when normal wear is charged",
+      "description": "Detroit and Grand Rapids turns blur wear vs damage on the withhold sheet. MCL 554.610. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "iowa-rural-turnover-surrender-date-gap",
+      "title": "Iowa rural turnover and the missing surrender date",
+      "description": "Small-town operators lose the deposit clock when keys hand off informally. Iowa Code 562A.12. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "missouri-stl-kc-deposit-clock-two-market",
+      "title": "Missouri STL and KC deposit clocks on the same spreadsheet",
+      "description": "Two-market operators mix surrender dates across units. RSMo 535.300. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "RSMo 535.300"
+      ]
     }
   ]
 }

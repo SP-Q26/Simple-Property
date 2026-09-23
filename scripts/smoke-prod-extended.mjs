@@ -7,7 +7,7 @@ const pages = [
   { path: "/launch-stack", need: ["Launch stack", "Deposit Desk", "doors"] },
   { path: "/success", need: ["Payment confirmed", "session_id", "sptRefreshEntitlement"] },
   { path: "/blog", need: ["Guides", "blog"] },
-  { path: "/llms.txt", need: ["Deposit Desk", "simple-property.com"] },
+  { path: "/llms.txt", need: ["Deposit Desk", "simple-property.com", "765 ILCS", "18 states + DC"] },
   { path: "/robots.txt", need: ["Sitemap:", "simple-property.com"] },
 ];
 

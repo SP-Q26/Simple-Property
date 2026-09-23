@@ -4,20 +4,21 @@ Not legal advice. Statute summaries for product defaults only · counsel confirm
 
 ## Shipped in wizard (step 1 · State)
 
-| Code | Default return days | Citation (label in app) | Notes |
-|------|---------------------|-------------------------|--------|
-| IL | 30 | 765 ILCS 715/ | Chicago RLTO toggle → **45 days** |
-| IN | 45 | IC 32-31-3-12 et seq. | No city overlay in v1 |
-| OH | 30 | ORC 5321.16 | |
-| MI | 30 | MCL 554.610 | |
-| IA | 30 | Iowa Code 562A.12 | |
-| MO | 30 | RSMo 535.300 | |
+**18 states + DC (19 wizard codes)** · see full table in `docs/STATE_EXPANSION_AUDIT_2026-09-22.md`.
 
-**Deferred:** Wisconsin (704.28 · forwarding-address clock needs extra wizard fields + legal spec).
+| Pattern | Codes |
+|---------|--------|
+| **30-day calendar** (default) | GA · IA · IL · LA · MI · MO · NC · ND · NH · NJ · NV · OH · UT · WA |
+| **45-day calendar** | DC · IN · MD · MS · VA |
+| **Chicago overlay** | IL → **45 days** RLTO |
+
+**Deferred (not simple):** WI, FL, AZ, TX, KS, PA, SC, TN, NM, MT, WY, OK, MA · see STATE_EXPANSION audit.
 
 ## Code
 
 - `web/lib/deposit-rules.mjs` · single source for deadlines + jurisdiction labels
+- `web/lib/brand-locale.mjs` · brand tag + nav derived from rules
+- `scripts/sync-brand-locale.mjs` · propagate tag to HTML + `sp-nav.js`
 - `web/lib/il-deposit-rules.mjs` · re-export shim for older imports
 
 ## Tenant email copy (Pro)
@@ -31,6 +32,5 @@ Not legal advice. Statute summaries for product defaults only · counsel confirm
 ## SEO / content
 
 - Manifest `states: ["IN"]` (etc.) on posts · `npm run build-blog` refreshes `/blog` sections (`#locale-IN`, …).
-- New deadline guides: Indiana 45-day, Ohio/Michigan/Iowa/Missouri 30-day (one article each).
-- **Locale bar** under header on every page (`sp-nav.js`) · links to `/app?state=XX` or `/blog#locale-XX` on Guides.
-- Illinois blog depth unchanged; multi-state posts roll out per state as needed.
+- **Locale bar** under header (`sp-nav.js`) · all shipped codes · blog anchors may lack guides for new states until content swarm.
+- Illinois + Midwest blog depth unchanged; add state deadline posts per priority.

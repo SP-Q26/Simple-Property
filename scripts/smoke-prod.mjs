@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /** Production smoke + post-smoke content checks (run after deploy). */
-const BASE = process.env.SPT_SMOKE_URL || "https://simple-property-spq.vercel.app";
+const BASE = process.env.SPT_SMOKE_URL || "https://simple-property.com";
 const EM = "\u2014";
 const paths = [
-  { name: "home", path: "/", need: ["Keep the clock", "Avoid penalties", "pathway-deck", "Pick your path", "hero-rotate", "simple-property.css?v=21", "viewport-fit=cover", "spt-atmosphere", "spt-weather", "spt-weather-mist", "spt-greystone-pilaster", "spt-door-monogram", "deposit-receipt", "40 units", "765 ILCS", "/feedback"], absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:"] },
+  { name: "home", path: "/", need: ["Keep the clock", "Avoid penalties", "pathway-deck", "Pick your path", "hero-rotate", "hero-share-art", "spt-share-door.png", "simple-property.css?v=22", "viewport-fit=cover", "spt-atmosphere", "spt-weather", "spt-weather-mist", "spt-greystone-pilaster", "spt-door-monogram", "deposit-receipt", "40 units", "765 ILCS", "/feedback"], absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:"] },
   { name: "feedback", path: "/feedback", need: ["Suggest rulesets", "spt-feedback-form", "simple-property.css?v=21", "viewport-fit=cover"], absent: [EM] },
   { name: "pricing", path: "/pricing", need: ["pricing-finder", "pricing-cards", "pf-units", "40 units", "Print / Save as PDF"], absent: [EM] },
   { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance"], absent: [] },
   { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Keep the clock"], absent: ["Homestead", EM] },
-  { name: "terms", path: "/terms", need: ["Terms of Service", "Illinois, Indiana", 'href="/privacy"'], absent: [EM] },
+  { name: "terms", path: "/terms", need: ["Terms of Service", "18 US states", 'href="/privacy"'], absent: [EM] },
   { name: "privacy", path: "/privacy", need: ["Privacy Policy", 'href="/terms"'], absent: [EM] },
   { name: "legal", path: "/legal", need: ["Legal", "/terms", "/privacy"], absent: [EM] },
 ];

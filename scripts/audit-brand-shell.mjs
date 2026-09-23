@@ -5,8 +5,8 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
-const BRAND_TAG = "Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO";
-const CSS = "simple-property.css?v=21";
+const BRAND_TAG = "Itemize it. Date it. Keep the clock. · 18 states + DC · Chicago RLTO";
+const CSS_PATTERN = /simple-property\.css\?v=\d+/;
 let fail = 0;
 
 function walkHtml(dir, out = []) {
@@ -33,8 +33,8 @@ for (const file of files) {
     console.error("BRAND FAIL missing brand tag:", rel);
     fail++;
   }
-  if (!html.includes(CSS)) {
-    console.error("BRAND FAIL css not v8:", rel);
+  if (!CSS_PATTERN.test(html)) {
+    console.error("BRAND FAIL missing versioned css:", rel);
     fail++;
   }
   if (html.includes("Homestead")) {

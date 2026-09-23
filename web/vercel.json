@@ -334,6 +334,234 @@
     {
       "source": "/blog/application-fees-vs-security-deposit-midwest",
       "destination": "/blog/application-fees-vs-security-deposit-midwest.html"
+    },
+    {
+      "source": "/blog/dc-rhca-deposit-clock-rowhouse-investor",
+      "destination": "/blog/dc-rhca-deposit-clock-rowhouse-investor.html"
+    },
+    {
+      "source": "/blog/dc-45-day-deposit-deadline",
+      "destination": "/blog/dc-45-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/dc-deposit-itemization",
+      "destination": "/blog/dc-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/dc-security-deposit-checklist",
+      "destination": "/blog/dc-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/georgia-cleaning-fee-lump-sum-deposit",
+      "destination": "/blog/georgia-cleaning-fee-lump-sum-deposit.html"
+    },
+    {
+      "source": "/blog/georgia-30-day-deposit-deadline",
+      "destination": "/blog/georgia-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/georgia-deposit-itemization",
+      "destination": "/blog/georgia-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/georgia-security-deposit-checklist",
+      "destination": "/blog/georgia-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/louisiana-withhold-without-itemized-accounting",
+      "destination": "/blog/louisiana-withhold-without-itemized-accounting.html"
+    },
+    {
+      "source": "/blog/louisiana-30-day-deposit-deadline",
+      "destination": "/blog/louisiana-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/louisiana-deposit-itemization",
+      "destination": "/blog/louisiana-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/louisiana-security-deposit-checklist",
+      "destination": "/blog/louisiana-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/maryland-45-day-belt-investor-missed-clock",
+      "destination": "/blog/maryland-45-day-belt-investor-missed-clock.html"
+    },
+    {
+      "source": "/blog/maryland-45-day-deposit-deadline",
+      "destination": "/blog/maryland-45-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/maryland-deposit-itemization",
+      "destination": "/blog/maryland-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/maryland-security-deposit-checklist",
+      "destination": "/blog/maryland-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/mississippi-possession-still-occupied-deposit",
+      "destination": "/blog/mississippi-possession-still-occupied-deposit.html"
+    },
+    {
+      "source": "/blog/mississippi-45-day-deposit-deadline",
+      "destination": "/blog/mississippi-45-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/mississippi-deposit-itemization",
+      "destination": "/blog/mississippi-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/mississippi-security-deposit-checklist",
+      "destination": "/blog/mississippi-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/north-carolina-interim-30-final-60-deposit",
+      "destination": "/blog/north-carolina-interim-30-final-60-deposit.html"
+    },
+    {
+      "source": "/blog/north-carolina-30-day-deposit-deadline",
+      "destination": "/blog/north-carolina-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/north-carolina-deposit-itemization",
+      "destination": "/blog/north-carolina-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/north-carolina-security-deposit-checklist",
+      "destination": "/blog/north-carolina-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/north-dakota-pet-deposit-vs-security-deposit",
+      "destination": "/blog/north-dakota-pet-deposit-vs-security-deposit.html"
+    },
+    {
+      "source": "/blog/north-dakota-30-day-deposit-deadline",
+      "destination": "/blog/north-dakota-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/north-dakota-deposit-itemization",
+      "destination": "/blog/north-dakota-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/north-dakota-security-deposit-checklist",
+      "destination": "/blog/north-dakota-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/new-hampshire-deposit-interest-itemization",
+      "destination": "/blog/new-hampshire-deposit-interest-itemization.html"
+    },
+    {
+      "source": "/blog/new-hampshire-30-day-deposit-deadline",
+      "destination": "/blog/new-hampshire-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/new-hampshire-deposit-itemization",
+      "destination": "/blog/new-hampshire-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/new-hampshire-security-deposit-checklist",
+      "destination": "/blog/new-hampshire-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/new-jersey-disclosure-clock-vs-return-clock",
+      "destination": "/blog/new-jersey-disclosure-clock-vs-return-clock.html"
+    },
+    {
+      "source": "/blog/new-jersey-30-day-deposit-deadline",
+      "destination": "/blog/new-jersey-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/new-jersey-deposit-itemization",
+      "destination": "/blog/new-jersey-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/new-jersey-security-deposit-checklist",
+      "destination": "/blog/new-jersey-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/nevada-return-and-itemization-same-mailing",
+      "destination": "/blog/nevada-return-and-itemization-same-mailing.html"
+    },
+    {
+      "source": "/blog/nevada-30-day-deposit-deadline",
+      "destination": "/blog/nevada-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/nevada-deposit-itemization",
+      "destination": "/blog/nevada-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/nevada-security-deposit-checklist",
+      "destination": "/blog/nevada-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/utah-missed-deposit-deadline-penalty-track",
+      "destination": "/blog/utah-missed-deposit-deadline-penalty-track.html"
+    },
+    {
+      "source": "/blog/utah-30-day-deposit-deadline",
+      "destination": "/blog/utah-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/utah-deposit-itemization",
+      "destination": "/blog/utah-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/utah-security-deposit-checklist",
+      "destination": "/blog/utah-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/virginia-45-day-itemization-mail-proof",
+      "destination": "/blog/virginia-45-day-itemization-mail-proof.html"
+    },
+    {
+      "source": "/blog/virginia-45-day-deposit-deadline",
+      "destination": "/blog/virginia-45-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/virginia-deposit-itemization",
+      "destination": "/blog/virginia-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/virginia-security-deposit-checklist",
+      "destination": "/blog/virginia-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/washington-deposit-invoices-substantiation",
+      "destination": "/blog/washington-deposit-invoices-substantiation.html"
+    },
+    {
+      "source": "/blog/washington-30-day-deposit-deadline",
+      "destination": "/blog/washington-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/washington-deposit-itemization",
+      "destination": "/blog/washington-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/washington-security-deposit-checklist",
+      "destination": "/blog/washington-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/indiana-45-day-clock-forwarding-address-confusion",
+      "destination": "/blog/indiana-45-day-clock-forwarding-address-confusion.html"
+    },
+    {
+      "source": "/blog/ohio-cleveland-columbus-turnover-mail-delay",
+      "destination": "/blog/ohio-cleveland-columbus-turnover-mail-delay.html"
+    },
+    {
+      "source": "/blog/michigan-detroit-normal-wear-deposit-fight",
+      "destination": "/blog/michigan-detroit-normal-wear-deposit-fight.html"
+    },
+    {
+      "source": "/blog/iowa-rural-turnover-surrender-date-gap",
+      "destination": "/blog/iowa-rural-turnover-surrender-date-gap.html"
+    },
+    {
+      "source": "/blog/missouri-stl-kc-deposit-clock-two-market",
+      "destination": "/blog/missouri-stl-kc-deposit-clock-two-market.html"
     }
   ],
   "crons": [
