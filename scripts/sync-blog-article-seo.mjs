@@ -24,12 +24,7 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   const block = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":${JSON.stringify(title)},"datePublished":${JSON.stringify(published)},"dateModified":${JSON.stringify(published)},"author":{"@type":"Organization","name":"Simple Property Tools"},"publisher":{"@type":"Organization","name":"Simple Property Tools"},"mainEntityOfPage":${JSON.stringify(url)},"description":${JSON.stringify(desc)}}</script>\n`;
   html = html.replace("</head>", block + "</head>");
 
-  if (!html.includes("og:image")) {
-    html = html.replace(
-      "<link rel=\"canonical\"",
-      `<meta property="og:image" content="https://simple-property.com/og/spt-card.svg">\n  <link rel="canonical"`
-    );
-  }
+  /* og/twitter: npm run sync:seo (sync-social-meta.mjs) */
   if (!html.match(/not legal advice/i)) {
     html = html.replace("</main>", `\n      ${DISCLAIMER}\n    </main>`);
   }

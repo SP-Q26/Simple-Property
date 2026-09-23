@@ -106,6 +106,13 @@ for (const j of jsonRoutes) await checkJson(j);
 await checkSitemap();
 await checkApiShapes();
 
+const ogPng = await fetch(`${BASE}/og/spt-share-door.png`, { method: "HEAD" });
+console.log(`HTTP ${ogPng.status} HEAD /og/spt-share-door.png`);
+if (ogPng.status !== 200) {
+  console.error("  FAIL OG PNG for link previews");
+  fail++;
+} else console.log("  ok share door png");
+
 if (fail) {
   console.error(`\nExtended prod smoke FAILED (${fail})`);
   process.exit(1);

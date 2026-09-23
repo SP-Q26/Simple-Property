@@ -42,6 +42,8 @@ const checks = [
   ["lib/google-tools.mjs", "Google Calendar + Sheets export"],
   ["sp-billing.js", "Billing portal UI"],
   ["og/spt-card.svg", "OG card"],
+  ["og/spt-share-door.svg", "OG share door art"],
+  ["og/spt-share-door.png", "OG share door PNG (link previews)"],
   ["favicon.svg", "Product mark"],
   ["feedback.html", "Ruleset feedback page"],
   ["sp-feedback.js", "Feedback form client"],
@@ -93,7 +95,7 @@ if (existsSync(join(web, "node_modules"))) {
 
 console.log(fail ? `Audit FAILED (${fail} P0)` : "Audit OK · proud-ship P0 gates pass");
 if (!fail) {
-  for (const script of ["audit-brand-shell.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs"]) {
+  for (const script of ["audit-brand-shell.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs"]) {
     const r = spawnSync(process.execPath, [join(root, "scripts", script)], { stdio: "inherit" });
     if (r.status !== 0) process.exit(1);
   }

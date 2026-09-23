@@ -25,7 +25,6 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} · Simple Property Tools</title>
   <meta name="description" content="${description.replace(/"/g, "&quot;")}">
-  <meta property="og:image" content="https://simple-property.com/og/spt-card.svg">
   <link rel="canonical" href="${url}">
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
