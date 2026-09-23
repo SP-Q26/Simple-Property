@@ -2,6 +2,7 @@
  * Customer-facing locale strings derived from deposit-rules.mjs (single source).
  */
 import { SUPPORTED_STATES, STATE_PACKS } from "./deposit-rules.mjs";
+import { STATUTE_URLS } from "./statute-urls.mjs";
 
 export const PACK_COUNT = SUPPORTED_STATES.length;
 export const STATE_ONLY_COUNT = SUPPORTED_STATES.filter((c) => c !== "DC").length;
@@ -45,6 +46,8 @@ export function localeNavEntries() {
     code,
     name: STATE_PACKS[code].label,
     returnDays: STATE_PACKS[code].returnDays,
+    cite: STATE_PACKS[code].cite,
+    statuteUrl: STATUTE_URLS[code],
     blog: `/blog#locale-${code}`,
     app: `/app?state=${code}`,
   }));

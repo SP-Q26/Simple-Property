@@ -47,7 +47,7 @@ need("index loss framing", LOSS.test(index));
 
 need("sp-nav color strip", nav.includes("coverage-bubbles--strip"));
 need("sp-nav no wrong color kicker", !/Wrong color\s*=/.test(nav));
-need("sp-nav legend tap state", nav.includes("Tap your state"));
+need("sp-nav legend statute shortcut", nav.includes("Ctrl+chip"));
 need("sp-nav buildCoverageMap not geographic map copy", !nav.includes("Tap the map") && !nav.includes("state map"));
 need("sp-nav loss in locale bar", LOSS.test(nav));
 

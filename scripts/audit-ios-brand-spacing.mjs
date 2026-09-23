@@ -51,7 +51,7 @@ need("css touch-action buttons", css.includes("touch-action: manipulation"));
 need("css brand tag mobile shrink", css.includes(".brand-tag") && css.includes("font-size: 0.72rem"));
 need("css spacing scale", css.includes("--space-5") && css.includes("--space-6"));
 need("css quant + gold brand", css.includes("--beam-gold") && css.includes("--quant-blue-surface"));
-need("sp-nav coverage bubble builder", read("sp-nav.js").includes("coverage-bubbles--strip") && read("sp-nav.js").includes("wireAppPreset"));
+need("sp-nav coverage bubble builder", read("sp-nav.js").includes("coverage-bubbles--strip") && read("sp-nav.js").includes("wireLocaleLink"));
 need("home hero caption clean", read("index.html").includes("Deposit Desk · start free") && !read("index.html").toLowerCase().includes("link preview"));
 
 function walkHtml(dir, out = []) {

@@ -20,12 +20,19 @@ import {
 } from "./lib/google-tools.mjs";
 import { buildPacketAiReport, copyTextForAi } from "./lib/packet-ai-report.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
+import { statuteUrlFor } from "./lib/statute-urls.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
 const MAX_STEPS = 5;
 const MAX_PHOTO_BYTES = 400_000;
 const MAX_PHOTOS_TOTAL = 1_200_000;
+
+function citeLink(code, cite) {
+  const url = statuteUrlFor(code);
+  if (!url) return esc(cite);
+  return `<a href="${esc(url)}" rel="noopener noreferrer" target="_blank">${esc(cite)}</a>`;
+}
 
 const DEFAULT_ROOMS = [
   "Living room",
@@ -493,10 +500,10 @@ function renderStep1() {
       </div>`;
   const clockHint =
     preset === "chicago-il"
-      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender. Elsewhere in Illinois: <strong>30 days</strong> (${pack.cite}).</p>`
+      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender. Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
       : st === "NC"
-        ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${pack.cite}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
-        : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${pack.cite}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
+        ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${citeLink(st, pack.cite)}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
+        : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
   return `
     <h2 id="step-title" tabindex="-1">Landlord &amp; property</h2>
     <div class="form-grid two">
