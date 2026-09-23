@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v26 · touch + safe-area + iOS spacing */
+/* Simple Property Tools · Deposit Desk · v29 · touch + safe-area + iOS spacing */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -90,11 +90,11 @@ body {
 @keyframes spt-weather-soft {
   0%,
   100% {
-    opacity: 0.68;
+    opacity: 0.82;
     transform: translate3d(0, 0, 0);
   }
   50% {
-    opacity: 0.95;
+    opacity: 1;
     transform: translate3d(-1.8%, 1.2%, 0);
   }
 }
@@ -102,11 +102,11 @@ body {
 @keyframes spt-weather-mist {
   0%,
   100% {
-    opacity: 0.42;
+    opacity: 0.5;
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    opacity: 0.68;
+    opacity: 0.82;
     transform: translate3d(2.5%, -1.5%, 0) scale(1.03);
   }
 }
@@ -114,12 +114,12 @@ body {
 .spt-weather {
   position: absolute;
   inset: -14%;
-  opacity: 0.78;
+  opacity: 0.94;
   background-image:
-    radial-gradient(circle at 18% 22%, rgba(59, 90, 120, 0.14) 0 1px, transparent 1px),
-    radial-gradient(circle at 62% 48%, rgba(201, 162, 39, 0.11) 0 1px, transparent 1px),
-    radial-gradient(circle at 44% 78%, rgba(74, 103, 65, 0.1) 0 1px, transparent 1px),
-    radial-gradient(circle at 82% 18%, rgba(180, 188, 198, 0.12) 0 1.5px, transparent 1.5px);
+    radial-gradient(circle at 18% 22%, rgba(59, 90, 120, 0.17) 0 1px, transparent 1px),
+    radial-gradient(circle at 62% 48%, rgba(201, 162, 39, 0.13) 0 1px, transparent 1px),
+    radial-gradient(circle at 44% 78%, rgba(74, 103, 65, 0.12) 0 1px, transparent 1px),
+    radial-gradient(circle at 82% 18%, rgba(180, 188, 198, 0.14) 0 1.5px, transparent 1.5px);
   background-size: 88px 88px, 120px 120px, 150px 150px, 180px 180px;
   animation: spt-weather-drift 72s linear infinite, spt-weather-soft 28s ease-in-out infinite;
 }
@@ -129,11 +129,11 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(ellipse 120% 40% at 50% -5%, rgba(59, 90, 120, 0.12), transparent 55%),
-    radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.04) 0 2px, transparent 2px);
+    radial-gradient(ellipse 120% 40% at 50% -5%, rgba(59, 90, 120, 0.14), transparent 55%),
+    radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px);
   background-size: 100% 100%, 220px 220px;
   animation: spt-weather-drift 96s linear infinite reverse;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 .spt-weather::after {
@@ -144,10 +144,10 @@ body {
     105deg,
     transparent 0,
     transparent 32px,
-    rgba(59, 90, 120, 0.055) 32px,
-    rgba(59, 90, 120, 0.055) 33px
+    rgba(59, 90, 120, 0.066) 32px,
+    rgba(59, 90, 120, 0.066) 33px
   );
-  opacity: 0.58;
+  opacity: 0.7;
   mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
 
@@ -155,8 +155,8 @@ body {
   position: absolute;
   inset: -8% -12%;
   background:
-    radial-gradient(ellipse 90% 55% at 48% 42%, rgba(238, 242, 246, 0.72), transparent 62%),
-    radial-gradient(ellipse 70% 40% at 62% 58%, rgba(59, 90, 120, 0.14), transparent 58%);
+    radial-gradient(ellipse 90% 55% at 48% 42%, rgba(238, 242, 246, 0.86), transparent 62%),
+    radial-gradient(ellipse 70% 40% at 62% 58%, rgba(59, 90, 120, 0.17), transparent 58%);
   filter: blur(1.5px);
   animation: spt-weather-mist 42s ease-in-out infinite;
 }
@@ -397,11 +397,11 @@ body {
 
 @media (max-width: 640px) {
   .spt-weather {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   .spt-weather-mist {
-    opacity: 0.85;
+    opacity: 1;
   }
 
   .spt-door-scene {
@@ -602,8 +602,6 @@ main > h1,
 .coverage-bubbles {
   position: relative;
   width: 100%;
-  aspect-ratio: 200 / 120;
-  min-height: 7.5rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   background:
@@ -613,12 +611,45 @@ main > h1,
   overflow: visible;
 }
 
+.coverage-bubbles--relative {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  min-height: 0;
+}
+
+.coverage-region {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.coverage-region__label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.coverage-region__row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.4rem;
+}
+
 .coverage-bubble {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  min-width: 2.75rem;
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  min-width: 2.5rem;
   min-height: var(--tap-min);
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.55rem;
   border-radius: var(--radius-pill);
   font-size: 0.6875rem;
   font-weight: 700;
@@ -630,11 +661,26 @@ main > h1,
   justify-content: center;
   cursor: pointer;
   touch-action: manipulation;
-  z-index: 2;
+  z-index: 1;
   border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
   box-shadow: 0 1px 4px rgba(61, 52, 41, 0.14);
   color: #fff;
+  flex: 0 0 auto;
   -webkit-tap-highlight-color: rgba(201, 162, 39, 0.22);
+}
+
+@media (min-width: 640px) {
+  .coverage-bubbles--relative {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-4);
+  }
+
+  .coverage-region {
+    flex: 1 1 7rem;
+    min-width: 7rem;
+  }
 }
 
 .coverage-bubble--30 {
@@ -764,6 +810,14 @@ main > h1,
 
 .coverage-spotlight .hero-lead {
   max-width: 42rem;
+}
+
+.coverage-spotlight p:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: var(--space-3);
+  align-items: center;
 }
 
 #wizard-panel {
@@ -2211,6 +2265,12 @@ textarea {
   margin: 0 0 var(--space-4);
 }
 
+@media (min-width: 640px) {
+  .locale-bar__list-fallback {
+    display: none;
+  }
+}
+
 @media (max-width: 639px) {
   .page {
     padding:
@@ -2453,19 +2513,8 @@ textarea {
     max-width: none;
   }
 
-  .coverage-bubbles {
-    min-height: 8.5rem;
-  }
-
-  .coverage-bubble {
-    min-width: 2.5rem;
-    font-size: 0.625rem;
-  }
-
-  .coverage-map__legend {
-    font-size: 0.625rem;
-    line-height: 1.35;
-    gap: 0.25rem 0.5rem;
+  .coverage-bubbles--relative {
+    padding: var(--space-3);
   }
 
   .hero-share-art {

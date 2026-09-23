@@ -137,30 +137,12 @@
     }
   ];
 
-  var MAP_XY = {
-    "DC": [178, 52],
-    "GA": [168, 78],
-    "IA": [102, 38],
-    "IL": [118, 46],
-    "IN": [132, 42],
-    "LA": [112, 82],
-    "MD": [172, 54],
-    "MI": [128, 28],
-    "MO": [100, 54],
-    "MS": [122, 74],
-    "NC": [168, 62],
-    "ND": [98, 22],
-    "NH": [182, 28],
-    "NJ": [174, 48],
-    "NV": [42, 48],
-    "OH": [142, 40],
-    "UT": [52, 44],
-    "VA": [166, 58],
-    "WA": [28, 18]
-  };
-
-  var MAP_W = 200;
-  var MAP_H = 120;
+  var MAP_REGIONS = [
+    { label: "West", codes: ["WA", "NV", "UT"] },
+    { label: "Midwest", codes: ["ND", "IA", "MO", "IL", "IN", "OH", "MI"] },
+    { label: "South", codes: ["LA", "MS", "GA", "NC"] },
+    { label: "East", codes: ["NH", "NJ", "MD", "DC", "VA"] }
+  ];
 
   var path = location.pathname.replace(/\/$/, "") || "/";
   var onBlog = path === "/blog";
@@ -192,31 +174,53 @@
     });
   }
 
+  function localeByCode(code) {
+    for (var i = 0; i < LOCALES.length; i++) {
+      if (LOCALES[i].code === code) return LOCALES[i];
+    }
+    return null;
+  }
+
+  function appendBubble(parent, loc) {
+    var href = onBlog ? loc.blog : loc.app;
+    var a = document.createElement("a");
+    a.className =
+      "coverage-bubble " +
+      (loc.returnDays === 45 ? "coverage-bubble--45" : "coverage-bubble--30");
+    a.href = href;
+    a.setAttribute("data-code", loc.code);
+    a.textContent = loc.code;
+    a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day pack");
+    wireAppPreset(a, loc.code);
+    parent.appendChild(a);
+  }
+
   function buildCoverageMap() {
     var wrap = document.createElement("div");
     wrap.className = "locale-bar__map-wrap";
 
     var plate = document.createElement("div");
-    plate.className = "coverage-bubbles";
+    plate.className = "coverage-bubbles coverage-bubbles--relative";
     plate.setAttribute("role", "group");
     plate.setAttribute("aria-label", "Deposit Desk coverage · tap a state");
 
-    LOCALES.forEach(function (loc) {
-      var xy = MAP_XY[loc.code];
-      if (!xy) return;
-      var href = onBlog ? loc.blog : loc.app;
-      var a = document.createElement("a");
-      a.className =
-        "coverage-bubble " +
-        (loc.returnDays === 45 ? "coverage-bubble--45" : "coverage-bubble--30");
-      a.href = href;
-      a.setAttribute("data-code", loc.code);
-      a.textContent = loc.code;
-      a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day pack");
-      a.style.left = (xy[0] / MAP_W) * 100 + "%";
-      a.style.top = (xy[1] / MAP_H) * 100 + "%";
-      wireAppPreset(a, loc.code);
-      plate.appendChild(a);
+    MAP_REGIONS.forEach(function (region) {
+      var block = document.createElement("div");
+      block.className = "coverage-region";
+
+      var label = document.createElement("span");
+      label.className = "coverage-region__label";
+      label.textContent = region.label;
+      block.appendChild(label);
+
+      var row = document.createElement("div");
+      row.className = "coverage-region__row";
+      region.codes.forEach(function (code) {
+        var loc = localeByCode(code);
+        if (loc) appendBubble(row, loc);
+      });
+      block.appendChild(row);
+      plate.appendChild(block);
     });
 
     wrap.appendChild(plate);
