@@ -23,7 +23,7 @@ const pricing = read("pricing.html");
 const index = read("index.html");
 const app = read("app.js");
 
-need("css v33 on home", index.includes("simple-property.css?v=33"));
+need("css v34 on home", index.includes("simple-property.css?v=34"));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
 need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
 need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));
@@ -37,7 +37,7 @@ need("hero door art asset", index.includes("spt-hero-door.svg") && index.include
 need("weather speckle layer", css.includes(".spt-weather") && index.includes("spt-weather-mist"));
 need("locale bar + coverage bubbles", css.includes(".locale-bar") && css.includes(".coverage-bubble--45"));
 need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
-need("display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
+need("display + UI fonts", css.includes("--font-display") && css.includes("Source Serif 4"));
 need("pricing wide layout", css.includes(".pricing-page"));
 need("sleek price cards", css.includes(".price-card") && css.includes("price-card__badge"));
 need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.js")));

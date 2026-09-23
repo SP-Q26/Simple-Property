@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -63,7 +64,7 @@ const chicagoAnchor = manifest.posts.find((p) => p.slug === "chicago-45-day-depo
 
 let citySections = `\n      <section class="guides-hub blog-cluster--city" aria-labelledby="guides-cities">\n`;
 citySections += `        <h2 id="guides-cities">Major cities</h2>\n`;
-citySections += `        <p class="muted">Chicago RLTO · local fees · app city dropdown on step 1. Not legal advice.</p>\n`;
+citySections += `        <p class="muted">Chicago HQ · RLTO and major-city dropdown on wizard step 1. Not legal advice.</p>\n`;
 citySections += `        <ul class="bullet-tight">\n`;
 if (chicagoAnchor) {
   citySections += `          <li><a href="/blog/${chicagoAnchor.slug}">${chicagoAnchor.title}</a></li>\n`;
@@ -74,7 +75,7 @@ for (const p of cityPosts) {
 }
 citySections += `        </ul>\n      </section>\n`;
 
-const stateOrder = manifest.stateOrder || ["IL", "IN", "OH", "MI", "IA", "MO"];
+const stateOrder = manifest.stateOrder?.length ? manifest.stateOrder : SUPPORTED_STATES;
 const stateLabels = manifest.stateLabels || {};
 
 function postStates(post) {
@@ -166,6 +167,10 @@ indexHtml = indexHtml.replace(
 indexHtml = indexHtml.replace(
   new RegExp(`${start}[\\s\\S]*${end}`),
   `${start}${indexSections}      ${end}`
+);
+indexHtml = indexHtml.replace(
+  /<p class="launch-live">[^<]*<\/p>/,
+  `<p class="launch-live">Live · deposit guides in 18 states + DC · founded in Chicago</p>`
 );
 indexHtml = indexHtml.replace(
   /<meta name="description" content="[^"]*">/,

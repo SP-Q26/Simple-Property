@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Simple Property Tools">
-  <rect width="32" height="32" rx="8" fill="#f4f0e6"/>
-  <path d="M8 24V14.5c0-3.6 3.2-6.5 8-6.5s8 2.9 8 6.5V24" fill="#faf7f0" stroke="#3d3429" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M16 8.5 8.5 13 16 9.5 23.5 13 16 8.5z" fill="#4a6741" stroke="#3d3429" stroke-width="1" stroke-linejoin="round"/>
-  <path d="M12 24V17h8v7" fill="none" stroke="#3d3429" stroke-width="1.25" stroke-linecap="round"/>
-  <circle cx="18.5" cy="20.5" r="0.9" fill="#c9a227"/>
+  <defs>
+    <linearGradient id="spt-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#faf7f0"/>
+      <stop offset="1" stop-color="#ebe4d6"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="9" fill="url(#spt-bg)"/>
+  <rect x="1" y="1" width="30" height="30" rx="8" fill="none" stroke="#c9a227" stroke-width="0.75" opacity="0.55"/>
+  <path d="M16 7.5 7.5 12.25 16 8.75 24.5 12.25 16 7.5z" fill="#4a6741" stroke="#3d3429" stroke-width="0.85" stroke-linejoin="round"/>
+  <path d="M8.5 24V14.75c0-3.35 3.05-6.1 7.5-6.1s7.5 2.75 7.5 6.1V24" fill="#faf7f0" stroke="#3d3429" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.25 24V17.25h7.5V24" fill="none" stroke="#3b5a78" stroke-width="1.1" stroke-linecap="round"/>
+  <circle cx="18.75" cy="20.35" r="1.05" fill="#c9a227" stroke="#3d3429" stroke-width="0.5"/>
+  <text x="16" y="13.6" text-anchor="middle" font-family="Georgia, serif" font-size="5.2" font-weight="700" fill="#3d3429">SP</text>
 </svg>

@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v33 · touch + safe-area + iOS spacing */
+/* Simple Property Tools · Deposit Desk · v34 · Source Sans + Source Serif */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -34,8 +34,8 @@
   --radius-sm: 0.35rem;
   --radius-md: 0.5rem;
   --radius-pill: 999px;
-  --font: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --tap-min: 2.75rem;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
@@ -2033,6 +2033,48 @@ textarea {
 .prose-legal li {
   color: var(--muted);
   max-width: 42rem;
+}
+
+.legal-hub-list {
+  list-style: none;
+  margin: var(--space-5) 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 42rem;
+}
+
+.legal-hub-list li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.legal-hub-icon {
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+.legal-hub-list a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.legal-hub-list a:hover {
+  color: var(--quant-blue);
+}
+
+.legal-hub-list .muted {
+  margin: var(--space-1) 0 0;
+  font-size: 0.95rem;
 }
 
 #step-title:focus {

@@ -14,6 +14,7 @@ const OLD_TAGS = [
   "Itemize it. Date it. Keep the clock. · IL · IN · OH · MI · IA · MO",
   "Itemize it. Date it. Keep the clock. · 19 states + DC · Chicago RLTO",
   "Itemize it. Date it. Keep the clock. · 18 states + DC · Chicago RLTO",
+  "Itemize it. Date it. Keep the clock. · Founded in Chicago · 18 states + DC",
   "Itemize it. Date it. Keep the clock. · 20 states + DC · Chicago RLTO",
 ];
 

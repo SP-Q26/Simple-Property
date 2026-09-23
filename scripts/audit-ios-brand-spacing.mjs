@@ -31,7 +31,7 @@ for (const p of pages) {
   if (h.includes(EM)) need(`${p} no em dash`, false);
 }
 
-need("css v33 header comment", css.includes("v33"));
+need("css v34 header comment", css.includes("v34"));
 need("css apple system stack", css.includes("-apple-system"));
 need("css safe-area tokens", css.includes("--safe-top") && css.includes("safe-area-inset-bottom"));
 need("css text-size-adjust", css.includes("-webkit-text-size-adjust: 100%"));

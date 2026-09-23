@@ -100,7 +100,7 @@ if (existsSync(join(web, "node_modules"))) {
 
 console.log(fail ? `Audit FAILED (${fail} P0)` : "Audit OK · proud-ship P0 gates pass");
 if (!fail) {
-  for (const script of ["audit-brand-shell.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-state-blog-coverage.mjs", "audit-ios-brand-spacing.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-landing-desktop.mjs", "audit-pain-copy.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs"]) {
+  for (const script of ["audit-brand-shell.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-state-blog-coverage.mjs", "audit-ios-brand-spacing.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-landing-desktop.mjs", "audit-fonts.mjs", "audit-pain-copy.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs"]) {
     const r = spawnSync(process.execPath, [join(root, "scripts", script)], { stdio: "inherit" });
     if (r.status !== 0) process.exit(1);
   }

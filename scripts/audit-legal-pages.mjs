@@ -37,6 +37,8 @@ need("vercel rewrite terms", vercel.includes('"/terms"'));
 need("vercel rewrite legal", vercel.includes('"/legal"'));
 need("vercel rewrite feedback", vercel.includes('"/feedback"'));
 
+need("legal.html hub list", read("legal.html").includes("legal-hub-list"));
+
 for (const page of ["index.html", "pricing.html", "app.html"]) {
   const h = read(page);
   need(`${page} footer terms`, h.includes('href="/terms"'));

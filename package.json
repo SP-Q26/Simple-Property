@@ -33,6 +33,8 @@
     "smoke:magic-link": "node scripts/smoke-prod-magic-link.mjs",
     "smoke:full": "node scripts/audit-spt-web.mjs && node scripts/smoke-prod.mjs && node scripts/smoke-prod-extended.mjs && node scripts/smoke-prod-states-blogs.mjs && node scripts/smoke-prod-magic-link.mjs && node scripts/smoke-checkout-live.mjs",
     "sync-chrome": "node scripts/sync-site-chrome.mjs",
+    "sync:head": "node scripts/sync-site-head.mjs",
+    "sync:brand": "node scripts/sync-brand-locale.mjs && node scripts/sync-site-head.mjs",
     "sync:seo": "node scripts/export-og-share-images.mjs && node scripts/sync-social-meta.mjs",
     "sync:locale": "node scripts/sync-brand-locale.mjs",
     "audit:social": "node scripts/audit-social-share.mjs"

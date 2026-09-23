@@ -1,12 +1,13 @@
 {
-  "name": "Simple Property Tools",
+  "name": "Simple Property Tools · Deposit Desk",
   "short_name": "Deposit Desk",
-  "description": "Plain deposit packets for Illinois mom-and-pop landlords.",
+  "description": "Security deposit packets for small landlords · 18 states + DC · founded in Chicago.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f4f0e6",
   "theme_color": "#4a6741",
   "icons": [
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
   ]
 }

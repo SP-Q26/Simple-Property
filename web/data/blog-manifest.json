@@ -79,7 +79,7 @@
     },
     "news": {
       "label": "News & law watch",
-      "audience": "Midwest rental policy roundup"
+      "audience": "National rental policy roundup"
     },
     "pain": {
       "label": "Pain & turnover",
@@ -247,7 +247,7 @@
     {
       "slug": "deposit-desk-vs-spreadsheet",
       "title": "Deposit Desk vs spreadsheet",
-      "description": "Surrender date, 30/45-day clocks, itemization lines, .ics, and print packet vs Excel at turnover. Midwest IL–MO. Not legal advice.",
+      "description": "Surrender date, 30/45-day clocks, itemization lines, .ics, and print packet vs Excel at turnover. Not legal advice.",
       "category": "landlord",
       "states": [
         "IL",
@@ -740,8 +740,8 @@
     },
     {
       "slug": "missed-deposit-deadline-midwest-small-landlord",
-      "title": "Missed deposit deadline stress  ·  Indiana, Ohio, Michigan, and neighbors",
-      "description": "Small landlords across the Midwest confuse lease end with surrender. 30- and 45-day windows by state. Not legal advice.",
+      "title": "Missed deposit deadline stress · multi-state roundup",
+      "description": "Small landlords confuse lease end with surrender. 30- and 45-day windows by state. Not legal advice.",
       "category": "pain",
       "intent": "pain",
       "states": [
@@ -953,7 +953,7 @@
     },
     {
       "slug": "move-in-move-out-fees-midwest-landlords",
-      "title": "Move-in and move-out fees vs the security deposit (Midwest)",
+      "title": "Move-in and move-out fees vs the security deposit",
       "description": "Cleaning fees, admin charges, and pass-through documentation costs. Keep them separate from the deposit ledger. IL · IN · OH · MI · IA · MO. Not legal advice.",
       "category": "landlord",
       "intent": "fees",
@@ -1003,7 +1003,7 @@
     {
       "slug": "pet-deposits-security-deposit-midwest",
       "title": "Pet deposits, pet rent, and security deposit withholds",
-      "description": "Separate pet charges from damage deductions at move-out. Midwest small landlords. Not legal advice.",
+      "description": "Separate pet charges from damage deductions at move-out. Small landlords. Not legal advice.",
       "category": "landlord",
       "intent": "fees",
       "states": [
@@ -1020,7 +1020,7 @@
     },
     {
       "slug": "application-fees-vs-security-deposit-midwest",
-      "title": "Application fees vs security deposits (Midwest renters and landlords)",
+      "title": "Application fees vs security deposits",
       "description": "Screening charges before lease signing are not move-out deposit returns. Plain-language split for IL · IN · OH · MI · IA · MO. Not legal advice.",
       "category": "renter",
       "intent": "fees",

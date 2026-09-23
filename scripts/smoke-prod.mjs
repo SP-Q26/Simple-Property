@@ -1,10 +1,43 @@
 #!/usr/bin/env node
 /** Production smoke + post-smoke content checks (run after deploy). */
+import { verifyPageStylesheet } from "./lib/smoke-css-gate.mjs";
+
 const BASE = process.env.SPT_SMOKE_URL || "https://simple-property.com";
 const EM = "\u2014";
 const paths = [
-  { name: "home", path: "/", need: ["Keep the clock", "Avoid penalties", "pathway-deck", "Pick your path", "hero-rotate", "hero-share-art", "spt-share-door.png", "simple-property.css?v=33", "viewport-fit=cover", "spt-atmosphere", "spt-weather", "spt-weather-mist", "spt-greystone-pilaster", "spt-door-monogram", "deposit-receipt", "40 units", "765 ILCS", "/feedback", "Deposit Desk · start free"], absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:", "link previews"] },
-  { name: "feedback", path: "/feedback", need: ["Suggest rulesets", "spt-feedback-form", "simple-property.css?v=33", "viewport-fit=cover"], absent: [EM] },
+  {
+    name: "home",
+    path: "/",
+    need: [
+      "Keep the clock",
+      "Avoid penalties",
+      "pathway-deck",
+      "Pick your path",
+      "hero-rotate",
+      "hero-share-art",
+      "spt-share-door.png",
+      "viewport-fit=cover",
+      "spt-atmosphere",
+      "spt-weather",
+      "spt-weather-mist",
+      "spt-greystone-pilaster",
+      "spt-door-monogram",
+      "deposit-receipt",
+      "40 units",
+      "765 ILCS",
+      "/feedback",
+      "Deposit Desk · start free",
+    ],
+    absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:", "link previews"],
+    css: true,
+  },
+  {
+    name: "feedback",
+    path: "/feedback",
+    need: ["Suggest rulesets", "spt-feedback-form", "viewport-fit=cover"],
+    absent: [EM],
+    css: true,
+  },
   { name: "pricing", path: "/pricing", need: ["pricing-finder", "pricing-cards", "pf-units", "40 units", "Print / Save as PDF"], absent: [EM] },
   { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance"], absent: [] },
   { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Keep the clock"], absent: ["Homestead", EM] },
@@ -17,7 +50,7 @@ const stripePngs = ["pro-monthly", "pro-annual", "turn-move-out", "turn-full"];
 
 let fail = 0;
 
-async function check({ name, path, need, absent }) {
+async function check({ name, path, need, absent, css }) {
   const url = BASE.replace(/\/$/, "") + path;
   const res = await fetch(url, { redirect: "follow" });
   const text = await res.text();
@@ -38,6 +71,10 @@ async function check({ name, path, need, absent }) {
       console.error(`  FAIL found: ${a}`);
       fail++;
     } else console.log(`  ok absent ${a}`);
+  }
+  if (css) {
+    const ok = await verifyPageStylesheet(BASE, text, name);
+    if (!ok) fail++;
   }
 }
 

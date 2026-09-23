@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { BRAND_TAG, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-locale.mjs";
 
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
@@ -22,14 +23,17 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${title} · Simple Property Tools</title>
   <meta name="description" content="${description.replace(/"/g, "&quot;")}">
   <link rel="canonical" href="${url}">
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=33">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="${FONT_GOOGLE}" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=${CSS_VERSION}">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>
@@ -41,7 +45,7 @@ ${atmosphereBlock}
         <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
         <span class="brand-text">
           <span class="brand-word">Simple Property Tools</span>
-          <span class="brand-tag">Itemize it. Date it. Keep the clock. · 18 states + DC · Chicago RLTO</span>
+          <span class="brand-tag">${BRAND_TAG}</span>
         </span>
       </a>
       <nav class="header-nav" aria-label="Primary">

@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 /** Extended production HTTP smoke · static routes, discovery, API shape (no card). */
+import { verifyPageStylesheet } from "./lib/smoke-css-gate.mjs";
+
 const BASE = (process.env.SPT_SMOKE_URL || "https://simple-property.com").replace(/\/$/, "");
 
 const pages = [
-  { path: "/app", need: ["wizard-steps", "packet-select", "Deposit packet", "simple-property.css?v=33"] },
+  { path: "/app", need: ["wizard-steps", "packet-select", "Deposit packet"], css: true },
   { path: "/launch-stack", need: ["Launch stack", "Deposit Desk", "doors"] },
   { path: "/success", need: ["Payment confirmed", "session_id", "sptRefreshEntitlement"] },
   { path: "/blog", need: ["Guides", "blog"] },
@@ -25,7 +27,7 @@ async function get(path) {
   return { url, res, text };
 }
 
-async function checkPage({ path, need }) {
+async function checkPage({ path, need, css }) {
   const { res, text } = await get(path);
   console.log(`HTTP ${res.status} page ${path}`);
   if (res.status !== 200) {
@@ -38,6 +40,10 @@ async function checkPage({ path, need }) {
       console.error(`  FAIL missing: ${n}`);
       fail++;
     } else console.log(`  ok ${n}`);
+  }
+  if (css) {
+    const ok = await verifyPageStylesheet(BASE, text, path);
+    if (!ok) fail++;
   }
 }
 

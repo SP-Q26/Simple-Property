@@ -50,9 +50,12 @@ const forbiddenCustomer = [
 for (const rel of customerCopyFiles) {
   const p = join(web, rel);
   if (!statSync(p).isFile()) continue;
-  const text = readFileSync(p, "utf8");
+  let text = readFileSync(p, "utf8");
   const low = text.toLowerCase();
   if (text.includes(EM)) need(`${rel} no em dash`, false);
+  // Legacy blog slugs may contain "midwest" in the path only.
+  const visible = text.replace(/href="\/blog\/[^"]*midwest[^"]*"/gi, 'href="#"');
+  if (/\bmidwest\b/i.test(visible)) need(`${rel} no Midwest regional focus`, false);
   for (const term of forbiddenCustomer) {
     if (low.includes(term)) need(`${rel} off-brand term: ${term.trim()}`, false);
   }
@@ -78,6 +81,9 @@ for (const page of ["index.html", "pricing.html", "success.html", "terms.html"])
   const h = readFileSync(join(web, page), "utf8");
   need(`${page} brand tag`, h.includes(BRAND_TAG));
   need(`${page} not legal advice`, h.includes("not legal advice") || h.includes("Not legal advice"));
+  if (page === "terms.html" || page === "privacy.html" || page === "legal.html") {
+    need(`${page} Chicago HQ mention`, h.includes("Chicago"));
+  }
 }
 
 const pricing = readFileSync(join(web, "pricing.html"), "utf8");

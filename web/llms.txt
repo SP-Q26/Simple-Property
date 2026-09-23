@@ -1,6 +1,6 @@
 # Simple Property Tools · llms.txt
 
-> Mom-and-pop landlords (18 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports a print-ready packet · **Itemize it. Date it. Keep the clock.** · not a PM suite.
+> Small landlords (18 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports a print-ready packet · **Itemize it. Date it. Keep the clock.** · founded in Chicago · not a PM suite.
 
 - https://simple-property.com/
 - **Deposit Desk** · wizard state packs: **30-day** GA, IA, IL, LA, MI, MO, NC, ND, NH, NJ, NV, OH, UT, WA · **45-day** DC, IN, MD, MS, VA · **Chicago RLTO 45** on IL · Illinois anchor **765 ILCS 715/** · move-in/move-out · print (per turn or Pro)
@@ -8,11 +8,12 @@
 - **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simple-property.com/pricing
 - **Guides** · pain (missed deadline, dispute, spreadsheet) · law · landlords · renters · news: https://simple-property.com/blog · RSS https://simple-property.com/blog/feed.rss
 - **Pain hub** · missed deadline, tenant dispute, Excel mistakes, surrender/keys: https://simple-property.com/blog#guides-pain
-- **City guides** · Chicago RLTO and major Midwest cities: https://simple-property.com/blog#guides-cities
+- **City guides** · Chicago RLTO and major metros: https://simple-property.com/blog#guides-cities
 - **Launch stack** · pain: portfolio outruns memory · solution: tools by door count: https://simple-property.com/launch-stack
 - Agent bus: https://simple-property.com/spt-ai-bus.json
 - Gospel: https://simple-property.com/.well-known/spt-gospel.json
 - **Feedback** · suggest state rulesets, wizard fields, guides: https://simple-property.com/feedback
+- **Legal** · https://simple-property.com/legal · terms · privacy
 - App: https://simple-property.com/app
 - hello@simple-property.com
 - Not: PM suite, legal advice, enterprise portfolio platform, inspection-photo SaaS

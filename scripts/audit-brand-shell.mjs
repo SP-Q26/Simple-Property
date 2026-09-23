@@ -5,7 +5,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
-const BRAND_TAG = "Itemize it. Date it. Keep the clock. · 18 states + DC · Chicago RLTO";
+const BRAND_TAG = "Itemize it. Date it. Keep the clock. · Founded in Chicago · 18 states + DC";
 const CSS_PATTERN = /simple-property\.css\?v=\d+/;
 let fail = 0;
 
