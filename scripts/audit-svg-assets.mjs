@@ -4,6 +4,7 @@ import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -60,8 +61,8 @@ for (const f of readdirSync(stripeDir).filter((x) => x.endsWith(".png"))) {
 }
 
 const og = readFileSync(join(web, "og/spt-card.svg"), "utf8");
-need("OG icon cluster", og.includes("translate(860") && og.includes("scale(1.08)"));
-need("OG ASCII states", og.includes("IL | IN | OH"));
+need("OG coverage chips on card", (og.match(/class="coverage-chip"/g) || []).length === SUPPORTED_STATES.length);
+need("OG card 18 states copy", og.includes("18 states + DC"));
 
 const monthly = readFileSync(join(web, "stripe/pro-monthly.svg"), "utf8");
 need("monthly cascade", (monthly.match(/scale\(/g) || []).length >= 3);

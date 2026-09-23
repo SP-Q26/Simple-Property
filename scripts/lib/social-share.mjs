@@ -2,11 +2,24 @@
 
 export const SITE = "https://simple-property.com";
 export const SITE_NAME = "Simple Property Tools";
-export const OG_IMAGE = `${SITE}/og/spt-share-door.png`;
+/** Bump when OG PNG art changes so Facebook Debugger picks up fresh previews. */
+export const OG_CACHE_VERSION = "20260923";
+export const OG_IMAGE_PATH = "/og/spt-share-door.png";
+export const OG_IMAGE_COVERAGE_PATH = "/og/spt-share-coverage-expansion.png";
+export const OG_IMAGE = `${SITE}${OG_IMAGE_PATH}?v=${OG_CACHE_VERSION}`;
+export const OG_IMAGE_COVERAGE = `${SITE}${OG_IMAGE_COVERAGE_PATH}?v=${OG_CACHE_VERSION}`;
 export const OG_IMAGE_ALT =
-  "Simple Property Tools Deposit Desk · open door with SP monogram · 18 states + DC deposit packets";
+  "Simple Property Tools Deposit Desk · coverage color bar · 18 states + DC deposit packets";
+export const OG_IMAGE_COVERAGE_ALT =
+  "Deposit Desk new state coverage · 18 states + DC color chips · thank you to operator contributors";
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
+
+export function ogImageUrl(path) {
+  const base = path.startsWith("http") ? path : `${SITE}${path.startsWith("/") ? path : `/${path}`}`;
+  const sep = base.includes("?") ? "&" : "?";
+  return `${base}${sep}v=${OG_CACHE_VERSION}`;
+}
 
 /**
  * @param {{
@@ -17,14 +30,24 @@ export const OG_IMAGE_HEIGHT = "630";
  *   ogType?: string;
  *   image?: string;
  *   imageAlt?: string;
+ *   articlePublished?: string;
+ *   articleModified?: string;
  * }} opts
  */
 export function buildSocialMetaBlock(opts) {
   const url = `${SITE}${opts.canonicalPath}`;
-  const image = opts.image || OG_IMAGE;
+  const image = opts.image ? ogImageUrl(opts.image.replace(SITE, "").split("?")[0]) : OG_IMAGE;
   const imageAlt = opts.imageAlt || OG_IMAGE_ALT;
   const robots = opts.robots ?? "index,follow";
   const ogType = opts.ogType ?? "website";
+  const articleLines = [];
+  if (opts.articlePublished && ogType === "article") {
+    const pub = iso8601Chicago(opts.articlePublished);
+    const mod = iso8601Chicago(opts.articleModified || opts.articlePublished);
+    articleLines.push(`  <meta property="article:published_time" content="${pub}">`);
+    articleLines.push(`  <meta property="article:modified_time" content="${mod}">`);
+    articleLines.push(`  <meta property="og:updated_time" content="${mod}">`);
+  }
   const lines = [
     `  <meta name="robots" content="${robots}">`,
     `  <link rel="canonical" href="${url}">`,
@@ -45,8 +68,13 @@ export function buildSocialMetaBlock(opts) {
     `  <meta name="twitter:description" content="${escapeAttr(opts.ogDescription)}">`,
     `  <meta name="twitter:image" content="${image}">`,
     `  <meta name="twitter:image:alt" content="${escapeAttr(imageAlt)}">`,
+    ...articleLines,
   ];
   return `  <!-- spt-social -->\n${lines.join("\n")}\n  <!-- /spt-social -->`;
+}
+
+function iso8601Chicago(isoDate) {
+  return `${isoDate}T12:00:00-05:00`;
 }
 
 function escapeAttr(s) {
@@ -57,6 +85,7 @@ function escapeAttr(s) {
 export function stripSocialMeta(html) {
   let out = html.replace(/\n?\s*<!-- spt-social -->[\s\S]*?<!-- \/spt-social -->\n?/g, "\n");
   out = out.replace(/\n?\s*<meta property="og:[^"]+" content="[^"]*">\n?/g, "\n");
+  out = out.replace(/\n?\s*<meta property="article:[^"]+" content="[^"]*">\n?/g, "\n");
   out = out.replace(/\n?\s*<meta name="twitter:[^"]+" content="[^"]*">\n?/g, "\n");
   out = out.replace(/\n?\s*<link rel="canonical" href="[^"]*">\n?/g, "\n");
   out = out.replace(/https:\/\/simple-property\.com\/og\/spt-card\.svg/g, OG_IMAGE);

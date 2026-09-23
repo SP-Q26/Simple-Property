@@ -11,10 +11,12 @@ import {
   stripSocialMeta,
   injectSocialMetaAfterDescription,
   SITE,
+  OG_IMAGE_COVERAGE_ALT,
 } from "./lib/social-share.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const blogDir = join(web, "blog");
+const manifest = JSON.parse(readFileSync(join(web, "data", "blog-manifest.json"), "utf8"));
 
 /** @type {Array<{ file: string; path: string; ogTitle: string; ogDescription: string; robots?: string; ogType?: string }>} */
 const DROP_PAGES = [
@@ -45,14 +47,14 @@ const DROP_PAGES = [
     path: "/launch-stack",
     ogTitle: "Launch stack · landlord tools by door count",
     ogDescription:
-      "What to deploy at 1–10, 10–20, and 20–40 doors: deposit compliance first. Midwest mom-and-pop. Not legal advice.",
+      "What to deploy at 1–10, 10–20, and 20–40 doors: deposit compliance first. 18 states + DC · not legal advice.",
   },
   {
     file: "feedback.html",
     path: "/feedback",
     ogTitle: "Suggest rulesets · Deposit Desk feedback",
     ogDescription:
-      "New state rulesets, wizard fields, guides, or fixes. Midwest deposit documentation · not legal advice.",
+      "New state rulesets, wizard fields, guides, or fixes. 18 states + DC today · Florida and Wisconsin on roadmap · not legal advice.",
   },
   {
     file: "logs.html",
@@ -84,7 +86,7 @@ const DROP_PAGES = [
     file: "terms.html",
     path: "/terms",
     ogTitle: "Terms of Service · Simple Property Tools",
-    ogDescription: "Deposit Desk terms · Midwest deposit documentation · not legal advice.",
+    ogDescription: "Deposit Desk terms · 18 states + DC · founded in Chicago · not legal advice.",
   },
   {
     file: "blog/index.html",
@@ -141,16 +143,23 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   const fullPath = join(blogDir, file);
   let html = readFileSync(fullPath, "utf8");
   const slug = file.replace(".html", "");
+  const post = manifest.posts.find((p) => p.slug === slug);
   const titleMatch = html.match(/<title>([^<]+)<\/title>/);
   const title = titleMatch ? titleMatch[1].replace(/ · Simple Property Tools$/, "").trim() : slug;
   const descMatch = html.match(/name="description" content="([^"]+)"/);
-  const desc = descMatch ? descMatch[1] : title;
+  const desc = post?.description || (descMatch ? descMatch[1] : title);
   html = stripSocialMeta(html);
+  const imagePath = post?.ogImage || undefined;
+  const imageAlt = post?.ogImageAlt || (imagePath ? OG_IMAGE_COVERAGE_ALT : undefined);
   const block = buildSocialMetaBlock({
     canonicalPath: `/blog/${slug}`,
     ogTitle: title,
     ogDescription: desc,
     ogType: "article",
+    image: imagePath,
+    imageAlt,
+    articlePublished: post?.published,
+    articleModified: post?.updated || post?.published,
   });
   html = injectSocialMetaAfterDescription(html, block);
   writeFileSync(fullPath, html);

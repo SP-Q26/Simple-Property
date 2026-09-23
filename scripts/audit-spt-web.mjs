@@ -43,6 +43,7 @@ const checks = [
   ["sp-billing.js", "Billing portal UI"],
   ["og/spt-card.svg", "OG card"],
   ["og/spt-share-door.svg", "OG share door art"],
+  ["og/spt-share-coverage-expansion.svg", "OG coverage expansion art"],
   ["og/spt-share-door.png", "OG share door PNG (link previews)"],
   ["favicon.svg", "Product mark"],
   ["feedback.html", "Ruleset feedback page"],
