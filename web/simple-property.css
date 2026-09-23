@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v24 · touch + safe-area + iOS spacing */
+/* Simple Property Tools · Deposit Desk · v26 · touch + safe-area + iOS spacing */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -575,7 +575,8 @@ main > h1,
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  z-index: 30;
+  z-index: 40;
+  pointer-events: auto;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px);
 }
@@ -594,76 +595,70 @@ main > h1,
 
 .locale-bar__map-wrap {
   flex: 1 1 280px;
-  max-width: 420px;
+  max-width: 28rem;
   min-width: 0;
 }
 
-.coverage-map {
-  display: block;
+.coverage-bubbles {
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 88px;
+  aspect-ratio: 200 / 120;
+  min-height: 7.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse 85% 65% at 48% 52%, var(--quant-blue-wash), transparent 72%),
+    linear-gradient(160deg, var(--quant-blue-surface), var(--surface));
+  box-shadow: var(--shadow-soft);
+  overflow: visible;
 }
 
-.coverage-map__land {
-  fill: var(--quant-blue-wash);
-  stroke: color-mix(in srgb, var(--quant-blue) 35%, var(--border));
-  stroke-width: 0.6;
-  vector-effect: non-scaling-stroke;
-}
-
-.coverage-map__state {
-  cursor: pointer;
-  outline: none;
-}
-
-.coverage-map__hit {
-  fill: rgba(255, 255, 255, 0.001);
-}
-
-.coverage-map__dot,
-.coverage-map__label {
-  pointer-events: none;
-}
-
-.coverage-map__dot {
-  stroke: #fff;
-  stroke-width: 1.2;
-  vector-effect: non-scaling-stroke;
-  transition: transform 0.12s ease, filter 0.12s ease;
-}
-
-.coverage-map__dot--30 {
-  fill: var(--success);
-}
-
-.coverage-map__dot--45 {
-  fill: var(--beam-gold);
-}
-
-.coverage-map__label {
-  font-family: var(--font-sans, Inter, sans-serif);
-  font-size: 5px;
+.coverage-bubble {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-width: 2.75rem;
+  min-height: var(--tap-min);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.6875rem;
   font-weight: 700;
-  text-anchor: middle;
-  fill: #fff;
-  pointer-events: none;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  z-index: 2;
+  border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  box-shadow: 0 1px 4px rgba(61, 52, 41, 0.14);
+  color: #fff;
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.22);
 }
 
-.coverage-map__state:hover .coverage-map__dot,
-.coverage-map__state:focus-visible .coverage-map__dot {
-  filter: brightness(1.08);
+.coverage-bubble--30 {
+  background: var(--success);
 }
 
-.coverage-map__state:focus-visible .coverage-map__hit {
-  stroke: var(--quant-blue);
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
+.coverage-bubble--45 {
+  background: var(--beam-gold);
+  color: var(--btn-on-gold);
 }
 
-.coverage-map__state[aria-current="location"] .coverage-map__dot {
-  stroke: var(--quant-blue);
-  stroke-width: 2;
+.coverage-bubble:hover {
+  filter: brightness(1.06);
+}
+
+.coverage-bubble:focus-visible {
+  outline: 2px solid var(--quant-blue);
+  outline-offset: 2px;
+}
+
+.coverage-bubble[aria-current="location"] {
+  outline: 2px solid var(--quant-blue);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--gold-hairline), 0 2px 6px rgba(59, 90, 120, 0.2);
 }
 
 .coverage-map__legend {
@@ -711,6 +706,73 @@ main > h1,
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.locale-bar__list-fallback {
+  margin-top: var(--space-2);
+  font-size: 0.8125rem;
+}
+
+.locale-bar__list-fallback summary {
+  cursor: pointer;
+  color: var(--quant-blue);
+  font-weight: 600;
+  min-height: var(--tap-min);
+  display: flex;
+  align-items: center;
+}
+
+.locale-bar__pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: var(--space-2);
+  max-height: 6rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.locale-bar__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: var(--tap-min);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.locale-bar__pill[aria-current="location"] {
+  outline: 2px solid var(--quant-blue);
+  outline-offset: 1px;
+}
+
+.coverage-spotlight {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  background: var(--quant-blue-surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.coverage-spotlight .hero-lead {
+  max-width: 42rem;
+}
+
+#wizard-panel {
+  scroll-margin-bottom: calc(var(--space-6) + var(--safe-bottom, 0px));
+}
+
+.pricing-checkout-error {
+  color: var(--danger, #9b2c2c);
+  max-width: 36rem;
 }
 
 .locale-pill {
@@ -2391,8 +2453,13 @@ textarea {
     max-width: none;
   }
 
-  .coverage-map {
-    max-height: 5.5rem;
+  .coverage-bubbles {
+    min-height: 8.5rem;
+  }
+
+  .coverage-bubble {
+    min-width: 2.5rem;
+    font-size: 0.625rem;
   }
 
   .coverage-map__legend {
@@ -2477,8 +2544,8 @@ textarea {
     background: color-mix(in srgb, var(--bg) 97%, transparent);
   }
 
-  .coverage-map__state {
-    -webkit-tap-highlight-color: rgba(201, 162, 39, 0.12);
+  .coverage-bubble {
+    -webkit-tap-highlight-color: rgba(201, 162, 39, 0.18);
   }
 
   .btn,

@@ -23,7 +23,7 @@ const DROP_PAGES = [
     path: "/",
     ogTitle: "Avoid deposit penalties · dated records · Deposit Desk",
     ogDescription:
-      "Midwest security deposit return: dated surrender, itemization, print-ready packets. Free draft · per turn · Pro. Not legal advice.",
+      "18 states + DC · deposit return clocks, itemization, print-ready packets. Free draft · per turn · Pro. Not legal advice.",
   },
   {
     file: "app.html",
@@ -31,14 +31,14 @@ const DROP_PAGES = [
     robots: "noindex,nofollow",
     ogTitle: "Start free deposit packet · Deposit Desk",
     ogDescription:
-      "Five steps · clock on screen · print-ready Midwest deposit packet. Free wizard · unlock per turn or Pro. Not legal advice.",
+      "Five steps · statutory clock on screen · print-ready packet. 18 states + DC · free wizard · unlock per turn or Pro. Not legal advice.",
   },
   {
     file: "pricing.html",
     path: "/pricing",
     ogTitle: "Deposit Desk pricing · cheaper than one cleaning fee",
     ogDescription:
-      "Free draft · $29/$49 per turn · Pro $22/mo or $99/yr · print packet · up to 40 units · IL–MO. Not legal advice.",
+      "Free draft · $29/$49 per turn · Pro $22/mo or $99/yr · print packet · up to 40 units · 18 states + DC. Not legal advice.",
   },
   {
     file: "launch-stack.html",
@@ -89,7 +89,7 @@ const DROP_PAGES = [
   {
     file: "blog/index.html",
     path: "/blog",
-    ogTitle: "Deposit guides · Midwest security deposits",
+    ogTitle: "Deposit guides · 18 states + DC",
     ogDescription:
       "City guides, missed deadlines, disputes, fees, and state law for small landlords. Not legal advice.",
   },

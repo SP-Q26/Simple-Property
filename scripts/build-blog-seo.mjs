@@ -37,7 +37,15 @@ for (const cat of Object.values(byCat)) {
 
 const painPosts = manifest.posts
   .filter((p) => p.intent === "pain")
-  .sort((a, b) => (a.published < b.published ? 1 : -1));
+  .sort((a, b) => {
+    const aPrimary = Object.values(manifest.primaryPainByState || {}).includes(a.slug);
+    const bPrimary = Object.values(manifest.primaryPainByState || {}).includes(b.slug);
+    if (aPrimary && !bPrimary) return -1;
+    if (!aPrimary && bPrimary) return 1;
+    if (a.slug === "missed-deposit-deadline-midwest-small-landlord") return 1;
+    if (b.slug === "missed-deposit-deadline-midwest-small-landlord") return -1;
+    return a.title.localeCompare(b.title);
+  });
 
 let painSections = `\n      <section class="guides-hub blog-cluster--pain" aria-labelledby="guides-pain">\n`;
 painSections += `        <h2 id="guides-pain">When something goes wrong</h2>\n`;
@@ -76,9 +84,14 @@ function postStates(post) {
 }
 
 function postsForState(code) {
+  const primary = manifest.primaryPainByState?.[code];
   return manifest.posts
     .filter((p) => postStates(p).includes(code))
-    .sort((a, b) => (a.published < b.published ? 1 : -1));
+    .sort((a, b) => {
+      if (a.slug === primary) return -1;
+      if (b.slug === primary) return 1;
+      return a.published < b.published ? 1 : -1;
+    });
 }
 
 let stateSections = `\n      <section class="guides-hub" aria-labelledby="guides-by-state">\n`;
@@ -166,6 +179,22 @@ indexHtml = indexHtml.replace(
   /<p class="hero-lead">[^<]*<\/p>/,
   `<p class="hero-lead">City guides · missed deadlines · fees and pets · spreadsheet traps · state law by wizard pack. Not legal advice.</p>`
 );
+indexHtml = indexHtml.replace(
+  /<meta property="og:title" content="[^"]*">/,
+  `<meta property="og:title" content="Deposit guides · 18 states + DC">`
+);
+indexHtml = indexHtml.replace(
+  /<meta name="twitter:title" content="[^"]*">/,
+  `<meta name="twitter:title" content="Deposit guides · 18 states + DC">`
+);
+indexHtml = indexHtml.replace(
+  /<meta property="og:image:alt" content="[^"]*">/,
+  `<meta property="og:image:alt" content="Simple Property Tools Deposit Desk · 18 states + DC deposit packets">`
+);
+indexHtml = indexHtml.replace(
+  /<meta name="twitter:image:alt" content="[^"]*">/,
+  `<meta name="twitter:image:alt" content="Simple Property Tools Deposit Desk · 18 states + DC deposit packets">`
+);
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");
 
@@ -173,7 +202,7 @@ const sorted = [...manifest.posts].sort((a, b) => (a.published < b.published ? 1
 let rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n`;
 rss += `<title>Simple Property Tools · deposit guides</title>\n`;
 rss += `<link>${site}/blog</link>\n`;
-rss += `<description>State and topic guides for IL, IN, OH, MI, IA, MO landlords and renters. Not legal advice.</description>\n`;
+rss += `<description>Deposit guides for 18 states + DC · small landlords · not legal advice.</description>\n`;
 rss += `<language>en-us</language>\n`;
 rss += `<atom:link href="${site}/blog/feed.rss" rel="self" type="application/rss+xml"/>\n`;
 for (const p of sorted.slice(0, 30)) {

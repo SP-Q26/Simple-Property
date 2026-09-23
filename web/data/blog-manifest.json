@@ -43,6 +43,27 @@
     "VA": "Virginia",
     "WA": "Washington"
   },
+  "primaryPainByState": {
+    "DC": "dc-rhca-deposit-clock-rowhouse-investor",
+    "GA": "georgia-cleaning-fee-lump-sum-deposit",
+    "IA": "iowa-rural-turnover-surrender-date-gap",
+    "IL": "missed-illinois-deposit-deadline-what-now",
+    "IN": "indiana-45-day-clock-forwarding-address-confusion",
+    "LA": "louisiana-withhold-without-itemized-accounting",
+    "MD": "maryland-45-day-belt-investor-missed-clock",
+    "MI": "michigan-detroit-normal-wear-deposit-fight",
+    "MO": "missouri-stl-kc-deposit-clock-two-market",
+    "MS": "mississippi-possession-still-occupied-deposit",
+    "NC": "north-carolina-interim-30-final-60-deposit",
+    "ND": "north-dakota-pet-deposit-vs-security-deposit",
+    "NH": "new-hampshire-deposit-interest-itemization",
+    "NJ": "new-jersey-disclosure-clock-vs-return-clock",
+    "NV": "nevada-return-and-itemization-same-mailing",
+    "OH": "ohio-cleveland-columbus-turnover-mail-delay",
+    "UT": "utah-missed-deposit-deadline-penalty-track",
+    "VA": "virginia-45-day-itemization-mail-proof",
+    "WA": "washington-deposit-invoices-substantiation"
+  },
   "categories": {
     "law": {
       "label": "Rules & law",

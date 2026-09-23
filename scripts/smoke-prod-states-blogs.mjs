@@ -12,6 +12,8 @@ const manifest = JSON.parse(readFileSync(join(root, "web", "data", "blog-manifes
 let fail = 0;
 
 function primaryPainSlug(code) {
+  const mapped = manifest.primaryPainByState?.[code];
+  if (mapped) return mapped;
   const pains = manifest.posts.filter(
     (p) => Array.isArray(p.states) && p.states.includes(code) && (p.intent === "pain" || p.category === "pain")
   );

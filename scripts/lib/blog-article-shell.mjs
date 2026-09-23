@@ -29,7 +29,7 @@ function articleShell({ title, description, slug, published, bodyHtml }) {
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=24">
+  <link rel="stylesheet" href="/simple-property.css?v=26">
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>

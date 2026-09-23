@@ -138,85 +138,29 @@
   ];
 
   var MAP_XY = {
-    "DC": [
-      178,
-      52
-    ],
-    "GA": [
-      168,
-      78
-    ],
-    "IA": [
-      108,
-      42
-    ],
-    "IL": [
-      118,
-      44
-    ],
-    "IN": [
-      124,
-      44
-    ],
-    "LA": [
-      112,
-      82
-    ],
-    "MD": [
-      172,
-      54
-    ],
-    "MI": [
-      126,
-      32
-    ],
-    "MO": [
-      108,
-      52
-    ],
-    "MS": [
-      122,
-      74
-    ],
-    "NC": [
-      168,
-      62
-    ],
-    "ND": [
-      98,
-      22
-    ],
-    "NH": [
-      182,
-      28
-    ],
-    "NJ": [
-      174,
-      48
-    ],
-    "NV": [
-      42,
-      48
-    ],
-    "OH": [
-      136,
-      44
-    ],
-    "UT": [
-      52,
-      44
-    ],
-    "VA": [
-      166,
-      58
-    ],
-    "WA": [
-      28,
-      18
-    ]
+    "DC": [178, 52],
+    "GA": [168, 78],
+    "IA": [102, 38],
+    "IL": [118, 46],
+    "IN": [132, 42],
+    "LA": [112, 82],
+    "MD": [172, 54],
+    "MI": [128, 28],
+    "MO": [100, 54],
+    "MS": [122, 74],
+    "NC": [168, 62],
+    "ND": [98, 22],
+    "NH": [182, 28],
+    "NJ": [174, 48],
+    "NV": [42, 48],
+    "OH": [142, 40],
+    "UT": [52, 44],
+    "VA": [166, 58],
+    "WA": [28, 18]
   };
 
-  var SVG_NS = "http://www.w3.org/2000/svg";
+  var MAP_W = 200;
+  var MAP_H = 120;
 
   var path = location.pathname.replace(/\/$/, "") || "/";
   var onBlog = path === "/blog";
@@ -252,69 +196,59 @@
     var wrap = document.createElement("div");
     wrap.className = "locale-bar__map-wrap";
 
-    var svg = document.createElementNS(SVG_NS, "svg");
-    svg.setAttribute("viewBox", "0 0 200 120");
-    svg.setAttribute("class", "coverage-map");
-    svg.setAttribute("role", "img");
-    svg.setAttribute("aria-label", "Deposit Desk coverage map · click a state");
-
-    var plate = document.createElementNS(SVG_NS, "path");
-    plate.setAttribute(
-      "d",
-      "M18,14 L188,10 L194,96 L22,102 Z M28,18 L52,44 L42,48 L38,38 L28,18 Z M98,22 L126,32 L136,44 L124,44 L118,44 L108,42 L98,22 Z M168,62 L168,78 L112,82 L122,74 L168,62 Z M172,54 L182,28 L174,48 L172,54 Z"
-    );
-    plate.setAttribute("class", "coverage-map__land");
-    svg.appendChild(plate);
+    var plate = document.createElement("div");
+    plate.className = "coverage-bubbles";
+    plate.setAttribute("role", "group");
+    plate.setAttribute("aria-label", "Deposit Desk coverage · tap a state");
 
     LOCALES.forEach(function (loc) {
       var xy = MAP_XY[loc.code];
       if (!xy) return;
       var href = onBlog ? loc.blog : loc.app;
-      var g = document.createElementNS(SVG_NS, "a");
-      g.setAttribute("href", href);
-      g.setAttribute("class", "coverage-map__state");
-      g.setAttribute("data-code", loc.code);
-      g.setAttribute("title", loc.name + " · " + loc.returnDays + "-day pack");
-
-      var hitR = loc.code === "DC" ? "12" : "14";
-      var hit = document.createElementNS(SVG_NS, "circle");
-      hit.setAttribute("cx", String(xy[0]));
-      hit.setAttribute("cy", String(xy[1]));
-      hit.setAttribute("r", hitR);
-      hit.setAttribute("class", "coverage-map__hit");
-      g.appendChild(hit);
-
-      var r = loc.code === "DC" ? "4.5" : "6.5";
-      var dot = document.createElementNS(SVG_NS, "circle");
-      dot.setAttribute("cx", String(xy[0]));
-      dot.setAttribute("cy", String(xy[1]));
-      dot.setAttribute("r", r);
-      dot.setAttribute(
-        "class",
-        loc.returnDays === 45 ? "coverage-map__dot coverage-map__dot--45" : "coverage-map__dot coverage-map__dot--30"
-      );
-      g.appendChild(dot);
-
-      var label = document.createElementNS(SVG_NS, "text");
-      label.setAttribute("x", String(xy[0]));
-      label.setAttribute("y", String(xy[1] + (loc.code === "DC" ? 2.5 : 3)));
-      label.setAttribute("class", "coverage-map__label");
-      label.textContent = loc.code;
-      g.appendChild(label);
-
-      wireAppPreset(g, loc.code);
-      svg.appendChild(g);
+      var a = document.createElement("a");
+      a.className =
+        "coverage-bubble " +
+        (loc.returnDays === 45 ? "coverage-bubble--45" : "coverage-bubble--30");
+      a.href = href;
+      a.setAttribute("data-code", loc.code);
+      a.textContent = loc.code;
+      a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day pack");
+      a.style.left = (xy[0] / MAP_W) * 100 + "%";
+      a.style.top = (xy[1] / MAP_H) * 100 + "%";
+      wireAppPreset(a, loc.code);
+      plate.appendChild(a);
     });
 
-    wrap.appendChild(svg);
+    wrap.appendChild(plate);
 
     var legend = document.createElement("div");
     legend.className = "coverage-map__legend";
     legend.innerHTML =
       '<span class="coverage-map__key coverage-map__key--30">30-day</span>' +
       '<span class="coverage-map__key coverage-map__key--45">45-day</span>' +
-      '<span class="coverage-map__key coverage-map__key--muted">Click a dot · Chicago RLTO 45 on IL</span>';
+      '<span class="coverage-map__key coverage-map__key--muted">Tap a state · Chicago RLTO 45 on IL</span>';
     wrap.appendChild(legend);
+
+    var fallback = document.createElement("details");
+    fallback.className = "locale-bar__list-fallback";
+    fallback.innerHTML = "<summary>All states</summary>";
+    var row = document.createElement("div");
+    row.className = "locale-bar__pill-row";
+    LOCALES.slice()
+      .sort(function (a, b) {
+        return a.code.localeCompare(b.code);
+      })
+      .forEach(function (loc) {
+        var link = document.createElement("a");
+        link.className = "locale-bar__pill";
+        link.href = onBlog ? loc.blog : loc.app;
+        link.textContent = loc.code;
+        link.setAttribute("data-code", loc.code);
+        wireAppPreset(link, loc.code);
+        row.appendChild(link);
+      });
+    fallback.appendChild(row);
+    wrap.appendChild(fallback);
 
     return wrap;
   }
@@ -352,7 +286,7 @@
 
   function markActiveLocale() {
     var active = activeStateCode();
-    document.querySelectorAll(".coverage-map__state").forEach(function (node) {
+    document.querySelectorAll(".coverage-bubble, .locale-bar__pill").forEach(function (node) {
       var code = node.getAttribute("data-code");
       if (code === active) node.setAttribute("aria-current", "location");
       else node.removeAttribute("aria-current");

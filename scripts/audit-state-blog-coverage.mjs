@@ -33,5 +33,25 @@ if (manifest.stateOrder?.length !== SUPPORTED_STATES.length) {
   fail++;
 }
 
+const primaryMap = manifest.primaryPainByState || {};
+for (const code of SUPPORTED_STATES) {
+  const slug = primaryMap[code];
+  if (!slug) {
+    console.error(`FAIL ${code}: missing primaryPainByState`);
+    fail++;
+    continue;
+  }
+  const post = manifest.posts.find((p) => p.slug === slug);
+  if (!post) {
+    console.error(`FAIL ${code}: primary pain slug not in manifest: ${slug}`);
+    fail++;
+  } else if (!post.states?.includes(code)) {
+    console.error(`FAIL ${code}: primary pain ${slug} not tagged for state`);
+    fail++;
+  } else {
+    console.log(`ok ${code} primary pain · ${slug}`);
+  }
+}
+
 if (fail) process.exit(1);
 console.log("audit-state-blog-coverage OK");

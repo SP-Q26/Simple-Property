@@ -241,7 +241,8 @@ let draft = loadDraft();
 
 function applyPresetStateFromUrl() {
   const params = new URLSearchParams(location.search);
-  let code = params.get("state");
+  const urlState = params.get("state");
+  let code = urlState;
   try {
     if (!code) code = sessionStorage.getItem("spt_preset_state");
   } catch {
@@ -249,7 +250,9 @@ function applyPresetStateFromUrl() {
   }
   if (!code) return;
   const normalized = normalizeStateCode(code);
-  if (draft.property.state === normalized && !params.get("city")) return;
+  if (!STATE_PACKS[normalized]) return;
+  const forceFromUrl = Boolean(urlState);
+  if (!forceFromUrl && draft.property.state === normalized && !params.get("city")) return;
   draft.property.state = normalized;
   if (normalized !== "IL") {
     draft.property.inChicago = false;
@@ -334,7 +337,9 @@ function renderStep1() {
   const clockHint =
     preset === "chicago-il"
       ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender. Elsewhere in Illinois: <strong>30 days</strong> (${pack.cite}).</p>`
-      : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${pack.cite}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
+      : st === "NC"
+        ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${pack.cite}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
+        : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${pack.cite}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
   return `
     <h2 id="step-title" tabindex="-1">Landlord &amp; property</h2>
     <div class="form-grid two">

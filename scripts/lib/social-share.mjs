@@ -4,7 +4,7 @@ export const SITE = "https://simple-property.com";
 export const SITE_NAME = "Simple Property Tools";
 export const OG_IMAGE = `${SITE}/og/spt-share-door.png`;
 export const OG_IMAGE_ALT =
-  "Simple Property Tools Deposit Desk · open door with SP monogram · Midwest deposit packets";
+  "Simple Property Tools Deposit Desk · open door with SP monogram · 18 states + DC deposit packets";
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
 

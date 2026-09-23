@@ -29,7 +29,8 @@ export default async function handler(req, res) {
   };
 
   if (!resendConfigured()) {
-    return res.status(503).json({ error: "email_not_configured", ...generic });
+    console.warn("spt magic-link: email provider not configured (set Resend env on Vercel)");
+    return res.status(200).json(generic);
   }
 
   try {

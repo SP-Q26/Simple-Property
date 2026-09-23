@@ -4,6 +4,11 @@
   async function startCheckout(btn) {
     var sku = btn.getAttribute("data-sku") || "annual";
     var prev = btn.textContent;
+    var errEl = document.getElementById("spt-checkout-error");
+    if (errEl) {
+      errEl.hidden = true;
+      errEl.textContent = "";
+    }
     btn.disabled = true;
     btn.textContent = "Opening checkout…";
     var body = { sku: sku };
@@ -30,9 +35,14 @@
       btn.disabled = false;
       btn.textContent = prev;
       if (e.message !== "packet_id_required") {
-        alert(
-          "Checkout is unavailable right now. Email hello@simple-property.com and we will send a checkout link."
-        );
+        var msg =
+          "Checkout is unavailable right now. Email hello@simple-property.com and we will send a checkout link.";
+        if (errEl) {
+          errEl.textContent = msg;
+          errEl.hidden = false;
+        } else {
+          alert(msg);
+        }
       }
     }
   }

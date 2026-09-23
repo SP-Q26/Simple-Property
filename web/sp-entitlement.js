@@ -123,7 +123,7 @@
       body: JSON.stringify({ email: email }),
     });
     var data = await res.json();
-    if (!res.ok && res.status !== 503) throw new Error(data.error || "magic_failed");
+    if (!res.ok) throw new Error(data.error || "magic_failed");
     return data;
   }
 
