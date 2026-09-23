@@ -43,6 +43,8 @@ function normalizeRoom(r) {
     notes: r?.notes || "",
     photo: r?.photo || null,
     photoLink: r?.photoLink || "",
+    photoFileName: r?.photoFileName || "",
+    photoCapturedAt: r?.photoCapturedAt || "",
   };
 }
 
@@ -64,7 +66,15 @@ function emptyDraft() {
     deposit: { amount: "", heldAt: "" },
     surrenderDate: "",
     photoAlbumLink: "",
-    rooms: DEFAULT_ROOMS.map((name) => ({ name, condition: "Good", notes: "", photo: null, photoLink: "" })),
+    rooms: DEFAULT_ROOMS.map((name) => ({
+      name,
+      condition: "Good",
+      notes: "",
+      photo: null,
+      photoLink: "",
+      photoFileName: "",
+      photoCapturedAt: "",
+    })),
     deductions: [{ category: "Unpaid rent", description: "", amount: "" }],
     signatures: { landlordPrinted: "", tenantPrinted: "", date: new Date().toISOString().slice(0, 10) },
   };
@@ -169,7 +179,8 @@ function proBlockMessage() {
       return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
     }
     return `<div class="paywall" role="status">
-      <strong>Unlock print/PDF for this packet.</strong> Per turn ($29 move-out · $49 full tenancy) or Pro subscription.
+      <strong>One late or thin packet costs more than $29.</strong> Unlock print/PDF for this packet.
+      Per turn ($29 move-out · $49 full tenancy) or Pro subscription.
       <div class="paywall-actions" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
         <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
         <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
@@ -234,6 +245,152 @@ function sumDeductions(list) {
 
 function photoBytesTotal(rooms) {
   return rooms.reduce((acc, r) => acc + (r.photo?.length || 0), 0);
+}
+
+function slugStreet(street) {
+  return (street || "unit").replace(/[^\w]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 32) || "unit";
+}
+
+function buildPhotoFileName(street, roomName, originalName) {
+  const ext = (originalName?.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
+  const room = (roomName || "room").replace(/[^\w]+/g, "-").slice(0, 20);
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
+  return `${slugStreet(street)}_${room}_move-in_${stamp}.${ext}`;
+}
+
+function surrenderLeaseHint(leaseEnd, surrender) {
+  if (!surrender) {
+    return "Statutory clock usually starts at surrender (keys back / vacant unit), not lease end alone.";
+  }
+  if (!leaseEnd) return "Log lease end too · compare both dates in disputes.";
+  if (surrender < leaseEnd) {
+    return "Surrender is before lease end · clock still runs from surrender if possession ended. Confirm with counsel.";
+  }
+  if (surrender > leaseEnd) {
+    return "Surrender is after lease end · common with holdover or slow turnover. Document keys returned.";
+  }
+  return "Surrender matches lease end · still note keys returned and unit vacant.";
+}
+
+function wearDamageGuideHref(state) {
+  const st = normalizeStateCode(state);
+  if (st === "IL") return "/blog/normal-wear-vs-damage-illinois.html";
+  if (st === "MI") return "/blog/michigan-detroit-normal-wear-deposit-fight.html";
+  return "/blog/deposit-desk-vs-spreadsheet.html";
+}
+
+function exportStatusLine() {
+  const parts = [];
+  if (hasTurnUnlock()) parts.push("Turn unlock active for this packet");
+  if (isProSubscription()) parts.push(`Pro active · up to ${PRO_UNITS_MAX} units`);
+  return parts.length ? parts.join(" · ") + " ·" : "";
+}
+
+function renderItemizationPreview() {
+  const dep = parseFloat(draft.deposit.amount) || 0;
+  const withheld = sumDeductions(draft.deductions);
+  const dedRows = draft.deductions
+    .filter((d) => d.amount || d.description)
+    .map(
+      (d) =>
+        `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "-"}</td><td>$${esc(d.amount) || "0.00"}</td></tr>`
+    )
+    .join("");
+  return `
+    <div class="itemization-preview product-proof" style="margin-top:1rem">
+      <p class="section-label">Statement preview</p>
+      <p class="field-hint">Totals your printable packet will carry · review before you unlock export.</p>
+      <table class="product-proof-table">
+        <thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead>
+        <tbody>${dedRows || `<tr><td colspan="3">Add move-out lines on step 4</td></tr>`}</tbody>
+      </table>
+      <p class="deposit-receipt__totals"><strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Withheld:</strong> $${withheld.toFixed(2)} · <strong>Return:</strong> $${Math.max(0, dep - withheld).toFixed(2)}</p>
+    </div>`;
+}
+
+function exportEntitlementSection() {
+  if (!canExportPro()) {
+    return (
+      proBlockMessage() ||
+      `<div class="paywall" role="status"><strong>Unlock export below.</strong> <a href="/pricing">Pricing</a></div>`
+    );
+  }
+  const tenantEmailBlock = isProSubscription()
+    ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
+        <p class="section-label" style="margin-bottom:0.5rem">Email copy to tenant</p>
+        <p class="field-hint">Sends a plain-language statement summary (not photos). BCCs your landlord email when checked.</p>
+        <div class="form-grid two">
+          <div><label for="tenant-email-send">Tenant email</label><input id="tenant-email-send" type="email" value="${esc(draft.tenant.email)}" autocomplete="email" /></div>
+          <div style="align-self:end;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
+            <label><input id="tenant-email-bcc" type="checkbox" checked /> BCC me (${esc(draft.landlord.email) || "landlord email on step 1"})</label>
+            <button type="button" class="btn btn-secondary" id="btn-email-tenant">Send tenant copy</button>
+          </div>
+        </div>
+        <p class="field-hint" id="tenant-email-status" aria-live="polite"></p>
+      </div>`
+    : "";
+  return `
+    <p class="field-hint export-status" role="status">${exportStatusLine()} Print / Save as PDF using the button below.</p>
+    <p style="margin-top:0.75rem"><button type="button" class="btn btn-secondary" id="btn-proof-manifest">Download photo proof manifest (.json)</button></p>
+    ${tenantEmailBlock}`;
+}
+
+function buildProofManifest() {
+  return {
+    packetId: draft.id,
+    property: {
+      street: draft.property.street,
+      city: draft.property.city,
+      state: draft.property.state,
+      zip: draft.property.zip,
+    },
+    tenant: draft.tenant.name,
+    surrenderDate: draft.surrenderDate,
+    photoAlbumLink: draft.photoAlbumLink,
+    generatedAt: new Date().toISOString(),
+    rooms: draft.rooms.map((r) => ({
+      name: r.name,
+      condition: r.condition,
+      photoFileName: r.photoFileName || null,
+      photoCapturedAt: r.photoCapturedAt || null,
+      photoLink: r.photoLink || null,
+      hasEmbeddedPhoto: Boolean(r.photo),
+      embeddedPhotoBytes: r.photo?.length || 0,
+    })),
+  };
+}
+
+function downloadProofManifest() {
+  readStepIntoDraft();
+  const json = JSON.stringify(buildProofManifest(), null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `deposit-proof-${slugStreet(draft.property.street)}-${draft.id.slice(0, 8)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  if (els.status) els.status.textContent = "Photo proof manifest downloaded (metadata + links, not image bytes).";
+}
+
+function initFromQuery() {
+  const params = new URLSearchParams(location.search);
+  const stepParam = parseInt(params.get("step") || "0", 10);
+  if (stepParam >= 1 && stepParam <= MAX_STEPS) step = stepParam;
+  const packetId = params.get("packet_id");
+  if (packetId && packetId !== draft.id) {
+    const found = listSavedPackets().find((p) => p.id === packetId);
+    if (found) {
+      draft = { ...emptyDraft(), ...found.data, id: found.id };
+      saveDraft(draft);
+    } else {
+      window.__sptStatusMsg =
+        "Paid packet id not in saved list · load the same browser draft or restore from Saved packets.";
+    }
+  }
+  if (params.get("checkout") === "cancel") {
+    window.__sptStatusMsg = "Checkout canceled · draft still saved · unlock anytime from step 5.";
+  }
 }
 
 let step = 1;
@@ -354,6 +511,7 @@ function renderStep1() {
       <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" aria-describedby="prop-units-hint" /></div>
         <p class="field-hint" id="prop-units-hint">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription. More doors? Finish the draft free, then contact us before checkout.</p>
       ${clockHint}
+      <p class="field-hint step-loss-kicker">Miss the return window or export without move-in proof · dispute cost usually beats $29–$99 tool fees.</p>
     </div>`;
 }
 
@@ -369,7 +527,8 @@ function renderStep2() {
       <div><label for="dep-amt">Security deposit ($)</label><input id="dep-amt" type="number" min="0" step="0.01" value="${esc(d.deposit.amount)}" /></div>
       <div><label for="dep-held">Deposit held at (bank note)</label><input id="dep-held" type="text" value="${esc(d.deposit.heldAt)}" /></div>
       <div><label for="surrender">Surrender date (keys returned)</label><input id="surrender" type="date" value="${esc(d.surrenderDate)}" /></div>
-    </div>`;
+    </div>
+    <p class="field-hint surrender-hint" id="surrender-hint" role="status">${esc(surrenderLeaseHint(d.lease.end, d.surrenderDate))}</p>`;
 }
 
 function renderStep3() {
@@ -390,6 +549,11 @@ function renderStep3() {
       <div class="photo-cell"><label>Photo upload (optional)</label>
         <input type="file" class="room-photo" accept="image/jpeg,image/png,image/webp" />
         ${r.photo ? `<img class="photo-thumb" src="${r.photo}" alt="" />` : ""}
+        ${
+          r.photoFileName
+            ? `<p class="field-hint photo-meta">${esc(r.photoFileName)}${r.photoCapturedAt ? ` · captured ${esc(r.photoCapturedAt.slice(0, 10))}` : ""}</p>`
+            : ""
+        }
       </div>
       <div class="room-photo-links">
         <label>Photo link (Dropbox, Google Drive, iCloud share URL)</label>
@@ -423,9 +587,10 @@ function renderStep4() {
     .join("");
   const dep = parseFloat(draft.deposit.amount) || 0;
   const withheld = sumDeductions(draft.deductions);
+  const guide = wearDamageGuideHref(draft.property.state);
   return `
     <h2 id="step-title" tabindex="-1">Move-out itemization (optional)</h2>
-    <p class="field-hint">Line items for your written statement.</p>
+    <p class="field-hint">Line items for your written statement. Separate <strong>normal wear</strong> from <strong>tenant-caused damage</strong> · vague “cleaning” lines get challenged. <a href="${guide}">Wear vs damage guide</a></p>
     ${rows}
     <button type="button" class="btn btn-secondary" id="btn-add-ded">Add line item</button>
     <div class="deadline-box" style="margin-top:1rem">
@@ -436,7 +601,6 @@ function renderStep4() {
 
 function renderStep5() {
   const deadline = computeDeadline(deadlineInput());
-  const sub = canExportPro();
   const reminderLines = deadline.reminders
     .map((d) => `<li>${formatUsDate(d)}</li>`)
     .join("");
@@ -455,6 +619,8 @@ function renderStep5() {
         <p class="field-hint">Opens Google in your browser. We do not connect to your Google account on our servers.</p></div>`
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
+    ${renderItemizationPreview()}
+    ${exportEntitlementSection()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
       <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
     </p>
@@ -469,7 +635,7 @@ function renderStep5() {
       deadline.deadline
         ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
         <p class="section-label" style="margin-bottom:0.5rem">Email reminders</p>
-        <p class="field-hint">7 days and 1 day before your deadline (uses the email from your Pro subscription).</p>
+        <p class="field-hint">7 days and 1 day before your deadline (uses the email you enter below · stored for reminders only).</p>
         <div class="form-grid two">
           <div><label for="rem-email">Email</label><input id="rem-email" type="email" value="${esc(draft.landlord.email)}" autocomplete="email" /></div>
           <div style="align-self:end"><button type="button" class="btn btn-secondary" id="btn-remind">Schedule emails</button></div>
@@ -477,23 +643,6 @@ function renderStep5() {
         <p class="field-hint" id="rem-status" aria-live="polite"></p>
       </div>`
         : ""
-    }
-    ${
-      isProSubscription()
-        ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
-        <p class="section-label" style="margin-bottom:0.5rem">Email copy to tenant</p>
-        <p class="field-hint">Sends a plain-language statement summary (not photos). BCCs your landlord email when checked.</p>
-        <div class="form-grid two">
-          <div><label for="tenant-email-send">Tenant email</label><input id="tenant-email-send" type="email" value="${esc(draft.tenant.email)}" autocomplete="email" /></div>
-          <div style="align-self:end;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
-            <label><input id="tenant-email-bcc" type="checkbox" checked /> BCC me (${esc(draft.landlord.email) || "landlord email on step 1"})</label>
-            <button type="button" class="btn btn-secondary" id="btn-email-tenant">Send tenant copy</button>
-          </div>
-        </div>
-        <p class="field-hint" id="tenant-email-status" aria-live="polite"></p>
-      </div>
-      <p class="field-hint" role="status">${hasTurnUnlock() && !isSubscribed() ? "Turn unlock active for this packet · " : ""}${isSubscribed() ? `Pro active · up to ${PRO_UNITS_MAX} units · ` : ""}Print / Save as PDF below.</p>`
-        : proBlockMessage() || `<div class="paywall" role="status"><strong>Unlock export below.</strong> <a href="/pricing">Pricing</a></div>`
     }`;
 }
 
@@ -527,6 +676,8 @@ function readStepIntoDraft() {
       notes: row.querySelector(".room-notes")?.value?.trim() || "",
       photoLink: row.querySelector(".room-photo-link")?.value?.trim() || "",
       photo: draft.rooms[i]?.photo || null,
+      photoFileName: draft.rooms[i]?.photoFileName || "",
+      photoCapturedAt: draft.rooms[i]?.photoCapturedAt || "",
     }));
   }
   if (step === 4) {
@@ -542,6 +693,19 @@ function readStepIntoDraft() {
     draft.signatures.date = document.getElementById("sig-date")?.value || draft.signatures.date;
   }
   saveDraft(draft);
+}
+
+function bindStep2Events() {
+  const update = () => {
+    const el = document.getElementById("surrender-hint");
+    if (!el) return;
+    const leaseEnd = document.getElementById("lease-end")?.value || "";
+    const surrender = document.getElementById("surrender")?.value || "";
+    el.textContent = surrenderLeaseHint(leaseEnd, surrender);
+  };
+  document.getElementById("lease-end")?.addEventListener("input", update);
+  document.getElementById("surrender")?.addEventListener("input", update);
+  update();
 }
 
 function bindStep1Events() {
@@ -567,7 +731,15 @@ function bindStep1Events() {
 function bindStepEvents() {
   document.getElementById("btn-add-room")?.addEventListener("click", () => {
     readStepIntoDraft();
-    draft.rooms.push({ name: "Other", condition: "Good", notes: "", photo: null, photoLink: "" });
+    draft.rooms.push({
+      name: "Other",
+      condition: "Good",
+      notes: "",
+      photo: null,
+      photoLink: "",
+      photoFileName: "",
+      photoCapturedAt: "",
+    });
     render();
   });
   document.getElementById("btn-add-ded")?.addEventListener("click", () => {
@@ -589,13 +761,25 @@ function bindStepEvents() {
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = reader.result;
-        draft.rooms[i] = draft.rooms[i] || { name: "Room", condition: "Good", notes: "", photo: null, photoLink: "" };
+        draft.rooms[i] = draft.rooms[i] || {
+          name: "Room",
+          condition: "Good",
+          notes: "",
+          photo: null,
+          photoLink: "",
+          photoFileName: "",
+          photoCapturedAt: "",
+        };
         const nextTotal = photoBytesTotal(draft.rooms) - (draft.rooms[i].photo?.length || 0) + dataUrl.length;
         if (nextTotal > MAX_PHOTOS_TOTAL) {
           alert("Total photo storage cap reached for this packet.");
           return;
         }
+        readStepIntoDraft();
+        const roomName = draft.rooms[i].name;
         draft.rooms[i].photo = dataUrl;
+        draft.rooms[i].photoFileName = buildPhotoFileName(draft.property.street, roomName, file.name);
+        draft.rooms[i].photoCapturedAt = new Date().toISOString();
         saveDraft(draft);
         render();
       };
@@ -657,6 +841,10 @@ function bindStepEvents() {
     downloadIcs("deposit-deadline.ics", ics);
   });
   document.getElementById("btn-save-packet")?.addEventListener("click", saveCurrentToLibrary);
+  document.getElementById("btn-proof-manifest")?.addEventListener("click", () => {
+    if (!canExportPro()) return;
+    downloadProofManifest();
+  });
   document.getElementById("btn-remind")?.addEventListener("click", async () => {
     readStepIntoDraft();
     const deadline = computeDeadline(deadlineInput());
@@ -776,6 +964,8 @@ function renderPrintPacket() {
   const roomRows = draft.rooms
     .map((r) => {
       const noteParts = [r.notes || ""];
+      if (r.photoFileName) noteParts.push(`File: ${r.photoFileName}`);
+      if (r.photoCapturedAt) noteParts.push(`Captured: ${r.photoCapturedAt.slice(0, 10)}`);
       if (r.photoLink) noteParts.push(`Photo link: ${r.photoLink}`);
       const noteCell = noteParts.filter(Boolean).join(" · ") || "n/a";
       return `<tr><td>${esc(r.name)}</td><td>${esc(r.condition)}</td><td>${esc(noteCell)}</td></tr>`;
@@ -783,7 +973,10 @@ function renderPrintPacket() {
     .join("");
   const photoBlock = draft.rooms
     .filter((r) => r.photo)
-    .map((r) => `<figure class="print-photo"><figcaption>${esc(r.name)}</figcaption><img src="${r.photo}" alt="" /></figure>`)
+    .map(
+      (r) =>
+        `<figure class="print-photo"><figcaption>${esc(r.name)}${r.photoFileName ? ` · ${esc(r.photoFileName)}` : ""}</figcaption><img src="${r.photo}" alt="" /></figure>`
+    )
     .join("");
   const dedRows = draft.deductions
     .filter((d) => d.amount || d.description)
@@ -819,12 +1012,20 @@ function render() {
   const renders = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
   els.panel.innerHTML = renders[step - 1]();
   if (step === 1) bindStep1Events();
+  if (step === 2) bindStep2Events();
   if (step === 3 || step === 4 || step === 5) bindStepEvents();
   renderPrintPacket();
   els.prev.disabled = step <= 1;
   els.next.textContent = step >= MAX_STEPS ? "Done" : "Continue";
   els.print.disabled = !canExportPro() || step < MAX_STEPS;
-  if (els.status) els.status.textContent = "Autosaved in this browser.";
+  if (els.status) {
+    if (window.__sptStatusMsg) {
+      els.status.textContent = window.__sptStatusMsg;
+      delete window.__sptStatusMsg;
+    } else {
+      els.status.textContent = "Autosaved in this browser.";
+    }
+  }
 }
 
 els.prev?.addEventListener("click", () => {
@@ -868,7 +1069,17 @@ document.getElementById("packet-select")?.addEventListener("change", (e) => {
 });
 
 refreshPacketSelect();
-render();
+(async function bootWizard() {
+  initFromQuery();
+  if (typeof window.sptBootstrapEntitlement === "function") {
+    try {
+      await window.sptBootstrapEntitlement();
+    } catch (e) {
+      console.warn("spt entitlement", e);
+    }
+  }
+  render();
+})();
 
 window.addEventListener("beforeprint", () => {
   readStepIntoDraft();

@@ -30,7 +30,9 @@ need("home JSON-LD SoftwareApplication url", index.includes('"url": "https://sim
 need("home JSON-LD WebSite", index.includes('"@type": "WebSite"'));
 need("css display + UI fonts", css.includes("--font-display") && css.includes("Lora"));
 need("css desktop landing block", css.includes(".page > main .hero") && css.includes("text-wrap: balance"));
-need("css v32 header", css.includes("v32"));
+need("css v33 header comment", css.includes("v33"));
+need("home no tap the map", !index.includes("Tap the map"));
+need("home color bar coverage", /color bar/i.test(index));
 
 const title = index.match(/<title>([^<]+)<\/title>/)?.[1] || "";
 need("title mentions deposit + states", /deposit/i.test(title) && /18 states|DC/i.test(title));

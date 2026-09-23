@@ -129,6 +129,18 @@
 
   async function bootstrapEntitlement() {
     var params = new URLSearchParams(location.search);
+    var sessionId = params.get("session_id");
+    if (sessionId) {
+      try {
+        await refreshFromSession(sessionId);
+        params.delete("session_id");
+        var cleanSession = params.toString();
+        history.replaceState({}, "", location.pathname + (cleanSession ? "?" + cleanSession : ""));
+      } catch (e) {
+        console.warn("spt session entitlement", e);
+      }
+      return;
+    }
     var magic = params.get("magic");
     var sig = params.get("sig");
     if (magic && sig) {

@@ -30,7 +30,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=32">
+  <link rel="stylesheet" href="/simple-property.css?v=33">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
@@ -128,6 +128,17 @@
         actions.hidden = false;
         var portalBtn = document.querySelector(".spt-billing-portal");
         if (portalBtn && (plan.indexOf("turn") === 0 || ent.plan === "turn")) portalBtn.hidden = true;
+        var packetId = ent.packet_id || params.get("packet_id");
+        var appQ = new URLSearchParams({ step: "5" });
+        if (packetId) appQ.set("packet_id", packetId);
+        var appHref = "/app?" + appQ.toString();
+        document.querySelectorAll('a[href="/app"]').forEach(function (a) {
+          a.href = appHref;
+        });
+        var primary = document.querySelector(".btn-primary");
+        if (primary) primary.href = appHref;
+        var stepLink = document.querySelector(".steps a[href]");
+        if (stepLink) stepLink.href = appHref;
       } catch (e) {
         status.textContent = "Verification failed.";
         err.hidden = false;

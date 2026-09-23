@@ -176,7 +176,7 @@
     a.href = href;
     a.setAttribute("data-code", loc.code);
     a.textContent = loc.code;
-    a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day pack");
+    a.setAttribute("title", loc.name + " · " + loc.returnDays + "-day · wrong clock costs");
     wireAppPreset(a, loc.code);
     parent.appendChild(a);
   }
@@ -188,19 +188,26 @@
     var head = document.createElement("div");
     head.className = "locale-bar__map-head";
 
+    var kicker = document.createElement("p");
+    kicker.className = "locale-bar__kicker field-hint";
+    kicker.textContent = onBlog
+      ? "One missed window or thin itemization costs more than tool fees · tap your state."
+      : "Wrong color = wrong deadline · tap your state before turnover.";
+    head.appendChild(kicker);
+
     var legend = document.createElement("div");
     legend.className = "coverage-map__legend";
     legend.innerHTML =
       '<span class="coverage-map__key coverage-map__key--30">30-day</span>' +
       '<span class="coverage-map__key coverage-map__key--45">45-day</span>' +
-      '<span class="coverage-map__key coverage-map__key--muted">Scroll · tap state</span>';
+      '<span class="coverage-map__key coverage-map__key--muted">Color bar · scroll · tap</span>';
     head.appendChild(legend);
     wrap.appendChild(head);
 
     var plate = document.createElement("div");
     plate.className = "coverage-bubbles coverage-bubbles--strip";
     plate.setAttribute("role", "group");
-    plate.setAttribute("aria-label", "Deposit Desk coverage · tap a state");
+    plate.setAttribute("aria-label", "Deposit return clocks by state · tap a color chip");
 
     var track = document.createElement("div");
     track.className = "coverage-bubbles__track";
@@ -227,7 +234,7 @@
 
     var label = document.createElement("span");
     label.className = "locale-bar__label";
-    label.textContent = onBlog ? "Guides by state" : "Your state";
+    label.textContent = onBlog ? "Pain guides by state" : "Beat the clock · your state";
     nav.appendChild(label);
 
     nav.appendChild(buildCoverageMap());

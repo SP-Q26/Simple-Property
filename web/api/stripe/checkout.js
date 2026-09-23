@@ -49,7 +49,9 @@ function sanitizePacketId(raw) {
 function buildBaseSessionParams({ sku, catalog, origin, metadata, packetId }) {
   const successParams = new URLSearchParams({ session_id: "{CHECKOUT_SESSION_ID}", plan: sku });
   if (packetId) successParams.set("packet_id", packetId);
-  const cancelUrl = isTurnSku(sku) ? `${origin}/app` : `${origin}/pricing`;
+  const cancelUrl = isTurnSku(sku)
+    ? `${origin}/app?step=5&checkout=cancel${packetId ? `&packet_id=${encodeURIComponent(packetId)}` : ""}`
+    : `${origin}/pricing`;
   const params = {
     mode: catalog.mode,
     line_items: [lineItemForSku(sku)],
