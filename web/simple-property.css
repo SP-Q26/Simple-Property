@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v30 · touch + safe-area + iOS spacing */
+/* Simple Property Tools · Deposit Desk · v31 · touch + safe-area + iOS spacing */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1334,6 +1334,56 @@ main > h1,
   letter-spacing: -0.02em;
   margin: 0 0 var(--space-4);
   max-width: 24ch;
+}
+
+@media (min-width: 820px) {
+  .page > main .hero {
+    padding: var(--space-7) 0 var(--space-6);
+  }
+
+  .hero-mission,
+  .page > main .hero h1 {
+    text-wrap: balance;
+    max-width: 24ch;
+    font-size: clamp(2rem, 2.6vw, 2.65rem);
+    line-height: 1.16;
+  }
+
+  .hero-clock-gloss,
+  .pain-solution-lead,
+  .hero-wedge {
+    max-width: var(--measure-wide);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .pain-solution-lead .ps-problem {
+    font-size: 1.0625rem;
+  }
+
+  .pain-solution-lead .ps-fix {
+    font-size: 1rem;
+  }
+
+  .hero-rotate-line {
+    font-size: 1.0625rem;
+    min-height: 2.75em;
+  }
+
+  .page > main .section h2 {
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    letter-spacing: -0.02em;
+  }
+
+  .guides-hub > p,
+  .coverage-spotlight .hero-lead {
+    max-width: var(--measure-wide);
+    line-height: 1.55;
+  }
+
+  .pathway-deck h2 {
+    font-size: 1.5rem;
+  }
 }
 
 .hero-lead {

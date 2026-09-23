@@ -23,7 +23,7 @@ const pricing = read("pricing.html");
 const index = read("index.html");
 const app = read("app.js");
 
-need("css v30 on home", index.includes("simple-property.css?v=30"));
+need("css v31 on home", index.includes("simple-property.css?v=31"));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
 need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
 need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));
