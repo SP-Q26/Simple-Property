@@ -36,7 +36,9 @@
     "sync:head": "node scripts/sync-site-head.mjs",
     "sync:brand": "node scripts/sync-brand-locale.mjs && node scripts/sync-site-head.mjs",
     "sync:seo": "node scripts/export-og-share-images.mjs && node scripts/sync-social-meta.mjs",
+    "sync:seo-statutes": "node scripts/migrate-national-blog-slugs.mjs && node scripts/patch-blog-statute-links.mjs && node scripts/patch-state-hub-links.mjs && node scripts/build-deposit-statutes-page.mjs && node scripts/sync-statute-discovery.mjs && node scripts/fix-blog-meta-descriptions.mjs && node scripts/sync-blog-article-seo.mjs",
     "sync:locale": "node scripts/sync-brand-locale.mjs",
+    "smoke:statutes": "node scripts/smoke-statute-urls.mjs",
     "audit:social": "node scripts/audit-social-share.mjs"
   },
   "engines": {

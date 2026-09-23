@@ -32,6 +32,26 @@
       ],
       "destination": "https://simple-property.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/blog/missed-deposit-deadline-midwest-small-landlord",
+      "destination": "/blog/missed-deposit-deadline-small-landlord-multi-state",
+      "permanent": true
+    },
+    {
+      "source": "/blog/move-in-move-out-fees-midwest-landlords",
+      "destination": "/blog/move-in-move-out-fees-vs-security-deposit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pet-deposits-security-deposit-midwest",
+      "destination": "/blog/pet-deposits-vs-security-deposit-withholds",
+      "permanent": true
+    },
+    {
+      "source": "/blog/application-fees-vs-security-deposit-midwest",
+      "destination": "/blog/application-fees-vs-security-deposit",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -62,6 +82,10 @@
     {
       "source": "/legal",
       "destination": "/legal.html"
+    },
+    {
+      "source": "/legal/deposit-statutes",
+      "destination": "/legal/deposit-statutes.html"
     },
     {
       "source": "/launch-stack",
@@ -272,8 +296,8 @@
       "destination": "/blog/forgot-move-in-photos-deposit-dispute-illinois.html"
     },
     {
-      "source": "/blog/missed-deposit-deadline-midwest-small-landlord",
-      "destination": "/blog/missed-deposit-deadline-midwest-small-landlord.html"
+      "source": "/blog/missed-deposit-deadline-small-landlord-multi-state",
+      "destination": "/blog/missed-deposit-deadline-small-landlord-multi-state.html"
     },
     {
       "source": "/blog/evanston-illinois-rental-deposit-guide",
@@ -324,20 +348,20 @@
       "destination": "/blog/st-louis-missouri-deposit-local-guide.html"
     },
     {
-      "source": "/blog/move-in-move-out-fees-midwest-landlords",
-      "destination": "/blog/move-in-move-out-fees-midwest-landlords.html"
+      "source": "/blog/move-in-move-out-fees-vs-security-deposit",
+      "destination": "/blog/move-in-move-out-fees-vs-security-deposit.html"
     },
     {
       "source": "/blog/deposit-documentation-tax-deduction-landlords",
       "destination": "/blog/deposit-documentation-tax-deduction-landlords.html"
     },
     {
-      "source": "/blog/pet-deposits-security-deposit-midwest",
-      "destination": "/blog/pet-deposits-security-deposit-midwest.html"
+      "source": "/blog/pet-deposits-vs-security-deposit-withholds",
+      "destination": "/blog/pet-deposits-vs-security-deposit-withholds.html"
     },
     {
-      "source": "/blog/application-fees-vs-security-deposit-midwest",
-      "destination": "/blog/application-fees-vs-security-deposit-midwest.html"
+      "source": "/blog/application-fees-vs-security-deposit",
+      "destination": "/blog/application-fees-vs-security-deposit.html"
     },
     {
       "source": "/blog/dc-rhca-deposit-clock-rowhouse-investor",

@@ -27,6 +27,10 @@ export const STATUTE_URLS = {
   WA: "https://app.leg.wa.gov/rcw/default.aspx?cite=59.18.280",
 };
 
+/** Chicago RLTO · deposit return overlay (city law · not ILGA). */
+export const CHICAGO_RLTO_URL =
+  "https://www.chicago.gov/city/en/depts/doh/provdrs/rlto.html";
+
 for (const code of SUPPORTED_STATES) {
   if (!STATUTE_URLS[code]) {
     throw new Error(`statute-urls.mjs missing URL for ${code}`);

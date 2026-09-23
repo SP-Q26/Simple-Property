@@ -21,4 +21,5 @@ jobs:
         run: |
           node scripts/smoke-prod.mjs
           node scripts/smoke-prod-states-blogs.mjs
+          node scripts/smoke-statute-urls.mjs
           node scripts/smoke-prod-magic-link.mjs

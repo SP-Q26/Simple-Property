@@ -1,10 +1,4 @@
-import { statuteUrlFor } from "../../web/lib/statute-urls.mjs";
-
-export function citeLinkHtml(cite, appCode) {
-  const url = statuteUrlFor(appCode);
-  if (!url) return cite;
-  return `<a href="${url}" rel="noopener noreferrer" target="_blank">${cite}</a>`;
-}
+import { citeLinkHtml } from "./cite-link-html.mjs";
 
 export function cta(stateName, app) {
   return `<p class="disclaimer">Not legal advice. Confirm facts and deadlines with qualified counsel.</p>

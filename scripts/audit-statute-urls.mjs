@@ -27,6 +27,7 @@ for (const code of SUPPORTED_STATES) {
 need("localeNavEntries cite + statuteUrl", localeNavEntries().every((e) => e.cite && e.statuteUrl));
 need("sp-nav modifier statute hint", nav.includes("statuteUrl") && nav.includes("metaKey"));
 need("sp-nav sr statute link", nav.includes("noopener noreferrer"));
+need("sp-nav statute index link", nav.includes("/legal/deposit-statutes"));
 
 console.log(fail ? `Statute URLs audit FAILED (${fail})` : "Statute URLs audit OK");
 process.exit(fail ? 1 : 0);

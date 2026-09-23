@@ -15,7 +15,7 @@ const PUBLISHED = "2026-09-22";
 
 const POSTS = [
   {
-    slug: "move-in-move-out-fees-midwest-landlords",
+    slug: "move-in-move-out-fees-vs-security-deposit",
     title: "Move-in and move-out fees vs the security deposit (Midwest)",
     description:
       "Cleaning fees, admin charges, and pass-through documentation costs. Keep them separate from the deposit ledger. IL · IN · OH · MI · IA · MO. Not legal advice.",
@@ -42,7 +42,7 @@ const POSTS = [
       <p><a class="btn btn-primary" href="/app">Start packet</a> · <a href="/pricing">Pricing</a></p>`,
   },
   {
-    slug: "pet-deposits-security-deposit-midwest",
+    slug: "pet-deposits-vs-security-deposit-withholds",
     title: "Pet deposits, pet rent, and security deposit withholds",
     description:
       "Separate pet charges from damage deductions at move-out. Midwest small landlords. Not legal advice.",
@@ -64,7 +64,7 @@ const POSTS = [
       <p><a class="btn btn-primary" href="/app">Start packet</a> · <a href="/blog#guides-cities">City guides</a></p>`,
   },
   {
-    slug: "application-fees-vs-security-deposit-midwest",
+    slug: "application-fees-vs-security-deposit",
     title: "Application fees vs security deposits (Midwest renters and landlords)",
     description:
       "Screening charges before lease signing are not move-out deposit returns. Plain-language split for IL · IN · OH · MI · IA · MO. Not legal advice.",

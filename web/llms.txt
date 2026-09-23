@@ -13,6 +13,7 @@
 - Agent bus: https://simple-property.com/spt-ai-bus.json
 - Gospel: https://simple-property.com/.well-known/spt-gospel.json
 - **Feedback** · suggest state rulesets, wizard fields, guides: https://simple-property.com/feedback
+- **Deposit statutes index** · official outbound links for all wizard states + DC: https://simple-property.com/legal/deposit-statutes
 - **Legal** · https://simple-property.com/legal · terms · privacy
 - App: https://simple-property.com/app
 - hello@simple-property.com

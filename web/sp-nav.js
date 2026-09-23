@@ -249,6 +249,12 @@
       '<span class="coverage-map__key coverage-map__key--muted">Tap state · Ctrl+chip = statute</span>';
     wrap.appendChild(legend);
 
+    var statuteIndex = document.createElement("p");
+    statuteIndex.className = "locale-bar__statute-index";
+    statuteIndex.innerHTML =
+      '<a href="/legal/deposit-statutes">Official deposit statutes</a> · 18 states + DC';
+    wrap.appendChild(statuteIndex);
+
     var plate = document.createElement("div");
     plate.className = "coverage-bubbles coverage-bubbles--strip";
     plate.setAttribute("role", "group");

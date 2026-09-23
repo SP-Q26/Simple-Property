@@ -20,7 +20,7 @@ import {
 } from "./lib/google-tools.mjs";
 import { buildPacketAiReport, copyTextForAi } from "./lib/packet-ai-report.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
-import { statuteUrlFor } from "./lib/statute-urls.mjs";
+import { STATUTE_URLS, CHICAGO_RLTO_URL } from "./lib/statute-urls.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
@@ -28,8 +28,9 @@ const MAX_STEPS = 5;
 const MAX_PHOTO_BYTES = 400_000;
 const MAX_PHOTOS_TOTAL = 1_200_000;
 
-function citeLink(code, cite) {
-  const url = statuteUrlFor(code);
+function citeLink(code, cite, opts) {
+  const url =
+    opts?.rlto && code === "IL" ? CHICAGO_RLTO_URL : STATUTE_URLS[code] || "";
   if (!url) return esc(cite);
   return `<a href="${esc(url)}" rel="noopener noreferrer" target="_blank">${esc(cite)}</a>`;
 }
@@ -500,7 +501,7 @@ function renderStep1() {
       </div>`;
   const clockHint =
     preset === "chicago-il"
-      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender. Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
+      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender (<a href="${esc(CHICAGO_RLTO_URL)}" rel="noopener noreferrer" target="_blank">city RLTO</a>). Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
       : st === "NC"
         ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${citeLink(st, pack.cite)}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
         : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;

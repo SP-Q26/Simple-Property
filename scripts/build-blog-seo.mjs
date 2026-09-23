@@ -43,8 +43,8 @@ const painPosts = manifest.posts
     const bPrimary = Object.values(manifest.primaryPainByState || {}).includes(b.slug);
     if (aPrimary && !bPrimary) return -1;
     if (!aPrimary && bPrimary) return 1;
-    if (a.slug === "missed-deposit-deadline-midwest-small-landlord") return 1;
-    if (b.slug === "missed-deposit-deadline-midwest-small-landlord") return -1;
+    if (a.slug === "missed-deposit-deadline-small-landlord-multi-state") return 1;
+    if (b.slug === "missed-deposit-deadline-small-landlord-multi-state") return -1;
     return a.title.localeCompare(b.title);
   });
 

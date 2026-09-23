@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v35 · locale bar breakpoints */
+/* Simple Property Tools · Deposit Desk · v37 · SEO statute index + hub links */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1984,6 +1984,11 @@ textarea {
   justify-content: center;
 }
 
+.faq-intro {
+  max-width: 42rem;
+  margin-bottom: var(--space-4);
+}
+
 .faq {
   display: grid;
   gap: var(--space-3);
@@ -1995,11 +2000,103 @@ textarea {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-4);
+  transition: border-color 0.15s ease;
+}
+
+.faq details[open] {
+  border-color: color-mix(in srgb, var(--beam-gold) 35%, var(--border));
+}
+
+.faq details p {
+  margin: var(--space-3) 0 0;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.faq details p a {
+  text-underline-offset: 0.12em;
 }
 
 .faq summary {
   font-weight: 600;
   cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--tap-min);
+  padding: 0.15rem 0;
+  touch-action: manipulation;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.faq details[open] summary::after {
+  content: "−";
+  color: var(--beam-gold);
+}
+
+.state-hub-links {
+  margin: var(--space-6) 0 var(--space-4);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.state-hub-links__row {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.state-hub-links__row a {
+  text-underline-offset: 0.12em;
+}
+
+.locale-bar__statute-index {
+  margin: 0 0 var(--space-2);
+  font-size: 0.8125rem;
+}
+
+.locale-bar__statute-index a {
+  color: var(--muted);
+  text-underline-offset: 0.12em;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: var(--space-4) 0;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+table.data-table th,
+table.data-table td {
+  border: 1px solid var(--border);
+  padding: var(--space-3);
+  text-align: left;
+  vertical-align: top;
+}
+
+table.data-table th {
+  background: var(--quant-blue-surface);
+  font-weight: 600;
 }
 
 .trust-strip {

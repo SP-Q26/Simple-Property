@@ -21,6 +21,7 @@ const ROUTES = new Set([
   "/privacy",
   "/terms",
   "/legal",
+  "/legal/deposit-statutes",
   "/success",
   "/llms.txt",
   "/spt-ai-bus.json",

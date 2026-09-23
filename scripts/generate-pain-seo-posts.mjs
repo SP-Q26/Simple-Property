@@ -158,7 +158,7 @@ const POSTS = [
       ${cta("IL")}`),
   },
   {
-    slug: "missed-deposit-deadline-midwest-small-landlord",
+    slug: "missed-deposit-deadline-small-landlord-multi-state",
     title: "Missed deposit deadline stress  ·  Indiana, Ohio, Michigan, and neighbors",
     description:
       "Small landlords across the Midwest confuse lease end with surrender. 30- and 45-day windows by state. Not legal advice.",
