@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v37 · SEO statute index + hub links */
+/* Simple Property Tools · Deposit Desk · v39 · coverage bar layout */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -594,16 +594,26 @@ main > h1,
 }
 
 .locale-bar__map-wrap {
-  flex: 1 1 12rem;
+  flex: 1 1 100%;
   max-width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: var(--space-2);
 }
 
 .locale-bar__map-head {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+  width: 100%;
+}
+
+.locale-bar__map-head .coverage-map__legend {
+  flex: 1 1 12rem;
+  min-width: 0;
 }
 
 .locale-bar__kicker {
@@ -631,7 +641,7 @@ main > h1,
   background: transparent;
   box-shadow: none;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .coverage-bubbles__track {
@@ -644,7 +654,7 @@ main > h1,
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x proximity;
-  padding: 0.0625rem 0 0.125rem;
+  padding: 0.125rem 0 0.1875rem;
   scrollbar-width: thin;
 }
 
@@ -681,19 +691,28 @@ main > h1,
 
 @media (min-width: 640px) {
   .locale-bar {
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-2);
+    align-items: start;
   }
 
   .locale-bar__label {
-    flex: 0 0 auto;
-    padding-top: 0.15rem;
+    grid-column: 1;
+    flex: none;
+    padding-top: 0;
+    margin-right: 0;
   }
 
   .locale-bar__map-wrap {
-    flex: 1 1 18rem;
+    grid-column: 1;
+    width: 100%;
     min-width: 0;
     max-width: 100%;
+  }
+
+  .locale-bar__sr {
+    grid-column: 1;
   }
 
   .coverage-bubbles--strip {
@@ -710,8 +729,9 @@ main > h1,
     flex-wrap: wrap;
     overflow-x: visible;
     overflow-y: visible;
-    row-gap: 0.2rem;
-    column-gap: 0.25rem;
+    row-gap: 0.35rem;
+    column-gap: 0.28rem;
+    padding: 0.125rem 0 0.25rem;
   }
 
   .coverage-bubble {
@@ -865,6 +885,23 @@ main > h1,
   box-shadow: var(--shadow-soft);
 }
 
+.coverage-spotlight.section {
+  padding-block: var(--space-5) var(--space-6);
+}
+
+.coverage-spotlight .hero-eyebrow {
+  margin: 0 0 var(--space-2);
+}
+
+.coverage-spotlight h2 {
+  margin: 0 0 var(--space-3);
+}
+
+.coverage-spotlight .ps-problem,
+.coverage-spotlight .ps-fix {
+  margin: 0 0 var(--space-3);
+}
+
 .coverage-spotlight .hero-lead {
   max-width: 42rem;
 }
@@ -873,8 +910,9 @@ main > h1,
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: var(--space-3);
+  gap: var(--space-2) var(--space-3);
   align-items: center;
+  margin: var(--space-2) 0 0;
 }
 
 #wizard-panel {
@@ -1989,63 +2027,133 @@ textarea {
   margin-bottom: var(--space-4);
 }
 
-.faq {
+/* FAQ · greystone door accordions (matches hero entry) */
+.faq-doors {
   display: grid;
-  gap: var(--space-3);
-  max-width: 42rem;
+  gap: var(--space-4);
+  max-width: none;
 }
 
-.faq details {
-  background: var(--surface);
-  border: 1px solid var(--border);
+@media (min-width: 640px) {
+  .faq-doors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .faq-doors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.faq-door {
+  position: relative;
+  margin: 0;
+  padding: var(--space-3) var(--space-3) var(--space-4);
+  border: 1px solid var(--gold-hairline);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
-  transition: border-color 0.15s ease;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 4px 14px rgba(59, 90, 120, 0.08);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.faq details[open] {
-  border-color: color-mix(in srgb, var(--beam-gold) 35%, var(--border));
+.faq-door::before {
+  content: "";
+  position: absolute;
+  top: var(--space-2);
+  left: 12%;
+  right: 12%;
+  height: 0.55rem;
+  border: 1px solid rgba(61, 52, 41, 0.22);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: linear-gradient(180deg, rgba(212, 208, 200, 0.95), rgba(200, 196, 188, 0.5));
+  pointer-events: none;
 }
 
-.faq details p {
-  margin: var(--space-3) 0 0;
-  color: var(--text);
-  line-height: 1.55;
+.faq-door[open] {
+  border-color: var(--beam-gold);
+  box-shadow: 0 8px 22px rgba(59, 90, 120, 0.14);
 }
 
-.faq details p a {
-  text-underline-offset: 0.12em;
-}
-
-.faq summary {
-  font-weight: 600;
-  cursor: pointer;
+.faq-door summary {
+  position: relative;
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
   min-height: var(--tap-min);
-  padding: 0.15rem 0;
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-5);
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  cursor: pointer;
   touch-action: manipulation;
+  border: 1px solid rgba(61, 52, 41, 0.28);
+  border-radius: 2px;
+  background: linear-gradient(180deg, #5a6169 0%, #454b52 42%, #3a4046 100%);
+  color: rgba(236, 238, 242, 0.95);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 3px 0 0 rgba(201, 162, 39, 0.55);
+  transform-origin: left center;
+  transition: transform 0.2s ease, box-shadow 0.15s ease;
 }
 
-.faq summary::-webkit-details-marker {
+.faq-door summary::-webkit-details-marker {
   display: none;
 }
 
-.faq summary::after {
-  content: "+";
+.faq-door summary::after {
+  content: "";
   flex-shrink: 0;
-  font-weight: 700;
-  color: var(--muted);
-  font-size: 1.1rem;
-  line-height: 1;
+  margin-left: auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f0d890, var(--beam-gold) 55%, #9a7a28);
+  box-shadow: 0 0 0 1px rgba(61, 52, 41, 0.35);
 }
 
-.faq details[open] summary::after {
-  content: "−";
-  color: var(--beam-gold);
+.faq-door[open] summary {
+  transform: perspective(520px) rotateY(-11deg);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 3px 0 0 rgba(201, 162, 39, 0.75),
+    4px 0 12px rgba(0, 0, 0, 0.12);
+}
+
+.faq-door__room {
+  margin-top: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  background: color-mix(in srgb, var(--quant-blue-surface) 35%, var(--surface));
+}
+
+.faq-door__room p {
+  margin: 0;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.faq-door__room p a {
+  text-underline-offset: 0.12em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-door summary,
+  .faq-door[open] summary {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Legacy .faq alias (single-column fallback) */
+.faq:not(.faq-doors) {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 42rem;
 }
 
 .state-hub-links {
@@ -2066,8 +2174,11 @@ textarea {
 }
 
 .locale-bar__statute-index {
-  margin: 0 0 var(--space-2);
-  font-size: 0.8125rem;
+  margin: 0;
+  flex: 0 1 auto;
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  text-align: right;
 }
 
 .locale-bar__statute-index a {
@@ -2884,6 +2995,17 @@ table.data-table th {
   .coverage-map__legend {
     font-size: 0.625rem;
     gap: 0.2rem 0.4rem;
+  }
+
+  .locale-bar__map-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .locale-bar__statute-index {
+    width: 100%;
+    text-align: left;
   }
 
   .hero-share-art {

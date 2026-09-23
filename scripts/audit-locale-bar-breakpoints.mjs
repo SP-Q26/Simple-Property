@@ -23,6 +23,7 @@ need(`css v${CSS_VERSION} header`, css.includes(`v${CSS_VERSION}`));
 need("19 state packs in nav", (nav.match(/"code":/g) || []).length === PACK_COUNT);
 need("nav no wrong color line", !/Wrong color\s*=/.test(nav));
 need("nav statute legend hint", nav.includes("Ctrl+chip") || nav.includes("statute"));
+need("nav map-head wrapper", nav.includes("locale-bar__map-head"));
 
 need("mobile max639 tap-min chips", css.includes("@media (max-width: 639px)") && css.includes(".coverage-bubble") && css.includes("--coverage-chip: var(--tap-min)"));
 need("mobile locale label full width", css.includes(".locale-bar__label") && css.includes("flex: 1 1 100%"));

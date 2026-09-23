@@ -15,7 +15,7 @@ function need(label, ok) {
   } else console.log("OK", label);
 }
 
-const details = (index.match(/<div class="faq">[\s\S]*?<\/div>\s*<\/section>/)[0].match(/<details>/g) || []).length;
+const details = (index.match(/<details class="faq-door"/g) || []).length;
 const questions = (index.match(/"@type": "Question"/g) || []).length;
 
 need("FAQ details count", details >= 8);
@@ -24,7 +24,8 @@ need("FAQ multistate states answer", index.includes("Which states are in the wiz
 need("FAQ pricing numbers", index.includes("$29") && index.includes("$99"));
 need("FAQ legal advice item", index.includes("Is this legal advice?"));
 need("FAQ no stale Wisconsin", !index.includes("Wisconsin and other states are not in the app"));
-need("FAQ statute outbound", index.includes("codes.ohio.gov") || index.includes("ilga.gov"));
+need("FAQ door panels", index.includes("faq-doors") && index.includes("faq-door"));
+need("FAQ nine doors heading", index.includes("Nine doors"));
 
 console.log(fail ? `Home FAQ audit FAILED (${fail})` : "Home FAQ audit OK");
 process.exit(fail ? 1 : 0);

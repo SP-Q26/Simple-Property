@@ -3,6 +3,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 let fail = 0;
@@ -23,7 +24,7 @@ const pricing = read("pricing.html");
 const index = read("index.html");
 const app = read("app.js");
 
-need("css v37 on home", index.includes("simple-property.css?v=37"));
+need(`css v${CSS_VERSION} on home`, index.includes(`simple-property.css?v=${CSS_VERSION}`));
 need("quant blue card wash", css.includes("--quant-blue-surface"));
 need("gold accent tokens", css.includes("--beam-gold") && css.includes(".btn-primary"));
 need("fact strip gold + blue", css.includes("border-top: 3px solid var(--beam-gold)") && css.includes(".fact-strip"));

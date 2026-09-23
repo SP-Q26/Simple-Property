@@ -3,6 +3,7 @@
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const index = readFileSync(join(web, "index.html"), "utf8");
@@ -30,7 +31,7 @@ need("home JSON-LD SoftwareApplication url", index.includes('"url": "https://sim
 need("home JSON-LD WebSite", index.includes('"@type": "WebSite"'));
 need("css display + UI fonts", css.includes("--font-display") && css.includes("Source Serif 4"));
 need("css desktop landing block", css.includes(".page > main .hero") && css.includes("text-wrap: balance"));
-need("css v37 header comment", css.includes("v37"));
+need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
 need("home no tap the map", !index.includes("Tap the map"));
 need("home color bar coverage", /color bar/i.test(index));
 

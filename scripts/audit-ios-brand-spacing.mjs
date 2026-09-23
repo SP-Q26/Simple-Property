@@ -6,6 +6,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const css = readFileSync(join(web, "simple-property.css"), "utf8");
@@ -31,7 +32,7 @@ for (const p of pages) {
   if (h.includes(EM)) need(`${p} no em dash`, false);
 }
 
-need("css v37 header comment", css.includes("v37"));
+need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
 need("css apple system stack", css.includes("-apple-system"));
 need("css safe-area tokens", css.includes("--safe-top") && css.includes("safe-area-inset-bottom"));
 need("css text-size-adjust", css.includes("-webkit-text-size-adjust: 100%"));
