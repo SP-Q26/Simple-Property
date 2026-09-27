@@ -16,6 +16,8 @@
     "sync-blog-seo": "node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs",
     "build-blog": "node scripts/build-blog-seo.mjs",
     "generate-blog-p0": "node scripts/generate-state-blog-p0.mjs",
+    "generate-state-expansion": "node scripts/generate-state-expansion-blogs.mjs",
+    "generate-state-sep-2026": "node scripts/generate-state-operator-sep-2026.mjs && node scripts/build-blog-seo.mjs && node scripts/sync-social-meta.mjs",
     "generate-pain-seo": "node scripts/generate-pain-seo-posts.mjs",
     "generate-city-seo": "node scripts/generate-city-seo-posts.mjs",
     "generate-fee-pet-seo": "node scripts/generate-fee-pet-seo-posts.mjs",

@@ -1,5 +1,8 @@
 /** Canonical Open Graph / Twitter tags for link previews (FB, LinkedIn, iMessage). */
 
+import { FB_APP_ID } from "../../web/lib/meta-app.mjs";
+
+export { FB_APP_ID };
 export const SITE = "https://simple-property.com";
 export const SITE_NAME = "Simple Property Tools";
 /** Bump when OG PNG art changes so Facebook Debugger picks up fresh previews. */
@@ -54,6 +57,7 @@ export function buildSocialMetaBlock(opts) {
     `  <meta property="og:type" content="${ogType}">`,
     `  <meta property="og:site_name" content="${SITE_NAME}">`,
     `  <meta property="og:locale" content="en_US">`,
+    ...(FB_APP_ID ? [`  <meta property="fb:app_id" content="${escapeAttr(FB_APP_ID)}">`] : []),
     `  <meta property="og:title" content="${escapeAttr(opts.ogTitle)}">`,
     `  <meta property="og:description" content="${escapeAttr(opts.ogDescription)}">`,
     `  <meta property="og:url" content="${url}">`,
@@ -85,6 +89,7 @@ function escapeAttr(s) {
 export function stripSocialMeta(html) {
   let out = html.replace(/\n?\s*<!-- spt-social -->[\s\S]*?<!-- \/spt-social -->\n?/g, "\n");
   out = out.replace(/\n?\s*<meta property="og:[^"]+" content="[^"]*">\n?/g, "\n");
+  out = out.replace(/\n?\s*<meta property="fb:[^"]+" content="[^"]*">\n?/g, "\n");
   out = out.replace(/\n?\s*<meta property="article:[^"]+" content="[^"]*">\n?/g, "\n");
   out = out.replace(/\n?\s*<meta name="twitter:[^"]+" content="[^"]*">\n?/g, "\n");
   out = out.replace(/\n?\s*<link rel="canonical" href="[^"]*">\n?/g, "\n");

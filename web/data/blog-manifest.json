@@ -1878,6 +1878,291 @@
       "statutes": [
         "RSMo 535.300"
       ]
+    },
+    {
+      "slug": "dc-operator-deposit-packet-sep-2026",
+      "title": "District of Columbia operators: deposit packet habits · September 2026",
+      "description": "45-day return default from surrender · D.C. Code § 42-3508.11. Local turnover habits for District of Columbia operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "D.C. Code § 42-3508.11"
+      ]
+    },
+    {
+      "slug": "georgia-operator-deposit-packet-sep-2026",
+      "title": "Georgia operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · O.C.G.A. 44-7-34. Local turnover habits for Georgia operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "GA"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "O.C.G.A. 44-7-34"
+      ]
+    },
+    {
+      "slug": "iowa-operator-deposit-packet-sep-2026",
+      "title": "Iowa operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · Iowa Code 562A.12. Local turnover habits for Iowa operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "IA"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "Iowa Code 562A.12"
+      ]
+    },
+    {
+      "slug": "illinois-operator-deposit-packet-sep-2026",
+      "title": "Illinois operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · 765 ILCS 715/. Local turnover habits for Illinois operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "765 ILCS 715/"
+      ]
+    },
+    {
+      "slug": "indiana-operator-deposit-packet-sep-2026",
+      "title": "Indiana operators: deposit packet habits · September 2026",
+      "description": "45-day return default from surrender · IC 32-31-3-12 et seq.. Local turnover habits for Indiana operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "IN"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "IC 32-31-3-12 et seq."
+      ]
+    },
+    {
+      "slug": "louisiana-operator-deposit-packet-sep-2026",
+      "title": "Louisiana operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · La. R.S. 9:3251. Local turnover habits for Louisiana operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "LA"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "La. R.S. 9:3251"
+      ]
+    },
+    {
+      "slug": "maryland-operator-deposit-packet-sep-2026",
+      "title": "Maryland operators: deposit packet habits · September 2026",
+      "description": "45-day return default from surrender · Md. Real Prop. § 8-203. Local turnover habits for Maryland operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "MD"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "Md. Real Prop. § 8-203"
+      ]
+    },
+    {
+      "slug": "michigan-operator-deposit-packet-sep-2026",
+      "title": "Michigan operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · MCL 554.610. Local turnover habits for Michigan operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "MI"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "MCL 554.610"
+      ]
+    },
+    {
+      "slug": "missouri-operator-deposit-packet-sep-2026",
+      "title": "Missouri operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · RSMo 535.300. Local turnover habits for Missouri operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "MO"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "RSMo 535.300"
+      ]
+    },
+    {
+      "slug": "mississippi-operator-deposit-packet-sep-2026",
+      "title": "Mississippi operators: deposit packet habits · September 2026",
+      "description": "45-day return default from surrender · Miss. Code § 89-8-21. Local turnover habits for Mississippi operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "MS"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "Miss. Code § 89-8-21"
+      ]
+    },
+    {
+      "slug": "north-carolina-operator-deposit-packet-sep-2026",
+      "title": "North Carolina operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · N.C.G.S. § 42-52. Local turnover habits for North Carolina operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "NC"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "N.C.G.S. § 42-52"
+      ]
+    },
+    {
+      "slug": "north-dakota-operator-deposit-packet-sep-2026",
+      "title": "North Dakota operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · N.D.C.C. § 47-16-07.1. Local turnover habits for North Dakota operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "ND"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "N.D.C.C. § 47-16-07.1"
+      ]
+    },
+    {
+      "slug": "new-hampshire-operator-deposit-packet-sep-2026",
+      "title": "New Hampshire operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · RSA 540-A:7. Local turnover habits for New Hampshire operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "NH"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "RSA 540-A:7"
+      ]
+    },
+    {
+      "slug": "new-jersey-operator-deposit-packet-sep-2026",
+      "title": "New Jersey operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · N.J.S.A. 46:8-21.1. Local turnover habits for New Jersey operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "NJ"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "N.J.S.A. 46:8-21.1"
+      ]
+    },
+    {
+      "slug": "nevada-operator-deposit-packet-sep-2026",
+      "title": "Nevada operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · NRS 118A.242. Local turnover habits for Nevada operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "NV"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "NRS 118A.242"
+      ]
+    },
+    {
+      "slug": "ohio-operator-deposit-packet-sep-2026",
+      "title": "Ohio operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · ORC 5321.16. Local turnover habits for Ohio operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "OH"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "ORC 5321.16"
+      ]
+    },
+    {
+      "slug": "utah-operator-deposit-packet-sep-2026",
+      "title": "Utah operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · Utah Code § 57-17-3. Local turnover habits for Utah operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "UT"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "Utah Code § 57-17-3"
+      ]
+    },
+    {
+      "slug": "virginia-operator-deposit-packet-sep-2026",
+      "title": "Virginia operators: deposit packet habits · September 2026",
+      "description": "45-day return default from surrender · Va. Code § 55.1-1226. Local turnover habits for Virginia operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "VA"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "washington-operator-deposit-packet-sep-2026",
+      "title": "Washington operators: deposit packet habits · September 2026",
+      "description": "30-day return default from surrender · RCW 59.18.280. Local turnover habits for Washington operators. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "WA"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-09-26",
+      "statutes": [
+        "RCW 59.18.280"
+      ]
     }
   ]
 }

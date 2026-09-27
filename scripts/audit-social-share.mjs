@@ -5,7 +5,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
 import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
-import { OG_CACHE_VERSION, OG_IMAGE_PATH, OG_IMAGE_COVERAGE_PATH } from "./lib/social-share.mjs";
+import { OG_CACHE_VERSION, OG_IMAGE_PATH, OG_IMAGE_COVERAGE_PATH, FB_APP_ID } from "./lib/social-share.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const manifest = JSON.parse(readFileSync(join(web, "data", "blog-manifest.json"), "utf8"));
@@ -54,6 +54,23 @@ const dropPages = [
 ];
 
 const ogNeedle = `${OG_IMAGE_PATH}?v=${OG_CACHE_VERSION}`;
+
+if (/^\d{5,}$/.test(FB_APP_ID)) {
+  const fbTag = `property="fb:app_id" content="${FB_APP_ID}"`;
+  for (const rel of dropPages) {
+    const html = readFileSync(join(web, rel), "utf8");
+    needContent(`fb:app_id on ${rel}`, html.includes(fbTag));
+  }
+  const coverageHtml = readFileSync(
+    join(web, "blog/deposit-desk-new-states-thanks-sep-2026.html"),
+    "utf8"
+  );
+  needContent("coverage post fb:app_id", coverageHtml.includes(fbTag));
+} else {
+  console.log(
+    "note: no Meta App ID — fb:app_id omitted (OK). Facebook posts still use og:image/title/url. Debugger may warn until you create a free Meta app."
+  );
+}
 
 for (const rel of dropPages) {
   const html = readFileSync(join(web, rel), "utf8");
