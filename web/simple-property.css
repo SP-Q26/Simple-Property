@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v40 · compact sticky chrome phone/tablet */
+/* Simple Property Tools · Deposit Desk · v41 · pricing deck + perf trim */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -64,7 +64,7 @@ body {
   color: var(--ink);
   background-color: var(--bg);
   background-image: radial-gradient(ellipse 130% 70% at 50% -25%, rgba(74, 103, 65, 0.09), transparent 58%);
-  background-attachment: fixed;
+  background-attachment: scroll;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -76,6 +76,7 @@ body {
   pointer-events: none;
   overflow: hidden;
   background: transparent;
+  contain: strict;
 }
 
 @keyframes spt-weather-drift {
@@ -436,6 +437,33 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .spt-weather-mist,
+  .spt-door-scene {
+    display: none;
+  }
+
+  .spt-weather {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+
+/* Interior pages · lighter atmosphere (CPU/GPU) */
+body:has(.pricing-page) .spt-door-scene,
+body:has(.pricing-page) .spt-weather-mist,
+body:has(main.prose) .spt-door-scene,
+body:has(main.prose) .spt-weather-mist,
+body:has(.prose-legal) .spt-door-scene,
+body:has(.prose-legal) .spt-weather-mist {
+  display: none;
+}
+
+body:has(.pricing-page) .spt-weather,
+body:has(main.prose) .spt-weather,
+body:has(.prose-legal) .spt-weather {
+  animation: none;
+  opacity: 0.42;
 }
 
 a {
@@ -577,8 +605,15 @@ main > h1,
   top: 0;
   z-index: 40;
   pointer-events: auto;
-  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   backdrop-filter: blur(6px);
+}
+
+@media (max-width: 1023px) {
+  .locale-bar {
+    backdrop-filter: none;
+    background: var(--bg);
+  }
 }
 
 .locale-bar__label {
@@ -1748,21 +1783,58 @@ main > h1,
 }
 
 .price-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 100%;
+  overflow: hidden;
+  background: linear-gradient(165deg, #fffefb 0%, var(--surface) 48%, var(--quant-blue-surface) 100%);
+  border: 1px solid color-mix(in srgb, var(--border) 88%, var(--quant-blue) 12%);
+  border-radius: calc(var(--radius-md) + 2px);
+  padding: var(--space-5) var(--space-4) var(--space-5);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-.price-card.featured {
-  border-color: var(--success);
-  box-shadow: 0 0 0 1px rgba(21, 128, 61, 0.15);
+.price-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--quant-blue) 0%, var(--beam-gold) 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.price-card--highlight {
+  border-color: color-mix(in srgb, var(--beam-gold) 55%, var(--border));
+  box-shadow: 0 0 0 1px var(--gold-hairline), 0 12px 32px rgba(59, 90, 120, 0.1);
+}
+
+.price-card--highlight::before {
+  opacity: 1;
+}
+
+.price-card--best {
+  border-color: color-mix(in srgb, var(--beam-gold) 70%, var(--border));
+}
+
+.price-card--best::before {
+  opacity: 1;
+  background: var(--beam-gold);
 }
 
 .price-card .amount {
-  font-size: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4vw, 2.35rem);
   font-weight: 700;
   letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--quant-blue);
+  margin: 0;
 }
 
 .price-card .period {
@@ -2481,9 +2553,9 @@ table.data-table th {
 }
 
 .pricing-finder {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #fffefb 0%, var(--surface) 100%);
+  border: 1px solid color-mix(in srgb, var(--border) 90%, var(--quant-blue) 10%);
+  border-radius: calc(var(--radius-md) + 2px);
   padding: var(--space-5) var(--space-6);
   box-shadow: var(--shadow-soft);
   margin-bottom: var(--space-6);
@@ -2544,6 +2616,7 @@ table.data-table th {
   display: grid;
   gap: var(--space-4);
   margin-bottom: var(--space-7);
+  align-items: stretch;
 }
 
 @media (min-width: 720px) {
@@ -2559,51 +2632,59 @@ table.data-table th {
   }
 }
 
-.price-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  min-height: 100%;
-  background: var(--quant-blue-surface);
-  transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
-}
-
 @media (hover: hover) {
   .price-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--accent);
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--quant-blue) 35%, var(--border));
+    box-shadow: 0 14px 36px rgba(59, 90, 120, 0.12);
   }
 }
 
-.price-card--highlight {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--gold-hairline), var(--shadow-soft);
-}
-
 .price-card__badge {
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--quant-blue);
   margin: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--quant-blue-wash);
+  border: 1px solid rgba(59, 90, 120, 0.12);
+}
+
+.price-card--highlight .price-card__badge,
+.price-card--best .price-card__badge {
+  color: var(--btn-on-gold);
+  background: color-mix(in srgb, var(--beam-gold) 22%, #fff);
+  border-color: var(--gold-hairline);
 }
 
 .price-card__tagline {
   margin: 0 0 var(--space-2);
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
 }
 
 .price-card .amount-suffix {
-  font-size: 1rem;
+  font-family: var(--font);
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--muted);
 }
 
 .price-card ul {
   flex: 1;
-  margin: var(--space-3) 0;
+  margin: var(--space-3) 0 var(--space-2);
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+}
+
+.price-card ul li {
+  margin-bottom: 0.45rem;
 }
 
 .btn-block {

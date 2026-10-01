@@ -28,8 +28,10 @@
   <!-- /spt-social -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=40">
+  <link rel="stylesheet" href="/simple-property.css?v=41">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
@@ -102,7 +104,7 @@
         <article class="price-card" data-pricing-tier="free">
           <p class="price-card__badge">Free</p>
           <p class="amount">$0</p>
-          <p class="price-card__tagline">See the statutory clock on screen before you pay</p>
+          <p class="price-card__tagline">Statutory clock on screen before you pay</p>
           <ul class="bullet-tight">
             <li>Full 5-step wizard · autosave</li>
             <li>30 / 45-day deadline on screen</li>
@@ -111,7 +113,7 @@
           <a class="btn btn-secondary btn-block" href="/app">Open free</a>
         </article>
 
-        <article class="price-card featured price-card--highlight" data-pricing-tier="per-turn">
+        <article class="price-card price-card--turn" data-pricing-tier="per-turn">
           <p class="price-card__badge">Per turn</p>
           <p class="amount">$29<span class="amount-suffix"> / $49</span></p>
           <p class="price-card__tagline">Seasonal turns · pay at export like screening</p>
@@ -123,7 +125,7 @@
           <a class="btn btn-primary btn-block" href="/app">Open wizard · unlock at export</a>
         </article>
 
-        <article class="price-card" data-pricing-tier="pro-monthly">
+        <article class="price-card price-card--pro" data-pricing-tier="pro-monthly">
           <p class="price-card__badge">Pro monthly</p>
           <p class="amount">$22</p>
           <p class="price-card__tagline">Stacked move-outs · print every packet</p>
@@ -135,7 +137,7 @@
           <button type="button" class="btn btn-secondary btn-block spt-checkout" data-sku="monthly">Subscribe monthly</button>
         </article>
 
-        <article class="price-card featured price-card--annual" data-pricing-tier="pro-annual">
+        <article class="price-card price-card--pro price-card--best" data-pricing-tier="pro-annual">
           <p class="price-card__badge">Pro annual</p>
           <p class="amount">$99</p>
           <p class="price-card__tagline">Year-round doors · best per-packet math</p>
@@ -202,7 +204,7 @@
   <script src="/sp-pricing-finder.js" defer></script>
   <script src="/sp-checkout.js" defer></script>
   <script src="/sp-billing.js" defer></script>
-  <script src="/sp-entitlement.js"></script>
+  <script src="/sp-entitlement.js" defer></script>
   <script src="/sp-magic.js" defer></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
