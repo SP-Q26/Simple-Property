@@ -2,23 +2,23 @@ import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BRAND_TAG_HTML, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-locale.mjs";
+import { articleGraph, SITE } from "./seo-jsonld.mjs";
 
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
 
 function articleShell({ title, description, slug, published, bodyHtml }) {
-  const url = `https://simple-property.com/blog/${slug}`;
-  const ld = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
-    datePublished: published,
-    dateModified: published,
-    author: { "@type": "Organization", name: "Simple Property Tools" },
-    publisher: { "@type": "Organization", name: "Simple Property Tools" },
-    mainEntityOfPage: url,
-    description,
-  });
+  const url = `${SITE}/blog/${slug}`;
+  const ld = JSON.stringify(
+    articleGraph({
+      headline: title,
+      description,
+      url,
+      published,
+      modified: published,
+      law: null,
+    })
+  );
   return `<!DOCTYPE html>
 <html lang="en">
 <head>

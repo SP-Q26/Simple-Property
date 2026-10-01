@@ -1,10 +1,17 @@
 #!/usr/bin/env node
-/** Article JSON-LD · citation / isBasedOn from manifest + statute-urls. */
+/** Article JSON-LD · citation / isBasedOn · BreadcrumbList @graph. */
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { STATE_PACKS } from "../web/lib/deposit-rules.mjs";
 import { STATUTE_URLS } from "../web/lib/statute-urls.mjs";
+import {
+  articleGraph,
+  stripJsonLd,
+  injectJsonLdBeforeHeadClose,
+  trimMetaDescription,
+  SITE,
+} from "./lib/seo-jsonld.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const blogDir = join(root, "web", "blog");
@@ -37,38 +44,40 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   const titleMatch = html.match(/<title>([^<]+)<\/title>/);
   const title = titleMatch ? titleMatch[1].replace(/ · Simple Property Tools$/, "") : slug;
   const descMatch = html.match(/name="description" content="([^"]+)"/);
-  const desc = post?.description || (descMatch ? descMatch[1].replace(/<[^>]+>/g, "") : title);
-  const url = `https://simple-property.com/blog/${slug}`;
+  const rawDesc = post?.description || (descMatch ? descMatch[1].replace(/<[^>]+>/g, "") : title);
+  const desc = trimMetaDescription(rawDesc);
+  const url = `${SITE}/blog/${slug}`;
   const dateMatch = html.match(/"datePublished"\s*:\s*"([^"]+)"/);
   const published = dateMatch ? dateMatch[1] : post?.published || "2026-09-01";
+  const modified = post?.updated || published;
 
   const law = legislationForPost(post);
-  const article = {
-    "@context": "https://schema.org",
-    "@type": "Article",
+  const graph = articleGraph({
     headline: title,
-    datePublished: published,
-    dateModified: post?.updated || published,
-    author: { "@type": "Organization", name: "Simple Property Tools" },
-    publisher: { "@type": "Organization", name: "Simple Property Tools" },
-    mainEntityOfPage: url,
     description: desc,
-  };
-  if (law) {
-    article.citation = [{ "@type": "CreativeWork", name: law.name, url: law.url }];
-    article.isBasedOn = { "@type": "Legislation", name: law.name, url: law.url };
-  }
+    url,
+    published,
+    modified,
+    law,
+  });
 
-  html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, "");
-  const block = `<script type="application/ld+json">${JSON.stringify(article)}</script>\n`;
-  html = html.replace("</head>", block + "</head>");
+  html = stripJsonLd(html);
+  html = injectJsonLdBeforeHeadClose(html, graph);
+
+  if (post?.description && desc !== post.description) {
+    const esc = desc.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    html = html
+      .replace(/^  <meta name="description".*$/m, `  <meta name="description" content="${esc}">`)
+      .replace(/^  <meta property="og:description".*$/m, `  <meta property="og:description" content="${esc}">`)
+      .replace(/^  <meta name="twitter:description".*$/m, `  <meta name="twitter:description" content="${esc}">`);
+  }
 
   if (!html.match(/not legal advice/i)) {
     html = html.replace("</main>", `\n      ${DISCLAIMER}\n    </main>`);
   }
   if (!html.includes("feed.rss")) {
     html = html.replace(
-      "<link rel=\"canonical\"",
+      '<link rel="canonical"',
       `<link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">\n  <link rel="canonical"`
     );
   }

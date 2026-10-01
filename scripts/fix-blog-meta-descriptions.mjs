@@ -9,8 +9,10 @@ const manifest = JSON.parse(
   readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "web", "data", "blog-manifest.json"), "utf8")
 );
 
+import { trimMetaDescription } from "./lib/seo-jsonld.mjs";
+
 function escAttr(s) {
-  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+  return trimMetaDescription(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 }
 
 let n = 0;

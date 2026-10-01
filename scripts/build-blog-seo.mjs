@@ -203,6 +203,40 @@ indexHtml = indexHtml.replace(
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");
 
+const hubLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      name: "Deposit guides · 18 states + DC",
+      url: `${site}/blog`,
+      description: "State and city deposit guides for small landlords · not legal advice.",
+      isPartOf: { "@type": "WebSite", name: "Simple Property Tools", url: site },
+    },
+    {
+      "@type": "ItemList",
+      numberOfItems: Math.min(24, manifest.posts.length),
+      itemListElement: [...manifest.posts]
+        .sort((a, b) => (a.published < b.published ? 1 : -1))
+        .slice(0, 24)
+        .map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${site}/blog/${p.slug}`,
+          name: p.title,
+        })),
+    },
+  ],
+};
+let hubHtml = readFileSync(indexPath, "utf8");
+hubHtml = hubHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, "");
+hubHtml = hubHtml.replace(
+  "</head>",
+  `  <script type="application/ld+json">${JSON.stringify(hubLd)}</script>\n</head>`
+);
+writeFileSync(indexPath, hubHtml);
+console.log("blog hub JSON-LD (CollectionPage + ItemList)");
+
 const sorted = [...manifest.posts].sort((a, b) => (a.published < b.published ? 1 : -1));
 let rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n`;
 rss += `<title>Simple Property Tools · deposit guides</title>\n`;
@@ -223,24 +257,27 @@ rss += `</channel>\n</rss>\n`;
 writeFileSync(join(web, "blog", "feed.rss"), rss);
 console.log("wrote blog/feed.rss");
 
-const staticUrls = [
-  `${site}/`,
-  `${site}/pricing`,
-  `${site}/pricing`,
-  `${site}/feedback`,
-  `${site}/app`,
-  `${site}/logs`,
-  `${site}/blog`,
-  `${site}/privacy`,
-  `${site}/terms`,
-  `${site}/legal`,
-  `${site}/launch-stack`,
+const staticEntries = [
+  { loc: `${site}/`, lastmod: "2026-09-30", changefreq: "weekly", priority: "1.0" },
+  { loc: `${site}/pricing`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.9" },
+  { loc: `${site}/blog`, lastmod: "2026-09-30", changefreq: "daily", priority: "0.95" },
+  { loc: `${site}/launch-stack`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.7" },
+  { loc: `${site}/feedback`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.5" },
+  { loc: `${site}/legal`, lastmod: "2026-09-30", changefreq: "yearly", priority: "0.4" },
+  { loc: `${site}/legal/deposit-statutes`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.85" },
+  { loc: `${site}/privacy`, lastmod: "2026-09-30", changefreq: "yearly", priority: "0.3" },
+  { loc: `${site}/terms`, lastmod: "2026-09-30", changefreq: "yearly", priority: "0.3" },
 ];
-const blogUrls = manifest.posts.map((p) => `${site}/blog/${p.slug}`);
-const allUrls = [...staticUrls, ...blogUrls];
+const blogEntries = manifest.posts.map((p) => ({
+  loc: `${site}/blog/${p.slug}`,
+  lastmod: p.updated || p.published || "2026-09-01",
+  changefreq: "monthly",
+  priority: p.intent === "pain" || p.category === "pain" ? "0.8" : "0.65",
+}));
+const allEntries = [...staticEntries, ...blogEntries];
 let sm = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-for (const loc of allUrls) {
-  sm += `  <url><loc>${loc}</loc></url>\n`;
+for (const e of allEntries) {
+  sm += `  <url><loc>${e.loc}</loc><lastmod>${e.lastmod}</lastmod><changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>\n`;
 }
 sm += `</urlset>\n`;
 writeFileSync(join(web, "sitemap.xml"), sm);

@@ -44,6 +44,13 @@ function scoreVisual() {
 }
 
 function scoreSeo() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-seo-sweep.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const out = (r.stdout || "") + (r.stderr || "");
+  const m = out.match(/SEO sweep score: (\d+)/);
+  if (m) return Number(m[1]);
   let s = 60;
   if (read("robots.txt").includes("sitemap.xml")) s += 10;
   const sm = read("sitemap.xml");

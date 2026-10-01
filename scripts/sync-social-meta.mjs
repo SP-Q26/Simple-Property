@@ -95,6 +95,13 @@ const DROP_PAGES = [
     ogDescription:
       "City guides, missed deadlines, disputes, fees, and state law for small landlords. Not legal advice.",
   },
+  {
+    file: "legal/deposit-statutes.html",
+    path: "/legal/deposit-statutes",
+    ogTitle: "Deposit return statutes · 18 states + DC",
+    ogDescription:
+      "Official statute links for every state in Deposit Desk · wizard defaults from surrender. Not legal advice.",
+  },
 ];
 
 function applyPage({ file, path, ogTitle, ogDescription, robots, ogType }) {
@@ -116,7 +123,8 @@ function applyPage({ file, path, ogTitle, ogDescription, robots, ogType }) {
     ogType,
   });
   html = injectSocialMetaAfterDescription(html, block);
-  if (file === "app.html" && !html.includes('"@type": "WebApplication"')) {
+  if (file === "app.html") {
+    html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, "");
     const ld = {
       "@context": "https://schema.org",
       "@type": "WebApplication",
