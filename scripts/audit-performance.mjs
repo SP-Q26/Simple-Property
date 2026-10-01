@@ -5,6 +5,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -27,7 +28,7 @@ const cssBytes = statSync(join(web, "simple-property.css")).size;
 console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
-need("css v41 header", css.includes("v41"));
+need(`css v${CSS_VERSION} header`, css.includes(`v${CSS_VERSION}`));
 need("css size under 72KB", cssBytes < 72 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
@@ -39,7 +40,7 @@ need("fonts display=swap in brand", read("lib/brand-locale.mjs").includes("displ
 const keyPages = ["index.html", "pricing.html", "app.html", "blog/index.html"];
 for (const p of keyPages) {
   const h = read(p);
-  need(`${p} css v41`, h.includes("simple-property.css?v=41"));
+  need(`${p} css v${CSS_VERSION}`, h.includes(`simple-property.css?v=${CSS_VERSION}`));
   need(`${p} vercel insights defer`, h.includes('defer src="/_vercel/insights/script.js"'));
   if (h.includes("sp-entitlement.js")) {
     need(`${p} entitlement defer`, h.includes('sp-entitlement.js" defer'));
