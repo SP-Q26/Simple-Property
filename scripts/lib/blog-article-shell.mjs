@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BRAND_TAG, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-locale.mjs";
+import { BRAND_TAG_HTML, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-locale.mjs";
 
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
@@ -45,7 +45,7 @@ ${atmosphereBlock}
         <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
         <span class="brand-text">
           <span class="brand-word">Simple Property Tools</span>
-          <span class="brand-tag">${BRAND_TAG}</span>
+          ${BRAND_TAG_HTML}
         </span>
       </a>
       <nav class="header-nav" aria-label="Primary">

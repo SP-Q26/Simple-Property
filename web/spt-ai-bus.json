@@ -1,11 +1,11 @@
 {
   "schema": "spt-ai-bus",
-  "version": 2,
+  "version": 3,
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "site": "https://simple-property.com",
   "contact": "hello@simple-property.com",
-  "hook": "Hit the deposit return deadline · 18 states + DC.",
+  "hook": "Itemize it. Date it. Beat the clock. · 18 states + DC deposit packets.",
   "lane": "765 ILCS 715/ · 30/45-day packs · Chicago RLTO · itemized withholding · print packet",
   "door_tiers": {
     "rough_1_10": "Deposit Desk · separate bank · cloud files · calendar · screening per lease",
@@ -27,6 +27,7 @@
     "https://simple-property.com/llms.txt",
     "https://simple-property.com/spt-ai-bus.json",
     "https://simple-property.com/.well-known/spt-gospel.json",
+    "https://simple-property.com/blog/feed.rss",
     "https://simple-property.com/launch-stack"
   ],
   "primary_cta": "https://simple-property.com/app",
@@ -41,5 +42,13 @@
   "launch_stack": "https://simple-property.com/launch-stack",
   "guides": "https://simple-property.com/blog",
   "blog_feed": "https://simple-property.com/blog/feed.rss",
-  "blog_pillars": ["law", "landlord", "renter", "news"]
+  "blog_pillars": [
+    "law",
+    "landlord",
+    "renter",
+    "news",
+    "pain",
+    "city"
+  ],
+  "blog_post_count": 138
 }

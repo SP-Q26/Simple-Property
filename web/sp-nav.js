@@ -290,7 +290,7 @@
 
     var label = document.createElement("span");
     label.className = "locale-bar__label";
-    label.textContent = onBlog ? "Pain guides by state" : "Beat the clock · your state";
+    label.textContent = onBlog ? "Guides by state" : "Your state";
     nav.appendChild(label);
 
     nav.appendChild(buildCoverageMap());

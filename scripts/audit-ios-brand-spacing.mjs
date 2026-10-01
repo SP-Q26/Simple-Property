@@ -49,7 +49,7 @@ need("css mobile locale map full width", css.includes(".locale-bar__map-wrap") &
 need("css mobile hero stack spacing", css.includes(".hero-actions") && css.includes("flex-direction: column"));
 need("css mobile deposit receipt scroll", css.includes(".deposit-receipt") && css.includes("-webkit-overflow-scrolling: touch"));
 need("css touch-action buttons", css.includes("touch-action: manipulation"));
-need("css brand tag mobile shrink", css.includes(".brand-tag") && css.includes("font-size: 0.72rem"));
+need("css brand tag mobile shrink", css.includes(".brand-tag__mobile") && css.includes("font-size: 0.625rem"));
 need("css spacing scale", css.includes("--space-5") && css.includes("--space-6"));
 need("css quant + gold brand", css.includes("--beam-gold") && css.includes("--quant-blue-surface"));
 need("sp-nav coverage bubble builder", read("sp-nav.js").includes("coverage-bubbles--strip") && read("sp-nav.js").includes("wireLocaleLink"));
