@@ -64,7 +64,7 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   html = stripJsonLd(html);
   html = injectJsonLdBeforeHeadClose(html, graph);
 
-  if (post?.description && desc !== post.description) {
+  if (post?.description) {
     const esc = desc.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
     html = html
       .replace(/^  <meta name="description".*$/m, `  <meta name="description" content="${esc}">`)

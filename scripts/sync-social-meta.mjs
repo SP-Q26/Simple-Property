@@ -47,14 +47,14 @@ const DROP_PAGES = [
     path: "/launch-stack",
     ogTitle: "Launch stack · landlord tools by door count",
     ogDescription:
-      "What to deploy at 1–10, 10–20, and 20–40 doors: deposit compliance first. 18 states + DC · not legal advice.",
+      "What to set up at 1–10, 10–20, and 20–40 doors: deposit compliance first. 18 states + DC · not legal advice.",
   },
   {
     file: "feedback.html",
     path: "/feedback",
     ogTitle: "Suggest rulesets · Deposit Desk feedback",
     ogDescription:
-      "New state rulesets, wizard fields, guides, or fixes. 18 states + DC today · Florida and Wisconsin on roadmap · not legal advice.",
+      "Tell us what to add: state rules, wizard fields, or guides. 18 states + DC today · founded in Chicago · not legal advice.",
   },
   {
     file: "logs.html",

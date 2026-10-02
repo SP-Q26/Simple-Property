@@ -7,15 +7,16 @@ import { articleGraph, SITE } from "./seo-jsonld.mjs";
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
 
-function articleShell({ title, description, slug, published, bodyHtml }) {
+function articleShell({ title, description, slug, published, modified, bodyHtml }) {
   const url = `${SITE}/blog/${slug}`;
+  const mod = modified || published;
   const ld = JSON.stringify(
     articleGraph({
       headline: title,
       description,
       url,
       published,
-      modified: published,
+      modified: mod,
       law: null,
     })
   );

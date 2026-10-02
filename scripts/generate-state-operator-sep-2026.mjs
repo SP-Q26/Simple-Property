@@ -15,6 +15,7 @@ const web = join(root, "web");
 const blogDir = join(web, "blog");
 const manifestPath = join(web, "data", "blog-manifest.json");
 const PUBLISHED = "2026-09-26";
+const MODIFIED = "2026-10-02";
 
 const SLUG_PREFIX = {
   DC: "dc",
@@ -96,8 +97,8 @@ function bodyFor(code, primaryPainSlug) {
 
   return `
       <p class="hero-eyebrow">${name} · Simple Property Tools</p>
-      <h1>${name} operators: deposit packet habits · September 2026</h1>
-      <p>Simple Property Tools is built for small landlords who itemize withholds, date surrender, and export before the clock on screen wins. ${local}</p>
+      <h1>${name} security deposit packet checklist · small landlords</h1>
+      <p>Itemize withholds, date surrender, and export before the return clock wins. ${local}</p>
       <dl class="fact-strip">
         <div><dt>Return default</dt><dd><strong>${days} days</strong> from surrender (keys back · unit vacant)</dd></div>
         <div><dt>Statute label</dt><dd>${citeLinkHtml(pack.cite, code)}</dd></div>
@@ -121,19 +122,21 @@ let added = 0;
 for (const code of SUPPORTED_STATES) {
   const pack = STATE_PACKS[code];
   const slug = slugFor(code);
-  const title = `${pack.label} operators: deposit packet habits · September 2026`;
-  const description = `${pack.returnDays}-day return default from surrender · ${pack.cite}. Local turnover habits for ${pack.label} operators. Not legal advice.`;
+  const title = `${pack.label} security deposit packet checklist · small landlords`;
+  const description = `${pack.label} security deposit return · ${pack.returnDays}-day default from surrender · ${pack.cite}. Itemization and export habits. Not legal advice.`;
 
   const html = articleShell({
     title,
     description,
     slug,
     published: PUBLISHED,
+    modified: MODIFIED,
     bodyHtml: bodyFor(code, manifest.primaryPainByState?.[code]),
   });
   writeFileSync(join(blogDir, `${slug}.html`), html);
 
-  if (!slugs.has(slug)) {
+  const existing = manifest.posts.find((p) => p.slug === slug);
+  if (!existing) {
     manifest.posts.push({
       slug,
       title,
@@ -142,13 +145,16 @@ for (const code of SUPPORTED_STATES) {
       intent: "operator",
       states: [code],
       published: PUBLISHED,
-      updated: PUBLISHED,
+      updated: MODIFIED,
       statutes: [pack.cite],
     });
     slugs.add(slug);
     added++;
     console.log("manifest+", slug);
   } else {
+    existing.title = title;
+    existing.description = description;
+    existing.updated = MODIFIED;
     console.log("refresh", slug);
   }
 }
