@@ -6,8 +6,8 @@
       "code": "DC",
       "name": "District of Columbia",
       "returnDays": 45,
-      "cite": "D.C. Code § 42-3508.11",
-      "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3508.11",
+      "cite": "D.C. Code § 42-3502.17",
+      "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.17",
       "blog": "/blog#locale-DC",
       "app": "/app?state=DC"
     },
@@ -25,7 +25,7 @@
       "name": "Iowa",
       "returnDays": 30,
       "cite": "Iowa Code 562A.12",
-      "statuteUrl": "https://www.legis.iowa.gov/docs/code/562A.12",
+      "statuteUrl": "https://www.legis.iowa.gov/law/iowaCode/sections?codeChapter=562A&codeSection=562A.12",
       "blog": "/blog#locale-IA",
       "app": "/app?state=IA"
     },

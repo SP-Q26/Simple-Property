@@ -21,6 +21,9 @@ export function linkifyCiteInHtml(html, code) {
     `<dd>${cite}</dd>`,
     `<dd>${cite} ·`,
     `<p class="field-hint">${cite}</p>`,
+    `<p class="field-hint">${cite} ·`,
+    ` under ${cite}.`,
+    ` under ${cite}/.`,
     `(${cite})`,
     ` · ${cite}`,
   ];

@@ -6,9 +6,9 @@ import { SUPPORTED_STATES } from "./deposit-rules.mjs";
 
 /** @type {Record<string, string>} */
 export const STATUTE_URLS = {
-  DC: "https://code.dccouncil.gov/us/dc/council/code/sections/42-3508.11",
+  DC: "https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.17",
   GA: "https://law.justia.com/codes/georgia/title-44/chapter-7/section-44-7-34/",
-  IA: "https://www.legis.iowa.gov/docs/code/562A.12",
+  IA: "https://www.legis.iowa.gov/law/iowaCode/sections?codeChapter=562A&codeSection=562A.12",
   IL: "https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=2065&ChapterID=57",
   IN: "https://iga.in.gov/statutes/ic/2024/titles/32/ar/t.32/ch.31",
   LA: "https://www.legis.la.gov/Legis/Law.aspx?d=78289",
@@ -29,7 +29,7 @@ export const STATUTE_URLS = {
 
 /** Chicago RLTO · deposit return overlay (city law · not ILGA). */
 export const CHICAGO_RLTO_URL =
-  "https://www.chicago.gov/city/en/depts/doh/provdrs/rlto.html";
+  "https://www.chicago.gov/city/en/depts/doh/provdrs/landlords/svcs/residential-landlord-and-tenant-ordinance.html";
 
 for (const code of SUPPORTED_STATES) {
   if (!STATUTE_URLS[code]) {

@@ -20,7 +20,7 @@ export const STATE_PACKS = {
     code: "DC",
     label: "District of Columbia",
     returnDays: 45,
-    cite: "D.C. Code § 42-3508.11",
+    cite: "D.C. Code § 42-3502.17",
     isDistrict: true,
   },
   GA: {

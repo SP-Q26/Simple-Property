@@ -44,14 +44,14 @@
   ],
   "door_tiers_url": "https://simple-property.com/launch-stack",
   "deposit_statutes_index": "https://simple-property.com/legal/deposit-statutes",
-  "chicago_rlto_url": "https://www.chicago.gov/city/en/depts/doh/provdrs/rlto.html",
+  "chicago_rlto_url": "https://www.chicago.gov/city/en/depts/doh/provdrs/landlords/svcs/residential-landlord-and-tenant-ordinance.html",
   "state_packs": [
     {
       "code": "DC",
       "label": "District of Columbia",
       "returnDays": 45,
-      "cite": "D.C. Code § 42-3508.11",
-      "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3508.11",
+      "cite": "D.C. Code § 42-3502.17",
+      "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.17",
       "app": "https://simple-property.com/app?state=DC",
       "guides": "https://simple-property.com/blog#locale-DC"
     },
@@ -69,7 +69,7 @@
       "label": "Iowa",
       "returnDays": 30,
       "cite": "Iowa Code 562A.12",
-      "statuteUrl": "https://www.legis.iowa.gov/docs/code/562A.12",
+      "statuteUrl": "https://www.legis.iowa.gov/law/iowaCode/sections?codeChapter=562A&codeSection=562A.12",
       "app": "https://simple-property.com/app?state=IA",
       "guides": "https://simple-property.com/blog#locale-IA"
     },

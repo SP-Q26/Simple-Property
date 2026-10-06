@@ -6,7 +6,7 @@ Not legal advice. Subagent statute review for Deposit Desk **simple pack** fit (
 
 | Code | Days | Citation | Added |
 |------|------|----------|-------|
-| DC | 45 | D.C. Code § 42-3508.11 | 2026-09-22 |
+| DC | 45 | D.C. Code § 42-3502.17 | 2026-09-22 |
 | GA | 30 | O.C.G.A. 44-7-34 | 2026-09-22 |
 | IA | 30 | Iowa Code 562A.12 | (Midwest v1) |
 | IL | 30 | 765 ILCS 715/ | (v1) · Chicago **45** overlay |
