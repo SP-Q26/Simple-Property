@@ -13,6 +13,8 @@ const web = join(root, "web");
 const manifestPath = join(web, "data", "blog-manifest.json");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const site = manifest.site.replace(/\/$/, "");
+/** Marketing pages last content refresh · bump on sitewide copy/SEO sweeps. */
+const SITE_LASTMOD = "2026-10-05";
 
 function blogHtmlPath(slug) {
   return join(web, "blog", `${slug}.html`);
@@ -258,15 +260,15 @@ writeFileSync(join(web, "blog", "feed.rss"), rss);
 console.log("wrote blog/feed.rss");
 
 const staticEntries = [
-  { loc: `${site}/`, lastmod: "2026-09-30", changefreq: "weekly", priority: "1.0" },
-  { loc: `${site}/pricing`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.9" },
-  { loc: `${site}/blog`, lastmod: "2026-09-30", changefreq: "daily", priority: "0.95" },
-  { loc: `${site}/launch-stack`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.7" },
-  { loc: `${site}/feedback`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.5" },
-  { loc: `${site}/legal`, lastmod: "2026-09-30", changefreq: "yearly", priority: "0.4" },
-  { loc: `${site}/legal/deposit-statutes`, lastmod: "2026-09-30", changefreq: "monthly", priority: "0.85" },
-  { loc: `${site}/privacy`, lastmod: "2026-09-30", changefreq: "yearly", priority: "0.3" },
-  { loc: `${site}/terms`, lastmod: "2026-09-30", changefreq: "yearly", priority: "0.3" },
+  { loc: `${site}/`, lastmod: SITE_LASTMOD, changefreq: "weekly", priority: "1.0" },
+  { loc: `${site}/pricing`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.9" },
+  { loc: `${site}/blog`, lastmod: SITE_LASTMOD, changefreq: "daily", priority: "0.95" },
+  { loc: `${site}/launch-stack`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.7" },
+  { loc: `${site}/feedback`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.5" },
+  { loc: `${site}/legal`, lastmod: SITE_LASTMOD, changefreq: "yearly", priority: "0.4" },
+  { loc: `${site}/legal/deposit-statutes`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.85" },
+  { loc: `${site}/privacy`, lastmod: SITE_LASTMOD, changefreq: "yearly", priority: "0.3" },
+  { loc: `${site}/terms`, lastmod: SITE_LASTMOD, changefreq: "yearly", priority: "0.3" },
 ];
 const blogEntries = manifest.posts.map((p) => ({
   loc: `${site}/blog/${p.slug}`,

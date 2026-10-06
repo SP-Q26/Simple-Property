@@ -13,8 +13,8 @@
   <rect x="40" y="40" width="1120" height="550" rx="20" fill="#f4f0e6" stroke="#d9d0c0" stroke-width="1.5"/>
   <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="40" font-weight="600">New state coverage</text>
   <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">Thank you to clients and investors who sourced local regs</text>
-  <text x="72" y="188" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="21" font-weight="600">Deposit Desk · 18 states + DC · iOS app incoming</text>
-  <text x="72" y="218" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17">Miami and Wisconsin on the roadmap · not legal advice</text>
+  <text x="72" y="188" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="21" font-weight="600">Deposit Desk · 18 states + DC · itemize · date · beat the clock</text>
+  <text x="72" y="218" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17">More states via feedback · not legal advice</text>
   <g font-family="system-ui,sans-serif" font-size="16" fill="#6b5c4a">
   <circle cx="72" cy="244" r="7" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.2"/>
   <text x="86" y="249">30-day</text>

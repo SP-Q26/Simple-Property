@@ -53,6 +53,7 @@ for (const p of INDEXABLE_PAGES) {
   const desc = h.match(/name="description" content="([^"]+)"/)?.[1];
   if (!desc) ding(5, `${p} no meta description`);
   else if (desc.length > 165) ding(3, `${p} description long (${desc.length})`);
+  else if (desc.length > 158) ding(1, `${p} description SERP trim (${desc.length}c)`);
   else if (desc.length < 45) ding(2, `${p} description thin (${desc.length})`);
   else ok(`${p} meta (${desc.length}c)`);
   const h1 = (h.match(/<h1[\s>]/g) || []).length;

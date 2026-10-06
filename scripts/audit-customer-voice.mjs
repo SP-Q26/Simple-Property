@@ -2,7 +2,7 @@
 /**
  * Customer voice · no backend roadmap, ship dates, or internal momentum on public HTML.
  */
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,20 @@ const FORBIDDEN = [
   { re: /\biOS app incoming\b/i, label: "iOS app incoming" },
   { re: /\bdeferred rulesets\b/i, label: "deferred rulesets" },
 ];
+
+const ogDir = join(web, "og");
+if (existsSync(ogDir)) {
+  for (const name of readdirSync(ogDir)) {
+    if (!name.endsWith(".svg")) continue;
+    const svg = readFileSync(join(ogDir, name), "utf8");
+    for (const { re, label } of FORBIDDEN) {
+      if (re.test(svg)) {
+        console.error("VOICE FAIL: og/" + name, "·", label);
+        fail++;
+      }
+    }
+  }
+}
 
 function walkHtml(dir, out = []) {
   for (const name of readdirSync(dir)) {
