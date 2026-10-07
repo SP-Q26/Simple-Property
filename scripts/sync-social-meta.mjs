@@ -12,6 +12,7 @@ import {
   injectSocialMetaAfterDescription,
   SITE,
   OG_IMAGE_COVERAGE_ALT,
+  COVERAGE_LABEL,
 } from "./lib/social-share.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
@@ -25,7 +26,7 @@ const DROP_PAGES = [
     path: "/",
     ogTitle: "Avoid deposit penalties · dated records · Deposit Desk",
     ogDescription:
-      "18 states + DC · deposit return clocks, itemization, print-ready packets. Free draft · per turn · Pro. Not legal advice.",
+      `${COVERAGE_LABEL} · deposit return clocks, itemization, print-ready packets. Free draft · per turn · Pro. Not legal advice.`,
   },
   {
     file: "app.html",
@@ -33,28 +34,28 @@ const DROP_PAGES = [
     robots: "noindex,nofollow",
     ogTitle: "Start free deposit packet · Deposit Desk",
     ogDescription:
-      "Five steps · statutory clock on screen · print-ready packet. 18 states + DC · free wizard · unlock per turn or Pro. Not legal advice.",
+      `Five steps · statutory clock on screen · print-ready packet. ${COVERAGE_LABEL} · free wizard · unlock per turn or Pro. Not legal advice.`,
   },
   {
     file: "pricing.html",
     path: "/pricing",
     ogTitle: "Deposit Desk pricing · cheaper than one cleaning fee",
     ogDescription:
-      "Free draft · $29/$49 per turn · Pro $22/mo or $99/yr · print packet · up to 40 units · 18 states + DC. Not legal advice.",
+      `Free draft · $29/$49 per turn · Pro $22/mo or $99/yr · print packet · up to 40 units · ${COVERAGE_LABEL}. Not legal advice.`,
   },
   {
     file: "launch-stack.html",
     path: "/launch-stack",
     ogTitle: "Landlord tools by door count",
     ogDescription:
-      "Set up deposit compliance at 1–10 doors · ledger at 10–20 · automation at 20–40. 18 states + DC · not legal advice.",
+      `Set up deposit compliance at 1–10 doors · ledger at 10–20 · automation at 20–40. ${COVERAGE_LABEL} · not legal advice.`,
   },
   {
     file: "feedback.html",
     path: "/feedback",
     ogTitle: "Suggest rulesets · Deposit Desk feedback",
     ogDescription:
-      "Suggest state rules, wizard fields, or guides. 18 states + DC · Chicago HQ · not legal advice.",
+      `Suggest state rules, wizard fields, or guides. ${COVERAGE_LABEL} · Chicago HQ · not legal advice.`,
   },
   {
     file: "logs.html",
@@ -86,19 +87,19 @@ const DROP_PAGES = [
     file: "terms.html",
     path: "/terms",
     ogTitle: "Terms of Service · Simple Property Tools",
-    ogDescription: "Deposit Desk terms · 18 states + DC · founded in Chicago · not legal advice.",
+    ogDescription: `Deposit Desk terms · ${COVERAGE_LABEL} · founded in Chicago · not legal advice.`,
   },
   {
     file: "blog/index.html",
     path: "/blog",
-    ogTitle: "Deposit guides · 18 states + DC",
+    ogTitle: `Deposit guides · ${COVERAGE_LABEL}`,
     ogDescription:
       "City guides, missed deadlines, disputes, fees, and state law for small landlords. Not legal advice.",
   },
   {
     file: "legal/deposit-statutes.html",
     path: "/legal/deposit-statutes",
-    ogTitle: "Deposit return statutes · 18 states + DC",
+    ogTitle: `Deposit return statutes · ${COVERAGE_LABEL}`,
     ogDescription:
       "Official statute links for every state in Deposit Desk · wizard defaults from surrender. Not legal advice.",
   },

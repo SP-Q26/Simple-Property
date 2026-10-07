@@ -5,7 +5,18 @@
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BRAND_TAG, BRAND_TAGLINE, BRAND_TAG_HTML, localeNavEntries, COVERAGE_MAP_XY } from "../web/lib/brand-locale.mjs";
+import {
+  BRAND_TAG,
+  BRAND_TAGLINE,
+  BRAND_TAG_HTML,
+  HERO_EYEBROW,
+  localeNavEntries,
+  COVERAGE_MAP_XY,
+  STATE_ONLY_COUNT,
+} from "../web/lib/brand-locale.mjs";
+
+const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
+const COVERAGE_PLUS = `${STATE_ONLY_COUNT} states plus DC`;
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -16,6 +27,10 @@ const OLD_TAGS = [
   "Itemize it. Date it. Keep the clock. · 18 states + DC · Chicago RLTO",
   "Itemize it. Date it. Keep the clock. · Founded in Chicago · 18 states + DC",
   "Itemize it. Date it. Keep the clock. · 20 states + DC · Chicago RLTO",
+  "Itemize it. Date it. Beat the clock. · Founded in Chicago · 18 states + DC",
+  `Itemize it. Date it. Beat the clock. · Founded in Chicago · 19 states + DC`,
+  "Itemize it. Date it. Beat the clock. · 18 states + DC",
+  `Itemize it. Date it. Beat the clock. · ${STATE_ONLY_COUNT - 1} states + DC`,
 ];
 
 function walkHtml(dir, out = []) {
@@ -29,17 +44,27 @@ function walkHtml(dir, out = []) {
   return out;
 }
 
-let htmlChanged = 0;
-for (const file of walkHtml(web)) {
-  let html = readFileSync(file, "utf8");
+function applyLocaleCopy(html) {
   let next = html;
   for (const old of OLD_TAGS) {
     next = next.split(old).join(BRAND_TAG);
   }
   next = next.split("Itemize it. Date it. Keep the clock.").join(BRAND_TAGLINE);
+  next = next.replaceAll("18 states + DC", COVERAGE_LABEL);
+  next = next.replaceAll("18 states plus DC", COVERAGE_PLUS);
+  if (next.includes('class="hero-eyebrow"') && next.includes("Security deposit return ·")) {
+    next = next.replace(/<p class="hero-eyebrow">[^<]*<\/p>/, `<p class="hero-eyebrow">${HERO_EYEBROW}</p>`);
+  }
   if (!next.includes("brand-tag__mobile")) {
     next = next.replaceAll(`<span class="brand-tag">${BRAND_TAG}</span>`, BRAND_TAG_HTML);
   }
+  return next;
+}
+
+let htmlChanged = 0;
+for (const file of walkHtml(web)) {
+  const html = readFileSync(file, "utf8");
+  const next = applyLocaleCopy(html);
   if (next !== html) {
     writeFileSync(file, next);
     htmlChanged++;
@@ -49,14 +74,7 @@ for (const file of walkHtml(web)) {
 const shellHeader = join(web, "brand/shell-header.html");
 if (existsSync(shellHeader)) {
   let sh = readFileSync(shellHeader, "utf8");
-  let next = sh;
-  for (const old of OLD_TAGS) {
-    next = next.split(old).join(BRAND_TAG);
-  }
-  next = next.split("Itemize it. Date it. Keep the clock.").join(BRAND_TAGLINE);
-  if (!next.includes("brand-tag__mobile")) {
-    next = next.replaceAll(`<span class="brand-tag">${BRAND_TAG}</span>`, BRAND_TAG_HTML);
-  }
+  const next = applyLocaleCopy(sh);
   if (next !== sh) {
     writeFileSync(shellHeader, next);
     console.log("updated brand/shell-header.html");

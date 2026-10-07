@@ -132,6 +132,12 @@ export const STATE_PACKS = {
     returnDays: 30,
     cite: "RCW 59.18.280",
   },
+  FL: {
+    code: "FL",
+    label: "Florida",
+    returnDays: 30,
+    cite: "Fla. Stat. § 83.49",
+  },
 };
 
 export const SUPPORTED_STATES = Object.keys(STATE_PACKS).sort();

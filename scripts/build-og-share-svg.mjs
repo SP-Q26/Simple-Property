@@ -104,10 +104,11 @@ ${doorScene()}`;
 
 const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="40" font-weight="600">New state coverage</text>
   <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">Thank you to clients and investors who sourced local regs</text>
-  <text x="72" y="188" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="21" font-weight="600">Deposit Desk · ${COVERAGE_LABEL} · iOS app incoming</text>
-  <text x="72" y="218" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17">Miami and Wisconsin on the roadmap · not legal advice</text>
-${legend(72, 244)}
-${chipGrid(72, 270, 10, 40, 6)}
+  <text x="72" y="182" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="20">${BRAND_TAGLINE}</text>
+  <text x="72" y="212" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="21" font-weight="600">Deposit Desk · ${COVERAGE_LABEL}</text>
+  <text x="72" y="242" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17">More states via feedback · not legal advice</text>
+${legend(72, 268)}
+${chipGrid(72, 294, 10, 40, 6)}
 ${doorScene()}`;
 
 const cardBody = `  <text x="88" y="148" fill="#3d3429" font-family="Georgia, serif" font-size="46" font-weight="600">Simple Property Tools</text>

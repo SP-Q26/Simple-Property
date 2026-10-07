@@ -25,6 +25,7 @@ export const STATUTE_URLS = {
   UT: "https://le.utah.gov/xcode/Title57/Chapter17/57-17-3.html",
   VA: "https://law.lis.virginia.gov/vacodefull/title55.1/chapter12/section55.1-1226/",
   WA: "https://app.leg.wa.gov/rcw/default.aspx?cite=59.18.280",
+  FL: "https://www.flsenate.gov/Laws/Statutes/2024/083.49",
 };
 
 /** Chicago RLTO · deposit return overlay (city law · not ILGA). */

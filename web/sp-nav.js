@@ -12,6 +12,15 @@
       "app": "/app?state=DC"
     },
     {
+      "code": "FL",
+      "name": "Florida",
+      "returnDays": 30,
+      "cite": "Fla. Stat. § 83.49",
+      "statuteUrl": "https://www.flsenate.gov/Laws/Statutes/2024/083.49",
+      "blog": "/blog#locale-FL",
+      "app": "/app?state=FL"
+    },
+    {
       "code": "GA",
       "name": "Georgia",
       "returnDays": 30,

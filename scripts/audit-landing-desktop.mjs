@@ -3,7 +3,9 @@
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
+import { CSS_VERSION, STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+
+const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const index = readFileSync(join(web, "index.html"), "utf8");
@@ -19,7 +21,7 @@ function need(label, ok) {
 
 need("home hero-mission h1", index.includes('class="hero-mission"'));
 need("home no stale 6-state FAQ", !index.includes("Wisconsin and other states are not in the app"));
-need("home multistate FAQ", index.includes("18 states + DC") && index.includes("Which states"));
+need("home multistate FAQ", index.includes(COVERAGE_LABEL) && index.includes("Which states"));
 const svgHero = readFileSync(join(web, "og", "spt-hero-door.svg"), "utf8");
 
 need("home hero door mark block", index.includes("hero-door-mark") && index.includes("sample packet below"));
@@ -36,7 +38,7 @@ need("home no tap the map", !index.includes("Tap the map"));
 need("home color bar coverage", /color bar/i.test(index));
 
 const title = index.match(/<title>([^<]+)<\/title>/)?.[1] || "";
-need("title mentions deposit + states", /deposit/i.test(title) && /18 states|DC/i.test(title));
+need("title mentions deposit + states", /deposit/i.test(title) && new RegExp(`${STATE_ONLY_COUNT} states|DC`).test(title));
 if (title.length > 70) {
   console.warn("WARN title length", title.length, "(ideal ≤60–70)");
 }

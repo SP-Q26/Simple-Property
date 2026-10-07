@@ -504,7 +504,9 @@ function renderStep1() {
       ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender (<a href="${esc(CHICAGO_RLTO_URL)}" rel="noopener noreferrer" target="_blank">city RLTO</a>). Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
       : st === "NC"
         ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${citeLink(st, pack.cite)}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
-        : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
+        : st === "FL"
+          ? `<p class="field-hint">Florida (${citeLink(st, pack.cite)}): within <strong>15 days</strong> after termination and possession, return the full deposit <strong>or</strong> send written claim notice · then <strong>30 days</strong> after notice for the balance and accounting. Deposit Desk shows a <strong>30-day</strong> export line from surrender for step-two discipline · see <a href="/blog/florida-83-49-two-step-miami-condo-deposit">§ 83.49 two-step guide</a> · confirm with counsel.</p>`
+          : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
   return `
     <h2 id="step-title" tabindex="-1">Landlord &amp; property</h2>
     <div class="form-grid two">

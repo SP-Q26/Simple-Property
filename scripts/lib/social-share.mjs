@@ -1,6 +1,9 @@
 /** Canonical Open Graph / Twitter tags for link previews (FB, LinkedIn, iMessage). */
 
 import { FB_APP_ID } from "../../web/lib/meta-app.mjs";
+import { STATE_ONLY_COUNT } from "../../web/lib/brand-locale.mjs";
+
+export const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
 export { FB_APP_ID };
 export const SITE = "https://simple-property.com";
@@ -12,9 +15,9 @@ export const OG_IMAGE_COVERAGE_PATH = "/og/spt-share-coverage-expansion.png";
 export const OG_IMAGE = `${SITE}${OG_IMAGE_PATH}?v=${OG_CACHE_VERSION}`;
 export const OG_IMAGE_COVERAGE = `${SITE}${OG_IMAGE_COVERAGE_PATH}?v=${OG_CACHE_VERSION}`;
 export const OG_IMAGE_ALT =
-  "Simple Property Tools Deposit Desk · coverage color bar · 18 states + DC deposit packets";
+  `Simple Property Tools Deposit Desk · coverage color bar · ${COVERAGE_LABEL} deposit packets`;
 export const OG_IMAGE_COVERAGE_ALT =
-  "Deposit Desk new state coverage · 18 states + DC color chips · thank you to operator contributors";
+  `Deposit Desk new state coverage · ${COVERAGE_LABEL} color chips · thank you to operator contributors`;
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
 

@@ -21,8 +21,16 @@ export function stateHubMap() {
   const map = {};
   for (const code of SUPPORTED_STATES) {
     const posts = postsFor(code);
+    const deadline =
+      code === "IL"
+        ? posts.find((p) => p.slug === "illinois-30-day-deposit-deadline")?.slug ||
+          posts.find((p) => /deadline|day-deposit|45-day|30-day/i.test(p.slug))?.slug
+        : code === "FL"
+          ? posts.find((p) => p.slug === "florida-83-49-two-step-miami-condo-deposit")?.slug ||
+            posts.find((p) => /deadline|83-49|two-step/i.test(p.slug))?.slug
+          : posts.find((p) => /deadline|day-deposit|45-day|30-day/i.test(p.slug))?.slug;
     map[code] = {
-      deadline: posts.find((p) => /deadline|day-deposit|45-day|30-day/i.test(p.slug))?.slug,
+      deadline,
       itemization: posts.find((p) => p.slug.includes("itemization"))?.slug,
       checklist: posts.find((p) => p.slug.includes("checklist"))?.slug,
       pain: posts.find((p) => p.intent === "pain" || p.category === "pain")?.slug,

@@ -5,6 +5,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
+import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -66,7 +67,7 @@ need("favicon rim lock plate", favicon.includes("door-rim-lock"));
 need("favicon no padlock arch", !favicon.includes('d="M26-8V-20'));
 const og = readFileSync(join(web, "og/spt-card.svg"), "utf8");
 need("OG coverage chips on card", (og.match(/class="coverage-chip"/g) || []).length === SUPPORTED_STATES.length);
-need("OG card 18 states copy", og.includes("18 states + DC"));
+need("OG card coverage copy", og.includes(`${STATE_ONLY_COUNT} states + DC`));
 
 const monthly = readFileSync(join(web, "stripe/pro-monthly.svg"), "utf8");
 need("monthly cascade", (monthly.match(/scale\(/g) || []).length >= 3);

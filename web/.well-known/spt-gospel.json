@@ -56,6 +56,15 @@
       "guides": "https://simple-property.com/blog#locale-DC"
     },
     {
+      "code": "FL",
+      "label": "Florida",
+      "returnDays": 30,
+      "cite": "Fla. Stat. § 83.49",
+      "statuteUrl": "https://www.flsenate.gov/Laws/Statutes/2024/083.49",
+      "app": "https://simple-property.com/app?state=FL",
+      "guides": "https://simple-property.com/blog#locale-FL"
+    },
+    {
       "code": "GA",
       "label": "Georgia",
       "returnDays": 30,

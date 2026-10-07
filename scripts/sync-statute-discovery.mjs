@@ -5,6 +5,9 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SUPPORTED_STATES, STATE_PACKS } from "../web/lib/deposit-rules.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "../web/lib/statute-urls.mjs";
+import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+
+const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const statuteIndexUrl = "https://simple-property.com/legal/deposit-statutes";
@@ -20,6 +23,8 @@ const packs = SUPPORTED_STATES.map((code) => ({
 }));
 
 let llms = readFileSync(join(web, "llms.txt"), "utf8");
+llms = llms.replaceAll("18 states + DC", COVERAGE_LABEL);
+llms = llms.replaceAll("18 states plus DC", `${STATE_ONLY_COUNT} states plus DC`);
 const block = `- **Deposit statutes index** · official outbound links for all wizard states + DC: ${statuteIndexUrl}`;
 if (!llms.includes("Deposit statutes index")) {
   llms = llms.replace(

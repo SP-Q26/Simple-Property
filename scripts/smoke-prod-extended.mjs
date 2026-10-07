@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 /** Extended production HTTP smoke · static routes, discovery, API shape (no card). */
 import { verifyPageStylesheet } from "./lib/smoke-css-gate.mjs";
+import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+
+const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
 const BASE = (process.env.SPT_SMOKE_URL || "https://simple-property.com").replace(/\/$/, "");
 
@@ -9,7 +12,7 @@ const pages = [
   { path: "/launch-stack", need: ["Stay ahead of deposit", "Deposit Desk", "doors"] },
   { path: "/success", need: ["Payment confirmed", "session_id", "sptRefreshEntitlement"] },
   { path: "/blog", need: ["Guides", "blog"] },
-  { path: "/llms.txt", need: ["Deposit Desk", "simple-property.com", "765 ILCS", "18 states + DC"] },
+  { path: "/llms.txt", need: ["Deposit Desk", "simple-property.com", "765 ILCS", COVERAGE_LABEL] },
   { path: "/robots.txt", need: ["Sitemap:", "simple-property.com"] },
 ];
 

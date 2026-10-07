@@ -43,6 +43,7 @@ export const COVERAGE_MAP_XY = {
   UT: [52, 44],
   VA: [166, 58],
   WA: [28, 18],
+  FL: [168, 88],
 };
 
 /** Nav · blog anchors use state code only. */

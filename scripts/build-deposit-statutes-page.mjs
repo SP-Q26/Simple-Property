@@ -5,7 +5,9 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SUPPORTED_STATES, STATE_PACKS } from "../web/lib/deposit-rules.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "../web/lib/statute-urls.mjs";
-import { BRAND_TAG, CSS_VERSION, FONT_GOOGLE } from "../web/lib/brand-locale.mjs";
+import { BRAND_TAG, CSS_VERSION, FONT_GOOGLE, STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+
+const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 mkdirSync(join(web, "legal"), { recursive: true });
@@ -35,7 +37,7 @@ const ld = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Deposit return statutes index",
-  description: "Security deposit return statute links for 18 states and DC",
+  description: `Security deposit return statute links for ${STATE_ONLY_COUNT} states and DC`,
   url: "https://simple-property.com/legal/deposit-statutes",
   isPartOf: { "@type": "WebSite", name: "Simple Property Tools", url: "https://simple-property.com" },
 };
@@ -45,7 +47,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Deposit return statutes · 18 states + DC · Simple Property Tools</title>
+  <title>Deposit return statutes · ${COVERAGE_LABEL} · Simple Property Tools</title>
   <meta name="description" content="Official links to security deposit return statutes for every state in Deposit Desk. Wizard defaults from surrender. Not legal advice.">
   <link rel="canonical" href="https://simple-property.com/legal/deposit-statutes">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">

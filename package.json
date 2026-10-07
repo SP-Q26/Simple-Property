@@ -20,6 +20,7 @@
     "generate-state-sep-2026": "node scripts/generate-state-operator-sep-2026.mjs && node scripts/build-blog-seo.mjs && node scripts/sync-social-meta.mjs",
     "generate-pain-seo": "node scripts/generate-pain-seo-posts.mjs",
     "generate-city-seo": "node scripts/generate-city-seo-posts.mjs",
+    "generate-metro-oct-2026": "node scripts/generate-metro-hyperfocus-oct-2026.mjs",
     "generate-fee-pet-seo": "node scripts/generate-fee-pet-seo-posts.mjs",
     "audit:blog": "node scripts/audit-blog-seo.mjs",
     "audit:discovery": "node scripts/audit-discovery-seo.mjs",

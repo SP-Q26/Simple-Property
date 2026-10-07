@@ -37,6 +37,7 @@ const SLUG_PREFIX = {
   UT: "utah",
   VA: "virginia",
   WA: "washington",
+  FL: "florida",
 };
 
 /** One line of local deposit culture per state (operator voice · not legal advice). */
@@ -79,6 +80,8 @@ const LOCAL_CULTURE = {
     "Out-of-state mail on day forty-four without tracking is a common belt investor pain point.",
   WA:
     "Each withhold line needs substantiation in the file, not just a label on a spreadsheet row.",
+  FL:
+    "Condo move-outs stack HOA fees, elevator reservations, and in-unit damage on one spreadsheet. Map the 15-day claim fork before you paint for the next tenant.",
 };
 
 function slugFor(code) {

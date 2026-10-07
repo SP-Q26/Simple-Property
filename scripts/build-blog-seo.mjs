@@ -7,6 +7,8 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
+import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+import { COVERAGE_LABEL, OG_IMAGE_ALT } from "./lib/social-share.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -14,7 +16,7 @@ const manifestPath = join(web, "data", "blog-manifest.json");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const site = manifest.site.replace(/\/$/, "");
 /** Marketing pages last content refresh · bump on sitewide copy/SEO sweeps. */
-const SITE_LASTMOD = "2026-10-05";
+const SITE_LASTMOD = "2026-10-07";
 
 function blogHtmlPath(slug) {
   return join(web, "blog", `${slug}.html`);
@@ -76,6 +78,25 @@ for (const p of cityPosts) {
   citySections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
 }
 citySections += `        </ul>\n      </section>\n`;
+
+const metroSeries = [
+  { id: "chicago-metro-oct-2026", label: "Chicago neighborhoods · RLTO" },
+  { id: "dc-metro-oct-2026", label: "DC neighborhoods · RHCA" },
+  { id: "miami-metro-oct-2026", label: "Miami · Florida § 83.49" },
+];
+let metroSections = `\n      <section class="guides-hub blog-cluster blog-cluster--metro" id="cluster-metro" aria-labelledby="guides-metro">\n`;
+metroSections += `        <h2 id="guides-metro">Metro deep dives</h2>\n`;
+metroSections += `        <p class="muted">Hyper-focused neighborhood guides · Chicago, DC, Miami · not legal advice.</p>\n`;
+for (const { id, label } of metroSeries) {
+  const list = manifest.posts.filter((p) => p.series === id).sort((a, b) => a.title.localeCompare(b.title));
+  if (!list.length) continue;
+  metroSections += `        <h3 class="section-label">${label}</h3>\n        <ul class="bullet-tight">\n`;
+  for (const p of list) {
+    metroSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+  }
+  metroSections += `        </ul>\n`;
+}
+metroSections += `      </section>\n`;
 
 const stateOrder = manifest.stateOrder?.length ? manifest.stateOrder : SUPPORTED_STATES;
 const stateLabels = manifest.stateLabels || {};
@@ -140,6 +161,8 @@ const stateStart = "<!-- BLOG_STATE_START -->";
 const stateEnd = "<!-- BLOG_STATE_END -->";
 const cityStart = "<!-- BLOG_CITY_START -->";
 const cityEnd = "<!-- BLOG_CITY_END -->";
+const metroStart = "<!-- BLOG_METRO_START -->";
+const metroEnd = "<!-- BLOG_METRO_END -->";
 const painStart = "<!-- BLOG_PAIN_START -->";
 const painEnd = "<!-- BLOG_PAIN_END -->";
 if (!indexHtml.includes(stateStart)) {
@@ -154,6 +177,10 @@ if (!indexHtml.includes(cityStart)) {
   console.error("blog/index.html missing BLOG_CITY markers");
   process.exit(1);
 }
+if (!indexHtml.includes(metroStart)) {
+  console.error("blog/index.html missing BLOG_METRO markers");
+  process.exit(1);
+}
 indexHtml = indexHtml.replace(
   new RegExp(`${painStart}[\\s\\S]*${painEnd}`),
   `${painStart}${painSections}      ${painEnd}`
@@ -161,6 +188,10 @@ indexHtml = indexHtml.replace(
 indexHtml = indexHtml.replace(
   new RegExp(`${cityStart}[\\s\\S]*${cityEnd}`),
   `${cityStart}${citySections}      ${cityEnd}`
+);
+indexHtml = indexHtml.replace(
+  new RegExp(`${metroStart}[\\s\\S]*${metroEnd}`),
+  `${metroStart}${metroSections}      ${metroEnd}`
 );
 indexHtml = indexHtml.replace(
   new RegExp(`${stateStart}[\\s\\S]*${stateEnd}`),
@@ -172,11 +203,11 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<p class="launch-live">[^<]*<\/p>/,
-  `<p class="launch-live">Live · deposit guides in 18 states + DC · founded in Chicago</p>`
+  `<p class="launch-live">Live · deposit guides in ${STATE_ONLY_COUNT} states + DC · founded in Chicago</p>`
 );
 indexHtml = indexHtml.replace(
   /<meta name="description" content="[^"]*">/,
-  `<meta name="description" content="State and city deposit guides, missed deadlines, tenant disputes, and itemization. 18 states + DC. Not legal advice.">`
+  `<meta name="description" content="State and city deposit guides, missed deadlines, tenant disputes, and itemization. ${STATE_ONLY_COUNT} states + DC. Not legal advice.">`
 );
 indexHtml = indexHtml.replace(
   /<title>[^<]*<\/title>/,
@@ -188,19 +219,19 @@ indexHtml = indexHtml.replace(
 );
 indexHtml = indexHtml.replace(
   /<meta property="og:title" content="[^"]*">/,
-  `<meta property="og:title" content="Deposit guides · 18 states + DC">`
+  `<meta property="og:title" content="Deposit guides · ${COVERAGE_LABEL}">`
 );
 indexHtml = indexHtml.replace(
   /<meta name="twitter:title" content="[^"]*">/,
-  `<meta name="twitter:title" content="Deposit guides · 18 states + DC">`
+  `<meta name="twitter:title" content="Deposit guides · ${COVERAGE_LABEL}">`
 );
 indexHtml = indexHtml.replace(
   /<meta property="og:image:alt" content="[^"]*">/,
-  `<meta property="og:image:alt" content="Simple Property Tools Deposit Desk · 18 states + DC deposit packets">`
+  `<meta property="og:image:alt" content="${OG_IMAGE_ALT}">`
 );
 indexHtml = indexHtml.replace(
   /<meta name="twitter:image:alt" content="[^"]*">/,
-  `<meta name="twitter:image:alt" content="Simple Property Tools Deposit Desk · 18 states + DC deposit packets">`
+  `<meta name="twitter:image:alt" content="${OG_IMAGE_ALT}">`
 );
 writeFileSync(indexPath, indexHtml);
 console.log("updated blog/index.html clusters");
@@ -210,7 +241,7 @@ const hubLd = {
   "@graph": [
     {
       "@type": "CollectionPage",
-      name: "Deposit guides · 18 states + DC",
+      name: `Deposit guides · ${COVERAGE_LABEL}`,
       url: `${site}/blog`,
       description: "State and city deposit guides for small landlords · not legal advice.",
       isPartOf: { "@type": "WebSite", name: "Simple Property Tools", url: site },
@@ -243,7 +274,7 @@ const sorted = [...manifest.posts].sort((a, b) => (a.published < b.published ? 1
 let rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n`;
 rss += `<title>Simple Property Tools · deposit guides</title>\n`;
 rss += `<link>${site}/blog</link>\n`;
-rss += `<description>Deposit guides for 18 states + DC · small landlords · not legal advice.</description>\n`;
+rss += `<description>Deposit guides for ${COVERAGE_LABEL} · small landlords · not legal advice.</description>\n`;
 rss += `<language>en-us</language>\n`;
 rss += `<atom:link href="${site}/blog/feed.rss" rel="self" type="application/rss+xml"/>\n`;
 for (const p of sorted.slice(0, 30)) {

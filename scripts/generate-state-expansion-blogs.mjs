@@ -242,6 +242,26 @@ const STATE_PAIN = {
         "Build the packet early, export PDF, mail with tracking, log in Deposit Desk and operator logs.",
     },
   },
+  FL: {
+    pain: {
+      slug: "florida-missed-15-day-claim-notice-deposit",
+      title: "Florida missed the 15-day deposit claim fork",
+      description:
+        "Operators skip the § 83.49 choice: full return or written claim notice within 15 days. Not legal advice.",
+      headline: "You waited for the HOA invoice before deciding whether to claim the deposit",
+      problem:
+        "Florida is not a single surrender clock. After termination and possession you must return the full deposit or send written claim notice within 15 days, then handle the balance within 30 days after notice.",
+      bullets: [
+        "Possession date fuzzy after a condo move-out inspection delay.",
+        "No written claim notice before day 20.",
+        "Withhold lines copied from a Midwest template with no Florida dates.",
+      ],
+      fix:
+        "Log possession in step 2, pick Miami in the city dropdown, and read the two-step guide before you mail. Export the packet for your operator log.",
+    },
+    localNote:
+      '<p class="field-hint">Florida also requires a <strong>15-day</strong> decision after termination and possession: full return or written claim notice · then <strong>30 days</strong> after notice for balance and accounting. See <a href="/blog/florida-83-49-two-step-miami-condo-deposit">§ 83.49 two-step guide</a>.</p>',
+  },
   WA: {
     pain: {
       slug: "washington-deposit-invoices-substantiation",
@@ -361,6 +381,7 @@ function slugPrefix(code) {
     UT: "utah",
     VA: "virginia",
     WA: "washington",
+    FL: "florida",
   };
   return map[code] || code.toLowerCase();
 }

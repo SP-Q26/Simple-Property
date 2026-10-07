@@ -3,6 +3,7 @@
   "feedPath": "/blog/feed.rss",
   "stateOrder": [
     "DC",
+    "FL",
     "GA",
     "IA",
     "IL",
@@ -24,6 +25,7 @@
   ],
   "stateLabels": {
     "DC": "District of Columbia",
+    "FL": "Florida",
     "GA": "Georgia",
     "IA": "Iowa",
     "IL": "Illinois",
@@ -62,7 +64,8 @@
     "OH": "ohio-cleveland-columbus-turnover-mail-delay",
     "UT": "utah-missed-deposit-deadline-penalty-track",
     "VA": "virginia-45-day-itemization-mail-proof",
-    "WA": "washington-deposit-invoices-substantiation"
+    "WA": "washington-deposit-invoices-substantiation",
+    "FL": "florida-missed-15-day-claim-notice-deposit"
   },
   "categories": {
     "law": {
@@ -88,6 +91,10 @@
     "city": {
       "label": "Major cities",
       "audience": "Local ordinances, RLTO, and turnover documentation"
+    },
+    "metro": {
+      "label": "Metro deep dives",
+      "audience": "Chicago, DC, and Miami neighborhood operator guides"
     }
   },
   "posts": [
@@ -2162,6 +2169,275 @@
       "updated": "2026-10-02",
       "statutes": [
         "RCW 59.18.280"
+      ]
+    },
+    {
+      "slug": "portage-park-three-flat-rlto-deposit-clock",
+      "title": "Portage Park three-flat: RLTO deposit clock",
+      "description": "RLTO 45-day return on a Portage Park three-flat. Surrender, itemization, export. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "chicago-metro-oct-2026",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "logan-square-greystone-two-flat-deposit-photos",
+      "title": "Logan Square greystone: deposit photo habits",
+      "description": "Greystone two-flat move-out photos that match later withhold lines. Chicago RLTO. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "chicago-metro-oct-2026",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "hyde-park-vintage-flat-normal-wear-deposit",
+      "title": "Hyde Park vintage flat: wear vs withhold",
+      "description": "Plaster, hardwood, and old trim in Hyde Park flats. RLTO itemization habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "chicago-metro-oct-2026",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "pilsen-walk-up-keys-mailed-surrender-illinois",
+      "title": "Pilsen walk-up: keys by mail, when clock starts",
+      "description": "Tenant mailed keys after a Pilsen walk-up lease ended. Surrender vs RLTO clock. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "chicago-metro-oct-2026",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ]
+    },
+    {
+      "slug": "capitol-hill-rowhouse-basement-adu-deposit-clock",
+      "title": "Capitol Hill rowhouse ADU: RHCA deposit clock",
+      "description": "Basement ADU turnover on Capitol Hill. RHCA 45-day discipline. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "dc-metro-oct-2026",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "D.C. Code § 42-3502.17"
+      ]
+    },
+    {
+      "slug": "petworth-english-basement-owner-occupied-deposit",
+      "title": "Petworth English basement: RHCA vs owner rules",
+      "description": "Owner-occupied Petworth rowhouse with a basement rental. RHCA coverage habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "dc-metro-oct-2026",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "D.C. Code § 42-3502.17"
+      ]
+    },
+    {
+      "slug": "columbia-heights-condo-conversion-forwarding-mail",
+      "title": "Columbia Heights condo unit: deposit mail proof",
+      "description": "Forwarding-address gaps after a condo-conversion rental in Columbia Heights. DC mail proof. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "dc-metro-oct-2026",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "D.C. Code § 42-3502.17"
+      ]
+    },
+    {
+      "slug": "shaw-carriage-house-belt-investor-dc-clock",
+      "title": "Shaw carriage house: belt investor DC clock",
+      "description": "Shaw carriage-house turnover when you also own in MD or VA. RHCA timing. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "dc-metro-oct-2026",
+      "states": [
+        "DC"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "D.C. Code § 42-3502.17"
+      ]
+    },
+    {
+      "slug": "florida-83-49-two-step-miami-condo-deposit",
+      "title": "Miami condo: Fla. § 83.49 two-step deposit",
+      "description": "Miami condo turnover under Fla. Stat. § 83.49: 15-day full return or claim notice, then 30-day balance. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "miami-metro-oct-2026",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ],
+      "cityPreset": "miami-fl"
+    },
+    {
+      "slug": "brickell-high-rise-condo-deposit-itemization",
+      "title": "Brickell high-rise: condo deposit lines",
+      "description": "Brickell tower turnover: HOA fees vs unit withholds under Florida deposit practice. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "miami-metro-oct-2026",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "wynwood-loft-hurricane-season-move-out-deposit",
+      "title": "Wynwood loft: storm-season move-out deposit",
+      "description": "Wynwood loft move-out during hurricane season. Florida 15-day first step habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "miami-metro-oct-2026",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "little-havana-duplex-florida-claim-notice-mail",
+      "title": "Little Havana duplex: Florida claim notice mail",
+      "description": "Little Havana duplex: certified mail habits for Florida deposit claim notice. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "series": "miami-metro-oct-2026",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-10-07",
+      "updated": "2026-10-07",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "florida-missed-15-day-claim-notice-deposit",
+      "title": "Florida missed the 15-day deposit claim fork",
+      "description": "Operators skip the § 83.49 choice: full return or written claim notice within 15 days. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "florida-30-day-deposit-deadline",
+      "title": "Florida 30-day deposit return window",
+      "description": "30-day return default from surrender · Fla. Stat. § 83.49. Not legal advice.",
+      "category": "law",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "florida-deposit-itemization",
+      "title": "Florida deposit itemization",
+      "description": "Written withhold lines · Fla. Stat. § 83.49. Not legal advice.",
+      "category": "law",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "florida-security-deposit-checklist",
+      "title": "Florida security deposit checklist",
+      "description": "Move-in through move-out · Fla. Stat. § 83.49. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "florida-operator-deposit-packet-sep-2026",
+      "title": "Florida security deposit packet checklist · small landlords",
+      "description": "Florida security deposit return · 30-day default from surrender · Fla. Stat. § 83.49. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "FL"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Fla. Stat. § 83.49"
       ]
     }
   ]

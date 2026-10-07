@@ -122,6 +122,15 @@ export const CITY_PRESETS = [
     blogSlug: "st-louis-missouri-deposit-local-guide",
     hint: "Missouri 30-day clock · city occupancy or rental inspection rules may run on a separate calendar from deposit return.",
   },
+  {
+    id: "miami-fl",
+    label: "Miami · Fla. Stat. § 83.49 two-step",
+    state: "FL",
+    cityName: "Miami",
+    blogSlug: "florida-83-49-two-step-miami-condo-deposit",
+    hint:
+      "Florida: within 15 days after termination and possession, return the full deposit or send written claim notice · then 30 days after notice for balance and accounting. See metro guide · confirm with counsel.",
+  },
 ];
 
 export function normalizeCityPresetId(raw) {
