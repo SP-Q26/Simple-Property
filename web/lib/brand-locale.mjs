@@ -15,7 +15,7 @@ export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__d
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 42;
+export const CSS_VERSION = 43;
 export const FONT_GOOGLE =
   "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap";
 export const FONT_LINK_HTML = `  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +45,13 @@ export const COVERAGE_MAP_XY = {
   WA: [28, 18],
   FL: [168, 88],
 };
+
+/** Header metro shortcuts · distinct colors in CSS (tone). */
+export const METRO_NAV = [
+  { short: "Chi", label: "Chicago · RLTO", href: "/app?state=IL&city=chicago-il", tone: "chi" },
+  { short: "DC", label: "Washington DC · RHCA", href: "/app?state=DC", tone: "dc" },
+  { short: "Mia", label: "Miami · Florida § 83.49", href: "/app?state=FL&city=miami-fl", tone: "mia" },
+];
 
 /** Nav · blog anchors use state code only. */
 export function localeNavEntries() {

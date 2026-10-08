@@ -33,6 +33,8 @@ need("css size under 72KB", cssBytes < 72 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));
+need("hero/wizard door scene off", css.includes("body:has(.wizard-steps) .spt-door-scene"));
+need("wizard weather off", css.includes("body:has(.wizard-steps) .spt-weather"));
 need("reduced motion hides door", css.includes(".spt-door-scene") && css.includes("prefers-reduced-motion"));
 need("mobile locale bar no backdrop blur", /max-width: 1023px[\s\S]*\.locale-bar[\s\S]*backdrop-filter: none/.test(css));
 need("fonts display=swap in brand", read("lib/brand-locale.mjs").includes("display=swap"));

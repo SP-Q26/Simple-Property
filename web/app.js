@@ -181,22 +181,30 @@ function isProSubscription() {
   return isSubscribed() && unitsWithinProCap(draft.property.unitCount);
 }
 
+function sptTrack(name, data) {
+  if (typeof window.sptTrack === "function") window.sptTrack(name, data || {});
+}
+
 function proBlockMessage() {
   if (!canExportPro()) {
     if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
-      return `<div class="paywall" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
+      return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
     }
-    return `<div class="paywall" role="status">
-      <strong>One late or thin packet costs more than $29.</strong> Unlock print/PDF for this packet.
-      Per turn ($29 move-out · $49 full tenancy) or Pro subscription.
+    return `<div class="paywall paywall--streamlined" role="status">
+      <strong>Unlock print / Save as PDF</strong> · one disputed withhold usually costs more than $29.
+      <p class="field-hint" style="margin:0.5rem 0 0">Pro also sends a <strong>tenant email copy</strong> from this screen · <a href="/pricing">compare plans</a></p>
       <div class="paywall-actions" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
         <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
         <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
-        <a class="btn btn-secondary" href="/pricing">Pro pricing</a>
+        <a class="btn btn-secondary" href="/pricing">Pro · $22/mo</a>
       </div>
     </div>`;
   }
   return "";
+}
+
+function paywallFreeToolsNote() {
+  return `<div class="paywall-free-tools" role="note"><strong>Already free:</strong> deadline math · Calendar · .ics · Sheets export · copy for AI. Pay once to print or save PDF for this packet.</div>`;
 }
 
 function syncChicagoFromPreset() {
@@ -294,9 +302,10 @@ function exportStatusLine() {
   return parts.length ? parts.join(" · ") + " ·" : "";
 }
 
-function renderItemizationPreview() {
+function renderItemizationPreview(lockedPreview) {
   const dep = parseFloat(draft.deposit.amount) || 0;
   const withheld = sumDeductions(draft.deductions);
+  const lockClass = lockedPreview ? " itemization-preview--locked" : "";
   const dedRows = draft.deductions
     .filter((d) => d.amount || d.description)
     .map(
@@ -305,7 +314,7 @@ function renderItemizationPreview() {
     )
     .join("");
   return `
-    <div class="itemization-preview product-proof" style="margin-top:1rem">
+    <div class="itemization-preview product-proof${lockClass}" style="margin-top:1rem">
       <p class="section-label">Statement preview</p>
       <p class="field-hint">Totals your printable packet will carry · review before you unlock export.</p>
       <table class="product-proof-table">
@@ -318,10 +327,7 @@ function renderItemizationPreview() {
 
 function exportEntitlementSection() {
   if (!canExportPro()) {
-    return (
-      proBlockMessage() ||
-      `<div class="paywall" role="status"><strong>Unlock export below.</strong> <a href="/pricing">Pricing</a></div>`
-    );
+    return "";
   }
   const tenantEmailBlock = isProSubscription()
     ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
@@ -629,8 +635,9 @@ function renderStep5() {
         <p class="field-hint">Opens Google in your browser. We do not connect to your Google account on our servers.</p></div>`
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
-    ${renderItemizationPreview()}
-    ${exportEntitlementSection()}
+    ${!canExportPro() ? paywallFreeToolsNote() : ""}
+    ${renderItemizationPreview(!canExportPro())}
+    ${canExportPro() ? exportEntitlementSection() : proBlockMessage()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
       <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
     </p>
@@ -1011,6 +1018,7 @@ function renderPrintPacket() {
         : ""
     }
     <p style="font-size:9pt">Documentation only. Not legal advice.</p>
+    <p style="font-size:8pt;color:#6b5c4a;margin-top:0.75rem">Packet prepared with Deposit Desk · simple-property.com</p>
     <div style="display:flex;gap:3rem;margin-top:2rem">
       <div><div class="signature-line">Landlord: ${esc(draft.signatures.landlordPrinted || draft.landlord.name)}</div></div>
       <div><div class="signature-line">Tenant: ${esc(draft.signatures.tenantPrinted || draft.tenant.name)}</div></div>
@@ -1025,6 +1033,10 @@ function render() {
   if (step === 2) bindStep2Events();
   if (step === 3 || step === 4 || step === 5) bindStepEvents();
   renderPrintPacket();
+  if (step === MAX_STEPS && !canExportPro()) {
+    sptTrack("paywall_view", { state: draft.property.state || "" });
+  }
+  sptTrack("wizard_step", { step: String(step), state: draft.property.state || "" });
   els.prev.disabled = step <= 1;
   els.next.textContent = step >= MAX_STEPS ? "Done" : "Continue";
   els.print.disabled = !canExportPro() || step < MAX_STEPS;
@@ -1088,6 +1100,7 @@ refreshPacketSelect();
       console.warn("spt entitlement", e);
     }
   }
+  sptTrack("wizard_start", { state: draft.property.state || "" });
   render();
 })();
 

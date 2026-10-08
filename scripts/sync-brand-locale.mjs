@@ -13,6 +13,7 @@ import {
   localeNavEntries,
   COVERAGE_MAP_XY,
   STATE_ONLY_COUNT,
+  METRO_NAV,
 } from "../web/lib/brand-locale.mjs";
 
 const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
@@ -89,6 +90,13 @@ nav = nav.replace(/  var LOCALES = \[[\s\S]*?\];/, localesBlock);
 const mapJson = JSON.stringify(COVERAGE_MAP_XY, null, 2).replace(/\n/g, "\n  ");
 const mapBlock = `  var MAP_XY = ${mapJson.replace(/^  /, "")};`;
 nav = nav.replace(/  var MAP_XY = \{[\s\S]*?\};/, mapBlock);
+const metroJson = JSON.stringify(METRO_NAV, null, 2).replace(/\n/g, "\n  ");
+const metroBlock = `  var METRO_NAV = ${metroJson.replace(/^  /, "")};`;
+nav = nav.replace(/  var METRO_NAV = \[[\s\S]*?\];/, metroBlock);
+nav = nav.replace(
+  /Official deposit statutes<\/a> · \d+ states \+ DC/,
+  `Official deposit statutes</a> · ${STATE_ONLY_COUNT} states + DC`
+);
 writeFileSync(navPath, nav);
 
 console.log(`sync-brand-locale · ${htmlChanged} html · sp-nav`);

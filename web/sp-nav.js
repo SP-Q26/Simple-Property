@@ -1,6 +1,27 @@
 (function () {
   "use strict";
 
+  var METRO_NAV = [
+    {
+      "short": "Chi",
+      "label": "Chicago · RLTO",
+      "href": "/app?state=IL&city=chicago-il",
+      "tone": "chi"
+    },
+    {
+      "short": "DC",
+      "label": "Washington DC · RHCA",
+      "href": "/app?state=DC",
+      "tone": "dc"
+    },
+    {
+      "short": "Mia",
+      "label": "Miami · Florida § 83.49",
+      "href": "/app?state=FL&city=miami-fl",
+      "tone": "mia"
+    }
+  ];
+
   var LOCALES = [
     {
       "code": "DC",
@@ -264,7 +285,7 @@
     var statuteIndex = document.createElement("p");
     statuteIndex.className = "locale-bar__statute-index";
     statuteIndex.innerHTML =
-      '<a href="/legal/deposit-statutes">Official deposit statutes</a> · 18 states + DC';
+      '<a href="/legal/deposit-statutes">Official deposit statutes</a> · 19 states + DC';
     head.appendChild(statuteIndex);
 
     wrap.appendChild(head);
@@ -287,6 +308,26 @@
     wrap.appendChild(plate);
 
     return wrap;
+  }
+
+  function injectMetroNav() {
+    var nav = document.querySelector(".header-nav");
+    if (!nav || nav.querySelector(".metro-nav")) return;
+    var wrap = document.createElement("span");
+    wrap.className = "metro-nav";
+    wrap.setAttribute("role", "group");
+    wrap.setAttribute("aria-label", "Metro desks");
+    METRO_NAV.forEach(function (m) {
+      var a = document.createElement("a");
+      a.className = "metro-nav__link metro-nav__link--" + m.tone;
+      a.href = m.href;
+      a.textContent = m.short;
+      a.title = m.label + " · Deposit Desk";
+      wrap.appendChild(a);
+    });
+    var guides = nav.querySelector('a[href="/blog"]');
+    if (guides) nav.insertBefore(wrap, guides);
+    else nav.appendChild(wrap);
   }
 
   function injectLocaleBar() {
@@ -346,6 +387,7 @@
     }
   });
 
+  injectMetroNav();
   injectLocaleBar();
   markActiveLocale();
   window.addEventListener("hashchange", markActiveLocale);

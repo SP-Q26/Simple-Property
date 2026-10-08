@@ -1,10 +1,12 @@
-/** Home hero · rotating court-record subtitles (respect reduced motion). */
+/** Home hero · rotating court-record subtitles (respect reduced motion + hidden tab). */
 (function () {
   const el = document.getElementById("hero-rotate");
   if (!el) return;
 
   const lines = [
     "Illinois and Chicago filings still turn on missed 30- and 45-day return windows after surrender, not lease end alone.",
+    "DC RHCA rowhouses and English basements: 45-day mail proof and itemization beat memory at hearing.",
+    "Florida § 83.49: Miami and South Florida operators lose on the 15-day claim notice fork as often as the 30-day balance.",
     "Indiana and Ohio dockets often award tenants when move-in photos and dated itemization never made it into the packet.",
     "Landlords still lose full deposits in small claims when the return deadline passes before a line-item letter goes out.",
     "Michigan and Iowa disputes hinge on documented wear vs damage and a dated withhold list, not memory at hearing.",
@@ -12,6 +14,7 @@
   ];
 
   let index = 0;
+  let timer = null;
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced || lines.length < 2) return;
 
@@ -23,8 +26,26 @@
     }, 320);
   }
 
-  window.setInterval(function () {
+  function tick() {
     index = (index + 1) % lines.length;
     show(index);
-  }, 8000);
+  }
+
+  function start() {
+    if (timer) return;
+    timer = window.setInterval(tick, 8000);
+  }
+
+  function stop() {
+    if (!timer) return;
+    window.clearInterval(timer);
+    timer = null;
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) stop();
+    else start();
+  });
+
+  start();
 })();

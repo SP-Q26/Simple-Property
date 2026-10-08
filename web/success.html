@@ -31,7 +31,7 @@
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=42">
+  <link rel="stylesheet" href="/simple-property.css?v=43">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
@@ -97,6 +97,7 @@
       </nav>
     </footer>
   </div>
+  <script src="/sp-events.js" defer></script>
   <script src="/sp-nav.js" defer></script>
   <script src="/sp-entitlement.js" defer></script>
   <script src="/sp-billing.js"></script>
@@ -127,6 +128,7 @@
             ".";
         }
         actions.hidden = false;
+        if (window.sptTrack) window.sptTrack("purchase_success", { plan: plan });
         var portalBtn = document.querySelector(".spt-billing-portal");
         if (portalBtn && (plan.indexOf("turn") === 0 || ent.plan === "turn")) portalBtn.hidden = true;
         var packetId = ent.packet_id || params.get("packet_id");

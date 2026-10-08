@@ -60,7 +60,8 @@ export function buildTenantPacketEmail(packet) {
 
   lines.push(
     "",
-    "This message is a courtesy copy from Deposit Desk (Simple Property Tools). It is not legal advice.",
+    "This message is a courtesy copy from Deposit Desk (Simple Property Tools) · https://simple-property.com",
+    "It is not legal advice.",
     "Questions about amounts or timing go to your landlord or a licensed attorney in your state.",
     "",
     `Document date: ${formatUsDate(packet.documentDate)}`
@@ -96,7 +97,7 @@ export function buildTenantPacketEmail(packet) {
           ? `<p><strong>Itemized withholdings</strong></p><table style="border-collapse:collapse;width:100%;font-size:13px"><thead><tr><th align="left">Category</th><th align="left">Description</th><th align="left">Amount</th></tr></thead><tbody>${htmlDed}</tbody></table>`
           : ""
       }
-      <p style="font-size:12px;color:#6b5c4a;margin-top:1.5rem">Courtesy copy · not legal advice · Simple Property Tools</p>
+      <p style="font-size:12px;color:#6b5c4a;margin-top:1.5rem">Courtesy copy · not legal advice · <a href="https://simple-property.com">Deposit Desk</a> · Simple Property Tools</p>
     </div>`;
 
   return { subject, text, html };

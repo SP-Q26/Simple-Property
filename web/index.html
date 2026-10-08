@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=42">
+  <link rel="stylesheet" href="/simple-property.css?v=43">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -211,7 +211,7 @@
               <div><dt>Vs Excel</dt><dd>Deadline + packet in one export</dd></div>
             </dl>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="/app?state=IL&amp;city=chicago-il">Start free packet</a>
+              <a class="btn btn-primary" id="hero-cta-primary" data-spt-geo-cta href="/app?state=IL&amp;city=chicago-il">Start free packet</a>
               <a class="btn btn-secondary" href="/pricing">Per turn · Pro pricing</a>
             </div>
           </div>
@@ -270,7 +270,7 @@
       <section class="pathway-deck" aria-labelledby="pathway-title">
         <h2 id="pathway-title">Pick your path</h2>
         <div class="pathway-grid">
-          <a class="pathway-card" href="/app?state=IL&amp;city=chicago-il">
+          <a class="pathway-card" data-spt-geo-cta href="/app?state=IL&amp;city=chicago-il">
             <p class="pathway-card__label">Do the work</p>
             <p class="pathway-card__title">Start a free packet</p>
             <p class="pathway-card__desc">Missed clock or weak proof costs more than $29 at export · five steps · deadline on screen first.</p>
@@ -355,7 +355,7 @@
         <h2 id="coverage-spotlight-title">19 states + DC · color bar, not guesswork</h2>
         <p class="ps-problem">Using the wrong state's clock or skipping move-in proof costs more than a per-turn fee.</p>
         <p class="ps-fix">Scroll the <strong>color bar</strong> under the header on any page · green <strong>30-day</strong> vs gold <strong>45-day</strong> chips · tap your state, then finish the wizard. Coverage spans <strong>19 states + DC</strong> with Chicago RLTO on Illinois when you pick Chicago.</p>
-        <p><a class="btn btn-secondary" href="/blog">Guides by state</a> <a class="btn btn-primary" href="/app?state=IL&amp;city=chicago-il">Start free packet</a></p>
+        <p><a class="btn btn-secondary" href="/blog">Guides by state</a> <a class="btn btn-primary" data-spt-geo-cta href="/app?state=IL&amp;city=chicago-il">Start free packet</a></p>
       </section>
 
       <section class="section" aria-labelledby="how-title">
@@ -466,7 +466,9 @@
       </nav>
     </footer>
   </div>
+  <script src="/sp-events.js" defer></script>
   <script src="/hero-rotate.js" defer></script>
+  <script src="/home-cta.js" defer></script>
   <script src="/sp-nav.js" defer></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>

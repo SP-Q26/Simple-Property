@@ -49,6 +49,8 @@ const checks = [
   ["feedback.html", "Ruleset feedback page"],
   ["sp-feedback.js", "Feedback form client"],
   ["api/feedback.js", "Feedback API"],
+  ["api/events.js", "Client analytics beacon"],
+  ["sp-events.js", "Client event bus"],
 ];
 
 for (const [path, label] of checks) need(path, label);

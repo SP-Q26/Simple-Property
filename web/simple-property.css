@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v42 · tight interactive sizing */
+/* Simple Property Tools · Deposit Desk · v43 · tight interactive sizing */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -470,6 +470,98 @@ body:has(main.prose) .spt-weather,
 body:has(.prose-legal) .spt-weather {
   animation: none;
   opacity: 0.42;
+}
+
+/* Home + wizard · drop 3D door + mist (main paint cost) */
+body:has(main .hero) .spt-door-scene,
+body:has(main .hero) .spt-weather-mist,
+body:has(.wizard-steps) .spt-door-scene,
+body:has(.wizard-steps) .spt-weather-mist {
+  display: none;
+}
+
+body:has(main .hero) .spt-weather,
+body:has(.wizard-steps) .spt-weather {
+  animation: none;
+  opacity: 0.34;
+}
+
+body:has(.wizard-steps) .spt-weather {
+  display: none;
+}
+
+.header-nav .metro-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-right: 0.35rem;
+}
+
+.metro-nav__link {
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-decoration: none;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  line-height: 1.2;
+}
+
+.metro-nav__link--chi {
+  background: #e6ebe0;
+  color: #3d5a34;
+  border-color: #5a7a52;
+}
+
+.metro-nav__link--dc {
+  background: #f3ecd4;
+  color: #6b5420;
+  border-color: #b8911f;
+}
+
+.metro-nav__link--mia {
+  background: #e3eef8;
+  color: #2a4f6e;
+  border-color: #3b5a78;
+}
+
+.metro-nav__link:hover {
+  filter: brightness(0.96);
+}
+
+@media (max-width: 900px) {
+  .header-nav .metro-nav {
+    order: 10;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 0.25rem 0 0;
+  }
+}
+
+.itemization-preview--locked {
+  position: relative;
+  max-height: 11rem;
+  overflow: hidden;
+}
+
+.itemization-preview--locked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(250, 247, 240, 0.92) 72%);
+  pointer-events: none;
+}
+
+.paywall--streamlined {
+  margin-top: var(--space-3);
+}
+
+.paywall-free-tools {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+  background: rgba(230, 235, 224, 0.45);
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
 }
 
 a {
