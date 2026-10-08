@@ -32,6 +32,7 @@ const OLD_TAGS = [
   `Itemize it. Date it. Beat the clock. · Founded in Chicago · 19 states + DC`,
   "Itemize it. Date it. Beat the clock. · 18 states + DC",
   `Itemize it. Date it. Beat the clock. · ${STATE_ONLY_COUNT - 1} states + DC`,
+  `Itemize it. Date it. Beat the clock. · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`,
 ];
 
 function walkHtml(dir, out = []) {
@@ -51,6 +52,7 @@ function applyLocaleCopy(html) {
     next = next.split(old).join(BRAND_TAG);
   }
   next = next.split("Itemize it. Date it. Keep the clock.").join(BRAND_TAGLINE);
+  next = next.split("Itemize it. Date it. Beat the clock.").join(BRAND_TAGLINE);
   next = next.replaceAll("18 states + DC", COVERAGE_LABEL);
   next = next.replaceAll("18 states plus DC", COVERAGE_PLUS);
   if (next.includes('class="hero-eyebrow"') && next.includes("Security deposit return ·")) {

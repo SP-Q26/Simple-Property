@@ -45,7 +45,7 @@ try {
 let gospel;
 try {
   gospel = JSON.parse(read(".well-known/spt-gospel.json"));
-  need("gospel tagline Beat the clock", String(gospel.tagline || "").includes("Beat the clock"));
+  need("gospel tagline Never pay the fee", String(gospel.tagline || "").includes("Never pay the fee"));
   need("gospel surfaces include bus", (gospel.surfaces || []).some((u) => u.includes("spt-ai-bus")));
 } catch {
   need("gospel JSON parse", false);

@@ -6,8 +6,8 @@ import { STATUTE_URLS } from "./statute-urls.mjs";
 
 export const PACK_COUNT = SUPPORTED_STATES.length;
 export const STATE_ONLY_COUNT = SUPPORTED_STATES.filter((c) => c !== "DC").length;
-/** Three-beat tagline · beat penalties, not “keep” the clock. */
-export const BRAND_TAGLINE = "Itemize it. Date it. Beat the clock.";
+/** Three-beat tagline · penalty avoidance, not clock wordplay. */
+export const BRAND_TAGLINE = "Itemize it. Date it. Never pay the fee.";
 export const BRAND_TAG = `${BRAND_TAGLINE} · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`;
 /** Shorter lockup line for phone and tablet header. */
 export const BRAND_TAG_SHORT = `${BRAND_TAGLINE} · ${STATE_ONLY_COUNT} states + DC`;
@@ -15,7 +15,7 @@ export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__d
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 43;
+export const CSS_VERSION = 44;
 export const FONT_GOOGLE =
   "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap";
 export const FONT_LINK_HTML = `  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,9 +48,23 @@ export const COVERAGE_MAP_XY = {
 
 /** Header metro shortcuts · distinct colors in CSS (tone). */
 export const METRO_NAV = [
-  { short: "Chi", label: "Chicago · RLTO", href: "/app?state=IL&city=chicago-il", tone: "chi" },
-  { short: "DC", label: "Washington DC · RHCA", href: "/app?state=DC", tone: "dc" },
-  { short: "Mia", label: "Miami · Florida § 83.49", href: "/app?state=FL&city=miami-fl", tone: "mia" },
+  {
+    short: "Chi",
+    state: "IL",
+    city: "chicago-il",
+    label: "Chicago · RLTO",
+    href: "/app?state=IL&city=chicago-il",
+    tone: "chi",
+  },
+  { short: "DC", state: "DC", city: "", label: "Washington DC · RHCA", href: "/app?state=DC", tone: "dc" },
+  {
+    short: "Mia",
+    state: "FL",
+    city: "miami-fl",
+    label: "Miami · Florida § 83.49",
+    href: "/app?state=FL&city=miami-fl",
+    tone: "mia",
+  },
 ];
 
 /** Nav · blog anchors use state code only. */

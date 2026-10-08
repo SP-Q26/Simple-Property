@@ -4,18 +4,24 @@
   var METRO_NAV = [
     {
       "short": "Chi",
+      "state": "IL",
+      "city": "chicago-il",
       "label": "Chicago · RLTO",
       "href": "/app?state=IL&city=chicago-il",
       "tone": "chi"
     },
     {
       "short": "DC",
+      "state": "DC",
+      "city": "",
       "label": "Washington DC · RHCA",
       "href": "/app?state=DC",
       "tone": "dc"
     },
     {
       "short": "Mia",
+      "state": "FL",
+      "city": "miami-fl",
       "label": "Miami · Florida § 83.49",
       "href": "/app?state=FL&city=miami-fl",
       "tone": "mia"
@@ -209,15 +215,39 @@
   var onBlog = path === "/blog";
   var onApp = path === "/app";
 
+  function presetStateFromStorage() {
+    try {
+      var stored = sessionStorage.getItem("spt_preset_state");
+      return stored ? stored.toUpperCase() : "";
+    } catch (err) {
+      return "";
+    }
+  }
+
   function activeStateCode() {
     var params = new URLSearchParams(location.search);
     var fromQuery = params.get("state");
     if (fromQuery) return fromQuery.toUpperCase();
+    var stored = presetStateFromStorage();
+    if (stored) return stored;
     if (onBlog) {
       var hash = location.hash || "";
       if (hash.indexOf("#locale-") === 0) return hash.slice(8).toUpperCase();
     }
     return "";
+  }
+
+  function setPresetState(code) {
+    if (!code) return;
+    try {
+      sessionStorage.setItem("spt_preset_state", code);
+    } catch (err) {
+      /* ignore */
+    }
+  }
+
+  function dispatchPresetState(detail) {
+    window.dispatchEvent(new CustomEvent("spt-preset-state", { detail: detail }));
   }
 
   function openStatute(loc) {
@@ -232,16 +262,27 @@
         openStatute(loc);
         return;
       }
+      setPresetState(loc.code);
       if (!onApp) return;
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
-      try {
-        sessionStorage.setItem("spt_preset_state", loc.code);
-      } catch (err) {
-        /* ignore */
+      history.replaceState({}, "", "/app?state=" + encodeURIComponent(loc.code));
+      dispatchPresetState({ state: loc.code });
+      markActiveLocale();
+    });
+  }
+
+  function wireMetroLink(link, metro) {
+    link.setAttribute("data-state", metro.state);
+    link.addEventListener("click", function (e) {
+      setPresetState(metro.state);
+      if (onApp && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) {
+        e.preventDefault();
+        history.replaceState({}, "", metro.href);
+        dispatchPresetState({ state: metro.state, city: metro.city || "" });
+        markActiveLocale();
+        return;
       }
-      history.replaceState({}, "", "/app?state=" + loc.code);
-      window.dispatchEvent(new CustomEvent("spt-preset-state", { detail: { state: loc.code } }));
     });
   }
 
@@ -323,6 +364,7 @@
       a.href = m.href;
       a.textContent = m.short;
       a.title = m.label + " · Deposit Desk";
+      wireMetroLink(a, m);
       wrap.appendChild(a);
     });
     var guides = nav.querySelector('a[href="/blog"]');
@@ -374,7 +416,12 @@
     var active = activeStateCode();
     document.querySelectorAll(".coverage-bubble, .locale-bar__pill").forEach(function (node) {
       var code = node.getAttribute("data-code");
-      if (code === active) node.setAttribute("aria-current", "location");
+      if (active && code === active) node.setAttribute("aria-current", "location");
+      else node.removeAttribute("aria-current");
+    });
+    document.querySelectorAll(".metro-nav__link").forEach(function (node) {
+      var code = node.getAttribute("data-state");
+      if (active && code === active) node.setAttribute("aria-current", "location");
       else node.removeAttribute("aria-current");
     });
   }
@@ -391,4 +438,6 @@
   injectLocaleBar();
   markActiveLocale();
   window.addEventListener("hashchange", markActiveLocale);
+  window.addEventListener("popstate", markActiveLocale);
+  window.addEventListener("spt-preset-state", markActiveLocale);
 })();

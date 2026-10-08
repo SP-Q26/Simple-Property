@@ -72,5 +72,10 @@ need("llms.txt mentions __SPT_AGENT__", llms.includes("__SPT_AGENT__"));
 const appHtml = readFileSync(join(web, "app.html"), "utf8");
 need("app.html agent snapshot link", appHtml.includes("spt-wizard-snapshot"));
 
+const navJs = readFileSync(join(web, "sp-nav.js"), "utf8");
+need("sp-nav metro wireMetroLink", navJs.includes("wireMetroLink"));
+need("sp-nav metro marks aria-current", navJs.includes('metro-nav__link")') && navJs.includes("markActiveLocale"));
+need("sp-nav preset on locale click", navJs.includes("markActiveLocale();"));
+
 console.log(fail ? `\nAgent snapshot audit FAILED (${fail})` : "\nAgent snapshot audit OK");
 process.exit(fail ? 1 : 0);

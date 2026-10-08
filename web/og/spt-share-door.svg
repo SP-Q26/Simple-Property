@@ -12,7 +12,7 @@
   <rect width="1200" height="630" fill="url(#share-bg)"/>
   <rect x="40" y="40" width="1120" height="550" rx="20" fill="#f4f0e6" stroke="#d9d0c0" stroke-width="1.5"/>
   <text x="72" y="118" fill="#3d3429" font-family="Georgia, serif" font-size="44" font-weight="600">Simple Property Tools</text>
-  <text x="72" y="168" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="26">Itemize it. Date it. Beat the clock.</text>
+  <text x="72" y="168" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="26">Itemize it. Date it. Never pay the fee.</text>
   <path d="M72 188h440" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
   <text x="72" y="228" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="24" font-weight="600">Deposit Desk · 19 states + DC</text>
   <text x="72" y="262" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="19">Founded in Chicago · deposit return clocks on screen</text>

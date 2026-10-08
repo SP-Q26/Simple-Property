@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Brand tagline gate · Beat the clock (not Keep the clock) on customer surfaces.
+ * Brand tagline gate · Never pay the fee (not Keep/Beat the clock) on customer surfaces.
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -9,6 +9,7 @@ import { BRAND_TAG, BRAND_TAGLINE } from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const KEEP_CLOCK = /\bKeep the clock\b/i;
+const BEAT_CLOCK = /\bBeat the clock\b/i;
 let fail = 0;
 
 function need(label, ok) {
@@ -35,14 +36,14 @@ for (const file of walk(web)) {
   const rel = file.slice(web.length + 1);
   if (skipUnderWeb.some((s) => rel.endsWith(s))) continue;
   const text = readFileSync(file, "utf8");
-  if (KEEP_CLOCK.test(text)) {
+  if (KEEP_CLOCK.test(text) || BEAT_CLOCK.test(text)) {
     console.error("  found in", rel);
     fail++;
   }
 }
 
-need("canon BRAND_TAGLINE", BRAND_TAGLINE.includes("Beat the clock"));
-need("canon BRAND_TAG", BRAND_TAG.includes("Beat the clock"));
+need("canon BRAND_TAGLINE", BRAND_TAGLINE.includes("Never pay the fee"));
+need("canon BRAND_TAG", BRAND_TAG.includes("Never pay the fee"));
 need("no Keep the clock under web/", fail === 0);
 
 console.log(fail ? `\nBrand tagline audit FAILED (${fail})` : "\nBrand tagline audit OK");

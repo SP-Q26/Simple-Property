@@ -453,9 +453,18 @@ function applyPresetStateFromUrl() {
 applyPresetStateFromUrl();
 window.addEventListener("spt-preset-state", (e) => {
   const code = normalizeStateCode(e.detail?.state);
+  if (!STATE_PACKS[code]) return;
   draft.property.state = code;
-  draft.property.cityPreset = "";
-  draft.property.inChicago = false;
+  const cityPreset = normalizeCityPresetId(e.detail?.city || "");
+  if (cityPreset && resolveCityOverlay(code, cityPreset)) {
+    draft.property.cityPreset = cityPreset;
+    const row = resolveCityOverlay(code, cityPreset);
+    if (row?.cityName) draft.property.city = row.cityName;
+    syncChicagoFromPreset();
+  } else {
+    draft.property.cityPreset = "";
+    draft.property.inChicago = false;
+  }
   saveDraft(draft);
   if (step === 1) render();
   else {

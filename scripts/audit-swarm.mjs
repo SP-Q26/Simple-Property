@@ -27,7 +27,7 @@ function scoreBrandShell() {
     const h = read(p);
     if (!h.includes("brand-mark")) s -= 8;
     if (!/simple-property\.css\?v=\d+/.test(h)) s -= 5;
-    if (!h.includes("Beat the clock")) s -= 5;
+    if (!h.includes("Never pay the fee")) s -= 5;
     if (h.includes("Homestead")) s -= 10;
   }
   return Math.max(0, s);

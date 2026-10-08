@@ -62,7 +62,7 @@ for (const rel of customerCopyFiles) {
 }
 
 need("gospel 40 doors", readFileSync(join(web, ".well-known/spt-gospel.json"), "utf8").includes("40 doors"));
-need("gospel tagline", readFileSync(join(web, ".well-known/spt-gospel.json"), "utf8").includes("Beat the clock"));
+need("gospel tagline", readFileSync(join(web, ".well-known/spt-gospel.json"), "utf8").includes("Never pay the fee"));
 
 const catalogSrc = readFileSync(join(web, "lib/stripe-catalog.mjs"), "utf8");
 need("catalog checkout_image paths", catalogSrc.includes('checkout_image: "/stripe/'));

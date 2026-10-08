@@ -41,7 +41,7 @@ needContent("share door SVG no six-state-only line", !doorSvg.includes("IL · IN
 needContent(`share door SVG ${SUPPORTED_STATES.length} chips`, (doorSvg.match(/class="coverage-chip"/g) || []).length === SUPPORTED_STATES.length);
 
 const coverageSvg = readFileSync(join(web, "og/spt-share-coverage-expansion.svg"), "utf8");
-needContent("coverage SVG customer tagline", /beat the clock/i.test(coverageSvg));
+needContent("coverage SVG customer tagline", /never pay the fee/i.test(coverageSvg));
 needContent("coverage SVG no iOS tease", !/iOS app incoming|TestFlight/i.test(coverageSvg));
 
 const dropPages = [
