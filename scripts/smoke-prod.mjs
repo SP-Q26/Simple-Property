@@ -41,7 +41,7 @@ const paths = [
   { name: "pricing", path: "/pricing", need: ["pricing-finder", "pricing-cards", "pf-units", "40 units", "Print / Save as PDF"], absent: [EM] },
   { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance"], absent: [] },
   { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Beat the clock"], absent: ["Homestead", EM] },
-  { name: "terms", path: "/terms", need: ["Terms of Service", "18 US states", 'href="/privacy"'], absent: [EM] },
+  { name: "terms", path: "/terms", need: ["Terms of Service", "19 states", 'href="/privacy"'], absent: [EM] },
   { name: "privacy", path: "/privacy", need: ["Privacy Policy", 'href="/terms"'], absent: [EM] },
   { name: "legal", path: "/legal", need: ["Legal", "/terms", "/privacy"], absent: [EM] },
 ];
