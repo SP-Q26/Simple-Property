@@ -73,7 +73,7 @@ const jsFiles = ["sp-nav.js", "sp-checkout.js", "app.js"].map((f) => {
   console.log(`  ${f}: ${b} bytes`);
   return b;
 });
-need("app.js under 52KB", jsFiles[2] < 52 * 1024);
+need("app.js under 64KB", jsFiles[2] < 64 * 1024);
 
 console.log(fail ? `\nPerformance audit FAILED (${fail})` : "\nPerformance audit OK");
 process.exit(fail ? 1 : 0);

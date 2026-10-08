@@ -34,7 +34,7 @@ const DROP_PAGES = [
     robots: "noindex,nofollow",
     ogTitle: "Start free deposit packet · Deposit Desk",
     ogDescription:
-      `Five steps · statutory clock on screen · print-ready packet. ${COVERAGE_LABEL} · free wizard · unlock per turn or Pro. Not legal advice.`,
+      `Five steps · statutory clock · watermarked preview print · mail-ready PDF after unlock. ${COVERAGE_LABEL} · per turn or Pro. Not legal advice.`,
   },
   {
     file: "pricing.html",

@@ -86,6 +86,7 @@ function emptyDraft() {
     })),
     deductions: [{ category: "Unpaid rent", description: "", amount: "" }],
     signatures: { landlordPrinted: "", tenantPrinted: "", date: new Date().toISOString().slice(0, 10) },
+    wizardMaxStep: 1,
   };
 }
 
@@ -106,7 +107,17 @@ function loadDraft() {
       deductions: parsed.deductions?.length ? parsed.deductions : emptyDraft().deductions,
       rooms: parsed.rooms?.length ? parsed.rooms.map(normalizeRoom) : emptyDraft().rooms,
       photoAlbumLink: parsed.photoAlbumLink || "",
+      wizardMaxStep: inferWizardMaxStep({
+        ...emptyDraft(),
+        ...parsed,
+        property: { ...emptyDraft().property, ...parsed.property },
+      }),
     };
+    merged.wizardMaxStep = Math.max(
+      merged.wizardMaxStep,
+      inferWizardMaxStep(merged),
+      Math.min(MAX_STEPS, Math.max(1, parseInt(parsed.wizardMaxStep, 10) || 1))
+    );
     if (!merged.property.cityPreset && merged.property.inChicago && merged.property.state === "IL") {
       merged.property.cityPreset = "chicago-il";
     }
@@ -131,7 +142,7 @@ function listSavedPackets() {
 function saveCurrentToLibrary() {
   readStepIntoDraft();
   const list = listSavedPackets();
-  const label = [draft.property.street, draft.tenant.name].filter(Boolean).join("n/a") || "Packet " + new Date().toLocaleDateString();
+  const label = [draft.property.street, draft.tenant.name].filter(Boolean).join(" · ") || "Packet " + new Date().toLocaleDateString();
   const entry = { id: draft.id, label, updatedAt: new Date().toISOString(), data: draft };
   const idx = list.findIndex((p) => p.id === draft.id);
   if (idx >= 0) list[idx] = entry;
@@ -145,8 +156,35 @@ function loadPacketById(id) {
   const found = listSavedPackets().find((p) => p.id === id);
   if (!found) return;
   draft = { ...emptyDraft(), ...found.data, id: found.id };
+  draft.wizardMaxStep = MAX_STEPS;
   saveDraft(draft);
   step = 1;
+  render();
+}
+
+function duplicateFromLastPacket() {
+  readStepIntoDraft();
+  const list = listSavedPackets();
+  if (!list.length) {
+    if (els.status) els.status.textContent = "No saved packets yet · save one from export step.";
+    return;
+  }
+  const src = list[0].data || {};
+  draft = {
+    ...emptyDraft(),
+    id: crypto.randomUUID?.() || "pkt-" + Date.now(),
+    landlord: { ...emptyDraft().landlord, ...src.landlord },
+    property: { ...emptyDraft().property, ...src.property },
+    deposit: {
+      amount: src.deposit?.amount || "",
+      heldAt: src.deposit?.heldAt || "",
+    },
+    wizardMaxStep: 2,
+  };
+  syncChicagoFromPreset();
+  saveDraft(draft);
+  step = 2;
+  if (els.status) els.status.textContent = "Duplicated property & landlord · enter new tenant and surrender.";
   render();
 }
 
@@ -191,9 +229,9 @@ function proBlockMessage() {
     if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
       return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
     }
-    return `<div class="paywall paywall--streamlined" role="status">
-      <strong>Unlock print / Save as PDF</strong> · one disputed withhold usually costs more than $29.
-      <p class="field-hint" style="margin:0.5rem 0 0">Pro also sends a <strong>tenant email copy</strong> from this screen · <a href="/pricing">compare plans</a></p>
+    return `<div class="paywall paywall--streamlined" id="export-paywall" role="status">
+      <strong>Unlock mail-ready PDF</strong> · one disputed withhold usually costs more than $29.
+      <p class="field-hint" style="margin:0.5rem 0 0">Preview is free and watermarked · unlock removes blur for tenant mail. Pro also sends a <strong>tenant email copy</strong> · <a href="/pricing">compare plans</a></p>
       <div class="paywall-actions" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
         <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
         <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
@@ -205,7 +243,21 @@ function proBlockMessage() {
 }
 
 function paywallFreeToolsNote() {
-  return `<div class="paywall-free-tools" role="note"><strong>Already free:</strong> deadline math · Calendar · .ics · Sheets export · copy for AI. Pay once to print or save PDF for this packet.</div>`;
+  return `<div class="paywall-free-tools" role="note"><strong>Already free:</strong> deadline math · Calendar · .ics · Sheets export · <strong>watermarked preview print</strong> · copy for AI. Unlock once for a <strong>mail-ready PDF</strong> (no watermark).</div>`;
+}
+
+function renderMailReadyRoute() {
+  return `<div class="mail-route-panel form-panel" id="mail-ready-route">
+      <p class="section-label">Mail-ready packet route</p>
+      <ol class="mail-route-list">
+        <li>Confirm landlord mailing address, tenant name, surrender date, and withhold lines above.</li>
+        <li><strong>Preview (watermarked)</strong> in the footer · check layout before you pay.</li>
+        <li><strong>Unlock mail-ready PDF</strong> · print or Save as PDF for tenant mail and your files.</li>
+        <li>Mail check and itemization together · log certificate of mailing or tracking on your own.</li>
+      </ol>
+      <p class="ps-fix">Your attorney will thank you for dated, itemized records. Organized packets cut billable hours when a tenant disputes a withhold.</p>
+      <p class="field-hint">Not legal advice · Deposit Desk does not mail for you · counsel sets strategy.</p>
+    </div>`;
 }
 
 function syncChicagoFromPreset() {
@@ -320,7 +372,7 @@ function renderItemizationPreview(lockedPreview) {
       <p class="field-hint">Totals your printable packet will carry · review before you unlock export.</p>
       <table class="product-proof-table">
         <thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead>
-        <tbody>${dedRows || `<tr><td colspan="3">Add move-out lines on step 4</td></tr>`}</tbody>
+        <tbody>${dedRows || `<tr><td colspan="3">Add move-out lines on step 3</td></tr>`}</tbody>
       </table>
       <p class="deposit-receipt__totals"><strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Withheld:</strong> $${withheld.toFixed(2)} · <strong>Return:</strong> $${Math.max(0, dep - withheld).toFixed(2)}</p>
     </div>`;
@@ -337,7 +389,7 @@ function exportEntitlementSection() {
         <div class="form-grid two">
           <div><label for="tenant-email-send">Tenant email</label><input id="tenant-email-send" type="email" value="${esc(draft.tenant.email)}" autocomplete="email" /></div>
           <div style="align-self:end;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
-            <label><input id="tenant-email-bcc" type="checkbox" checked /> BCC me (${esc(draft.landlord.email) || "landlord email on step 1"})</label>
+            <label><input id="tenant-email-bcc" type="checkbox" checked /> BCC me (${esc(draft.landlord.email) || "landlord email on export step"})</label>
             <button type="button" class="btn btn-secondary" id="btn-email-tenant">Send tenant copy</button>
           </div>
         </div>
@@ -478,17 +530,140 @@ const els = {
   panel: document.getElementById("wizard-panel"),
   prev: document.getElementById("btn-prev"),
   next: document.getElementById("btn-next"),
-  print: document.getElementById("btn-print"),
+  printPreview: document.getElementById("btn-print-preview"),
+  print: document.getElementById("btn-print-final"),
   printRoot: document.getElementById("print-packet"),
   status: document.getElementById("wizard-status"),
 };
 
+function maxWizardStep() {
+  return Math.min(MAX_STEPS, Math.max(1, draft.wizardMaxStep || 1));
+}
+
+function bumpWizardMaxStep() {
+  draft.wizardMaxStep = Math.max(maxWizardStep(), step);
+  saveDraft(draft);
+}
+
+function focusStepTitle() {
+  focusStepField();
+}
+
+function focusStepField() {
+  requestAnimationFrame(() => {
+    const pick =
+      {
+        1: "#prop-street, #prop-state",
+        2: "#surrender",
+        3: ".ded-amt, .ded-desc, .ded-cat",
+        4: "#photo-album",
+        5: "#ll-name, #ll-email",
+      }[step] || "#step-title";
+    const el = document.querySelector(pick);
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: false });
+    else document.getElementById("step-title")?.focus({ preventScroll: false });
+  });
+}
+
+function inferWizardMaxStep(d) {
+  let n = 1;
+  const st = normalizeStateCode(d?.property?.state || "IL");
+  if (STATE_PACKS[st] && (d?.property?.street || "").trim()) n = 2;
+  if ((d?.surrenderDate || "").trim()) n = Math.max(n, 2);
+  if ((d?.tenant?.name || "").trim() && (d?.deposit?.amount || "").toString().trim()) n = Math.max(n, 3);
+  const hasDed = (d?.deductions || []).some((row) => row.amount || row.description);
+  if (hasDed || n >= 3) n = Math.max(n, 3);
+  if ((d?.photoAlbumLink || "").trim() || (d?.rooms || []).some((r) => r.photoLink || r.notes || r.photo)) {
+    n = Math.max(n, 4);
+  }
+  if ((d?.landlord?.name || "").trim() && (d?.landlord?.email || "").trim()) n = Math.max(n, 5);
+  return Math.min(MAX_STEPS, n);
+}
+
+function advanceWizard() {
+  readStepIntoDraft();
+  if (step >= MAX_STEPS) return false;
+  bumpWizardMaxStep();
+  step += 1;
+  draft.wizardMaxStep = Math.max(maxWizardStep(), step);
+  saveDraft(draft);
+  render();
+  focusStepField();
+  return true;
+}
+
+function bindWizardKeyboard() {
+  if (document.body.dataset.sptWizardKeys === "1") return;
+  document.body.dataset.sptWizardKeys = "1";
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" || e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+    const t = e.target;
+    if (!t || !els.panel?.contains(t)) return;
+    const tag = t.tagName;
+    if (tag === "TEXTAREA" || tag === "BUTTON" || tag === "SELECT") return;
+    if (step >= MAX_STEPS) return;
+    e.preventDefault();
+    advanceWizard();
+  });
+}
+
+function goToStep(n) {
+  const target = Math.min(MAX_STEPS, Math.max(1, n));
+  if (target > maxWizardStep() && target !== step) return;
+  readStepIntoDraft();
+  step = target;
+  render();
+  focusStepTitle();
+}
+
 function setStepLabels() {
   if (!els.steps) return;
+  const max = maxWizardStep();
   els.steps.querySelectorAll("[data-step]").forEach((el) => {
     const n = parseInt(el.getAttribute("data-step"), 10);
     el.classList.toggle("active", n === step);
+    el.classList.toggle("done", n < step || (n <= max && n !== step));
+    el.setAttribute("aria-selected", n === step ? "true" : "false");
+    el.disabled = n > max;
+    el.setAttribute("aria-disabled", n > max ? "true" : "false");
   });
+}
+
+function bindWizardStepNav() {
+  if (!els.steps || els.steps.dataset.navBound === "1") return;
+  els.steps.dataset.navBound = "1";
+  els.steps.querySelectorAll("[data-step]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const n = parseInt(el.getAttribute("data-step"), 10);
+      if (Number.isNaN(n) || el.disabled) return;
+      goToStep(n);
+    });
+  });
+}
+
+function statuteClockDetails(st, pack, preset) {
+  const guideLink = overlayGuideLink(st, preset);
+  const inner =
+    preset === "chicago-il"
+      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender (<a href="${esc(CHICAGO_RLTO_URL)}" rel="noopener noreferrer" target="_blank">city RLTO</a>). Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
+      : st === "NC"
+        ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${citeLink(st, pack.cite)}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
+        : st === "FL"
+          ? `<p class="field-hint">Florida (${citeLink(st, pack.cite)}): within <strong>15 days</strong> after termination and possession, return the full deposit <strong>or</strong> send written claim notice · then <strong>30 days</strong> after notice for the balance and accounting. Deposit Desk shows a <strong>30-day</strong> export line from surrender for step-two discipline · see <a href="/blog/florida-83-49-two-step-miami-condo-deposit">§ 83.49 two-step guide</a> · confirm with counsel.</p>`
+          : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
+  return `<details class="statute-details"><summary>${esc(pack.label)} deposit clock (${pack.returnDays}-day default)</summary>${inner}${guideLink}</details>`;
+}
+
+function overlayGuideLink(st, preset) {
+  const overlay = resolveCityOverlay(st, preset);
+  if (overlay?.blogSlug) {
+    return `<p class="field-hint"><a href="/blog/${overlay.blogSlug}">City guide</a></p>`;
+  }
+  if (preset === "chicago-il") {
+    return `<p class="field-hint"><a href="/blog/chicago-45-day-deposit-deadline">Chicago RLTO guide</a></p>`;
+  }
+  return "";
 }
 
 function esc(s) {
@@ -503,61 +678,91 @@ function renderStep1() {
   const st = normalizeStateCode(d.property.state);
   const pack = STATE_PACKS[st];
   const preset = normalizeCityPresetId(d.property.cityPreset);
-  const overlay = resolveCityOverlay(st, preset);
-  const guideLink = overlay?.blogSlug
-    ? ` · <a href="/blog/${overlay.blogSlug}">City guide</a>`
-    : preset === "chicago-il"
-      ? ` · <a href="/blog/chicago-45-day-deposit-deadline">Chicago RLTO guide</a>`
-      : "";
   const cityBlock = `
       <div style="grid-column:1/-1">
         <label for="prop-city-preset">Major city (if local rules may apply)</label>
         <select id="prop-city-preset">${citySelectOptions(st, preset)}</select>
-        <p class="field-hint" id="prop-city-hint">${cityPresetHint(st, preset)}${guideLink}</p>
+        <p class="field-hint" id="prop-city-hint">${cityPresetHint(st, preset)}</p>
       </div>`;
-  const clockHint =
-    preset === "chicago-il"
-      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender (<a href="${esc(CHICAGO_RLTO_URL)}" rel="noopener noreferrer" target="_blank">city RLTO</a>). Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
-      : st === "NC"
-        ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${citeLink(st, pack.cite)}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
-        : st === "FL"
-          ? `<p class="field-hint">Florida (${citeLink(st, pack.cite)}): within <strong>15 days</strong> after termination and possession, return the full deposit <strong>or</strong> send written claim notice · then <strong>30 days</strong> after notice for the balance and accounting. Deposit Desk shows a <strong>30-day</strong> export line from surrender for step-two discipline · see <a href="/blog/florida-83-49-two-step-miami-condo-deposit">§ 83.49 two-step guide</a> · confirm with counsel.</p>`
-          : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
   return `
-    <h2 id="step-title" tabindex="-1">Landlord &amp; property</h2>
-    <div class="form-grid two">
-      <div><label for="ll-name">Landlord name</label><input id="ll-name" type="text" value="${esc(d.landlord.name)}" autocomplete="name" /></div>
-      <div><label for="ll-email">Email</label><input id="ll-email" type="email" value="${esc(d.landlord.email)}" autocomplete="email" /></div>
-      <div class="form-grid" style="grid-column:1/-1"><label for="ll-addr">Mailing address</label><input id="ll-addr" type="text" value="${esc(d.landlord.address)}" autocomplete="street-address" /></div>
+    <h2 id="step-title" tabindex="-1">Rental property</h2>
+    <p class="field-hint">Start with the unit and state rules · landlord details land on export for your mailed packet.</p>
+    <div class="form-grid two wizard-flow-grid">
       <div><label for="prop-state">State</label><select id="prop-state">${stateSelectOptions(st)}</select></div>
       ${cityBlock}
-      <div><label for="prop-street">Rental street address</label><input id="prop-street" type="text" value="${esc(d.property.street)}" /></div>
-      <div><label for="prop-city">City</label><input id="prop-city" type="text" value="${esc(d.property.city)}" /></div>
-      <div><label for="prop-zip">ZIP</label><input id="prop-zip" type="text" value="${esc(d.property.zip)}" /></div>
+      <div style="grid-column:1/-1"><label for="prop-street">Rental street address</label><input id="prop-street" type="text" value="${esc(d.property.street)}" autocomplete="street-address" /></div>
+      <div><label for="prop-city">City</label><input id="prop-city" type="text" value="${esc(d.property.city)}" autocomplete="address-level2" /></div>
+      <div><label for="prop-zip">ZIP</label><input id="prop-zip" type="text" value="${esc(d.property.zip)}" autocomplete="postal-code" inputmode="numeric" /></div>
       <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" aria-describedby="prop-units-hint" /></div>
-        <p class="field-hint" id="prop-units-hint">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription. More doors? Finish the draft free, then contact us before checkout.</p>
-      ${clockHint}
-      <p class="field-hint step-loss-kicker">Miss the return window or export without move-in proof · dispute cost usually beats $29–$99 tool fees.</p>
+      <p class="field-hint" id="prop-units-hint" style="grid-column:1/-1">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription.</p>
+      ${statuteClockDetails(st, pack, preset)}
+      <p class="field-hint step-loss-kicker" style="grid-column:1/-1">Miss the return window or export without move-in proof · dispute cost usually beats $29–$99 tool fees.</p>
     </div>`;
 }
 
 function renderStep2() {
   const d = draft;
+  const deadline = computeDeadline(deadlineInput());
+  const clockLine = deadline.deadline
+    ? `<p class="deadline-box deadline-box--inline" role="status"><strong>Return / itemize by:</strong> ${formatUsDate(deadline.deadline)} · ${deadline.days} days (${esc(deadline.jurisdiction)})</p>`
+    : `<p class="field-hint" role="status">Add surrender below to see your statutory clock.</p>`;
   return `
-    <h2 id="step-title" tabindex="-1">Tenant &amp; lease</h2>
-    <div class="form-grid two">
-      <div><label for="tn-name">Tenant name</label><input id="tn-name" type="text" value="${esc(d.tenant.name)}" /></div>
-      <div><label for="tn-email">Tenant email</label><input id="tn-email" type="email" value="${esc(d.tenant.email)}" autocomplete="email" /><p class="field-hint">Used for “Email copy to tenant” on export (Pro).</p></div>
+    <h2 id="step-title" tabindex="-1">Turnover &amp; clock</h2>
+    <p class="field-hint">Surrender drives the deadline · deposit and tenant ID the packet.</p>
+    ${clockLine}
+    <div class="form-grid two wizard-flow-grid">
+      <div class="turnover-priority field-with-action" style="grid-column:1/-1">
+        <label for="surrender">Surrender date (keys returned)</label>
+        <div class="field-action-row">
+          <input id="surrender" type="date" value="${esc(d.surrenderDate)}" />
+          <button type="button" class="btn btn-secondary" id="btn-surrender-today">Today</button>
+        </div>
+      </div>
+      <div><label for="dep-amt">Security deposit ($)</label><input id="dep-amt" type="number" min="0" step="0.01" value="${esc(d.deposit.amount)}" inputmode="decimal" /></div>
+      <div><label for="dep-held">Deposit held at (bank note)</label><input id="dep-held" type="text" value="${esc(d.deposit.heldAt)}" /></div>
+      <div><label for="tn-name">Tenant name</label><input id="tn-name" type="text" value="${esc(d.tenant.name)}" autocomplete="name" /></div>
+      <div><label for="tn-email">Tenant email</label><input id="tn-email" type="email" value="${esc(d.tenant.email)}" autocomplete="email" /><p class="field-hint">Pro can email the statement on export.</p></div>
       <div><label for="lease-start">Lease start</label><input id="lease-start" type="date" value="${esc(d.lease.start)}" /></div>
       <div><label for="lease-end">Lease end</label><input id="lease-end" type="date" value="${esc(d.lease.end)}" /></div>
-      <div><label for="dep-amt">Security deposit ($)</label><input id="dep-amt" type="number" min="0" step="0.01" value="${esc(d.deposit.amount)}" /></div>
-      <div><label for="dep-held">Deposit held at (bank note)</label><input id="dep-held" type="text" value="${esc(d.deposit.heldAt)}" /></div>
-      <div><label for="surrender">Surrender date (keys returned)</label><input id="surrender" type="date" value="${esc(d.surrenderDate)}" /></div>
     </div>
     <p class="field-hint surrender-hint" id="surrender-hint" role="status">${esc(surrenderLeaseHint(d.lease.end, d.surrenderDate))}</p>`;
 }
 
 function renderStep3() {
+  const rows = draft.deductions
+    .map(
+      (r) => `
+    <div class="room-row deduction-row">
+      <div><label>Category</label><input type="text" class="ded-cat" value="${esc(r.category)}" placeholder="Damage / Cleaning" /></div>
+      <div><label>Description</label><input type="text" class="ded-desc" value="${esc(r.description)}" /></div>
+      <div><label>Amount ($)</label><input type="number" class="ded-amt" min="0" step="0.01" value="${esc(r.amount)}" inputmode="decimal" /></div>
+    </div>`
+    )
+    .join("");
+  const dep = parseFloat(draft.deposit.amount) || 0;
+  const withheld = sumDeductions(draft.deductions);
+  const guide = wearDamageGuideHref(draft.property.state);
+  return `
+    <h2 id="step-title" tabindex="-1">Move-out itemization</h2>
+    <p class="field-hint">Line items for your written statement · do this before move-in proof when you are at move-out. <a href="${guide}">Wear vs damage guide</a></p>
+    <div class="wizard-speed-row">
+      <button type="button" class="btn btn-primary" id="btn-full-return">Full deposit return</button>
+      <span class="field-hint">No withholds · jumps to move-in proof</span>
+    </div>
+    <div class="ded-quick-add" role="group" aria-label="Quick withhold lines">
+      <button type="button" class="btn btn-secondary ded-quick" data-cat="Cleaning">+ Cleaning</button>
+      <button type="button" class="btn btn-secondary ded-quick" data-cat="Damage">+ Damage</button>
+      <button type="button" class="btn btn-secondary ded-quick" data-cat="Unpaid rent">+ Unpaid rent</button>
+    </div>
+    ${rows}
+    <button type="button" class="btn btn-secondary" id="btn-add-ded">Add line item</button>
+    <div class="deadline-box" style="margin-top:1rem">
+      Deposit $${dep.toFixed(2)} · Withheld $${withheld.toFixed(2)} ·
+      Return $${Math.max(0, dep - withheld).toFixed(2)}
+    </div>`;
+}
+
+function renderStep4() {
   const rows = draft.rooms
     .map(
       (r, i) => `
@@ -588,41 +793,27 @@ function renderStep3() {
     </div>`
     )
     .join("");
+  const hasRoomDetail = draft.rooms.some(
+    (r) => r.notes || r.photo || r.photoLink || r.condition !== "Good"
+  );
+  const roomsOpen = hasRoomDetail || Boolean(draft.photoAlbumLink);
   return `
-    <h2 id="step-title" tabindex="-1">Move-in checklist</h2>
+    <h2 id="step-title" tabindex="-1">Move-in proof (optional)</h2>
+    <p class="field-hint">Fast path: paste one folder link · skip room grid if you already have cloud proof.</p>
     <div class="photo-album-panel">
-      <label for="photo-album">Whole-unit photo folder (optional)</label>
-      <input id="photo-album" class="external-photo-link" type="url" value="${esc(draft.photoAlbumLink)}" placeholder="Dropbox or Google Drive folder link for this move-in" inputmode="url" autocomplete="off" />
-      <p class="field-hint">Paste a view-only share link · stored in this browser with your packet · we do not upload your files.</p>
+      <label for="photo-album">Whole-unit photo folder</label>
+      <input id="photo-album" class="external-photo-link" type="url" value="${esc(draft.photoAlbumLink)}" placeholder="Dropbox or Google Drive folder link" inputmode="url" autocomplete="off" />
+      <p class="field-hint">View-only share link · stays in this browser · we do not upload files.</p>
     </div>
-    <p class="field-hint">Per-room: notes below · small photo upload (~400KB each) or paste a cloud link per room.</p>
-    ${rows}
-    <button type="button" class="btn btn-secondary" id="btn-add-room">Add room</button>`;
-}
-
-function renderStep4() {
-  const rows = draft.deductions
-    .map(
-      (r) => `
-    <div class="room-row deduction-row">
-      <div><label>Category</label><input type="text" class="ded-cat" value="${esc(r.category)}" placeholder="Damage / Cleaning" /></div>
-      <div><label>Description</label><input type="text" class="ded-desc" value="${esc(r.description)}" /></div>
-      <div><label>Amount ($)</label><input type="number" class="ded-amt" min="0" step="0.01" value="${esc(r.amount)}" /></div>
-    </div>`
-    )
-    .join("");
-  const dep = parseFloat(draft.deposit.amount) || 0;
-  const withheld = sumDeductions(draft.deductions);
-  const guide = wearDamageGuideHref(draft.property.state);
-  return `
-    <h2 id="step-title" tabindex="-1">Move-out itemization (optional)</h2>
-    <p class="field-hint">Line items for your written statement. Separate <strong>normal wear</strong> from <strong>tenant-caused damage</strong> · vague “cleaning” lines get challenged. <a href="${guide}">Wear vs damage guide</a></p>
-    ${rows}
-    <button type="button" class="btn btn-secondary" id="btn-add-ded">Add line item</button>
-    <div class="deadline-box" style="margin-top:1rem">
-      Deposit $${dep.toFixed(2)} · Withheld $${withheld.toFixed(2)} ·
-      Return $${Math.max(0, dep - withheld).toFixed(2)}
-    </div>`;
+    <details class="move-in-rooms" ${roomsOpen ? "open" : ""}>
+      <summary>Room-by-room checklist</summary>
+      <p class="field-hint">Per-room notes · ~400KB upload or cloud link each.</p>
+      ${rows}
+      <button type="button" class="btn btn-secondary" id="btn-add-room">Add room</button>
+    </details>
+    <p style="margin-top:var(--space-4)">
+      <button type="button" class="btn btn-primary" id="btn-skip-move-in">Skip to export</button>
+    </p>`;
 }
 
 function renderStep5() {
@@ -630,9 +821,15 @@ function renderStep5() {
   const reminderLines = deadline.reminders
     .map((d) => `<li>${formatUsDate(d)}</li>`)
     .join("");
+  const d = draft;
   return `
     <h2 id="step-title" tabindex="-1">Review &amp; export</h2>
-    <p><strong>${esc(draft.property.street)}</strong> · ${esc(draft.tenant.name)} · Deposit $${esc(draft.deposit.amount || "0")}</p>
+    <p><strong>${esc(d.property.street)}</strong> · ${esc(d.tenant.name)} · Deposit $${esc(d.deposit.amount || "0")}</p>
+    <div class="form-grid two wizard-flow-grid landlord-export-block">
+      <div><label for="ll-name">Landlord name (for packet)</label><input id="ll-name" type="text" value="${esc(d.landlord.name)}" autocomplete="name" /></div>
+      <div><label for="ll-email">Landlord email</label><input id="ll-email" type="email" value="${esc(d.landlord.email)}" autocomplete="email" /></div>
+      <div style="grid-column:1/-1"><label for="ll-addr">Landlord mailing address</label><input id="ll-addr" type="text" value="${esc(d.landlord.address)}" autocomplete="street-address" /></div>
+    </div>
     ${
       deadline.deadline
         ? `<div class="deadline-box"><strong>Return / itemize by:</strong> ${formatUsDate(deadline.deadline)} · ${deadline.days} days (${esc(deadline.jurisdiction)}).
@@ -645,6 +842,7 @@ function renderStep5() {
         <p class="field-hint">Opens Google in your browser. We do not connect to your Google account on our servers.</p></div>`
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
+    ${renderMailReadyRoute()}
     ${!canExportPro() ? paywallFreeToolsNote() : ""}
     ${renderItemizationPreview(!canExportPro())}
     ${canExportPro() ? exportEntitlementSection() : proBlockMessage()}
@@ -675,9 +873,6 @@ function renderStep5() {
 
 function readStepIntoDraft() {
   if (step === 1) {
-    draft.landlord.name = document.getElementById("ll-name")?.value?.trim() || "";
-    draft.landlord.email = document.getElementById("ll-email")?.value?.trim() || "";
-    draft.landlord.address = document.getElementById("ll-addr")?.value?.trim() || "";
     draft.property.street = document.getElementById("prop-street")?.value?.trim() || "";
     draft.property.city = document.getElementById("prop-city")?.value?.trim() || "";
     draft.property.zip = document.getElementById("prop-zip")?.value?.trim() || "";
@@ -696,6 +891,13 @@ function readStepIntoDraft() {
     draft.surrenderDate = document.getElementById("surrender")?.value || "";
   }
   if (step === 3) {
+    draft.deductions = [...document.querySelectorAll(".deduction-row")].map((row) => ({
+      category: row.querySelector(".ded-cat")?.value?.trim() || "Item",
+      description: row.querySelector(".ded-desc")?.value?.trim() || "",
+      amount: row.querySelector(".ded-amt")?.value || "",
+    }));
+  }
+  if (step === 4) {
     draft.photoAlbumLink = document.getElementById("photo-album")?.value?.trim() || "";
     draft.rooms = [...document.querySelectorAll(".room-row-photos")].map((row, i) => ({
       name: row.querySelector(".room-name")?.value?.trim() || "Room",
@@ -707,31 +909,54 @@ function readStepIntoDraft() {
       photoCapturedAt: draft.rooms[i]?.photoCapturedAt || "",
     }));
   }
-  if (step === 4) {
-    draft.deductions = [...document.querySelectorAll(".deduction-row")].map((row) => ({
-      category: row.querySelector(".ded-cat")?.value?.trim() || "Item",
-      description: row.querySelector(".ded-desc")?.value?.trim() || "",
-      amount: row.querySelector(".ded-amt")?.value || "",
-    }));
-  }
   if (step === 5) {
+    draft.landlord.name = document.getElementById("ll-name")?.value?.trim() || "";
+    draft.landlord.email = document.getElementById("ll-email")?.value?.trim() || "";
+    draft.landlord.address = document.getElementById("ll-addr")?.value?.trim() || "";
     draft.signatures.landlordPrinted = document.getElementById("sig-ll")?.value?.trim() || "";
     draft.signatures.tenantPrinted = document.getElementById("sig-tn")?.value?.trim() || "";
     draft.signatures.date = document.getElementById("sig-date")?.value || draft.signatures.date;
+    const rem = document.getElementById("rem-email");
+    if (rem?.value?.trim()) draft.landlord.email = rem.value.trim();
   }
   saveDraft(draft);
 }
 
 function bindStep2Events() {
+  document.getElementById("btn-surrender-today")?.addEventListener("click", () => {
+    const input = document.getElementById("surrender");
+    if (!input) return;
+    input.value = new Date().toISOString().slice(0, 10);
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.focus();
+  });
   const update = () => {
     const el = document.getElementById("surrender-hint");
     if (!el) return;
     const leaseEnd = document.getElementById("lease-end")?.value || "";
     const surrender = document.getElementById("surrender")?.value || "";
     el.textContent = surrenderLeaseHint(leaseEnd, surrender);
+    const clock = document.querySelector(".deadline-box--inline");
+    if (clock) {
+      if (!surrender) {
+        clock.outerHTML = `<p class="field-hint" role="status">Add surrender below to see your statutory clock.</p>`;
+        return;
+      }
+      syncChicagoFromPreset();
+      const deadline = computeDeadline({
+        surrenderDate: surrender,
+        state: draft.property.state,
+        inChicago: draft.property.inChicago,
+        cityPreset: draft.property.cityPreset,
+      });
+      if (deadline.deadline) {
+        clock.innerHTML = `<strong>Return / itemize by:</strong> ${formatUsDate(deadline.deadline)} · ${deadline.days} days (${esc(deadline.jurisdiction)})`;
+      }
+    }
   };
   document.getElementById("lease-end")?.addEventListener("input", update);
   document.getElementById("surrender")?.addEventListener("input", update);
+  document.getElementById("dep-amt")?.addEventListener("input", update);
   update();
 }
 
@@ -756,6 +981,37 @@ function bindStep1Events() {
 }
 
 function bindStepEvents() {
+  document.getElementById("btn-full-return")?.addEventListener("click", () => {
+    readStepIntoDraft();
+    draft.deductions = [{ category: "Return", description: "Full deposit to tenant", amount: "0" }];
+    draft.wizardMaxStep = Math.max(maxWizardStep(), 4);
+    saveDraft(draft);
+    step = 4;
+    render();
+    focusStepField();
+    if (els.status) els.status.textContent = "Full return noted · add move-in link if you have one, or skip to export.";
+  });
+  document.querySelectorAll(".ded-quick").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      readStepIntoDraft();
+      const cat = btn.getAttribute("data-cat") || "Item";
+      draft.deductions.push({ category: cat, description: "", amount: "" });
+      saveDraft(draft);
+      render();
+      const rows = document.querySelectorAll(".deduction-row");
+      const last = rows[rows.length - 1];
+      last?.querySelector(".ded-amt, .ded-desc")?.focus();
+    });
+  });
+  document.getElementById("btn-skip-move-in")?.addEventListener("click", () => {
+    readStepIntoDraft();
+    bumpWizardMaxStep();
+    step = MAX_STEPS;
+    draft.wizardMaxStep = MAX_STEPS;
+    saveDraft(draft);
+    render();
+    focusStepTitle();
+  });
   document.getElementById("btn-add-room")?.addEventListener("click", () => {
     readStepIntoDraft();
     draft.rooms.push({
@@ -971,18 +1227,13 @@ function bindStepEvents() {
   });
 }
 
-function syncPrintAccessClass() {
-  if (canExportPro()) document.body.classList.remove("spt-no-pro-print");
-  else document.body.classList.add("spt-no-pro-print");
+function syncPrintAccessClass(previewMode) {
+  document.body.classList.remove("spt-no-pro-print", "spt-print-preview");
+  if (previewMode || canExportPro()) return;
+  document.body.classList.add("spt-no-pro-print");
 }
 
-function renderPrintPacket() {
-  if (!els.printRoot) return;
-  syncPrintAccessClass();
-  if (!canExportPro()) {
-    els.printRoot.innerHTML = "";
-    return;
-  }
+function buildPrintPacketInnerHtml() {
   const deadline = computeDeadline(deadlineInput());
   const stLabel = STATE_PACKS[normalizeStateCode(draft.property.state)]?.label || "deposit";
   const addr = [draft.property.street, draft.property.city, draft.property.zip].filter(Boolean).join(", ");
@@ -1009,18 +1260,19 @@ function renderPrintPacket() {
     .filter((d) => d.amount || d.description)
     .map((d) => `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "n/a"}</td><td>$${esc(d.amount) || "0"}</td></tr>`)
     .join("");
-  els.printRoot.innerHTML = `
+  return `
     <h2>Deposit Desk · ${esc(stLabel)} deposit packet</h2>
     <p style="font-size:10pt;color:#6b5c4a">Simple Property Tools · Deposit Desk · ${formatUsDate(draft.signatures.date)}</p>
     <p><strong>Property:</strong> ${esc(addr)}<br/>
     <strong>Tenant:</strong> ${esc(draft.tenant.name)} · <strong>Lease:</strong> ${formatUsDate(draft.lease.start)} – ${formatUsDate(draft.lease.end)}<br/>
     <strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Held:</strong> ${esc(draft.deposit.heldAt) || "n/a"}</p>
-    <p><strong>Landlord:</strong> ${esc(draft.landlord.name)} · ${esc(draft.landlord.email)}</p>
+    <p><strong>Landlord:</strong> ${esc(draft.landlord.name)} · ${esc(draft.landlord.email)}<br/>
+    <strong>Mailing address:</strong> ${esc(draft.landlord.address) || "n/a"}</p>
     ${deadline.deadline ? `<p><strong>Deadline (${esc(deadline.jurisdiction)}):</strong> ${formatUsDate(deadline.deadline)}</p>` : ""}
     ${draft.photoAlbumLink ? `<p><strong>Move-in photo folder:</strong> ${esc(draft.photoAlbumLink)}</p>` : ""}
     <h3>Move-in condition</h3>
     <table><thead><tr><th>Area</th><th>Condition</th><th>Notes</th></tr></thead><tbody>${roomRows}</tbody></table>
-    ${photoBlock ? `<h3>Move-in photos</h3><div class="print-photos">${photoBlock}</div>` : ""}
+    ${photoBlock ? `<h3>Move-in photos</h3><div class="print-photos print-photos--sensitive">${photoBlock}</div>` : ""}
     ${
       dedRows
         ? `<h3>Itemized deductions</h3><table><thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead><tbody>${dedRows}</tbody></table>
@@ -1028,11 +1280,46 @@ function renderPrintPacket() {
         : ""
     }
     <p style="font-size:9pt">Documentation only. Not legal advice.</p>
-    <p style="font-size:8pt;color:#6b5c4a;margin-top:0.75rem">Packet prepared with Deposit Desk · simple-property.com</p>
+    <p style="font-size:8pt;color:#6b5c4a;margin-top:0.75rem">Packet prepared with Deposit Desk · simple-property.com · Packet ${esc(draft.id.slice(0, 8))}</p>
     <div style="display:flex;gap:3rem;margin-top:2rem">
       <div><div class="signature-line">Landlord: ${esc(draft.signatures.landlordPrinted || draft.landlord.name)}</div></div>
       <div><div class="signature-line">Tenant: ${esc(draft.signatures.tenantPrinted || draft.tenant.name)}</div></div>
     </div>`;
+}
+
+/** @param {"auto"|"preview"|"final"} kind */
+function renderPrintPacket(kind = "auto") {
+  if (!els.printRoot) return;
+  const preview =
+    kind === "preview" || (kind === "auto" && !canExportPro());
+  const final = kind === "final" || (kind === "auto" && canExportPro());
+  if (!preview && !final) return;
+  if (kind === "final" && !canExportPro()) return;
+
+  syncPrintAccessClass(preview && !final);
+  els.printRoot.classList.toggle("print-packet--preview", preview && !final);
+  const banner = preview && !final
+    ? `<p class="print-preview-banner" aria-hidden="true">PREVIEW · NOT FOR TENANT MAIL · UNLOCK MAIL-READY PDF AT SIMPLE-PROPERTY.COM</p>`
+    : "";
+  els.printRoot.innerHTML = `${banner}<div class="print-packet__inner">${buildPrintPacketInnerHtml()}</div>`;
+}
+
+function syncExportButtons() {
+  const onExport = step >= MAX_STEPS;
+  const locked = !canExportPro();
+  if (els.printPreview) {
+    els.printPreview.hidden = !onExport;
+    els.printPreview.disabled = !onExport;
+    els.printPreview.classList.toggle("btn-primary", locked);
+    els.printPreview.classList.toggle("btn-secondary", !locked);
+  }
+  if (els.print) {
+    els.print.hidden = !onExport;
+    els.print.disabled = !onExport;
+    els.print.textContent = locked ? "Unlock mail-ready PDF" : "Print / Save PDF";
+    els.print.classList.toggle("btn-primary", !locked);
+    els.print.classList.toggle("btn-secondary", locked);
+  }
 }
 
 function publishLiveAgentSnapshot() {
@@ -1061,20 +1348,24 @@ function publishLiveAgentSnapshot() {
 }
 
 function render() {
+  bindWizardKeyboard();
+  bindWizardStepNav();
   setStepLabels();
   const renders = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
   els.panel.innerHTML = renders[step - 1]();
   if (step === 1) bindStep1Events();
   if (step === 2) bindStep2Events();
   if (step === 3 || step === 4 || step === 5) bindStepEvents();
-  renderPrintPacket();
+  renderPrintPacket("auto");
+  syncExportButtons();
   if (step === MAX_STEPS && !canExportPro()) {
     sptTrack("paywall_view", { state: draft.property.state || "" });
   }
   sptTrack("wizard_step", { step: String(step), state: draft.property.state || "" });
   els.prev.disabled = step <= 1;
-  els.next.textContent = step >= MAX_STEPS ? "Done" : "Continue";
-  els.print.disabled = !canExportPro() || step < MAX_STEPS;
+  if (step >= MAX_STEPS) els.next.textContent = "Done";
+  else if (step === 4) els.next.textContent = "Continue to export";
+  else els.next.textContent = "Continue";
   if (els.status) {
     if (window.__sptStatusMsg) {
       els.status.textContent = window.__sptStatusMsg;
@@ -1084,31 +1375,43 @@ function render() {
     }
   }
   publishLiveAgentSnapshot();
+  if (!draft.signatures.landlordPrinted && draft.landlord.name && step === 5) {
+    const sig = document.getElementById("sig-ll");
+    if (sig && !sig.value) sig.value = draft.landlord.name;
+  }
 }
 
 els.prev?.addEventListener("click", () => {
   readStepIntoDraft();
   step = Math.max(1, step - 1);
   render();
+  focusStepTitle();
 });
 
 els.next?.addEventListener("click", () => {
+  advanceWizard();
+});
+
+els.printPreview?.addEventListener("click", () => {
   readStepIntoDraft();
-  if (step >= MAX_STEPS) return;
-  step += 1;
-  render();
+  if (step < MAX_STEPS) return;
+  window.__sptPrintKind = "preview";
+  renderPrintPacket("preview");
+  sptTrack("preview_print", { state: draft.property.state || "" });
+  window.print();
 });
 
 els.print?.addEventListener("click", () => {
   readStepIntoDraft();
+  if (step < MAX_STEPS) return;
   if (!canExportPro()) {
-    els.panel.insertAdjacentHTML(
-      "beforeend",
-      proBlockMessage() ||
-        `<div class="paywall" role="alert">Subscribe on <a href="/pricing">pricing</a> to export.</div>`
-    );
+    document.getElementById("export-paywall")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    sptTrack("unlock_scroll", { state: draft.property.state || "" });
     return;
   }
+  window.__sptPrintKind = "final";
+  renderPrintPacket("final");
+  sptTrack("print_final", { state: draft.property.state || "" });
   window.print();
 });
 
@@ -1119,6 +1422,8 @@ document.getElementById("btn-new-packet")?.addEventListener("click", () => {
   step = 1;
   render();
 });
+
+document.getElementById("btn-duplicate-packet")?.addEventListener("click", duplicateFromLastPacket);
 
 document.getElementById("packet-select")?.addEventListener("change", (e) => {
   const id = e.target.value;
@@ -1142,8 +1447,10 @@ refreshPacketSelect();
 
 window.addEventListener("beforeprint", () => {
   readStepIntoDraft();
-  renderPrintPacket();
+  const kind = window.__sptPrintKind || (canExportPro() ? "final" : "preview");
+  renderPrintPacket(kind);
 });
 window.addEventListener("afterprint", () => {
-  renderPrintPacket();
+  delete window.__sptPrintKind;
+  renderPrintPacket("auto");
 });

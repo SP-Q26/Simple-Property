@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Deposit packet wizard · Simple Property Tools</title>
-  <meta name="description" content="Five steps · clock on screen · print-ready deposit packet in 19 states + DC. Free wizard · unlock per turn or Pro. Not legal advice.">
+  <meta name="description" content="Five steps · statutory clock · watermarked preview print · mail-ready PDF after unlock. 19 states + DC · per turn or Pro. Not legal advice.">
   <!-- spt-social -->
   <meta name="robots" content="noindex,nofollow">
   <link rel="canonical" href="https://simple-property.com/app">
@@ -12,7 +12,7 @@
   <meta property="og:site_name" content="Simple Property Tools">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Start free deposit packet · Deposit Desk">
-  <meta property="og:description" content="Five steps · statutory clock on screen · print-ready packet. 19 states + DC · free wizard · unlock per turn or Pro. Not legal advice.">
+  <meta property="og:description" content="Five steps · statutory clock · watermarked preview print · mail-ready PDF after unlock. 19 states + DC · per turn or Pro. Not legal advice.">
   <meta property="og:url" content="https://simple-property.com/app">
   <meta property="og:image" content="https://simple-property.com/og/spt-share-door.png?v=20260923b">
   <meta property="og:image:secure_url" content="https://simple-property.com/og/spt-share-door.png?v=20260923b">
@@ -22,18 +22,18 @@
   <meta property="og:image:alt" content="Simple Property Tools Deposit Desk · coverage color bar · 19 states + DC deposit packets">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Start free deposit packet · Deposit Desk">
-  <meta name="twitter:description" content="Five steps · statutory clock on screen · print-ready packet. 19 states + DC · free wizard · unlock per turn or Pro. Not legal advice.">
+  <meta name="twitter:description" content="Five steps · statutory clock · watermarked preview print · mail-ready PDF after unlock. 19 states + DC · per turn or Pro. Not legal advice.">
   <meta name="twitter:image" content="https://simple-property.com/og/spt-share-door.png?v=20260923b">
   <meta name="twitter:image:alt" content="Simple Property Tools Deposit Desk · coverage color bar · 19 states + DC deposit packets">
   <!-- /spt-social -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=44">
-                  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Deposit Desk","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simple-property.com/app","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free draft wizard"}}</script>
-  <link rel="alternate" type="application/json" href="#spt-wizard-snapshot" title="Deposit Desk · live wizard state (client)">
+  <link rel="stylesheet" href="/simple-property.css?v=45">
+                  <link rel="alternate" type="application/json" href="#spt-wizard-snapshot" title="Deposit Desk · live wizard state (client)">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Deposit Desk","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simple-property.com/app","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free draft wizard"}}</script>
 </head>
-<body>
+<body class="spt-wizard-app">
   <div class="spt-atmosphere" aria-hidden="true">
     <div class="spt-weather"></div>
     <div class="spt-weather-mist"></div>
@@ -67,29 +67,31 @@
     </header>
 
     <main class="no-print">
-      <div class="app-intro">
-        <p class="ps-problem">Move-out week without a dated packet · disputes cost more than export fees.</p>
-        <p class="ps-fix">Five steps from property to print · autosaved in this browser · not legal advice.</p>
+      <div class="app-intro app-intro--compact">
+        <p class="ps-problem">Move-out without a dated packet · dispute cost usually beats $29 export.</p>
+        <p class="ps-fix">Property → turnover → withholds → proof → export · autosaved · not legal advice.</p>
       </div>
       <div class="packet-bar">
         <label for="packet-select">Saved packets</label>
         <select id="packet-select" aria-label="Load saved packet"></select>
+        <button type="button" class="btn btn-secondary" id="btn-duplicate-packet" title="New tenant · same property &amp; landlord">Duplicate last</button>
         <button type="button" class="btn btn-secondary" id="btn-new-packet">New packet</button>
         <button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button>
       </div>
-      <div class="wizard-steps" id="wizard-step-labels" aria-label="Steps">
-        <span data-step="1">1 · Property</span>
-        <span data-step="2">2 · Tenant</span>
-        <span data-step="3">3 · Move-in</span>
-        <span data-step="4">4 · Move-out</span>
-        <span data-step="5">5 · Export</span>
+      <div class="wizard-steps" id="wizard-step-labels" role="tablist" aria-label="Wizard steps">
+        <button type="button" class="wizard-step" role="tab" data-step="1" id="wizard-tab-1">1 · Property</button>
+        <button type="button" class="wizard-step" role="tab" data-step="2" id="wizard-tab-2">2 · Turnover</button>
+        <button type="button" class="wizard-step" role="tab" data-step="3" id="wizard-tab-3">3 · Move-out</button>
+        <button type="button" class="wizard-step" role="tab" data-step="4" id="wizard-tab-4">4 · Move-in</button>
+        <button type="button" class="wizard-step" role="tab" data-step="5" id="wizard-tab-5">5 · Export</button>
       </div>
       <p class="field-hint" id="wizard-status" aria-live="polite"></p>
       <div class="form-panel" id="wizard-panel"></div>
-      <div class="wizard-nav">
+      <div class="wizard-nav wizard-nav--sticky no-print">
         <button type="button" class="btn btn-secondary" id="btn-prev">Back</button>
-        <div style="display:flex;gap:0.5rem">
-          <button type="button" class="btn btn-secondary" id="btn-print">Print / Save PDF</button>
+        <div class="wizard-nav__actions">
+          <button type="button" class="btn btn-secondary" id="btn-print-preview" hidden>Preview (watermarked)</button>
+          <button type="button" class="btn btn-primary" id="btn-print-final" hidden>Unlock mail-ready PDF</button>
           <button type="button" class="btn btn-primary" id="btn-next">Continue</button>
         </div>
       </div>

@@ -410,6 +410,22 @@
     nav.appendChild(sr);
 
     header.insertAdjacentElement("afterend", nav);
+
+    if (path === "/app") {
+      nav.classList.add("locale-bar--wizard");
+      var toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "btn btn-secondary locale-bar__toggle";
+      toggle.setAttribute("aria-expanded", activeStateCode() ? "false" : "true");
+      toggle.textContent = activeStateCode() ? "Change state" : "Hide map";
+      toggle.addEventListener("click", function () {
+        var compact = nav.classList.toggle("locale-bar--compact");
+        toggle.setAttribute("aria-expanded", compact ? "false" : "true");
+        toggle.textContent = compact ? "Change state" : "Hide map";
+      });
+      if (activeStateCode()) nav.classList.add("locale-bar--compact");
+      nav.insertBefore(toggle, nav.firstChild?.nextSibling || null);
+    }
   }
 
   function markActiveLocale() {

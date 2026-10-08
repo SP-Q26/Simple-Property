@@ -6,11 +6,11 @@ export const WIZARD_SNAPSHOT_SCHEMA = "spt-wizard-snapshot";
 export const WIZARD_SNAPSHOT_VERSION = 1;
 
 export const WIZARD_STEPS = [
-  { n: 1, key: "property", label: "Property", focus: "state, city preset, unit count, address" },
-  { n: 2, key: "tenant", label: "Tenant & surrender", focus: "tenant, deposit, surrender date" },
-  { n: 3, key: "move_in", label: "Move-in", focus: "room condition, photo links" },
-  { n: 4, key: "move_out", label: "Move-out", focus: "itemized withholdings" },
-  { n: 5, key: "export", label: "Review & export", focus: "deadline, print, paywall, AI copy" },
+  { n: 1, key: "property", label: "Property", focus: "state, rental address, city preset, unit count" },
+  { n: 2, key: "turnover", label: "Turnover", focus: "surrender date, deposit, tenant, lease" },
+  { n: 3, key: "move_out", label: "Move-out", focus: "itemized withholdings before export" },
+  { n: 4, key: "move_in", label: "Move-in proof", focus: "optional album link or room checklist" },
+  { n: 5, key: "export", label: "Export", focus: "landlord mail, deadline, print, paywall" },
 ];
 
 /**
@@ -81,10 +81,22 @@ export function buildWizardAgentSnapshot(ctx) {
     wizard: {
       step: ctx.step,
       maxSteps: WIZARD_STEPS.length,
+      maxStepVisited: ctx.draft?.wizardMaxStep ?? 1,
       stepKey: stepDef.key,
       stepLabel: stepDef.label,
       stepFocus: stepDef.focus,
       steps: WIZARD_STEPS.map((s) => ({ n: s.n, key: s.key, label: s.label })),
+      speedShortcuts: [
+        "step_tab_jump",
+        "surrender_today",
+        "full_deposit_return",
+        "deduction_quick_add",
+        "skip_move_in",
+        "duplicate_last_packet",
+        "enter_to_continue",
+        "watermarked_preview_print",
+        "unlock_mail_ready_pdf",
+      ],
     },
     packet: {
       id: ctx.draft?.id || null,

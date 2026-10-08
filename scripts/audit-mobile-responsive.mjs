@@ -57,6 +57,8 @@ need("css touch-action buttons", css.includes("touch-action: manipulation") && c
 need("css form inputs full width pattern", css.includes(".form-grid") || css.includes(".field-stack"));
 need("css skip link", css.includes(".skip-link"));
 need("app wizard steps wrap", css.includes(".wizard-steps") && css.includes("flex-wrap"));
+need("wizard step buttons", css.includes(".wizard-step") && css.includes("focus-visible"));
+need("wizard flow tablet single col", css.includes("wizard-flow-grid"));
 need("header nav wraps", css.includes(".header-nav") && css.includes("flex-wrap"));
 need("pricing finder stacks on mobile", css.includes(".pricing-finder__grid"));
 need("locale bar mobile", css.includes(".coverage-bubbles") && css.includes("locale-bar"));
