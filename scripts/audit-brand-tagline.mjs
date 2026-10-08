@@ -42,8 +42,8 @@ for (const file of walk(web)) {
   }
 }
 
-need("canon BRAND_TAGLINE", BRAND_TAGLINE.includes("Never pay the fee"));
-need("canon BRAND_TAG", BRAND_TAG.includes("Never pay the fee"));
+need("canon BRAND_TAGLINE", BRAND_TAGLINE.includes("Never pay the fees"));
+need("canon BRAND_TAG", BRAND_TAG.includes("Never pay the fees"));
 need("no Keep the clock under web/", fail === 0);
 
 console.log(fail ? `\nBrand tagline audit FAILED (${fail})` : "\nBrand tagline audit OK");

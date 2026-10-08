@@ -29,7 +29,8 @@ console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header`, css.includes(`v${CSS_VERSION}`));
-need("css size under 72KB", cssBytes < 72 * 1024);
+/** v48+: mail-proof grid, guide callouts on blog, hero traction (landing only). */
+need("css size under 74KB", cssBytes < 74 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));

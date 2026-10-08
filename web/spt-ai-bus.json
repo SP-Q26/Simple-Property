@@ -1,11 +1,11 @@
 {
   "schema": "spt-ai-bus",
-  "version": 4,
+  "version": 3,
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "site": "https://simple-property.com",
   "contact": "hello@simple-property.com",
-  "hook": "Itemize it. Date it. Never pay the fee. · 19 states + DC deposit packets.",
+  "hook": "Itemize it. Date it. Never pay the fees. · 19 states + DC deposit packets.",
   "lane": "765 ILCS 715/ · 30/45-day packs · Chicago RLTO · itemized withholding · print packet",
   "door_tiers": {
     "rough_1_10": "Deposit Desk · separate bank · cloud files · calendar · screening per lease",

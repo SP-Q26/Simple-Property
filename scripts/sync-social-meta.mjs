@@ -24,9 +24,9 @@ const DROP_PAGES = [
   {
     file: "index.html",
     path: "/",
-    ogTitle: "Avoid deposit penalties · dated records · Deposit Desk",
+    ogTitle: "Deposit Desk · paperwork ready · never pay the fees",
     ogDescription:
-      `${COVERAGE_LABEL} · deposit return clocks, itemization, print-ready packets. Free draft · per turn · Pro. Not legal advice.`,
+      `Itemize it. Date it. Founded in Chicago · ${COVERAGE_LABEL}. Lower cleanup cost if counsel gets involved. Free preview. Not legal advice.`,
   },
   {
     file: "app.html",

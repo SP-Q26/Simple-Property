@@ -7,7 +7,7 @@ import { STATUTE_URLS } from "./statute-urls.mjs";
 export const PACK_COUNT = SUPPORTED_STATES.length;
 export const STATE_ONLY_COUNT = SUPPORTED_STATES.filter((c) => c !== "DC").length;
 /** Three-beat tagline · penalty avoidance, not clock wordplay. */
-export const BRAND_TAGLINE = "Itemize it. Date it. Never pay the fee.";
+export const BRAND_TAGLINE = "Itemize it. Date it. Never pay the fees.";
 export const BRAND_TAG = `${BRAND_TAGLINE} · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`;
 /** Shorter lockup line for phone and tablet header. */
 export const BRAND_TAG_SHORT = `${BRAND_TAGLINE} · ${STATE_ONLY_COUNT} states + DC`;
@@ -15,7 +15,7 @@ export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__d
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 46;
+export const CSS_VERSION = 48;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

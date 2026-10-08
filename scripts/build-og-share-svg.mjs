@@ -37,26 +37,65 @@ function chipGrid(startX, startY, cols, chipW, gap) {
   return out;
 }
 
-function doorScene() {
-  return `  <rect x="700" y="72" width="56" height="420" fill="#7a4038" fill-opacity="0.14" rx="3"/>
-  <rect x="1044" y="72" width="56" height="420" fill="#7a4038" fill-opacity="0.14" rx="3"/>
-  <rect x="748" y="96" width="304" height="376" rx="5" fill="#3d3429" fill-opacity="0.05" stroke="#3d3429" stroke-width="1.5" stroke-opacity="0.35"/>
-  <rect x="756" y="104" width="288" height="360" rx="4" fill="#3d3429" fill-opacity="0.08" stroke="#3d3429" stroke-width="2.25"/>
-  <rect x="768" y="116" width="120" height="336" rx="2" fill="url(#door-light)" stroke="#3d3429" stroke-width="2"/>
-  <g class="door-hinge" fill="#8a7a66" stroke="#3d3429" stroke-width="0.8">
-    <rect x="771" y="148" width="5" height="7" rx="1.2"/>
-    <rect x="771" y="228" width="5" height="7" rx="1.2"/>
-    <rect x="771" y="308" width="5" height="7" rx="1.2"/>
-  </g>
-  <path d="M888 116 L888 452" stroke="#3d3429" stroke-width="2"/>
-  <path d="M768 116 L888 184 L888 384 L768 452 Z" fill="#faf7f0" stroke="#3d3429" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M888 184 L1020 116 L1020 452 L888 384 Z" fill="#4a6741" fill-opacity="0.35" stroke="#3d3429" stroke-width="2"/>
-  <g class="door-rim-lock">
-    <rect x="876" y="278" width="12" height="16" rx="2.5" fill="#f4f0e6" stroke="#3d3429" stroke-width="1.2"/>
-    <circle cx="882" cy="286" r="4" fill="#c9a227" stroke="#3d3429" stroke-width="1"/>
-  </g>
-  <text x="828" y="294" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="42" font-weight="600">SP</text>
-  <path d="M888 116 L1020 116" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>`;
+function doorSceneMini() {
+  return `  <g transform="translate(720, 88) scale(0.92)">
+  <rect x="0" y="0" width="56" height="420" fill="#7a4038" fill-opacity="0.12" rx="3"/>
+  <rect x="344" y="0" width="56" height="420" fill="#7a4038" fill-opacity="0.12" rx="3"/>
+  <rect x="48" y="24" width="304" height="376" rx="5" fill="#3d3429" fill-opacity="0.05" stroke="#3d3429" stroke-width="1.5" stroke-opacity="0.35"/>
+  <rect x="56" y="32" width="288" height="360" rx="4" fill="#3d3429" fill-opacity="0.08" stroke="#3d3429" stroke-width="2.25"/>
+  <rect x="68" y="44" width="120" height="336" rx="2" fill="url(#door-light)" stroke="#3d3429" stroke-width="2"/>
+  <path d="M188 44 L188 380" stroke="#3d3429" stroke-width="2"/>
+  <path d="M68 44 L188 112 L188 312 L68 380 Z" fill="#faf7f0" stroke="#3d3429" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M188 112 L320 44 L320 380 L188 312 Z" fill="#4a6741" fill-opacity="0.38" stroke="#3d3429" stroke-width="2"/>
+  <circle cx="176" cy="214" r="5" fill="#c9a227" stroke="#3d3429" stroke-width="1"/>
+  <text x="128" y="222" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="38" font-weight="600">SP</text>
+  <path d="M188 44 L320 44" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
+  <rect x="332" y="168" width="8" height="88" rx="2" fill="#c9a227" fill-opacity="0.35"/>
+</g>`;
+}
+
+/** Highlight box with even padding (OG safe zone). */
+function highlightPill(x, y, w, lines) {
+  const padX = 28;
+  const padTop = 22;
+  const padBottom = 22;
+  const lineSpecs = [
+    { size: 22, weight: 700, fill: "#3d3429", lead: 30 },
+    { size: 17, weight: 400, fill: "#6b5c4a", lead: 26 },
+  ];
+  const used = lines.slice(0, 2);
+  const innerH = used.reduce((acc, _, i) => acc + (lineSpecs[i]?.lead || 26), 0);
+  const h = padTop + innerH + padBottom;
+  let baseline = y + padTop + lineSpecs[0].size;
+  const lineEls = used
+    .map((line, i) => {
+      const s = lineSpecs[i] || lineSpecs[1];
+      if (i > 0) baseline = y + padTop + lineSpecs[0].lead + s.size;
+      const el = `<text x="${x + padX}" y="${baseline}" fill="${s.fill}" font-family="system-ui,sans-serif" font-size="${s.size}" font-weight="${s.weight}">${line}</text>`;
+      return el;
+    })
+    .join("\n");
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="#fffef8" stroke="#c9a227" stroke-width="2.5"/>
+${lineEls}`;
+}
+
+function featuredMetroChips(y) {
+  const chipH = 56;
+  const metros = [
+    { code: "IL", label: "Chicago", x: 72 },
+    { code: "FL", label: "Miami", x: 168 },
+    { code: "DC", label: "DC", x: 264 },
+  ];
+  return metros
+    .map(
+      (m) =>
+        `<g>
+  <rect x="${m.x}" y="${y}" width="84" height="${chipH}" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="${m.x + 42}" y="${y + 26}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#4a6741">${m.code}</text>
+  <text x="${m.x + 42}" y="${y + 44}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#6b5c4a">${m.label}</text>
+</g>`
+    )
+    .join("\n");
 }
 
 function defsBlock() {
@@ -93,14 +132,15 @@ ${body}
 `;
 }
 
-const defaultBody = `  <text x="72" y="118" fill="#3d3429" font-family="Georgia, serif" font-size="44" font-weight="600">Simple Property Tools</text>
-  <text x="72" y="168" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="26">${BRAND_TAGLINE}</text>
-  <path d="M72 188h440" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
-  <text x="72" y="228" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="24" font-weight="600">Deposit Desk · ${COVERAGE_LABEL}</text>
-  <text x="72" y="262" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="19">Founded in Chicago · deposit return clocks on screen</text>
-${legend(72, 286)}
-${chipGrid(72, 312, 10, 40, 6)}
-${doorScene()}`;
+const defaultBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="38" font-weight="600">Simple Property Tools</text>
+  <text x="72" y="148" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="24">${BRAND_TAGLINE}</text>
+  <path d="M72 162h520" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
+  <text x="72" y="192" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="21" font-weight="600">Deposit Desk · Founded in Chicago · ${COVERAGE_LABEL}</text>
+${highlightPill(72, 212, 580, ["Paperwork ready.", "Lower cleanup cost if counsel gets involved."])}
+${featuredMetroChips(326)}
+  <text x="72" y="400" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="16">Surrender · deadline · itemize · preview free · mail-ready PDF</text>
+  <text x="72" y="428" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="14">Not legal advice · documentation only</text>
+${doorSceneMini()}`;
 
 const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="40" font-weight="600">New state coverage</text>
   <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">Thank you to clients and investors who sourced local regs</text>
@@ -109,7 +149,7 @@ const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia
   <text x="72" y="242" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17">More states via feedback · not legal advice</text>
 ${legend(72, 268)}
 ${chipGrid(72, 294, 10, 40, 6)}
-${doorScene()}`;
+${doorSceneMini()}`;
 
 const cardBody = `  <text x="88" y="148" fill="#3d3429" font-family="Georgia, serif" font-size="46" font-weight="600">Simple Property Tools</text>
   <text x="88" y="198" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="24">Deposit Desk · ${COVERAGE_LABEL}</text>
@@ -120,7 +160,7 @@ ${chipGrid(88, 274, 8, 40, 6)}`;
 writeFileSync(
   join(ogDir, "spt-share-door.svg"),
   shell({
-    ariaLabel: `Simple Property Tools Deposit Desk · ${COVERAGE_LABEL} · coverage color bar`,
+    ariaLabel: `Deposit Desk · paperwork ready · Founded in Chicago · ${COVERAGE_LABEL}`,
     body: defaultBody,
   })
 );

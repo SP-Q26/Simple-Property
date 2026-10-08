@@ -38,10 +38,18 @@ const doorSvg = readFileSync(join(web, "og/spt-share-door.svg"), "utf8");
 needContent("share door SVG 18 states copy", doorSvg.includes(`${STATE_ONLY_COUNT} states + DC`));
 needContent("share door SVG no Midwest-only line", !doorSvg.includes("Midwest deposit packets"));
 needContent("share door SVG no six-state-only line", !doorSvg.includes("IL · IN · OH · MI · IA · MO"));
-needContent(`share door SVG ${SUPPORTED_STATES.length} chips`, (doorSvg.match(/class="coverage-chip"/g) || []).length === SUPPORTED_STATES.length);
+needContent("share door SVG highlight copy", doorSvg.includes("Paperwork ready"));
+needContent("share door SVG counsel line", /counsel gets involved/i.test(doorSvg));
+needContent("share door SVG featured metros", doorSvg.includes("Miami") && doorSvg.includes("Chicago"));
+needContent("share door SVG no live traction stat", !/48\+ landlords/i.test(doorSvg));
+needContent("share door SVG highlight padding", (() => {
+  const m = doorSvg.match(/<rect x="72" y="212" width="580" height="(\d+)"/);
+  const h = m ? parseInt(m[1], 10) : 0;
+  return h >= 94 && h <= 108;
+})());
 
 const coverageSvg = readFileSync(join(web, "og/spt-share-coverage-expansion.svg"), "utf8");
-needContent("coverage SVG customer tagline", /never pay the fee/i.test(coverageSvg));
+needContent("coverage SVG customer tagline", /never pay the fees/i.test(coverageSvg));
 needContent("coverage SVG no iOS tease", !/iOS app incoming|TestFlight/i.test(coverageSvg));
 
 const dropPages = [
