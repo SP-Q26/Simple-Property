@@ -34,26 +34,6 @@
       "permanent": true
     },
     {
-      "source": "/blog/missed-deposit-deadline-small-landlord-multi-state",
-      "destination": "/blog/missed-deposit-deadline-small-landlord-multi-state",
-      "permanent": true
-    },
-    {
-      "source": "/blog/move-in-move-out-fees-vs-security-deposit",
-      "destination": "/blog/move-in-move-out-fees-vs-security-deposit",
-      "permanent": true
-    },
-    {
-      "source": "/blog/pet-deposits-vs-security-deposit-withholds",
-      "destination": "/blog/pet-deposits-vs-security-deposit-withholds",
-      "permanent": true
-    },
-    {
-      "source": "/blog/application-fees-vs-security-deposit",
-      "destination": "/blog/application-fees-vs-security-deposit",
-      "permanent": true
-    },
-    {
       "source": "/blog/missed-deposit-deadline-midwest-small-landlord",
       "destination": "/blog/missed-deposit-deadline-small-landlord-multi-state",
       "permanent": true

@@ -7,6 +7,14 @@ import { fileURLToPath } from "node:url";
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 let fail = 0;
 
+const vercel = JSON.parse(readFileSync(join(web, "vercel.json"), "utf8"));
+for (const r of vercel.redirects || []) {
+  if (r.source === r.destination) {
+    console.error("LINK FAIL identity redirect loop:", r.source);
+    fail++;
+  }
+}
+
 const manifest = JSON.parse(readFileSync(join(web, "data", "blog-manifest.json"), "utf8"));
 
 const ROUTES = new Set([
