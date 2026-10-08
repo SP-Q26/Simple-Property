@@ -1,7 +1,7 @@
 (function () {
   var el = document.getElementById("hero-traction");
   if (!el) return;
-  fetch("/api/public-traction", { credentials: "same-origin" })
+  fetch("/data/public-traction.json", { credentials: "same-origin" })
     .then(function (r) {
       return r.ok ? r.json() : null;
     })
