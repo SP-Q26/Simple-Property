@@ -20,7 +20,13 @@
     "guides": "https://simple-property.com/blog",
     "blog_feed": "https://simple-property.com/blog/feed.rss",
     "launch_stack": "https://simple-property.com/launch-stack",
-    "app": "https://simple-property.com/app"
+    "app": "https://simple-property.com/app",
+    "wizard_live_snapshot": "https://simple-property.com/app#spt-wizard-snapshot"
+  },
+  "wizard_live": {
+    "schema": "spt-wizard-snapshot",
+    "js_global": "__SPT_AGENT__",
+    "dom_id": "spt-wizard-snapshot"
   },
   "search_intent": [
     "Illinois security deposit return deadline",

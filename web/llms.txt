@@ -11,6 +11,7 @@
 - **City guides** · Chicago RLTO and major metros: https://simple-property.com/blog#guides-cities
 - **Launch stack** · pain: portfolio outruns memory · solution: tools by door count: https://simple-property.com/launch-stack
 - Agent bus: https://simple-property.com/spt-ai-bus.json
+- **Live wizard (in browser on /app only)** · `window.__SPT_AGENT__` · JSON in `#spt-wizard-snapshot` · updates every step · event `spt-agent-snapshot` · no API · step 5 also has **Copy for AI assistant** (full markdown clipboard)
 - Gospel: https://simple-property.com/.well-known/spt-gospel.json
 - **Feedback** · suggest state rulesets, wizard fields, guides: https://simple-property.com/feedback
 - **Deposit statutes index** · official outbound links for all wizard states + DC: https://simple-property.com/legal/deposit-statutes

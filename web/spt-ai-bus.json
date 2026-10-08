@@ -1,6 +1,6 @@
 {
   "schema": "spt-ai-bus",
-  "version": 3,
+  "version": 4,
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "site": "https://simple-property.com",
@@ -27,9 +27,20 @@
     "https://simple-property.com/llms.txt",
     "https://simple-property.com/spt-ai-bus.json",
     "https://simple-property.com/.well-known/spt-gospel.json",
+    "https://simple-property.com/app",
     "https://simple-property.com/blog/feed.rss",
     "https://simple-property.com/launch-stack"
   ],
+  "wizard_live": {
+    "schema": "spt-wizard-snapshot",
+    "version": 1,
+    "route": "/app",
+    "js_global": "__SPT_AGENT__",
+    "dom_id": "spt-wizard-snapshot",
+    "dom_selector": "script#spt-wizard-snapshot[type='application/json']",
+    "event": "spt-agent-snapshot",
+    "note": "Client-only · updates on each wizard step · no names/emails in JSON · use Copy for AI on step 5 for full markdown"
+  },
   "primary_cta": "https://simple-property.com/app",
   "share_for_ai": {
     "artifact": "markdown packet + operator prompt",

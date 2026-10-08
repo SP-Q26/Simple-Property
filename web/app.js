@@ -19,6 +19,7 @@ import {
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
 import { buildPacketAiReport, copyTextForAi } from "./lib/packet-ai-report.mjs";
+import { buildWizardAgentSnapshot, publishWizardAgentSnapshot } from "./lib/wizard-agent-snapshot.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "./lib/statute-urls.mjs";
 
@@ -1025,6 +1026,31 @@ function renderPrintPacket() {
     </div>`;
 }
 
+function publishLiveAgentSnapshot() {
+  const deadline = computeDeadline(deadlineInput());
+  const sub = parseSubEntitlement();
+  const subscriptionMeta = sub
+    ? {
+        plan: sub.plan,
+        valid_until: sub.valid_until,
+        product: sub.product,
+      }
+    : null;
+  publishWizardAgentSnapshot(
+    buildWizardAgentSnapshot({
+      step,
+      draft,
+      canExport: canExportPro(),
+      hasTurnUnlock: hasTurnUnlock(),
+      isProSubscription: isProSubscription(),
+      isDemoPro: typeof window.sptIsDemoPro === "function" && window.sptIsDemoPro(),
+      subscriptionMeta,
+      deadline,
+      savedPacketCount: listSavedPackets().length,
+    })
+  );
+}
+
 function render() {
   setStepLabels();
   const renders = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
@@ -1048,6 +1074,7 @@ function render() {
       els.status.textContent = "Autosaved in this browser.";
     }
   }
+  publishLiveAgentSnapshot();
 }
 
 els.prev?.addEventListener("click", () => {

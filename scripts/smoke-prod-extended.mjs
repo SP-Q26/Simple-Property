@@ -8,7 +8,7 @@ const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 const BASE = (process.env.SPT_SMOKE_URL || "https://simple-property.com").replace(/\/$/, "");
 
 const pages = [
-  { path: "/app", need: ["wizard-steps", "packet-select", "Deposit packet"], css: true },
+  { path: "/app", need: ["wizard-steps", "packet-select", "Deposit packet", "spt-wizard-snapshot"], css: true },
   { path: "/launch-stack", need: ["Stay ahead of deposit", "Deposit Desk", "doors"] },
   { path: "/success", need: ["Payment confirmed", "session_id", "sptRefreshEntitlement"] },
   { path: "/blog", need: ["Guides", "blog"] },

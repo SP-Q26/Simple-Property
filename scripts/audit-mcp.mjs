@@ -37,6 +37,7 @@ try {
   need("ai-bus blog_feed", Boolean(bus.blog_feed));
   need("ai-bus guides URL", bus.guides?.includes("/blog"));
   need("ai-bus primary_cta /app", bus.primary_cta?.includes("/app"));
+  need("ai-bus wizard_live", bus.wizard_live?.schema === "spt-wizard-snapshot");
 } catch {
   need("ai-bus JSON parse", false);
 }
