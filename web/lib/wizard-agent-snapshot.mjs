@@ -96,6 +96,10 @@ export function buildWizardAgentSnapshot(ctx) {
         "enter_to_continue",
         "watermarked_preview_print",
         "unlock_mail_ready_pdf",
+        "turnover_deep_link",
+        "packet_json_import_export",
+        "mail_proof_log",
+        "copy_return_link",
       ],
     },
     packet: {

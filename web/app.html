@@ -29,7 +29,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=45">
+  <link rel="stylesheet" href="/simple-property.css?v=46">
                   <link rel="alternate" type="application/json" href="#spt-wizard-snapshot" title="Deposit Desk · live wizard state (client)">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Deposit Desk","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://simple-property.com/app","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Free draft wizard"}}</script>
 </head>
@@ -76,6 +76,9 @@
         <select id="packet-select" aria-label="Load saved packet"></select>
         <button type="button" class="btn btn-secondary" id="btn-duplicate-packet" title="New tenant · same property &amp; landlord">Duplicate last</button>
         <button type="button" class="btn btn-secondary" id="btn-new-packet">New packet</button>
+        <button type="button" class="btn btn-secondary" id="btn-export-packet" title="Cross-device backup with photos">Download packet</button>
+        <button type="button" class="btn btn-secondary" id="btn-import-packet">Import packet</button>
+        <input type="file" id="packet-import-file" accept="application/json,.json" hidden />
         <button type="button" class="btn btn-secondary spt-billing-portal">Manage billing</button>
       </div>
       <div class="wizard-steps" id="wizard-step-labels" role="tablist" aria-label="Wizard steps">

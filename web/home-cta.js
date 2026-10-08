@@ -2,10 +2,11 @@
 (function () {
   "use strict";
 
+  var TURNOVER = "turnover=1&step=2";
   var PRESET = {
-    IL: "/app?state=IL&city=chicago-il",
-    DC: "/app?state=DC",
-    FL: "/app?state=FL&city=miami-fl",
+    IL: "/app?state=IL&city=chicago-il&" + TURNOVER,
+    DC: "/app?state=DC&" + TURNOVER,
+    FL: "/app?state=FL&city=miami-fl&" + TURNOVER,
   };
 
   function stateFromContext() {
@@ -21,8 +22,8 @@
 
   function hrefForState(code) {
     if (PRESET[code]) return PRESET[code];
-    if (code) return "/app?state=" + encodeURIComponent(code);
-    return "/app?state=IL&city=chicago-il";
+    if (code) return "/app?state=" + encodeURIComponent(code) + "&" + TURNOVER;
+    return PRESET.IL;
   }
 
   function apply() {
@@ -32,7 +33,7 @@
       el.setAttribute("href", href);
     });
     var primary = document.getElementById("hero-cta-primary");
-    if (primary && !code) primary.setAttribute("href", "/app?state=IL&city=chicago-il");
+    if (primary && !code) primary.setAttribute("href", PRESET.IL);
     else if (primary) primary.setAttribute("href", href);
   }
 

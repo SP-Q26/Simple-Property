@@ -15,7 +15,15 @@ export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__d
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 45;
+export const CSS_VERSION = 46;
+export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
+
+/** Deep link for move-out-first wizard entry. */
+export function appWizardHref(state, cityPreset = "") {
+  const q = new URLSearchParams({ state, turnover: "1", step: "2" });
+  if (cityPreset) q.set("city", cityPreset);
+  return `/app?${q.toString()}`;
+}
 export const FONT_GOOGLE =
   "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap";
 export const FONT_LINK_HTML = `  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,16 +61,16 @@ export const METRO_NAV = [
     state: "IL",
     city: "chicago-il",
     label: "Chicago · RLTO",
-    href: "/app?state=IL&city=chicago-il",
+    href: appWizardHref("IL", "chicago-il"),
     tone: "chi",
   },
-  { short: "DC", state: "DC", city: "", label: "Washington DC · RHCA", href: "/app?state=DC", tone: "dc" },
+  { short: "DC", state: "DC", city: "", label: "Washington DC · RHCA", href: appWizardHref("DC"), tone: "dc" },
   {
     short: "Mia",
     state: "FL",
     city: "miami-fl",
     label: "Miami · Florida § 83.49",
-    href: "/app?state=FL&city=miami-fl",
+    href: appWizardHref("FL", "miami-fl"),
     tone: "mia",
   },
 ];
@@ -76,6 +84,6 @@ export function localeNavEntries() {
     cite: STATE_PACKS[code].cite,
     statuteUrl: STATUTE_URLS[code],
     blog: `/blog#locale-${code}`,
-    app: `/app?state=${code}`,
+    app: appWizardHref(code),
   }));
 }

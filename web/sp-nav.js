@@ -7,7 +7,7 @@
       "state": "IL",
       "city": "chicago-il",
       "label": "Chicago · RLTO",
-      "href": "/app?state=IL&city=chicago-il",
+      "href": "/app?state=IL&turnover=1&step=2&city=chicago-il",
       "tone": "chi"
     },
     {
@@ -15,7 +15,7 @@
       "state": "DC",
       "city": "",
       "label": "Washington DC · RHCA",
-      "href": "/app?state=DC",
+      "href": "/app?state=DC&turnover=1&step=2",
       "tone": "dc"
     },
     {
@@ -23,7 +23,7 @@
       "state": "FL",
       "city": "miami-fl",
       "label": "Miami · Florida § 83.49",
-      "href": "/app?state=FL&city=miami-fl",
+      "href": "/app?state=FL&turnover=1&step=2&city=miami-fl",
       "tone": "mia"
     }
   ];
@@ -36,7 +36,7 @@
       "cite": "D.C. Code § 42-3502.17",
       "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.17",
       "blog": "/blog#locale-DC",
-      "app": "/app?state=DC"
+      "app": "/app?state=DC&turnover=1&step=2"
     },
     {
       "code": "FL",
@@ -45,7 +45,7 @@
       "cite": "Fla. Stat. § 83.49",
       "statuteUrl": "https://www.flsenate.gov/Laws/Statutes/2024/083.49",
       "blog": "/blog#locale-FL",
-      "app": "/app?state=FL"
+      "app": "/app?state=FL&turnover=1&step=2"
     },
     {
       "code": "GA",
@@ -54,7 +54,7 @@
       "cite": "O.C.G.A. 44-7-34",
       "statuteUrl": "https://law.justia.com/codes/georgia/title-44/chapter-7/section-44-7-34/",
       "blog": "/blog#locale-GA",
-      "app": "/app?state=GA"
+      "app": "/app?state=GA&turnover=1&step=2"
     },
     {
       "code": "IA",
@@ -63,7 +63,7 @@
       "cite": "Iowa Code 562A.12",
       "statuteUrl": "https://www.legis.iowa.gov/law/iowaCode/sections?codeChapter=562A&codeSection=562A.12",
       "blog": "/blog#locale-IA",
-      "app": "/app?state=IA"
+      "app": "/app?state=IA&turnover=1&step=2"
     },
     {
       "code": "IL",
@@ -72,7 +72,7 @@
       "cite": "765 ILCS 715/",
       "statuteUrl": "https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=2065&ChapterID=57",
       "blog": "/blog#locale-IL",
-      "app": "/app?state=IL"
+      "app": "/app?state=IL&turnover=1&step=2"
     },
     {
       "code": "IN",
@@ -81,7 +81,7 @@
       "cite": "IC 32-31-3-12 et seq.",
       "statuteUrl": "https://iga.in.gov/statutes/ic/2024/titles/32/ar/t.32/ch.31",
       "blog": "/blog#locale-IN",
-      "app": "/app?state=IN"
+      "app": "/app?state=IN&turnover=1&step=2"
     },
     {
       "code": "LA",
@@ -90,7 +90,7 @@
       "cite": "La. R.S. 9:3251",
       "statuteUrl": "https://www.legis.la.gov/Legis/Law.aspx?d=78289",
       "blog": "/blog#locale-LA",
-      "app": "/app?state=LA"
+      "app": "/app?state=LA&turnover=1&step=2"
     },
     {
       "code": "MD",
@@ -99,7 +99,7 @@
       "cite": "Md. Real Prop. § 8-203",
       "statuteUrl": "https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gpr&section=8-203",
       "blog": "/blog#locale-MD",
-      "app": "/app?state=MD"
+      "app": "/app?state=MD&turnover=1&step=2"
     },
     {
       "code": "MI",
@@ -108,7 +108,7 @@
       "cite": "MCL 554.610",
       "statuteUrl": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-554-610",
       "blog": "/blog#locale-MI",
-      "app": "/app?state=MI"
+      "app": "/app?state=MI&turnover=1&step=2"
     },
     {
       "code": "MO",
@@ -117,7 +117,7 @@
       "cite": "RSMo 535.300",
       "statuteUrl": "https://revisor.mo.gov/main/OneSection.aspx?section=535.300",
       "blog": "/blog#locale-MO",
-      "app": "/app?state=MO"
+      "app": "/app?state=MO&turnover=1&step=2"
     },
     {
       "code": "MS",
@@ -126,7 +126,7 @@
       "cite": "Miss. Code § 89-8-21",
       "statuteUrl": "https://law.justia.com/codes/mississippi/title-89/chapter-8/section-89-8-21/",
       "blog": "/blog#locale-MS",
-      "app": "/app?state=MS"
+      "app": "/app?state=MS&turnover=1&step=2"
     },
     {
       "code": "NC",
@@ -135,7 +135,7 @@
       "cite": "N.C.G.S. § 42-52",
       "statuteUrl": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_42/GS_42-52.html",
       "blog": "/blog#locale-NC",
-      "app": "/app?state=NC"
+      "app": "/app?state=NC&turnover=1&step=2"
     },
     {
       "code": "ND",
@@ -144,7 +144,7 @@
       "cite": "N.D.C.C. § 47-16-07.1",
       "statuteUrl": "https://www.ndleg.gov/assembly/current-session/ncc/ncc/47-16-07-1.htm",
       "blog": "/blog#locale-ND",
-      "app": "/app?state=ND"
+      "app": "/app?state=ND&turnover=1&step=2"
     },
     {
       "code": "NH",
@@ -153,7 +153,7 @@
       "cite": "RSA 540-A:7",
       "statuteUrl": "https://www.gencourt.state.n.us/rsa/html/LIV/540-A/540-A-7.htm",
       "blog": "/blog#locale-NH",
-      "app": "/app?state=NH"
+      "app": "/app?state=NH&turnover=1&step=2"
     },
     {
       "code": "NJ",
@@ -162,7 +162,7 @@
       "cite": "N.J.S.A. 46:8-21.1",
       "statuteUrl": "https://lis.njleg.gov/statute/N.J.S.A_46%3A8-21.1",
       "blog": "/blog#locale-NJ",
-      "app": "/app?state=NJ"
+      "app": "/app?state=NJ&turnover=1&step=2"
     },
     {
       "code": "NV",
@@ -171,7 +171,7 @@
       "cite": "NRS 118A.242",
       "statuteUrl": "https://www.leg.state.nv.us/NRS/NRS-118A.html#NRS118ASec242",
       "blog": "/blog#locale-NV",
-      "app": "/app?state=NV"
+      "app": "/app?state=NV&turnover=1&step=2"
     },
     {
       "code": "OH",
@@ -180,7 +180,7 @@
       "cite": "ORC 5321.16",
       "statuteUrl": "https://codes.ohio.gov/ohio-revised-code/section-5321.16",
       "blog": "/blog#locale-OH",
-      "app": "/app?state=OH"
+      "app": "/app?state=OH&turnover=1&step=2"
     },
     {
       "code": "UT",
@@ -189,7 +189,7 @@
       "cite": "Utah Code § 57-17-3",
       "statuteUrl": "https://le.utah.gov/xcode/Title57/Chapter17/57-17-3.html",
       "blog": "/blog#locale-UT",
-      "app": "/app?state=UT"
+      "app": "/app?state=UT&turnover=1&step=2"
     },
     {
       "code": "VA",
@@ -198,7 +198,7 @@
       "cite": "Va. Code § 55.1-1226",
       "statuteUrl": "https://law.lis.virginia.gov/vacodefull/title55.1/chapter12/section55.1-1226/",
       "blog": "/blog#locale-VA",
-      "app": "/app?state=VA"
+      "app": "/app?state=VA&turnover=1&step=2"
     },
     {
       "code": "WA",
@@ -207,7 +207,7 @@
       "cite": "RCW 59.18.280",
       "statuteUrl": "https://app.leg.wa.gov/rcw/default.aspx?cite=59.18.280",
       "blog": "/blog#locale-WA",
-      "app": "/app?state=WA"
+      "app": "/app?state=WA&turnover=1&step=2"
     }
   ];
 

@@ -25,6 +25,8 @@ import { STATUTE_URLS, CHICAGO_RLTO_URL } from "./lib/statute-urls.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
+const TURNOVER_MODE_KEY = "spt_turnover_mode";
+const PACKET_BACKUP_SCHEMA = 1;
 const MAX_STEPS = 5;
 const MAX_PHOTO_BYTES = 400_000;
 const MAX_PHOTOS_TOTAL = 1_200_000;
@@ -44,6 +46,8 @@ const DEFAULT_ROOMS = [
   "Bathroom",
   "Hall / entry",
 ];
+
+const TURNOVER_ROOM_NAMES = ["Living room", "Kitchen", "Bedroom"];
 
 function normalizeRoom(r) {
   return {
@@ -86,8 +90,114 @@ function emptyDraft() {
     })),
     deductions: [{ category: "Unpaid rent", description: "", amount: "" }],
     signatures: { landlordPrinted: "", tenantPrinted: "", date: new Date().toISOString().slice(0, 10) },
+    mailProof: { mailedAt: "", tracking: "", method: "" },
+    turnoverMode: false,
     wizardMaxStep: 1,
   };
+}
+
+function compactRoomsForTurnover() {
+  const byName = new Map(draft.rooms.map((r) => [r.name, r]));
+  draft.rooms = TURNOVER_ROOM_NAMES.map((name) => normalizeRoom(byName.get(name) || { name }));
+}
+
+function isTurnoverQuery(params) {
+  const t = params.get("turnover");
+  return t === "1" || t === "true";
+}
+
+function enableTurnoverMode(opts = {}) {
+  draft.turnoverMode = true;
+  try {
+    sessionStorage.setItem(TURNOVER_MODE_KEY, "1");
+  } catch {
+    /* ignore */
+  }
+  if (opts.compactRooms !== false) compactRoomsForTurnover();
+  const minStep = opts.minStep || 2;
+  draft.wizardMaxStep = Math.max(draft.wizardMaxStep || 1, minStep);
+  saveDraft(draft);
+}
+
+async function copyPlainText(text) {
+  if (typeof copyTextForAi === "function") {
+    try {
+      await copyTextForAi(text);
+      return true;
+    } catch {
+      /* fall through */
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function packetReturnUrl() {
+  const u = new URL(location.origin + "/app");
+  u.searchParams.set("packet_id", draft.id);
+  u.searchParams.set("step", "5");
+  return u.toString();
+}
+
+function buildPacketBackup() {
+  readStepIntoDraft();
+  return {
+    schema: PACKET_BACKUP_SCHEMA,
+    exportedAt: new Date().toISOString(),
+    product: "Deposit Desk",
+    data: JSON.parse(JSON.stringify(draft)),
+  };
+}
+
+function downloadPacketBackup() {
+  const payload = buildPacketBackup();
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `deposit-desk-packet-${slugStreet(draft.property.street)}-${draft.id.slice(0, 8)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  if (els.status) {
+    els.status.textContent =
+      "Packet file downloaded · move to another device with Import packet file (photos included if embedded).";
+  }
+}
+
+function importPacketBackupObject(parsed) {
+  if (!parsed || parsed.schema !== PACKET_BACKUP_SCHEMA || !parsed.data) {
+    throw new Error("invalid_schema");
+  }
+  const imported = parsed.data;
+  draft = {
+    ...emptyDraft(),
+    ...imported,
+    id: imported.id || emptyDraft().id,
+    property: { ...emptyDraft().property, ...imported.property },
+    landlord: { ...emptyDraft().landlord, ...imported.landlord },
+    tenant: { ...emptyDraft().tenant, ...imported.tenant },
+    lease: { ...emptyDraft().lease, ...imported.lease },
+    deposit: { ...emptyDraft().deposit, ...imported.deposit },
+    signatures: { ...emptyDraft().signatures, ...imported.signatures },
+    mailProof: { ...emptyDraft().mailProof, ...imported.mailProof },
+    deductions: imported.deductions?.length ? imported.deductions : emptyDraft().deductions,
+    rooms: imported.rooms?.length ? imported.rooms.map(normalizeRoom) : emptyDraft().rooms,
+  };
+  draft.property.state = normalizeStateCode(draft.property.state);
+  draft.property.cityPreset = normalizeCityPresetId(draft.property.cityPreset);
+  draft.wizardMaxStep = Math.max(inferWizardMaxStep(draft), imported.wizardMaxStep || 1, 5);
+  syncChicagoFromPreset();
+  saveDraft(draft);
+  step = Math.min(MAX_STEPS, Math.max(1, parseInt(imported.wizardMaxStep, 10) || 5));
+  render();
+  saveCurrentToLibrary();
+  focusStepTitle();
+  if (els.status) els.status.textContent = "Packet imported · review export step before you mail.";
 }
 
 function loadDraft() {
@@ -120,6 +230,13 @@ function loadDraft() {
     );
     if (!merged.property.cityPreset && merged.property.inChicago && merged.property.state === "IL") {
       merged.property.cityPreset = "chicago-il";
+    }
+    merged.mailProof = { ...emptyDraft().mailProof, ...parsed.mailProof };
+    merged.turnoverMode = Boolean(parsed.turnoverMode);
+    try {
+      if (sessionStorage.getItem(TURNOVER_MODE_KEY) === "1") merged.turnoverMode = true;
+    } catch {
+      /* ignore */
     }
     return merged;
   } catch {
@@ -227,7 +344,7 @@ function sptTrack(name, data) {
 function proBlockMessage() {
   if (!canExportPro()) {
     if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
-      return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
+      return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, use <strong>Duplicate last</strong> per building batch, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
     }
     return `<div class="paywall paywall--streamlined" id="export-paywall" role="status">
       <strong>Unlock mail-ready PDF</strong> · one disputed withhold usually costs more than $29.
@@ -236,6 +353,8 @@ function proBlockMessage() {
         <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
         <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
         <a class="btn btn-secondary" href="/pricing">Pro · $22/mo</a>
+        <button type="button" class="btn btn-secondary" id="btn-copy-return-link">Copy return link (this browser)</button>
+        <button type="button" class="btn btn-secondary" id="btn-copy-unlock-note">Copy unlock note (tenant pays)</button>
       </div>
     </div>`;
   }
@@ -247,14 +366,21 @@ function paywallFreeToolsNote() {
 }
 
 function renderMailReadyRoute() {
+  const mp = draft.mailProof || emptyDraft().mailProof;
   return `<div class="mail-route-panel form-panel" id="mail-ready-route">
       <p class="section-label">Mail-ready packet route</p>
       <ol class="mail-route-list">
         <li>Confirm landlord mailing address, tenant name, surrender date, and withhold lines above.</li>
         <li><strong>Preview (watermarked)</strong> in the footer · check layout before you pay.</li>
         <li><strong>Unlock mail-ready PDF</strong> · print or Save as PDF for tenant mail and your files.</li>
-        <li>Mail check and itemization together · log certificate of mailing or tracking on your own.</li>
+        <li>Mail check and itemization together · log certificate of mailing or tracking below.</li>
       </ol>
+      <div class="form-grid two mail-proof-grid">
+        <div><label for="mail-mailed">Date mailed to tenant</label><input id="mail-mailed" type="date" value="${esc(mp.mailedAt)}" /></div>
+        <div><label for="mail-method">Mail method</label><input id="mail-method" type="text" value="${esc(mp.method)}" placeholder="USPS certified, courier, hand delivery" /></div>
+        <div style="grid-column:1/-1"><label for="mail-tracking">Tracking or certificate #</label><input id="mail-tracking" type="text" value="${esc(mp.tracking)}" autocomplete="off" /></div>
+      </div>
+      <p class="field-hint">Stored in this browser only · appears on your printed packet when filled.</p>
       <p class="ps-fix">Your attorney will thank you for dated, itemized records. Organized packets cut billable hours when a tenant disputes a withhold.</p>
       <p class="field-hint">Not legal advice · Deposit Desk does not mail for you · counsel sets strategy.</p>
     </div>`;
@@ -442,21 +568,29 @@ function downloadProofManifest() {
 
 function initFromQuery() {
   const params = new URLSearchParams(location.search);
-  const stepParam = parseInt(params.get("step") || "0", 10);
+  let stepParam = parseInt(params.get("step") || "0", 10);
+  if (isTurnoverQuery(params)) {
+    enableTurnoverMode({ minStep: 2 });
+    if (!(stepParam >= 1 && stepParam <= MAX_STEPS)) stepParam = 2;
+  }
   if (stepParam >= 1 && stepParam <= MAX_STEPS) step = stepParam;
   const packetId = params.get("packet_id");
   if (packetId && packetId !== draft.id) {
     const found = listSavedPackets().find((p) => p.id === packetId);
     if (found) {
       draft = { ...emptyDraft(), ...found.data, id: found.id };
+      draft.wizardMaxStep = Math.max(draft.wizardMaxStep || 1, step);
       saveDraft(draft);
     } else {
       window.__sptStatusMsg =
-        "Paid packet id not in saved list · load the same browser draft or restore from Saved packets.";
+        "Packet id not in this browser · use Import packet file from the toolbar, or pick a saved packet.";
     }
   }
   if (params.get("checkout") === "cancel") {
     window.__sptStatusMsg = "Checkout canceled · draft still saved · unlock anytime from step 5.";
+  }
+  if (params.get("checkout") === "success") {
+    window.__sptStatusMsg = "Payment received · if export is still locked, refresh once or re-open this packet.";
   }
 }
 
@@ -709,6 +843,11 @@ function renderStep2() {
   return `
     <h2 id="step-title" tabindex="-1">Turnover &amp; clock</h2>
     <p class="field-hint">Surrender drives the deadline · deposit and tenant ID the packet.</p>
+    ${
+      normalizeStateCode(draft.property.state) === "FL"
+        ? `<p class="turnover-alert field-hint" role="note"><strong>Florida two-step (§ 83.49):</strong> within 15 days after termination, return the full deposit <strong>or</strong> send written claim notice · then 30 days for balance and accounting. <a href="/blog/florida-83-49-two-step-miami-condo-deposit">Two-step guide</a> · confirm with counsel.</p>`
+        : ""
+    }
     ${clockLine}
     <div class="form-grid two wizard-flow-grid">
       <div class="turnover-priority field-with-action" style="grid-column:1/-1">
@@ -796,10 +935,10 @@ function renderStep4() {
   const hasRoomDetail = draft.rooms.some(
     (r) => r.notes || r.photo || r.photoLink || r.condition !== "Good"
   );
-  const roomsOpen = hasRoomDetail || Boolean(draft.photoAlbumLink);
+  const roomsOpen = !draft.turnoverMode && (hasRoomDetail || Boolean(draft.photoAlbumLink));
   return `
     <h2 id="step-title" tabindex="-1">Move-in proof (optional)</h2>
-    <p class="field-hint">Fast path: paste one folder link · skip room grid if you already have cloud proof.</p>
+    <p class="field-hint">Fast path: paste one folder link · skip room grid if you already have cloud proof.${draft.turnoverMode ? " Turnover mode uses a 3-room checklist." : ""}</p>
     <div class="photo-album-panel">
       <label for="photo-album">Whole-unit photo folder</label>
       <input id="photo-album" class="external-photo-link" type="url" value="${esc(draft.photoAlbumLink)}" placeholder="Dropbox or Google Drive folder link" inputmode="url" autocomplete="off" />
@@ -844,7 +983,7 @@ function renderStep5() {
     }
     ${renderMailReadyRoute()}
     ${!canExportPro() ? paywallFreeToolsNote() : ""}
-    ${renderItemizationPreview(!canExportPro())}
+    ${renderItemizationPreview(false)}
     ${canExportPro() ? exportEntitlementSection() : proBlockMessage()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
       <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
@@ -918,6 +1057,11 @@ function readStepIntoDraft() {
     draft.signatures.date = document.getElementById("sig-date")?.value || draft.signatures.date;
     const rem = document.getElementById("rem-email");
     if (rem?.value?.trim()) draft.landlord.email = rem.value.trim();
+    draft.mailProof = {
+      mailedAt: document.getElementById("mail-mailed")?.value || "",
+      tracking: document.getElementById("mail-tracking")?.value?.trim() || "",
+      method: document.getElementById("mail-method")?.value?.trim() || "",
+    };
   }
   saveDraft(draft);
 }
@@ -1225,6 +1369,30 @@ function bindStepEvents() {
       if (typeof window.sptStartCheckout === "function") window.sptStartCheckout(btn);
     });
   });
+  document.getElementById("btn-copy-return-link")?.addEventListener("click", async () => {
+    readStepIntoDraft();
+    saveCurrentToLibrary();
+    const ok = await copyPlainText(packetReturnUrl());
+    if (els.status) {
+      els.status.textContent = ok
+        ? "Return link copied · opens this packet on step 5 in the same browser profile."
+        : "Could not copy · save packet and bookmark /app?packet_id=" + draft.id.slice(0, 8) + "…";
+    }
+  });
+  document.getElementById("btn-copy-unlock-note")?.addEventListener("click", async () => {
+    readStepIntoDraft();
+    const note = [
+      "Deposit Desk unlock (Simple Property Tools)",
+      "Packet id: " + draft.id,
+      "After payment, return to: " + packetReturnUrl(),
+      "If you use a different device, ask your landlord for the packet .json file and tap Import packet file on simple-property.com/app.",
+      "Not legal advice.",
+    ].join("\n");
+    const ok = await copyPlainText(note);
+    if (els.status) {
+      els.status.textContent = ok ? "Unlock note copied · paste into email or text to payer." : "Could not copy unlock note.";
+    }
+  });
 }
 
 function syncPrintAccessClass(previewMode) {
@@ -1269,6 +1437,11 @@ function buildPrintPacketInnerHtml() {
     <p><strong>Landlord:</strong> ${esc(draft.landlord.name)} · ${esc(draft.landlord.email)}<br/>
     <strong>Mailing address:</strong> ${esc(draft.landlord.address) || "n/a"}</p>
     ${deadline.deadline ? `<p><strong>Deadline (${esc(deadline.jurisdiction)}):</strong> ${formatUsDate(deadline.deadline)}</p>` : ""}
+    ${
+      draft.mailProof?.mailedAt || draft.mailProof?.tracking || draft.mailProof?.method
+        ? `<p><strong>Mailed to tenant:</strong> ${formatUsDate(draft.mailProof.mailedAt) || "n/a"} · ${esc(draft.mailProof.method) || "n/a"} · ${esc(draft.mailProof.tracking) || "n/a"}</p>`
+        : ""
+    }
     ${draft.photoAlbumLink ? `<p><strong>Move-in photo folder:</strong> ${esc(draft.photoAlbumLink)}</p>` : ""}
     <h3>Move-in condition</h3>
     <table><thead><tr><th>Area</th><th>Condition</th><th>Notes</th></tr></thead><tbody>${roomRows}</tbody></table>
@@ -1424,6 +1597,25 @@ document.getElementById("btn-new-packet")?.addEventListener("click", () => {
 });
 
 document.getElementById("btn-duplicate-packet")?.addEventListener("click", duplicateFromLastPacket);
+
+document.getElementById("btn-export-packet")?.addEventListener("click", downloadPacketBackup);
+
+document.getElementById("btn-import-packet")?.addEventListener("click", () => {
+  document.getElementById("packet-import-file")?.click();
+});
+
+document.getElementById("packet-import-file")?.addEventListener("change", async (e) => {
+  const file = e.target.files?.[0];
+  e.target.value = "";
+  if (!file) return;
+  try {
+    const text = await file.text();
+    const parsed = JSON.parse(text);
+    importPacketBackupObject(parsed);
+  } catch {
+    if (els.status) els.status.textContent = "Could not import · use a Deposit Desk packet .json export.";
+  }
+});
 
 document.getElementById("packet-select")?.addEventListener("change", (e) => {
   const id = e.target.value;
