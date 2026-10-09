@@ -41,6 +41,8 @@ need("css iOS input 16px", css.includes("@media (max-width: 639px)") && css.incl
 need("css mobile page safe padding", css.includes("max(var(--space-3), var(--safe-right))"));
 need("css coverage bubbles", css.includes(".coverage-bubbles") && css.includes(".coverage-bubble--30"));
 need("css coverage tap target", css.includes(".coverage-bubble") && css.includes("--coverage-chip:"));
+need("css coverage bubble hover+active", css.includes(".coverage-bubble:hover") && css.includes(".coverage-bubble:active"));
+need("css metro nav focus visible", css.includes(".metro-nav__link:focus-visible"));
 need("css locale bar pointer-events", css.includes(".locale-bar") && css.includes("pointer-events: auto"));
 need("css webkit touch callout block", css.includes("-webkit-touch-callout: none"));
 need("css coverage strip map", css.includes(".coverage-bubbles--strip") && css.includes(".coverage-bubbles__track"));

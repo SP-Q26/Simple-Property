@@ -53,6 +53,8 @@ need("css tap min height token", css.includes("--tap-min"));
 need("css iOS input 16px mobile", css.includes("@media (max-width: 639px)") && css.includes("font-size: 1rem") && css.includes("input[type=\"text\"]"));
 need("css packet-bar mobile stack", css.includes(".packet-bar") && css.includes("flex-direction: column"));
 need("css pathway touch active", css.includes(".pathway-card:active"));
+need("css coverage bubble active tap", css.includes(".coverage-bubble:active"));
+need("css guide pills active tap", css.includes(".guides-hub .guide-pills a:active"));
 need("css touch-action buttons", css.includes("touch-action: manipulation") && css.includes(".btn"));
 need("css form inputs full width pattern", css.includes(".form-grid") || css.includes(".field-stack"));
 need("css skip link", css.includes(".skip-link"));

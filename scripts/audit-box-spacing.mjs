@@ -22,6 +22,8 @@ need("mail-route list rhythm", css.includes(".mail-route-list li:last-child"));
 need("wizard itemization totals divider", css.includes(".itemization-preview .deposit-receipt__totals"));
 need("paywall actions gap", css.includes(".spt-wizard-app .paywall-actions"));
 need("form-panel base padding", css.includes(".form-panel") && css.includes("padding: var(--space-5)"));
+need("coverage strip inset padding", css.includes(".coverage-bubbles--strip") && css.includes("var(--space-4)"));
+need("coverage spotlight inset", css.includes(".coverage-spotlight") && css.includes("var(--space-6)"));
 
 const pillH = parseInt(doorSvg.match(/y="212" width="580" height="(\d+)"/)?.[1] || "0", 10);
 need("OG highlight min height", pillH >= 94);
