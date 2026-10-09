@@ -29,8 +29,8 @@ console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header`, css.includes(`v${CSS_VERSION}`));
-/** v49+: coverage strip box, interactive hover/tap/focus gates. */
-need("css size under 76KB", cssBytes < 76 * 1024);
+/** v50+: Isles Collective footer shell. */
+need("css size under 78KB", cssBytes < 78 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));

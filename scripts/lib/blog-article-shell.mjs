@@ -3,6 +3,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BRAND_TAG_HTML, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-locale.mjs";
 import { articleGraph, SITE } from "./seo-jsonld.mjs";
+import { wrapFooter, FOOTER_NAV_BLOG_POST } from "./site-footer.mjs";
 
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
@@ -59,10 +60,7 @@ ${atmosphereBlock}
     <main id="main" class="prose">
 ${bodyHtml}
     </main>
-    <footer class="site-footer">
-      <p class="footer-colophon"><img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22"><span>Simple Property Tools · not legal advice</span></p>
-      <nav class="footer-links"><a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/">Home</a></nav>
-    </footer>
+    ${wrapFooter("site-footer", FOOTER_NAV_BLOG_POST)}
   </div>
   <script src="/sp-nav.js" defer></script>
   <script defer src="/_vercel/insights/script.js"></script>

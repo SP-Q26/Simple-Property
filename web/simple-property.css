@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v49 · coverage box pad + tap/hover */
+/* Simple Property Tools · Deposit Desk · v50 · Isles Collective footer */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1929,19 +1929,103 @@ main > h1,
 }
 
 .site-footer {
-  border-top: 1px solid var(--border);
-  padding: var(--space-6) 0 var(--space-5);
   margin-top: var(--space-7);
+  padding: var(--space-6) 0 var(--space-5);
   font-size: 0.88rem;
   color: var(--muted);
+  border-top: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--beam-gold) 55%, transparent) 22%,
+      color-mix(in srgb, var(--quant-blue) 45%, transparent) 78%,
+      transparent 100%
+    )
+    border-box;
+}
+
+.footer-shell {
+  display: grid;
+  gap: var(--space-5);
+  align-items: end;
+}
+
+@media (min-width: 768px) {
+  .footer-shell {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--space-6) var(--space-5);
+  }
+
+  .footer-links {
+    justify-content: flex-end;
+    margin-top: 0;
+  }
+}
+
+.footer-identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 .footer-colophon {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 0 0 var(--space-3);
-  font-size: 0.82rem;
+  gap: 0.55rem;
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.footer-product {
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+.footer-disclaimer {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.footer-collective {
+  margin: var(--space-2) 0 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.footer-collective__name {
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 88%, var(--quant-blue));
+}
+
+.footer-collective__year {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.footer-rights {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.footer-credit {
+  margin: var(--space-1) 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 92%, var(--quant-blue));
+}
+
+.footer-credit__name {
+  font-weight: 600;
+  color: var(--quant-blue);
 }
 
 .footer-mark {
@@ -2780,7 +2864,7 @@ table.data-table th {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 0.65rem;
-  margin-top: var(--space-3);
+  margin-top: 0;
   font-size: 0.8125rem;
 }
 
@@ -2802,6 +2886,11 @@ table.data-table th {
 .footer-links a:hover {
   color: var(--quant-blue);
   background: var(--quant-blue-wash);
+}
+
+.footer-links a:focus-visible {
+  outline: 2px solid var(--quant-blue);
+  outline-offset: 2px;
 }
 
 .prose-legal h2 {

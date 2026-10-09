@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { SUPPORTED_STATES, STATE_PACKS } from "../web/lib/deposit-rules.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "../web/lib/statute-urls.mjs";
 import { BRAND_TAG, CSS_VERSION, FONT_GOOGLE, STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+import { wrapFooter } from "./lib/site-footer.mjs";
 
 const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
@@ -91,16 +92,11 @@ ${chicagoRow}
       </div>
       <p class="disclaimer">Not legal advice. Local ordinances, lease terms, and program rules may change your deadline. Confirm with licensed counsel.</p>
     </main>
-    <footer class="site-footer">
-      <p class="footer-colophon">
-        <img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22">
-        <span>Simple Property Tools · not legal advice</span>
-      </p>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="/app">App</a><a href="/pricing">Pricing</a><a href="/blog">Guides</a>
-        <a href="/legal">Legal</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
-      </nav>
-    </footer>
+    ${wrapFooter(
+      "site-footer",
+      `<a href="/app">App</a><a href="/pricing">Pricing</a><a href="/blog">Guides</a>
+        <a href="/legal">Legal</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>`
+    )}
   </div>
   <script src="/sp-nav.js" defer></script>
 </body>
