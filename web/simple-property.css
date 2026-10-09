@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v50 · Isles Collective footer */
+/* Simple Property Tools · Deposit Desk · v51 · brand mark polish */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1194,6 +1194,8 @@ main > h1,
   width: 2.5rem;
   height: 2.5rem;
   flex-shrink: 0;
+  border-radius: 0.55rem;
+  box-shadow: 0 1px 2px rgba(61, 52, 41, 0.1);
 }
 
 .brand-text {

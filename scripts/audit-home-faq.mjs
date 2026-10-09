@@ -25,7 +25,9 @@ need("FAQ pricing numbers", index.includes("$29") && index.includes("$99"));
 need("FAQ legal advice item", index.includes("Is this legal advice?"));
 need("FAQ no stale Wisconsin", !index.includes("Wisconsin and other states are not in the app"));
 need("FAQ door panels", index.includes("faq-doors") && index.includes("faq-door"));
-need("FAQ nine doors heading", index.includes("Nine doors"));
+need("FAQ ten doors heading", index.includes("Ten doors"));
+need("FAQ honest limits door", index.includes("Honest limits"));
+need("FAQ launch-stack handoff link", index.includes("/launch-stack"));
 
 console.log(fail ? `Home FAQ audit FAILED (${fail})` : "Home FAQ audit OK");
 process.exit(fail ? 1 : 0);

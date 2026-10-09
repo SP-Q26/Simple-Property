@@ -15,6 +15,10 @@ const skipHosts = new Set([
   "www.simple-property.com",
   "buy.stripe.com",
   "checkout.stripe.com",
+  "www.innago.com",
+  "innago.com",
+  "www.avail.com",
+  "avail.com",
 ]);
 
 let fail = 0;
