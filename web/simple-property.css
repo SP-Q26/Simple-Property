@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v51 · brand mark polish */
+/* Simple Property Tools · Deposit Desk · v52 · court record warning card */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -8,6 +8,9 @@
   --success: #4a6741;
   --success-soft: #e6ebe0;
   --warning: #a8641a;
+  --court-warning-ink: #6b3838;
+  --court-warning-border: rgba(139, 58, 58, 0.42);
+  --court-warning-surface: rgba(139, 58, 58, 0.09);
   --beam-gold: #c9a227;
   --beam-gold-dim: #a8841f;
   --gold-hairline: rgba(201, 162, 39, 0.4);
@@ -1252,13 +1255,26 @@ main > h1,
   max-width: 42rem;
 }
 
+.court-record-card {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    145deg,
+    var(--court-warning-surface),
+    rgba(122, 64, 56, 0.11)
+  );
+  border: 1px solid var(--court-warning-border);
+  border-left: 4px solid rgba(139, 58, 58, 0.58);
+  box-shadow: var(--shadow-soft);
+}
+
 .hero-rotate-kicker {
   margin: 0 0 var(--space-2);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--quant-blue);
+  color: var(--court-warning-ink);
 }
 
 .hero-rotate-line {
@@ -1266,18 +1282,50 @@ main > h1,
   min-height: 3.2em;
   font-size: 1.05rem;
   line-height: 1.45;
-  color: var(--muted);
-  transition: opacity 0.35s ease;
+  color: var(--ink);
+  font-weight: 500;
+  transition:
+    opacity 0.35s ease,
+    transform 0.4s ease;
+  transform-origin: left center;
 }
 
 .hero-rotate-line.is-fading {
-  opacity: 0.35;
+  opacity: 0.22;
+  transform: rotate(-0.65deg) translateY(3px);
+}
+
+.hero-rotate-line.is-entering {
+  animation: court-record-in 0.44s ease forwards;
+}
+
+@keyframes court-record-in {
+  from {
+    opacity: 0.2;
+    transform: rotate(1.15deg) translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0);
+  }
 }
 
 .hero-rotate-note {
   margin: var(--space-2) 0 0;
   font-size: 0.78rem;
   color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rotate-line.is-entering {
+    animation: none;
+  }
+
+  .hero-rotate-line.is-fading,
+  .hero-rotate-line.is-entering {
+    transform: none;
+  }
 }
 
 /* Pain → solution copy (landing + pricing) */

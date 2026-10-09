@@ -38,6 +38,7 @@ need("guide pills hover+active+focus", css.includes(".guides-hub .guide-pills a:
 need("btn hover+active+focus", css.includes(".btn:active") && css.includes(".btn:focus-visible"));
 need("header nav hover", css.includes(".header-nav a:hover"));
 need("faq door summary tap", css.includes(".faq-door summary:hover") && css.includes(".faq-door summary:focus-visible"));
+need("court record rotate motion", css.includes("court-record-in") && css.includes("prefers-reduced-motion"));
 need("statute index link hover", css.includes(".locale-bar__statute-index a:hover"));
 
 need("coverage spotlight padding", blockHas(".coverage-spotlight {", "padding: var(--space-6)"));

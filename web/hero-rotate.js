@@ -23,6 +23,10 @@
     window.setTimeout(function () {
       el.textContent = lines[next];
       el.classList.remove("is-fading");
+      el.classList.add("is-entering");
+      window.setTimeout(function () {
+        el.classList.remove("is-entering");
+      }, 440);
     }, 320);
   }
 

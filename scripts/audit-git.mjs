@@ -39,6 +39,8 @@ function note(msg) {
 
 console.log("── Simple Property · git audit ──\n");
 
+const inCi = process.env.CI === "true" || process.env.GITHUB_ACTIONS === "true";
+
 if (!existsSync(join(root, ".git"))) {
   bad("not a git repository — cd into simple-property clone");
   process.exit(1);
@@ -46,11 +48,13 @@ if (!existsSync(join(root, ".git"))) {
 
 const name = tryRun("git config user.name");
 const email = tryRun("git config user.email");
-if (!email || !email.endsWith("@users.noreply.github.com")) {
+if (inCi) {
+  ok("CI mode · local user.name/user.email not required (commit authors checked below)");
+} else if (!email || !email.endsWith("@users.noreply.github.com")) {
   bad(`user.email must be GitHub noreply (got ${email || "unset"})`);
 } else ok(`identity ${name} <${email}>`);
 
-if (email && (email.includes(".lan") || email.includes(".local"))) {
+if (!inCi && email && (email.includes(".lan") || email.includes(".local"))) {
   bad("machine-local email in git config");
 }
 
@@ -66,7 +70,9 @@ if (!remote || !remote.includes("SP-Q26/Simple-Property")) {
 } else ok("origin → Simple-Property");
 
 const canonicalSsh = "git@github.com:SP-Q26/Simple-Property.git";
-if (remote === canonicalSsh) {
+if (inCi && remote?.includes("SP-Q26/Simple-Property")) {
+  ok("CI checkout remote (HTTPS expected)");
+} else if (remote === canonicalSsh) {
   ok("origin uses SSH (agent + terminal push)");
 } else if (remote?.startsWith("https://")) {
   bad("origin is HTTPS — use SSH to avoid SP-Q26@ password prompts (see docs/GIT_AGENT_CONNECTION.md)");
@@ -79,14 +85,19 @@ if (process.env.CI !== "true" && remote?.startsWith("git@")) {
   else note("SSH key not available in this shell — agent push needs full permissions");
 }
 
-tryRun("git fetch origin --quiet") || tryRun("git fetch origin");
+if (!inCi) {
+  tryRun("git fetch origin --quiet") || tryRun("git fetch origin");
+}
 
-const localSha = tryRun("git rev-parse main");
-const remoteSha = tryRun("git rev-parse origin/main");
-const counts = tryRun("git rev-list --left-right --count origin/main...main");
+const branch = tryRun("git rev-parse --abbrev-ref HEAD") || "main";
+const localSha = tryRun(`git rev-parse ${branch}`);
+const remoteSha = inCi ? localSha : tryRun("git rev-parse origin/main");
+const counts = inCi ? null : tryRun(`git rev-list --left-right --count origin/main...${branch}`);
 const [behind, ahead] = counts ? counts.split("\t").map(Number) : [0, 0];
 
-if (localSha === remoteSha) {
+if (inCi) {
+  ok(`CI checkout at ${branch} ${localSha?.slice(0, 7) || ""}`);
+} else if (localSha === remoteSha) {
   ok("main matches origin/main");
 } else {
   const mergeBase = tryRun("git merge-base main origin/main");
@@ -101,16 +112,18 @@ if (localSha === remoteSha) {
   }
 }
 
-const upstream = tryRun("git rev-parse --abbrev-ref main@{upstream}");
-if (!upstream || upstream === "main@{upstream}") {
-  note("main has no upstream — after push: git branch -u origin/main main");
-} else ok(`upstream ${upstream}`);
+if (!inCi) {
+  const upstream = tryRun("git rev-parse --abbrev-ref main@{upstream}");
+  if (!upstream || upstream === "main@{upstream}") {
+    note("main has no upstream — after push: git branch -u origin/main main");
+  } else ok(`upstream ${upstream}`);
+}
 
-const porcelain = tryRun("git status --porcelain");
+const porcelain = inCi ? "" : tryRun("git status --porcelain");
 if (porcelain) {
   note("uncommitted changes (commit or stash before deploy)");
   console.log(porcelain.split("\n").slice(0, 8).join("\n"));
-} else ok("working tree clean");
+} else ok(inCi ? "CI checkout (clean by definition)" : "working tree clean");
 
 const staged = tryRun("git diff --cached --name-only");
 if (staged) {

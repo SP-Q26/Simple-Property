@@ -45,6 +45,11 @@ for (const rel of REQUIRED) {
     if (svg.includes(bad)) need(`${rel} no forbidden char`, false);
   }
   const xml = spawnSync("xmllint", ["--noout", p], { encoding: "utf8" });
+  if (xml.error?.code === "ENOENT") {
+    console.error("SVG FAIL: xmllint not installed · apt install libxml2-utils or brew install libxml2");
+    fail++;
+    break;
+  }
   need(`${rel} xmllint`, xml.status === 0);
   if (xml.status !== 0 && xml.stderr) console.error(xml.stderr.trim());
 }

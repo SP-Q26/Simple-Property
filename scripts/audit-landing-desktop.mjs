@@ -36,6 +36,9 @@ need("css desktop landing block", css.includes(".page > main .hero") && css.incl
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
 need("home no tap the map", !index.includes("Tap the map"));
 need("home color bar coverage", /color bar/i.test(index));
+need("home court record warning card", index.includes("court-record-card") && index.includes("hero-rotate"));
+need("css court record warning", css.includes("--court-warning-surface") && css.includes(".court-record-card"));
+need("hero rotate script", index.includes("hero-rotate.js"));
 
 const title = index.match(/<title>([^<]+)<\/title>/)?.[1] || "";
 need("title mentions deposit + states", /deposit/i.test(title) && new RegExp(`${STATE_ONLY_COUNT} states|DC`).test(title));
