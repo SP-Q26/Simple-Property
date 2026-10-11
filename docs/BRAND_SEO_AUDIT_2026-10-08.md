@@ -43,7 +43,41 @@
 
 ## UI change this sweep
 
-- Home **court record card:** semi-red surface, left accent, rotating lines with slight rotate-in animation; respects `prefers-reduced-motion` (static first line, no interval).
+- Home **court record card (v53):** muted danger tokens (`--court-warning-accent`), stronger left rail, kicker **signal dot** (`::before`), note line in warning ink; still greystone + sage palette (not alarm-red).
+- Rotating lines + slight rotate-in; `prefers-reduced-motion` unchanged.
+
+## Vercel logo + favicon (repo audit)
+
+**Automated:** `node scripts/audit-vercel-favicon.mjs` (wired in `npm run audit`)
+
+| Check | Status |
+|-------|--------|
+| `/favicon.svg` (32 viewBox, door mark) | OK |
+| Every public HTML links `/favicon.svg` + manifest | OK |
+| `site.webmanifest` coverage copy matches `brand-locale` | OK (`sync-site-webmanifest.mjs`) |
+| JSON-LD `logo` → apex favicon | OK |
+| OG `og/spt-share-door.png` + card svg | OK |
+| Vercel Insights / Speed Insights `defer` | OK |
+
+**Manual (Vercel dashboard):** Project **Settings → General → Project Icon** — upload or match **same asset as** `web/favicon.svg` (repo cannot set this via API). Preview tab favicon should match after deploy.
+
+**Manifest fix:** `theme_color` aligned to greystone `#f4f0e6`; description no longer stale “18 states”.
+
+## Trust · simple · problem/solution
+
+**Automated:** `node scripts/audit-trust-voice.mjs`
+
+| Lens | Verdict |
+|------|---------|
+| **Trust** | Documentation-only disclaimers, honest limits FAQ, no hype/scare copy, statute outbound gated |
+| **Simple** | Tagline + ps-problem/ps-fix blocks, one product lane (Deposit Desk), door mark without micro-type |
+| **Problem → solution** | Home + pricing pain leads; court card = *pattern* risk (dockets), CTA to packet not litigation |
+
+**Blogs touched (court context cross-link, not legal advice):**
+
+- `deposit-desk-vs-spreadsheet`
+- `missed-deposit-deadline-small-landlord-multi-state`
+- `landlord-tools-by-door-count`
 
 ## Re-run
 

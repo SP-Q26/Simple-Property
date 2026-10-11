@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v52 · court record warning card */
+/* Simple Property Tools · Deposit Desk · v53 · court warning polish */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -9,8 +9,9 @@
   --success-soft: #e6ebe0;
   --warning: #a8641a;
   --court-warning-ink: #6b3838;
-  --court-warning-border: rgba(139, 58, 58, 0.42);
-  --court-warning-surface: rgba(139, 58, 58, 0.09);
+  --court-warning-accent: #9a4545;
+  --court-warning-border: rgba(139, 58, 58, 0.48);
+  --court-warning-surface: rgba(139, 58, 58, 0.11);
   --beam-gold: #c9a227;
   --beam-gold-dim: #a8841f;
   --gold-hairline: rgba(201, 162, 39, 0.4);
@@ -1256,25 +1257,41 @@ main > h1,
 }
 
 .court-record-card {
+  position: relative;
   padding: var(--space-4);
   border-radius: var(--radius-md);
   background: linear-gradient(
     145deg,
     var(--court-warning-surface),
-    rgba(122, 64, 56, 0.11)
+    rgba(122, 64, 56, 0.14)
   );
   border: 1px solid var(--court-warning-border);
-  border-left: 4px solid rgba(139, 58, 58, 0.58);
-  box-shadow: var(--shadow-soft);
+  border-left: 4px solid var(--court-warning-accent);
+  box-shadow:
+    0 1px 3px rgba(139, 58, 58, 0.1),
+    var(--shadow-soft);
 }
 
 .hero-rotate-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   margin: 0 0 var(--space-2);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--court-warning-ink);
+}
+
+.hero-rotate-kicker::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--court-warning-accent);
+  box-shadow: 0 0 0 2px rgba(139, 58, 58, 0.2);
 }
 
 .hero-rotate-line {
@@ -1314,7 +1331,8 @@ main > h1,
 .hero-rotate-note {
   margin: var(--space-2) 0 0;
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--court-warning-ink);
+  opacity: 0.88;
 }
 
 @media (prefers-reduced-motion: reduce) {

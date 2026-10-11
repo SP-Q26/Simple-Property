@@ -1,13 +1,23 @@
 {
   "name": "Simple Property Tools · Deposit Desk",
   "short_name": "Deposit Desk",
-  "description": "Security deposit packets for small landlords · 18 states + DC · founded in Chicago.",
+  "description": "Itemize it. Date it. Never pay the fees. · Security deposit packets · 19 states + DC · founded in Chicago.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f4f0e6",
-  "theme_color": "#4a6741",
+  "theme_color": "#f4f0e6",
   "icons": [
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
   ]
 }

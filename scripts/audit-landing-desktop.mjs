@@ -38,6 +38,7 @@ need("home no tap the map", !index.includes("Tap the map"));
 need("home color bar coverage", /color bar/i.test(index));
 need("home court record warning card", index.includes("court-record-card") && index.includes("hero-rotate"));
 need("css court record warning", css.includes("--court-warning-surface") && css.includes(".court-record-card"));
+need("css court kicker signal", css.includes(".hero-rotate-kicker::before"));
 need("hero rotate script", index.includes("hero-rotate.js"));
 
 const title = index.match(/<title>([^<]+)<\/title>/)?.[1] || "";
