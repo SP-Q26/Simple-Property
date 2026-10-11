@@ -143,7 +143,8 @@ for (const [key, cat] of Object.entries(byCat)) {
   indexSections += `        <h2>${cat.label}</h2>\n        <p class="muted">${cat.audience}</p>\n        <ul class="bullet-tight">\n`;
   for (const p of cat.posts) {
     const watch = p.lawWatch ? ' <span class="badge">Law watch</span>' : "";
-    indexSections += `          <li><a href="/blog/${p.slug}">${p.title}</a>${watch}</li>\n`;
+    const archive = p.archived ? ' <span class="badge">Archive</span>' : "";
+    indexSections += `          <li><a href="/blog/${p.slug}">${p.title}</a>${watch}${archive}</li>\n`;
   }
   indexSections += "        </ul>\n      </section>\n";
 }

@@ -357,8 +357,37 @@
     },
     {
       "slug": "deposit-desk-new-states-thanks-sep-2026",
-      "title": "New state coverage · thank you to the operators who sourced local regs",
-      "description": "Security deposit guides and wizard coverage in 32 states + DC · how to pick your state and start a packet. Not legal advice.",
+      "title": "New state coverage · September 2026 archive (19 states + DC)",
+      "description": "Archived September 2026 snapshot · wizard coverage at 19 states + DC · thank-you to operators who sourced local regs. See October update for current coverage. Not legal advice.",
+      "category": "news",
+      "intent": "news",
+      "archived": true,
+      "supersededBy": "deposit-desk-new-states-thanks-oct-2026",
+      "states": [
+        "DC",
+        "GA",
+        "LA",
+        "MD",
+        "MS",
+        "NC",
+        "ND",
+        "NH",
+        "NJ",
+        "NV",
+        "UT",
+        "VA",
+        "WA"
+      ],
+      "published": "2026-09-23",
+      "updated": "2026-09-23",
+      "ogImage": "/og/spt-share-coverage-expansion.png",
+      "ogImageAlt": "Deposit Desk new state coverage · 19 states + DC color chips · September 2026 archive",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-new-states-thanks-oct-2026",
+      "title": "New state coverage · October 2026 update (32 states + DC)",
+      "description": "Security deposit guides and wizard coverage in 32 states + DC · metro shortcuts · how to pick your state and start a packet. Not legal advice.",
       "category": "news",
       "intent": "news",
       "states": [
@@ -376,8 +405,8 @@
         "VA",
         "WA"
       ],
-      "published": "2026-09-23",
-      "updated": "2026-10-08",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
       "ogImage": "/og/spt-share-coverage-expansion.png",
       "ogImageAlt": "Deposit Desk new state coverage · 32 states + DC color chips · thank you to operator contributors",
       "statutes": []

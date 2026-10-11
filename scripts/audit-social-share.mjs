@@ -70,7 +70,7 @@ if (/^\d{5,}$/.test(FB_APP_ID)) {
     needContent(`fb:app_id on ${rel}`, html.includes(fbTag));
   }
   const coverageHtml = readFileSync(
-    join(web, "blog/deposit-desk-new-states-thanks-sep-2026.html"),
+    join(web, "blog/deposit-desk-new-states-thanks-oct-2026.html"),
     "utf8"
   );
   needContent("coverage post fb:app_id", coverageHtml.includes(fbTag));
@@ -96,9 +96,9 @@ for (const rel of dropPages) {
   }
 }
 
-const coveragePost = manifest.posts.find((p) => p.slug === "deposit-desk-new-states-thanks-sep-2026");
+const coveragePost = manifest.posts.find((p) => p.slug === "deposit-desk-new-states-thanks-oct-2026");
 const coverageHtml = readFileSync(
-  join(web, "blog/deposit-desk-new-states-thanks-sep-2026.html"),
+  join(web, "blog/deposit-desk-new-states-thanks-oct-2026.html"),
   "utf8"
 );
 const covImg = `${OG_IMAGE_COVERAGE_PATH}?v=${OG_CACHE_VERSION}`;

@@ -2,7 +2,9 @@
 
 **Default image:** `https://simple-property.com/og/spt-share-door.png?v=20260923` (1200×630 · coverage color bar + door)
 
-**Coverage announcement:** `https://simple-property.com/og/spt-share-coverage-expansion.png?v=20260923` (blog post `deposit-desk-new-states-thanks-sep-2026`)
+**Coverage announcement (current):** `https://simple-property.com/blog/deposit-desk-new-states-thanks-oct-2026` · OG `spt-share-coverage-expansion.png?v=20261011a`
+
+**Coverage archive (September 2026 snapshot):** `https://simple-property.com/blog/deposit-desk-new-states-thanks-sep-2026` · frozen at 19 states + DC
 
 Facebook and LinkedIn do not reliably use SVG for `og:image`. PNG is generated from `web/og/*.svg` via `build-og-share-svg.mjs` (reads `deposit-rules.mjs` for 30/45 chips).
 
