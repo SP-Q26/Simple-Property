@@ -148,7 +148,7 @@ const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia
   <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">New metros: Tampa · Atlanta · Seattle · Vegas · DMV · more</text>
   <text x="72" y="178" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="18">Thank you to operators who sourced local regs</text>
   <text x="72" y="204" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="19">${BRAND_TAGLINE}</text>
-  <text x="72" y="232" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="20" font-weight="600">Deposit Desk · CA · CO · FL · HI · MN · Tier A packs live</text>
+  <text x="72" y="232" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="20" font-weight="600">Deposit Desk · 32 states + DC · CA · CO · FL · HI · MN in wizard</text>
   <text x="72" y="258" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="16">Not legal advice · documentation only</text>
 ${legend(72, 278)}
 ${chipGrid(72, 302, 11, 36, 5)}

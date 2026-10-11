@@ -25,6 +25,8 @@ const FORBIDDEN = [
   { re: /\bspecced in our\b/i, label: "specced in our" },
   { re: /\biOS app incoming\b/i, label: "iOS app incoming" },
   { re: /\bdeferred rulesets\b/i, label: "deferred rulesets" },
+  { re: /\bTier[\s-]?A\b/i, label: "Tier A (internal expansion label)" },
+  { re: /\bTier[\s-]?4\b/i, label: "Tier 4 (internal expansion label)" },
 ];
 
 const ogDir = join(web, "og");

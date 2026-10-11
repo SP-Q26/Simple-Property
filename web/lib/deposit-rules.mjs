@@ -2,7 +2,7 @@
  * Deposit return deadline helpers · supported states (alpha).
  * Not legal advice. Confirm statutes and local ordinances for each property.
  * Wisconsin deferred (forwarding-address clock · separate spec).
- * Tier A Oct 2026: CA, MN, HI, VT, NE, SD, RI, CT, DE, WV, KY, AR, CO.
+ * Oct 2026 expansion packs: CA, MN, HI, VT, NE, SD, RI, CT, DE, WV, KY, AR, CO.
  */
 
 import {

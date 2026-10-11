@@ -86,7 +86,7 @@ const metroSeries = [
 ];
 let metroSections = `\n      <section class="guides-hub blog-cluster blog-cluster--metro" id="cluster-metro" aria-labelledby="guides-metro">\n`;
 metroSections += `        <h2 id="guides-metro">Metro deep dives</h2>\n`;
-metroSections += `        <p class="muted">Hyper-focused neighborhood guides · Chicago, DC, Miami · plus Tier A metro local guides (FL, ATL, DMV, SLC, NOLA, Seattle, Vegas). Not legal advice.</p>\n`;
+metroSections += `        <p class="muted">Hyper-focused neighborhood guides · Chicago, DC, Miami · plus metro local guides (Tampa, Orlando, Jacksonville, Atlanta, Richmond, NoVA, Baltimore, SLC, New Orleans, Seattle, Vegas). Not legal advice.</p>\n`;
 for (const { id, label } of metroSeries) {
   const list = manifest.posts.filter((p) => p.series === id).sort((a, b) => a.title.localeCompare(b.title));
   if (!list.length) continue;
