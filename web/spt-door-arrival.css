@@ -1,5 +1,5 @@
-/* Scout arrival · glass + sword shimmer · WWL through-motion canon */
-.spt-scout-arrival {
+/* Greystone door arrival · WWL through-motion (Simple Property) */
+.spt-door-arrival {
   position: fixed;
   inset: 0;
   z-index: 100000;
@@ -7,66 +7,58 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: rgba(244, 240, 230, 0.92);
+  background: rgba(244, 240, 230, 0.94);
   transform-origin: 50% 48%;
   opacity: 1;
-  animation: sptScoutThrough 1.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sptDoorThrough 1.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 420ms;
 }
 
-.spt-scout-arrival--done {
+.spt-door-arrival--done {
   opacity: 0;
   visibility: hidden;
   animation: none;
 }
 
-@keyframes sptScoutThrough {
+@keyframes sptDoorThrough {
   0% {
     opacity: 1;
     transform: scale(0.88);
-    filter: brightness(1);
   }
   18% {
     opacity: 1;
     transform: scale(0.92);
   }
-  55% {
-    opacity: 0.94;
-    transform: scale(1.05);
-  }
   100% {
     opacity: 0;
     transform: scale(1.18);
-    filter: brightness(1.12);
     visibility: hidden;
   }
 }
 
-.spt-scout-arrival__glow {
+.spt-door-arrival__glow {
   position: absolute;
   width: min(72vmin, 420px);
   height: min(72vmin, 420px);
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(201, 162, 39, 0.28) 0%,
-    rgba(59, 90, 120, 0.12) 42%,
+    rgba(201, 162, 39, 0.22) 0%,
+    rgba(107, 92, 74, 0.1) 45%,
     rgba(244, 240, 230, 0) 70%
   );
-  opacity: 0.75;
-  transform: scale(0.9);
-  animation: sptScoutGlow 1.6s ease-out forwards;
+  animation: sptDoorGlow 1.6s ease-out forwards;
 }
 
-@keyframes sptScoutGlow {
+@keyframes sptDoorGlow {
   0%,
   26% {
     opacity: 0.35;
     transform: scale(0.85);
   }
   60% {
-    opacity: 0.95;
-    transform: scale(1.06);
+    opacity: 0.9;
+    transform: scale(1.05);
   }
   100% {
     opacity: 0;
@@ -74,7 +66,7 @@
   }
 }
 
-.spt-scout-arrival__player {
+.spt-door-arrival__player {
   position: relative;
   z-index: 1;
   width: min(78vmin, 460px);
@@ -84,20 +76,19 @@
   justify-content: center;
 }
 
-.spt-scout-arrival__lottie,
-.spt-scout-arrival__svg {
+.spt-door-arrival__lottie,
+.spt-door-arrival__svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spt-scout-arrival {
+  .spt-door-arrival {
     animation-duration: 0.45s;
     animation-delay: 0ms;
   }
-  .spt-scout-arrival__glow {
+  .spt-door-arrival__glow {
     animation: none;
-    opacity: 0.45;
   }
 }

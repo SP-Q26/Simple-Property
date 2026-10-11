@@ -11,7 +11,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
 const MIN = 95;
 
-const scoutArrival = spawnSync(process.execPath, [join(root, "scripts", "audit-scout-arrival-lottie.mjs")], {
+const scoutArrival = spawnSync(process.execPath, [join(root, "scripts", "audit-door-arrival-lottie.mjs")], {
   encoding: "utf8",
   stdio: ["ignore", "pipe", "pipe"],
 });
