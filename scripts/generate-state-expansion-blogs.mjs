@@ -14,6 +14,7 @@ import {
   checklistBody,
   deadlineBody,
 } from "./lib/blog-post-helpers.mjs";
+import { TIER_A_STATE_PAIN_OCT_2026 } from "./lib/tier-a-state-pain-oct-2026.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -24,6 +25,7 @@ const LEGACY = new Set(["IL", "IN", "OH", "MI", "IA", "MO"]);
 
 /** @type {Record<string, { pain: { slug: string, title: string, description: string, headline: string, problem: string, bullets: string[], fix: string }, localNote?: string }>} */
 const STATE_PAIN = {
+  ...TIER_A_STATE_PAIN_OCT_2026,
   DC: {
     pain: {
       slug: "dc-rhca-deposit-clock-rowhouse-investor",
@@ -368,20 +370,34 @@ const LEGACY_PAIN = {
 
 function slugPrefix(code) {
   const map = {
+    AR: "arkansas",
+    CA: "california",
+    CO: "colorado",
+    CT: "connecticut",
     DC: "dc",
+    DE: "delaware",
+    FL: "florida",
     GA: "georgia",
+    HI: "hawaii",
+    KY: "kentucky",
     LA: "louisiana",
     MD: "maryland",
+    MN: "minnesota",
     MS: "mississippi",
     NC: "north-carolina",
     ND: "north-dakota",
+    NE: "nebraska",
     NH: "new-hampshire",
     NJ: "new-jersey",
     NV: "nevada",
+    OH: "ohio",
+    RI: "rhode-island",
+    SD: "south-dakota",
     UT: "utah",
     VA: "virginia",
+    VT: "vermont",
     WA: "washington",
-    FL: "florida",
+    WV: "west-virginia",
   };
   return map[code] || code.toLowerCase();
 }
@@ -538,6 +554,12 @@ for (const code of ["IN", "OH", "MI", "IA", "MO"]) {
   } else {
     console.log("html refresh legacy pain", post.slug);
   }
+}
+
+manifest.primaryPainByState = manifest.primaryPainByState || {};
+for (const code of SUPPORTED_STATES) {
+  const cfg = STATE_PAIN[code];
+  if (cfg?.pain?.slug) manifest.primaryPainByState[code] = cfg.pain.slug;
 }
 
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");

@@ -18,26 +18,39 @@ const PUBLISHED = "2026-09-26";
 const MODIFIED = "2026-10-02";
 
 const SLUG_PREFIX = {
+  AR: "arkansas",
+  CA: "california",
+  CO: "colorado",
+  CT: "connecticut",
   DC: "dc",
+  DE: "delaware",
+  FL: "florida",
   GA: "georgia",
+  HI: "hawaii",
   IA: "iowa",
   IL: "illinois",
   IN: "indiana",
+  KY: "kentucky",
   LA: "louisiana",
   MD: "maryland",
   MI: "michigan",
+  MN: "minnesota",
   MO: "missouri",
   MS: "mississippi",
   NC: "north-carolina",
   ND: "north-dakota",
+  NE: "nebraska",
   NH: "new-hampshire",
   NJ: "new-jersey",
   NV: "nevada",
   OH: "ohio",
+  RI: "rhode-island",
+  SD: "south-dakota",
   UT: "utah",
   VA: "virginia",
+  VT: "vermont",
   WA: "washington",
-  FL: "florida",
+  WV: "west-virginia",
 };
 
 /** One line of local deposit culture per state (operator voice · not legal advice). */
@@ -82,6 +95,32 @@ const LOCAL_CULTURE = {
     "Each withhold line needs substantiation in the file, not just a label on a spreadsheet row.",
   FL:
     "Condo move-outs stack HOA fees, elevator reservations, and in-unit damage on one spreadsheet. Map the 15-day claim fork before you paint for the next tenant.",
+  AR:
+    "Sixty days feels safe until a tenant argues itemization never arrived at the last known address.",
+  CA:
+    "Twenty-one days after vacate punishes operators who wait for every contractor invoice before writing withhold lines.",
+  CO:
+    "Front Range leases sometimes specify a longer written window. Copy the clause into your log before you trust a thirty-day habit.",
+  CT:
+    "Forwarding address timing can restart the clock you thought you already spent.",
+  DE:
+    "Twenty days passes fast when you are waiting on a single carpet vendor quote.",
+  HI:
+    "Island travel and vendor schedules compress the fourteen-day window after termination.",
+  KY:
+    "URLTA counties expect signed damage lists and a written refund demand trail, not a verbal withhold.",
+  MN:
+    "Document mailing instructions before you treat the twenty-one-day window as started.",
+  NE:
+    "Fourteen days after termination leaves little room for informal key handoffs.",
+  RI:
+    "Later-of lease end, possession, and forwarding address makes one spreadsheet column lie.",
+  SD:
+    "Twenty-one days after termination once you have a mailing address is easy to miss on rural turns.",
+  VT:
+    "Seasonal units may differ from year-round defaults. Confirm with counsel before you export.",
+  WV:
+    "Sixty-day math can involve next-tenant move-in, not just lease end on paper.",
 };
 
 function slugFor(code) {

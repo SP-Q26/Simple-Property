@@ -2,48 +2,74 @@
   "site": "https://simple-property.com",
   "feedPath": "/blog/feed.rss",
   "stateOrder": [
+    "AR",
+    "CA",
+    "CO",
+    "CT",
     "DC",
+    "DE",
     "FL",
     "GA",
+    "HI",
     "IA",
     "IL",
     "IN",
+    "KY",
     "LA",
     "MD",
     "MI",
+    "MN",
     "MO",
     "MS",
     "NC",
     "ND",
+    "NE",
     "NH",
     "NJ",
     "NV",
     "OH",
+    "RI",
+    "SD",
     "UT",
     "VA",
-    "WA"
+    "VT",
+    "WA",
+    "WV"
   ],
   "stateLabels": {
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
     "DC": "District of Columbia",
+    "DE": "Delaware",
     "FL": "Florida",
     "GA": "Georgia",
+    "HI": "Hawaii",
     "IA": "Iowa",
     "IL": "Illinois",
     "IN": "Indiana",
+    "KY": "Kentucky",
     "LA": "Louisiana",
     "MD": "Maryland",
     "MI": "Michigan",
+    "MN": "Minnesota",
     "MO": "Missouri",
     "MS": "Mississippi",
     "NC": "North Carolina",
     "ND": "North Dakota",
+    "NE": "Nebraska",
     "NH": "New Hampshire",
     "NJ": "New Jersey",
     "NV": "Nevada",
     "OH": "Ohio",
+    "RI": "Rhode Island",
+    "SD": "South Dakota",
     "UT": "Utah",
     "VA": "Virginia",
-    "WA": "Washington"
+    "VT": "Vermont",
+    "WA": "Washington",
+    "WV": "West Virginia"
   },
   "primaryPainByState": {
     "DC": "dc-rhca-deposit-clock-rowhouse-investor",
@@ -65,7 +91,20 @@
     "UT": "utah-missed-deposit-deadline-penalty-track",
     "VA": "virginia-45-day-itemization-mail-proof",
     "WA": "washington-deposit-invoices-substantiation",
-    "FL": "florida-missed-15-day-claim-notice-deposit"
+    "FL": "florida-missed-15-day-claim-notice-deposit",
+    "AR": "arkansas-60-day-deposit-mail-last-known-address",
+    "CA": "california-21-day-deposit-itemization-forfeit",
+    "CO": "colorado-30-vs-60-day-lease-deposit-clock",
+    "CT": "connecticut-forwarding-address-later-of-clock",
+    "DE": "delaware-20-day-deposit-double-damages-fear",
+    "HI": "hawaii-14-day-deposit-return-forfeit",
+    "KY": "kentucky-urlta-deposit-demand-and-damage-lists",
+    "MN": "minnesota-21-day-deposit-mailing-address",
+    "NE": "nebraska-14-day-deposit-itemization",
+    "RI": "rhode-island-20-day-later-of-deposit-clock",
+    "SD": "south-dakota-21-day-deposit-address-gate",
+    "VT": "vermont-14-day-deposit-seasonal-unit",
+    "WV": "west-virginia-60-day-deposit-next-tenant-clock"
   },
   "categories": {
     "law": {
@@ -1896,7 +1935,7 @@
         "DC"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "D.C. Code § 42-3502.17"
       ]
@@ -1911,7 +1950,7 @@
         "GA"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "O.C.G.A. 44-7-34"
       ]
@@ -1926,7 +1965,7 @@
         "IA"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "Iowa Code 562A.12"
       ]
@@ -1941,7 +1980,7 @@
         "IL"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "765 ILCS 715/"
       ]
@@ -1956,7 +1995,7 @@
         "IN"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "IC 32-31-3-12 et seq."
       ]
@@ -1971,7 +2010,7 @@
         "LA"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "La. R.S. 9:3251"
       ]
@@ -1986,7 +2025,7 @@
         "MD"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "Md. Real Prop. § 8-203"
       ]
@@ -2001,7 +2040,7 @@
         "MI"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "MCL 554.610"
       ]
@@ -2016,7 +2055,7 @@
         "MO"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "RSMo 535.300"
       ]
@@ -2031,7 +2070,7 @@
         "MS"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "Miss. Code § 89-8-21"
       ]
@@ -2046,7 +2085,7 @@
         "NC"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "N.C.G.S. § 42-52"
       ]
@@ -2061,7 +2100,7 @@
         "ND"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "N.D.C.C. § 47-16-07.1"
       ]
@@ -2076,7 +2115,7 @@
         "NH"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "RSA 540-A:7"
       ]
@@ -2091,7 +2130,7 @@
         "NJ"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "N.J.S.A. 46:8-21.1"
       ]
@@ -2106,7 +2145,7 @@
         "NV"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "NRS 118A.242"
       ]
@@ -2121,7 +2160,7 @@
         "OH"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "ORC 5321.16"
       ]
@@ -2136,7 +2175,7 @@
         "UT"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "Utah Code § 57-17-3"
       ]
@@ -2151,7 +2190,7 @@
         "VA"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "Va. Code § 55.1-1226"
       ]
@@ -2166,7 +2205,7 @@
         "WA"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "RCW 59.18.280"
       ]
@@ -2435,9 +2474,1121 @@
         "FL"
       ],
       "published": "2026-09-26",
-      "updated": "2026-10-08",
+      "updated": "2026-10-02",
       "statutes": [
         "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "arkansas-60-day-deposit-mail-last-known-address",
+      "title": "Arkansas 60-day deposit and last-known-address mail",
+      "description": "Long clock, thin itemization, and mail to the last address on file. Ark. Code § 18-16-305. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "AR"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Ark. Code § 18-16-305"
+      ]
+    },
+    {
+      "slug": "arkansas-60-day-deposit-deadline",
+      "title": "Arkansas 60-day deposit return window",
+      "description": "60-day return default from surrender · Ark. Code § 18-16-305. Not legal advice.",
+      "category": "law",
+      "states": [
+        "AR"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Ark. Code § 18-16-305"
+      ]
+    },
+    {
+      "slug": "arkansas-deposit-itemization",
+      "title": "Arkansas deposit itemization",
+      "description": "Written withhold lines · Ark. Code § 18-16-305. Not legal advice.",
+      "category": "law",
+      "states": [
+        "AR"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Ark. Code § 18-16-305"
+      ]
+    },
+    {
+      "slug": "arkansas-security-deposit-checklist",
+      "title": "Arkansas security deposit checklist",
+      "description": "Move-in through move-out · Ark. Code § 18-16-305. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "AR"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Ark. Code § 18-16-305"
+      ]
+    },
+    {
+      "slug": "california-21-day-deposit-itemization-forfeit",
+      "title": "California 21-day deposit itemization and forfeiture risk",
+      "description": "Three weeks after vacate with strict itemization habits. Cal. Civ. Code § 1950.5. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "CA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Cal. Civ. Code § 1950.5"
+      ]
+    },
+    {
+      "slug": "california-21-day-deposit-deadline",
+      "title": "California 21-day deposit return window",
+      "description": "21-day return default from surrender · Cal. Civ. Code § 1950.5. Not legal advice.",
+      "category": "law",
+      "states": [
+        "CA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Cal. Civ. Code § 1950.5"
+      ]
+    },
+    {
+      "slug": "california-deposit-itemization",
+      "title": "California deposit itemization",
+      "description": "Written withhold lines · Cal. Civ. Code § 1950.5. Not legal advice.",
+      "category": "law",
+      "states": [
+        "CA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Cal. Civ. Code § 1950.5"
+      ]
+    },
+    {
+      "slug": "california-security-deposit-checklist",
+      "title": "California security deposit checklist",
+      "description": "Move-in through move-out · Cal. Civ. Code § 1950.5. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "CA"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Cal. Civ. Code § 1950.5"
+      ]
+    },
+    {
+      "slug": "colorado-30-vs-60-day-lease-deposit-clock",
+      "title": "Colorado 30-day default vs lease up to 60 days",
+      "description": "Statutory default and written lease extensions confuse one spreadsheet. C.R.S. § 38-12-103. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "CO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "C.R.S. § 38-12-103"
+      ]
+    },
+    {
+      "slug": "colorado-30-day-deposit-deadline",
+      "title": "Colorado 30-day deposit return window",
+      "description": "30-day return default from surrender · C.R.S. § 38-12-103. Not legal advice.",
+      "category": "law",
+      "states": [
+        "CO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "C.R.S. § 38-12-103"
+      ]
+    },
+    {
+      "slug": "colorado-deposit-itemization",
+      "title": "Colorado deposit itemization",
+      "description": "Written withhold lines · C.R.S. § 38-12-103. Not legal advice.",
+      "category": "law",
+      "states": [
+        "CO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "C.R.S. § 38-12-103"
+      ]
+    },
+    {
+      "slug": "colorado-security-deposit-checklist",
+      "title": "Colorado security deposit checklist",
+      "description": "Move-in through move-out · C.R.S. § 38-12-103. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "CO"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "C.R.S. § 38-12-103"
+      ]
+    },
+    {
+      "slug": "connecticut-forwarding-address-later-of-clock",
+      "title": "Connecticut forwarding address and later-of clock",
+      "description": "Twenty-one days after tenancy ends or fifteen days after written forwarding address. Conn. Gen. Stat. § 47a-21. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "CT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Conn. Gen. Stat. § 47a-21"
+      ]
+    },
+    {
+      "slug": "connecticut-21-day-deposit-deadline",
+      "title": "Connecticut 21-day deposit return window",
+      "description": "21-day return default from surrender · Conn. Gen. Stat. § 47a-21. Not legal advice.",
+      "category": "law",
+      "states": [
+        "CT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Conn. Gen. Stat. § 47a-21"
+      ]
+    },
+    {
+      "slug": "connecticut-deposit-itemization",
+      "title": "Connecticut deposit itemization",
+      "description": "Written withhold lines · Conn. Gen. Stat. § 47a-21. Not legal advice.",
+      "category": "law",
+      "states": [
+        "CT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Conn. Gen. Stat. § 47a-21"
+      ]
+    },
+    {
+      "slug": "connecticut-security-deposit-checklist",
+      "title": "Connecticut security deposit checklist",
+      "description": "Move-in through move-out · Conn. Gen. Stat. § 47a-21. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "CT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Conn. Gen. Stat. § 47a-21"
+      ]
+    },
+    {
+      "slug": "delaware-20-day-deposit-double-damages-fear",
+      "title": "Delaware 20-day deposit return discipline",
+      "description": "Short window and stiff dispute stakes. 25 Del. C. § 5514. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "DE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "25 Del. C. § 5514"
+      ]
+    },
+    {
+      "slug": "delaware-20-day-deposit-deadline",
+      "title": "Delaware 20-day deposit return window",
+      "description": "20-day return default from surrender · 25 Del. C. § 5514. Not legal advice.",
+      "category": "law",
+      "states": [
+        "DE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "25 Del. C. § 5514"
+      ]
+    },
+    {
+      "slug": "delaware-deposit-itemization",
+      "title": "Delaware deposit itemization",
+      "description": "Written withhold lines · 25 Del. C. § 5514. Not legal advice.",
+      "category": "law",
+      "states": [
+        "DE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "25 Del. C. § 5514"
+      ]
+    },
+    {
+      "slug": "delaware-security-deposit-checklist",
+      "title": "Delaware security deposit checklist",
+      "description": "Move-in through move-out · 25 Del. C. § 5514. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "DE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "25 Del. C. § 5514"
+      ]
+    },
+    {
+      "slug": "hawaii-14-day-deposit-return-forfeit",
+      "title": "Hawaii 14-day deposit return",
+      "description": "Two-week window after termination. Haw. Rev. Stat. § 521-38. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "HI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Haw. Rev. Stat. § 521-38"
+      ]
+    },
+    {
+      "slug": "hawaii-14-day-deposit-deadline",
+      "title": "Hawaii 14-day deposit return window",
+      "description": "14-day return default from surrender · Haw. Rev. Stat. § 521-38. Not legal advice.",
+      "category": "law",
+      "states": [
+        "HI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Haw. Rev. Stat. § 521-38"
+      ]
+    },
+    {
+      "slug": "hawaii-deposit-itemization",
+      "title": "Hawaii deposit itemization",
+      "description": "Written withhold lines · Haw. Rev. Stat. § 521-38. Not legal advice.",
+      "category": "law",
+      "states": [
+        "HI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Haw. Rev. Stat. § 521-38"
+      ]
+    },
+    {
+      "slug": "hawaii-security-deposit-checklist",
+      "title": "Hawaii security deposit checklist",
+      "description": "Move-in through move-out · Haw. Rev. Stat. § 521-38. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "HI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Haw. Rev. Stat. § 521-38"
+      ]
+    },
+    {
+      "slug": "kentucky-urlta-deposit-demand-and-damage-lists",
+      "title": "Kentucky URLTA deposit demand and damage lists",
+      "description": "Separate account, move-in/out lists, and written refund demand habits. KRS 383.580. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "KY"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "KRS 383.580"
+      ]
+    },
+    {
+      "slug": "kentucky-30-day-deposit-deadline",
+      "title": "Kentucky 30-day deposit return window",
+      "description": "30-day return default from surrender · KRS 383.580. Not legal advice.",
+      "category": "law",
+      "states": [
+        "KY"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "KRS 383.580"
+      ]
+    },
+    {
+      "slug": "kentucky-deposit-itemization",
+      "title": "Kentucky deposit itemization",
+      "description": "Written withhold lines · KRS 383.580. Not legal advice.",
+      "category": "law",
+      "states": [
+        "KY"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "KRS 383.580"
+      ]
+    },
+    {
+      "slug": "kentucky-security-deposit-checklist",
+      "title": "Kentucky security deposit checklist",
+      "description": "Move-in through move-out · KRS 383.580. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "KY"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "KRS 383.580"
+      ]
+    },
+    {
+      "slug": "minnesota-21-day-deposit-mailing-address",
+      "title": "Minnesota 21-day deposit and mailing address",
+      "description": "Three weeks after tenancy ends once you have forwarding instructions. Minn. Stat. § 504B.178. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "MN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Minn. Stat. § 504B.178"
+      ]
+    },
+    {
+      "slug": "minnesota-21-day-deposit-deadline",
+      "title": "Minnesota 21-day deposit return window",
+      "description": "21-day return default from surrender · Minn. Stat. § 504B.178. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Minn. Stat. § 504B.178"
+      ]
+    },
+    {
+      "slug": "minnesota-deposit-itemization",
+      "title": "Minnesota deposit itemization",
+      "description": "Written withhold lines · Minn. Stat. § 504B.178. Not legal advice.",
+      "category": "law",
+      "states": [
+        "MN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Minn. Stat. § 504B.178"
+      ]
+    },
+    {
+      "slug": "minnesota-security-deposit-checklist",
+      "title": "Minnesota security deposit checklist",
+      "description": "Move-in through move-out · Minn. Stat. § 504B.178. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "MN"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Minn. Stat. § 504B.178"
+      ]
+    },
+    {
+      "slug": "nebraska-14-day-deposit-itemization",
+      "title": "Nebraska 14-day deposit itemization",
+      "description": "Two weeks after termination with itemized balance. Neb. Rev. Stat. § 76-1416. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "NE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Neb. Rev. Stat. § 76-1416"
+      ]
+    },
+    {
+      "slug": "nebraska-14-day-deposit-deadline",
+      "title": "Nebraska 14-day deposit return window",
+      "description": "14-day return default from surrender · Neb. Rev. Stat. § 76-1416. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Neb. Rev. Stat. § 76-1416"
+      ]
+    },
+    {
+      "slug": "nebraska-deposit-itemization",
+      "title": "Nebraska deposit itemization",
+      "description": "Written withhold lines · Neb. Rev. Stat. § 76-1416. Not legal advice.",
+      "category": "law",
+      "states": [
+        "NE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Neb. Rev. Stat. § 76-1416"
+      ]
+    },
+    {
+      "slug": "nebraska-security-deposit-checklist",
+      "title": "Nebraska security deposit checklist",
+      "description": "Move-in through move-out · Neb. Rev. Stat. § 76-1416. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "NE"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "Neb. Rev. Stat. § 76-1416"
+      ]
+    },
+    {
+      "slug": "rhode-island-20-day-later-of-deposit-clock",
+      "title": "Rhode Island later-of deposit clock",
+      "description": "Twenty days after lease end, possession, or forwarding address. R.I. Gen. Laws § 34-18-19. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "RI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "R.I. Gen. Laws § 34-18-19"
+      ]
+    },
+    {
+      "slug": "rhode-island-20-day-deposit-deadline",
+      "title": "Rhode Island 20-day deposit return window",
+      "description": "20-day return default from surrender · R.I. Gen. Laws § 34-18-19. Not legal advice.",
+      "category": "law",
+      "states": [
+        "RI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "R.I. Gen. Laws § 34-18-19"
+      ]
+    },
+    {
+      "slug": "rhode-island-deposit-itemization",
+      "title": "Rhode Island deposit itemization",
+      "description": "Written withhold lines · R.I. Gen. Laws § 34-18-19. Not legal advice.",
+      "category": "law",
+      "states": [
+        "RI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "R.I. Gen. Laws § 34-18-19"
+      ]
+    },
+    {
+      "slug": "rhode-island-security-deposit-checklist",
+      "title": "Rhode Island security deposit checklist",
+      "description": "Move-in through move-out · R.I. Gen. Laws § 34-18-19. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "RI"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "R.I. Gen. Laws § 34-18-19"
+      ]
+    },
+    {
+      "slug": "south-dakota-21-day-deposit-address-gate",
+      "title": "South Dakota 21-day deposit after address",
+      "description": "Twenty-one days after termination once mailing address is known. SDCL § 43-32-24. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "SD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "SDCL § 43-32-24"
+      ]
+    },
+    {
+      "slug": "south-dakota-21-day-deposit-deadline",
+      "title": "South Dakota 21-day deposit return window",
+      "description": "21-day return default from surrender · SDCL § 43-32-24. Not legal advice.",
+      "category": "law",
+      "states": [
+        "SD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "SDCL § 43-32-24"
+      ]
+    },
+    {
+      "slug": "south-dakota-deposit-itemization",
+      "title": "South Dakota deposit itemization",
+      "description": "Written withhold lines · SDCL § 43-32-24. Not legal advice.",
+      "category": "law",
+      "states": [
+        "SD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "SDCL § 43-32-24"
+      ]
+    },
+    {
+      "slug": "south-dakota-security-deposit-checklist",
+      "title": "South Dakota security deposit checklist",
+      "description": "Move-in through move-out · SDCL § 43-32-24. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "SD"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "SDCL § 43-32-24"
+      ]
+    },
+    {
+      "slug": "vermont-14-day-deposit-seasonal-unit",
+      "title": "Vermont 14-day deposit and seasonal units",
+      "description": "Short default window; seasonal rentals may differ. 9 V.S.A. § 4461. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "VT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "9 V.S.A. § 4461"
+      ]
+    },
+    {
+      "slug": "vermont-14-day-deposit-deadline",
+      "title": "Vermont 14-day deposit return window",
+      "description": "14-day return default from surrender · 9 V.S.A. § 4461. Not legal advice.",
+      "category": "law",
+      "states": [
+        "VT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "9 V.S.A. § 4461"
+      ]
+    },
+    {
+      "slug": "vermont-deposit-itemization",
+      "title": "Vermont deposit itemization",
+      "description": "Written withhold lines · 9 V.S.A. § 4461. Not legal advice.",
+      "category": "law",
+      "states": [
+        "VT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "9 V.S.A. § 4461"
+      ]
+    },
+    {
+      "slug": "vermont-security-deposit-checklist",
+      "title": "Vermont security deposit checklist",
+      "description": "Move-in through move-out · 9 V.S.A. § 4461. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "VT"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "9 V.S.A. § 4461"
+      ]
+    },
+    {
+      "slug": "west-virginia-60-day-deposit-next-tenant-clock",
+      "title": "West Virginia 60-day deposit and next-tenant timing",
+      "description": "Longer window with possession and re-rent variables. W. Va. Code § 37-6A-2. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "WV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "W. Va. Code § 37-6A-2"
+      ]
+    },
+    {
+      "slug": "west-virginia-60-day-deposit-deadline",
+      "title": "West Virginia 60-day deposit return window",
+      "description": "60-day return default from surrender · W. Va. Code § 37-6A-2. Not legal advice.",
+      "category": "law",
+      "states": [
+        "WV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "W. Va. Code § 37-6A-2"
+      ]
+    },
+    {
+      "slug": "west-virginia-deposit-itemization",
+      "title": "West Virginia deposit itemization",
+      "description": "Written withhold lines · W. Va. Code § 37-6A-2. Not legal advice.",
+      "category": "law",
+      "states": [
+        "WV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "W. Va. Code § 37-6A-2"
+      ]
+    },
+    {
+      "slug": "west-virginia-security-deposit-checklist",
+      "title": "West Virginia security deposit checklist",
+      "description": "Move-in through move-out · W. Va. Code § 37-6A-2. Not legal advice.",
+      "category": "landlord",
+      "states": [
+        "WV"
+      ],
+      "published": "2026-09-22",
+      "updated": "2026-09-22",
+      "statutes": [
+        "W. Va. Code § 37-6A-2"
+      ]
+    },
+    {
+      "slug": "arkansas-operator-deposit-packet-sep-2026",
+      "title": "Arkansas security deposit packet checklist · small landlords",
+      "description": "Arkansas security deposit return · 60-day default from surrender · Ark. Code § 18-16-305. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "AR"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Ark. Code § 18-16-305"
+      ]
+    },
+    {
+      "slug": "california-operator-deposit-packet-sep-2026",
+      "title": "California security deposit packet checklist · small landlords",
+      "description": "California security deposit return · 21-day default from surrender · Cal. Civ. Code § 1950.5. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "CA"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Cal. Civ. Code § 1950.5"
+      ]
+    },
+    {
+      "slug": "colorado-operator-deposit-packet-sep-2026",
+      "title": "Colorado security deposit packet checklist · small landlords",
+      "description": "Colorado security deposit return · 30-day default from surrender · C.R.S. § 38-12-103. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "CO"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "C.R.S. § 38-12-103"
+      ]
+    },
+    {
+      "slug": "connecticut-operator-deposit-packet-sep-2026",
+      "title": "Connecticut security deposit packet checklist · small landlords",
+      "description": "Connecticut security deposit return · 21-day default from surrender · Conn. Gen. Stat. § 47a-21. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "CT"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Conn. Gen. Stat. § 47a-21"
+      ]
+    },
+    {
+      "slug": "delaware-operator-deposit-packet-sep-2026",
+      "title": "Delaware security deposit packet checklist · small landlords",
+      "description": "Delaware security deposit return · 20-day default from surrender · 25 Del. C. § 5514. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "DE"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "25 Del. C. § 5514"
+      ]
+    },
+    {
+      "slug": "hawaii-operator-deposit-packet-sep-2026",
+      "title": "Hawaii security deposit packet checklist · small landlords",
+      "description": "Hawaii security deposit return · 14-day default from surrender · Haw. Rev. Stat. § 521-38. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "HI"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Haw. Rev. Stat. § 521-38"
+      ]
+    },
+    {
+      "slug": "kentucky-operator-deposit-packet-sep-2026",
+      "title": "Kentucky security deposit packet checklist · small landlords",
+      "description": "Kentucky security deposit return · 30-day default from surrender · KRS 383.580. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "KY"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "KRS 383.580"
+      ]
+    },
+    {
+      "slug": "minnesota-operator-deposit-packet-sep-2026",
+      "title": "Minnesota security deposit packet checklist · small landlords",
+      "description": "Minnesota security deposit return · 21-day default from surrender · Minn. Stat. § 504B.178. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "MN"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Minn. Stat. § 504B.178"
+      ]
+    },
+    {
+      "slug": "nebraska-operator-deposit-packet-sep-2026",
+      "title": "Nebraska security deposit packet checklist · small landlords",
+      "description": "Nebraska security deposit return · 14-day default from surrender · Neb. Rev. Stat. § 76-1416. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "NE"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "Neb. Rev. Stat. § 76-1416"
+      ]
+    },
+    {
+      "slug": "rhode-island-operator-deposit-packet-sep-2026",
+      "title": "Rhode Island security deposit packet checklist · small landlords",
+      "description": "Rhode Island security deposit return · 20-day default from surrender · R.I. Gen. Laws § 34-18-19. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "RI"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "R.I. Gen. Laws § 34-18-19"
+      ]
+    },
+    {
+      "slug": "south-dakota-operator-deposit-packet-sep-2026",
+      "title": "South Dakota security deposit packet checklist · small landlords",
+      "description": "South Dakota security deposit return · 21-day default from surrender · SDCL § 43-32-24. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "SD"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "SDCL § 43-32-24"
+      ]
+    },
+    {
+      "slug": "vermont-operator-deposit-packet-sep-2026",
+      "title": "Vermont security deposit packet checklist · small landlords",
+      "description": "Vermont security deposit return · 14-day default from surrender · 9 V.S.A. § 4461. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "VT"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "9 V.S.A. § 4461"
+      ]
+    },
+    {
+      "slug": "west-virginia-operator-deposit-packet-sep-2026",
+      "title": "West Virginia security deposit packet checklist · small landlords",
+      "description": "West Virginia security deposit return · 60-day default from surrender · W. Va. Code § 37-6A-2. Itemization and export habits. Not legal advice.",
+      "category": "landlord",
+      "intent": "operator",
+      "states": [
+        "WV"
+      ],
+      "published": "2026-09-26",
+      "updated": "2026-10-02",
+      "statutes": [
+        "W. Va. Code § 37-6A-2"
+      ]
+    },
+    {
+      "slug": "tampa-florida-deposit-local-guide",
+      "title": "Tampa security deposit local guide",
+      "description": "Florida § 83.49 turnover habits for Tampa operators. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "FL"
+      ],
+      "cityPreset": "tampa-fl",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "orlando-florida-deposit-local-guide",
+      "title": "Orlando security deposit local guide",
+      "description": "Central Florida deposit packet habits. Fla. Stat. § 83.49. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "FL"
+      ],
+      "cityPreset": "orlando-fl",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "jacksonville-florida-deposit-local-guide",
+      "title": "Jacksonville security deposit local guide",
+      "description": "Northeast Florida deposit return habits. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "FL"
+      ],
+      "cityPreset": "jacksonville-fl",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Fla. Stat. § 83.49"
+      ]
+    },
+    {
+      "slug": "atlanta-georgia-deposit-local-guide",
+      "title": "Atlanta security deposit local guide",
+      "description": "Metro Atlanta deposit clocks and itemization. O.C.G.A. 44-7-34. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "GA"
+      ],
+      "cityPreset": "atlanta-ga",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "O.C.G.A. 44-7-34"
+      ]
+    },
+    {
+      "slug": "richmond-virginia-deposit-local-guide",
+      "title": "Richmond security deposit local guide",
+      "description": "Richmond metro deposit mail and itemization. Va. Code § 55.1-1226. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "VA"
+      ],
+      "cityPreset": "richmond-va",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "northern-virginia-deposit-local-guide",
+      "title": "Northern Virginia security deposit local guide",
+      "description": "NoVA belt investor deposit clocks. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "VA"
+      ],
+      "cityPreset": "northern-virginia-va",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Va. Code § 55.1-1226"
+      ]
+    },
+    {
+      "slug": "baltimore-maryland-deposit-local-guide",
+      "title": "Baltimore security deposit local guide",
+      "description": "Baltimore city deposit return habits. Md. Real Prop. § 8-203. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "MD"
+      ],
+      "cityPreset": "baltimore-md",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Md. Real Prop. § 8-203"
+      ]
+    },
+    {
+      "slug": "salt-lake-city-utah-deposit-local-guide",
+      "title": "Salt Lake City security deposit local guide",
+      "description": "Wasatch Front deposit discipline. Utah Code § 57-17-3. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "UT"
+      ],
+      "cityPreset": "salt-lake-city-ut",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "Utah Code § 57-17-3"
+      ]
+    },
+    {
+      "slug": "new-orleans-louisiana-deposit-local-guide",
+      "title": "New Orleans security deposit local guide",
+      "description": "Orleans Parish turnover and deposit accounting. La. R.S. 9:3251. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "LA"
+      ],
+      "cityPreset": "new-orleans-la",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "La. R.S. 9:3251"
+      ]
+    },
+    {
+      "slug": "seattle-washington-deposit-local-guide",
+      "title": "Seattle security deposit local guide",
+      "description": "Seattle metro substantiation habits. RCW 59.18.280. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "WA"
+      ],
+      "cityPreset": "seattle-wa",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "RCW 59.18.280"
+      ]
+    },
+    {
+      "slug": "las-vegas-nevada-deposit-local-guide",
+      "title": "Las Vegas security deposit local guide",
+      "description": "Clark County turnover deposit mail habits. NRS 118A.242. Not legal advice.",
+      "category": "city",
+      "intent": "city",
+      "states": [
+        "NV"
+      ],
+      "cityPreset": "las-vegas-nv",
+      "published": "2026-10-11",
+      "updated": "2026-10-11",
+      "statutes": [
+        "NRS 118A.242"
       ]
     }
   ]

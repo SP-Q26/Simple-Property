@@ -782,8 +782,12 @@ function statuteClockDetails(st, pack, preset) {
     preset === "chicago-il"
       ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender (<a href="${esc(CHICAGO_RLTO_URL)}" rel="noopener noreferrer" target="_blank">city RLTO</a>). Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
       : st === "NC"
-        ? `<p class="field-hint">${pack.label} wizard uses a <strong>${pack.returnDays}-day</strong> default after surrender (${citeLink(st, pack.cite)}). Some tenancies also have interim/final return phases · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC pain guide</a> · confirm with counsel.</p>`
-        : st === "FL"
+        ? `<p class="field-hint">${pack.label} (${citeLink(st, pack.cite)}): <strong>30-day</strong> accounting from surrender is the wizard default · interim accounting by day 30 and <strong>final by day 60</strong> when damage scope is still open · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC guide</a> · confirm with counsel.</p>`
+        : st === "CO"
+          ? `<p class="field-hint">Colorado (${citeLink(st, pack.cite)}): <strong>30 calendar days</strong> after surrender by default · written lease may extend up to <strong>60 days</strong> max · wizard shows ${pack.returnDays}-day export line · confirm lease language with counsel.</p>`
+          : st === "KY"
+            ? `<p class="field-hint">Kentucky (${citeLink(st, pack.cite)}): where URLTA applies, keep separate accounting, signed damage lists, and written refund demand habits · wizard shows <strong>${pack.returnDays}-day</strong> export discipline from surrender · confirm coverage with counsel.</p>`
+            : st === "FL"
           ? `<p class="field-hint">Florida (${citeLink(st, pack.cite)}): within <strong>15 days</strong> after termination and possession, return the full deposit <strong>or</strong> send written claim notice · then <strong>30 days</strong> after notice for the balance and accounting. Deposit Desk shows a <strong>30-day</strong> export line from surrender for step-two discipline · see <a href="/blog/florida-83-49-two-step-miami-condo-deposit">§ 83.49 two-step guide</a> · confirm with counsel.</p>`
           : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
   return `<details class="statute-details"><summary>${esc(pack.label)} deposit clock (${pack.returnDays}-day default)</summary>${inner}${guideLink}</details>`;
@@ -846,7 +850,11 @@ function renderStep2() {
     ${
       normalizeStateCode(draft.property.state) === "FL"
         ? `<p class="turnover-alert field-hint" role="note"><strong>Florida two-step (§ 83.49):</strong> within 15 days after termination, return the full deposit <strong>or</strong> send written claim notice · then 30 days for balance and accounting. <a href="/blog/florida-83-49-two-step-miami-condo-deposit">Two-step guide</a> · confirm with counsel.</p>`
-        : ""
+        : normalizeStateCode(draft.property.state) === "NC"
+          ? `<p class="turnover-alert field-hint" role="note"><strong>North Carolina (§ 42-52):</strong> plan for <strong>30-day</strong> accounting from surrender · if repairs are not final, interim notice by day 30 and <strong>final by day 60</strong> · <a href="/blog/north-carolina-interim-30-final-60-deposit">NC guide</a> · confirm with counsel.</p>`
+          : normalizeStateCode(draft.property.state) === "CO"
+            ? `<p class="turnover-alert field-hint" role="note"><strong>Colorado (§ 38-12-103):</strong> default <strong>30 days</strong> after surrender · lease may allow up to <strong>60 days</strong> · <a href="/blog/colorado-30-vs-60-day-lease-deposit-clock">CO guide</a> · confirm with counsel.</p>`
+            : ""
     }
     ${clockLine}
     <div class="form-grid two wizard-flow-grid">

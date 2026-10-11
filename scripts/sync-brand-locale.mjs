@@ -35,6 +35,9 @@ const OLD_TAGS = [
   `Itemize it. Date it. Beat the clock. · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`,
   `Itemize it. Date it. Never pay the fee. · Founded in Chicago · ${STATE_ONLY_COUNT} states + DC`,
   "Itemize it. Date it. Never pay the fee. · 19 states + DC",
+  `Itemize it. Date it. Never pay the fees. · Founded in Chicago · 19 states + DC`,
+  `Itemize it. Date it. Never pay the fees. · Founded in Chicago · 20 states + DC`,
+  `Itemize it. Date it. Never pay the fees. · Founded in Chicago · 31 states + DC`,
 ];
 
 function walkHtml(dir, out = []) {
@@ -58,6 +61,10 @@ function applyLocaleCopy(html) {
   next = next.replaceAll("Never pay the fee.", "Never pay the fees.");
   next = next.replaceAll("18 states + DC", COVERAGE_LABEL);
   next = next.replaceAll("18 states plus DC", COVERAGE_PLUS);
+  next = next.replaceAll("19 states + DC", COVERAGE_LABEL);
+  next = next.replaceAll("19 states plus DC", COVERAGE_PLUS);
+  next = next.replaceAll("20 states + DC", COVERAGE_LABEL);
+  next = next.replaceAll("31 states + DC", COVERAGE_LABEL);
   if (next.includes('class="hero-eyebrow"') && next.includes("Security deposit return ·")) {
     next = next.replace(/<p class="hero-eyebrow">[^<]*<\/p>/, `<p class="hero-eyebrow">${HERO_EYEBROW}</p>`);
   }

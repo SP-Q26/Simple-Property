@@ -25,10 +25,62 @@
       "label": "Miami · Florida § 83.49",
       "href": "/app?state=FL&turnover=1&step=2&city=miami-fl",
       "tone": "mia"
+    },
+    {
+      "short": "Tpa",
+      "state": "FL",
+      "city": "tampa-fl",
+      "label": "Tampa · Florida § 83.49",
+      "href": "/app?state=FL&turnover=1&step=2&city=tampa-fl",
+      "tone": "tpa"
+    },
+    {
+      "short": "ATL",
+      "state": "GA",
+      "city": "atlanta-ga",
+      "label": "Atlanta · Georgia",
+      "href": "/app?state=GA&turnover=1&step=2&city=atlanta-ga",
+      "tone": "atl"
     }
   ];
 
   var LOCALES = [
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "returnDays": 60,
+      "cite": "Ark. Code § 18-16-305",
+      "statuteUrl": "https://www.arkleg.state.ar.us/ArkansasCode/Sections/DisplaySection?code=18-16-305",
+      "blog": "/blog#locale-AR",
+      "app": "/app?state=AR&turnover=1&step=2"
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "returnDays": 21,
+      "cite": "Cal. Civ. Code § 1950.5",
+      "statuteUrl": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5",
+      "blog": "/blog#locale-CA",
+      "app": "/app?state=CA&turnover=1&step=2"
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "returnDays": 30,
+      "cite": "C.R.S. § 38-12-103",
+      "statuteUrl": "https://law.justia.com/codes/colorado/title-38/article-12/section-38-12-103/",
+      "blog": "/blog#locale-CO",
+      "app": "/app?state=CO&turnover=1&step=2"
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "returnDays": 21,
+      "cite": "Conn. Gen. Stat. § 47a-21",
+      "statuteUrl": "https://www.cga.ct.gov/current/pub/chap_831.htm#sec_47a-21",
+      "blog": "/blog#locale-CT",
+      "app": "/app?state=CT&turnover=1&step=2"
+    },
     {
       "code": "DC",
       "name": "District of Columbia",
@@ -37,6 +89,15 @@
       "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.17",
       "blog": "/blog#locale-DC",
       "app": "/app?state=DC&turnover=1&step=2"
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "returnDays": 20,
+      "cite": "25 Del. C. § 5514",
+      "statuteUrl": "https://delcode.delaware.gov/title25/c055/#5514",
+      "blog": "/blog#locale-DE",
+      "app": "/app?state=DE&turnover=1&step=2"
     },
     {
       "code": "FL",
@@ -55,6 +116,15 @@
       "statuteUrl": "https://law.justia.com/codes/georgia/title-44/chapter-7/section-44-7-34/",
       "blog": "/blog#locale-GA",
       "app": "/app?state=GA&turnover=1&step=2"
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "returnDays": 14,
+      "cite": "Haw. Rev. Stat. § 521-38",
+      "statuteUrl": "https://www.capitol.hawaii.gov/hrscurrent/Vol12_Ch0501-0588/HRS0521/HRS_0521-0038.htm",
+      "blog": "/blog#locale-HI",
+      "app": "/app?state=HI&turnover=1&step=2"
     },
     {
       "code": "IA",
@@ -84,6 +154,15 @@
       "app": "/app?state=IN&turnover=1&step=2"
     },
     {
+      "code": "KY",
+      "name": "Kentucky",
+      "returnDays": 30,
+      "cite": "KRS 383.580",
+      "statuteUrl": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=35733",
+      "blog": "/blog#locale-KY",
+      "app": "/app?state=KY&turnover=1&step=2"
+    },
+    {
       "code": "LA",
       "name": "Louisiana",
       "returnDays": 30,
@@ -109,6 +188,15 @@
       "statuteUrl": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-554-610",
       "blog": "/blog#locale-MI",
       "app": "/app?state=MI&turnover=1&step=2"
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "returnDays": 21,
+      "cite": "Minn. Stat. § 504B.178",
+      "statuteUrl": "https://www.revisor.mn.gov/statutes/cite/504B.178",
+      "blog": "/blog#locale-MN",
+      "app": "/app?state=MN&turnover=1&step=2"
     },
     {
       "code": "MO",
@@ -147,6 +235,15 @@
       "app": "/app?state=ND&turnover=1&step=2"
     },
     {
+      "code": "NE",
+      "name": "Nebraska",
+      "returnDays": 14,
+      "cite": "Neb. Rev. Stat. § 76-1416",
+      "statuteUrl": "https://nebraskalegislature.gov/laws/statutes.php?statute=76-1416",
+      "blog": "/blog#locale-NE",
+      "app": "/app?state=NE&turnover=1&step=2"
+    },
+    {
       "code": "NH",
       "name": "New Hampshire",
       "returnDays": 30,
@@ -183,6 +280,24 @@
       "app": "/app?state=OH&turnover=1&step=2"
     },
     {
+      "code": "RI",
+      "name": "Rhode Island",
+      "returnDays": 20,
+      "cite": "R.I. Gen. Laws § 34-18-19",
+      "statuteUrl": "https://webserver.rilegislature.gov/Statutes/title34/34-18/34-18-19.htm",
+      "blog": "/blog#locale-RI",
+      "app": "/app?state=RI&turnover=1&step=2"
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "returnDays": 21,
+      "cite": "SDCL § 43-32-24",
+      "statuteUrl": "https://sdlegislature.gov/statutes/DisplayStatute/?Type=Statute&Statute=43-32-24",
+      "blog": "/blog#locale-SD",
+      "app": "/app?state=SD&turnover=1&step=2"
+    },
+    {
       "code": "UT",
       "name": "Utah",
       "returnDays": 30,
@@ -201,6 +316,15 @@
       "app": "/app?state=VA&turnover=1&step=2"
     },
     {
+      "code": "VT",
+      "name": "Vermont",
+      "returnDays": 14,
+      "cite": "9 V.S.A. § 4461",
+      "statuteUrl": "https://legislature.vermont.gov/statutes/section/09/137/04461",
+      "blog": "/blog#locale-VT",
+      "app": "/app?state=VT&turnover=1&step=2"
+    },
+    {
       "code": "WA",
       "name": "Washington",
       "returnDays": 30,
@@ -208,6 +332,15 @@
       "statuteUrl": "https://app.leg.wa.gov/rcw/default.aspx?cite=59.18.280",
       "blog": "/blog#locale-WA",
       "app": "/app?state=WA&turnover=1&step=2"
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "returnDays": 60,
+      "cite": "W. Va. Code § 37-6A-2",
+      "statuteUrl": "https://code.wvlegislature.gov/37-6A-2/",
+      "blog": "/blog#locale-WV",
+      "app": "/app?state=WV&turnover=1&step=2"
     }
   ];
 
@@ -326,7 +459,7 @@
     var statuteIndex = document.createElement("p");
     statuteIndex.className = "locale-bar__statute-index";
     statuteIndex.innerHTML =
-      '<a href="/legal/deposit-statutes">Official deposit statutes</a> · 19 states + DC';
+      '<a href="/legal/deposit-statutes">Official deposit statutes</a> · 32 states + DC';
     head.appendChild(statuteIndex);
 
     wrap.appendChild(head);

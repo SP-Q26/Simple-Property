@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v53 · court warning polish */
+/* Simple Property Tools · Deposit Desk · v54 · Tier A states + metros */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -543,6 +543,18 @@ body:has(.wizard-steps) .spt-weather {
   background: #e3eef8;
   color: #2a4f6e;
   border-color: #3b5a78;
+}
+
+.metro-nav__link--tpa {
+  background: #e8f0f5;
+  color: #2a4f6e;
+  border-color: #4a7c9e;
+}
+
+.metro-nav__link--atl {
+  background: #ece8f2;
+  color: #4a3d5c;
+  border-color: #6b5b8a;
 }
 
 .metro-nav__link:hover {

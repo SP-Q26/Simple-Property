@@ -738,6 +738,310 @@
     {
       "source": "/blog/florida-operator-deposit-packet-sep-2026",
       "destination": "/blog/florida-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/arkansas-60-day-deposit-mail-last-known-address",
+      "destination": "/blog/arkansas-60-day-deposit-mail-last-known-address.html"
+    },
+    {
+      "source": "/blog/arkansas-60-day-deposit-deadline",
+      "destination": "/blog/arkansas-60-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/arkansas-deposit-itemization",
+      "destination": "/blog/arkansas-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/arkansas-security-deposit-checklist",
+      "destination": "/blog/arkansas-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/california-21-day-deposit-itemization-forfeit",
+      "destination": "/blog/california-21-day-deposit-itemization-forfeit.html"
+    },
+    {
+      "source": "/blog/california-21-day-deposit-deadline",
+      "destination": "/blog/california-21-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/california-deposit-itemization",
+      "destination": "/blog/california-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/california-security-deposit-checklist",
+      "destination": "/blog/california-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/colorado-30-vs-60-day-lease-deposit-clock",
+      "destination": "/blog/colorado-30-vs-60-day-lease-deposit-clock.html"
+    },
+    {
+      "source": "/blog/colorado-30-day-deposit-deadline",
+      "destination": "/blog/colorado-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/colorado-deposit-itemization",
+      "destination": "/blog/colorado-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/colorado-security-deposit-checklist",
+      "destination": "/blog/colorado-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/connecticut-forwarding-address-later-of-clock",
+      "destination": "/blog/connecticut-forwarding-address-later-of-clock.html"
+    },
+    {
+      "source": "/blog/connecticut-21-day-deposit-deadline",
+      "destination": "/blog/connecticut-21-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/connecticut-deposit-itemization",
+      "destination": "/blog/connecticut-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/connecticut-security-deposit-checklist",
+      "destination": "/blog/connecticut-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/delaware-20-day-deposit-double-damages-fear",
+      "destination": "/blog/delaware-20-day-deposit-double-damages-fear.html"
+    },
+    {
+      "source": "/blog/delaware-20-day-deposit-deadline",
+      "destination": "/blog/delaware-20-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/delaware-deposit-itemization",
+      "destination": "/blog/delaware-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/delaware-security-deposit-checklist",
+      "destination": "/blog/delaware-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/hawaii-14-day-deposit-return-forfeit",
+      "destination": "/blog/hawaii-14-day-deposit-return-forfeit.html"
+    },
+    {
+      "source": "/blog/hawaii-14-day-deposit-deadline",
+      "destination": "/blog/hawaii-14-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/hawaii-deposit-itemization",
+      "destination": "/blog/hawaii-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/hawaii-security-deposit-checklist",
+      "destination": "/blog/hawaii-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/kentucky-urlta-deposit-demand-and-damage-lists",
+      "destination": "/blog/kentucky-urlta-deposit-demand-and-damage-lists.html"
+    },
+    {
+      "source": "/blog/kentucky-30-day-deposit-deadline",
+      "destination": "/blog/kentucky-30-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/kentucky-deposit-itemization",
+      "destination": "/blog/kentucky-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/kentucky-security-deposit-checklist",
+      "destination": "/blog/kentucky-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/minnesota-21-day-deposit-mailing-address",
+      "destination": "/blog/minnesota-21-day-deposit-mailing-address.html"
+    },
+    {
+      "source": "/blog/minnesota-21-day-deposit-deadline",
+      "destination": "/blog/minnesota-21-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/minnesota-deposit-itemization",
+      "destination": "/blog/minnesota-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/minnesota-security-deposit-checklist",
+      "destination": "/blog/minnesota-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/nebraska-14-day-deposit-itemization",
+      "destination": "/blog/nebraska-14-day-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/nebraska-14-day-deposit-deadline",
+      "destination": "/blog/nebraska-14-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/nebraska-deposit-itemization",
+      "destination": "/blog/nebraska-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/nebraska-security-deposit-checklist",
+      "destination": "/blog/nebraska-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/rhode-island-20-day-later-of-deposit-clock",
+      "destination": "/blog/rhode-island-20-day-later-of-deposit-clock.html"
+    },
+    {
+      "source": "/blog/rhode-island-20-day-deposit-deadline",
+      "destination": "/blog/rhode-island-20-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/rhode-island-deposit-itemization",
+      "destination": "/blog/rhode-island-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/rhode-island-security-deposit-checklist",
+      "destination": "/blog/rhode-island-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/south-dakota-21-day-deposit-address-gate",
+      "destination": "/blog/south-dakota-21-day-deposit-address-gate.html"
+    },
+    {
+      "source": "/blog/south-dakota-21-day-deposit-deadline",
+      "destination": "/blog/south-dakota-21-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/south-dakota-deposit-itemization",
+      "destination": "/blog/south-dakota-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/south-dakota-security-deposit-checklist",
+      "destination": "/blog/south-dakota-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/vermont-14-day-deposit-seasonal-unit",
+      "destination": "/blog/vermont-14-day-deposit-seasonal-unit.html"
+    },
+    {
+      "source": "/blog/vermont-14-day-deposit-deadline",
+      "destination": "/blog/vermont-14-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/vermont-deposit-itemization",
+      "destination": "/blog/vermont-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/vermont-security-deposit-checklist",
+      "destination": "/blog/vermont-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/west-virginia-60-day-deposit-next-tenant-clock",
+      "destination": "/blog/west-virginia-60-day-deposit-next-tenant-clock.html"
+    },
+    {
+      "source": "/blog/west-virginia-60-day-deposit-deadline",
+      "destination": "/blog/west-virginia-60-day-deposit-deadline.html"
+    },
+    {
+      "source": "/blog/west-virginia-deposit-itemization",
+      "destination": "/blog/west-virginia-deposit-itemization.html"
+    },
+    {
+      "source": "/blog/west-virginia-security-deposit-checklist",
+      "destination": "/blog/west-virginia-security-deposit-checklist.html"
+    },
+    {
+      "source": "/blog/arkansas-operator-deposit-packet-sep-2026",
+      "destination": "/blog/arkansas-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/california-operator-deposit-packet-sep-2026",
+      "destination": "/blog/california-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/colorado-operator-deposit-packet-sep-2026",
+      "destination": "/blog/colorado-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/connecticut-operator-deposit-packet-sep-2026",
+      "destination": "/blog/connecticut-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/delaware-operator-deposit-packet-sep-2026",
+      "destination": "/blog/delaware-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/hawaii-operator-deposit-packet-sep-2026",
+      "destination": "/blog/hawaii-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/kentucky-operator-deposit-packet-sep-2026",
+      "destination": "/blog/kentucky-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/minnesota-operator-deposit-packet-sep-2026",
+      "destination": "/blog/minnesota-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/nebraska-operator-deposit-packet-sep-2026",
+      "destination": "/blog/nebraska-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/rhode-island-operator-deposit-packet-sep-2026",
+      "destination": "/blog/rhode-island-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/south-dakota-operator-deposit-packet-sep-2026",
+      "destination": "/blog/south-dakota-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/vermont-operator-deposit-packet-sep-2026",
+      "destination": "/blog/vermont-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/west-virginia-operator-deposit-packet-sep-2026",
+      "destination": "/blog/west-virginia-operator-deposit-packet-sep-2026.html"
+    },
+    {
+      "source": "/blog/tampa-florida-deposit-local-guide",
+      "destination": "/blog/tampa-florida-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/orlando-florida-deposit-local-guide",
+      "destination": "/blog/orlando-florida-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/jacksonville-florida-deposit-local-guide",
+      "destination": "/blog/jacksonville-florida-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/atlanta-georgia-deposit-local-guide",
+      "destination": "/blog/atlanta-georgia-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/richmond-virginia-deposit-local-guide",
+      "destination": "/blog/richmond-virginia-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/northern-virginia-deposit-local-guide",
+      "destination": "/blog/northern-virginia-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/baltimore-maryland-deposit-local-guide",
+      "destination": "/blog/baltimore-maryland-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/salt-lake-city-utah-deposit-local-guide",
+      "destination": "/blog/salt-lake-city-utah-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/new-orleans-louisiana-deposit-local-guide",
+      "destination": "/blog/new-orleans-louisiana-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/seattle-washington-deposit-local-guide",
+      "destination": "/blog/seattle-washington-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/las-vegas-nevada-deposit-local-guide",
+      "destination": "/blog/las-vegas-nevada-deposit-local-guide.html"
     }
   ],
   "crons": [

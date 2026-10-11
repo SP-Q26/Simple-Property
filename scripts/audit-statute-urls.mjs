@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** Every shipped state pack has an https statute URL aligned with deposit-rules cite. */
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SUPPORTED_STATES, STATE_PACKS } from "../web/lib/deposit-rules.mjs";
@@ -28,6 +28,18 @@ need("localeNavEntries cite + statuteUrl", localeNavEntries().every((e) => e.cit
 need("sp-nav modifier statute hint", nav.includes("statuteUrl") && nav.includes("metaKey"));
 need("sp-nav sr statute link", nav.includes("noopener noreferrer"));
 need("sp-nav statute index link", nav.includes("/legal/deposit-statutes"));
+
+const statutesPage = join(web, "legal", "deposit-statutes.html");
+if (existsSync(statutesPage)) {
+  const statutesHtml = readFileSync(statutesPage, "utf8");
+  for (const code of SUPPORTED_STATES) {
+    const url = STATUTE_URLS[code];
+    need(`deposit-statutes.html links ${code}`, statutesHtml.includes(url));
+    need(`deposit-statutes.html cites ${code}`, statutesHtml.includes(STATE_PACKS[code].cite));
+  }
+} else {
+  need("deposit-statutes.html exists", false);
+}
 
 console.log(fail ? `Statute URLs audit FAILED (${fail})` : "Statute URLs audit OK");
 process.exit(fail ? 1 : 0);

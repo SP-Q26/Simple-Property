@@ -2,6 +2,7 @@
  * Deposit return deadline helpers · supported states (alpha).
  * Not legal advice. Confirm statutes and local ordinances for each property.
  * Wisconsin deferred (forwarding-address clock · separate spec).
+ * Tier A Oct 2026: CA, MN, HI, VT, NE, SD, RI, CT, DE, WV, KY, AR, CO.
  */
 
 import {
@@ -12,10 +13,36 @@ import {
 
 export { citySelectOptions, cityPresetHint, normalizeCityPresetId, inChicagoFromPreset } from "./city-overlays.mjs";
 
-/** @typedef {{ code: string, label: string, returnDays: number, cite: string, chicagoOverlay?: boolean, isDistrict?: boolean }} StatePack */
+/** @typedef {{ code: string, label: string, returnDays: number, cite: string, chicagoOverlay?: boolean, isDistrict?: boolean, extendedReturnDays?: number }} StatePack */
 
 /** @type {Record<string, StatePack>} */
 export const STATE_PACKS = {
+  AR: {
+    code: "AR",
+    label: "Arkansas",
+    returnDays: 60,
+    cite: "Ark. Code § 18-16-305",
+  },
+  CA: {
+    code: "CA",
+    label: "California",
+    returnDays: 21,
+    cite: "Cal. Civ. Code § 1950.5",
+  },
+  CO: {
+    code: "CO",
+    label: "Colorado",
+    returnDays: 30,
+    cite: "C.R.S. § 38-12-103",
+    /** Written lease may extend to 60 days max · wizard shows 30 default. */
+    extendedReturnDays: 60,
+  },
+  CT: {
+    code: "CT",
+    label: "Connecticut",
+    returnDays: 21,
+    cite: "Conn. Gen. Stat. § 47a-21",
+  },
   DC: {
     code: "DC",
     label: "District of Columbia",
@@ -23,11 +50,29 @@ export const STATE_PACKS = {
     cite: "D.C. Code § 42-3502.17",
     isDistrict: true,
   },
+  DE: {
+    code: "DE",
+    label: "Delaware",
+    returnDays: 20,
+    cite: "25 Del. C. § 5514",
+  },
+  FL: {
+    code: "FL",
+    label: "Florida",
+    returnDays: 30,
+    cite: "Fla. Stat. § 83.49",
+  },
   GA: {
     code: "GA",
     label: "Georgia",
     returnDays: 30,
     cite: "O.C.G.A. 44-7-34",
+  },
+  HI: {
+    code: "HI",
+    label: "Hawaii",
+    returnDays: 14,
+    cite: "Haw. Rev. Stat. § 521-38",
   },
   IA: {
     code: "IA",
@@ -48,6 +93,12 @@ export const STATE_PACKS = {
     returnDays: 45,
     cite: "IC 32-31-3-12 et seq.",
   },
+  KY: {
+    code: "KY",
+    label: "Kentucky",
+    returnDays: 30,
+    cite: "KRS 383.580",
+  },
   LA: {
     code: "LA",
     label: "Louisiana",
@@ -66,6 +117,12 @@ export const STATE_PACKS = {
     returnDays: 30,
     cite: "MCL 554.610",
   },
+  MN: {
+    code: "MN",
+    label: "Minnesota",
+    returnDays: 21,
+    cite: "Minn. Stat. § 504B.178",
+  },
   MO: {
     code: "MO",
     label: "Missouri",
@@ -83,12 +140,19 @@ export const STATE_PACKS = {
     label: "North Carolina",
     returnDays: 30,
     cite: "N.C.G.S. § 42-52",
+    extendedReturnDays: 60,
   },
   ND: {
     code: "ND",
     label: "North Dakota",
     returnDays: 30,
     cite: "N.D.C.C. § 47-16-07.1",
+  },
+  NE: {
+    code: "NE",
+    label: "Nebraska",
+    returnDays: 14,
+    cite: "Neb. Rev. Stat. § 76-1416",
   },
   NH: {
     code: "NH",
@@ -108,11 +172,23 @@ export const STATE_PACKS = {
     returnDays: 30,
     cite: "NRS 118A.242",
   },
+  RI: {
+    code: "RI",
+    label: "Rhode Island",
+    returnDays: 20,
+    cite: "R.I. Gen. Laws § 34-18-19",
+  },
   OH: {
     code: "OH",
     label: "Ohio",
     returnDays: 30,
     cite: "ORC 5321.16",
+  },
+  SD: {
+    code: "SD",
+    label: "South Dakota",
+    returnDays: 21,
+    cite: "SDCL § 43-32-24",
   },
   UT: {
     code: "UT",
@@ -126,17 +202,23 @@ export const STATE_PACKS = {
     returnDays: 45,
     cite: "Va. Code § 55.1-1226",
   },
+  VT: {
+    code: "VT",
+    label: "Vermont",
+    returnDays: 14,
+    cite: "9 V.S.A. § 4461",
+  },
   WA: {
     code: "WA",
     label: "Washington",
     returnDays: 30,
     cite: "RCW 59.18.280",
   },
-  FL: {
-    code: "FL",
-    label: "Florida",
-    returnDays: 30,
-    cite: "Fla. Stat. § 83.49",
+  WV: {
+    code: "WV",
+    label: "West Virginia",
+    returnDays: 60,
+    cite: "W. Va. Code § 37-6A-2",
   },
 };
 

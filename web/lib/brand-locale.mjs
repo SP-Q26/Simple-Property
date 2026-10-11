@@ -15,7 +15,7 @@ export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__d
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 53;
+export const CSS_VERSION = 54;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */
@@ -32,8 +32,21 @@ export const FONT_LINK_HTML = `  <link rel="preconnect" href="https://fonts.goog
 
 /** Approximate map coordinates · viewBox 0 0 200 120 (not geographic survey). */
 export const COVERAGE_MAP_XY = {
+  AR: [108, 68],
+  CA: [18, 52],
+  CO: [72, 48],
+  CT: [180, 38],
   DC: [178, 52],
+  DE: [176, 50],
   GA: [168, 78],
+  HI: [8, 82],
+  KY: [140, 58],
+  MN: [108, 28],
+  NE: [92, 42],
+  RI: [184, 36],
+  SD: [92, 32],
+  VT: [180, 26],
+  WV: [158, 54],
   IA: [108, 42],
   IL: [118, 44],
   IN: [124, 44],
@@ -72,6 +85,22 @@ export const METRO_NAV = [
     label: "Miami · Florida § 83.49",
     href: appWizardHref("FL", "miami-fl"),
     tone: "mia",
+  },
+  {
+    short: "Tpa",
+    state: "FL",
+    city: "tampa-fl",
+    label: "Tampa · Florida § 83.49",
+    href: appWizardHref("FL", "tampa-fl"),
+    tone: "tpa",
+  },
+  {
+    short: "ATL",
+    state: "GA",
+    city: "atlanta-ga",
+    label: "Atlanta · Georgia",
+    href: appWizardHref("GA", "atlanta-ga"),
+    tone: "atl",
   },
 ];
 
