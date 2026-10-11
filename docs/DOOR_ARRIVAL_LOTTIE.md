@@ -23,6 +23,6 @@ Once per browser session (`spt_door_arrival_seen`). Tests: `data-spt-door-arriva
 | `web/lottie/spt-door-arrival-lottie.json` | `node scripts/generate-spt-door-arrival-lottie.mjs` |
 | `web/lottie/spt-door-arrival-fallback.svg` | Reduced motion |
 
-## Sister brand (SP Quant)
+## Sister brand (Innsegall)
 
-Scout glass **fading to** sword shimmer lives on **spquant.com** index gate — not on this site. See `SPQ/docs/spq/SP_SCOUT_ARRIVAL_LOTTIE.md`.
+Scout glass **fading to** sword shimmer is **Innsegall** site entrance motion (not Simple Property, not SP Quant). Ship under `innsegall/` when built; WWL timing only is shared.

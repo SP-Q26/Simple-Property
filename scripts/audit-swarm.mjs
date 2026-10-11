@@ -11,12 +11,12 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
 const MIN = 95;
 
-const scoutArrival = spawnSync(process.execPath, [join(root, "scripts", "audit-door-arrival-lottie.mjs")], {
+const doorArrival = spawnSync(process.execPath, [join(root, "scripts", "audit-door-arrival-lottie.mjs")], {
   encoding: "utf8",
   stdio: ["ignore", "pipe", "pipe"],
 });
-if (scoutArrival.status !== 0) {
-  console.error((scoutArrival.stdout || "") + (scoutArrival.stderr || ""));
+if (doorArrival.status !== 0) {
+  console.error((doorArrival.stdout || "") + (doorArrival.stderr || ""));
   process.exit(1);
 }
 
