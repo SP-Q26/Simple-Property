@@ -59,7 +59,7 @@
 | OG `og/spt-share-door.png` + card svg | OK |
 | Vercel Insights / Speed Insights `defer` | OK |
 
-**Manual (Vercel dashboard):** Project **Settings → General → Project Icon** — upload or match **same asset as** `web/favicon.svg` (repo cannot set this via API). Preview tab favicon should match after deploy.
+**Manual (Vercel dashboard):** Project **Settings → General → Project Icon** — upload `web/apple-touch-icon.png` from `npm run export:favicon` (repo cannot set dashboard icon via API). Deploy serves `/favicon.ico` + PNG companions for preview tabs and crawlers.
 
 **Manifest fix:** `theme_color` aligned to greystone `#f4f0e6`; description no longer stale “18 states”.
 

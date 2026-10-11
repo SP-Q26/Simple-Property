@@ -21,6 +21,9 @@ function need(label, ok) {
 
 const faviconPath = join(web, "favicon.svg");
 need("favicon.svg exists", existsSync(faviconPath));
+need("favicon.ico exists", existsSync(join(web, "favicon.ico")));
+need("favicon-32.png exists", existsSync(join(web, "favicon-32.png")));
+need("apple-touch-icon.png exists", existsSync(join(web, "apple-touch-icon.png")));
 const favicon = readFileSync(faviconPath, "utf8");
 need("favicon xmlns", favicon.includes('xmlns="http://www.w3.org/2000/svg"'));
 need("favicon aria-label", favicon.includes("aria-label="));
@@ -35,9 +38,10 @@ need("manifest icon favicon.svg", manifest.icons?.some((i) => i.src === "/favico
 need("manifest start_url /", manifest.start_url === "/");
 
 const index = readFileSync(join(web, "index.html"), "utf8");
+need("home favicon.ico link", index.includes('rel="icon" href="/favicon.ico"'));
 need("home favicon link svg", index.includes('rel="icon" href="/favicon.svg"'));
 need("home webmanifest", index.includes('rel="manifest" href="/site.webmanifest"'));
-need("home apple-touch-icon", index.includes('rel="apple-touch-icon" href="/favicon.svg"'));
+need("home apple-touch-icon png", index.includes('rel="apple-touch-icon" href="/apple-touch-icon.png"'));
 need("home theme-color", index.includes('name="theme-color"'));
 need("home JSON-LD logo favicon", index.includes('"logo": "https://simple-property.com/favicon.svg"'));
 need(`home css v${CSS_VERSION}`, index.includes(`simple-property.css?v=${CSS_VERSION}`));
@@ -60,7 +64,7 @@ for (const file of walkHtml(web)) {
   const rel = file.replace(web + "/", "");
   if (rel.startsWith("brand/")) continue;
   const html = readFileSync(file, "utf8");
-  if (!html.includes("/favicon.svg")) {
+  if (!html.includes("/favicon.svg") || !html.includes("/favicon.ico")) {
     console.error("VERCEL/FAVICON FAIL: missing favicon on", rel);
     missingIcon++;
   }

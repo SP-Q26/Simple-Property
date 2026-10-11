@@ -10,8 +10,9 @@ const OLD_FONT =
   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,500&display=swap";
 const NEW_FONT = FONT_GOOGLE;
 const CSS_HREF = `/simple-property.css?v=${CSS_VERSION}`;
-const ICON_BLOCK = `  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/favicon.svg">`;
+const ICON_BLOCK = `  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">`;
 
 function walkHtml(dir, out = []) {
   for (const name of readdirSync(dir)) {
@@ -30,7 +31,11 @@ for (const file of walkHtml(web)) {
   const before = html;
   html = html.replaceAll(OLD_FONT, NEW_FONT);
   html = html.replace(/\/simple-property\.css\?v=\d+/g, CSS_HREF);
-  if (!html.includes("apple-touch-icon")) {
+  if (!html.includes('href="/favicon.ico"')) {
+    html = html.replace(
+      /<link rel="icon" href="\/favicon\.svg" type="image\/svg\+xml">\s*\n?\s*<link rel="apple-touch-icon" href="[^"]+">/,
+      ICON_BLOCK
+    );
     html = html.replace(
       /<link rel="icon" href="\/favicon\.svg" type="image\/svg\+xml">/,
       ICON_BLOCK

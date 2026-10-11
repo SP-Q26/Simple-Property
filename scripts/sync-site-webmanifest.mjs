@@ -17,8 +17,10 @@ const manifest = {
   background_color: "#f4f0e6",
   theme_color: "#f4f0e6",
   icons: [
+    { src: "/favicon.ico", sizes: "32x32", type: "image/x-icon", purpose: "any" },
     { src: "/favicon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
-    { src: "/favicon.svg", sizes: "any", type: "image/svg+xml", purpose: "maskable" },
+    { src: "/apple-touch-icon.png", sizes: "180x180", type: "image/png", purpose: "any" },
+    { src: "/apple-touch-icon.png", sizes: "180x180", type: "image/png", purpose: "maskable" },
   ],
 };
 const next = JSON.stringify(manifest, null, 2) + "\n";

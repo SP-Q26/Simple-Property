@@ -99,6 +99,22 @@ for (const p of paths) await check(p);
 console.log("── Stripe product images (hosted) ──");
 for (const name of stripePngs) await checkStripePng(name);
 
+console.log("── Favicon (Vercel / crawlers) ──");
+for (const asset of ["favicon.ico", "favicon.svg", "apple-touch-icon.png"]) {
+  const url = `${BASE.replace(/\/$/, "")}/${asset}`;
+  try {
+    const res = await fetch(url, { method: "HEAD", redirect: "follow" });
+    console.log(`HTTP ${res.status} ${asset}`);
+    if (res.status < 200 || res.status >= 400) {
+      console.error(`  FAIL ${asset}`);
+      fail++;
+    } else console.log(`  ok ${asset}`);
+  } catch (e) {
+    console.error(`  FAIL ${asset} ${e.message}`);
+    fail++;
+  }
+}
+
 if (fail) {
   console.error(`\nProd smoke FAILED (${fail})`);
   process.exit(1);
