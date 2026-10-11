@@ -11,6 +11,17 @@
 
 **Dashboard:** [vercel.com/spq/simple-property](https://vercel.com/spq/simple-property)
 
+**Canonical project name:** `simple-property` only. Do **not** create a second Vercel project for this repo.
+
+| Project | Domains | Role |
+|---------|---------|------|
+| **simple-property** | `simple-property.com`, `www`, `simple-property-*.vercel.app` | Production — use this |
+| **web** (if it appears) | `web-*.vercel.app` only | Accidental duplicate — usually from `npx vercel link` inside `web/` without picking `simple-property` |
+
+If both projects show the same GitHub repo icon, every `main` push builds **twice**. Apex traffic still goes to **simple-property** only. Remove the duplicate: Vercel → **web** → Settings → **Delete Project** (safe; no custom domains on that project).
+
+When linking the CLI from `web/`, choose existing project **`simple-property`**, not a new project named `web`.
+
 ## 1b. Deployment Protection (public alpha)
 
 SPQ team defaults may enable **Vercel Authentication** on `*.vercel.app` URLs. Anonymous visitors then hit SSO instead of Deposit Desk.
