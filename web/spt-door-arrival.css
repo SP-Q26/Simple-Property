@@ -87,6 +87,26 @@ html.spt-door-arrival-lock body {
   display: block;
 }
 
+.spt-door-arrival__monogram {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: clamp(1.35rem, 5.5vmin, 2.1rem);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  color: rgba(230, 232, 236, 0.88);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(201, 162, 39, 0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .spt-door-arrival {
     animation-duration: 0.45s;

@@ -21,11 +21,21 @@ const HOLD = LOTTIE_HOLD_FRAMES;
 const W = 240;
 const H = 240;
 
-const BG = [0.957, 0.941, 0.902, 1];
-const PANEL = [0.239, 0.204, 0.161, 1];
-const EDGE = [0.549, 0.514, 0.439, 1];
-const SEAM = [0.788, 0.635, 0.153, 1];
-const GOLD = [0.831, 0.659, 0.263, 1];
+/** Greystone + steel door · match simple-property.css + favicon mark */
+function hexToLottie(hex) {
+  const n = parseInt(hex.replace('#', ''), 16);
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255, 1];
+}
+
+const BG = hexToLottie('#f4f0e6');
+const FRAME_EDGE = hexToLottie('#b8b2a8');
+const FRAME_FILL = hexToLottie('#d8d4cc');
+const DOOR_STEEL = hexToLottie('#4a5058');
+const DOOR_STEEL_HI = hexToLottie('#5a6169');
+const INK = hexToLottie('#3d3429');
+const SEAM = hexToLottie('#c9a227');
+const GOLD = hexToLottie('#c9a227');
+const SAGE = hexToLottie('#4a6741');
 
 function ksPos(frames) {
   return {
@@ -114,6 +124,28 @@ function strokeRect(w, h, color, width) {
   return [{ ty: 'gr', it: items, nm: 'frame', np: 3, cix: 2, bm: 0 }];
 }
 
+function circleFill(diameter, color) {
+  const items = [
+    {
+      ty: 'el',
+      p: { a: 0, k: [0, 0] },
+      s: { a: 0, k: [diameter, diameter] },
+    },
+    { ty: 'fl', c: { a: 0, k: color }, o: { a: 0, k: 100 }, r: 1, bm: 0 },
+    {
+      ty: 'tr',
+      p: { a: 0, k: [0, 0] },
+      a: { a: 0, k: [0, 0] },
+      s: { a: 0, k: [100, 100] },
+      r: { a: 0, k: 0 },
+      o: { a: 0, k: 100 },
+      sk: { a: 0, k: 0 },
+      sa: { a: 0, k: 0 },
+    },
+  ];
+  return [{ ty: 'gr', it: items, nm: 'dot', np: 3, cix: 2, bm: 0 }];
+}
+
 const lottie = {
   v: '5.7.4',
   fr: FR,
@@ -147,7 +179,65 @@ const lottie = {
       sr: 1,
       ks: ksStatic(100, [120, 120, 0]),
       ao: 0,
-      shapes: strokeRect(132, 168, EDGE, 2.5),
+      shapes: [
+        ...rectFill(132, 168, FRAME_FILL, 6),
+        ...strokeRect(132, 168, FRAME_EDGE, 2.5),
+      ],
+      ip: 0,
+      op: OP,
+      st: 0,
+      bm: 0,
+    },
+    {
+      ddd: 0,
+      ind: 7,
+      ty: 4,
+      nm: 'Pediment',
+      sr: 1,
+      ks: ksStatic(100, [120, 52, 0]),
+      ao: 0,
+      shapes: [
+        {
+          ty: 'gr',
+          it: [
+            {
+              ty: 'sh',
+              ks: {
+                a: 0,
+                k: {
+                  i: [[0, 0], [0, 0], [0, 0]],
+                  o: [[0, 0], [0, 0], [0, 0]],
+                  v: [[-36, 14], [36, 14], [0, -22]],
+                  c: true,
+                },
+              },
+            },
+            { ty: 'fl', c: { a: 0, k: SAGE }, o: { a: 0, k: 100 }, r: 1, bm: 0 },
+            {
+              ty: 'st',
+              c: { a: 0, k: INK },
+              o: { a: 0, k: 100 },
+              w: { a: 0, k: 1.2 },
+              lc: 2,
+              lj: 2,
+            },
+            {
+              ty: 'tr',
+              p: { a: 0, k: [0, 0] },
+              a: { a: 0, k: [0, 0] },
+              s: { a: 0, k: [100, 100] },
+              r: { a: 0, k: 0 },
+              o: { a: 0, k: 100 },
+              sk: { a: 0, k: 0 },
+              sa: { a: 0, k: 0 },
+            },
+          ],
+          nm: 'sage peak',
+          np: 4,
+          cix: 2,
+          bm: 0,
+        },
+      ],
       ip: 0,
       op: OP,
       st: 0,
@@ -206,7 +296,10 @@ const lottie = {
         s: { a: 0, k: [100, 100, 100] },
       },
       ao: 0,
-      shapes: rectFill(68, 156, PANEL, 4),
+      shapes: [
+        ...rectFill(68, 156, DOOR_STEEL, 2),
+        ...rectFill(52, 132, DOOR_STEEL_HI, 1),
+      ],
       ip: 0,
       op: OP,
       st: 0,
@@ -231,7 +324,10 @@ const lottie = {
         s: { a: 0, k: [100, 100, 100] },
       },
       ao: 0,
-      shapes: rectFill(68, 156, PANEL, 4),
+      shapes: [
+        ...rectFill(68, 156, DOOR_STEEL, 2),
+        ...rectFill(52, 132, DOOR_STEEL_HI, 1),
+      ],
       ip: 0,
       op: OP,
       st: 0,
@@ -239,58 +335,24 @@ const lottie = {
     },
     {
       ddd: 0,
-      ind: 6,
+      ind: 8,
       ty: 4,
-      nm: 'SPT monogram',
+      nm: 'Knob',
       sr: 1,
       ks: {
-        o: ksOpacity([
-          [0, 0],
-          [HOLD + 2, 0],
-          [HOLD + 14, 0],
-          [HOLD + 26, 100],
-          [OP, 0],
-        ]),
+        o: { a: 0, k: 100 },
         r: { a: 0, k: 0 },
-        p: { a: 0, k: [120, 118, 0] },
+        p: ksPos([
+          [0, 120, 120],
+          [HOLD, 120, 120],
+          [HOLD + 8, 120, 120],
+          [OP, 168, 128],
+        ]),
         a: { a: 0, k: [0, 0, 0] },
         s: { a: 0, k: [100, 100, 100] },
       },
       ao: 0,
-      shapes: [
-        {
-          ty: 'gr',
-          it: [
-            {
-              ty: 'rc',
-              p: { a: 0, k: [-18, -6] },
-              s: { a: 0, k: [36, 3] },
-              r: { a: 0, k: 0 },
-            },
-            {
-              ty: 'rc',
-              p: { a: 0, k: [-18, 6] },
-              s: { a: 0, k: [36, 3] },
-              r: { a: 0, k: 0 },
-            },
-            { ty: 'fl', c: { a: 0, k: GOLD }, o: { a: 0, k: 100 }, r: 1, bm: 0 },
-            {
-              ty: 'tr',
-              p: { a: 0, k: [0, 0] },
-              a: { a: 0, k: [0, 0] },
-              s: { a: 0, k: [100, 100] },
-              r: { a: 0, k: 0 },
-              o: { a: 0, k: 100 },
-              sk: { a: 0, k: 0 },
-              sa: { a: 0, k: 0 },
-            },
-          ],
-          nm: 'sp bars',
-          np: 4,
-          cix: 2,
-          bm: 0,
-        },
-      ],
+      shapes: circleFill(10, GOLD),
       ip: 0,
       op: OP,
       st: 0,

@@ -50,10 +50,17 @@ need("JS FLOOR_MS", js.includes("var FLOOR_MS = " + FLOOR_MS));
 need("JS WALL_MS", js.includes("var WALL_MS = " + WALL_MS));
 need("JS scroll lock", js.includes("spt-door-arrival-lock"));
 need("player loop false", js.includes('"loop", "false"'));
+need("HTML SP monogram overlay", js.includes("spt-door-arrival__monogram"));
+need("monogram SP text", js.includes('textContent = "SP"'));
 
 const css = needFile("spt-door-arrival.css");
 need("through-motion keyframes", css.includes("sptDoorThrough"));
 need("scroll lock rule", css.includes("spt-door-arrival-lock"));
+need("monogram CSS", css.includes("spt-door-arrival__monogram"));
+
+const fallback = needFile("lottie/spt-door-arrival-fallback.svg");
+need("fallback SP text", fallback.includes(">SP<"));
+need("fallback steel door", fallback.includes("#4a5058") || fallback.includes("#5a6169"));
 
 const json = JSON.parse(needFile("lottie/spt-door-arrival-lottie.json"));
 const durMs = Math.round((json.op / json.fr) * 1000);

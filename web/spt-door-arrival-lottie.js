@@ -11,7 +11,7 @@
   var PLAYER = "/vendor/dotlottie-player.mjs";
   var ASSET_JSON = "/lottie/spt-door-arrival-lottie.json";
   var ASSET_FALLBACK = "/lottie/spt-door-arrival-fallback.svg";
-  var ASSET_VER = "2";
+  var ASSET_VER = "3";
   var HOLD_MS = 420;
   var FLOOR_MS = 780;
   var WALL_MS = 1600;
@@ -143,9 +143,21 @@
     }, remain);
   }
 
+  function ensureMonogram(mount) {
+    var el = mount.querySelector(".spt-door-arrival__monogram");
+    if (el) return el;
+    el = global.document.createElement("div");
+    el.className = "spt-door-arrival__monogram";
+    el.textContent = "SP";
+    el.setAttribute("aria-hidden", "true");
+    mount.appendChild(el);
+    return el;
+  }
+
   function mountSvg(host) {
     var mount = host.querySelector("#sptDoorPlayer") || host;
     mount.innerHTML = "";
+    ensureMonogram(mount);
     var img = global.document.createElement("img");
     img.src = ASSET_FALLBACK + "?v=" + ASSET_VER;
     img.alt = "";
@@ -162,6 +174,7 @@
       .then(function () {
         if (finished || host.classList.contains("spt-door-arrival--done")) return;
         mount.innerHTML = "";
+        ensureMonogram(mount);
         var el = global.document.createElement("dotlottie-player");
         el.setAttribute("src", ASSET_JSON + "?v=" + ASSET_VER);
         el.setAttribute("autoplay", "");
