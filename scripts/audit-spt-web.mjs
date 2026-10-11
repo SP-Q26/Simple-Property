@@ -55,6 +55,10 @@ const checks = [
   ["data/court-record-snippets.json", "Court record snippets"],
   ["court-record-rotate.js", "Court record rotate"],
   ["home-boot.js", "Home boot bundle"],
+  ["spt-scout-arrival-lottie.js", "Scout arrival Lottie boot"],
+  ["spt-scout-arrival.css", "Scout arrival motion CSS"],
+  ["lottie/spt-scout-arrival-lottie.json", "Scout arrival Lottie JSON"],
+  ["lottie/spt-scout-arrival-fallback.svg", "Scout arrival static fallback"],
 ];
 
 for (const [path, label] of checks) need(path, label);
