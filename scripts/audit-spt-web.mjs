@@ -57,6 +57,7 @@ const checks = [
   ["home-boot.js", "Home boot bundle"],
   ["spt-door-arrival-lottie.js", "Door arrival Lottie boot"],
   ["spt-door-arrival.css", "Door arrival motion CSS"],
+  ["vendor/dotlottie-player.mjs", "Door arrival dotlottie player (self-hosted)"],
   ["lottie/spt-door-arrival-lottie.json", "Door arrival Lottie JSON"],
   ["lottie/spt-door-arrival-fallback.svg", "Door arrival static fallback"],
 ];

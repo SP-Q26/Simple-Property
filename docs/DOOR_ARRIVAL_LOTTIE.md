@@ -20,8 +20,14 @@ Once per browser session (`spt_door_arrival_seen`). Tests: `data-spt-door-arriva
 
 | File | Role |
 |------|------|
-| `web/lottie/spt-door-arrival-lottie.json` | `node scripts/generate-spt-door-arrival-lottie.mjs` |
+| `web/lottie/spt-door-arrival-lottie.json` | `npm run generate:door-lottie` |
 | `web/lottie/spt-door-arrival-fallback.svg` | Reduced motion |
+| `web/vendor/dotlottie-player.mjs` | Self-hosted player (no unpkg on load) |
+| `scripts/lib/door-arrival-canon.mjs` | HOLD / FLOOR / WALL ms + Lottie `op` |
+
+**Pages:** `index.html` + `app.html` preload JSON and load `spt-door-arrival-*.css/js` · bump via `npm run sync:door-arrival`.
+
+**Runtime:** scroll lock on `<html class="spt-door-arrival-lock">` during overlay · `loop="false"` on player · finish respects **780ms floor** even if `complete` fires early.
 
 ## Sister brand (Innsegall)
 

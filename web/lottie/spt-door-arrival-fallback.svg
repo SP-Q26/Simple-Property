@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="">
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-hidden="true">
   <rect width="240" height="240" fill="#f4f0e6"/>
   <rect x="54" y="36" width="132" height="168" rx="6" fill="none" stroke="#8c8370" stroke-width="2.5"/>
-  <rect x="54" y="42" width="60" height="156" rx="4" fill="#3d3429"/>
-  <rect x="126" y="42" width="60" height="156" rx="4" fill="#3d3429"/>
-  <rect x="114" y="50" width="12" height="140" rx="2" fill="#c9a227" opacity="0.9"/>
-  <rect x="84" y="112" width="72" height="3" fill="#d4a843"/>
-  <rect x="84" y="124" width="72" height="3" fill="#d4a843"/>
+  <rect x="58" y="42" width="56" height="156" rx="4" fill="#3d3429"/>
+  <rect x="126" y="42" width="56" height="156" rx="4" fill="#3d3429"/>
+  <rect x="114" y="50" width="12" height="140" rx="2" fill="#c9a227" opacity="0.92"/>
+  <rect x="84" y="112" width="72" height="3" rx="1" fill="#d4a843"/>
+  <rect x="84" y="124" width="72" height="3" rx="1" fill="#d4a843"/>
+  <circle cx="168" cy="128" r="4" fill="#c9a227" stroke="#3d3429" stroke-width="0.6"/>
 </svg>

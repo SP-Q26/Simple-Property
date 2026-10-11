@@ -5,13 +5,19 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  LOTTIE_FR,
+  LOTTIE_OP,
+  LOTTIE_HOLD_FRAMES,
+} from './lib/door-arrival-canon.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = join(ROOT, 'docs/lottie-source');
 const PUBLIC_JSON = join(ROOT, 'web/lottie/spt-door-arrival-lottie.json');
 
-const FR = 30;
-const OP = 48; // 1.6s wall (WWL arrival canon)
+const FR = LOTTIE_FR;
+const OP = LOTTIE_OP;
+const HOLD = LOTTIE_HOLD_FRAMES;
 const W = 240;
 const H = 240;
 
@@ -156,8 +162,9 @@ const lottie = {
       ks: {
         o: ksOpacity([
           [0, 0],
-          [10, 0],
-          [22, 100],
+          [HOLD, 0],
+          [HOLD + 10, 0],
+          [HOLD + 22, 100],
           [OP, 85],
         ]),
         r: { a: 0, k: 0 },
@@ -167,7 +174,8 @@ const lottie = {
           a: 1,
           k: [
             { t: 0, s: [8, 100, 100] },
-            { t: 22, s: [22, 100, 100] },
+            { t: HOLD, s: [8, 100, 100] },
+            { t: HOLD + 22, s: [22, 100, 100] },
             { t: OP, s: [28, 100, 100] },
           ],
         },
@@ -190,7 +198,8 @@ const lottie = {
         r: { a: 0, k: 0 },
         p: ksPos([
           [0, 120, 120],
-          [8, 120, 120],
+          [HOLD, 120, 120],
+          [HOLD + 8, 120, 120],
           [OP, 52, 120],
         ]),
         a: { a: 0, k: [34, 0, 0] },
@@ -214,7 +223,8 @@ const lottie = {
         r: { a: 0, k: 0 },
         p: ksPos([
           [0, 120, 120],
-          [8, 120, 120],
+          [HOLD, 120, 120],
+          [HOLD + 8, 120, 120],
           [OP, 188, 120],
         ]),
         a: { a: 0, k: [-34, 0, 0] },
@@ -236,8 +246,9 @@ const lottie = {
       ks: {
         o: ksOpacity([
           [0, 0],
-          [14, 0],
-          [26, 100],
+          [HOLD + 2, 0],
+          [HOLD + 14, 0],
+          [HOLD + 26, 100],
           [OP, 0],
         ]),
         r: { a: 0, k: 0 },

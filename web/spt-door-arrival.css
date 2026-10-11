@@ -1,4 +1,8 @@
 /* Greystone door arrival · WWL through-motion (Simple Property) */
+html.spt-door-arrival-lock body {
+  overflow: hidden;
+}
+
 .spt-door-arrival {
   position: fixed;
   inset: 0;
