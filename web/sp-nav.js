@@ -43,6 +43,56 @@
       "tone": "atl"
     }
   ];
+  var METRO_NAV_MORE = [
+    {
+      "short": "Sea",
+      "state": "WA",
+      "city": "seattle-wa",
+      "label": "Seattle · Washington",
+      "href": "/app?state=WA&turnover=1&step=2&city=seattle-wa",
+      "tone": "sea"
+    },
+    {
+      "short": "LV",
+      "state": "NV",
+      "city": "las-vegas-nv",
+      "label": "Las Vegas · Nevada",
+      "href": "/app?state=NV&turnover=1&step=2&city=las-vegas-nv",
+      "tone": "lv"
+    },
+    {
+      "short": "NOLA",
+      "state": "LA",
+      "city": "new-orleans-la",
+      "label": "New Orleans · Louisiana",
+      "href": "/app?state=LA&turnover=1&step=2&city=new-orleans-la",
+      "tone": "nola"
+    },
+    {
+      "short": "BWI",
+      "state": "MD",
+      "city": "baltimore-md",
+      "label": "Baltimore · Maryland",
+      "href": "/app?state=MD&turnover=1&step=2&city=baltimore-md",
+      "tone": "bwi"
+    },
+    {
+      "short": "RVA",
+      "state": "VA",
+      "city": "richmond-va",
+      "label": "Richmond · Virginia",
+      "href": "/app?state=VA&turnover=1&step=2&city=richmond-va",
+      "tone": "rva"
+    },
+    {
+      "short": "ORL",
+      "state": "FL",
+      "city": "orlando-fl",
+      "label": "Orlando · Florida",
+      "href": "/app?state=FL&turnover=1&step=2&city=orlando-fl",
+      "tone": "orl"
+    }
+  ];
 
   var LOCALES = [
     {
@@ -491,15 +541,34 @@
     wrap.className = "metro-nav";
     wrap.setAttribute("role", "group");
     wrap.setAttribute("aria-label", "Metro desks");
-    METRO_NAV.forEach(function (m) {
+    function addMetroLink(m, parent) {
       var a = document.createElement("a");
       a.className = "metro-nav__link metro-nav__link--" + m.tone;
       a.href = m.href;
       a.textContent = m.short;
       a.title = m.label + " · Deposit Desk";
       wireMetroLink(a, m);
-      wrap.appendChild(a);
+      parent.appendChild(a);
+    }
+    METRO_NAV.forEach(function (m) {
+      addMetroLink(m, wrap);
     });
+    if (typeof METRO_NAV_MORE !== "undefined" && METRO_NAV_MORE.length) {
+      var more = document.createElement("details");
+      more.className = "metro-nav-more";
+      var sum = document.createElement("summary");
+      sum.className = "metro-nav__link metro-nav__link--more";
+      sum.textContent = "+";
+      sum.title = "More metros · Seattle · Vegas · DMV · Orlando";
+      more.appendChild(sum);
+      var tray = document.createElement("span");
+      tray.className = "metro-nav-more__tray";
+      METRO_NAV_MORE.forEach(function (m) {
+        addMetroLink(m, tray);
+      });
+      more.appendChild(tray);
+      wrap.appendChild(more);
+    }
     var guides = nav.querySelector('a[href="/blog"]');
     if (guides) nav.insertBefore(wrap, guides);
     else nav.appendChild(wrap);

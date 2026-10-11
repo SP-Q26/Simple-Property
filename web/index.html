@@ -14,8 +14,8 @@
   <meta property="og:title" content="Deposit Desk · paperwork ready · never pay the fees">
   <meta property="og:description" content="Itemize it. Date it. Founded in Chicago · 32 states + DC. Lower cleanup cost if counsel gets involved. Free preview. Not legal advice.">
   <meta property="og:url" content="https://simple-property.com/">
-  <meta property="og:image" content="https://simple-property.com/og/spt-share-door.png?v=20261008c">
-  <meta property="og:image:secure_url" content="https://simple-property.com/og/spt-share-door.png?v=20261008c">
+  <meta property="og:image" content="https://simple-property.com/og/spt-share-door.png?v=20261011a">
+  <meta property="og:image:secure_url" content="https://simple-property.com/og/spt-share-door.png?v=20261011a">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Deposit Desk · paperwork ready · never pay the fees">
   <meta name="twitter:description" content="Itemize it. Date it. Founded in Chicago · 32 states + DC. Lower cleanup cost if counsel gets involved. Free preview. Not legal advice.">
-  <meta name="twitter:image" content="https://simple-property.com/og/spt-share-door.png?v=20261008c">
+  <meta name="twitter:image" content="https://simple-property.com/og/spt-share-door.png?v=20261011a">
   <meta name="twitter:image:alt" content="Deposit Desk · paperwork ready · 32 states + DC · Founded in Chicago · not legal advice">
   <!-- /spt-social -->
   <meta name="theme-color" content="#f4f0e6">
@@ -37,7 +37,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=54">
+  <link rel="stylesheet" href="/simple-property.css?v=57">
+  <link rel="preload" href="/data/court-record-snippets.json" as="fetch" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -244,33 +245,34 @@
             <div class="deposit-receipt product-proof" role="img" aria-label="Sample deposit packet receipt">
               <header class="deposit-receipt__head">
                 <p class="deposit-receipt__brand">Deposit Desk · Illinois deposit packet</p>
-                <p class="deposit-receipt__id">Packet #SPT-2026-0315 · Generated 2026-03-15</p>
+                <p class="deposit-receipt__id">Packet a3f9c812 · Sample · matches printable export</p>
               </header>
               <dl class="deposit-receipt__meta">
-                <div><dt>Property</dt><dd>123 Oak St, Unit 2 · Chicago, IL</dd></div>
-                <div><dt>Tenant</dt><dd>Jordan Lee</dd></div>
-                <div><dt>Surrender</dt><dd>2026-03-01</dd></div>
-                <div><dt>Deposit held</dt><dd>$1,450.00 · First National escrow</dd></div>
-                <div><dt>Photo folder</dt><dd>Drive link on file (move-in album)</dd></div>
+                <div><dt>Property</dt><dd>123 Oak St, Unit 2 · Chicago, IL 60614</dd></div>
+                <div><dt>Tenant</dt><dd>Jordan Lee · Lease 2025-04-01 – 2026-03-31</dd></div>
+                <div><dt>Surrender</dt><dd>2026-03-01 · keys returned</dd></div>
+                <div><dt>Deposit held</dt><dd>$1,450.00 · escrow account</dd></div>
+                <div><dt>Landlord mail</dt><dd>PO Box 418 · Chicago, IL · hello@simple-property.com</dd></div>
+                <div><dt>Photo folder</dt><dd>Move-in album URL (Google Drive / Dropbox link in real packet)</dd></div>
               </dl>
-              <p class="deadline-line">Return or itemize by <strong>2026-04-15</strong> · 45 days · Chicago RLTO</p>
+              <p class="deadline-line">Return or itemize by <strong>2026-04-15</strong> · 45 days from surrender · Chicago RLTO</p>
               <h3 class="deposit-receipt__section">Move-in condition</h3>
               <table class="product-proof-table">
-                <thead><tr><th>Room</th><th>Condition</th><th>Notes</th></tr></thead>
+                <thead><tr><th>Area</th><th>Condition</th><th>Notes / photo links</th></tr></thead>
                 <tbody>
-                  <tr><td>Living room</td><td>Good</td><td>Pre-existing carpet wear noted</td></tr>
-                  <tr><td>Kitchen</td><td>Good</td><td>Appliances tested · Photo link: Drive share URL in packet</td></tr>
+                  <tr><td>Living room</td><td>Good</td><td>Pre-existing carpet wear noted · Photo link on file</td></tr>
+                  <tr><td>Kitchen</td><td>Good</td><td>Appliances tested · dated move-in photos in folder</td></tr>
                 </tbody>
               </table>
-              <h3 class="deposit-receipt__section">Move-out withholdings</h3>
+              <h3 class="deposit-receipt__section">Itemized deductions</h3>
               <table class="product-proof-table">
                 <thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead>
                 <tbody>
                   <tr><td>Cleaning</td><td>Professional clean per move-out checklist</td><td>$120.00</td></tr>
                 </tbody>
               </table>
-              <p class="deposit-receipt__totals"><strong>Total withheld:</strong> $120.00 · <strong>Balance due tenant:</strong> $1,330.00</p>
-              <p class="field-hint">Documentation only · not legal advice</p>
+              <p class="deposit-receipt__totals"><strong>Total withheld:</strong> $120.00 · <strong>Return to tenant:</strong> $1,330.00</p>
+              <p class="field-hint">Sample only · 32 states + DC in wizard · documentation only · not legal advice</p>
             </div>
           </div>
         </div>
@@ -488,9 +490,8 @@
     </footer>
   </div>
   <script src="/sp-events.js" defer></script>
-  <script src="/hero-rotate.js" defer></script>
-  <script src="/home-cta.js" defer></script>
-  <script src="/home-traction.js" defer></script>
+  <script src="/home-boot.js" defer></script>
+  <script src="/court-record-rotate.js" defer></script>
   <script src="/sp-nav.js" defer></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>

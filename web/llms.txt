@@ -1,10 +1,10 @@
 # Simple Property Tools · llms.txt
 
-> Small landlords (19 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports print-ready packet + **packet .json** for handoff · **Itemize it. Date it. Never pay the fees.** · founded in Chicago · complements Innago/Avail/bank rent stacks · not a PM suite.
+> Small landlords (32 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports print-ready packet + **packet .json** for handoff · **Itemize it. Date it. Never pay the fees.** · founded in Chicago · complements Innago/Avail/bank rent stacks · not a PM suite.
 
 - https://simple-property.com/
-- **Deposit Desk** · wizard state packs: **30-day** GA, IA, IL, LA, MI, MO, NC, ND, NH, NJ, NV, OH, UT, WA · **45-day** DC, IN, MD, MS, VA · **Chicago RLTO 45** on IL · Illinois anchor **765 ILCS 715/** · move-in/move-out · print (per turn or Pro)
-- **Florida** and other packs in wizard · deferred states: AZ, WI, TX, KS, PA, and others · see https://simple-property.com/feedback
+- **Deposit Desk** · 32 states + DC wizard packs · surrender-date clocks · print packet + JSON · statute links: https://simple-property.com/legal/deposit-statutes
+- **Court / docket patterns** · blog guides rotate regional snippets (self-help + statute links · not fabricated case names): https://simple-property.com/data/court-record-snippets.json
 - **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simple-property.com/pricing
 - **Guides** · pain (missed deadline, dispute, spreadsheet) · law · landlords · renters · news: https://simple-property.com/blog · RSS https://simple-property.com/blog/feed.rss
 - **Pain hub** · missed deadline, tenant dispute, Excel mistakes, surrender/keys: https://simple-property.com/blog#guides-pain

@@ -44,7 +44,7 @@ need("sleek price cards", css.includes(".price-card") && css.includes("price-car
 need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.js")));
 need("pricing card grid", pricing.includes("pricing-cards"));
 need("pathway deck on home", index.includes("pathway-deck") && index.includes("/feedback"));
-need("deposit receipt sample", index.includes("deposit-receipt") && index.includes("Move-in condition"));
+need("deposit receipt sample", index.includes("deposit-receipt") && index.includes("Itemized deductions"));
 need("brand tag on pricing", pricing.includes("Never pay the fees"));
 need("pro units 40 in pricing", pricing.includes("40"));
 need("photo link fields app", app.includes("photoAlbumLink") && app.includes("room-photo-link"));

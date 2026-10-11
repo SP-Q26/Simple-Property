@@ -39,7 +39,7 @@ need("home color bar coverage", /color bar/i.test(index));
 need("home court record warning card", index.includes("court-record-card") && index.includes("hero-rotate"));
 need("css court record warning", css.includes("--court-warning-surface") && css.includes(".court-record-card"));
 need("css court kicker signal", css.includes(".hero-rotate-kicker::before"));
-need("hero rotate script", index.includes("hero-rotate.js"));
+need("court rotate script", index.includes("court-record-rotate.js"));
 
 const title = index.match(/<title>([^<]+)<\/title>/)?.[1] || "";
 need("title mentions deposit + states", /deposit/i.test(title) && new RegExp(`${STATE_ONLY_COUNT} states|DC`).test(title));

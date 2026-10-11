@@ -16,7 +16,7 @@ const manifestPath = join(web, "data", "blog-manifest.json");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const site = manifest.site.replace(/\/$/, "");
 /** Marketing pages last content refresh · bump on sitewide copy/SEO sweeps. */
-const SITE_LASTMOD = "2026-10-07";
+const SITE_LASTMOD = "2026-10-11";
 
 function blogHtmlPath(slug) {
   return join(web, "blog", `${slug}.html`);
@@ -68,7 +68,7 @@ const chicagoAnchor = manifest.posts.find((p) => p.slug === "chicago-45-day-depo
 
 let citySections = `\n      <section class="guides-hub blog-cluster--city" aria-labelledby="guides-cities">\n`;
 citySections += `        <h2 id="guides-cities">Major cities</h2>\n`;
-citySections += `        <p class="muted">Chicago HQ · RLTO and major-city dropdown on wizard step 1. Not legal advice.</p>\n`;
+citySections += `        <p class="muted">Chicago HQ · Tampa, Atlanta, Seattle, Vegas, and wizard metro dropdowns on step 1 · each guide surfaces rotating court-pattern notes. Not legal advice.</p>\n`;
 citySections += `        <ul class="bullet-tight">\n`;
 if (chicagoAnchor) {
   citySections += `          <li><a href="/blog/${chicagoAnchor.slug}">${chicagoAnchor.title}</a></li>\n`;
@@ -86,7 +86,7 @@ const metroSeries = [
 ];
 let metroSections = `\n      <section class="guides-hub blog-cluster blog-cluster--metro" id="cluster-metro" aria-labelledby="guides-metro">\n`;
 metroSections += `        <h2 id="guides-metro">Metro deep dives</h2>\n`;
-metroSections += `        <p class="muted">Hyper-focused neighborhood guides · Chicago, DC, Miami · not legal advice.</p>\n`;
+metroSections += `        <p class="muted">Hyper-focused neighborhood guides · Chicago, DC, Miami · plus Tier A metro local guides (FL, ATL, DMV, SLC, NOLA, Seattle, Vegas). Not legal advice.</p>\n`;
 for (const { id, label } of metroSeries) {
   const list = manifest.posts.filter((p) => p.series === id).sort((a, b) => a.title.localeCompare(b.title));
   if (!list.length) continue;

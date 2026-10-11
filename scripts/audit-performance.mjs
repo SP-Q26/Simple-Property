@@ -2,7 +2,7 @@
 /**
  * Performance + memory drain audit · static gates (CSS weight, scripts, atmosphere, paint cost).
  */
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
@@ -30,7 +30,8 @@ console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header`, css.includes(`v${CSS_VERSION}`));
 /** v50+: Isles Collective footer shell. */
-need("css size under 78KB", cssBytes < 78 * 1024);
+/** Tier A + court-record UI · was ~80KB at v54. */
+need("css size under 81KB", cssBytes < 81 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));
@@ -75,6 +76,28 @@ const jsFiles = ["sp-nav.js", "sp-checkout.js", "app.js"].map((f) => {
   return b;
 });
 need("app.js under 72KB", jsFiles[2] < 72 * 1024);
+
+need("court-record-rotate.js present", existsSync(join(web, "court-record-rotate.js")));
+need("no legacy court rotate scripts", !existsSync(join(web, "hero-rotate.js")) && !existsSync(join(web, "blog-court-rotate.js")));
+const courtRotate = statSync(join(web, "court-record-rotate.js")).size;
+console.log(`  court-record-rotate.js: ${courtRotate} bytes`);
+need("court-record-rotate under 5KB", courtRotate < 5 * 1024);
+
+const snippetsPath = join(web, "data/court-record-snippets.json");
+if (existsSync(snippetsPath)) {
+  const snipBytes = statSync(snippetsPath).size;
+  console.log(`  court-record-snippets.json: ${snipBytes} bytes`);
+  need("snippets json under 90KB", snipBytes < 90 * 1024);
+}
+
+const index = read("index.html");
+need("index home-boot.js", index.includes("home-boot.js"));
+need("index no legacy home-cta/traction", !index.includes("home-cta.js") && !index.includes("home-traction.js"));
+need("index snippet preload", index.includes('preload" href="/data/court-record-snippets.json"'));
+
+const vercel = readFileSync(join(root, "web", "vercel.json"), "utf8");
+need("vercel cache data/*", vercel.includes('"/data/(.*)"') && vercel.includes("Cache-Control"));
+need("vercel cache css", vercel.includes('"/simple-property.css"'));
 
 console.log(fail ? `\nPerformance audit FAILED (${fail})` : "\nPerformance audit OK");
 process.exit(fail ? 1 : 0);

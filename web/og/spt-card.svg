@@ -22,104 +22,104 @@
   <text x="276" y="253" fill="#3b5a78">Tap your state</text>
 </g>
 <g class="coverage-chip" data-code="AR">
-  <rect x="88" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="108" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">AR</text>
+  <rect x="88" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="106" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">AR</text>
 </g><g class="coverage-chip" data-code="CA">
-  <rect x="134" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="154" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">CA</text>
+  <rect x="129" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="147" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">CA</text>
 </g><g class="coverage-chip" data-code="CO">
-  <rect x="180" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="200" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">CO</text>
+  <rect x="170" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="188" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">CO</text>
 </g><g class="coverage-chip" data-code="CT">
-  <rect x="226" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="246" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">CT</text>
+  <rect x="211" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="229" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">CT</text>
 </g><g class="coverage-chip" data-code="DC">
-  <rect x="272" y="274" width="40" height="40" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
-  <text x="292" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#7a6218">DC</text>
+  <rect x="252" y="274" width="36" height="36" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
+  <text x="270" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#7a6218">DC</text>
 </g><g class="coverage-chip" data-code="DE">
-  <rect x="318" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="338" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">DE</text>
+  <rect x="293" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="311" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">DE</text>
 </g><g class="coverage-chip" data-code="FL">
-  <rect x="364" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="384" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">FL</text>
+  <rect x="334" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="352" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">FL</text>
 </g><g class="coverage-chip" data-code="GA">
-  <rect x="410" y="274" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="430" y="299" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">GA</text>
+  <rect x="375" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="393" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">GA</text>
 </g><g class="coverage-chip" data-code="HI">
-  <rect x="88" y="320" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="108" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">HI</text>
+  <rect x="416" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="434" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">HI</text>
 </g><g class="coverage-chip" data-code="IA">
-  <rect x="134" y="320" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="154" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">IA</text>
+  <rect x="457" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="475" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">IA</text>
 </g><g class="coverage-chip" data-code="IL">
-  <rect x="180" y="320" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="200" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">IL</text>
+  <rect x="498" y="274" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="516" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">IL</text>
 </g><g class="coverage-chip" data-code="IN">
-  <rect x="226" y="320" width="40" height="40" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
-  <text x="246" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#7a6218">IN</text>
+  <rect x="88" y="315" width="36" height="36" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
+  <text x="106" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#7a6218">IN</text>
 </g><g class="coverage-chip" data-code="KY">
-  <rect x="272" y="320" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="292" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">KY</text>
+  <rect x="129" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="147" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">KY</text>
 </g><g class="coverage-chip" data-code="LA">
-  <rect x="318" y="320" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="338" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">LA</text>
+  <rect x="170" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="188" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">LA</text>
 </g><g class="coverage-chip" data-code="MD">
-  <rect x="364" y="320" width="40" height="40" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
-  <text x="384" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#7a6218">MD</text>
+  <rect x="211" y="315" width="36" height="36" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
+  <text x="229" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#7a6218">MD</text>
 </g><g class="coverage-chip" data-code="MI">
-  <rect x="410" y="320" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="430" y="345" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">MI</text>
+  <rect x="252" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="270" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">MI</text>
 </g><g class="coverage-chip" data-code="MN">
-  <rect x="88" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="108" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">MN</text>
+  <rect x="293" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="311" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">MN</text>
 </g><g class="coverage-chip" data-code="MO">
-  <rect x="134" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="154" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">MO</text>
+  <rect x="334" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="352" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">MO</text>
 </g><g class="coverage-chip" data-code="MS">
-  <rect x="180" y="366" width="40" height="40" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
-  <text x="200" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#7a6218">MS</text>
+  <rect x="375" y="315" width="36" height="36" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
+  <text x="393" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#7a6218">MS</text>
 </g><g class="coverage-chip" data-code="NC">
-  <rect x="226" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="246" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">NC</text>
+  <rect x="416" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="434" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">NC</text>
 </g><g class="coverage-chip" data-code="ND">
-  <rect x="272" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="292" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">ND</text>
+  <rect x="457" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="475" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">ND</text>
 </g><g class="coverage-chip" data-code="NE">
-  <rect x="318" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="338" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">NE</text>
+  <rect x="498" y="315" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="516" y="337" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">NE</text>
 </g><g class="coverage-chip" data-code="NH">
-  <rect x="364" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="384" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">NH</text>
+  <rect x="88" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="106" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">NH</text>
 </g><g class="coverage-chip" data-code="NJ">
-  <rect x="410" y="366" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="430" y="391" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">NJ</text>
+  <rect x="129" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="147" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">NJ</text>
 </g><g class="coverage-chip" data-code="NV">
-  <rect x="88" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="108" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">NV</text>
+  <rect x="170" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="188" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">NV</text>
 </g><g class="coverage-chip" data-code="OH">
-  <rect x="134" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="154" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">OH</text>
+  <rect x="211" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="229" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">OH</text>
 </g><g class="coverage-chip" data-code="RI">
-  <rect x="180" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="200" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">RI</text>
+  <rect x="252" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="270" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">RI</text>
 </g><g class="coverage-chip" data-code="SD">
-  <rect x="226" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="246" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">SD</text>
+  <rect x="293" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="311" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">SD</text>
 </g><g class="coverage-chip" data-code="UT">
-  <rect x="272" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="292" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">UT</text>
+  <rect x="334" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="352" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">UT</text>
 </g><g class="coverage-chip" data-code="VA">
-  <rect x="318" y="412" width="40" height="40" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
-  <text x="338" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#7a6218">VA</text>
+  <rect x="375" y="356" width="36" height="36" rx="5" fill="#f3ecd4" stroke="#b8911f" stroke-width="1.4"/>
+  <text x="393" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#7a6218">VA</text>
 </g><g class="coverage-chip" data-code="VT">
-  <rect x="364" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="384" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">VT</text>
+  <rect x="416" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="434" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">VT</text>
 </g><g class="coverage-chip" data-code="WA">
-  <rect x="410" y="412" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="430" y="437" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">WA</text>
+  <rect x="457" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="475" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">WA</text>
 </g><g class="coverage-chip" data-code="WV">
-  <rect x="88" y="458" width="40" height="40" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
-  <text x="108" y="483" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#4a6741">WV</text>
+  <rect x="498" y="356" width="36" height="36" rx="5" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.4"/>
+  <text x="516" y="378" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4a6741">WV</text>
 </g>
   <text x="960" y="548" text-anchor="middle" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="18">simple-property.com</text>
 </svg>

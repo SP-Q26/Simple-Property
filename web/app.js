@@ -18,7 +18,7 @@ import {
   googleCalendarReminderUrls,
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
-import { buildPacketAiReport, copyTextForAi } from "./lib/packet-ai-report.mjs";
+import { buildPacketAiReport, copyTextForAi, buildPrintPacketInnerHtml } from "./lib/packet-report.mjs";
 import { buildWizardAgentSnapshot, publishWizardAgentSnapshot } from "./lib/wizard-agent-snapshot.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "./lib/statute-urls.mjs";
@@ -1409,63 +1409,9 @@ function syncPrintAccessClass(previewMode) {
   document.body.classList.add("spt-no-pro-print");
 }
 
-function buildPrintPacketInnerHtml() {
+function buildPrintPacketHtml() {
   const deadline = computeDeadline(deadlineInput());
-  const stLabel = STATE_PACKS[normalizeStateCode(draft.property.state)]?.label || "deposit";
-  const addr = [draft.property.street, draft.property.city, draft.property.zip].filter(Boolean).join(", ");
-  const dep = parseFloat(draft.deposit.amount) || 0;
-  const withheld = sumDeductions(draft.deductions);
-  const roomRows = draft.rooms
-    .map((r) => {
-      const noteParts = [r.notes || ""];
-      if (r.photoFileName) noteParts.push(`File: ${r.photoFileName}`);
-      if (r.photoCapturedAt) noteParts.push(`Captured: ${r.photoCapturedAt.slice(0, 10)}`);
-      if (r.photoLink) noteParts.push(`Photo link: ${r.photoLink}`);
-      const noteCell = noteParts.filter(Boolean).join(" · ") || "n/a";
-      return `<tr><td>${esc(r.name)}</td><td>${esc(r.condition)}</td><td>${esc(noteCell)}</td></tr>`;
-    })
-    .join("");
-  const photoBlock = draft.rooms
-    .filter((r) => r.photo)
-    .map(
-      (r) =>
-        `<figure class="print-photo"><figcaption>${esc(r.name)}${r.photoFileName ? ` · ${esc(r.photoFileName)}` : ""}</figcaption><img src="${r.photo}" alt="" /></figure>`
-    )
-    .join("");
-  const dedRows = draft.deductions
-    .filter((d) => d.amount || d.description)
-    .map((d) => `<tr><td>${esc(d.category)}</td><td>${esc(d.description) || "n/a"}</td><td>$${esc(d.amount) || "0"}</td></tr>`)
-    .join("");
-  return `
-    <h2>Deposit Desk · ${esc(stLabel)} deposit packet</h2>
-    <p style="font-size:10pt;color:#6b5c4a">Simple Property Tools · Deposit Desk · ${formatUsDate(draft.signatures.date)}</p>
-    <p><strong>Property:</strong> ${esc(addr)}<br/>
-    <strong>Tenant:</strong> ${esc(draft.tenant.name)} · <strong>Lease:</strong> ${formatUsDate(draft.lease.start)} – ${formatUsDate(draft.lease.end)}<br/>
-    <strong>Deposit:</strong> $${dep.toFixed(2)} · <strong>Held:</strong> ${esc(draft.deposit.heldAt) || "n/a"}</p>
-    <p><strong>Landlord:</strong> ${esc(draft.landlord.name)} · ${esc(draft.landlord.email)}<br/>
-    <strong>Mailing address:</strong> ${esc(draft.landlord.address) || "n/a"}</p>
-    ${deadline.deadline ? `<p><strong>Deadline (${esc(deadline.jurisdiction)}):</strong> ${formatUsDate(deadline.deadline)}</p>` : ""}
-    ${
-      draft.mailProof?.mailedAt || draft.mailProof?.tracking || draft.mailProof?.method
-        ? `<p><strong>Mailed to tenant:</strong> ${formatUsDate(draft.mailProof.mailedAt) || "n/a"} · ${esc(draft.mailProof.method) || "n/a"} · ${esc(draft.mailProof.tracking) || "n/a"}</p>`
-        : ""
-    }
-    ${draft.photoAlbumLink ? `<p><strong>Move-in photo folder:</strong> ${esc(draft.photoAlbumLink)}</p>` : ""}
-    <h3>Move-in condition</h3>
-    <table><thead><tr><th>Area</th><th>Condition</th><th>Notes</th></tr></thead><tbody>${roomRows}</tbody></table>
-    ${photoBlock ? `<h3>Move-in photos</h3><div class="print-photos print-photos--sensitive">${photoBlock}</div>` : ""}
-    ${
-      dedRows
-        ? `<h3>Itemized deductions</h3><table><thead><tr><th>Category</th><th>Description</th><th>Amount</th></tr></thead><tbody>${dedRows}</tbody></table>
-    <p><strong>Total withheld:</strong> $${withheld.toFixed(2)} · <strong>Return to tenant:</strong> $${Math.max(0, dep - withheld).toFixed(2)}</p>`
-        : ""
-    }
-    <p style="font-size:9pt">Documentation only. Not legal advice.</p>
-    <p style="font-size:8pt;color:#6b5c4a;margin-top:0.75rem">Packet prepared with Deposit Desk · simple-property.com · Packet ${esc(draft.id.slice(0, 8))}</p>
-    <div style="display:flex;gap:3rem;margin-top:2rem">
-      <div><div class="signature-line">Landlord: ${esc(draft.signatures.landlordPrinted || draft.landlord.name)}</div></div>
-      <div><div class="signature-line">Tenant: ${esc(draft.signatures.tenantPrinted || draft.tenant.name)}</div></div>
-    </div>`;
+  return buildPrintPacketInnerHtml(draft, deadline, esc);
 }
 
 /** @param {"auto"|"preview"|"final"} kind */
@@ -1482,7 +1428,7 @@ function renderPrintPacket(kind = "auto") {
   const banner = preview && !final
     ? `<p class="print-preview-banner" aria-hidden="true">PREVIEW · NOT FOR TENANT MAIL · UNLOCK MAIL-READY PDF AT SIMPLE-PROPERTY.COM</p>`
     : "";
-  els.printRoot.innerHTML = `${banner}<div class="print-packet__inner">${buildPrintPacketInnerHtml()}</div>`;
+  els.printRoot.innerHTML = `${banner}<div class="print-packet__inner">${buildPrintPacketHtml()}</div>`;
 }
 
 function syncExportButtons() {

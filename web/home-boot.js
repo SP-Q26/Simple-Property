@@ -1,4 +1,4 @@
-/** Home · geo-aware primary CTAs from ?state= or locale bar preset. Founded in Chicago · multistate. */
+/** Home · geo CTAs + optional traction line (single request) */
 (function () {
   "use strict";
 
@@ -26,7 +26,7 @@
     return PRESET.IL;
   }
 
-  function apply() {
+  function applyCtas() {
     var code = stateFromContext();
     var href = hrefForState(code);
     document.querySelectorAll("[data-spt-geo-cta]").forEach(function (el) {
@@ -37,13 +37,36 @@
     else if (primary) primary.setAttribute("href", href);
   }
 
-  window.addEventListener("spt-preset-state", function () {
-    apply();
-  });
+  function loadTraction() {
+    var el = document.getElementById("hero-traction");
+    if (!el) return;
+    fetch("/data/public-traction.json", { credentials: "same-origin" })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (d) {
+        if (!d || !d.landlordsMin) return;
+        var j = d.jurisdictionsMin ? d.landlordsMin + "+ jurisdictions" : "32 states + DC";
+        el.textContent = d.landlordsMin + "+ landlords · " + j + " · paperwork-ready packets";
+        el.hidden = false;
+      })
+      .catch(function () {});
+  }
+
+  window.addEventListener("spt-preset-state", applyCtas);
+
+  function boot() {
+    applyCtas();
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadTraction, { timeout: 2000 });
+    } else {
+      loadTraction();
+    }
+  }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", apply);
+    document.addEventListener("DOMContentLoaded", boot);
   } else {
-    apply();
+    boot();
   }
 })();

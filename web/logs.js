@@ -410,7 +410,7 @@ function renderPrintBlock() {
   const title = tabs.find((t) => t.id === activeTab)?.label || "Log";
   root.innerHTML = `
     <h2>Simple Property Tools · ${esc(title)}</h2>
-    <p>Printed ${new Date().toLocaleString()} · not legal advice</p>
+    <p>Printed ${new Date().toLocaleString()} · ${entries.length} row(s) · simple-property.com/logs · not legal advice</p>
     <table><thead><tr><th>#</th><th>When</th><th>Unit</th><th>Summary</th><th>Status</th></tr></thead>
     <tbody>
       ${entries

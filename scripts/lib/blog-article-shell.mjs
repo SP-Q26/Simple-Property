@@ -4,11 +4,19 @@ import { fileURLToPath } from "node:url";
 import { BRAND_TAG_HTML, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-locale.mjs";
 import { articleGraph, SITE } from "./seo-jsonld.mjs";
 import { wrapFooter, FOOTER_NAV_BLOG_POST } from "./site-footer.mjs";
+import { blogCourtCardHtml } from "./blog-court-card-html.mjs";
+
+export function stripBlogCourtCard(bodyHtml) {
+  return bodyHtml
+    .replace(/\n?<!-- spt-court-record -->[\s\S]*?<!-- \/spt-court-record -->\n?/g, "\n")
+    .trim();
+}
 
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
 
-function articleShell({ title, description, slug, published, modified, bodyHtml }) {
+function articleShell({ title, description, slug, published, modified, bodyHtml, states = [], cityPreset = "" }) {
+  const proseBody = `${blogCourtCardHtml({ states, cityPreset })}\n${stripBlogCourtCard(bodyHtml)}`;
   const url = `${SITE}/blog/${slug}`;
   const mod = modified || published;
   const ld = JSON.stringify(
@@ -36,6 +44,7 @@ function articleShell({ title, description, slug, published, modified, bodyHtml 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="${FONT_GOOGLE}" rel="stylesheet">
   <link rel="stylesheet" href="/simple-property.css?v=${CSS_VERSION}">
+  <link rel="preload" href="/data/court-record-snippets.json" as="fetch" crossorigin>
   <script type="application/ld+json">${ld}</script>
 </head>
 <body>
@@ -58,11 +67,12 @@ ${atmosphereBlock}
       </nav>
     </header>
     <main id="main" class="prose">
-${bodyHtml}
+${proseBody}
     </main>
     ${wrapFooter("site-footer", FOOTER_NAV_BLOG_POST)}
   </div>
   <script src="/sp-nav.js" defer></script>
+  <script src="/court-record-rotate.js" defer></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>

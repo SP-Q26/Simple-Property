@@ -52,6 +52,9 @@ const checks = [
   ["api/events.js", "Client analytics beacon"],
   ["sp-events.js", "Client event bus"],
   ["lib/wizard-agent-snapshot.mjs", "Wizard live agent snapshot"],
+  ["data/court-record-snippets.json", "Court record snippets"],
+  ["court-record-rotate.js", "Court record rotate"],
+  ["home-boot.js", "Home boot bundle"],
 ];
 
 for (const [path, label] of checks) need(path, label);
@@ -104,7 +107,7 @@ if (existsSync(join(web, "node_modules"))) {
 
 console.log(fail ? `Audit FAILED (${fail} P0)` : "Audit OK · proud-ship P0 gates pass");
 if (!fail) {
-  for (const script of ["audit-brand-shell.mjs", "audit-brand-tagline.mjs", "audit-vercel-favicon.mjs", "audit-trust-voice.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-seo-sweep.mjs", "audit-performance.mjs", "audit-wizard-speed.mjs", "audit-agent-snapshot.mjs", "audit-mcp.mjs", "audit-state-blog-coverage.mjs", "audit-region-expansion-oct-2026.mjs", "audit-ios-brand-spacing.mjs", "audit-responsive-spacing.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-landing-desktop.mjs", "audit-fonts.mjs", "audit-locale-bar-breakpoints.mjs", "audit-statute-urls.mjs", "audit-statute-outbound.mjs", "audit-home-faq.mjs", "audit-state-hub-links.mjs", "audit-pain-copy.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-customer-voice.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs", "audit-box-spacing.mjs", "audit-blog-guide-warnings.mjs", "audit-interactive-states.mjs", "audit-site-footer.mjs", "audit-stack-handoff.mjs"]) {
+  for (const script of ["audit-brand-shell.mjs", "audit-brand-tagline.mjs", "audit-vercel-favicon.mjs", "audit-trust-voice.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-packet-reports.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-court-record-coverage.mjs", "audit-seo-sweep.mjs", "audit-performance.mjs", "audit-wizard-speed.mjs", "audit-agent-snapshot.mjs", "audit-mcp.mjs", "audit-state-blog-coverage.mjs", "audit-region-expansion-oct-2026.mjs", "audit-ios-brand-spacing.mjs", "audit-responsive-spacing.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-landing-desktop.mjs", "audit-fonts.mjs", "audit-locale-bar-breakpoints.mjs", "audit-statute-urls.mjs", "audit-statute-outbound.mjs", "audit-home-faq.mjs", "audit-state-hub-links.mjs", "audit-pain-copy.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-customer-voice.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs", "audit-box-spacing.mjs", "audit-blog-guide-warnings.mjs", "audit-interactive-states.mjs", "audit-site-footer.mjs", "audit-stack-handoff.mjs"]) {
     const r = spawnSync(process.execPath, [join(root, "scripts", script)], { stdio: "inherit" });
     if (r.status !== 0) process.exit(1);
   }

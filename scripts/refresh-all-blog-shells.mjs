@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /**
- * Re-wrap every blog post body in articleShell (CSS v40 · dual brand tag · nav scripts).
+ * Re-wrap every blog post body in articleShell (court card + rotate script).
+ * After run: node scripts/sync-blog-article-seo.mjs && node scripts/sync-social-meta.mjs
  */
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { articleShell } from "./lib/blog-article-shell.mjs";
+import { articleShell, stripBlogCourtCard } from "./lib/blog-article-shell.mjs";
 
 const blogDir = join(dirname(fileURLToPath(import.meta.url)), "..", "web", "blog");
 const manifest = JSON.parse(
@@ -27,7 +28,7 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
     console.warn("skip (no main)", slug);
     continue;
   }
-  let bodyHtml = mainMatch[1].trim();
+  let bodyHtml = stripBlogCourtCard(mainMatch[1].trim());
   // Keep in-body CTAs; sync-blog-article-seo adds disclaimer if absent.
 
   const titleMatch = html.match(/<title>([^<]+)<\/title>/);
@@ -37,7 +38,15 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
   const dateMatch = html.match(/"datePublished"\s*:\s*"([^"]+)"/);
   const published = dateMatch ? dateMatch[1] : post.published;
 
-  const next = articleShell({ title, description, slug, published, bodyHtml });
+  const next = articleShell({
+    title,
+    description,
+    slug,
+    published,
+    bodyHtml,
+    states: post.states || [],
+    cityPreset: post.cityPreset || "",
+  });
   if (next !== html) {
     writeFileSync(path, next);
     refreshed++;

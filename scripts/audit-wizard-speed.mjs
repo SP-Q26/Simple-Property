@@ -44,7 +44,7 @@ need("mail proof fields", appJs.includes("mail-mailed") && appJs.includes("mailP
 need("statement preview unlocked", appJs.includes("renderItemizationPreview(false)"));
 need("packet import export ui", appHtml.includes("btn-export-packet") && appHtml.includes("btn-import-packet"));
 need("return link copy", appJs.includes("btn-copy-return-link") && appJs.includes("packetReturnUrl"));
-need("home turnover cta", readFileSync(join(web, "home-cta.js"), "utf8").includes("turnover=1"));
+need("home turnover cta", readFileSync(join(web, "home-boot.js"), "utf8").includes("turnover=1"));
 
 console.log(fail ? `\nWizard speed audit FAILED (${fail})` : "\nWizard speed audit OK");
 process.exit(fail ? 1 : 0);

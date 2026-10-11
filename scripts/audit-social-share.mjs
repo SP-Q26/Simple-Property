@@ -40,7 +40,7 @@ needContent("share door SVG no Midwest-only line", !doorSvg.includes("Midwest de
 needContent("share door SVG no six-state-only line", !doorSvg.includes("IL · IN · OH · MI · IA · MO"));
 needContent("share door SVG highlight copy", doorSvg.includes("Paperwork ready"));
 needContent("share door SVG counsel line", /counsel gets involved/i.test(doorSvg));
-needContent("share door SVG featured metros", doorSvg.includes("Miami") && doorSvg.includes("Chicago"));
+needContent("share door SVG featured metros", doorSvg.includes("Tampa") && doorSvg.includes("Chicago") && doorSvg.includes("Atlanta"));
 needContent("share door SVG no live traction stat", !/48\+ landlords/i.test(doorSvg));
 needContent("share door SVG highlight padding", (() => {
   const m = doorSvg.match(/<rect x="72" y="212" width="580" height="(\d+)"/);

@@ -33,8 +33,8 @@ const manifestPath = join(web, "data/blog-manifest.json");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 for (const p of manifest.posts) {
   if (p.slug !== "deposit-desk-new-states-thanks-sep-2026") continue;
-  p.description = p.description.replace(/18 states \+ DC/g, label);
-  if (p.ogImageAlt) p.ogImageAlt = p.ogImageAlt.replace(/18 states \+ DC/g, label);
+  p.description = p.description.replace(/\d+ states \+ DC/g, label);
+  if (p.ogImageAlt) p.ogImageAlt = p.ogImageAlt.replace(/\d+ states \+ DC/g, label);
 }
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 

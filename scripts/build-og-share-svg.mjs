@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * OG link-preview art from deposit-rules (30/45 chips · 18 states + DC).
+ * OG link-preview art from deposit-rules (30/45 chips · all wizard states + DC).
  * Run before export-og-share-images.mjs · npm run sync:seo
  */
 import { writeFileSync } from "node:fs";
@@ -18,11 +18,11 @@ function chipMarkup(x, y, code) {
   const fill = is45 ? "#f3ecd4" : "#e6ebe0";
   const stroke = is45 ? "#b8911f" : "#5a7a52";
   const ink = is45 ? "#7a6218" : "#4a6741";
-  const w = 40;
-  const h = 40;
+  const w = 36;
+  const h = 36;
   return `<g class="coverage-chip" data-code="${code}">
   <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="${fill}" stroke="${stroke}" stroke-width="1.4"/>
-  <text x="${x + w / 2}" y="${y + h / 2 + 5}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="${ink}">${code}</text>
+  <text x="${x + w / 2}" y="${y + h / 2 + 4}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="${ink}">${code}</text>
 </g>`;
 }
 
@@ -83,16 +83,18 @@ function featuredMetroChips(y) {
   const chipH = 56;
   const metros = [
     { code: "IL", label: "Chicago", x: 72 },
-    { code: "FL", label: "Miami", x: 168 },
-    { code: "DC", label: "DC", x: 264 },
+    { code: "FL", label: "Tampa", x: 156 },
+    { code: "GA", label: "Atlanta", x: 240 },
+    { code: "DC", label: "DC", x: 324 },
+    { code: "CA", label: "California", x: 408 },
   ];
   return metros
     .map(
       (m) =>
         `<g>
-  <rect x="${m.x}" y="${y}" width="84" height="${chipH}" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
-  <text x="${m.x + 42}" y="${y + 26}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#4a6741">${m.code}</text>
-  <text x="${m.x + 42}" y="${y + 44}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#6b5c4a">${m.label}</text>
+  <rect x="${m.x}" y="${y}" width="76" height="${chipH}" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="${m.x + 38}" y="${y + 26}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4a6741">${m.code}</text>
+  <text x="${m.x + 38}" y="${y + 44}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b5c4a">${m.label}</text>
 </g>`
     )
     .join("\n");
@@ -142,20 +144,21 @@ ${featuredMetroChips(326)}
   <text x="72" y="428" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="14">Not legal advice · documentation only</text>
 ${doorSceneMini()}`;
 
-const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="40" font-weight="600">New state coverage</text>
-  <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">Thank you to clients and investors who sourced local regs</text>
-  <text x="72" y="182" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="20">${BRAND_TAGLINE}</text>
-  <text x="72" y="212" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="21" font-weight="600">Deposit Desk · ${COVERAGE_LABEL}</text>
-  <text x="72" y="242" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17">More states via feedback · not legal advice</text>
-${legend(72, 268)}
-${chipGrid(72, 294, 10, 40, 6)}
+const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="40" font-weight="600">${COVERAGE_LABEL}</text>
+  <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">New metros: Tampa · Atlanta · Seattle · Vegas · DMV · more</text>
+  <text x="72" y="178" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="18">Thank you to operators who sourced local regs</text>
+  <text x="72" y="204" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="19">${BRAND_TAGLINE}</text>
+  <text x="72" y="232" fill="#3b5a78" font-family="system-ui,sans-serif" font-size="20" font-weight="600">Deposit Desk · CA · CO · FL · HI · MN · Tier A packs live</text>
+  <text x="72" y="258" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="16">Not legal advice · documentation only</text>
+${legend(72, 278)}
+${chipGrid(72, 302, 11, 36, 5)}
 ${doorSceneMini()}`;
 
 const cardBody = `  <text x="88" y="148" fill="#3d3429" font-family="Georgia, serif" font-size="46" font-weight="600">Simple Property Tools</text>
   <text x="88" y="198" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="24">Deposit Desk · ${COVERAGE_LABEL}</text>
   <path d="M88 218h400" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
 ${legend(88, 248)}
-${chipGrid(88, 274, 8, 40, 6)}`;
+${chipGrid(88, 274, 11, 36, 5)}`;
 
 writeFileSync(
   join(ogDir, "spt-share-door.svg"),

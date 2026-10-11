@@ -15,7 +15,7 @@ export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__d
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 54;
+export const CSS_VERSION = 57;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */
@@ -101,6 +101,58 @@ export const METRO_NAV = [
     label: "Atlanta · Georgia",
     href: appWizardHref("GA", "atlanta-ga"),
     tone: "atl",
+  },
+];
+
+/** Compact header metros (overflow menu). */
+export const METRO_NAV_MORE = [
+  {
+    short: "Sea",
+    state: "WA",
+    city: "seattle-wa",
+    label: "Seattle · Washington",
+    href: appWizardHref("WA", "seattle-wa"),
+    tone: "sea",
+  },
+  {
+    short: "LV",
+    state: "NV",
+    city: "las-vegas-nv",
+    label: "Las Vegas · Nevada",
+    href: appWizardHref("NV", "las-vegas-nv"),
+    tone: "lv",
+  },
+  {
+    short: "NOLA",
+    state: "LA",
+    city: "new-orleans-la",
+    label: "New Orleans · Louisiana",
+    href: appWizardHref("LA", "new-orleans-la"),
+    tone: "nola",
+  },
+  {
+    short: "BWI",
+    state: "MD",
+    city: "baltimore-md",
+    label: "Baltimore · Maryland",
+    href: appWizardHref("MD", "baltimore-md"),
+    tone: "bwi",
+  },
+  {
+    short: "RVA",
+    state: "VA",
+    city: "richmond-va",
+    label: "Richmond · Virginia",
+    href: appWizardHref("VA", "richmond-va"),
+    tone: "rva",
+  },
+  {
+    short: "ORL",
+    state: "FL",
+    city: "orlando-fl",
+    label: "Orlando · Florida",
+    href: appWizardHref("FL", "orlando-fl"),
+    tone: "orl",
   },
 ];
 

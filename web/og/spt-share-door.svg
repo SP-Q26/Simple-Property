@@ -19,19 +19,29 @@
 <text x="100" y="256" fill="#3d3429" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Paperwork ready.</text>
 <text x="100" y="281" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="17" font-weight="400">Lower cleanup cost if counsel gets involved.</text>
 <g>
-  <rect x="72" y="326" width="84" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
-  <text x="114" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#4a6741">IL</text>
-  <text x="114" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#6b5c4a">Chicago</text>
+  <rect x="72" y="326" width="76" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="110" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4a6741">IL</text>
+  <text x="110" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b5c4a">Chicago</text>
 </g>
 <g>
-  <rect x="168" y="326" width="84" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
-  <text x="210" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#4a6741">FL</text>
-  <text x="210" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#6b5c4a">Miami</text>
+  <rect x="156" y="326" width="76" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="194" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4a6741">FL</text>
+  <text x="194" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b5c4a">Tampa</text>
 </g>
 <g>
-  <rect x="264" y="326" width="84" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
-  <text x="306" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#4a6741">DC</text>
-  <text x="306" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#6b5c4a">DC</text>
+  <rect x="240" y="326" width="76" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="278" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4a6741">GA</text>
+  <text x="278" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b5c4a">Atlanta</text>
+</g>
+<g>
+  <rect x="324" y="326" width="76" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="362" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4a6741">DC</text>
+  <text x="362" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b5c4a">DC</text>
+</g>
+<g>
+  <rect x="408" y="326" width="76" height="56" rx="8" fill="#e6ebe0" stroke="#5a7a52" stroke-width="1.6"/>
+  <text x="446" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#4a6741">CA</text>
+  <text x="446" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b5c4a">California</text>
 </g>
   <text x="72" y="400" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="16">Surrender · deadline · itemize · preview free · mail-ready PDF</text>
   <text x="72" y="428" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="14">Not legal advice · documentation only</text>

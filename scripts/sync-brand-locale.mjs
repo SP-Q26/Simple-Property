@@ -14,6 +14,7 @@ import {
   COVERAGE_MAP_XY,
   STATE_ONLY_COUNT,
   METRO_NAV,
+  METRO_NAV_MORE,
 } from "../web/lib/brand-locale.mjs";
 
 const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
@@ -105,6 +106,13 @@ nav = nav.replace(/  var MAP_XY = \{[\s\S]*?\};/, mapBlock);
 const metroJson = JSON.stringify(METRO_NAV, null, 2).replace(/\n/g, "\n  ");
 const metroBlock = `  var METRO_NAV = ${metroJson.replace(/^  /, "")};`;
 nav = nav.replace(/  var METRO_NAV = \[[\s\S]*?\];/, metroBlock);
+const metroMoreJson = JSON.stringify(METRO_NAV_MORE, null, 2).replace(/\n/g, "\n  ");
+const metroMoreBlock = `  var METRO_NAV_MORE = ${metroMoreJson.replace(/^  /, "")};`;
+if (nav.includes("var METRO_NAV_MORE")) {
+  nav = nav.replace(/  var METRO_NAV_MORE = \[[\s\S]*?\];/, metroMoreBlock);
+} else {
+  nav = nav.replace(metroBlock, `${metroBlock}\n${metroMoreBlock}`);
+}
 nav = nav.replace(
   /Official deposit statutes<\/a> · \d+ states \+ DC/,
   `Official deposit statutes</a> · ${STATE_ONLY_COUNT} states + DC`

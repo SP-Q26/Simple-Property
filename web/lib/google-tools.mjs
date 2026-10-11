@@ -55,27 +55,36 @@ export function buildPacketSheetsCsv(draft, deadline) {
     "Property",
     "City",
     "State",
-    "Chicago RLTO",
+    "City preset",
     "Tenant",
+    "Lease start",
+    "Lease end",
     "Surrender date",
     "Deadline date",
     "Jurisdiction",
     "Deposit amount",
     "Withhold total",
+    "Return to tenant",
+    "Photo folder link",
     "Updated",
   ];
   const withheld = (draft.deductions || []).reduce((a, d) => a + (parseFloat(d.amount) || 0), 0);
+  const dep = parseFloat(draft.deposit?.amount) || 0;
   const row = [
     draft.property?.street,
     draft.property?.city,
     draft.property?.state || "IL",
-    draft.property?.inChicago ? "yes" : "no",
+    draft.property?.cityPreset || "",
     draft.tenant?.name,
+    draft.lease?.start,
+    draft.lease?.end,
     draft.surrenderDate,
     deadline?.deadline,
     deadline?.jurisdiction,
     draft.deposit?.amount,
     withheld.toFixed(2),
+    Math.max(0, dep - withheld).toFixed(2),
+    draft.photoAlbumLink || "",
     new Date().toISOString().slice(0, 10),
   ];
   return [headers.map(csvCell).join(","), row.map(csvCell).join(",")].join("\n");

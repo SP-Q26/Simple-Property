@@ -8,7 +8,7 @@
   "site": "https://simple-property.com",
   "contact": "hello@simple-property.com",
   "lane": {
-    "is": "Security deposit move-in/move-out documentation for mom-and-pop landlords (19 US states + DC · Chicago RLTO · up to 40 doors). Wizard default clocks: 30 or 45 calendar days from surrender where statute fits simple model.",
+    "is": "Security deposit move-in/move-out documentation for mom-and-pop landlords (32 US states + DC · Chicago RLTO · up to 40 doors). Wizard default clocks: 30 or 45 calendar days from surrender where statute fits simple model.",
     "is_not": "Property management · legal advice · enterprise portfolio platform · inspection photo SaaS"
   },
   "deadlines": {
@@ -47,6 +47,42 @@
   "chicago_rlto_url": "https://www.chicago.gov/city/en/depts/doh/provdrs/landlords/svcs/residential-landlord-and-tenant-ordinance.html",
   "state_packs": [
     {
+      "code": "AR",
+      "label": "Arkansas",
+      "returnDays": 60,
+      "cite": "Ark. Code § 18-16-305",
+      "statuteUrl": "https://www.arkleg.state.ar.us/ArkansasCode/Sections/DisplaySection?code=18-16-305",
+      "app": "https://simple-property.com/app?state=AR",
+      "guides": "https://simple-property.com/blog#locale-AR"
+    },
+    {
+      "code": "CA",
+      "label": "California",
+      "returnDays": 21,
+      "cite": "Cal. Civ. Code § 1950.5",
+      "statuteUrl": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5",
+      "app": "https://simple-property.com/app?state=CA",
+      "guides": "https://simple-property.com/blog#locale-CA"
+    },
+    {
+      "code": "CO",
+      "label": "Colorado",
+      "returnDays": 30,
+      "cite": "C.R.S. § 38-12-103",
+      "statuteUrl": "https://law.justia.com/codes/colorado/title-38/article-12/section-38-12-103/",
+      "app": "https://simple-property.com/app?state=CO",
+      "guides": "https://simple-property.com/blog#locale-CO"
+    },
+    {
+      "code": "CT",
+      "label": "Connecticut",
+      "returnDays": 21,
+      "cite": "Conn. Gen. Stat. § 47a-21",
+      "statuteUrl": "https://www.cga.ct.gov/current/pub/chap_831.htm#sec_47a-21",
+      "app": "https://simple-property.com/app?state=CT",
+      "guides": "https://simple-property.com/blog#locale-CT"
+    },
+    {
       "code": "DC",
       "label": "District of Columbia",
       "returnDays": 45,
@@ -54,6 +90,15 @@
       "statuteUrl": "https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.17",
       "app": "https://simple-property.com/app?state=DC",
       "guides": "https://simple-property.com/blog#locale-DC"
+    },
+    {
+      "code": "DE",
+      "label": "Delaware",
+      "returnDays": 20,
+      "cite": "25 Del. C. § 5514",
+      "statuteUrl": "https://delcode.delaware.gov/title25/c055/#5514",
+      "app": "https://simple-property.com/app?state=DE",
+      "guides": "https://simple-property.com/blog#locale-DE"
     },
     {
       "code": "FL",
@@ -72,6 +117,15 @@
       "statuteUrl": "https://law.justia.com/codes/georgia/title-44/chapter-7/section-44-7-34/",
       "app": "https://simple-property.com/app?state=GA",
       "guides": "https://simple-property.com/blog#locale-GA"
+    },
+    {
+      "code": "HI",
+      "label": "Hawaii",
+      "returnDays": 14,
+      "cite": "Haw. Rev. Stat. § 521-38",
+      "statuteUrl": "https://www.capitol.hawaii.gov/hrscurrent/Vol12_Ch0501-0588/HRS0521/HRS_0521-0038.htm",
+      "app": "https://simple-property.com/app?state=HI",
+      "guides": "https://simple-property.com/blog#locale-HI"
     },
     {
       "code": "IA",
@@ -101,6 +155,15 @@
       "guides": "https://simple-property.com/blog#locale-IN"
     },
     {
+      "code": "KY",
+      "label": "Kentucky",
+      "returnDays": 30,
+      "cite": "KRS 383.580",
+      "statuteUrl": "https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=35733",
+      "app": "https://simple-property.com/app?state=KY",
+      "guides": "https://simple-property.com/blog#locale-KY"
+    },
+    {
       "code": "LA",
       "label": "Louisiana",
       "returnDays": 30,
@@ -126,6 +189,15 @@
       "statuteUrl": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-554-610",
       "app": "https://simple-property.com/app?state=MI",
       "guides": "https://simple-property.com/blog#locale-MI"
+    },
+    {
+      "code": "MN",
+      "label": "Minnesota",
+      "returnDays": 21,
+      "cite": "Minn. Stat. § 504B.178",
+      "statuteUrl": "https://www.revisor.mn.gov/statutes/cite/504B.178",
+      "app": "https://simple-property.com/app?state=MN",
+      "guides": "https://simple-property.com/blog#locale-MN"
     },
     {
       "code": "MO",
@@ -164,6 +236,15 @@
       "guides": "https://simple-property.com/blog#locale-ND"
     },
     {
+      "code": "NE",
+      "label": "Nebraska",
+      "returnDays": 14,
+      "cite": "Neb. Rev. Stat. § 76-1416",
+      "statuteUrl": "https://nebraskalegislature.gov/laws/statutes.php?statute=76-1416",
+      "app": "https://simple-property.com/app?state=NE",
+      "guides": "https://simple-property.com/blog#locale-NE"
+    },
+    {
       "code": "NH",
       "label": "New Hampshire",
       "returnDays": 30,
@@ -200,6 +281,24 @@
       "guides": "https://simple-property.com/blog#locale-OH"
     },
     {
+      "code": "RI",
+      "label": "Rhode Island",
+      "returnDays": 20,
+      "cite": "R.I. Gen. Laws § 34-18-19",
+      "statuteUrl": "https://webserver.rilegislature.gov/Statutes/title34/34-18/34-18-19.htm",
+      "app": "https://simple-property.com/app?state=RI",
+      "guides": "https://simple-property.com/blog#locale-RI"
+    },
+    {
+      "code": "SD",
+      "label": "South Dakota",
+      "returnDays": 21,
+      "cite": "SDCL § 43-32-24",
+      "statuteUrl": "https://sdlegislature.gov/statutes/DisplayStatute/?Type=Statute&Statute=43-32-24",
+      "app": "https://simple-property.com/app?state=SD",
+      "guides": "https://simple-property.com/blog#locale-SD"
+    },
+    {
       "code": "UT",
       "label": "Utah",
       "returnDays": 30,
@@ -218,6 +317,15 @@
       "guides": "https://simple-property.com/blog#locale-VA"
     },
     {
+      "code": "VT",
+      "label": "Vermont",
+      "returnDays": 14,
+      "cite": "9 V.S.A. § 4461",
+      "statuteUrl": "https://legislature.vermont.gov/statutes/section/09/137/04461",
+      "app": "https://simple-property.com/app?state=VT",
+      "guides": "https://simple-property.com/blog#locale-VT"
+    },
+    {
       "code": "WA",
       "label": "Washington",
       "returnDays": 30,
@@ -225,6 +333,15 @@
       "statuteUrl": "https://app.leg.wa.gov/rcw/default.aspx?cite=59.18.280",
       "app": "https://simple-property.com/app?state=WA",
       "guides": "https://simple-property.com/blog#locale-WA"
+    },
+    {
+      "code": "WV",
+      "label": "West Virginia",
+      "returnDays": 60,
+      "cite": "W. Va. Code § 37-6A-2",
+      "statuteUrl": "https://code.wvlegislature.gov/37-6A-2/",
+      "app": "https://simple-property.com/app?state=WV",
+      "guides": "https://simple-property.com/blog#locale-WV"
     }
   ]
 }

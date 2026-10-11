@@ -22,14 +22,36 @@ const packs = SUPPORTED_STATES.map((code) => ({
   guides: `https://simple-property.com/blog#locale-${code}`,
 }));
 
+const courtDataUrl = "https://simple-property.com/data/court-record-snippets.json";
+
 let llms = readFileSync(join(web, "llms.txt"), "utf8");
 llms = llms.replaceAll("18 states + DC", COVERAGE_LABEL);
+llms = llms.replaceAll("19 states + DC", COVERAGE_LABEL);
 llms = llms.replaceAll("18 states plus DC", `${STATE_ONLY_COUNT} states plus DC`);
+llms = llms.replaceAll("19 states plus DC", `${STATE_ONLY_COUNT} states plus DC`);
+llms = llms.replace(
+  /^> Small landlords \(\d+ states \+ DC\):/m,
+  `> Small landlords (${COVERAGE_LABEL}):`
+);
+llms = llms.replace(
+  /^- \*\*Deposit Desk\*\* · wizard state packs:.*$/m,
+  `- **Deposit Desk** · ${COVERAGE_LABEL} wizard packs · surrender-date clocks · print packet + JSON · statute links: ${statuteIndexUrl}`
+);
+llms = llms.replace(
+  /^- \*\*Florida\*\* and other packs.*$/m,
+  `- **Court / docket patterns** · blog guides rotate regional snippets (self-help + statute links · not fabricated case names): ${courtDataUrl}`
+);
 const block = `- **Deposit statutes index** · official outbound links for all wizard states + DC: ${statuteIndexUrl}`;
 if (!llms.includes("Deposit statutes index")) {
   llms = llms.replace(
     "- **Legal**",
     `${block}\n- **Legal**`
+  );
+}
+if (!llms.includes("court-record-snippets")) {
+  llms = llms.replace(
+    "- **City guides**",
+    `- **Court pattern data** · ${courtDataUrl}\n- **City guides**`
   );
 }
 writeFileSync(join(web, "llms.txt"), llms);
