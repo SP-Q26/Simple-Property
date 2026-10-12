@@ -36,6 +36,7 @@ const checks = [
   ["lib/packet-email.mjs", "Tenant email body builder"],
   ["lib/entitlement-verify.mjs", "Pro entitlement verify"],
   ["api/cron/deadline-reminders.js", "Deadline reminder cron"],
+  ["api/health/services.js", "Platform health probe"],
   ["lib/kv-client.mjs", "KV client"],
   ["lib/subscription-store.mjs", "Subscription KV store"],
   ["lib/entitlement.mjs", "Entitlement signing"],

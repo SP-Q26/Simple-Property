@@ -18,6 +18,7 @@ function need(label, ok, detail = "") {
 }
 
 const paths = [
+  "api/health/services.js",
   "api/reminders/subscribe.js",
   "api/cron/deadline-reminders.js",
   "lib/reminder-store.mjs",

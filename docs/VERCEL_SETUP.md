@@ -64,6 +64,26 @@ Copy from `web/.env.example`. Set per **Preview** and **Production** in Vercel �
 | `SPT_EMAIL_FROM` | `Deposit Desk <hello@simple-property.com>` | Same (domain verified) | |
 | `SPT_CRON_SECRET` | Optional | Optional | Vercel sets `CRON_SECRET` for cron routes |
 
+### Phase 3 · make reminders + Pro KV fully live
+
+Production **`simple-property`** currently needs **Upstash Redis** and **Resend** (Stripe is already set). After env is complete, redeploy **Production** once.
+
+| Step | Dashboard |
+|------|-----------|
+| 1 · **KV** | [simple-property → Storage](https://vercel.com/spq/simple-property/stores) → **Create Database** → **Upstash Redis** → name `simple-property-kv` → connect to **simple-property** → confirm `KV_REST_API_URL` + `KV_REST_API_TOKEN` on **Production** (and Preview if you test reminders there). |
+| 2 · **Resend** | [Resend](https://resend.com/api-keys) → API key → Vercel → **Settings → Environment Variables** → `RESEND_API_KEY` (Sensitive) on **Production** + **Preview**. Verify sending domain for `hello@simple-property.com` (or your from-address). |
+| 3 · **From address** | `SPT_EMAIL_FROM` = `Deposit Desk <hello@simple-property.com>` on Production + Preview (plain or sensitive). |
+| 4 · **Redeploy** | Deployments → latest **Production** → **Redeploy** (env vars apply on next build/runtime). |
+| 5 · **Smoke** | `curl -s https://simple-property.com/api/health/services` → `ready: true` · wizard step 5 → **Schedule emails** → not `email_not_configured`. |
+
+**Readiness probe (no secrets):** `GET /api/health/services` returns booleans for `resend`, `kv`, `stripe`, etc.
+
+```bash
+npm run smoke:health   # from repo root after deploy
+```
+
+Cron is already in `web/vercel.json` (`0 14 * * *` → `/api/cron/deadline-reminders`). Vercel injects `CRON_SECRET` on Hobby/Pro; optional duplicate as `SPT_CRON_SECRET` for local cron tests.
+
 **Preview Stripe webhook:** Stripe Dashboard → Developers → Webhooks → Add endpoint:
 
 `https://<your-preview>.vercel.app/api/stripe/webhook`

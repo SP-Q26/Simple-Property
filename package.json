@@ -43,6 +43,7 @@
     "sync:blogs": "node scripts/refresh-all-blog-shells.mjs && node scripts/patch-state-hub-links.mjs && node scripts/patch-blog-statute-links.mjs && node scripts/sync-blog-article-seo.mjs && node scripts/build-blog-seo.mjs && node scripts/fix-blog-meta-descriptions.mjs && node scripts/sync-site-chrome.mjs && node scripts/sync-social-meta.mjs && node scripts/sync-mcp-discovery.mjs",
     "smoke:prod": "node scripts/smoke-prod.mjs",
     "smoke:packet": "node scripts/smoke-packet-live.mjs",
+    "smoke:health": "node scripts/smoke-platform-health.mjs",
     "smoke:checkout": "node scripts/smoke-checkout-live.mjs",
     "smoke:extended": "node scripts/smoke-prod-extended.mjs",
     "smoke:states-blogs": "node scripts/smoke-prod-states-blogs.mjs",
