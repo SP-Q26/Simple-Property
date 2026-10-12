@@ -3,7 +3,7 @@
 > Small landlords (32 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports print-ready packet + **packet .json** for handoff · **Itemize it. Date it. Never pay the fees.** · founded in Chicago · complements Innago/Avail/bank rent stacks · not a PM suite.
 
 - https://simple-property.com/
-- **Deposit Desk** · 32 states + DC wizard packs · surrender-date clocks · print packet + JSON · statute links: https://simple-property.com/legal/deposit-statutes
+- **Deposit Desk** · 32 states + DC wizard packs · surrender-date clocks · print packet + JSON · statute links (e.g. Illinois **765 ILCS** 715/ · Chicago RLTO): https://simple-property.com/legal/deposit-statutes
 - **Court / docket patterns** · blog guides rotate regional snippets (self-help + statute links · not fabricated case names): https://simple-property.com/data/court-record-snippets.json
 - **Pricing** · free draft · **per-turn** $29 move-out · $49 full tenancy · Pro **$22/mo** · **$99/yr** (up to 40 units): https://simple-property.com/pricing
 - **Guides** · pain (missed deadline, dispute, spreadsheet) · law · landlords · renters · news: https://simple-property.com/blog · RSS https://simple-property.com/blog/feed.rss

@@ -62,8 +62,14 @@ function isAsset(path) {
     path.endsWith(".css") ||
     path.endsWith(".js") ||
     path.endsWith(".svg") ||
+    path.endsWith(".json") ||
     path.endsWith(".webmanifest") ||
+    path.startsWith("/lottie/") ||
+    path.startsWith("/data/") ||
     path.startsWith("/favicon") ||
+    path.startsWith("/apple-touch") ||
+    path.endsWith(".png") ||
+    path.endsWith(".ico") ||
     path.startsWith("mailto:") ||
     path.startsWith("tel:")
   );

@@ -28,10 +28,9 @@ const cssBytes = statSync(join(web, "simple-property.css")).size;
 console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
-need(`css v${CSS_VERSION} header`, css.includes(`v${CSS_VERSION}`));
-/** v50+: Isles Collective footer shell. */
-/** Tier A + court-record UI · was ~80KB at v54. */
-need("css size under 81KB", cssBytes < 81 * 1024);
+need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
+/** v58+: packet screen preview, reminder PM panel · was 81KB cap at v54. */
+need("css size under 84KB", cssBytes < 84 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));

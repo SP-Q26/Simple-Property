@@ -44,6 +44,7 @@
     "smoke:prod": "node scripts/smoke-prod.mjs",
     "smoke:packet": "node scripts/smoke-packet-live.mjs",
     "smoke:health": "node scripts/smoke-platform-health.mjs",
+    "smoke:reminders": "node scripts/smoke-reminders-live.mjs",
     "smoke:checkout": "node scripts/smoke-checkout-live.mjs",
     "smoke:extended": "node scripts/smoke-prod-extended.mjs",
     "smoke:states-blogs": "node scripts/smoke-prod-states-blogs.mjs",

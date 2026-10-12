@@ -32,15 +32,32 @@ Runs only after `repo-audit` passes in **smoke-prod**.
 | `smoke-prod-states-blogs.mjs` | `/app.js`, `/blog` clusters, pain post per state | 404, missing locale anchor |
 | `smoke-statute-urls.mjs` | GET each statute URL | **404/410 only** (403 often warn) |
 | `smoke-prod-magic-link.mjs` | `POST /api/auth/magic-link` | Not **200 + ok:true** |
+| `smoke:health` | `GET /api/health/services` | `ready: false` (Resend + KV on deploy) |
+| `smoke:reminders` | health + `POST /api/reminders/subscribe` + cron gate | Not **200** enqueue after env live |
 
 **CSS version:** prod HTML may lag repo `CSS_VERSION` by one deploy · **warn** unless `SPT_SMOKE_STRICT_CSS=1`.
 
-## Why pushes looked “always red”
+## Why pushes looked “always red” (2026-10-12 audit)
 
-1. **`audit` workflow** · `audit-git.mjs` treated GitHub Actions like a laptop: required local `user.email` noreply and failed on HTTPS `origin` → **preflight died in ~1s** before `web/npm ci`.
-2. **`smoke-prod`** · ran `npm run audit` at repo root **without** `web/npm ci` and **without** `xmllint` on some runners → audit could fail before live smoke; live step was **skipped**.
-3. **Duplicate work** · same heavy audit twice per push (audit + smoke-prod).
-4. **Deploy race** · push triggers CI immediately; apex may still serve **previous** commit (CSS v mismatch warnings, not usually hard fail).
+**Symptom:** Two GitHub emails per `main` push — workflow **`audit`** (`gate`) and **`smoke-prod`** (`repo-audit` + `apex-smoke`) both fail; `apex-smoke` is **skipped** when `repo-audit` fails.
+
+**Current root cause (Simple-Property):** `npm run preflight` → `web/npm run audit` → **`audit-performance.mjs` exit 1**:
+
+| Check | Issue |
+|-------|--------|
+| `css v58 header` (old) | Looked for literal `v58` **inside** `simple-property.css` (only HTML query strings have `?v=58`) · false fail every run |
+| `css size under 81KB` | Stylesheet ~**83.8KB** after v58 wizard/preview CSS · real over-cap |
+
+**Not the blocker:** `audit-git` on CI (noreply authors OK) · live **`smoke-prod-magic-link`** returns `200 + ok:true` without Resend.
+
+**Note:** There is **no** `launch-gate` workflow in this repo. **`launch-gate`** lives on **Innsegall** (`innsegall/.github/workflows/launch-gate.yml`) — separate emails if that repo is on the same org notifications.
+
+**Historical (fixed in repo):**
+
+1. **`audit-git`** CI mode · no longer fails on HTTPS `origin`.
+2. **`smoke-prod`** · installs `xmllint` + runs full `preflight` (same as `audit`).
+3. **Duplicate work** · still two workflows × same `preflight` → **two failure emails** until green or consolidated.
+4. **Deploy race** · apex smoke can warn on CSS `?v=` lag one deploy (rare hard fail).
 
 ## Local parity (before push)
 
