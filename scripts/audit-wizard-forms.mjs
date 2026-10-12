@@ -84,6 +84,7 @@ need("logs ticket form order", logsJs.indexOf("tkt-unit") < logsJs.indexOf("tkt-
 need("logs inspection form order", logsJs.indexOf("ins-unit") < logsJs.indexOf("ins-summary"));
 need("feedback honeypot", feedbackHtml.includes('name="website"') && feedbackHtml.includes("feedback-honeypot"));
 need("feedback category first", feedbackHtml.indexOf('name="category"') < feedbackHtml.indexOf('name="message"'));
+need("feedback agent form marker", feedbackHtml.includes('data-spt-agent-form="feedback"'));
 
 need("supported state count documented", SUPPORTED_STATES.length >= 32);
 need("intro flow matches steps", appHtml.includes("Property → turnover → withholds → proof → export"));

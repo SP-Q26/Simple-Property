@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v58 · packet preview + reminder PM panel */
+/* Simple Property Tools · Deposit Desk · v59 · screen packet preview readable + print watermark split */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -2823,8 +2823,13 @@ body.spt-print-preview #print-packet.print-packet--preview .print-packet__inner 
   }
 }
 
-.print-packet {
+/* Screen: full packet preview on export step · print root hidden until print/preview mode */
+.print-packet:not(.print-packet--screen) {
   display: none;
+}
+
+.print-packet--screen {
+  display: block;
 }
 
 .print-packet h2 {

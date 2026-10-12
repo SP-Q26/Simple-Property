@@ -100,6 +100,9 @@ if (remoteApp) {
   need("prod finishWizard", remoteApp.includes("function finishWizard"));
   need("prod packet-screen-preview", remoteApp.includes("packet-screen-preview"));
   need("prod btn-print-preview", remoteApp.includes("btn-print-preview"));
+  need("prod preview refresh hook", remoteApp.includes("refreshExportStepPreviews"));
+  need("prod screen preview marker", remoteApp.includes("data-spt-preview-body"));
+  need("prod full itemization on export", remoteApp.includes("renderItemizationPreview(false)"));
 }
 
 const doorCss = readFileSync(join(root, "web/spt-door-arrival.css"), "utf8");

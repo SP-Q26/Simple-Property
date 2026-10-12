@@ -13,7 +13,7 @@
 - Agent bus: https://simple-property.com/spt-ai-bus.json
 - **Live wizard (in browser on /app only)** · `window.__SPT_AGENT__` · JSON in `#spt-wizard-snapshot` · updates every step · event `spt-agent-snapshot` · no API · step 5 also has **Copy for AI assistant** (full markdown clipboard)
 - Gospel: https://simple-property.com/.well-known/spt-gospel.json
-- **Feedback** · suggest state rulesets, wizard fields, guides: https://simple-property.com/feedback
+- **Feedback** · suggest state rulesets, wizard fields, guides: https://simple-property.com/feedback · `window.__SPT_AGENT__` on `/feedback` · `window.sptAgentFormFill({ category, state?, email?, message? })` · query `?category=ruleset&message=...` · event `spt-agent-form-filled`
 - **Deposit statutes index** · official outbound links for all wizard states + DC: https://simple-property.com/legal/deposit-statutes
 - **Legal** · https://simple-property.com/legal · terms · privacy
 - App: https://simple-property.com/app

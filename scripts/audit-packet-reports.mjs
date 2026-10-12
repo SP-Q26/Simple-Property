@@ -34,6 +34,10 @@ need("screen packet preview section", app.includes("packet-screen-preview"));
 need("renderScreenPacketPreview", app.includes("function renderScreenPacketPreview"));
 const css = readFileSync(join(web, "simple-property.css"), "utf8");
 need("screen preview CSS", css.includes(".packet-screen-preview__body"));
+need("screen preview not hidden", css.includes(".print-packet--screen") && css.includes(":not(.print-packet--screen)"));
+need("screen preview no print watermark", css.includes(".packet-screen-preview__body::after") && css.includes("content: none"));
+need("export step full itemization", app.includes("renderItemizationPreview(false)"));
+need("export step preview refresh", app.includes("refreshExportStepPreviews") && app.includes("data-spt-preview-body"));
 need("print preview readable on screen", css.includes("body.spt-print-preview"));
 
 const nav = readFileSync(join(web, "sp-nav.js"), "utf8");

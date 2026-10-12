@@ -51,6 +51,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, scheduled: jobs.length });
   } catch (e) {
     console.error("spt reminders subscribe", e);
+    if (e?.code === "kv_set_failed" || e?.code === "kv_zadd_failed") {
+      return res.status(503).json({ error: "reminders_storage_failed" });
+    }
     return res.status(500).json({ error: "subscribe_failed" });
   }
 }

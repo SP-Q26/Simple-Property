@@ -505,13 +505,46 @@ function renderScreenPacketPreview() {
   const inner = buildPrintPacketHtml();
   const badge = canExportPro()
     ? ""
-    : `<p class="packet-screen-preview__badge" role="status">Preview · unlock mail-ready PDF to remove watermark on print</p>`;
+    : `<p class="packet-screen-preview__badge" role="status">On-screen preview shows your full packet · print adds a watermark until you unlock</p>`;
   return `<section class="packet-screen-preview" id="packet-screen-preview" aria-labelledby="packet-screen-preview-title">
     <h3 class="section-label" id="packet-screen-preview-title">Full packet preview</h3>
-    <p class="field-hint">On-screen layout before you print · ${deadline.deadline ? `deadline ${formatUsDate(deadline.deadline)}` : "add surrender on step 2 for deadline"}</p>
+    <p class="field-hint">Live packet from steps 1–4 and the fields above · ${deadline.deadline ? `deadline ${formatUsDate(deadline.deadline)}` : "add surrender on step 2 for deadline"}</p>
     ${badge}
-    <div class="packet-screen-preview__body print-packet print-packet--screen">${inner}</div>
+    <div class="packet-screen-preview__body print-packet print-packet--screen" data-spt-preview-body>${inner}</div>
   </section>`;
+}
+
+/** Keep export-step previews in sync while editing landlord / signature / mail fields. */
+function refreshExportStepPreviews() {
+  if (step !== MAX_STEPS) return;
+  readStepIntoDraft();
+  const body = document.querySelector("[data-spt-preview-body]");
+  if (body) body.innerHTML = buildPrintPacketHtml();
+  const item = document.querySelector(".itemization-preview");
+  if (item) {
+    const next = document.createElement("div");
+    next.innerHTML = renderItemizationPreview(false);
+    const replacement = next.firstElementChild;
+    if (replacement) item.replaceWith(replacement);
+  }
+}
+
+function bindExportStepPreviewRefresh() {
+  const handler = () => refreshExportStepPreviews();
+  for (const id of [
+    "ll-name",
+    "ll-email",
+    "ll-addr",
+    "sig-ll",
+    "sig-tn",
+    "sig-date",
+    "mail-mailed",
+    "mail-tracking",
+    "mail-method",
+  ]) {
+    document.getElementById(id)?.addEventListener("input", handler);
+    document.getElementById(id)?.addEventListener("change", handler);
+  }
 }
 
 function renderItemizationPreview(lockedPreview) {
@@ -1043,7 +1076,7 @@ function renderStep5() {
     }
     ${renderMailReadyRoute()}
     ${!canExportPro() ? paywallFreeToolsNote() : ""}
-    ${renderItemizationPreview(!canExportPro())}
+    ${renderItemizationPreview(false)}
     ${renderScreenPacketPreview()}
     ${canExportPro() ? exportEntitlementSection() : proBlockMessage()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
@@ -1360,6 +1393,7 @@ function bindStepEvents() {
     sync();
   };
   bindReminderPmToggle();
+  bindExportStepPreviewRefresh();
 
   document.getElementById("btn-remind")?.addEventListener("click", async () => {
     readStepIntoDraft();
@@ -1395,7 +1429,9 @@ function bindStepEvents() {
               ? "Email reminders not enabled on this host yet (Resend)."
               : data.error === "reminders_storage_not_configured"
                 ? "Reminder queue not configured on this host (KV)."
-                : "Could not schedule  ·  check deadline and email.";
+                : data.error === "reminders_storage_failed"
+                  ? "Reminder queue write failed · try again in a moment."
+                  : "Could not schedule  ·  check deadline and email.";
           status.textContent = msg;
         }
         return;

@@ -38,6 +38,7 @@ try {
   need("ai-bus guides URL", bus.guides?.includes("/blog"));
   need("ai-bus primary_cta /app", bus.primary_cta?.includes("/app"));
   need("ai-bus wizard_live", bus.wizard_live?.schema === "spt-wizard-snapshot");
+  need("ai-bus feedback_form", bus.feedback_form?.schema === "spt-feedback-form");
 } catch {
   need("ai-bus JSON parse", false);
 }

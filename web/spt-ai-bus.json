@@ -1,6 +1,6 @@
 {
   "schema": "spt-ai-bus",
-  "version": 3,
+  "version": 4,
   "product": "Deposit Desk",
   "company": "Simple Property Tools",
   "site": "https://simple-property.com",
@@ -40,6 +40,22 @@
     "dom_selector": "script#spt-wizard-snapshot[type='application/json']",
     "event": "spt-agent-snapshot",
     "note": "Client-only · updates on each wizard step · no names/emails in JSON · use Copy for AI on step 5 for full markdown"
+  },
+  "feedback_form": {
+    "schema": "spt-feedback-form",
+    "version": 1,
+    "route": "/feedback",
+    "js_global": "__SPT_AGENT__",
+    "dom_id": "spt-feedback-snapshot",
+    "dom_selector": "script#spt-feedback-snapshot[type='application/json']",
+    "form_id": "spt-feedback-form",
+    "fill_api": "window.sptAgentFormFill",
+    "submit_api": "window.sptAgentFormSubmit",
+    "post_message_type": "spt-agent-form-fill",
+    "event": "spt-agent-snapshot",
+    "event_fill": "spt-agent-form-filled",
+    "query_fill": "category, state, email, message",
+    "note": "Client-only · snapshot omits message body · voice/AI fills fields then submit or dryRun"
   },
   "primary_cta": "https://simple-property.com/app",
   "share_for_ai": {

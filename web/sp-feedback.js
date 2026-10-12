@@ -1,13 +1,24 @@
-(function () {
-  var form = document.getElementById("spt-feedback-form");
-  var status = document.getElementById("spt-feedback-status");
-  if (!form || !status) return;
+import {
+  registerFeedbackAgentApi,
+  LANDLORD_FEEDBACK_SMOKE_FILL,
+} from "./lib/agent-form-fill.mjs";
 
-  form.addEventListener("submit", async function (ev) {
+const form = document.getElementById("spt-feedback-form");
+const status = document.getElementById("spt-feedback-status");
+if (!form || !status) {
+  /* page partial */
+} else {
+  registerFeedbackAgentApi({ form });
+
+  if (new URLSearchParams(location.search).get("smoke") === "fill") {
+    window.sptAgentFormFill?.(LANDLORD_FEEDBACK_SMOKE_FILL);
+  }
+
+  form.addEventListener("submit", async (ev) => {
     ev.preventDefault();
     status.textContent = "Sending…";
-    var data = new FormData(form);
-    var payload = {
+    const data = new FormData(form);
+    const payload = {
       category: data.get("category"),
       state: data.get("state"),
       email: data.get("email"),
@@ -15,17 +26,16 @@
       website: data.get("website"),
     };
     try {
-      var res = await fetch("/api/feedback", {
+      const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      var json = await res.json().catch(function () {
-        return {};
-      });
+      const json = await res.json().catch(() => ({}));
       if (res.ok && json.ok) {
         status.textContent = "Thanks. We read every suggestion. Not legal advice.";
         form.reset();
+        window.sptAgentFormFill?.({});
         return;
       }
       if (json.hint) {
@@ -33,8 +43,8 @@
         return;
       }
       status.textContent = "Could not send. Try hello@simple-property.com.";
-    } catch (e) {
+    } catch {
       status.textContent = "Network error. Email hello@simple-property.com.";
     }
   });
-})();
+}

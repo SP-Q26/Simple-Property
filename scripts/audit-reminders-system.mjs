@@ -37,6 +37,8 @@ const envEx = readFileSync(join(web, ".env.example"), "utf8");
 need("subscribe checks resend", subscribe.includes("resendConfigured"));
 need("subscribe checks kv", subscribe.includes("kvConfigured"));
 need("subscribe schedules offsets", subscribe.includes("[7, 1]") || subscribe.includes("offsets"));
+need("reminder store kv persist", readFileSync(join(web, "lib/reminder-store.mjs"), "utf8").includes("kv_set_failed"));
+need("subscribe kv write error", subscribe.includes("reminders_storage_failed"));
 need("cron auth bearer", cron.includes("authorization") && cron.includes("CRON_SECRET"));
 need("cron sends via resend", cron.includes("sendDeadlineReminderEmail"));
 need("vercel cron path", vercel.includes("/api/cron/deadline-reminders"));
