@@ -1,6 +1,7 @@
 import { scheduleDeadlineReminders } from "../../lib/reminder-store.mjs";
 import { resendConfigured } from "../../lib/resend.mjs";
 import { normalizeEmail } from "../../lib/subscription-store.mjs";
+import { kvConfigured } from "../../lib/kv-client.mjs";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -9,6 +10,9 @@ export default async function handler(req, res) {
   }
   if (!resendConfigured()) {
     return res.status(503).json({ error: "email_not_configured" });
+  }
+  if (!kvConfigured()) {
+    return res.status(503).json({ error: "reminders_storage_not_configured" });
   }
 
   let body = req.body;

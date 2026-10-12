@@ -91,9 +91,26 @@ function emptyDraft() {
     deductions: [{ category: "Unpaid rent", description: "", amount: "" }],
     signatures: { landlordPrinted: "", tenantPrinted: "", date: new Date().toISOString().slice(0, 10) },
     mailProof: { mailedAt: "", tracking: "", method: "" },
+    reminders: { usePmEmail: false, pmEmail: "" },
     turnoverMode: false,
     wizardMaxStep: 1,
   };
+}
+
+function normalizeReminders(r) {
+  return {
+    usePmEmail: Boolean(r?.usePmEmail),
+    pmEmail: String(r?.pmEmail || "").trim(),
+  };
+}
+
+/** Email address for deadline reminder API (landlord vs PM). */
+function reminderDeliveryEmailFromDom() {
+  const usePm = Boolean(document.getElementById("rem-use-pm")?.checked);
+  if (usePm) {
+    return document.getElementById("rem-pm-email")?.value?.trim() || draft.reminders?.pmEmail || "";
+  }
+  return document.getElementById("ll-email")?.value?.trim() || draft.landlord.email || "";
 }
 
 function compactRoomsForTurnover() {
@@ -185,6 +202,7 @@ function importPacketBackupObject(parsed) {
     deposit: { ...emptyDraft().deposit, ...imported.deposit },
     signatures: { ...emptyDraft().signatures, ...imported.signatures },
     mailProof: { ...emptyDraft().mailProof, ...imported.mailProof },
+    reminders: normalizeReminders(imported.reminders),
     deductions: imported.deductions?.length ? imported.deductions : emptyDraft().deductions,
     rooms: imported.rooms?.length ? imported.rooms.map(normalizeRoom) : emptyDraft().rooms,
   };
@@ -232,6 +250,7 @@ function loadDraft() {
       merged.property.cityPreset = "chicago-il";
     }
     merged.mailProof = { ...emptyDraft().mailProof, ...parsed.mailProof };
+    merged.reminders = normalizeReminders(parsed.reminders);
     merged.turnoverMode = Boolean(parsed.turnoverMode);
     try {
       if (sessionStorage.getItem(TURNOVER_MODE_KEY) === "1") merged.turnoverMode = true;
@@ -765,8 +784,11 @@ function bindWizardKeyboard() {
     if (!t || !els.panel?.contains(t)) return;
     const tag = t.tagName;
     if (tag === "TEXTAREA" || tag === "BUTTON" || tag === "SELECT") return;
-    if (step >= MAX_STEPS) return;
     e.preventDefault();
+    if (step >= MAX_STEPS) {
+      finishWizard();
+      return;
+    }
     advanceWizard();
   });
 }
@@ -923,7 +945,7 @@ function renderStep3() {
     <p class="field-hint">Line items for your written statement · do this before move-in proof when you are at move-out. <a href="${guide}">Wear vs damage guide</a></p>
     <div class="wizard-speed-row">
       <button type="button" class="btn btn-primary" id="btn-full-return">Full deposit return</button>
-      <span class="field-hint">No withholds · jumps to move-in proof</span>
+      <span class="field-hint">No withholds · jumps to export · tab 4 if you add move-in proof</span>
     </div>
     <div class="ded-quick-add" role="group" aria-label="Quick withhold lines">
       <button type="button" class="btn btn-secondary ded-quick" data-cat="Cleaning">+ Cleaning</button>
@@ -998,6 +1020,7 @@ function renderStep5() {
     .map((d) => `<li>${formatUsDate(d)}</li>`)
     .join("");
   const d = draft;
+  const rem = normalizeReminders(d.reminders);
   return `
     <h2 id="step-title" tabindex="-1">Review &amp; export</h2>
     <p><strong>${esc(d.property.street)}</strong> · ${esc(d.tenant.name)} · Deposit $${esc(d.deposit.amount || "0")}</p>
@@ -1035,11 +1058,20 @@ function renderStep5() {
     <button type="button" class="btn btn-secondary" id="btn-save-packet">Save packet to this browser</button>
     ${
       deadline.deadline
-        ? `<div class="form-panel" style="margin-top:1rem;border-style:dashed">
+        ? `<div class="form-panel reminder-panel" style="margin-top:1rem;border-style:dashed">
         <p class="section-label" style="margin-bottom:0.5rem">Email reminders</p>
-        <p class="field-hint">7 days and 1 day before your deadline (uses the email you enter below · stored for reminders only).</p>
-        <div class="form-grid two">
-          <div><label for="rem-email">Email</label><input id="rem-email" type="email" value="${esc(draft.landlord.email)}" autocomplete="email" /></div>
+        <p class="field-hint">7 days and 1 day before your deadline · requires Resend + KV on the host (Pro feature on pricing).</p>
+        <label class="reminder-pm-toggle field-hint">
+          <input type="checkbox" id="rem-use-pm" ${rem.usePmEmail ? "checked" : ""} />
+          Property managed · send reminders to PM / property manager email (not landlord above)
+        </label>
+        <div id="rem-pm-panel" class="form-grid two" style="margin-top:0.75rem;${rem.usePmEmail ? "" : "display:none"}">
+          <div style="grid-column:1/-1">
+            <label for="rem-pm-email">PM email</label>
+            <input id="rem-pm-email" type="email" value="${esc(rem.pmEmail)}" autocomplete="email" placeholder="pm@company.com" />
+          </div>
+        </div>
+        <div class="form-grid two" style="margin-top:0.75rem">
           <div style="align-self:end"><button type="button" class="btn btn-secondary" id="btn-remind">Schedule emails</button></div>
         </div>
         <p class="field-hint" id="rem-status" aria-live="polite"></p>
@@ -1093,13 +1125,15 @@ function readStepIntoDraft() {
     draft.signatures.landlordPrinted = document.getElementById("sig-ll")?.value?.trim() || "";
     draft.signatures.tenantPrinted = document.getElementById("sig-tn")?.value?.trim() || "";
     draft.signatures.date = document.getElementById("sig-date")?.value || draft.signatures.date;
-    const rem = document.getElementById("rem-email");
-    if (rem?.value?.trim()) draft.landlord.email = rem.value.trim();
     draft.mailProof = {
       mailedAt: document.getElementById("mail-mailed")?.value || "",
       tracking: document.getElementById("mail-tracking")?.value?.trim() || "",
       method: document.getElementById("mail-method")?.value?.trim() || "",
     };
+    draft.reminders = normalizeReminders({
+      usePmEmail: document.getElementById("rem-use-pm")?.checked,
+      pmEmail: document.getElementById("rem-pm-email")?.value,
+    });
   }
   saveDraft(draft);
 }
@@ -1166,12 +1200,15 @@ function bindStepEvents() {
   document.getElementById("btn-full-return")?.addEventListener("click", () => {
     readStepIntoDraft();
     draft.deductions = [{ category: "Return", description: "Full deposit to tenant", amount: "0" }];
-    draft.wizardMaxStep = Math.max(maxWizardStep(), 4);
+    draft.wizardMaxStep = MAX_STEPS;
     saveDraft(draft);
-    step = 4;
+    step = MAX_STEPS;
     render();
-    focusStepField();
-    if (els.status) els.status.textContent = "Full return noted · add move-in link if you have one, or skip to export.";
+    focusStepTitle();
+    if (els.status) {
+      els.status.textContent =
+        "Full return noted · on export step · open tab 4 anytime if you add move-in proof.";
+    }
   });
   document.querySelectorAll(".ded-quick").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -1310,13 +1347,32 @@ function bindStepEvents() {
     if (!canExportPro()) return;
     downloadProofManifest();
   });
+  const bindReminderPmToggle = () => {
+    const box = document.getElementById("rem-use-pm");
+    const panel = document.getElementById("rem-pm-panel");
+    if (!box || !panel || box.dataset.bound === "1") return;
+    box.dataset.bound = "1";
+    const sync = () => {
+      panel.style.display = box.checked ? "" : "none";
+      if (box.checked) document.getElementById("rem-pm-email")?.focus();
+    };
+    box.addEventListener("change", sync);
+    sync();
+  };
+  bindReminderPmToggle();
+
   document.getElementById("btn-remind")?.addEventListener("click", async () => {
     readStepIntoDraft();
     const deadline = computeDeadline(deadlineInput());
-    const email = document.getElementById("rem-email")?.value?.trim();
+    const usePm = Boolean(draft.reminders?.usePmEmail);
+    const email = reminderDeliveryEmailFromDom();
     const status = document.getElementById("rem-status");
-    if (!deadline.deadline || !email) {
-      if (status) status.textContent = "Add surrender date and email.";
+    if (!deadline.deadline || !email?.includes("@")) {
+      if (status) {
+        status.textContent = usePm
+          ? "Add surrender date and PM email, or uncheck managed property."
+          : "Add surrender date and landlord email above.";
+      }
       return;
     }
     if (status) status.textContent = "Scheduling…";
@@ -1333,11 +1389,15 @@ function bindStepEvents() {
       });
       const data = await res.json();
       if (!res.ok) {
-        if (status)
-          status.textContent =
+        if (status) {
+          const msg =
             data.error === "email_not_configured"
-              ? "Email reminders not enabled on this host yet."
-              : "Could not schedule  ·  check deadline and email.";
+              ? "Email reminders not enabled on this host yet (Resend)."
+              : data.error === "reminders_storage_not_configured"
+                ? "Reminder queue not configured on this host (KV)."
+                : "Could not schedule  ·  check deadline and email.";
+          status.textContent = msg;
+        }
         return;
       }
       if (status) status.textContent = `Scheduled ${data.scheduled} reminder(s).`;
@@ -1534,9 +1594,15 @@ function render() {
     }
   }
   publishLiveAgentSnapshot();
-  if (!draft.signatures.landlordPrinted && draft.landlord.name && step === 5) {
-    const sig = document.getElementById("sig-ll");
-    if (sig && !sig.value) sig.value = draft.landlord.name;
+  if (step === 5) {
+    if (!draft.signatures.landlordPrinted && draft.landlord.name) {
+      const sig = document.getElementById("sig-ll");
+      if (sig && !sig.value) sig.value = draft.landlord.name;
+    }
+    if (!draft.signatures.tenantPrinted && draft.tenant.name) {
+      const sigTn = document.getElementById("sig-tn");
+      if (sigTn && !sigTn.value) sigTn.value = draft.tenant.name;
+    }
   }
 }
 

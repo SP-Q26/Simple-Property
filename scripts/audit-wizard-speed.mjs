@@ -28,6 +28,7 @@ need("duplicate last packet", appJs.includes("btn-duplicate-packet") && appJs.in
 need("wizard step jump", appJs.includes("goToStep") && appJs.includes("wizardMaxStep"));
 need("surrender today shortcut", appJs.includes("btn-surrender-today"));
 need("full deposit return shortcut", appJs.includes("btn-full-return"));
+need("full return jumps to export", appJs.includes("btn-full-return") && appJs.includes("step = MAX_STEPS"));
 need("deduction quick-add", appJs.includes("ded-quick"));
 need("enter advances wizard", appJs.includes("bindWizardKeyboard") && appJs.includes("advanceWizard"));
 need("focus first field per step", appJs.includes("focusStepField"));
@@ -41,7 +42,12 @@ need("mail-ready route copy", appJs.includes("mail-ready-route") && appJs.includ
 need("turnover deep link", appJs.includes("isTurnoverQuery") && appJs.includes("enableTurnoverMode"));
 need("packet json backup", appJs.includes("PACKET_BACKUP_SCHEMA") && appJs.includes("importPacketBackupObject"));
 need("mail proof fields", appJs.includes("mail-mailed") && appJs.includes("mailProof"));
-need("statement preview unlocked", appJs.includes("renderItemizationPreview(false)"));
+need(
+  "statement preview on export",
+  appJs.includes("renderItemizationPreview(") &&
+    (appJs.includes("renderItemizationPreview(false)") ||
+      appJs.includes("renderItemizationPreview(!canExportPro())"))
+);
 need("packet import export ui", appHtml.includes("btn-export-packet") && appHtml.includes("btn-import-packet"));
 need("return link copy", appJs.includes("btn-copy-return-link") && appJs.includes("packetReturnUrl"));
 need("home turnover cta", readFileSync(join(web, "home-boot.js"), "utf8").includes("turnover=1"));
