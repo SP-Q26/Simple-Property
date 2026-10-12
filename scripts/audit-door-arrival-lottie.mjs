@@ -57,10 +57,12 @@ const css = needFile("spt-door-arrival.css");
 need("through-motion keyframes", css.includes("sptDoorThrough"));
 need("scroll lock rule", css.includes("spt-door-arrival-lock"));
 need("monogram CSS", css.includes("spt-door-arrival__monogram"));
+need("hide hero SP during lock", css.includes("spt-door-arrival-lock") && css.includes("spt-door-monogram"));
 
 const fallback = needFile("lottie/spt-door-arrival-fallback.svg");
-need("fallback SP text", fallback.includes(">SP<"));
+need("fallback no SP text (overlay only)", !fallback.includes(">SP<"));
 need("fallback steel door", fallback.includes("#4a5058") || fallback.includes("#5a6169"));
+need("single HTML SP overlay", (js.match(/textContent = "SP"/g) || []).length === 1);
 
 const json = JSON.parse(needFile("lottie/spt-door-arrival-lottie.json"));
 const durMs = Math.round((json.op / json.fr) * 1000);

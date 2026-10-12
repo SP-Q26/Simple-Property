@@ -28,6 +28,13 @@ need("sample Chicago RLTO deadline", index.includes("Chicago RLTO") && index.inc
 need("sample packet id format", index.includes("Packet a3f9c812"));
 need("sample product email only", index.includes("hello@simple-property.com") && !index.includes("@gmail"));
 need("google sheets return column", readFileSync(join(web, "lib/google-tools.mjs"), "utf8").includes("Return to tenant"));
+need("wizard finishWizard", app.includes("function finishWizard"));
+need("wizard done on max step", /step >= MAX_STEPS[\s\S]{0,120}finishWizard/.test(app));
+need("screen packet preview section", app.includes("packet-screen-preview"));
+need("renderScreenPacketPreview", app.includes("function renderScreenPacketPreview"));
+const css = readFileSync(join(web, "simple-property.css"), "utf8");
+need("screen preview CSS", css.includes(".packet-screen-preview__body"));
+need("print preview readable on screen", css.includes("body.spt-print-preview"));
 
 const nav = readFileSync(join(web, "sp-nav.js"), "utf8");
 need("metro nav more tray", nav.includes("METRO_NAV_MORE") && nav.includes("metro-nav-more"));

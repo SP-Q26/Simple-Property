@@ -2600,6 +2600,77 @@ textarea {
   display: none;
 }
 
+.packet-screen-preview {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.packet-screen-preview__badge {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8a6d12;
+  background: rgba(201, 162, 39, 0.12);
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: var(--radius-sm);
+}
+
+.packet-screen-preview__body {
+  display: block !important;
+  max-height: min(52vh, 28rem);
+  overflow: auto;
+  padding: var(--space-3);
+  background: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.packet-screen-preview__body h2 {
+  font-size: 1.05rem;
+  margin-top: 0;
+}
+
+.packet-screen-preview__body h3 {
+  font-size: 0.95rem;
+}
+
+body.spt-print-preview #print-packet.print-packet--preview {
+  display: block !important;
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
+  background: #fff;
+  border: 1px dashed rgba(201, 162, 39, 0.45);
+}
+
+body.spt-print-preview #print-packet.print-packet--preview::before,
+body.spt-print-preview #print-packet.print-packet--preview::after,
+.packet-screen-preview__body::before,
+.packet-screen-preview__body::after {
+  content: none !important;
+  display: none !important;
+}
+
+body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: #8a6d12;
+  border: 1px solid #c9a227;
+  padding: 0.35rem 0.5rem;
+  margin: 0 0 0.75rem;
+}
+
+body.spt-print-preview #print-packet.print-packet--preview .print-packet__inner {
+  filter: none;
+  opacity: 1;
+}
+
 .spt-wizard-app .wizard-nav--sticky {
   position: sticky;
   bottom: 0;
@@ -2713,8 +2784,8 @@ textarea {
   }
 
   .print-packet--preview .print-packet__inner {
-    filter: blur(1.35px);
-    opacity: 0.88;
+    filter: blur(0.35px);
+    opacity: 0.96;
   }
 
   .print-packet--preview .print-photos--sensitive img {
@@ -2739,14 +2810,14 @@ textarea {
   .print-packet--preview::after {
     content: "PREVIEW · NOT FOR TENANT MAIL";
     position: fixed;
-    top: 42%;
+    top: 46%;
     left: 50%;
     z-index: 9999;
-    transform: translate(-50%, -50%) rotate(-28deg);
-    font-size: 34pt;
+    transform: translate(-50%, -50%) rotate(-24deg);
+    font-size: 22pt;
     font-weight: 700;
     letter-spacing: 0.06em;
-    color: rgba(61, 52, 41, 0.22);
+    color: rgba(61, 52, 41, 0.16);
     white-space: nowrap;
     pointer-events: none;
   }

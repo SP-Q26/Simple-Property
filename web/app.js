@@ -481,10 +481,24 @@ function exportStatusLine() {
   return parts.length ? parts.join(" · ") + " ·" : "";
 }
 
+function renderScreenPacketPreview() {
+  const deadline = computeDeadline(deadlineInput());
+  const inner = buildPrintPacketHtml();
+  const badge = canExportPro()
+    ? ""
+    : `<p class="packet-screen-preview__badge" role="status">Preview · unlock mail-ready PDF to remove watermark on print</p>`;
+  return `<section class="packet-screen-preview" id="packet-screen-preview" aria-labelledby="packet-screen-preview-title">
+    <h3 class="section-label" id="packet-screen-preview-title">Full packet preview</h3>
+    <p class="field-hint">On-screen layout before you print · ${deadline.deadline ? `deadline ${formatUsDate(deadline.deadline)}` : "add surrender on step 2 for deadline"}</p>
+    ${badge}
+    <div class="packet-screen-preview__body print-packet print-packet--screen">${inner}</div>
+  </section>`;
+}
+
 function renderItemizationPreview(lockedPreview) {
   const dep = parseFloat(draft.deposit.amount) || 0;
   const withheld = sumDeductions(draft.deductions);
-  const lockClass = lockedPreview ? " itemization-preview--locked" : "";
+  const lockClass = lockedPreview && !canExportPro() ? " itemization-preview--locked" : "";
   const dedRows = draft.deductions
     .filter((d) => d.amount || d.description)
     .map(
@@ -724,6 +738,21 @@ function advanceWizard() {
   render();
   focusStepField();
   return true;
+}
+
+function finishWizard() {
+  readStepIntoDraft();
+  saveDraft(draft);
+  window.__sptStatusMsg =
+    "Packet saved in this browser · use Preview or Unlock below, or Save packet.";
+  render();
+  const focus =
+    document.getElementById("btn-print-preview") ||
+    document.getElementById("export-paywall") ||
+    document.getElementById("packet-screen-preview") ||
+    document.getElementById("btn-save-packet");
+  focus?.scrollIntoView({ behavior: "smooth", block: "center" });
+  sptTrack("wizard_done", { state: draft.property.state || "" });
 }
 
 function bindWizardKeyboard() {
@@ -991,7 +1020,8 @@ function renderStep5() {
     }
     ${renderMailReadyRoute()}
     ${!canExportPro() ? paywallFreeToolsNote() : ""}
-    ${renderItemizationPreview(false)}
+    ${renderItemizationPreview(!canExportPro())}
+    ${renderScreenPacketPreview()}
     ${canExportPro() ? exportEntitlementSection() : proBlockMessage()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
       <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
@@ -1423,10 +1453,12 @@ function renderPrintPacket(kind = "auto") {
   if (!preview && !final) return;
   if (kind === "final" && !canExportPro()) return;
 
-  syncPrintAccessClass(preview && !final);
-  els.printRoot.classList.toggle("print-packet--preview", preview && !final);
-  const banner = preview && !final
-    ? `<p class="print-preview-banner" aria-hidden="true">PREVIEW · NOT FOR TENANT MAIL · UNLOCK MAIL-READY PDF AT SIMPLE-PROPERTY.COM</p>`
+  const isPreview = preview && !final;
+  syncPrintAccessClass(isPreview);
+  document.body.classList.toggle("spt-print-preview", isPreview);
+  els.printRoot.classList.toggle("print-packet--preview", isPreview);
+  const banner = isPreview
+    ? `<p class="print-preview-banner">PREVIEW · NOT FOR TENANT MAIL · UNLOCK AT SIMPLE-PROPERTY.COM</p>`
     : "";
   els.printRoot.innerHTML = `${banner}<div class="print-packet__inner">${buildPrintPacketHtml()}</div>`;
 }
@@ -1516,6 +1548,10 @@ els.prev?.addEventListener("click", () => {
 });
 
 els.next?.addEventListener("click", () => {
+  if (step >= MAX_STEPS) {
+    finishWizard();
+    return;
+  }
   advanceWizard();
 });
 
@@ -1524,6 +1560,7 @@ els.printPreview?.addEventListener("click", () => {
   if (step < MAX_STEPS) return;
   window.__sptPrintKind = "preview";
   renderPrintPacket("preview");
+  els.printRoot?.scrollIntoView({ behavior: "smooth", block: "start" });
   sptTrack("preview_print", { state: draft.property.state || "" });
   window.print();
 });
@@ -1598,5 +1635,6 @@ window.addEventListener("beforeprint", () => {
 });
 window.addEventListener("afterprint", () => {
   delete window.__sptPrintKind;
+  document.body.classList.remove("spt-print-preview");
   renderPrintPacket("auto");
 });

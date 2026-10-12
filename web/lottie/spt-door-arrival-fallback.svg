@@ -6,5 +6,4 @@
   <rect x="126" y="62" width="56" height="136" rx="2" fill="#4a5058"/>
   <rect x="114" y="70" width="12" height="120" rx="2" fill="#c9a227" opacity="0.92"/>
   <circle cx="168" cy="128" r="5" fill="#c9a227" stroke="#3d3429" stroke-width="0.8"/>
-  <text x="120" y="132" text-anchor="middle" font-family="Source Sans 3, system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="0.22em" fill="rgba(230,232,236,0.9)">SP</text>
 </svg>

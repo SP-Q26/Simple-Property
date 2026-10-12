@@ -3,6 +3,11 @@ html.spt-door-arrival-lock body {
   overflow: hidden;
 }
 
+/* One SP mark during arrival · overlay only (hide hero door behind parchment) */
+html.spt-door-arrival-lock .spt-door-scene .spt-door-monogram {
+  visibility: hidden;
+}
+
 .spt-door-arrival {
   position: fixed;
   inset: 0;
