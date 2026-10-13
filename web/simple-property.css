@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v60 · wizard step rail + compact locale chrome */
+/* Simple Property Tools · Deposit Desk · v61 · hero wizard CTA horizontal card */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1732,27 +1732,32 @@ main > h1,
 }
 
 .hero-door-mark {
-  max-width: 14rem;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: none;
+  margin: 0;
 }
 
 .hero-door-mark__link {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
   text-decoration: none;
   color: inherit;
+  border-radius: inherit;
+  transition:
+    background var(--ease-interactive),
+    box-shadow var(--ease-interactive);
 }
 
 .hero-door-mark__media {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 8 / 9;
-  max-height: 10.5rem;
-  width: 100%;
-  padding: var(--space-3) var(--space-4) var(--space-2);
+  width: 4.25rem;
+  height: 4.25rem;
+  padding: var(--space-1);
   overflow: hidden;
   background: transparent;
 }
@@ -1764,18 +1769,39 @@ main > h1,
   object-fit: contain;
 }
 
+.hero-door-mark__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1 1 auto;
+  text-align: left;
+}
+
 .hero-door-mark__label {
   display: block;
-  width: 100%;
-  padding: var(--space-2) var(--space-3);
   font-family: var(--font);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
   color: var(--quant-blue);
-  border-top: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
-  background: color-mix(in srgb, var(--quant-blue-surface) 55%, var(--surface));
+}
+
+.hero-door-mark__sub {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.hero-door-mark__link:hover,
+.hero-door-mark__link:focus-visible {
+  background: color-mix(in srgb, var(--quant-blue-surface) 45%, var(--surface));
 }
 
 .hero-door-mark__link:hover .hero-door-mark__label,
@@ -1783,22 +1809,18 @@ main > h1,
   color: var(--ink);
 }
 
-.hero-door-mark__cap {
-  margin-top: var(--space-2);
-  padding: 0;
-  border: none;
-  background: transparent;
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  text-transform: none;
-  color: var(--muted);
-  text-align: center;
+.hero-door-mark__link:hover .hero-door-mark__sub,
+.hero-door-mark__link:focus-visible .hero-door-mark__sub {
+  color: color-mix(in srgb, var(--muted) 70%, var(--ink));
 }
 
 .hero-share-art__link {
   display: block;
   cursor: pointer;
+}
+
+.hero-share-art.hero-door-mark .hero-share-art__link {
+  display: flex;
 }
 
 .hero-share-art__media {
@@ -1916,9 +1938,14 @@ main > h1,
   }
 
   .hero-door-mark {
-    max-width: 12.5rem;
-    margin-left: auto;
+    max-width: none;
+    margin-left: 0;
     margin-right: 0;
+  }
+
+  .hero-door-mark__media {
+    width: 3.75rem;
+    height: 3.75rem;
   }
 }
 
