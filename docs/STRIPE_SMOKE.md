@@ -4,11 +4,22 @@ Adapted from Innsegall `STRIPE_SMOKE.md` · Isles catalog in `docs/STRIPE_ISLES_
 
 **Test mode** until live keys are verified · card `4242 4242 4242 4242`.
 
+## Full send (production bar)
+
+```bash
+export STRIPE_SECRET_KEY='sk_live_…'
+npm run full-send
+```
+
+See **`docs/FULL_SEND_STRIPE.md`** · lane rules **`docs/LANE_ISOLATION.md`**.
+
 ## Before pay
 
 | Check | Command |
 |-------|---------|
+| Full send | `npm run full-send` |
 | Repo audit | `npm run audit` |
+| Live Dashboard vs git | `npm run audit:stripe-live` |
 | Live home | `SPT_SMOKE_URL=https://simple-property.com npm run smoke:prod` |
 | Checkout API | `npm run smoke:checkout` |
 | Catalog script | `npm run verify-stripe` (needs `STRIPE_SECRET_KEY`) |

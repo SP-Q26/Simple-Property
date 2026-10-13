@@ -18,11 +18,22 @@ Deposit Desk sends mail through **Vercel** (`RESEND_API_KEY`). **Cursor MCP** is
 
 **Not required:** Resend **webhook** to Vercel (optional later for bounces). **Stripe** webhook is separate and required for billing.
 
-## Cursor MCP (this repo)
+## Cursor MCP (Deposit Desk lane)
 
-**Canonical Cursor config (SPQ repo):** stdio `resend-mcp` + secrets in `~/.cursor/resend-mcp.env` — see **`SPQ/docs/RESEND_MCP_CURSOR.md`** (fixes `stateless; use POST` from remote OAuth/GET).
+**This repo only** — not SPQ / WeWeb. Prefer **Resend plugin** in Cursor Settings → MCP (OAuth), or stdio:
 
-Hosted `https://mcp.resend.com/mcp` is POST-only; GET returns `-32000`. Remote OAuth in Cursor is flaky; Resend’s own Cursor docs recommend **stdio**.
+```json
+"resend": {
+  "command": "npx",
+  "args": ["-y", "resend-mcp"],
+  "envFile": "${userHome}/.cursor/resend-mcp.env",
+  "env": { "SENDER_EMAIL_ADDRESS": "Deposit Desk <hello@simple-property.com>" }
+}
+```
+
+Create `~/.cursor/resend-mcp.env` (`chmod 600`) with `RESEND_API_KEY=re_…` from [Resend API keys](https://resend.com/api-keys) (same key as Vercel, pasted manually). **Reload window** after first connect.
+
+Hosted `https://mcp.resend.com/mcp` is POST-only; GET returns `-32000`. Remote OAuth in Cursor is flaky; Resend’s docs recommend **stdio** or the **plugin**.
 
 1. **Cursor Settings → MCP** → confirm `resend` is listed → **Connect** / OAuth in browser.
 2. Or chat: `/add-plugin resend` (plugin + MCP + skills).

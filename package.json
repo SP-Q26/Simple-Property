@@ -53,6 +53,7 @@
     "smoke:states-blogs": "node scripts/smoke-prod-states-blogs.mjs",
     "smoke:magic-link": "node scripts/smoke-prod-magic-link.mjs",
     "smoke:full": "node scripts/audit-spt-web.mjs && node scripts/smoke-prod.mjs && node scripts/smoke-prod-extended.mjs && node scripts/smoke-prod-states-blogs.mjs && node scripts/smoke-prod-magic-link.mjs && node scripts/smoke-checkout-live.mjs",
+    "full-send": "node scripts/full-send.mjs",
     "sync-chrome": "node scripts/sync-site-chrome.mjs",
     "sync:head": "node scripts/sync-site-head.mjs",
     "sync:brand": "node scripts/sync-brand-locale.mjs && node scripts/sync-site-head.mjs",

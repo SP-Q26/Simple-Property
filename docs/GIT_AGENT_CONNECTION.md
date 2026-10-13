@@ -1,5 +1,7 @@
 # Git connection · Cursor agent + your Mac
 
+**Lane:** [Simple-Property](https://github.com/SP-Q26/Simple-Property) only — **not** SPQ `weweb-export`. Open the **`simple-property`** folder in Cursor for Deposit Desk work. See `docs/LANE_ISOLATION.md`.
+
 ## Current canonical setup (verified)
 
 | Check | Expected |

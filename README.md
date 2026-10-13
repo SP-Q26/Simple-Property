@@ -10,7 +10,7 @@ Canon: `docs/CANON.md` · brand: `docs/BRAND.md` · quality: `docs/SWARM_AUDIT.m
 - **Vibe:** Plain dealing · Amish-*adjacent* values (simple, honest, no flash) — not caricature  
 - **Product:** Deposit Desk · IL move-in / move-out deposit packets  
 - **Stack:** Static `web/` on Vercel · Stripe Checkout · localStorage packets · KV Pro index · Resend reminders  
-- **Repo:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) — forked from Innsegall **only** to bootstrap GitHub/Vercel; shipped code is Deposit Desk only  
+- **Repo:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) — **standalone lane** (not SPQ WeWeb / `weweb-export`); forked from Innsegall only to bootstrap GitHub/Vercel  
 
 ## Alpha routes
 
@@ -41,7 +41,11 @@ Or from repo root: `chmod +x scripts/preview.sh && ./scripts/preview.sh static|f
 
 ## Deploy
 
-**Vercel:** `docs/VERCEL_SETUP.md` — import repo, root `web`, enable Analytics + Speed Insights, preview deploy then apex. Set `SPT_SITE_URL` on preview; production uses `https://simple-property.com` in catalog until overridden.
+**Vercel:** `docs/VERCEL_SETUP.md` — import repo, root `web`, branch **`main`**, enable Analytics + Speed Insights. Production: `https://simple-property.com`.
+
+**After deploy:** `docs/FULL_SEND_STRIPE.md` · `npm run full-send` (with `STRIPE_SECRET_KEY` for live Dashboard audit).
+
+**Cursor:** open this **`simple-property`** folder only for Deposit Desk — `docs/LANE_ISOLATION.md`.
 
 ## Docs
 

@@ -19,8 +19,8 @@ const Stripe = require("stripe");
 
 const key = (process.env.STRIPE_SECRET_KEY || "").trim();
 if (!key) {
-  console.error("STRIPE LIVE AUDIT SKIP: set STRIPE_SECRET_KEY (Dashboard or Vercel integration).");
-  process.exit(0);
+  console.error("STRIPE LIVE AUDIT SKIP: set STRIPE_SECRET_KEY (Stripe Dashboard; Vercel integration secrets are not pullable).");
+  process.exit(process.env.FULL_SEND_REQUIRE_STRIPE === "1" ? 1 : 0);
 }
 
 const stripe = new Stripe(key, { apiVersion: "2024-11-20.acacia" });

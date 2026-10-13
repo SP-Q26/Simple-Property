@@ -116,14 +116,24 @@ npx vercel                    # preview URL (no --prod)
 
 ## 5. Post-deploy smoke
 
+**Automated full send (Stripe + Resend + proud-ship audits):**
+
+```bash
+export STRIPE_SECRET_KEY='sk_live_…'   # Dashboard audit only; optional for health/checkout smokes
+npm run full-send
+```
+
+Details: `docs/FULL_SEND_STRIPE.md` · this repo is **`main` only** — not SPQ `weweb-export` (`docs/LANE_ISOLATION.md`).
+
 | Check | URL |
 |-------|-----|
+| Platform health | `GET /api/health/services` |
 | Home + nav | `/` |
 | Pricing | `/pricing` |
 | Wizard demo Pro | `/app?demo=pro` (preview / localhost only) |
 | Blog | `/blog/landlord-tools-by-door-count` |
 | Launch stack | `/launch-stack` |
-| Entitlement API | `/api/entitlement` (GET, expect JSON error without params — not 500) |
+| Entitlement API | `/api/entitlement` (GET without params → 400, not 500) |
 
 Cron (production): daily 14:00 UTC → `/api/cron/deadline-reminders` (`vercel.json`).
 
