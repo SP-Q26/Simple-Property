@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v61 · hero wizard CTA horizontal card */
+/* Simple Property Tools · Deposit Desk · v63 · preview blur + watermark lock */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -571,14 +571,43 @@ body:has(.wizard-steps) .spt-weather {
   display: none;
 }
 
-.metro-nav__link--more {
-  min-width: 1.6rem;
-  padding: 0.12rem 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: #f4f0e6;
-  border-color: #d9d0c0;
-  color: #6b5c4a;
+.metro-nav-more__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  min-height: 1.75rem;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--quant-blue);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color var(--ease-interactive),
+    background var(--ease-interactive);
+}
+
+.metro-nav-more__toggle:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--quant-blue-surface) 55%, transparent);
+}
+
+.metro-nav-more__toggle:active {
+  transform: scale(0.94);
+}
+
+.metro-nav-more__toggle:focus-visible {
+  outline: 2px solid var(--quant-blue);
+  outline-offset: 2px;
 }
 
 .metro-nav-more__tray {
@@ -1088,6 +1117,21 @@ main > h1,
 
 .coverage-map__key--muted::before {
   display: none;
+}
+
+.coverage-map__key--hint {
+  flex: 1 1 10rem;
+  min-width: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.coverage-map__key--hint strong {
+  font-weight: 800;
+  font-size: 0.875rem;
 }
 
 .locale-bar__sr {
@@ -2702,6 +2746,62 @@ textarea {
   line-height: 1.45;
 }
 
+/* Locked preview · ~10% visual obscuring + diagonal watermark (screen + print) */
+.print-packet--preview.spt-preview-locked,
+.print-packet--preview.spt-preview-locked .print-packet__inner {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.print-packet--preview {
+  position: relative;
+  isolation: isolate;
+}
+
+.print-packet--preview .print-packet__inner {
+  filter: blur(3px);
+  opacity: 0.9;
+}
+
+.print-packet--preview .print-photos--sensitive img {
+  filter: blur(4px) grayscale(0.25);
+}
+
+.print-packet--preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    -32deg,
+    transparent 0,
+    transparent 72px,
+    rgba(201, 162, 39, 0.11) 72px,
+    rgba(201, 162, 39, 0.11) 88px
+  );
+}
+
+.print-packet--preview::after {
+  content: "PREVIEW · NOT FOR TENANT MAIL · SIMPLE-PROPERTY.COM";
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, -50%) rotate(-22deg);
+  font-size: clamp(0.72rem, 2.8vw, 1.05rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.35;
+  max-width: 92%;
+  color: rgba(61, 52, 41, 0.22);
+  white-space: normal;
+  pointer-events: none;
+}
+
 .packet-screen-preview__body h2 {
   font-size: 1.05rem;
   margin-top: 0;
@@ -2719,14 +2819,6 @@ body.spt-print-preview #print-packet.print-packet--preview {
   border: 1px dashed rgba(201, 162, 39, 0.45);
 }
 
-body.spt-print-preview #print-packet.print-packet--preview::before,
-body.spt-print-preview #print-packet.print-packet--preview::after,
-.packet-screen-preview__body::before,
-.packet-screen-preview__body::after {
-  content: none !important;
-  display: none !important;
-}
-
 body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner {
   display: block;
   font-size: 0.8rem;
@@ -2736,11 +2828,6 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   border: 1px solid #c9a227;
   padding: 0.35rem 0.5rem;
   margin: 0 0 0.75rem;
-}
-
-body.spt-print-preview #print-packet.print-packet--preview .print-packet__inner {
-  filter: none;
-  opacity: 1;
 }
 
 .spt-wizard-app .wizard-nav--sticky {
@@ -2819,7 +2906,9 @@ body.spt-print-preview #print-packet.print-packet--preview .print-packet__inner 
   .site-footer,
   .wizard-nav,
   .wizard-steps,
-  .paywall {
+  .paywall,
+  .packet-screen-preview,
+  .print-packet--screen {
     display: none !important;
   }
   .page {
@@ -2856,42 +2945,49 @@ body.spt-print-preview #print-packet.print-packet--preview .print-packet__inner 
   }
 
   .print-packet--preview .print-packet__inner {
-    filter: blur(0.35px);
-    opacity: 0.96;
+    filter: blur(3px);
+    opacity: 0.9;
   }
 
   .print-packet--preview .print-photos--sensitive img {
-    filter: blur(3px) grayscale(0.35);
+    filter: blur(5px) grayscale(0.4);
   }
 
   .print-packet--preview::before {
     content: "";
     position: fixed;
-    inset: -10%;
+    inset: -12%;
     z-index: 9998;
     pointer-events: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
     background: repeating-linear-gradient(
       -32deg,
       transparent 0,
-      transparent 100px,
-      rgba(201, 162, 39, 0.09) 100px,
-      rgba(201, 162, 39, 0.09) 118px
+      transparent 88px,
+      rgba(201, 162, 39, 0.14) 88px,
+      rgba(201, 162, 39, 0.14) 106px
     );
   }
 
   .print-packet--preview::after {
-    content: "PREVIEW · NOT FOR TENANT MAIL";
+    content: "PREVIEW · NOT FOR TENANT MAIL · SIMPLE-PROPERTY.COM";
     position: fixed;
-    top: 46%;
+    top: 38%;
     left: 50%;
     z-index: 9999;
     transform: translate(-50%, -50%) rotate(-24deg);
-    font-size: 22pt;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: rgba(61, 52, 41, 0.16);
-    white-space: nowrap;
+    font-size: 20pt;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-align: center;
+    line-height: 1.35;
+    max-width: 88%;
+    color: rgba(61, 52, 41, 0.24);
+    white-space: normal;
     pointer-events: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 

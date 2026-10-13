@@ -503,7 +503,7 @@
     legend.innerHTML =
       '<span class="coverage-map__key coverage-map__key--30">30-day</span>' +
       '<span class="coverage-map__key coverage-map__key--45">45-day</span>' +
-      '<span class="coverage-map__key coverage-map__key--muted">Tap state · Ctrl+chip = statute</span>';
+      '<span class="coverage-map__key coverage-map__key--hint">Tap state · <strong>Ctrl+chip = law / statute</strong></span>';
     head.appendChild(legend);
 
     var statuteIndex = document.createElement("p");
@@ -557,8 +557,9 @@
       var more = document.createElement("details");
       more.className = "metro-nav-more";
       var sum = document.createElement("summary");
-      sum.className = "metro-nav__link metro-nav__link--more";
+      sum.className = "metro-nav-more__toggle";
       sum.textContent = "+";
+      sum.setAttribute("aria-label", "More metro guides");
       sum.title = "More metros · Seattle · Vegas · DMV · Orlando";
       more.appendChild(sum);
       var tray = document.createElement("span");

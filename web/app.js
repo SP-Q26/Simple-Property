@@ -505,12 +505,13 @@ function renderScreenPacketPreview() {
   const inner = buildPrintPacketHtml();
   const badge = canExportPro()
     ? ""
-    : `<p class="packet-screen-preview__badge" role="status">On-screen preview shows your full packet · print adds a watermark until you unlock</p>`;
+    : `<p class="packet-screen-preview__badge" role="status">Preview is blurred and watermarked on screen and in print until you unlock · not for tenant mail</p>`;
+  const lockClass = canExportPro() ? "" : " print-packet--preview spt-preview-locked";
   return `<section class="packet-screen-preview" id="packet-screen-preview" aria-labelledby="packet-screen-preview-title">
     <h3 class="section-label" id="packet-screen-preview-title">Full packet preview</h3>
     <p class="field-hint">Live packet from steps 1–4 and the fields above · ${deadline.deadline ? `deadline ${formatUsDate(deadline.deadline)}` : "add surrender on step 2 for deadline"}</p>
     ${badge}
-    <div class="packet-screen-preview__body print-packet print-packet--screen" data-spt-preview-body>${inner}</div>
+    <div class="packet-screen-preview__body print-packet print-packet--screen${lockClass}" data-spt-preview-body aria-hidden="false"><div class="print-packet__inner">${inner}</div></div>
   </section>`;
 }
 
@@ -519,7 +520,14 @@ function refreshExportStepPreviews() {
   if (step !== MAX_STEPS) return;
   readStepIntoDraft();
   const body = document.querySelector("[data-spt-preview-body]");
-  if (body) body.innerHTML = buildPrintPacketHtml();
+  if (body) {
+    const inner = buildPrintPacketHtml();
+    const wrap = body.querySelector(".print-packet__inner");
+    if (wrap) wrap.innerHTML = inner;
+    else body.innerHTML = `<div class="print-packet__inner">${inner}</div>`;
+    body.classList.toggle("print-packet--preview", !canExportPro());
+    body.classList.toggle("spt-preview-locked", !canExportPro());
+  }
   const item = document.querySelector(".itemization-preview");
   if (item) {
     const next = document.createElement("div");
@@ -1553,6 +1561,7 @@ function renderPrintPacket(kind = "auto") {
   syncPrintAccessClass(isPreview);
   document.body.classList.toggle("spt-print-preview", isPreview);
   els.printRoot.classList.toggle("print-packet--preview", isPreview);
+  els.printRoot.classList.toggle("spt-preview-locked", isPreview);
   const banner = isPreview
     ? `<p class="print-preview-banner">PREVIEW · NOT FOR TENANT MAIL · UNLOCK AT SIMPLE-PROPERTY.COM</p>`
     : "";

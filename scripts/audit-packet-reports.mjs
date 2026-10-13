@@ -35,10 +35,14 @@ need("renderScreenPacketPreview", app.includes("function renderScreenPacketPrevi
 const css = readFileSync(join(web, "simple-property.css"), "utf8");
 need("screen preview CSS", css.includes(".packet-screen-preview__body"));
 need("screen preview not hidden", css.includes(".print-packet--screen") && css.includes(":not(.print-packet--screen)"));
-need("screen preview no print watermark", css.includes(".packet-screen-preview__body::after") && css.includes("content: none"));
+need("screen preview watermark lock", css.includes(".print-packet--preview::after") && css.includes("NOT FOR TENANT MAIL"));
+need("screen preview blur lock", css.includes(".print-packet--preview .print-packet__inner") && css.includes("blur(3px)"));
+need("preview user-select none", css.includes("spt-preview-locked") && css.includes("user-select: none"));
+need("print hides screen preview clone", css.includes("@media print") && css.includes(".packet-screen-preview"));
 need("export step full itemization", app.includes("renderItemizationPreview(false)"));
 need("export step preview refresh", app.includes("refreshExportStepPreviews") && app.includes("data-spt-preview-body"));
-need("print preview readable on screen", css.includes("body.spt-print-preview"));
+need("export preview locked class in js", app.includes("spt-preview-locked") && app.includes("print-packet--preview"));
+need("print preview on screen matches lock", css.includes("body.spt-print-preview"));
 
 const nav = readFileSync(join(web, "sp-nav.js"), "utf8");
 need("metro nav more tray", nav.includes("METRO_NAV_MORE") && nav.includes("metro-nav-more"));
