@@ -4,7 +4,7 @@ export function resendConfigured() {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
-export async function sendResendEmail({ to, subject, text, html, bcc }) {
+export async function sendResendEmail({ to, subject, text, html, bcc, replyTo }) {
   if (!resendConfigured()) {
     return { ok: false, error: "resend_not_configured" };
   }
@@ -17,6 +17,13 @@ export async function sendResendEmail({ to, subject, text, html, bcc }) {
     html: html || text.replace(/\n/g, "<br>"),
   };
   if (bcc?.length) payload.bcc = bcc;
+  const reply =
+    replyTo === undefined || replyTo === null || replyTo === ""
+      ? null
+      : Array.isArray(replyTo)
+        ? replyTo.filter(Boolean)
+        : [replyTo];
+  if (reply?.length) payload.reply_to = reply.length === 1 ? reply[0] : reply;
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {

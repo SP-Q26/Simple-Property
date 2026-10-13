@@ -76,7 +76,7 @@ export default async function handler(req, res) {
       to,
       subject,
       text,
-      ...(email ? { bcc: undefined } : {}),
+      ...(email ? { replyTo: email } : {}),
     });
     mailed = result.ok;
   }

@@ -62,6 +62,7 @@ Copy from `web/.env.example`. Set per **Preview** and **Production** in Vercel �
 | `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Upstash via Marketplace | Same or prod store | Pro restore index |
 | `RESEND_API_KEY` | `re_…` | `re_…` | Magic link + reminders |
 | `SPT_EMAIL_FROM` | `Deposit Desk <hello@simple-property.com>` | Same (domain verified) | |
+| `SPT_FEEDBACK_TO` | Optional | `hello@simple-property.com` or `feedback@…` | Feedback notification inbox |
 | `SPT_CRON_SECRET` | Optional | Optional | Vercel sets `CRON_SECRET` for cron routes |
 
 ### Phase 3 · make reminders + Pro KV fully live
