@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v59 · screen packet preview readable + print watermark split */
+/* Simple Property Tools · Deposit Desk · v60 · wizard step rail + compact locale chrome */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -2306,27 +2306,35 @@ main > h1,
 .wizard-steps {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
+  align-items: flex-end;
+  gap: 0;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 90%, var(--quant-blue) 10%);
 }
 
 .wizard-steps span,
 .wizard-step {
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  padding: 0.35rem 0.65rem;
-  border-radius: var(--radius-pill);
-  background: var(--surface);
-  border: 1px solid var(--border);
+  flex: 1 1 4.5rem;
+  min-width: 0;
+  padding: var(--space-2) var(--space-1);
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
   color: var(--muted);
   cursor: pointer;
   min-height: var(--tap-min);
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
   transition:
-    background var(--ease-interactive),
-    border-color var(--ease-interactive),
     color var(--ease-interactive),
-    box-shadow var(--ease-interactive);
+    border-color var(--ease-interactive);
   touch-action: manipulation;
 }
 
@@ -2337,15 +2345,15 @@ main > h1,
 
 .wizard-steps span.active,
 .wizard-step.active {
-  border-color: var(--accent);
   color: var(--quant-blue);
-  background: var(--quant-blue-surface);
-  box-shadow: 0 0 0 1px var(--gold-hairline);
+  border-bottom-color: var(--beam-gold);
+  background: transparent;
+  box-shadow: none;
 }
 
 .wizard-step.done:not(.active) {
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
   color: var(--ink);
+  border-bottom-color: color-mix(in srgb, var(--beam-gold) 35%, transparent);
 }
 
 .wizard-step:focus-visible {
@@ -2393,6 +2401,36 @@ main > h1,
   font-size: 0.9rem;
 }
 
+.spt-wizard-app .app-intro--compact {
+  max-width: none;
+  margin: 0 0 var(--space-2);
+  padding: var(--space-2) 0 var(--space-3);
+  border-left: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 88%, transparent);
+  border-radius: 0;
+  background: transparent;
+}
+
+.spt-wizard-app .app-intro--compact .ps-problem {
+  margin: 0 0 var(--space-1);
+  font-size: 0.85rem;
+}
+
+.spt-wizard-app .packet-bar {
+  margin-bottom: var(--space-3);
+  padding: var(--space-2) 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 88%, transparent);
+  border-radius: 0;
+  gap: var(--space-2) var(--space-3);
+}
+
+.spt-wizard-app #wizard-status {
+  margin: 0 0 var(--space-2);
+  min-height: 1.15rem;
+}
+
 .spt-wizard-app .locale-bar--wizard.locale-bar--compact .locale-bar__map-wrap,
 .spt-wizard-app .locale-bar--wizard.locale-bar--compact .locale-bar__sr {
   display: none;
@@ -2400,6 +2438,13 @@ main > h1,
 
 .spt-wizard-app .locale-bar--wizard {
   gap: var(--space-2);
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.spt-wizard-app .locale-bar--wizard.locale-bar--compact {
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 90%, var(--quant-blue) 10%);
 }
 
 .locale-bar__toggle {
@@ -3920,13 +3965,22 @@ table.data-table th {
   }
 
   .wizard-steps {
-    gap: var(--space-2);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
 
   .wizard-steps span,
   .wizard-step {
-    font-size: 0.78rem;
-    padding: 0.45rem 0.7rem;
+    font-size: 0.72rem;
+    flex: 0 0 auto;
+    padding: var(--space-2) var(--space-2);
+  }
+
+  .spt-wizard-app .packet-bar {
+    gap: var(--space-2);
+    padding-bottom: var(--space-3);
   }
 
   input[type="text"],
