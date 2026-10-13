@@ -34,6 +34,12 @@ export default async function handler(req, res) {
 
     if (sessionId && String(sessionId).startsWith("cs_")) {
       const result = await entitlementFromSession(String(sessionId));
+      if (result?.error === "invalid_session_id") {
+        return res.status(400).json(result);
+      }
+      if (result?.error === "session_not_found") {
+        return res.status(404).json(result);
+      }
       if (result?.error) {
         return res.status(402).json(result);
       }

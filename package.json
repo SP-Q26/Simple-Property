@@ -47,6 +47,7 @@
     "smoke:reminders": "node scripts/smoke-reminders-live.mjs",
     "smoke:feedback": "node scripts/smoke-feedback-agent.mjs",
     "audit:resend": "node scripts/audit-resend-stack.mjs",
+    "audit:stripe-live": "node scripts/audit-stripe-live-dashboard.mjs",
     "smoke:checkout": "node scripts/smoke-checkout-live.mjs",
     "smoke:extended": "node scripts/smoke-prod-extended.mjs",
     "smoke:states-blogs": "node scripts/smoke-prod-states-blogs.mjs",

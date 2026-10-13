@@ -118,10 +118,27 @@ export async function resolveEntitlementForCustomer(customerId) {
   });
 }
 
+/** Stripe Checkout session ids are cs_{test|live}_ + alphanumeric (no underscores). */
+export function isPlausibleCheckoutSessionId(sessionId) {
+  const s = String(sessionId || "");
+  return /^cs_(test|live)_[A-Za-z0-9]{14,}$/.test(s);
+}
+
 export async function entitlementFromSession(sessionId) {
-  const session = await stripe().checkout.sessions.retrieve(sessionId, {
-    expand: ["subscription"],
-  });
+  if (!isPlausibleCheckoutSessionId(sessionId)) {
+    return { error: "invalid_session_id" };
+  }
+  let session;
+  try {
+    session = await stripe().checkout.sessions.retrieve(sessionId, {
+      expand: ["subscription"],
+    });
+  } catch (e) {
+    if (e?.code === "resource_missing" || e?.raw?.code === "resource_missing") {
+      return { error: "session_not_found" };
+    }
+    throw e;
+  }
   if (session.payment_status !== "paid" && session.status !== "complete") {
     return { error: "payment_incomplete", status: session.payment_status };
   }
