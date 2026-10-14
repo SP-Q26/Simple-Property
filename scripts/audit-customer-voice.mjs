@@ -58,6 +58,8 @@ const scanRoots = [
   join(web, "pricing.html"),
   join(web, "feedback.html"),
   join(web, "launch-stack.html"),
+  join(web, "hub.html"),
+  join(web, "modules.html"),
   join(web, "legal.html"),
   join(web, "terms.html"),
   join(web, "privacy.html"),

@@ -2,11 +2,11 @@ import { createReceiptDraft, emptyOrg, newId, todayIso } from "./receipt-spine.m
 import { defaultSectionsForTemplate } from "./hub-templates.mjs";
 
 export function seedHubState() {
-  const org = emptyOrg("Greystone demo portfolio");
+  const org = emptyOrg("My portfolio");
   const property = {
     id: newId("prop"),
     orgId: org.id,
-    label: "Two-flat · Logan Square",
+    label: "Two-flat · Logan Square (sample)",
     address: "1234 N Example Ave",
     state: "IL",
     city: "Chicago",

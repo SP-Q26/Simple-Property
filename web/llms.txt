@@ -10,8 +10,8 @@
 - **Pain hub** · missed deadline, tenant dispute, Excel mistakes, surrender/keys: https://simple-property.com/blog#guides-pain
 - **City guides** · Chicago RLTO and major metros: https://simple-property.com/blog#guides-cities
 - **Launch stack** · rent PM (Innago, Avail) + **Deposit Desk at turnover** · door-count tiers: https://simple-property.com/launch-stack
-- **Receipt Rail hub (alpha, noindex)** · org spine · move-in / move-out wizards · browser-local: https://simple-property.com/hub
-- **Receipt modules** · phased `template_id` registry (P1 move-in/out live in alpha): https://simple-property.com/modules
+- **Condition hub (preview, noindex)** · move-in / move-out walkthroughs · saves in browser: https://simple-property.com/hub
+- **Condition tools list** · move-in/out plus roadmap tools: https://simple-property.com/modules
 - Agent bus: https://simple-property.com/spt-ai-bus.json
 - **Live wizard (in browser on /app only)** · `window.__SPT_AGENT__` · JSON in `#spt-wizard-snapshot` · updates every step · event `spt-agent-snapshot` · no API · step 5 also has **Copy for AI assistant** (full markdown clipboard)
 - Gospel: https://simple-property.com/.well-known/spt-gospel.json

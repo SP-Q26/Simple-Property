@@ -40,7 +40,8 @@ need("templates move_in", templates.includes("move_in_baseline"));
 need("templates move_out", templates.includes("move_out_condition"));
 need("templates registry size", (templates.match(/template_id|id: "/g) || []).length >= 10);
 need("store localStorage", store.includes("HUB_STORAGE_KEY"));
-need("modules.html", read("modules.html").includes("move_out_condition"));
+need("modules.html", read("modules.html").includes("Move-out walkthrough"));
+need("hub copy module", read("lib/hub-copy.mjs").includes("Condition hub"));
 need("hub css", read("simple-property.css").includes(".hub-nav"));
 
 console.log(fail ? `\nHub alpha audit FAILED (${fail})` : "\nHub alpha audit OK");
