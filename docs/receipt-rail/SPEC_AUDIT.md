@@ -11,8 +11,8 @@
 | Verdict | Detail |
 |---------|--------|
 | **Spec quality** | **Shippable as canon** — grammar, phases, and gates are coherent enough to build P1. |
-| **Production parity** | **None yet** — hub is documentation only; all revenue still flows through Deposit Desk wizard + Stripe today. |
-| **Deploy now** | **Train 0** — commit spec + finish Deposit Desk conversion work (urgency paywall, ROI copy, CSS v66); do **not** cut `/app` until P1 import bridge exists. |
+| **Production parity** | **Partial** — `/hub` alpha (client spine + P1 wizards, noindex); revenue still Deposit Desk + Stripe. |
+| **Deploy now** | **Train 0–1** — keep `/app`; dogfood `/hub` alpha; P1 DB + server PDF before indexable hub. |
 
 ---
 
@@ -22,7 +22,7 @@
 |-------|------|--------------|--------|
 | Primary URL | `simple-property.com` | Same | OK |
 | Not a PMS | Explicit | `/launch-stack`, Phase 4 lane | OK |
-| Proof + PDF + send | Receipt Rail | Step 5 export, Resend reminders, magic-link auth exists | **Partial** — no org spine, no finalize lock, no counterparty ack |
+| Proof + PDF + send | Receipt Rail | Deposit Desk export + `/hub` finalize lock (local) | **Partial** — no server PDF, no receipt-scoped send |
 | Move-in vs move-out moat | P2 compare | Move-in step 4 + move-out flow in one packet | **Partial** — compare not automated |
 | Module count | 13 phased | 1 composite wizard | Expected gap |
 | Stripe `isles_brand` | deposit_desk + future | `stripe-catalog.mjs` uses `deposit_desk` | OK |
@@ -50,7 +50,7 @@
 |----|------|----------|------------|
 | R1 | **Big-bang `/app` replacement** breaks SEO + habit | P0 | Ship `/hub` behind flag; keep `/app` until import + parity |
 | R2 | **No server PDF** yet; paid unlock is client print | P0 | P1 deliverable; spec already calls server PDF |
-| R3 | **Unit cap 40 vs 25** confuses pricing page | P1 | Decision in expansion open questions; update one source |
+| R3 | **Unit cap 40 vs 25** confuses pricing page | — | **Closed** — [PRICING_40_UNITS.md](./PRICING_40_UNITS.md) + CANON |
 | R4 | **P1 = 6 weeks** without chosen DB | P0 | Week 0: Supabase vs Xano (default Supabase in plan) |
 | R5 | **Analytics** — `/api/events` no-op | P2 | KV counters or Vercel events before hub launch |
 | R6 | **13 modules in marketing** before ship | P2 | Modules page: label “Roadmap” per phase |

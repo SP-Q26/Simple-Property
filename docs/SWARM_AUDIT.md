@@ -68,6 +68,7 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 | Metric | Score | Gate |
 |--------|------:|------|
 | Expansion spec (Receipt Rail canon) | run swarm | `audit-receipt-rail-spec.mjs` · docs in `docs/receipt-rail/` |
+| Hub alpha (spine · P1 wizards) | run swarm | `audit-hub-alpha.mjs` · `/hub` noindex |
 
 **Deploy plan:** `docs/receipt-rail/SWARM_DEPLOY_PLAN.md` · **Spec audit:** `docs/receipt-rail/SPEC_AUDIT.md`  
 Program **A** = Deposit Desk (`PHASE4_ROADMAP`) · Program **B** = hub P1 — do not replace `/app` until P1 gate (10 finalized receipts).

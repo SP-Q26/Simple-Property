@@ -9,7 +9,7 @@
 
 | Layer | Achievable today | Needs backend (P1) |
 |-------|------------------|---------------------|
-| **Marketing + SEO** | Yes — 32 states + DC blog, home, pricing | Hub modules page (copy-only) |
+| **Marketing + SEO** | Yes — 32 states + DC blog, home, pricing, **`/modules`** | Hub indexable when P1 exits |
 | **Deposit Desk wizard** | Yes — 5 steps, urgency paywall, export lock | Server PDF |
 | **Stripe checkout** | Yes — turn + Pro on prod | Keeper/Portfolio hub SKUs |
 | **Email reminders** | Yes — Resend + KV when env set | Receipt send + ack |
@@ -18,7 +18,7 @@
 | **Compare moat** | Partial — same packet, manual | Paired finalized receipts |
 | **Counterparty magic link** | API exists for auth, not receipts | Receipt-scoped tokens |
 
-**Ship now:** Program A commits + deploy. **Ship next:** `/hub` alpha (flow only, `noindex`).
+**Ship now:** Program A on `main` + **Program B alpha** (`/hub` noindex, `audit-hub-alpha`).
 
 ---
 
@@ -33,9 +33,10 @@
 | Pro $22/mo / $99/yr · **40 units** | Live | KV + entitlement |
 | Deadline reminders | Live if env | `api/reminders` |
 | Magic-link operator auth | Live | `api/auth/magic-link` |
-| Urgency paywall ≤7 days | Ready to deploy | uncommitted `app.js` |
-| ROI marketing copy | Ready to deploy | uncommitted HTML |
-| Receipt Rail **docs** + swarm gate | Ready to deploy | `audit-receipt-rail-spec` |
+| Urgency paywall ≤7 days | Live on `main` | `paywall--urgency` · `audit-wizard-forms` |
+| ROI marketing copy | Live on `main` | `audit-pain-copy` |
+| Receipt Rail **docs** + swarm gate | Live | `audit-receipt-rail-spec` |
+| Hub alpha spine + P1 wizards | Live (noindex) | `audit-hub-alpha` · [CODE_MAP.md](./CODE_MAP.md) |
 
 **Not achievable without product work:** server-side PDF, cross-device packet sync, hub billing.
 
@@ -45,14 +46,15 @@
 
 | Screen | Alpha behavior | Data |
 |--------|----------------|------|
-| **Portfolio home** | KPI cards, recent drafts | `hub-fixtures.mjs` + localStorage |
-| **Properties** | List → unit → tenancy | Mock + user-added local |
-| **New receipt** | Pick `move_in_baseline` / `move_out_condition` | Template registry (JS) |
-| **Wizard** | Rooms, conditions, photo URLs | Draft receipt object |
-| **Review** | Verdict CLEAR / FIX_LIST / FILE | — |
-| **Finalize** | Lock + move to Vault | localStorage |
-| **Vault** | Finalized list, export/send **stubs** | No Resend call |
+| **Portfolio home** | KPI cards, recent drafts | `web/hub-app.js` · `hub-fixtures.mjs` |
+| **Properties** | List → unit → tenancy timeline | `chainForTenancy` in `hub-store.mjs` |
+| **New receipt** | Pick `move_in_baseline` / `move_out_condition` | `hub-templates.mjs` |
+| **Wizard** | Rooms, conditions, photo URLs | `receipt-spine.mjs` sections |
+| **Review** | Verdict CLEAR / FIX_LIST / FILE | `suggestVerdict` + operator override |
+| **Finalize** | Lock + move to Vault | `finalizeReceipt` |
+| **Vault** | Finalized list, export/send **stubs** | Amend → `amendReceipt` |
 | **Billing** | Link to `/pricing` | No new SKUs |
+| **Compare** | UI stub when both P1 receipts finalized | `compare_report` server P2 |
 
 **Explicit non-goals in alpha:** login, upload bytes, email send, Stripe, compare PDF, amend chain UI (stub only).
 

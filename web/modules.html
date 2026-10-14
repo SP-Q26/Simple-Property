@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Receipt modules · Simple Property Tools</title>
+  <meta name="description" content="Thirteen Receipt Rail modules by phase: move-in, move-out, compare, deposit exhibit, STR, and ops visits. Deposit Desk ships today.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://simple-property.com/modules">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/simple-property.css?v=67">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand-lockup" href="/">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
+        <span class="brand-text">
+          <span class="brand-word">Simple Property Tools</span>
+          <span class="brand-tag"><span class="brand-tag__desktop">Itemize it. Date it. Never pay the fees. · Founded in Chicago · 32 states + DC</span><span class="brand-tag__mobile">Itemize it. Date it. Never pay the fees. · Founded in Chicago · 32 states + DC</span></span>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="/app">Deposit Desk</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/hub">Hub (alpha)</a>
+        <a href="/launch-stack">Stack</a>
+        <a href="/blog">Guides</a>
+      </nav>
+    </header>
+    <main id="main" class="prose">
+      <p class="hero-eyebrow">Receipt Rail · module registry</p>
+      <h1>One spine · many receipts</h1>
+      <p>Every module is a <code>template_id</code> on the same chain: Organization → Property → Unit → Tenancy → Receipt. Capture, finalize, export, send.</p>
+      <p><a class="btn btn-primary" href="/hub">Try hub alpha</a> <a class="btn btn-secondary" href="/app">Deposit Desk (live)</a></p>
+
+      <h2>P1 · shipping first</h2>
+      <ul class="bullet-tight">
+        <li><strong>move_in_baseline</strong> · room condition at lease start</li>
+        <li><strong>move_out_condition</strong> · same rooms at surrender · pairs for compare</li>
+      </ul>
+
+      <h2>P2 · deposit moat</h2>
+      <ul class="bullet-tight">
+        <li><strong>deposit_deduction_exhibit</strong> · withhold lines from Deposit Desk</li>
+        <li><strong>key_fob_handoff</strong> · access device counts</li>
+        <li><strong>compare_report</strong> · derived move-in vs move-out PDF</li>
+      </ul>
+
+      <h2>P3–P6 · ops &amp; STR</h2>
+      <p class="field-hint">Maintenance visit, entry notice, periodic inspection, STR turnover, damage claim pack, water 48h, contents inventory, license manifest, owner job diary · see <code>docs/receipt-rail/SIMPLE_PROPERTY_EXPANSION.md</code> in repo.</p>
+
+      <p class="disclaimer">Not legal advice. Hub alpha is browser-local until P1 backend ships.</p>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <div class="footer-identity">
+          <p class="footer-colophon">
+            <img class="footer-mark" src="/favicon.svg" alt="" width="22" height="22">
+            <span class="footer-product">Simple Property Tools</span>
+          </p>
+          <p class="footer-disclaimer">Documentation only · not legal advice</p>
+          <p class="footer-collective"><span class="footer-collective__name">The Isles Collective</span> <span class="footer-collective__year">© 2026</span></p>
+          <p class="footer-rights">All rights reserved.</p>
+          <p class="footer-credit">Web by <span class="footer-credit__name">AJ Nichols</span></p>
+        </div>
+        <nav class="footer-links" aria-label="Footer"><a href="/app">App</a><a href="/logs">Logs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/launch-stack">Stack</a>
+        <a href="/blog">Guides</a>
+        <a href="/blog/feed.rss">RSS</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/legal">Legal</a>
+        <a href="/feedback">Feedback</a>
+        <a href="mailto:hello@simple-property.com">Contact</a></nav>
+      </div>
+    </footer>
+  </div>
+  <script src="/sp-nav.js" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

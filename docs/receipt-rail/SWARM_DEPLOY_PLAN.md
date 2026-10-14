@@ -32,6 +32,7 @@ node scripts/audit-receipt-rail-spec.mjs   # expansion canon
 | **Ops** | Agent | `npm run audit` · `audit:git` · push `main` | All P0 audits green |
 | **Product** | Agent | Ship urgency paywall · ROI copy · CSS v66 | `audit-wizard-forms` · `audit-pain-copy` |
 | **Spec** | Agent | `docs/receipt-rail/*` + SPEC_AUDIT + this plan | `audit-receipt-rail-spec.mjs` |
+| **Hub alpha** | Agent | `/hub` + `web/lib/receipt-spine.mjs` · move-in/out | `audit-hub-alpha.mjs` |
 | **Stripe** | Operator | Stripe Dashboard: any abandoned checkouts from last 80 visits | Manual |
 | **Analytics** | Operator | Vercel: `/app` vs blog · custom events `paywall_urgency`, `checkout_click` | Manual |
 
@@ -49,7 +50,7 @@ node scripts/audit-receipt-rail-spec.mjs   # expansion canon
 | **Schema** | `organizations`, `properties`, `units`, `tenancies`, `receipts`, `receipt_sections`, `media`, `exports`, `delivery_log` | Migrations versioned in repo |
 | **Auth** | Operator magic link → `org_id` session | Reuse patterns from `api/auth/magic-link.js` |
 | **Storage** | Signed upload URL API | No public photo URLs |
-| **Entitlement** | Extend KV / DB: plan tier + property cap | Map Keeper → 5 properties (resolve 40-unit Pro separately) |
+| **Entitlement** | Extend KV / DB: plan tier + **unit cap** | Keeper **10 units** · Portfolio **40** · [PRICING_40_UNITS.md](./PRICING_40_UNITS.md) |
 | **CI** | `audit-receipt-rail-schema.mjs` (future) stub | Fails if migrations missing |
 
 **Deploy:** Preview only · env vars in Vercel · no marketing links to `/hub`.
@@ -67,7 +68,7 @@ node scripts/audit-receipt-rail-spec.mjs   # expansion canon
 | **Send** | Resend + magic link view | Delivery log row written |
 | **Import** | Packet JSON → draft receipt (read-only path) | One sample import test |
 
-**Deploy:** `/hub` on preview URL · `robots: noindex` until gate met.
+**Deploy:** `/hub` on preview URL · `robots: noindex` until gate met. **Alpha (Train 0+):** client-only flow on prod `/hub` is OK when `audit-hub-alpha` passes.
 
 ---
 
@@ -75,7 +76,7 @@ node scripts/audit-receipt-rail-spec.mjs   # expansion canon
 
 | Lane | Deliverable | Gate |
 |------|-------------|------|
-| **Stripe** | Keeper $29/mo · per-receipt $19/$15 SKUs · metadata `isles_brand: simple_property` | `smoke:checkout` extended |
+| **Stripe** | Keeper $29/mo · turn **$29/$49** until hub SKUs split · metadata `isles_brand: simple_property` | `smoke:checkout` extended |
 | **Marketing** | Modules page (P1 only live) · sample redacted PDF | `audit-pain-copy` |
 | **Agent** | `llms.txt` + bus: hub routes + receipt snapshot | `audit-mcp` |
 | **Dogfood** | 10 finalized receipts (non-founder) | **P1 exit** |
@@ -113,10 +114,11 @@ Mirror `docs/SWARM_AUDIT.md` lanes — **Program A** must stay ≥ 95 while **Pr
 
 1. `npm run preflight` (or `audit:git` + `cd web && npm run audit`)
 2. `node scripts/audit-receipt-rail-spec.mjs`
-3. `cd web && npm run audit:swarm`
-4. `git push origin main`
-5. Confirm `simple-property.css?v=` on prod `/app`
-6. `npm run smoke:prod` · `npm run smoke:checkout` (when Stripe touched)
+3. `node scripts/audit-hub-alpha.mjs`
+4. `cd web && npm run audit:swarm`
+5. `git push origin main`
+6. Confirm `simple-property.css?v=` on prod `/app` and `/hub`
+7. `npm run smoke:prod` · `npm run smoke:checkout` (when Stripe touched)
 
 ---
 

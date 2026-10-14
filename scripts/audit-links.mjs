@@ -23,6 +23,8 @@ const ROUTES = new Set([
   "/logs",
   "/pricing",
   "/launch-stack",
+  "/hub",
+  "/modules",
   "/feedback",
   "/blog",
   "/blog/feed.rss",

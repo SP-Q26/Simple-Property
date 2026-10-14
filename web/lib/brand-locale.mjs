@@ -18,7 +18,7 @@ export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 export const VALUE_ROI_LINE =
   "Saves you time on turnover · cheaper than a fee · pays for itself for life with one legal claim";
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 66;
+export const CSS_VERSION = 67;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

@@ -29,8 +29,8 @@ console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
-/** v66+: export urgency paywall · v65 form flow · was 93KB at v65. */
-need("css size under 96KB", cssBytes < 96 * 1024);
+/** v67+: hub shell · v66 urgency · cap reviewed when CSS grows. */
+need("css size under 100KB", cssBytes < 100 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));

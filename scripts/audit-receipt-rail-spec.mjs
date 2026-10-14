@@ -55,6 +55,7 @@ need("plan deploy checklist", plan.includes("audit-receipt-rail-spec"));
 
 need("pricing 40 units doc", readDoc("PRICING_40_UNITS.md").includes("40 units"));
 need("achievable now audit", readDoc("ACHIEVABLE_NOW.md").includes("Program A"));
+need("code map spine", readDoc("CODE_MAP.md").includes("receipt-spine.mjs"));
 
 const templateIds = [
   "move_in_baseline",

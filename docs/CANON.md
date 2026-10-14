@@ -9,7 +9,7 @@
 | Header tag | **Deposit Desk · IL & Chicago RLTO** |
 | Mark | `/favicon.svg` |
 | Product (roadmap) | **Active:** `docs/PHASE4_ROADMAP.md` (Deposit Desk) · **Expansion:** `docs/receipt-rail/` (Simple Property hub) · lanes: `docs/SMALL_PM_LANE_MAP.md` |
-| Audience | Mom-and-pop · **1–3 people** · Pro cap **4 doors** |
+| Audience | Mom-and-pop → small operator · **1–40 units** · Pro cap **40 units** (`web/lib/pro-limits.mjs`) |
 
 **Voice:** Illinois deadlines · receipts · per-turn or Pro · not legal advice.
 

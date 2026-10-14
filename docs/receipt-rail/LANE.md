@@ -49,7 +49,7 @@ Organization
 ### Property · Unit
 
 - Address, jurisdiction (state + city preset), unit label.
-- Cap gates: Free 1 property; Keeper 5; Portfolio 25.
+- Cap gates: Free 1 property · **2 units**; Keeper **10 units**; Portfolio **40 units** ([PRICING_40_UNITS.md](./PRICING_40_UNITS.md)).
 
 ### Tenancy
 

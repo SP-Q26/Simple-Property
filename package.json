@@ -7,6 +7,7 @@
     "audit": "node scripts/audit-spt-web.mjs",
     "audit:swarm": "node scripts/audit-swarm.mjs",
     "audit:receipt-rail": "node scripts/audit-receipt-rail-spec.mjs",
+    "audit:hub-alpha": "node scripts/audit-hub-alpha.mjs",
     "preflight": "node scripts/audit-git.mjs && cd web && npm ci && npm run audit",
     "ci:preflight": "npm run preflight",
     "audit:git": "node scripts/audit-git.mjs",

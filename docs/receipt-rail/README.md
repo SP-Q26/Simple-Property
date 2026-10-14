@@ -9,6 +9,9 @@
 | [LANE.md](./LANE.md) | Shared **Receipt Rail** grammar (entities, lifecycle, module contract) |
 | [SPEC_AUDIT.md](./SPEC_AUDIT.md) | Spec vs live product audit |
 | [SWARM_DEPLOY_PLAN.md](./SWARM_DEPLOY_PLAN.md) | Parallel lanes · deploy trains 0–4 |
+| [ACHIEVABLE_NOW.md](./ACHIEVABLE_NOW.md) | Live vs alpha vs P1 backend |
+| [PRICING_40_UNITS.md](./PRICING_40_UNITS.md) | Keeper / Portfolio unit caps |
+| [CODE_MAP.md](./CODE_MAP.md) | Alpha implementation paths in `web/` |
 
 ## Relationship to shipping code today
 
@@ -19,7 +22,9 @@
 | Browser-local packets + KV Pro index | Org → Property → Unit → Tenancy → **Receipt** (server-backed) |
 | `/logs` operator notes | **Vault** + ops modules (P3+) |
 
-**Do not** treat this folder as deployed behavior until P1 gates in [SIMPLE_PROPERTY_EXPANSION.md](./SIMPLE_PROPERTY_EXPANSION.md) are met. Deposit Desk remains the production lane until Receipt Rail P1 replaces or wraps the wizard spine.
+**Alpha:** `/hub` (noindex) exercises the spine + P1 wizards in the browser — see [CODE_MAP.md](./CODE_MAP.md). **Production billing** stays on Deposit Desk until P1 gate (10 finalized receipts on server).
+
+**Do not** treat server-backed Receipt Rail as deployed until P1 gates in [SIMPLE_PROPERTY_EXPANSION.md](./SIMPLE_PROPERTY_EXPANSION.md) are met.
 
 ## Related docs (current product)
 

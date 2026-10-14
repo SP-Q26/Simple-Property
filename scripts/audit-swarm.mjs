@@ -140,6 +140,14 @@ function scoreContentDepth() {
   return 70;
 }
 
+function scoreHubAlpha() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-hub-alpha.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  return r.status === 0 ? 100 : 0;
+}
+
 function scoreExpansionSpec() {
   const r = spawnSync(process.execPath, [join(root, "scripts", "audit-receipt-rail-spec.mjs")], {
     encoding: "utf8",
@@ -197,6 +205,7 @@ const metrics = [
   ["Discovery · lane · SEO", scoreDiscoveryLane],
   ["Launch stack · door tiers", scoreLaunchStack],
   ["Expansion spec (Receipt Rail canon)", scoreExpansionSpec],
+  ["Hub alpha (spine · move-in/out)", scoreHubAlpha],
 ];
 let fail = 0;
 const rows = [];
