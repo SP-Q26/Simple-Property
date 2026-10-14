@@ -29,8 +29,11 @@ Live price IDs are in `web/lib/stripe-catalog.mjs` and `docs/STRIPE_ISLES_AUDIT_
 | `STRIPE_PRICE_ANNUAL` | `annual` | subscription yearly | **$99.00** | `spt_deposit_annual` |
 | `STRIPE_PRICE_TURN_MOVE_OUT` | `turn_move_out` | one-time | **$29.00** | `spt_turn_move_out` |
 | `STRIPE_PRICE_TURN_FULL` | `turn_full` | one-time | **$49.00** | `spt_turn_full` |
+| `STRIPE_PRICE_KEEPER_MONTHLY` | `keeper_monthly` | subscription monthly | **$29.00** | `spt_keeper_monthly` |
+| `STRIPE_PRICE_PORTFOLIO_MONTHLY` | `portfolio_monthly` | subscription monthly | **$79.00** | `spt_portfolio_monthly` |
 
 **Catalog source:** `web/lib/stripe-catalog.mjs`  
+**Live provisioned (Condition hub):** 2026-03-14 · `prod_VRISWxgBrgclJT` · `prod_VRISJeTzyO7Ad8`  
 **Verify:** `STRIPE_SECRET_KEY=<test secret> npm run verify-stripe`
 
 If env price IDs are unset, Checkout uses inline `price_data` (fine for test; set IDs before live).
@@ -55,7 +58,7 @@ If env price IDs are unset, Checkout uses inline `price_data` (fine for test; se
 |----------|---------|
 | `STRIPE_SECRET_KEY` | Same Isles account as Innsegall when operator chooses unified billing |
 | `STRIPE_WEBHOOK_SECRET` | **Separate** endpoint secret per site URL |
-| `STRIPE_PRICE_*` | Four price IDs above |
+| `STRIPE_PRICE_*` | Six price IDs above |
 | `SPT_ENTITLEMENT_SECRET` | HMAC for `/api/entitlement` |
 | `KV_REST_*` | Turn unlock + subscription index |
 

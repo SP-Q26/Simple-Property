@@ -24,7 +24,15 @@
     if (sub.valid_until) {
       return new Date(sub.valid_until).getTime() > Date.now();
     }
-    return sub.plan === "pro" || sub.sku === "monthly" || sub.sku === "annual";
+    return (
+      sub.plan === "pro" ||
+      sub.plan === "keeper" ||
+      sub.plan === "portfolio" ||
+      sub.sku === "monthly" ||
+      sub.sku === "annual" ||
+      sub.sku === "keeper_monthly" ||
+      sub.sku === "portfolio_monthly"
+    );
   }
 
   function isActive(sub) {

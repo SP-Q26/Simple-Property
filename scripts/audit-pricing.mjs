@@ -51,6 +51,10 @@ need("gospel pricing 22/99", read(".well-known/spt-gospel.json").includes('"mont
 need("terms mention prices", existsSync(join(web, "terms.html")) && read("terms.html").includes("$22"));
 need("pricing suite Keeper", pricing.includes("Keeper"));
 need("pricing suite Portfolio", pricing.includes("Portfolio"));
+need("pricing keeper checkout", pricing.includes('data-sku="keeper_monthly"'));
+need("pricing portfolio checkout", pricing.includes('data-sku="portfolio_monthly"'));
+need("catalog keeper stripe id", catalog.includes("keeper_monthly") && catalog.includes("price_1UQPrI"));
+need("catalog portfolio stripe id", catalog.includes("portfolio_monthly") && catalog.includes("price_1UQPs2"));
 need("pricing modules link", pricing.includes("/modules"));
 need("PRICING_40_UNITS doc", existsSync(join(root, "docs/receipt-rail/PRICING_40_UNITS.md")));
 

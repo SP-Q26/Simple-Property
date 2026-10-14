@@ -80,6 +80,57 @@ export const STRIPE_CATALOG = {
       isles_lane: "spt_turn_move_out",
     },
   },
+  keeper_monthly: {
+    sku: "keeper_monthly",
+    name: "Condition hub · Keeper Monthly",
+    description:
+      "Up to 10 units · move-in/out walkthroughs · Deposit Desk Pro print for those doors.",
+    stripe_description:
+      "Condition hub Keeper for up to 10 units: move-in and move-out walkthroughs plus Deposit Desk Pro print export for those doors. Billed monthly. Cancel anytime from Manage billing on simple-property.com. Not legal advice.",
+    unit_amount: 2900,
+    currency: "usd",
+    mode: "subscription",
+    recurring: { interval: "month" },
+    lookup_key: "spt_keeper_monthly",
+    checkout_image: "/stripe/pro-monthly.png",
+    live_product_id: "prod_VRISWxgBrgclJT",
+    live_price_id: "price_1UQPrIFDJKTJlxOcaevgDHfP",
+    metadata: {
+      spt_sku: "keeper_monthly",
+      spt_plan: "keeper",
+      spt_units_max: "10",
+      isles_product: "condition_hub",
+      isles_brand: "deposit_desk",
+      isles_portfolio: "the_isles",
+      isles_lane: "spt_keeper_monthly",
+    },
+  },
+  portfolio_monthly: {
+    sku: "portfolio_monthly",
+    name: "Condition hub · Portfolio Monthly",
+    description:
+      "Up to 40 units · three seats · Keeper plus shared vault as modules ship.",
+    stripe_description:
+      "Condition hub Portfolio for up to 40 units and three seats: Keeper features plus shared vault and ops modules as they ship. Billed monthly. Cancel anytime from Manage billing on simple-property.com. Not legal advice.",
+    unit_amount: 7900,
+    currency: "usd",
+    mode: "subscription",
+    recurring: { interval: "month" },
+    lookup_key: "spt_portfolio_monthly",
+    checkout_image: "/stripe/pro-annual.png",
+    live_product_id: "prod_VRISJeTzyO7Ad8",
+    live_price_id: "price_1UQPs2FDJKTJlxOcvsW7j0UX",
+    metadata: {
+      spt_sku: "portfolio_monthly",
+      spt_plan: "portfolio",
+      spt_units_max: "40",
+      spt_seats_max: "3",
+      isles_product: "condition_hub",
+      isles_brand: "deposit_desk",
+      isles_portfolio: "the_isles",
+      isles_lane: "spt_portfolio_monthly",
+    },
+  },
   turn_full: {
     sku: "turn_full",
     name: "Deposit Desk · Full tenancy print unlock",
@@ -114,8 +165,14 @@ export function normalizeCheckoutSku(raw) {
   const s = String(raw || "annual").trim();
   if (SKU_ALIASES[s]) return SKU_ALIASES[s];
   if (STRIPE_CATALOG[s]) return s;
-  if (s === "monthly" || s === "annual") return s;
+  if (s === "monthly" || s === "annual" || s === "keeper_monthly" || s === "portfolio_monthly") return s;
   return "annual";
+}
+
+export function isSubscriptionSku(sku) {
+  const key = normalizeCheckoutSku(sku);
+  const item = STRIPE_CATALOG[key];
+  return item?.mode === "subscription";
 }
 
 export function catalogForSku(sku) {
@@ -134,6 +191,8 @@ export function priceEnvKeyForSku(sku) {
   if (key === "monthly") return "STRIPE_PRICE_MONTHLY";
   if (key === "turn_full") return "STRIPE_PRICE_TURN_FULL";
   if (key === "turn_move_out") return "STRIPE_PRICE_TURN_MOVE_OUT";
+  if (key === "keeper_monthly") return "STRIPE_PRICE_KEEPER_MONTHLY";
+  if (key === "portfolio_monthly") return "STRIPE_PRICE_PORTFOLIO_MONTHLY";
   return "STRIPE_PRICE_ANNUAL";
 }
 

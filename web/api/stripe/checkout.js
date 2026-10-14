@@ -3,6 +3,7 @@ import {
   catalogForSku,
   isTurnSku,
   normalizeCheckoutSku,
+  priceEnvKeyForSku,
   resolvePriceIdForSku,
   siteOrigin,
 } from "../../lib/stripe-catalog.mjs";
@@ -62,7 +63,10 @@ function buildBaseSessionParams({ sku, catalog, origin, metadata, packetId }) {
   };
   if (catalog.mode === "subscription") {
     params.subscription_data = {
-      metadata: { ...metadata, spt_plan: "pro" },
+      metadata: {
+        ...metadata,
+        spt_plan: catalog.metadata?.spt_plan || metadata.spt_plan || "pro",
+      },
     };
   }
   return params;
@@ -119,21 +123,12 @@ export default async function handler(req, res) {
   const metadata = {
     spt_sku: sku,
     spt_plan: catalog.metadata?.spt_plan || "pro",
-    spt_units_max: String(PRO_UNITS_MAX),
+    spt_units_max: catalog.metadata?.spt_units_max || String(PRO_UNITS_MAX),
     spt_payer: "landlord",
   };
   if (packetId) metadata.spt_packet_id = packetId;
 
-  const envKey =
-    sku === "monthly"
-      ? "STRIPE_PRICE_MONTHLY"
-      : sku === "annual"
-        ? "STRIPE_PRICE_ANNUAL"
-        : sku === "turn_full"
-          ? "STRIPE_PRICE_TURN_FULL"
-          : sku === "turn_move_out"
-            ? "STRIPE_PRICE_TURN_MOVE_OUT"
-            : "";
+  const envKey = priceEnvKeyForSku(sku);
   const envPrice = envKey ? (process.env[envKey] || "").trim() : "";
   if (
     envPrice &&

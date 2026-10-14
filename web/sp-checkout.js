@@ -57,7 +57,14 @@
 
   var params = new URLSearchParams(location.search);
   var buy = params.get("buy");
-  if (buy === "monthly" || buy === "annual" || buy === "turn_move_out" || buy === "turn_full") {
+  if (
+    buy === "monthly" ||
+    buy === "annual" ||
+    buy === "keeper_monthly" ||
+    buy === "portfolio_monthly" ||
+    buy === "turn_move_out" ||
+    buy === "turn_full"
+  ) {
     var auto = document.querySelector('.spt-checkout[data-sku="' + buy + '"]');
     if (auto) startCheckout(auto);
   }

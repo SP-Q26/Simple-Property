@@ -109,9 +109,16 @@ export async function resolveEntitlementForCustomer(customerId) {
   if (!record || !isProStatus(record.status)) {
     return null;
   }
+  const sku = record.sku || "annual";
+  const plan =
+    sku === "keeper_monthly"
+      ? "keeper"
+      : sku === "portfolio_monthly"
+        ? "portfolio"
+        : "pro";
   return buildEntitlement({
-    plan: "pro",
-    sku: record.sku || "annual",
+    plan,
+    sku,
     valid_until: record.valid_until,
     stripe_subscription: record.subscription_id,
     stripe_customer: record.customer_id,
@@ -170,8 +177,9 @@ export async function entitlementFromSession(sessionId) {
     validUntil = new Date(sub.current_period_end * 1000).toISOString();
     subscriptionId = sub.id;
   }
+  const plan = session.metadata?.spt_plan || (sku === "keeper_monthly" ? "keeper" : sku === "portfolio_monthly" ? "portfolio" : "pro");
   return buildEntitlement({
-    plan: "pro",
+    plan,
     sku,
     valid_until: validUntil,
     stripe_session: session.id,

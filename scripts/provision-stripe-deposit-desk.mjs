@@ -36,6 +36,8 @@ function productMetadata(entry) {
   const lane = {
     monthly: "spt_pro_monthly",
     annual: "spt_pro_annual",
+    keeper_monthly: "spt_keeper_monthly",
+    portfolio_monthly: "spt_portfolio_monthly",
     turn_move_out: "spt_turn_move_out",
     turn_full: "spt_turn_full",
   }[entry.sku];
@@ -133,6 +135,8 @@ async function main() {
     const map = {
       monthly: "STRIPE_PRICE_MONTHLY",
       annual: "STRIPE_PRICE_ANNUAL",
+      keeper_monthly: "STRIPE_PRICE_KEEPER_MONTHLY",
+      portfolio_monthly: "STRIPE_PRICE_PORTFOLIO_MONTHLY",
       turn_move_out: "STRIPE_PRICE_TURN_MOVE_OUT",
       turn_full: "STRIPE_PRICE_TURN_FULL",
     };

@@ -32,6 +32,8 @@ const envKeys = [
   "STRIPE_PRICE_ANNUAL",
   "STRIPE_PRICE_TURN_MOVE_OUT",
   "STRIPE_PRICE_TURN_FULL",
+  "STRIPE_PRICE_KEEPER_MONTHLY",
+  "STRIPE_PRICE_PORTFOLIO_MONTHLY",
 ];
 let warn = 0;
 for (const k of envKeys) {
@@ -52,6 +54,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-11-
 for (const envName of [
   "STRIPE_PRICE_MONTHLY",
   "STRIPE_PRICE_ANNUAL",
+  "STRIPE_PRICE_KEEPER_MONTHLY",
+  "STRIPE_PRICE_PORTFOLIO_MONTHLY",
   "STRIPE_PRICE_TURN_MOVE_OUT",
   "STRIPE_PRICE_TURN_FULL",
 ]) {
@@ -63,11 +67,15 @@ for (const envName of [
       ? "turn_move_out"
       : skuKey === "turn_full"
         ? "turn_full"
-        : skuKey === "monthly"
-          ? "monthly"
-          : skuKey === "annual"
-            ? "annual"
-            : null;
+        : skuKey === "keeper_monthly"
+          ? "keeper_monthly"
+          : skuKey === "portfolio_monthly"
+            ? "portfolio_monthly"
+            : skuKey === "monthly"
+              ? "monthly"
+              : skuKey === "annual"
+                ? "annual"
+                : null;
   const canon = catalogKey ? STRIPE_CATALOG[catalogKey]?.live_price_id : "";
   if (canon && id !== canon) {
     console.warn(
