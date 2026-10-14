@@ -28,7 +28,8 @@ ${hasNav ? `        <nav class="footer-links" aria-label="${navLabel}">${nav}</n
     </footer>`;
 }
 
-export const FOOTER_NAV_FULL = `<a href="/app">App</a><a href="/logs">Logs</a>
+export const FOOTER_NAV_FULL = `<a href="/app">Deposit Desk</a><a href="/logs">Logs</a>
+        <a href="/hub">Condition hub</a>
         <a href="/pricing">Pricing</a>
         <a href="/launch-stack">Stack</a>
         <a href="/blog">Guides</a>
@@ -41,10 +42,22 @@ export const FOOTER_NAV_FULL = `<a href="/app">App</a><a href="/logs">Logs</a>
 
 export const FOOTER_NAV_BLOG_POST = `<a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/">Home</a>`;
 
-export const FOOTER_NAV_BLOG_HUB = `<a href="/">Home</a><a href="/app">App</a><a href="/logs">Logs</a><a href="/blog/feed.rss">RSS</a>`;
+export const FOOTER_NAV_BLOG_HUB = `<a href="/">Home</a><a href="/app">Deposit Desk</a><a href="/hub">Condition hub</a><a href="/logs">Logs</a><a href="/blog/feed.rss">RSS</a>`;
 
 export const FOOTER_NAV_APP = `<a href="/terms">Terms</a><a href="/privacy">Privacy</a>`;
 
 export const FOOTER_NAV_LOGS = `<a href="/app">Deposit Desk</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a>`;
 
 export const FOOTER_NAV_STATUTES = `<a href="/legal">Legal hub</a><a href="/blog">Guides</a><a href="/">Home</a>`;
+
+/** Hub SPA footer · no self-link to /hub */
+export const FOOTER_NAV_HUB_PAGE = `<a href="/app">Deposit Desk</a><a href="/logs">Logs</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/launch-stack">Stack</a>
+        <a href="/blog">Guides</a>
+        <a href="/blog/feed.rss">RSS</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="/legal">Legal</a>
+        <a href="/feedback">Feedback</a>
+        <a href="mailto:hello@simple-property.com">Contact</a>`;

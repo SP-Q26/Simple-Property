@@ -5,6 +5,8 @@ import { BRAND_TAG_HTML, CSS_VERSION, FONT_GOOGLE } from "../../web/lib/brand-lo
 import { articleGraph, SITE } from "./seo-jsonld.mjs";
 import { wrapFooter, FOOTER_NAV_BLOG_POST } from "./site-footer.mjs";
 import { blogCourtCardHtml } from "./blog-court-card-html.mjs";
+import { ensureBlogGoalCopy } from "./blog-goal-copy.mjs";
+import { HEADER_NAV_BLOCK } from "./site-nav.mjs";
 
 export function stripBlogCourtCard(bodyHtml) {
   return bodyHtml
@@ -15,8 +17,19 @@ export function stripBlogCourtCard(bodyHtml) {
 const webRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "web");
 const atmosphereBlock = readFileSync(join(webRoot, "brand/atmosphere.html"), "utf8").trimEnd();
 
-function articleShell({ title, description, slug, published, modified, bodyHtml, states = [], cityPreset = "" }) {
-  const proseBody = `${blogCourtCardHtml({ states, cityPreset })}\n${stripBlogCourtCard(bodyHtml)}`;
+function articleShell({
+  title,
+  description,
+  slug,
+  published,
+  modified,
+  bodyHtml,
+  states = [],
+  cityPreset = "",
+  stateLabels = {},
+}) {
+  const goalBody = ensureBlogGoalCopy(stripBlogCourtCard(bodyHtml), { states, stateLabels });
+  const proseBody = `${blogCourtCardHtml({ states, cityPreset })}\n${goalBody}`;
   const url = `${SITE}/blog/${slug}`;
   const mod = modified || published;
   const ld = JSON.stringify(
@@ -59,12 +72,7 @@ ${atmosphereBlock}
           ${BRAND_TAG_HTML}
         </span>
       </a>
-      <nav class="header-nav" aria-label="Primary">
-        <a href="/app">App</a><a href="/logs">Logs</a>
-        <a href="/pricing">Pricing</a>
-        <a href="/launch-stack">Stack</a>
-        <a href="/blog">Guides</a>
-      </nav>
+      ${HEADER_NAV_BLOCK}
     </header>
     <main id="main" class="prose">
 ${proseBody}

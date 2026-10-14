@@ -1,5 +1,7 @@
 # Canon · Simple Property Tools
 
+**Lane master (start here):** `docs/SIMPLE_PROPERTY_LANE_MASTER.md`
+
 **Locked brand (2026-09-22)**
 
 | Layer | Name |

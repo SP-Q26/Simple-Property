@@ -1,5 +1,7 @@
 # Receipt Rail · Simple Property expansion
 
+**Lane master:** `../SIMPLE_PROPERTY_LANE_MASTER.md` · Programs A/B · routes · gates.
+
 **Repo:** `SP-Q26/Simple-Property` (implementation)  
 **Canon mirror (optional):** `SP-Q26/SPQ` may hold pointers only — **product truth lives here.**
 

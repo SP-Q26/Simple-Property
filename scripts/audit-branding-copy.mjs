@@ -77,10 +77,14 @@ need("checkout branding canon in catalog", catalogSrc.includes("checkoutBranding
 need("checkout mom-and-pop submit copy", checkout.includes("Manage billing on simple-property.com") || catalogSrc.includes("Manage billing"));
 need("checkout no Customer Portal", !checkout.toLowerCase().includes("customer portal"));
 
-for (const page of ["index.html", "pricing.html", "success.html", "terms.html"]) {
+for (const page of ["index.html", "pricing.html", "success.html", "terms.html", "modules.html"]) {
   const h = readFileSync(join(web, page), "utf8");
   need(`${page} brand tag`, h.includes(BRAND_TAG));
   need(`${page} not legal advice`, h.includes("not legal advice") || h.includes("Not legal advice"));
+  if (h.includes("header-nav")) {
+    need(`${page} Deposit Desk nav`, h.includes('href="/app">Deposit Desk') || page === "app.html");
+    need(`${page} no App nav label`, !h.includes('href="/app">App<'));
+  }
   if (page === "terms.html" || page === "privacy.html" || page === "legal.html") {
     need(`${page} Chicago HQ mention`, h.includes("Chicago"));
   }

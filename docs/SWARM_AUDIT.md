@@ -69,12 +69,17 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 |--------|------:|------|
 | Expansion spec (Receipt Rail canon) | run swarm | `audit-receipt-rail-spec.mjs` · docs in `docs/receipt-rail/` |
 | Hub alpha (spine · P1 wizards) | run swarm | `audit-hub-alpha.mjs` · `/hub` noindex |
+| Goal copy (pain · CTA · action) | run audit | `audit-goal-copy.mjs` · core surfaces |
+| Blog goal copy (full corpus) | run audit | `audit-blog-goal-copy.mjs` · all manifest posts · `apply:blog-goal-copy` |
+| Elevation sweep (umbrella) | run audit | `audit-elevation-sweep.mjs` · `docs/ELEVATION_AUDIT.md` |
+| Site nav + related guides | run audit | `audit-site-nav.mjs` · `audit-blog-related.mjs` |
 
 **Deploy plan:** `docs/receipt-rail/SWARM_DEPLOY_PLAN.md` · **Spec audit:** `docs/receipt-rail/SPEC_AUDIT.md`  
 Program **A** = Deposit Desk (`PHASE4_ROADMAP`) · Program **B** = hub P1 — do not replace `/app` until P1 gate (10 finalized receipts).
 
 ## Related docs
 
+- `docs/SIMPLE_PROPERTY_LANE_MASTER.md` — agent entry · Programs A/B · routes · gates
 - `docs/receipt-rail/README.md` — hub expansion index
 - `docs/LANE_COMPARE.md` — vs Innsegall lane · brand/SEO/content growth
 - `docs/DEPLOY.md` — git branch + Vercel redeploy

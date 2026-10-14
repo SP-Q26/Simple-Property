@@ -49,6 +49,10 @@ need(
 need("home per-turn model", read("index.html").includes("per turn") || read("index.html").includes("Per turn"));
 need("gospel pricing 22/99", read(".well-known/spt-gospel.json").includes('"monthly_usd": 22'));
 need("terms mention prices", existsSync(join(web, "terms.html")) && read("terms.html").includes("$22"));
+need("pricing suite Keeper", pricing.includes("Keeper"));
+need("pricing suite Portfolio", pricing.includes("Portfolio"));
+need("pricing modules link", pricing.includes("/modules"));
+need("PRICING_40_UNITS doc", existsSync(join(root, "docs/receipt-rail/PRICING_40_UNITS.md")));
 
 console.log(fail ? `\nPricing audit FAILED (${fail})` : "\nPricing audit OK");
 process.exit(fail ? 1 : 0);

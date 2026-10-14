@@ -46,6 +46,7 @@ for (const file of readdirSync(blogDir).filter((f) => f.endsWith(".html") && f !
     bodyHtml,
     states: post.states || [],
     cityPreset: post.cityPreset || "",
+    stateLabels: manifest.stateLabels || {},
   });
   if (next !== html) {
     writeFileSync(path, next);

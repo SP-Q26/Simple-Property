@@ -457,6 +457,7 @@ function bindEvents(view, ctx = {}) {
 }
 
 function render() {
+  document.getElementById("hub-static-intro")?.remove();
   const { parts } = parseRoute();
   let body = "";
   let ctx = {};

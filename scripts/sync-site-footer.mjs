@@ -11,6 +11,7 @@ import {
   FOOTER_NAV_APP,
   FOOTER_NAV_LOGS,
   FOOTER_NAV_STATUTES,
+  FOOTER_NAV_HUB_PAGE,
   FOOTER_COLLECTIVE,
 } from "./lib/site-footer.mjs";
 
@@ -28,6 +29,7 @@ function walkHtml(dir, out = []) {
 }
 
 function pickNav(rel) {
+  if (rel === "hub.html") return FOOTER_NAV_HUB_PAGE;
   if (rel === "app.html") return FOOTER_NAV_APP;
   if (rel === "logs.html") return FOOTER_NAV_LOGS;
   if (rel === "legal/deposit-statutes.html") return FOOTER_NAV_STATUTES;

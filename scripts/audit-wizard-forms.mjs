@@ -87,7 +87,13 @@ need("feedback category first", feedbackHtml.indexOf('name="category"') < feedba
 need("feedback agent form marker", feedbackHtml.includes('data-spt-agent-form="feedback"'));
 
 need("supported state count documented", SUPPORTED_STATES.length >= 32);
-need("intro flow matches steps", appHtml.includes("Property → turnover → withholds → proof → export"));
+need(
+  "intro flow matches steps",
+  appHtml.includes("Five steps:") &&
+    appHtml.includes("property & state") &&
+    appHtml.includes("withholds") &&
+    appHtml.includes("move-in proof")
+);
 need("wizard progress rail", appHtml.includes("wizard-progress"));
 need("wizard step head in app.js", appJs.includes("wizardStepHead"));
 need("export deadline urgency paywall", appJs.includes("paywall--urgency") && appJs.includes("exportDeadlineUrgency"));
