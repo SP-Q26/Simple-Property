@@ -59,7 +59,17 @@ Copy from `web/.env.example`. Set per **Preview** and **Production** in Vercel �
 | `STRIPE_PRICE_MONTHLY` / `STRIPE_PRICE_ANNUAL` | Optional test price IDs | Live price IDs | Inline `price_data` fallback if unset |
 | `SPT_ENTITLEMENT_SECRET` | Random 32+ bytes | **Different** random value | HMAC for entitlement + magic links |
 | `SPT_SITE_URL` | `https://<preview-host>.vercel.app` | `https://simple-property.com` | Checkout success/cancel URLs |
-| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Upstash via Marketplace | Same or prod store | Pro restore index |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Upstash via Marketplace | Same or prod store | **Only pair the app reads** (`web/lib/kv-client.mjs`) |
+| `STRIPE_PRICE_KEEPER_MONTHLY` / `STRIPE_PRICE_PORTFOLIO_MONTHLY` | Live IDs (or test parallels) | Same | Condition hub subscriptions · canon in `stripe-catalog.mjs` |
+| `STRIPE_PRICE_MONTHLY` / `ANNUAL` / `TURN_*` | Live IDs on prod | Test IDs on preview if using `sk_test_` | Optional on `sk_live` (catalog wins) |
+
+### Upstash “Needs Attention” (KV_REST_API_TOKEN, REDIS_URL, …)
+
+Connecting **Storage → Upstash Redis** may inject five variables. Deposit Desk uses **only** `KV_REST_API_URL` and `KV_REST_API_TOKEN`. **Delete** the unused keys in Vercel if present: `KV_REST_API_READ_ONLY_TOKEN`, `KV_URL`, `REDIS_URL` (CLI: `cd web && npx vercel env rm <KEY> production --yes` and repeat for `preview`). Same for unused Resend inject `RESEND_EMAIL_DOMAIN` — the app uses `SPT_EMAIL_FROM` only.
+
+Vercel may flag **readable-secret** on integration-injected tokens. That is a visibility recommendation, not a broken KV. Fix: open each flagged var → **Sensitive**, or **Storage → your database → Reconnect**. After any env change, **Redeploy Production** once. Smoke: `GET /api/health/services` → `checks.kv: true`.
+
+Repo audit: `node scripts/audit-vercel-env-canonical.mjs`
 | `RESEND_API_KEY` | `re_…` | `re_…` | Magic link + reminders |
 | `SPT_EMAIL_FROM` | `Deposit Desk <hello@simple-property.com>` | Same (domain verified) | |
 | `SPT_FEEDBACK_TO` | Optional | `hello@simple-property.com` or `feedback@…` | Feedback notification inbox |

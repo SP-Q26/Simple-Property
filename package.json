@@ -20,6 +20,7 @@
     "audit:git": "node scripts/audit-git.mjs",
     "verify-stripe": "node scripts/verify-stripe-catalog.mjs",
     "audit:stripe-sweep": "node scripts/audit-stripe-sweep.mjs",
+    "audit:vercel-env": "node scripts/audit-vercel-env-canonical.mjs",
     "provision-stripe": "node scripts/provision-stripe-deposit-desk.mjs",
     "export:stripe-images": "node scripts/export-stripe-product-images.mjs",
     "sync:stripe-images": "node scripts/sync-stripe-product-images.mjs",

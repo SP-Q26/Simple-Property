@@ -34,7 +34,7 @@ const paths = [
   {
     name: "feedback",
     path: "/feedback",
-    need: ["Suggest rulesets", "spt-feedback-form", "viewport-fit=cover"],
+    need: ["Help us fix your turnover headaches", "spt-feedback-form", "viewport-fit=cover"],
     absent: [EM],
     css: true,
   },
