@@ -19,7 +19,11 @@ import {
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
 import { buildPacketAiReport, copyTextForAi, buildPrintPacketInnerHtml } from "./lib/packet-report.mjs";
-import { buildWizardAgentSnapshot, publishWizardAgentSnapshot } from "./lib/wizard-agent-snapshot.mjs";
+import {
+  buildWizardAgentSnapshot,
+  publishWizardAgentSnapshot,
+  WIZARD_STEPS,
+} from "./lib/wizard-agent-snapshot.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "./lib/statute-urls.mjs";
 
@@ -848,12 +852,59 @@ function setStepLabels() {
   const max = maxWizardStep();
   els.steps.querySelectorAll("[data-step]").forEach((el) => {
     const n = parseInt(el.getAttribute("data-step"), 10);
-    el.classList.toggle("active", n === step);
-    el.classList.toggle("done", n < step || (n <= max && n !== step));
-    el.setAttribute("aria-selected", n === step ? "true" : "false");
-    el.disabled = n > max;
-    el.setAttribute("aria-disabled", n > max ? "true" : "false");
+    const def = WIZARD_STEPS.find((s) => s.n === n);
+    const isActive = n === step;
+    const isDone = n < step;
+    const isLocked = n > max;
+    const isUpcoming = !isDone && !isActive && !isLocked;
+    el.classList.toggle("active", isActive);
+    el.classList.toggle("done", isDone);
+    el.classList.toggle("upcoming", isUpcoming);
+    el.classList.toggle("locked", isLocked);
+    el.setAttribute("aria-selected", isActive ? "true" : "false");
+    el.disabled = isLocked;
+    el.setAttribute("aria-disabled", isLocked ? "true" : "false");
+    if (def) {
+      el.setAttribute("aria-label", `Step ${n} of ${MAX_STEPS}: ${def.label}`);
+      el.setAttribute("data-step-key", def.key);
+    }
   });
+  const fill = document.getElementById("wizard-progress-fill");
+  const bar = document.getElementById("wizard-progress");
+  if (fill) {
+    const pct = MAX_STEPS <= 1 ? 100 : ((step - 1) / (MAX_STEPS - 1)) * 100;
+    fill.style.width = `${pct}%`;
+  }
+  if (bar) {
+    bar.setAttribute("data-wizard-step", String(step));
+    bar.setAttribute("aria-valuenow", String(step));
+    bar.setAttribute("aria-valuemax", String(MAX_STEPS));
+    const def = WIZARD_STEPS.find((s) => s.n === step);
+    bar.setAttribute(
+      "aria-label",
+      def ? `Wizard progress: step ${step} of ${MAX_STEPS}, ${def.label}` : `Wizard progress: step ${step} of ${MAX_STEPS}`
+    );
+  }
+}
+
+function wizardStepHead(title, subtitle) {
+  const def = WIZARD_STEPS.find((s) => s.n === step) || WIZARD_STEPS[0];
+  const hint = subtitle || def.focus;
+  return `<header class="wizard-step-head">
+    <p class="wizard-step-banner" role="status">
+      <span class="wizard-step-banner__seq">Step ${step} of ${MAX_STEPS}</span>
+      <span class="wizard-step-banner__label">${esc(def.label)}</span>
+      <span class="wizard-step-banner__key" data-spt-step-key="${esc(def.key)}">${esc(def.key)}</span>
+    </p>
+    <h2 id="step-title" tabindex="-1">${esc(title)}</h2>
+    <p class="wizard-step-focus field-hint">${esc(hint)}</p>
+  </header>`;
+}
+
+function wizardFlowStatusLine() {
+  const def = WIZARD_STEPS.find((s) => s.n === step);
+  if (!def) return "Autosaved in this browser.";
+  return `Step ${step} of ${MAX_STEPS} · ${def.label} · ${def.focus} · Autosaved in this browser.`;
 }
 
 function bindWizardStepNav() {
@@ -915,8 +966,7 @@ function renderStep1() {
         <p class="field-hint" id="prop-city-hint">${cityPresetHint(st, preset)}</p>
       </div>`;
   return `
-    <h2 id="step-title" tabindex="-1">Rental property</h2>
-    <p class="field-hint">Start with the unit and state rules · landlord details land on export for your mailed packet.</p>
+    ${wizardStepHead("Rental property", "Start with the unit and state rules · landlord details land on export for your mailed packet.")}
     <div class="form-grid two wizard-flow-grid">
       <div><label for="prop-state">State</label><select id="prop-state">${stateSelectOptions(st)}</select></div>
       ${cityBlock}
@@ -937,8 +987,7 @@ function renderStep2() {
     ? `<p class="deadline-box deadline-box--inline" role="status"><strong>Return / itemize by:</strong> ${formatUsDate(deadline.deadline)} · ${deadline.days} days (${esc(deadline.jurisdiction)})</p>`
     : `<p class="field-hint" role="status">Add surrender below to see your statutory clock.</p>`;
   return `
-    <h2 id="step-title" tabindex="-1">Turnover &amp; clock</h2>
-    <p class="field-hint">Surrender drives the deadline · deposit and tenant ID the packet.</p>
+    ${wizardStepHead("Turnover & clock", "Surrender drives the deadline · deposit and tenant ID the packet.")}
     ${
       normalizeStateCode(draft.property.state) === "FL"
         ? `<p class="turnover-alert field-hint" role="note"><strong>Florida two-step (§ 83.49):</strong> within 15 days after termination, return the full deposit <strong>or</strong> send written claim notice · then 30 days for balance and accounting. <a href="/blog/florida-83-49-two-step-miami-condo-deposit">Two-step guide</a> · confirm with counsel.</p>`
@@ -982,8 +1031,11 @@ function renderStep3() {
   const withheld = sumDeductions(draft.deductions);
   const guide = wearDamageGuideHref(draft.property.state);
   return `
-    <h2 id="step-title" tabindex="-1">Move-out itemization</h2>
-    <p class="field-hint">Line items for your written statement · do this before move-in proof when you are at move-out. <a href="${guide}">Wear vs damage guide</a></p>
+    ${wizardStepHead(
+      "Move-out itemization",
+      "Line items for your written statement · do this before move-in proof when you are at move-out."
+    )}
+    <p class="field-hint" style="margin-top:0"><a href="${guide}">Wear vs damage guide</a></p>
     <div class="wizard-speed-row">
       <button type="button" class="btn btn-primary" id="btn-full-return">Full deposit return</button>
       <span class="field-hint">No withholds · jumps to export · tab 4 if you add move-in proof</span>
@@ -1037,8 +1089,10 @@ function renderStep4() {
   );
   const roomsOpen = !draft.turnoverMode && (hasRoomDetail || Boolean(draft.photoAlbumLink));
   return `
-    <h2 id="step-title" tabindex="-1">Move-in proof (optional)</h2>
-    <p class="field-hint">Fast path: paste one folder link · skip room grid if you already have cloud proof.${draft.turnoverMode ? " Turnover mode uses a 3-room checklist." : ""}</p>
+    ${wizardStepHead(
+      "Move-in proof (optional)",
+      `Fast path: paste one folder link · skip room grid if you already have cloud proof.${draft.turnoverMode ? " Turnover mode uses a 3-room checklist." : ""}`
+    )}
     <div class="photo-album-panel">
       <label for="photo-album">Whole-unit photo folder</label>
       <input id="photo-album" class="external-photo-link" type="url" value="${esc(draft.photoAlbumLink)}" placeholder="Dropbox or Google Drive folder link" inputmode="url" autocomplete="off" />
@@ -1063,7 +1117,7 @@ function renderStep5() {
   const d = draft;
   const rem = normalizeReminders(d.reminders);
   return `
-    <h2 id="step-title" tabindex="-1">Review &amp; export</h2>
+    ${wizardStepHead("Review & export", "Landlord mail, deadline tools, print unlock, and signatures.")}
     <p><strong>${esc(d.property.street)}</strong> · ${esc(d.tenant.name)} · Deposit $${esc(d.deposit.amount || "0")}</p>
     <div class="form-grid two wizard-flow-grid landlord-export-block">
       <div><label for="ll-name">Landlord name (for packet)</label><input id="ll-name" type="text" value="${esc(d.landlord.name)}" autocomplete="name" /></div>
@@ -1616,6 +1670,9 @@ function render() {
   bindWizardStepNav();
   setStepLabels();
   const renders = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
+  els.panel.setAttribute("data-wizard-step", String(step));
+  const stepDef = WIZARD_STEPS.find((s) => s.n === step);
+  if (stepDef) els.panel.setAttribute("data-step-key", stepDef.key);
   els.panel.innerHTML = renders[step - 1]();
   if (step === 1) bindStep1Events();
   if (step === 2) bindStep2Events();
@@ -1635,7 +1692,7 @@ function render() {
       els.status.textContent = window.__sptStatusMsg;
       delete window.__sptStatusMsg;
     } else {
-      els.status.textContent = "Autosaved in this browser.";
+      els.status.textContent = wizardFlowStatusLine();
     }
   }
   publishLiveAgentSnapshot();

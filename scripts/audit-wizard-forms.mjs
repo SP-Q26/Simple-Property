@@ -88,6 +88,8 @@ need("feedback agent form marker", feedbackHtml.includes('data-spt-agent-form="f
 
 need("supported state count documented", SUPPORTED_STATES.length >= 32);
 need("intro flow matches steps", appHtml.includes("Property → turnover → withholds → proof → export"));
+need("wizard progress rail", appHtml.includes("wizard-progress"));
+need("wizard step head in app.js", appJs.includes("wizardStepHead"));
 
 console.log(fail ? `\nWizard forms audit FAILED (${fail})` : "\nWizard forms audit OK");
 process.exit(fail ? 1 : 0);

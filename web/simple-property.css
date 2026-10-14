@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v63 · preview blur + watermark lock */
+/* Simple Property Tools · Deposit Desk · v65 · form flow step colors */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -2374,6 +2374,131 @@ main > h1,
 }
 
 /* Wizard */
+.wizard-progress {
+  position: relative;
+  height: 4px;
+  margin: 0 0 var(--space-2);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--border) 70%, var(--surface));
+  overflow: hidden;
+}
+
+.wizard-progress__fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--quant-blue) 85%, var(--beam-gold) 15%),
+    var(--beam-gold)
+  );
+  transition: width 0.28s ease-out;
+}
+
+.wizard-step-head {
+  margin: 0 0 var(--space-3);
+}
+
+.wizard-step-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+  margin: 0 0 var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ink);
+  background: var(--quant-blue-surface);
+  border: 1px solid color-mix(in srgb, var(--quant-blue) 22%, var(--border));
+  border-left: 4px solid var(--beam-gold);
+  border-radius: var(--radius-sm);
+}
+
+.wizard-step-banner__seq {
+  color: var(--quant-blue);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.wizard-step-banner__label {
+  font-weight: 700;
+}
+
+.wizard-step-banner__key {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.wizard-step-head h2 {
+  margin: 0 0 var(--space-1);
+}
+
+.wizard-step-focus {
+  margin: 0 0 var(--space-2);
+}
+
+.spt-wizard-app #wizard-panel.form-panel[data-wizard-step] {
+  --spt-step-accent: color-mix(in srgb, var(--beam-gold) 55%, var(--quant-blue) 45%);
+  border-left: 4px solid var(--spt-step-accent);
+  transition: border-color 0.2s ease;
+}
+
+.spt-wizard-app #wizard-panel[data-wizard-step="1"] {
+  --spt-step-accent: var(--beam-gold);
+}
+
+.spt-wizard-app #wizard-panel[data-wizard-step="2"] {
+  --spt-step-accent: var(--quant-blue);
+}
+
+.spt-wizard-app #wizard-panel[data-wizard-step="3"] {
+  --spt-step-accent: color-mix(in srgb, var(--warning) 55%, var(--quant-blue) 45%);
+}
+
+.spt-wizard-app #wizard-panel[data-wizard-step="4"] {
+  --spt-step-accent: color-mix(in srgb, var(--success) 45%, var(--quant-blue) 55%);
+}
+
+.spt-wizard-app #wizard-panel[data-wizard-step="5"] {
+  --spt-step-accent: color-mix(in srgb, var(--success) 65%, var(--beam-gold) 35%);
+}
+
+.spt-wizard-app #wizard-panel[data-wizard-step] .wizard-step-banner {
+  border-left-color: var(--spt-step-accent);
+}
+
+.wizard-step.active[data-step-key="property"] {
+  border-bottom-color: var(--beam-gold);
+}
+
+.wizard-step.active[data-step-key="turnover"] {
+  border-bottom-color: var(--quant-blue);
+}
+
+.wizard-step.active[data-step-key="move_out"] {
+  border-bottom-color: color-mix(in srgb, var(--warning) 65%, var(--beam-gold));
+}
+
+.wizard-step.active[data-step-key="move_in"] {
+  border-bottom-color: color-mix(in srgb, var(--success) 55%, var(--beam-gold));
+}
+
+.wizard-step.active[data-step-key="export"] {
+  border-bottom-color: color-mix(in srgb, var(--success) 65%, var(--beam-gold));
+}
+
+.spt-wizard-app #wizard-status.wizard-flow-status {
+  font-weight: 600;
+  color: color-mix(in srgb, var(--quant-blue) 75%, var(--ink));
+}
+
 .wizard-steps {
   display: flex;
   flex-wrap: wrap;
@@ -2418,13 +2543,27 @@ main > h1,
 .wizard-step.active {
   color: var(--quant-blue);
   border-bottom-color: var(--beam-gold);
-  background: transparent;
+  background: var(--quant-blue-surface);
+  font-weight: 700;
   box-shadow: none;
 }
 
 .wizard-step.done:not(.active) {
-  color: var(--ink);
-  border-bottom-color: color-mix(in srgb, var(--beam-gold) 35%, transparent);
+  color: color-mix(in srgb, var(--success) 35%, var(--ink));
+  background: color-mix(in srgb, var(--success-soft) 65%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--success) 45%, var(--beam-gold));
+}
+
+.wizard-step.upcoming:not(.active):not(:disabled) {
+  color: var(--muted);
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.wizard-step.locked:disabled {
+  opacity: 0.38;
+  color: var(--muted);
+  background: transparent;
 }
 
 .wizard-step:focus-visible {
@@ -4342,10 +4481,162 @@ table.data-table th {
   background: var(--quant-blue-wash);
 }
 
-.log-tab.active {
-  background: var(--success-soft);
-  color: var(--ink);
-  border-color: var(--success);
+.log-tab.active,
+.log-tab--active {
+  color: var(--quant-blue);
+  background: var(--quant-blue-surface);
+  border-color: color-mix(in srgb, var(--quant-blue) 40%, var(--beam-gold));
+  border-bottom: 2px solid var(--beam-gold);
+  font-weight: 700;
+}
+
+.log-tab--done:not(.active) {
+  color: color-mix(in srgb, var(--success) 30%, var(--ink));
+  background: color-mix(in srgb, var(--success-soft) 70%, var(--surface));
+  border-color: color-mix(in srgb, var(--success) 35%, var(--border));
+}
+
+.log-tab--upcoming:not(.active) {
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.form-flow-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+  margin: 0 0 var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--quant-blue-surface);
+  border: 1px solid color-mix(in srgb, var(--quant-blue) 22%, var(--border));
+  border-left: 4px solid var(--beam-gold);
+  border-radius: var(--radius-sm);
+}
+
+.form-flow-banner__seq {
+  color: var(--quant-blue);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.form-flow-banner__label {
+  font-weight: 700;
+}
+
+.form-flow-banner__flow {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.form-flow-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  list-style: none;
+  counter-reset: form-flow;
+}
+
+.form-flow-rail__item {
+  flex: 1 1 4.5rem;
+  min-width: 0;
+  padding: var(--space-2) var(--space-1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--muted);
+  border-bottom: 2px solid color-mix(in srgb, var(--border) 85%, transparent);
+}
+
+.form-flow-rail__item::before {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--quant-blue);
+  margin-bottom: 0.15rem;
+}
+
+.form-flow-rail__item--1::before {
+  content: "1";
+}
+.form-flow-rail__item--2::before {
+  content: "2";
+}
+.form-flow-rail__item--3::before {
+  content: "3";
+}
+.form-flow-rail__item--4::before {
+  content: "4";
+}
+.form-flow-rail__item--5::before {
+  content: "5";
+}
+
+.form-flow-rail__item--current {
+  color: var(--quant-blue);
+  font-weight: 700;
+  border-bottom-color: var(--beam-gold);
+  background: var(--quant-blue-surface);
+}
+
+.form-flow-rail__item--done {
+  color: color-mix(in srgb, var(--success) 35%, var(--ink));
+  border-bottom-color: color-mix(in srgb, var(--success) 45%, var(--beam-gold));
+}
+
+.form-flow-rail__item--upcoming {
+  color: var(--muted);
+  border-bottom-color: color-mix(in srgb, var(--border) 85%, transparent);
+}
+
+.form-flow-rail--compact .form-flow-rail__item {
+  flex: 1 1 6rem;
+}
+
+.field-stack[data-flow-step]:focus-within {
+  outline: 2px solid color-mix(in srgb, var(--quant-blue) 35%, transparent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+#log-panel[data-log-step="1"] {
+  --spt-step-accent: var(--beam-gold);
+}
+
+#log-panel[data-log-step="2"] {
+  --spt-step-accent: var(--quant-blue);
+}
+
+#log-panel[data-log-step="3"] {
+  --spt-step-accent: color-mix(in srgb, var(--success) 55%, var(--beam-gold));
+}
+
+#log-panel[data-log-step] .form-flow-banner {
+  border-left-color: var(--spt-step-accent);
+}
+
+.log-tab.active[data-log-step="1"] {
+  border-bottom-color: var(--beam-gold);
+}
+
+.log-tab.active[data-log-step="2"] {
+  border-bottom-color: var(--quant-blue);
+}
+
+.log-tab.active[data-log-step="3"] {
+  border-bottom-color: color-mix(in srgb, var(--success) 55%, var(--beam-gold));
+}
+
+.form-flow-hint {
+  margin-top: calc(var(--space-2) * -1);
+  margin-bottom: var(--space-3);
 }
 
 .log-toolbar-actions {

@@ -29,8 +29,8 @@ console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
-/** v63+: preview watermark lock · was 84KB cap at v58. */
-need("css size under 90KB", cssBytes < 90 * 1024);
+/** v64+: form flow step colors · v63 preview lock · was 84KB cap at v58. */
+need("css size under 93KB", cssBytes < 93 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));
@@ -74,7 +74,7 @@ const jsFiles = ["sp-nav.js", "sp-checkout.js", "app.js"].map((f) => {
   console.log(`  ${f}: ${b} bytes`);
   return b;
 });
-need("app.js under 74KB", jsFiles[2] < 74 * 1024);
+need("app.js under 76KB", jsFiles[2] < 76 * 1024);
 
 need("court-record-rotate.js present", existsSync(join(web, "court-record-rotate.js")));
 need("no legacy court rotate scripts", !existsSync(join(web, "hero-rotate.js")) && !existsSync(join(web, "blog-court-rotate.js")));

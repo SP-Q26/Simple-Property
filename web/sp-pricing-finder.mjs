@@ -1,10 +1,17 @@
 /** Pricing questionnaire · recommends Free / per-turn / Pro. */
-(function () {
-  const units = document.getElementById("pf-units");
-  const turns = document.getElementById("pf-turns");
-  const out = document.getElementById("pf-result");
-  const cards = document.querySelectorAll("[data-pricing-tier]");
-  if (!units || !turns || !out) return;
+import { bindFormFlowRail } from "./lib/form-flow-rail.mjs";
+
+const units = document.getElementById("pf-units");
+const turns = document.getElementById("pf-turns");
+const out = document.getElementById("pf-result");
+const cards = document.querySelectorAll("[data-pricing-tier]");
+const finderForm = document.getElementById("pricing-finder-form");
+if (!units || !turns || !out) {
+  /* partial */
+} else {
+  if (finderForm) {
+    bindFormFlowRail(finderForm, { hintId: "pricing-flow-hint" });
+  }
 
   function recommend() {
     const u = Number(units.value);
@@ -39,4 +46,4 @@
   units.addEventListener("change", recommend);
   turns.addEventListener("change", recommend);
   recommend();
-})();
+}

@@ -14,9 +14,24 @@ import {
 } from "./lib/operator-logs.mjs";
 
 const tabs = [
-  { id: "maintenance", label: "Maintenance" },
-  { id: "tickets", label: "Tickets" },
-  { id: "inspections", label: "Inspections & complaints" },
+  {
+    id: "maintenance",
+    label: "Maintenance",
+    n: 1,
+    flow: "Unit → issue → vendor → status → save",
+  },
+  {
+    id: "tickets",
+    label: "Tickets",
+    n: 2,
+    flow: "Unit → reporter → subject → assignment → save",
+  },
+  {
+    id: "inspections",
+    label: "Inspections & complaints",
+    n: 3,
+    flow: "Unit → event → party → summary → save",
+  },
 ];
 
 let activeTab = "maintenance";
@@ -117,9 +132,21 @@ function options(list, selected) {
   return list.map((v) => `<option ${v === selected ? "selected" : ""}>${esc(v)}</option>`).join("");
 }
 
+function logFormFlowBanner() {
+  const t = tabs.find((x) => x.id === activeTab) || tabs[0];
+  const idx = tabs.findIndex((x) => x.id === activeTab);
+  return `<p class="form-flow-banner" role="status">
+    <span class="form-flow-banner__seq">Log ${t.n} of ${tabs.length}</span>
+    <span class="form-flow-banner__label">${esc(t.label)}</span>
+    <span class="form-flow-banner__flow">Fill top to bottom: ${esc(t.flow)}</span>
+  </p>`;
+}
+
 function renderForm() {
+  const flowHead = logFormFlowBanner();
   if (activeTab === "maintenance") {
     return `
+    ${flowHead}
     <form class="log-form" id="log-form">
       <div class="form-grid two">
         <div><label for="mnt-unit">Unit / address</label><input id="mnt-unit" type="text" required /></div>
@@ -141,6 +168,7 @@ function renderForm() {
   }
   if (activeTab === "tickets") {
     return `
+    ${flowHead}
     <form class="log-form" id="log-form">
       <div class="form-grid two">
         <div><label for="tkt-unit">Unit / address</label><input id="tkt-unit" type="text" required /></div>
@@ -161,6 +189,7 @@ function renderForm() {
     </form>`;
   }
   return `
+    ${flowHead}
     <form class="log-form" id="log-form">
       <div class="form-grid two">
         <div><label for="ins-unit">Unit / address</label><input id="ins-unit" type="text" required /></div>
@@ -429,11 +458,15 @@ function renderPrintBlock() {
 }
 
 function renderTabs() {
+  const activeIdx = tabs.findIndex((t) => t.id === activeTab);
   els.tabs.innerHTML = tabs
-    .map(
-      (t) =>
-        `<button type="button" class="log-tab ${t.id === activeTab ? "active" : ""}" data-tab="${t.id}">${t.label}</button>`
-    )
+    .map((t, i) => {
+      const isActive = t.id === activeTab;
+      let state = "upcoming";
+      if (isActive) state = "active";
+      else if (i < activeIdx) state = "done";
+      return `<button type="button" role="tab" class="log-tab log-tab--${state} ${isActive ? "active" : ""}" data-tab="${t.id}" data-log-step="${t.n}" data-step-key="${t.id}" id="log-tab-${t.id}" aria-selected="${isActive ? "true" : "false"}" aria-label="Log ${t.n} of ${tabs.length}: ${t.label}">${t.n} · ${esc(t.label)}</button>`;
+    })
     .join("");
   els.tabs.querySelectorAll(".log-tab").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -446,12 +479,18 @@ function renderTabs() {
 
 function render() {
   renderTabs();
+  const t = tabs.find((x) => x.id === activeTab) || tabs[0];
+  els.panel.setAttribute("data-spt-agent-form", "logs");
+  els.panel.setAttribute("data-log-tab", activeTab);
+  els.panel.setAttribute("data-log-step", String(t.n));
   els.panel.innerHTML = renderForm();
   bindForm();
   renderList();
   bindList();
   renderPrintBlock();
-  setStatus(`${loadEntries(storageKey()).length} entries in this browser · filter: "${filterText || "none"}"`);
+  setStatus(
+    `Log ${t.n} of ${tabs.length} · ${t.label} · ${loadEntries(storageKey()).length} entries · filter: "${filterText || "none"}"`
+  );
 }
 
 els.filter?.addEventListener("input", (e) => {

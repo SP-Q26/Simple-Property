@@ -59,7 +59,7 @@ need("success pain framing", success.includes("ps-problem"));
 need("logs pain + fix", logs.includes("ps-problem") && logs.includes("ps-fix"));
 
 need("app paywall loss line", /costs more than \$29|cost more than/i.test(appJs));
-need("pricing finder loss", read("sp-pricing-finder.js").match(LOSS));
+need("pricing finder loss", read("sp-pricing-finder.mjs").match(LOSS));
 
 const pathwayCards = index.match(/pathway-card__desc/g)?.length || 0;
 need("index pathway cards", pathwayCards >= 4);

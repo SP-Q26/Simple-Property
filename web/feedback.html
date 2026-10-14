@@ -32,7 +32,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=63">
+  <link rel="stylesheet" href="/simple-property.css?v=65">
 </head>
 <body>
   <div class="spt-atmosphere" aria-hidden="true">
@@ -81,7 +81,15 @@
       </div>
 
       <form id="spt-feedback-form" class="form-panel feedback-form" data-spt-agent-form="feedback" style="max-width:36rem;margin-top:1.5rem">
-        <label class="field-stack">
+        <ol class="form-flow-rail" aria-label="Fill in order">
+          <li class="form-flow-rail__item form-flow-rail__item--1">Category</li>
+          <li class="form-flow-rail__item form-flow-rail__item--2">Location</li>
+          <li class="form-flow-rail__item form-flow-rail__item--3">Contact</li>
+          <li class="form-flow-rail__item form-flow-rail__item--4">Details</li>
+          <li class="form-flow-rail__item form-flow-rail__item--5">Send</li>
+        </ol>
+        <p class="form-flow-hint field-hint" id="feedback-flow-hint" role="status">One screen · work top to bottom · agents: match field order below.</p>
+        <label class="field-stack" data-flow-step="1">
           <span>Category</span>
           <select name="category" required>
             <option value="ruleset">State or city ruleset (deadlines, RLTO, fields)</option>
@@ -91,20 +99,20 @@
             <option value="other">Other</option>
           </select>
         </label>
-        <label class="field-stack">
+        <label class="field-stack" data-flow-step="2">
           <span>State or city (optional)</span>
           <input name="state" type="text" maxlength="80" placeholder="e.g. Chicago RLTO, Indiana 45-day" autocomplete="off" />
         </label>
-        <label class="field-stack">
+        <label class="field-stack" data-flow-step="3">
           <span>Your email (optional, for follow-up)</span>
           <input name="email" type="email" maxlength="120" autocomplete="email" />
         </label>
-        <label class="field-stack">
+        <label class="field-stack" data-flow-step="4">
           <span>Suggestion</span>
           <textarea name="message" required rows="6" minlength="12" maxlength="4000" placeholder="What should Deposit Desk do differently? Include statute or ordinance cites if you have them."></textarea>
         </label>
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="feedback-honeypot" />
-        <button type="submit" class="btn btn-primary">Send suggestion</button>
+        <button type="submit" class="btn btn-primary" data-flow-step="5">Send suggestion</button>
         <p class="field-hint" id="spt-feedback-status" aria-live="polite"></p>
       </form>
 

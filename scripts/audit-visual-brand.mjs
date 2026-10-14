@@ -41,7 +41,7 @@ need("spacing scale", css.includes("--space-8") && css.includes("--page-max"));
 need("display + UI fonts", css.includes("--font-display") && css.includes("Source Serif 4"));
 need("pricing wide layout", css.includes(".pricing-page"));
 need("sleek price cards", css.includes(".price-card") && css.includes("price-card__badge"));
-need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.js")));
+need("pricing finder", pricing.includes("pricing-finder") && existsSync(join(web, "sp-pricing-finder.mjs")));
 need("pricing card grid", pricing.includes("pricing-cards"));
 need("pathway deck on home", index.includes("pathway-deck") && index.includes("/feedback"));
 need("deposit receipt sample", index.includes("deposit-receipt") && index.includes("Itemized deductions"));

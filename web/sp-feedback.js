@@ -2,6 +2,7 @@ import {
   registerFeedbackAgentApi,
   LANDLORD_FEEDBACK_SMOKE_FILL,
 } from "./lib/agent-form-fill.mjs";
+import { bindFormFlowRail } from "./lib/form-flow-rail.mjs";
 
 const form = document.getElementById("spt-feedback-form");
 const status = document.getElementById("spt-feedback-status");
@@ -9,6 +10,7 @@ if (!form || !status) {
   /* page partial */
 } else {
   registerFeedbackAgentApi({ form });
+  bindFormFlowRail(form, { hintId: "feedback-flow-hint" });
 
   if (new URLSearchParams(location.search).get("smoke") === "fill") {
     window.sptAgentFormFill?.(LANDLORD_FEEDBACK_SMOKE_FILL);
