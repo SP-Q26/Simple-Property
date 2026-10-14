@@ -4,7 +4,7 @@
 
 **GitHub:** [SP-Q26/Simple-Property](https://github.com/SP-Q26/Simple-Property) · git: **`docs/GIT_AGENT_CONNECTION.md`**
 
-Canon: `docs/CANON.md` · brand: `docs/BRAND.md` · quality: `docs/SWARM_AUDIT.md`.
+Canon: `docs/CANON.md` · brand: `docs/BRAND.md` · quality: `docs/SWARM_AUDIT.md` · **hub expansion:** `docs/receipt-rail/README.md`.
 
 - **Umbrella:** Simple Property Tools · **tag:** Deposit Desk · IL & Chicago RLTO  
 - **Vibe:** Plain dealing · Amish-*adjacent* values (simple, honest, no flash) — not caricature  

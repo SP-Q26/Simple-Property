@@ -140,6 +140,17 @@ function scoreContentDepth() {
   return 70;
 }
 
+function scoreExpansionSpec() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-receipt-rail-spec.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  if (r.status === 0) return 100;
+  const out = (r.stdout || "") + (r.stderr || "");
+  const fails = (out.match(/RECEIPT RAIL SPEC FAIL/g) || []).length;
+  return Math.max(0, 100 - fails * 8);
+}
+
 function scoreLaunchStack() {
   const h = read("launch-stack.html");
   if (!h) return 0;
@@ -185,6 +196,7 @@ const metrics = [
   ["Blog SEO (manifest · RSS · pillars)", scoreBlogSeoLane],
   ["Discovery · lane · SEO", scoreDiscoveryLane],
   ["Launch stack · door tiers", scoreLaunchStack],
+  ["Expansion spec (Receipt Rail canon)", scoreExpansionSpec],
 ];
 let fail = 0;
 const rows = [];

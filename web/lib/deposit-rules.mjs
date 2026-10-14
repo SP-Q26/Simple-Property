@@ -297,6 +297,31 @@ export function formatUsDate(iso) {
   return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 }
 
+/** Calendar days from today (local) until statutory deadline ISO date. */
+export function daysUntilDeadline(deadlineIso) {
+  if (!deadlineIso) return null;
+  const end = new Date(`${deadlineIso}T12:00:00`);
+  if (Number.isNaN(end.getTime())) return null;
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  return Math.round((endDay - today) / 86_400_000);
+}
+
+/** True when surrender is set and return deadline is within 7 calendar days (or past). */
+export function exportDeadlineUrgency(surrenderDate, deadlineResult) {
+  if (!surrenderDate || !deadlineResult?.deadline) {
+    return { urgent: false, daysLeft: null, deadlineIso: "" };
+  }
+  const daysLeft = daysUntilDeadline(deadlineResult.deadline);
+  if (daysLeft === null) return { urgent: false, daysLeft: null, deadlineIso: "" };
+  return {
+    urgent: daysLeft <= 7,
+    daysLeft,
+    deadlineIso: deadlineResult.deadline,
+  };
+}
+
 export function stateSelectOptions(selected = "IL") {
   const sel = normalizeStateCode(selected);
   return SUPPORTED_STATES.map(

@@ -1,5 +1,6 @@
 import {
   computeDeadline,
+  exportDeadlineUrgency,
   formatUsDate,
   normalizeStateCode,
   stateSelectOptions,
@@ -364,24 +365,46 @@ function sptTrack(name, data) {
   if (typeof window.sptTrack === "function") window.sptTrack(name, data || {});
 }
 
-function proBlockMessage() {
-  if (!canExportPro()) {
-    if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
-      return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, use <strong>Duplicate last</strong> per building batch, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
-    }
-    return `<div class="paywall paywall--streamlined" id="export-paywall" role="status">
-      <strong>Unlock mail-ready PDF</strong> · one disputed withhold usually costs more than $29.
-      <p class="field-hint" style="margin:0.5rem 0 0">Preview is free and watermarked · unlock removes blur for tenant mail. Pro also sends a <strong>tenant email copy</strong> · <a href="/pricing">compare plans</a></p>
-      <div class="paywall-actions" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
+function paywallActionsHtml() {
+  return `<div class="paywall-actions">
         <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
         <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
         <a class="btn btn-secondary" href="/pricing">Pro · $22/mo</a>
         <button type="button" class="btn btn-secondary" id="btn-copy-return-link">Copy return link (this browser)</button>
         <button type="button" class="btn btn-secondary" id="btn-copy-unlock-note">Copy unlock note (tenant pays)</button>
-      </div>
+      </div>`;
+}
+
+function proBlockMessage(opts = {}) {
+  if (canExportPro()) return "";
+  if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
+    return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, use <strong>Duplicate last</strong> per building batch, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
+  }
+  const urgency = opts.urgency;
+  const deadlineIso = opts.deadlineIso || "";
+  const daysLeft = typeof opts.daysLeft === "number" ? opts.daysLeft : null;
+  if (urgency && deadlineIso) {
+    const clockLabel = formatUsDate(deadlineIso);
+    const daysLine =
+      daysLeft === null
+        ? ""
+        : daysLeft < 0
+          ? `<p class="export-urgency__days">Deadline passed ${Math.abs(daysLeft)} day(s) ago · mail a defensible packet now · not legal advice.</p>`
+          : daysLeft === 0
+            ? `<p class="export-urgency__days"><strong>Due today.</strong> Unlock before you mail the tenant.</p>`
+            : `<p class="export-urgency__days"><strong>${daysLeft} day(s) left.</strong> Unlock before you mail the tenant.</p>`;
+    return `<div class="paywall paywall--urgency" id="export-paywall" role="status">
+      <p class="export-urgency__headline"><strong>Mail-ready PDF</strong> · clock ends ${esc(clockLabel)}</p>
+      ${daysLine}
+      ${paywallActionsHtml()}
+      <p class="field-hint export-urgency__hint">Watermarked preview stays free below · unlock removes blur for tenant mail · <a href="/pricing">compare plans</a></p>
     </div>`;
   }
-  return "";
+  return `<div class="paywall paywall--streamlined" id="export-paywall" role="status">
+      <strong>Unlock mail-ready PDF</strong> · one disputed withhold usually costs more than $29.
+      <p class="field-hint" style="margin:0.5rem 0 0">Preview is free and watermarked · unlock removes blur for tenant mail. Pro also sends a <strong>tenant email copy</strong> · <a href="/pricing">compare plans</a></p>
+      ${paywallActionsHtml()}
+    </div>`;
 }
 
 function paywallFreeToolsNote() {
@@ -887,14 +910,20 @@ function setStepLabels() {
   }
 }
 
-function wizardStepHead(title, subtitle) {
+function wizardStepHead(title, subtitle, options = {}) {
   const def = WIZARD_STEPS.find((s) => s.n === step) || WIZARD_STEPS[0];
   const hint = subtitle || def.focus;
+  const bannerUrgent = options.bannerUrgent ? String(options.bannerUrgent) : "";
+  const bannerClass = bannerUrgent ? " wizard-step-banner--urgent" : "";
+  const urgentHtml = bannerUrgent
+    ? `<span class="wizard-step-banner__urgent">${esc(bannerUrgent)}</span>`
+    : "";
   return `<header class="wizard-step-head">
-    <p class="wizard-step-banner" role="status">
+    <p class="wizard-step-banner${bannerClass}" role="status">
       <span class="wizard-step-banner__seq">Step ${step} of ${MAX_STEPS}</span>
       <span class="wizard-step-banner__label">${esc(def.label)}</span>
       <span class="wizard-step-banner__key" data-spt-step-key="${esc(def.key)}">${esc(def.key)}</span>
+      ${urgentHtml}
     </p>
     <h2 id="step-title" tabindex="-1">${esc(title)}</h2>
     <p class="wizard-step-focus field-hint">${esc(hint)}</p>
@@ -1111,13 +1140,31 @@ function renderStep4() {
 
 function renderStep5() {
   const deadline = computeDeadline(deadlineInput());
+  const urgency = exportDeadlineUrgency(draft.surrenderDate, deadline);
+  const showUrgentPaywall = urgency.urgent && !canExportPro();
   const reminderLines = deadline.reminders
     .map((d) => `<li>${formatUsDate(d)}</li>`)
     .join("");
   const d = draft;
   const rem = normalizeReminders(d.reminders);
+  const stepHeadSubtitle = showUrgentPaywall
+    ? "Unlock mail-ready PDF before you mail · landlord details and signatures below."
+    : "Landlord mail, deadline tools, print unlock, and signatures.";
+  const bannerUrgent =
+    showUrgentPaywall && deadline.deadline
+      ? `Mail-ready PDF · clock ends ${formatUsDate(deadline.deadline)}`
+      : "";
   return `
-    ${wizardStepHead("Review & export", "Landlord mail, deadline tools, print unlock, and signatures.")}
+    ${wizardStepHead("Review & export", stepHeadSubtitle, { bannerUrgent })}
+    ${
+      showUrgentPaywall
+        ? proBlockMessage({
+            urgency: true,
+            deadlineIso: urgency.deadlineIso,
+            daysLeft: urgency.daysLeft,
+          })
+        : ""
+    }
     <p><strong>${esc(d.property.street)}</strong> · ${esc(d.tenant.name)} · Deposit $${esc(d.deposit.amount || "0")}</p>
     <div class="form-grid two wizard-flow-grid landlord-export-block">
       <div><label for="ll-name">Landlord name (for packet)</label><input id="ll-name" type="text" value="${esc(d.landlord.name)}" autocomplete="name" /></div>
@@ -1137,10 +1184,10 @@ function renderStep5() {
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
     ${renderMailReadyRoute()}
-    ${!canExportPro() ? paywallFreeToolsNote() : ""}
+    ${!canExportPro() && !showUrgentPaywall ? paywallFreeToolsNote() : ""}
     ${renderItemizationPreview(false)}
     ${renderScreenPacketPreview()}
-    ${canExportPro() ? exportEntitlementSection() : proBlockMessage()}
+    ${canExportPro() ? exportEntitlementSection() : showUrgentPaywall ? "" : proBlockMessage()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
       <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
     </p>
@@ -1681,6 +1728,13 @@ function render() {
   syncExportButtons();
   if (step === MAX_STEPS && !canExportPro()) {
     sptTrack("paywall_view", { state: draft.property.state || "" });
+    const urg = exportDeadlineUrgency(draft.surrenderDate, computeDeadline(deadlineInput()));
+    if (urg.urgent) {
+      sptTrack("paywall_urgency", {
+        state: draft.property.state || "",
+        days_left: String(urg.daysLeft ?? ""),
+      });
+    }
   }
   sptTrack("wizard_step", { step: String(step), state: draft.property.state || "" });
   els.prev.disabled = step <= 1;

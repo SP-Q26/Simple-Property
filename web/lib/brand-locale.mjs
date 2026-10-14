@@ -14,8 +14,11 @@ export const BRAND_TAG_SHORT = `${BRAND_TAGLINE} · ${STATE_ONLY_COUNT} states +
 export const BRAND_TAG_HTML = `<span class="brand-tag"><span class="brand-tag__desktop">${BRAND_TAG}</span><span class="brand-tag__mobile">${BRAND_TAG_SHORT}</span></span>`;
 export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} states + DC · up to 40 units`;
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
+/** Turnover speed · fee comparison · lifetime ROI framing (pair with not legal advice on-page). */
+export const VALUE_ROI_LINE =
+  "Saves you time on turnover · cheaper than a fee · pays for itself for life with one legal claim";
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 65;
+export const CSS_VERSION = 66;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

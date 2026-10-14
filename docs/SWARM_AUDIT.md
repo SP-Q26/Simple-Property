@@ -63,8 +63,18 @@ Target: **≥ 95 / 100** on every metric. Exit code **1** if any lane drops belo
 - [ ] Per-post OG art (still shared `og/spt-card.svg`) — optional
 - [ ] Cross-device **packet** sync beyond Pro restore — product P1, not brand
 
+## Expansion (Receipt Rail)
+
+| Metric | Score | Gate |
+|--------|------:|------|
+| Expansion spec (Receipt Rail canon) | run swarm | `audit-receipt-rail-spec.mjs` · docs in `docs/receipt-rail/` |
+
+**Deploy plan:** `docs/receipt-rail/SWARM_DEPLOY_PLAN.md` · **Spec audit:** `docs/receipt-rail/SPEC_AUDIT.md`  
+Program **A** = Deposit Desk (`PHASE4_ROADMAP`) · Program **B** = hub P1 — do not replace `/app` until P1 gate (10 finalized receipts).
+
 ## Related docs
 
+- `docs/receipt-rail/README.md` — hub expansion index
 - `docs/LANE_COMPARE.md` — vs Innsegall lane · brand/SEO/content growth
 - `docs/DEPLOY.md` — git branch + Vercel redeploy
 - `docs/AUDIT_BRAND_LANE.md` — shell canon

@@ -6,6 +6,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { VALUE_ROI_LINE } from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 let fail = 0;
@@ -55,6 +56,9 @@ need("blog index loss or pain hub", /pain|missed|dispute/i.test(blogIndex));
 need("app.html pain + fix", appHtml.includes("ps-problem") && appHtml.includes("ps-fix"));
 need("app.html loss in intro", LOSS.test(appHtml));
 need("pricing pain + loss", pricing.includes("ps-problem") && LOSS.test(pricing));
+need("pricing value ROI line", pricing.includes(VALUE_ROI_LINE));
+need("index value ROI line", index.includes(VALUE_ROI_LINE));
+need("app value ROI line", appHtml.includes(VALUE_ROI_LINE));
 need("success pain framing", success.includes("ps-problem"));
 need("logs pain + fix", logs.includes("ps-problem") && logs.includes("ps-fix"));
 
