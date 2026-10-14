@@ -62,6 +62,10 @@ Copy from `web/.env.example`. Set per **Preview** and **Production** in Vercel �
 | `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Upstash via Marketplace | Same or prod store | **Only pair the app reads** (`web/lib/kv-client.mjs`) |
 | `STRIPE_PRICE_KEEPER_MONTHLY` / `STRIPE_PRICE_PORTFOLIO_MONTHLY` | Live IDs (or test parallels) | Same | Condition hub subscriptions · canon in `stripe-catalog.mjs` |
 | `STRIPE_PRICE_MONTHLY` / `ANNUAL` / `TURN_*` | Live IDs on prod | Test IDs on preview if using `sk_test_` | Optional on `sk_live` (catalog wins) |
+| `RESEND_API_KEY` | `re_…` | `re_…` | Magic link + reminders |
+| `SPT_EMAIL_FROM` | `Deposit Desk <hello@simple-property.com>` | Same (domain verified) | |
+| `SPT_FEEDBACK_TO` | Optional | `hello@simple-property.com` or `feedback@…` | Feedback notification inbox |
+| `SPT_CRON_SECRET` | Optional | Optional | Vercel sets `CRON_SECRET` for cron routes |
 
 ### Upstash “Needs Attention” (KV_REST_API_TOKEN, REDIS_URL, …)
 
@@ -69,11 +73,7 @@ Connecting **Storage → Upstash Redis** may inject five variables. Deposit Desk
 
 Vercel may flag **readable-secret** on integration-injected tokens. That is a visibility recommendation, not a broken KV. Fix: open each flagged var → **Sensitive**, or **Storage → your database → Reconnect**. After any env change, **Redeploy Production** once. Smoke: `GET /api/health/services` → `checks.kv: true`.
 
-Repo audit: `node scripts/audit-vercel-env-canonical.mjs`
-| `RESEND_API_KEY` | `re_…` | `re_…` | Magic link + reminders |
-| `SPT_EMAIL_FROM` | `Deposit Desk <hello@simple-property.com>` | Same (domain verified) | |
-| `SPT_FEEDBACK_TO` | Optional | `hello@simple-property.com` or `feedback@…` | Feedback notification inbox |
-| `SPT_CRON_SECRET` | Optional | Optional | Vercel sets `CRON_SECRET` for cron routes |
+Repo audit: `npm run audit:vercel-env`
 
 ### Phase 3 · make reminders + Pro KV fully live
 
