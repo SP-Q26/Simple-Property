@@ -4,6 +4,8 @@
 
 **Audit baseline:** `npm run audit` green (swarm ≥ 95, SEO, performance, stack handoff gate after this doc).
 
+**Release train order:** `docs/PHASE4_ROADMAP.md` (product → AI onboarding → deploy smokes → **comprehensive SEO sweep last**).
+
 ---
 
 ## 1. Lane law (what we refuse)

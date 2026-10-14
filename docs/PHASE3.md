@@ -18,11 +18,15 @@ Cross-device Pro, durable subscription state, email deadline reminders.
 3. **Stripe webhook** — `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.paid` → `/api/stripe/webhook`
 4. **Cron** — `vercel.json` runs daily 14:00 UTC; set `SPT_CRON_SECRET` or use Vercel `CRON_SECRET`
 
+## Next · phase 4
+
+**Active roadmap:** `docs/PHASE4_ROADMAP.md` — order of operations, AI onboarding gate, **SEO sweep last**, lane dominance.
+
 ## Still later
 
 - Full login / packet sync to server (not localStorage-only)
 - SMS reminders
-- Multi-state rules engine
+- Multi-state rules engine (wizard packs remain source of truth per state)
 
 ## Verify
 

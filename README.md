@@ -57,7 +57,8 @@ Or from repo root: `chmod +x scripts/preview.sh && ./scripts/preview.sh static|f
 - `docs/AUDIT_INNSEGALL_LENS.md` — vs Innsegall discipline · customer-only surfaces  
 - `docs/LANE_COMPARE.md` · `docs/DEPLOY.md` — vs Innsegall · git/Vercel  
 - `docs/SWARM_2026-09-20.md` — competitor + IL rules + MVP synthesis  
-- `docs/PHASE2.md` · `docs/PHASE3.md` — billing, portal, KV, magic link, reminders  
+- `docs/PHASE4_ROADMAP.md` — **active** release order (AI onboarding → SEO sweep last)
+- `docs/PHASE2.md` · `docs/PHASE3.md` — shipped billing, portal, KV, magic link, reminders  
 - `docs/ALPHA.md` — P0/P1 checklist  
 
 **Quality:** `npm run preflight` (repo root) or `cd web && npm run audit`
