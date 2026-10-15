@@ -20,6 +20,7 @@ import {
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
 import { buildPacketAiReport, copyTextForAi, buildPrintPacketInnerHtml } from "./lib/packet-report.mjs";
+import { bindPacketBar, buildDepositDeskPbsRow, renderPacketBarHtml } from "./lib/packet-bar.mjs";
 import {
   buildWizardAgentSnapshot,
   publishWizardAgentSnapshot,
@@ -1154,8 +1155,13 @@ function renderStep5() {
     showUrgentPaywall && deadline.deadline
       ? `Mail-ready PDF · clock ends ${formatUsDate(deadline.deadline)}`
       : "";
+  const packetBar = renderPacketBarHtml({
+    showIcs: Boolean(deadline.deadline),
+    printLocked: !canExportPro(),
+  });
   return `
     ${wizardStepHead("Review & export", stepHeadSubtitle, { bannerUrgent })}
+    ${packetBar}
     ${
       showUrgentPaywall
         ? proBlockMessage({
@@ -1503,6 +1509,7 @@ function bindStepEvents() {
   };
   bindReminderPmToggle();
   bindExportStepPreviewRefresh();
+  bindPacketBarFinalize();
 
   document.getElementById("btn-remind")?.addEventListener("click", async () => {
     readStepIntoDraft();
@@ -1635,6 +1642,45 @@ function bindStepEvents() {
     if (els.status) {
       els.status.textContent = ok ? "Unlock note copied · paste into email or text to payer." : "Could not copy unlock note.";
     }
+  });
+}
+
+function triggerWizardPrint(kind) {
+  readStepIntoDraft();
+  if (step < MAX_STEPS) return;
+  if (kind === "final" && !canExportPro()) {
+    document.getElementById("export-paywall")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    sptTrack("unlock_scroll", { state: draft.property.state || "" });
+    return;
+  }
+  const isPreview = kind === "preview";
+  window.__sptPrintKind = isPreview ? "preview" : "final";
+  renderPrintPacket(isPreview ? "preview" : "final");
+  els.printRoot?.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (isPreview) sptTrack("preview_print", { state: draft.property.state || "" });
+  else sptTrack("final_print", { state: draft.property.state || "" });
+  window.print();
+}
+
+function bindPacketBarFinalize() {
+  const bar = document.getElementById("spt-packet-bar");
+  if (!bar) return;
+  bindPacketBar(bar, {
+    printLocked: !canExportPro(),
+    getRow: async () => {
+      readStepIntoDraft();
+      const deadline = computeDeadline(deadlineInput());
+      return buildDepositDeskPbsRow({
+        draft,
+        deadline,
+        shareUrl: packetReturnUrl(),
+      });
+    },
+    onPrint: (mode) => triggerWizardPrint(mode),
+    onIcs: () => document.getElementById("btn-ics")?.click(),
+    onStatus: (msg) => {
+      if (els.status) els.status.textContent = msg;
+    },
   });
 }
 
@@ -1778,27 +1824,16 @@ els.next?.addEventListener("click", () => {
 });
 
 els.printPreview?.addEventListener("click", () => {
-  readStepIntoDraft();
-  if (step < MAX_STEPS) return;
-  window.__sptPrintKind = "preview";
-  renderPrintPacket("preview");
-  els.printRoot?.scrollIntoView({ behavior: "smooth", block: "start" });
-  sptTrack("preview_print", { state: draft.property.state || "" });
-  window.print();
+  triggerWizardPrint("preview");
 });
 
 els.print?.addEventListener("click", () => {
-  readStepIntoDraft();
-  if (step < MAX_STEPS) return;
   if (!canExportPro()) {
     document.getElementById("export-paywall")?.scrollIntoView({ behavior: "smooth", block: "center" });
     sptTrack("unlock_scroll", { state: draft.property.state || "" });
     return;
   }
-  window.__sptPrintKind = "final";
-  renderPrintPacket("final");
-  sptTrack("print_final", { state: draft.property.state || "" });
-  window.print();
+  triggerWizardPrint("final");
 });
 
 document.getElementById("btn-new-packet")?.addEventListener("click", () => {

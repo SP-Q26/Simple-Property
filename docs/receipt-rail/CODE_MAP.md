@@ -9,6 +9,7 @@
 | Persistence | `web/lib/hub-store.mjs` | `localStorage` key `spt_hub_v1` |
 | Demo seed | `web/lib/hub-fixtures.mjs` | Greystone two-flat sample |
 | Hub UI | `web/hub.html` · `web/hub-app.js` | Hash routes · capture → review → vault |
+| Packet bar (PBS v1) | `web/lib/packet-bar.mjs` · `web/app.js` step 5 | Copy link · TSV row · print · `.ics` |
 | Modules marketing | `web/modules.html` | Public module list |
 | Gate | `scripts/audit-hub-alpha.mjs` | CI / `npm run audit:hub-alpha` |
 

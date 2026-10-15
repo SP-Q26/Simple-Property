@@ -56,6 +56,8 @@ need("plan deploy checklist", plan.includes("audit-receipt-rail-spec"));
 need("pricing 40 units doc", readDoc("PRICING_40_UNITS.md").includes("40 units"));
 need("achievable now audit", readDoc("ACHIEVABLE_NOW.md").includes("Program A"));
 need("code map spine", readDoc("CODE_MAP.md").includes("receipt-spine.mjs"));
+need("PACKET_BAR_SWEEP_v1", readDoc("PACKET_BAR_SWEEP_v1.md").includes("ai_paste_v1"));
+need("PACKET_BAR PBS columns", readDoc("PACKET_BAR_SWEEP_v1.md").includes("content_hash"));
 
 const templateIds = [
   "move_in_baseline",

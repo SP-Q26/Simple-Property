@@ -14,6 +14,7 @@
 | [ACHIEVABLE_NOW.md](./ACHIEVABLE_NOW.md) | Live vs alpha vs P1 backend |
 | [PRICING_40_UNITS.md](./PRICING_40_UNITS.md) | Keeper / Portfolio unit caps |
 | [CODE_MAP.md](./CODE_MAP.md) | Alpha implementation paths in `web/` |
+| [PACKET_BAR_SWEEP_v1.md](./PACKET_BAR_SWEEP_v1.md) | PBS v1 · finalize toolbar · TSV row · `ai_paste_v1` |
 
 ## Relationship to shipping code today
 
