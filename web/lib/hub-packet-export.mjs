@@ -5,8 +5,10 @@
 import { sha256ContentHash } from "./packet-bar.mjs";
 import { suggestVerdict } from "./receipt-spine.mjs";
 
+import { HUB_DESK_HANDOFF_KEY } from "./hub-desk-handoff.mjs";
+
 export const CONDITION_HUB_BRAND = "condition_hub";
-export const HUB_DESK_HANDOFF_KEY = "spt_hub_desk_handoff_v1";
+export { HUB_DESK_HANDOFF_KEY };
 
 export function hubShareUrl(receiptId) {
   const origin = typeof location !== "undefined" ? location.origin : "https://simple-property.com";

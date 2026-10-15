@@ -1,7 +1,8 @@
 /**
- * Client telemetry sink · log-only until isles_events / Xano unified bus.
+ * Client telemetry sink · Vercel logs + optional KV funnel rollups.
  * No PII storage · receipt ids must arrive hashed from client.
  */
+import { recordFunnelEvent } from "../lib/funnel-rollups.mjs";
 
 const PII_KEY_RE =
   /(email|e_mail|address|street|tenant|landlord|phone|zip|name|mail|recipient)/i;
@@ -44,6 +45,12 @@ export default async function handler(req, res) {
       at: new Date().toISOString(),
     })
   );
+
+  try {
+    await recordFunnelEvent(name, data);
+  } catch (e) {
+    console.error("spt funnel rollup", name, e.message);
+  }
 
   return res.status(204).end();
 }

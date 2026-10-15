@@ -40,7 +40,10 @@ need("sanitizeTelemetry", tele.includes("sanitizeTelemetry") && tele.includes("r
 need("hashReceiptId", tele.includes("hashReceiptId"));
 need("trackPacketBar", tele.includes("packet_bar_copy_tsv"));
 need("sp-events scrub", events.includes("PII_KEY_RE") && events.includes("checkout_intent"));
-need("api/events sink", readFileSync(join(web, "api/events.js"), "utf8").includes("spt_telemetry"));
+const eventsApi = readFileSync(join(web, "api/events.js"), "utf8");
+need("api/events sink", eventsApi.includes("spt_telemetry"));
+need("api/events funnel rollup", eventsApi.includes("recordFunnelEvent"));
+need("spt_hub_handoff_applied spec", doc.includes("spt_hub_handoff_applied") || doc.includes("hub_handoff"));
 need(
   "packet bar emits tsv",
   bar.includes("packet_bar_copy_tsv") || /trackPacketBar\(\s*["']copy_tsv/.test(bar)

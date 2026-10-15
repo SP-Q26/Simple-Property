@@ -33,6 +33,7 @@
 | `spt_page_view` | `page`, `path`, `ref?` |
 | `spt_blog_view` | `slug` |
 | `spt_start_intent` | `ref` (e.g. `move-out`, `launch-stack`), `template_id?` |
+| `spt_hub_handoff_applied` | `template_id`, `field_count` (Condition hub → Desk prefill) |
 | `spt_module_click` | `module`: `deposit_desk` \| `condition_hub` \| `operator_logs` |
 
 ---
@@ -86,8 +87,9 @@ Logged from `web/api/stripe/webhook.js` as structured JSON (`spt_telemetry: true
 
 ## Sink
 
-1. **Now:** Vercel Web Analytics (`window.va`) + `POST /api/events` (console log) + webhook logs.
-2. **Later:** Xano or unified `isles_events` (same event names).
+1. **Now:** Vercel Web Analytics (`window.va`) + `POST /api/events` (console log + **KV funnel counters** when `KV_REST_*` set) + webhook logs.
+2. **Weekly:** `GET /api/funnel/report` (Bearer cron secret) · cron `/api/cron/funnel-weekly-report` · local `npm run report:funnel-weekly`.
+3. **Later:** Xano or unified `isles_events` (same event names).
 
 **Audit:** `npm run audit:telemetry`
 

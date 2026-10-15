@@ -97,6 +97,9 @@ need(
 need("wizard progress rail", appHtml.includes("wizard-progress"));
 need("wizard step head in app.js", appJs.includes("wizardStepHead"));
 need("export deadline urgency paywall", appJs.includes("paywall--urgency") && appJs.includes("exportDeadlineUrgency"));
+need("pm handoff sheet step 5", appJs.includes("pm-handoff-sheet"));
+need("condition hub handoff consumer", appJs.includes("consumeConditionHubHandoff"));
+need("urgent reminder panel", appJs.includes("reminder-panel--urgent"));
 
 console.log(fail ? `\nWizard forms audit FAILED (${fail})` : "\nWizard forms audit OK");
 process.exit(fail ? 1 : 0);

@@ -4047,6 +4047,18 @@
       "published": "2026-10-15",
       "updated": "2026-10-15",
       "statutes": []
+    },
+    {
+      "slug": "deposit-desk-vs-innago-avail-turnover",
+      "title": "Deposit Desk vs Innago and Avail at turnover",
+      "description": "Rent tools run the lease month · Deposit Desk runs surrender week · itemization, clock, and mail-ready packet. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-desk",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
     }
   ]
 }

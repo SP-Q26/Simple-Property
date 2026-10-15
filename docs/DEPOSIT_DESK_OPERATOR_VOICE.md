@@ -7,6 +7,8 @@ Say **Simple Property Tools** in footer; say **Deposit Desk** or **Condition hub
 **Hook (pain):** Spreadsheets break at surrender date. The clock does not.  
 **Category:** Documentation for small landlords at turnover—not property management software.
 
+**Process name:** [**OAR Pass**](./ISLES_OAR_PASS_1PAGER.md) (Operator Adoption Rubric) · reuse on every Isles lane.
+
 Canon siblings: Ships.one operator voice (SPQ `docs/receipt-rail/SHIPS_ONE_OPERATOR_VOICE.md`) · FieldDrop gospel (field service lanes).
 
 ---

@@ -1,6 +1,7 @@
 import Stripe from "stripe";
 import { upsertSubscriptionRecord } from "../../lib/subscription-store.mjs";
 import { recordFromCheckoutSession, recordFromStripeSubscription } from "../../lib/stripe-entitlement.mjs";
+import { recordFunnelEvent } from "../../lib/funnel-rollups.mjs";
 
 export const config = {
   api: {
@@ -21,7 +22,7 @@ function readRawBody(req) {
   });
 }
 
-function logEvent(name, payload) {
+async function logEvent(name, payload) {
   console.log(
     JSON.stringify({
       spt_telemetry: true,
@@ -31,6 +32,11 @@ function logEvent(name, payload) {
       ...payload,
     })
   );
+  try {
+    await recordFunnelEvent(name, payload || {});
+  } catch (e) {
+    console.error("spt funnel rollup webhook", name, e.message);
+  }
 }
 
 export default async function handler(req, res) {
@@ -56,7 +62,7 @@ export default async function handler(req, res) {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const record = await recordFromCheckoutSession(session);
-      logEvent("checkout_complete", {
+      await logEvent("checkout_complete", {
         sku: session.metadata?.spt_sku || "",
         stripe_type: "checkout.session.completed",
         session_id: session.id,
@@ -85,7 +91,7 @@ export default async function handler(req, res) {
       }
       const subName =
         event.type === "customer.subscription.deleted" ? "subscription_deleted" : "subscription_updated";
-      logEvent(subName, {
+      await logEvent(subName, {
         sku: skuHint || "annual",
         status: sub.status,
         subscription_id: sub.id,
@@ -93,7 +99,7 @@ export default async function handler(req, res) {
     } else if (event.type === "invoice.paid") {
       const inv = event.data.object;
       if (inv.billing_reason === "subscription_cycle") {
-        logEvent("subscription_renewal", {
+        await logEvent("subscription_renewal", {
           invoice_id: inv.id,
           customer: inv.customer,
           amount_paid: inv.amount_paid,

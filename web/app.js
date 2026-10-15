@@ -39,6 +39,10 @@ import {
 } from "./lib/wizard-agent-snapshot.mjs";
 import { PRO_UNITS_MAX, parseUnitCount, unitsWithinProCap } from "./lib/pro-limits.mjs";
 import { STATUTE_URLS, CHICAGO_RLTO_URL } from "./lib/statute-urls.mjs";
+import {
+  consumeConditionHubHandoff,
+  renderPmTurnoverHandoffSheet,
+} from "./lib/deposit-desk-handoff-ui.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
@@ -1211,6 +1215,7 @@ function renderStep5() {
         <p class="field-hint">Opens Google in your browser. We do not connect to your Google account on our servers.</p></div>`
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
+    ${renderPmTurnoverHandoffSheet(draft, esc)}
     ${renderMailReadyRoute()}
     ${!canExportPro() && !showUrgentPaywall ? paywallFreeToolsNote() : ""}
     ${renderItemizationPreview(false)}
@@ -1228,8 +1233,13 @@ function renderStep5() {
     <button type="button" class="btn btn-secondary" id="btn-save-packet">Save packet to this browser</button>
     ${
       deadline.deadline
-        ? `<div class="form-panel reminder-panel" style="margin-top:1rem;border-style:dashed">
+        ? `<div class="form-panel reminder-panel${urgency.urgent ? " reminder-panel--urgent" : ""}" style="margin-top:1rem;border-style:dashed">
         <p class="section-label" style="margin-bottom:0.5rem">Email reminders</p>
+        ${
+          urgency.urgent
+            ? `<p class="field-hint reminder-urgent-hint" role="status"><strong>Clock is tight.</strong> Schedule reminder emails before you unlock the mail-ready PDF.</p>`
+            : ""
+        }
         <p class="field-hint">7 days and 1 day before your deadline · requires Resend + KV on the host (Pro feature on pricing).</p>
         <label class="reminder-pm-toggle field-hint">
           <input type="checkbox" id="rem-use-pm" ${rem.usePmEmail ? "checked" : ""} />
@@ -1532,6 +1542,14 @@ function bindStepEvents() {
   bindReminderPmToggle();
   bindExportStepPreviewRefresh();
   bindPacketBarFinalize();
+
+  document.getElementById("btn-print-pm-handoff")?.addEventListener("click", () => {
+    const sheet = document.getElementById("pm-handoff-sheet");
+    if (!sheet) return;
+    document.body.classList.add("spt-print-pm-handoff");
+    window.print();
+    document.body.classList.remove("spt-print-pm-handoff");
+  });
 
   document.getElementById("btn-remind")?.addEventListener("click", async () => {
     readStepIntoDraft();
@@ -1900,6 +1918,18 @@ document.getElementById("packet-select")?.addEventListener("change", (e) => {
 
 refreshPacketSelect();
 (async function bootWizard() {
+  consumeConditionHubHandoff({
+    draft,
+    saveDraft,
+    enableTurnoverMode,
+    getStep: () => step,
+    setStep: (n) => {
+      step = n;
+    },
+    setStatusMsg: (msg) => {
+      window.__sptStatusMsg = msg;
+    },
+  });
   initFromQuery();
   if (typeof window.sptBootstrapEntitlement === "function") {
     try {

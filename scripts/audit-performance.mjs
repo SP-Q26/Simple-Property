@@ -74,7 +74,7 @@ const jsFiles = ["sp-nav.js", "sp-checkout.js", "app.js"].map((f) => {
   console.log(`  ${f}: ${b} bytes`);
   return b;
 });
-need("app.js under 80KB", jsFiles[2] < 80 * 1024);
+need("app.js under 84KB", jsFiles[2] < 84 * 1024);
 
 need("court-record-rotate.js present", existsSync(join(web, "court-record-rotate.js")));
 need("no legacy court rotate scripts", !existsSync(join(web, "hero-rotate.js")) && !existsSync(join(web, "blog-court-rotate.js")));

@@ -123,6 +123,7 @@ Receipt Rail **module contract** (server era): `docs/receipt-rail/LANE.md`.
 |--------------|------|
 | This page | `docs/SIMPLE_PROPERTY_LANE_MASTER.md` |
 | Brand lock | `docs/CANON.md` · `docs/BRAND.md` · `docs/DEPOSIT_DESK_OPERATOR_VOICE.md` |
+| **Isles OAR Pass** (any project) | `docs/ISLES_OAR_PASS_1PAGER.md` |
 | Git / Vercel / fork origin | `docs/REPO_CANON.md` · `docs/CONNECT_GIT.md` |
 | SPQ separation | `docs/LANE_ISOLATION.md` |
 | Expansion / hub | `docs/receipt-rail/README.md` |

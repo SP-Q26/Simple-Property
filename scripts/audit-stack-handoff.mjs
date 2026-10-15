@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /** PM stack complement · packet handoff · counsel-hour economics on marketing surfaces. */
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -30,6 +30,7 @@ need("app packet import", app.includes("importPacketBackupObject") || app.includ
 
 need("llms handoff PM complement", llms.includes("handoff") || llms.includes("Innago") || llms.includes("Avail"));
 need("llms not PM suite", llms.includes("Not:") && llms.includes("PM"));
+need("innago avail turnover compare post", existsSync(join(web, "blog/deposit-desk-vs-innago-avail-turnover.html")));
 
 console.log(fail ? `\nStack handoff audit FAILED (${fail})` : "\nStack handoff audit OK");
 process.exit(fail ? 1 : 0);

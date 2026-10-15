@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v68 · operator adoption voice */
+/* Simple Property Tools · Deposit Desk · v69 · funnel handoff ROI */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -4937,5 +4937,48 @@ table.data-table th {
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: var(--space-4);
+}
+
+.reminder-panel--urgent {
+  border-color: var(--color-accent, #b45309);
+  background: color-mix(in srgb, var(--color-accent, #b45309) 8%, transparent);
+}
+
+.reminder-urgent-hint {
+  margin-bottom: var(--space-2);
+}
+
+.handoff-sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-2) 0;
+  font-size: 0.9375rem;
+}
+
+.handoff-sheet-table th {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.35rem 0.75rem 0.35rem 0;
+  width: 38%;
+  font-weight: 600;
+}
+
+.handoff-sheet-table td {
+  padding: 0.35rem 0;
+}
+
+@media print {
+  body.spt-print-pm-handoff .no-print,
+  body.spt-print-pm-handoff .wizard-progress,
+  body.spt-print-pm-handoff .site-header,
+  body.spt-print-pm-handoff .packet-bar,
+  body.spt-print-pm-handoff .wizard-step-banner,
+  body.spt-print-pm-handoff main > :not(#pm-handoff-sheet) {
+    display: none !important;
+  }
+
+  body.spt-print-pm-handoff #pm-handoff-sheet {
+    display: block !important;
+  }
 }
 
