@@ -27,6 +27,9 @@ const FORBIDDEN = [
   { re: /\bdeferred rulesets\b/i, label: "deferred rulesets" },
   { re: /\bTier[\s-]?A\b/i, label: "Tier A (internal expansion label)" },
   { re: /\bTier[\s-]?4\b/i, label: "Tier 4 (internal expansion label)" },
+  { re: /\bsupercharge\b/i, label: "supercharge (SaaS hype)" },
+  { re: /\bgame[- ]changer\b/i, label: "game-changer (SaaS hype)" },
+  { re: /\bunlock the power\b/i, label: "unlock the power (SaaS hype)" },
 ];
 
 const ogDir = join(web, "og");

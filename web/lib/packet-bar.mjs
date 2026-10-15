@@ -131,13 +131,17 @@ export function renderPacketBarHtml(opts = {}) {
   const icsBtn = showIcs
     ? `<button type="button" class="btn btn-secondary" data-pbs="ics">Download .ics</button>`
     : "";
-  return `<div class="packet-bar" id="spt-packet-bar" role="toolbar" aria-label="Packet actions">
+  const hint =
+    opts.hint ||
+    "Portfolio row pastes into Google Sheets in one step · link reopens this packet on step 5 · not legal advice.";
+  const barId = opts.barId || "spt-packet-bar";
+  return `<div class="packet-bar" id="${barId}" role="toolbar" aria-label="Packet actions">
   <button type="button" class="btn btn-secondary" data-pbs="copy-link">Copy link</button>
   <button type="button" class="btn btn-secondary" data-pbs="copy-tsv">Copy row (TSV)</button>
   <button type="button" class="btn btn-primary" data-pbs="print">${printLabel}</button>
   ${icsBtn}
 </div>
-<p class="field-hint packet-bar-hint">Portfolio row pastes into Google Sheets in one step · link reopens this packet on step 5 · not legal advice.</p>`;
+<p class="field-hint packet-bar-hint">${hint}</p>`;
 }
 
 /**
@@ -160,7 +164,7 @@ export function bindPacketBar(root, handlers) {
     handlers.onFinalizeAttempt?.(row);
     try {
       await copyTextForAi(row.share_url);
-      trackPacketBar("copy_link");
+      trackPacketBar("copy_link", handlers.telemetryExtra || {});
       status("Link copied · share with counsel or paste into email.");
     } catch {
       handlers.onFinalizeFail?.("copy_link");
@@ -174,7 +178,7 @@ export function bindPacketBar(root, handlers) {
     handlers.onFinalizeAttempt?.(row);
     try {
       await copyTextForAi(line);
-      trackPacketBar("copy_tsv");
+      trackPacketBar("copy_tsv", handlers.telemetryExtra || {});
       const receipt_id_hash = await hashReceiptId(row.receipt_id);
       handlers.onFinalizeSuccess?.({ receipt_id_hash, verdict: row.verdict });
       status("TSV row copied · paste into Google Sheets (cell A1).");
@@ -186,6 +190,7 @@ export function bindPacketBar(root, handlers) {
 
   root.querySelector('[data-pbs="print"]')?.addEventListener("click", () => {
     const mode = handlers.printLocked ? "preview" : "final";
+    trackPacketBar("pdf", handlers.telemetryExtra || {});
     handlers.onPrint(mode);
   });
 

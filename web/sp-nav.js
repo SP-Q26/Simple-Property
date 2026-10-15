@@ -485,7 +485,7 @@
         loc.returnDays +
         "-day · " +
         (loc.cite || "statute") +
-        " · missed clock costs more · tap opens desk · Ctrl+click opens official code"
+        " · missed clock costs more than the tool · tap opens Deposit Desk · Ctrl+click opens official code"
     );
     wireLocaleLink(a, loc);
     parent.appendChild(a);
@@ -503,7 +503,7 @@
     legend.innerHTML =
       '<span class="coverage-map__key coverage-map__key--30">30-day</span>' +
       '<span class="coverage-map__key coverage-map__key--45">45-day</span>' +
-      '<span class="coverage-map__key coverage-map__key--hint">Tap state · <strong>Ctrl+chip = law / statute</strong></span>';
+      '<span class="coverage-map__key coverage-map__key--hint">Your state · tap opens Deposit Desk · <strong>Ctrl+chip = official statute</strong></span>';
     head.appendChild(legend);
 
     var statuteIndex = document.createElement("p");
@@ -517,7 +517,7 @@
     var plate = document.createElement("div");
     plate.className = "coverage-bubbles coverage-bubbles--strip";
     plate.setAttribute("role", "group");
-    plate.setAttribute("aria-label", "Deposit return clocks by state · tap a color chip");
+    plate.setAttribute("aria-label", "Deposit return clocks by state · tap a chip to open Deposit Desk");
 
     var track = document.createElement("div");
     track.className = "coverage-bubbles__track";

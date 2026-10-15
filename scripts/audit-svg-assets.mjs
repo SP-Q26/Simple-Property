@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
 import { STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
+import { STRIPE_CATALOG } from "../web/lib/stripe-catalog.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -16,6 +17,8 @@ const REQUIRED = [
   "og/spt-card.svg",
   "stripe/pro-monthly.svg",
   "stripe/pro-annual.svg",
+  "stripe/keeper-monthly.svg",
+  "stripe/portfolio-monthly.svg",
   "stripe/turn-move-out.svg",
   "stripe/turn-full.svg",
 ];
@@ -84,6 +87,14 @@ const moveOut = readFileSync(join(web, "stripe/turn-move-out.svg"), "utf8");
 need("move-out swing door", moveOut.includes("l36 28") || moveOut.includes("L36 28"));
 const full = readFileSync(join(web, "stripe/turn-full.svg"), "utf8");
 need("full tenancy two doors", full.includes("translate(-72") && full.includes("#7a4038"));
+const keeper = readFileSync(join(web, "stripe/keeper-monthly.svg"), "utf8");
+need("keeper clipboard check", keeper.includes("M84 92"));
+const portfolio = readFileSync(join(web, "stripe/portfolio-monthly.svg"), "utf8");
+need("portfolio three seats", (portfolio.match(/<circle/g) || []).length >= 3);
+
+const paths = Object.values(STRIPE_CATALOG).map((i) => i.checkout_image);
+const uniq = new Set(paths);
+need(`unique checkout_image per SKU (${paths.length})`, uniq.size === paths.length);
 
 console.log(fail ? `\nSVG audit FAILED (${fail})` : "\nSVG audit OK");
 process.exit(fail ? 1 : 0);

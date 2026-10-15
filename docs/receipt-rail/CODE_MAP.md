@@ -8,8 +8,9 @@
 | Module registry | `web/lib/hub-templates.mjs` | `template_id` → rooms · P1: `move_in_baseline`, `move_out_condition` |
 | Persistence | `web/lib/hub-store.mjs` | `localStorage` key `spt_hub_v1` |
 | Demo seed | `web/lib/hub-fixtures.mjs` | Greystone two-flat sample |
-| Hub UI | `web/hub.html` · `web/hub-app.js` | Hash routes · capture → review → vault |
-| Packet bar (PBS v1) | `web/lib/packet-bar.mjs` · `web/app.js` step 5 | Copy link · TSV row · print · `.ics` |
+| Hub UI | `web/hub.html` · `web/hub-app.js` | Hash routes · capture → review → **done** (PBS) → vault |
+| Hub export + compare | `web/lib/hub-packet-export.mjs` | PBS row · print HTML · Desk handoff · move-in/out diff |
+| Packet bar (PBS v1) | `web/lib/packet-bar.mjs` · `web/app.js` step 5 · hub **done** | Copy link · TSV row · print · `.ics` (Desk only) |
 | Modules marketing | `web/modules.html` | Public module list |
 | Gate | `scripts/audit-hub-alpha.mjs` | CI / `npm run audit:hub-alpha` |
 

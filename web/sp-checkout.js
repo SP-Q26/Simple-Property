@@ -26,7 +26,7 @@
       });
       var data = await res.json();
       if (data.error === "packet_id_required") {
-        alert("Open the wizard and reach step 5 before unlocking this packet, or save your draft first.");
+        alert("Open Deposit Desk and reach step 5 before unlocking this packet, or save your draft first.");
         throw new Error("packet_id_required");
       }
       if (data.url) location.href = data.url;

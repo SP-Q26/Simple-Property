@@ -18,7 +18,7 @@ if (!units || !turns || !out) {
     const t = Number(turns.value);
     let tier = "free";
     let copy =
-      "Start free. See statutory deadlines first · one missed clock costs more than any unlock fee.";
+      "Open Deposit Desk free. See statutory deadlines first · one missed clock costs more than any unlock fee.";
 
     if (t >= 7 || u >= 11) {
       tier = "pro-annual";

@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v67 · Receipt Rail hub */
+/* Simple Property Tools · Deposit Desk · v68 · operator adoption voice */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -4887,6 +4887,29 @@ table.data-table th {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+.hub-compare-table tr.hub-compare--changed td {
+  background: rgba(196, 92, 38, 0.08);
+}
+
+.hub-compare-table tr.hub-compare--changed td:last-child {
+  font-weight: 600;
+  color: var(--accent, #c45c26);
+}
+
+.hero-team {
+  max-width: 42rem;
+  margin-top: var(--space-2);
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.prose .pain-solution-lead,
+.prose .ps-problem,
+.prose .ps-fix {
+  line-height: 1.55;
 }
 
 .hub-wizard-section {

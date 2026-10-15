@@ -24,6 +24,16 @@ import {
   saveHubState,
   upsertReceipt,
 } from "./lib/hub-store.mjs";
+import { bindPacketBar, renderPacketBarHtml } from "./lib/packet-bar.mjs";
+import {
+  buildHubPbsRow,
+  buildHubPrintHtml,
+  compareReceiptSections,
+  CONDITION_HUB_BRAND,
+  depositDeskHandoffUrl,
+  writeHubDeskHandoff,
+} from "./lib/hub-packet-export.mjs";
+import { trackIsles } from "./lib/spt-telemetry.mjs";
 
 let state = loadHubState();
 
@@ -77,8 +87,50 @@ function compareHint(tenancyId) {
   const list = receiptsForTenancy(tenancyId);
   const moveIn = list.find((r) => r.templateId === "move_in_baseline" && r.status === "finalized");
   const moveOut = list.find((r) => r.templateId === "move_out_condition" && r.status === "finalized");
-  if (moveIn && moveOut) return { ready: true };
-  return { ready: false, moveIn: !!moveIn, moveOut: !!moveOut };
+  if (moveIn && moveOut) return { ready: true, moveIn, moveOut };
+  return { ready: false, moveIn: !!moveIn, moveOut: !!moveOut, moveInReceipt: moveIn, moveOutReceipt: moveOut };
+}
+
+function hubTelemetryExtra(receipt) {
+  const templateId = receipt?.templateId || "";
+  return {
+    isles_brand: CONDITION_HUB_BRAND,
+    templateId,
+  };
+}
+
+function bindHubPacketBar(receiptId) {
+  const receipt = getReceipt(state, receiptId);
+  if (!receipt || receipt.status !== "finalized") return;
+  const chain = chainForTenancy(state, receipt.tenancyId);
+  const t = getTemplate(receipt.templateId);
+  const mount = document.getElementById("hub-packet-bar-mount");
+  if (!mount) return;
+  bindPacketBar(mount, {
+    telemetryExtra: hubTelemetryExtra(receipt),
+    getRow: () => buildHubPbsRow(receipt),
+    onPrint: () => {
+      const html = buildHubPrintHtml({
+        receipt,
+        chain,
+        templateLabel: t?.label || "Condition record",
+      });
+      const w = window.open("", "_blank", "noopener,noreferrer");
+      if (!w) {
+        setStatus("Allow pop-ups to print this record.");
+        return;
+      }
+      w.document.write(html);
+      w.document.close();
+      w.focus();
+      w.print();
+    },
+    onStatus: setStatus,
+  });
+  document.getElementById("hub-desk-handoff")?.addEventListener("click", () => {
+    writeHubDeskHandoff(chain, receipt);
+    trackIsles("hub_desk_handoff_click", hubTelemetryExtra(receipt));
+  });
 }
 
 function navHtml(active) {
@@ -116,7 +168,7 @@ function receiptRow(r) {
       <a class="btn btn-secondary btn-compact" href="#/receipts/${esc(r.id)}/wizard">${r.status === "finalized" ? "View" : "Continue"}</a>
       ${
         r.status === "finalized"
-          ? `<a class="btn btn-secondary btn-compact" href="#/vault">Saved</a>`
+          ? `<a class="btn btn-secondary btn-compact" href="#/receipts/${esc(r.id)}/done">Export</a>`
           : `<a class="btn btn-primary btn-compact" href="#/receipts/${esc(r.id)}/review">Review &amp; lock</a>`
       }
     </div>
@@ -254,8 +306,19 @@ function renderUnitHistory(tenancyId) {
       <h2>Move-in vs move-out summary</h2>
       ${
         cmp.ready
-          ? `<p class="ps-fix">You have locked move-in and move-out walkthroughs for this unit. A printable side-by-side report is next on our release list.</p>
-             <button type="button" class="btn btn-secondary" disabled>Download comparison (coming soon)</button>`
+          ? (() => {
+              const rows = compareReceiptSections(cmp.moveIn, cmp.moveOut);
+              const changed = rows.filter((r) => r.changed).length;
+              const body = rows
+                .map(
+                  (r) =>
+                    `<tr class="${r.changed ? "hub-compare--changed" : ""}"><td>${esc(r.label)}</td><td>${esc(r.moveInCondition)}</td><td>${esc(r.moveOutCondition)}</td><td>${r.changed ? "Changed" : "-"}</td></tr>`
+                )
+                .join("");
+              return `<p class="ps-fix">${changed} room${changed === 1 ? "" : "s"} with a different condition rating between move-in and move-out. Use this table when you build your deposit packet.</p>
+              <table class="log-table hub-compare-table"><thead><tr><th>Room</th><th>Move-in</th><th>Move-out</th><th>Flag</th></tr></thead><tbody>${body}</tbody></table>
+              <p><a class="btn btn-primary" href="${esc(depositDeskHandoffUrl())}" id="hub-unit-desk-handoff">Open Deposit Desk for this turnover</a></p>`;
+            })()
           : `<p class="field-hint">Lock both a move-in and move-out walkthrough to unlock a comparison summary.</p>`
       }
     </section>
@@ -315,6 +378,37 @@ function renderWizard(receiptId) {
   `;
 }
 
+function renderReceiptDone(receiptId) {
+  const receipt = getReceipt(state, receiptId);
+  if (!receipt) return `<p>Record not found.</p>`;
+  if (receipt.status !== "finalized") {
+    return `<p>This walkthrough is not locked yet. <a href="#/receipts/${esc(receiptId)}/review">Review &amp; lock</a></p>`;
+  }
+  const t = getTemplate(receipt.templateId);
+  const chain = chainForTenancy(state, receipt.tenancyId);
+  const place = [chain?.property?.label, chain?.unit?.label].filter(Boolean).join(" · ");
+  const bar = renderPacketBarHtml({
+    barId: "hub-packet-bar",
+    hint:
+      "TSV row pastes into Google Sheets · link reopens this locked record on this device · print saves a paper copy · not legal advice.",
+  });
+  const showDesk =
+    receipt.templateId === "move_out_condition"
+      ? `<p><a class="btn btn-primary" href="${esc(depositDeskHandoffUrl())}" id="hub-desk-handoff">Start deposit packet in Deposit Desk</a></p>`
+      : `<p class="field-hint">After move-out, lock a move-out walkthrough, then hand off to Deposit Desk for the statutory packet.</p>`;
+  return `
+    <header class="hub-head">
+      <h1>Record locked</h1>
+      <p class="ps-fix">${esc(t?.label || "Walkthrough")} · ${esc(place)} · ${esc(verdictLabel(receipt.verdict || ""))}</p>
+    </header>
+    <section class="hub-panel">
+      <div id="hub-packet-bar-mount">${bar}</div>
+      ${showDesk}
+      <p><a class="btn btn-secondary" href="#/vault">All saved records</a> <a class="btn btn-secondary" href="#/properties">Properties</a></p>
+    </section>
+  `;
+}
+
 function renderReview(receiptId) {
   const receipt = getReceipt(state, receiptId);
   if (!receipt) return `<p>Record not found.</p>`;
@@ -358,8 +452,8 @@ function renderVault() {
           return `<li class="hub-list__item">
             <div><strong>${esc(title)}</strong> · ${esc(r.finalizedAt?.slice(0, 10) || "")} · ${esc(verdictLabel(r.verdict || ""))}</div>
             <div class="hub-list__actions">
-              <button type="button" class="btn btn-secondary btn-compact" disabled title="PDF download coming soon">Download PDF</button>
-              <button type="button" class="btn btn-secondary btn-compact" disabled title="Email link coming soon">Email tenant</button>
+              <a class="btn btn-secondary btn-compact" href="#/receipts/${esc(r.id)}/done">Export &amp; print</a>
+              <button type="button" class="btn btn-secondary btn-compact" disabled title="Email link coming with server delivery">Email tenant</button>
               <button type="button" class="btn btn-secondary btn-compact" data-hub-amend="${esc(r.id)}">Start correction</button>
             </div>
           </li>`;
@@ -441,7 +535,19 @@ function bindEvents(view, ctx = {}) {
     const finalized = finalizeReceipt(receipt, verdict);
     persist(upsertReceipt(state, finalized));
     setStatus("Record locked and saved on this device.");
-    navigate("#/vault");
+    trackIsles("hub_receipt_finalized", hubTelemetryExtra(finalized));
+    navigate(`#/receipts/${finalized.id}/done`);
+  });
+
+  document.getElementById("hub-unit-desk-handoff")?.addEventListener("click", () => {
+    const ten = getTenancy(state, ctx.tenancyId);
+    if (!ten) return;
+    const chain = chainForTenancy(state, ten.id);
+    const moveOut = receiptsForTenancy(ten.id).find(
+      (r) => r.templateId === "move_out_condition" && r.status === "finalized"
+    );
+    if (moveOut) writeHubDeskHandoff(chain, moveOut);
+    trackIsles("hub_desk_handoff_click", hubTelemetryExtra(moveOut || { templateId: "move_out_condition" }));
   });
 
   root.querySelectorAll("[data-hub-amend]").forEach((btn) => {
@@ -464,8 +570,13 @@ function render() {
   const section = parts[0] || "";
 
   if (section === "properties") body = renderProperties();
-  else if (section === "unit" && parts[1]) body = renderUnitHistory(parts[1]);
-  else if (section === "tenancy" && parts[1]) body = renderUnitHistory(parts[1]);
+  else if (section === "unit" && parts[1]) {
+    body = renderUnitHistory(parts[1]);
+    ctx = { tenancyId: parts[1] };
+  } else if (section === "tenancy" && parts[1]) {
+    body = renderUnitHistory(parts[1]);
+    ctx = { tenancyId: parts[1] };
+  }
   else if (section === "start" && parts[1]) body = renderPickUnit(parts[1]);
   else if (section === "receipts") {
     if (parts[1] && parts[2] === "wizard") {
@@ -474,6 +585,9 @@ function render() {
     } else if (parts[1] && parts[2] === "review") {
       body = renderReview(parts[1]);
       ctx = { receiptId: parts[1] };
+    } else if (parts[1] && parts[2] === "done") {
+      body = renderReceiptDone(parts[1]);
+      ctx = { receiptId: parts[1] };
     } else body = renderReceiptsList();
   } else if (section === "vault") body = renderVault();
   else if (section === "billing") body = renderBilling();
@@ -481,6 +595,7 @@ function render() {
 
   root.innerHTML = `${navHtml(section === "start" ? "" : section)}<div class="hub-main">${body}</div>`;
   bindEvents(section, ctx);
+  if (ctx.receiptId && parts[2] === "done") bindHubPacketBar(ctx.receiptId);
 }
 
 window.addEventListener("hashchange", render);

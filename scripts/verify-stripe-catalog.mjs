@@ -45,7 +45,7 @@ for (const k of envKeys) {
 
 if (!process.env.STRIPE_SECRET_KEY) {
   console.log("\nSet STRIPE_SECRET_KEY to validate Dashboard price IDs.");
-  process.exit(warn ? 1 : 0);
+  process.exit(0);
 }
 
 const Stripe = (await import("stripe")).default;

@@ -32,9 +32,9 @@ const DROP_PAGES = [
     file: "app.html",
     path: "/app",
     robots: "noindex,nofollow",
-    ogTitle: "Start free deposit packet · Deposit Desk",
+    ogTitle: "Open Deposit Desk · free draft packet",
     ogDescription:
-      `Five steps · statutory clock · watermarked preview print · mail-ready PDF after unlock. ${COVERAGE_LABEL} · per turn or Pro. Not legal advice.`,
+      `Five steps · surrender clock · watermarked preview print · mail-ready PDF after unlock. ${COVERAGE_LABEL} · per turn or Pro. Not legal advice.`,
   },
   {
     file: "pricing.html",
@@ -92,9 +92,24 @@ const DROP_PAGES = [
   {
     file: "blog/index.html",
     path: "/blog",
-    ogTitle: `Deposit guides · ${COVERAGE_LABEL}`,
+    ogTitle: `Deposit guides · small landlords · ${COVERAGE_LABEL}`,
     ogDescription:
-      "City guides, missed deadlines, disputes, fees, and state law for small landlords. Not legal advice.",
+      "City guides, missed deadlines, disputes, and state law · then open Deposit Desk for a dated packet. Not legal advice.",
+  },
+  {
+    file: "modules.html",
+    path: "/modules",
+    ogTitle: "Condition tools · move-in & move-out · Deposit Desk",
+    ogDescription:
+      `Room walkthroughs and deposit packets for landlords who run the doors themselves. ${COVERAGE_LABEL}. Not legal advice.`,
+  },
+  {
+    file: "hub.html",
+    path: "/hub",
+    robots: "noindex,nofollow",
+    ogTitle: "Condition hub · move-in & move-out proof",
+    ogDescription:
+      "Room-by-room walkthroughs saved on your device · pairs with Deposit Desk at turnover. Not legal advice.",
   },
   {
     file: "legal/deposit-statutes.html",

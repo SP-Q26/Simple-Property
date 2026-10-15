@@ -16,9 +16,11 @@ export const HERO_EYEBROW = `Security deposit return · ${STATE_ONLY_COUNT} stat
 export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 /** Turnover speed · fee comparison · lifetime ROI framing (pair with not legal advice on-page). */
 export const VALUE_ROI_LINE =
-  "Saves you time on turnover · cheaper than a fee · pays for itself for life with one legal claim";
+  "Saves you time on turnover · priced like a screening fee · one defended packet can cover years of Pro";
+export const OPERATOR_TEAM_LINE =
+  "Built for landlords who run the doors themselves · not a property management company.";
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 67;
+export const CSS_VERSION = 68;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

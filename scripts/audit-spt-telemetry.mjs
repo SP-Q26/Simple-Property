@@ -41,7 +41,10 @@ need("hashReceiptId", tele.includes("hashReceiptId"));
 need("trackPacketBar", tele.includes("packet_bar_copy_tsv"));
 need("sp-events scrub", events.includes("PII_KEY_RE") && events.includes("checkout_intent"));
 need("api/events sink", readFileSync(join(web, "api/events.js"), "utf8").includes("spt_telemetry"));
-need("packet bar emits tsv", bar.includes("packet_bar_copy_tsv") || bar.includes('trackPacketBar("copy_tsv")'));
+need(
+  "packet bar emits tsv",
+  bar.includes("packet_bar_copy_tsv") || /trackPacketBar\(\s*["']copy_tsv/.test(bar)
+);
 need("app sp_wizard_start", app.includes("sp_wizard_start"));
 need("webhook checkout_complete", hook.includes('logEvent("checkout_complete"'));
 

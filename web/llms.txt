@@ -1,6 +1,6 @@
 # Simple Property Tools · llms.txt
 
-> Small landlords (32 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports print-ready packet + **packet .json** for handoff · **Itemize it. Date it. Never pay the fees.** · founded in Chicago · complements Innago/Avail/bank rent stacks · not a PM suite.
+> Small landlords (32 states + DC): missed deposit deadlines and disputes without proof · **Deposit Desk** dates surrender, itemizes withholds, exports print-ready packet + **packet .json** for handoff · **Itemize it. Date it. Never pay the fees.** · voice: mom-and-pop team tone, no SaaS hype (`docs/DEPOSIT_DESK_OPERATOR_VOICE.md`) · founded in Chicago · complements Innago/Avail/bank rent stacks · not a PM suite.
 
 - https://simple-property.com/
 - **Deposit Desk** · 32 states + DC wizard packs · surrender-date clocks · print packet + JSON · statute links (e.g. Illinois **765 ILCS** 715/ · Chicago RLTO): https://simple-property.com/legal/deposit-statutes

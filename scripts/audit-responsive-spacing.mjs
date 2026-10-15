@@ -29,6 +29,7 @@ need("phone locale map-head hidden", css.includes("@media (max-width: 639px)") &
 need("tablet locale map-head hidden", css.includes("@media (min-width: 640px) and (max-width: 1023px)") && css.includes(".locale-bar__map-head") && css.includes("display: none"));
 need("phone coverage chip compact", css.includes("--coverage-chip: 2.5rem"));
 need("locale label short copy", nav.includes('"Your state"') && nav.includes('"Guides by state"'));
+need("locale map opens desk hint", nav.includes("tap opens Deposit Desk"));
 need("sticky locale bar", css.includes(".locale-bar") && css.includes("position: sticky"));
 need("tablet spacing block present", css.includes("@media (min-width: 640px) and (max-width: 1023px)"));
 

@@ -92,7 +92,7 @@ export const STRIPE_CATALOG = {
     mode: "subscription",
     recurring: { interval: "month" },
     lookup_key: "spt_keeper_monthly",
-    checkout_image: "/stripe/pro-monthly.png",
+    checkout_image: "/stripe/keeper-monthly.png",
     live_product_id: "prod_VRISWxgBrgclJT",
     live_price_id: "price_1UQPrIFDJKTJlxOcaevgDHfP",
     metadata: {
@@ -117,7 +117,7 @@ export const STRIPE_CATALOG = {
     mode: "subscription",
     recurring: { interval: "month" },
     lookup_key: "spt_portfolio_monthly",
-    checkout_image: "/stripe/pro-annual.png",
+    checkout_image: "/stripe/portfolio-monthly.png",
     live_product_id: "prod_VRISJeTzyO7Ad8",
     live_price_id: "price_1UQPs2FDJKTJlxOcvsW7j0UX",
     metadata: {

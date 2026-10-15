@@ -52,9 +52,9 @@
 | **Wizard** | Rooms, conditions, photo URLs | `receipt-spine.mjs` sections |
 | **Review** | Verdict CLEAR / FIX_LIST / FILE | `suggestVerdict` + operator override |
 | **Finalize** | Lock + move to Vault | `finalizeReceipt` |
-| **Vault** | Finalized list, export/send **stubs** | Amend → `amendReceipt` |
+| **Vault** | Finalized list · **PBS export** on `#/receipts/:id/done` | Email send · server PDF |
 | **Billing** | Link to `/pricing` | No new SKUs |
-| **Compare** | UI stub when both P1 receipts finalized | `compare_report` server P2 |
+| **Compare** | **Alpha table** when both P1 receipts finalized on a unit | `compare_report` PDF server P2 |
 
 **Explicit non-goals in alpha:** login, upload bytes, email send, Stripe, compare PDF, amend chain UI (stub only).
 

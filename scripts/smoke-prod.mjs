@@ -46,7 +46,14 @@ const paths = [
   { name: "legal", path: "/legal", need: ["Legal", "/terms", "/privacy"], absent: [EM] },
 ];
 
-const stripePngs = ["pro-monthly", "pro-annual", "turn-move-out", "turn-full"];
+const stripePngs = [
+  "pro-monthly",
+  "pro-annual",
+  "keeper-monthly",
+  "portfolio-monthly",
+  "turn-move-out",
+  "turn-full",
+];
 
 let fail = 0;
 

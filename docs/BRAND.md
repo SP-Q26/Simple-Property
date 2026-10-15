@@ -20,7 +20,9 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline.
 
 ## Voice (SEO + conversion)
 
-**Lead problem → fix.** One sharp problem line (deadline, proof, seasonality, scale), then one fix line naming **Deposit Desk** and the outcome (dated packet, print, surrender math). Use classes **`.ps-problem`** and **`.ps-fix`** on landing, pricing, app intro, launch stack, logs, success, and feedback. Do not prefix copy with **Pain:** / **Solution:** on the hero.
+**Full persona + psychology:** `docs/DEPOSIT_DESK_OPERATOR_VOICE.md` (Ships.one / FieldDrop-style adoption sweep).
+
+**Lead problem → fix.** One sharp problem line (deadline, proof, seasonality, scale), then one fix line naming **Deposit Desk** and the outcome (dated packet, print, surrender math). Optional team line: *Built for landlords who run the doors themselves—not a property management company.* Use classes **`.ps-problem`** and **`.ps-fix`** on landing, pricing, app intro, launch stack, logs, success, and feedback. Do not prefix copy with **Pain:** / **Solution:** on the hero.
 
 - **Pain themes:** missed statutory return window · disputed withhold without move-in proof · spreadsheet/surrender chaos · per-turn seasonality · portfolio outrunning memory.
 - **Solution themes:** five-step wizard (property → turnover → move-out → move-in proof → export) · surrender-driven 30/45-day math · **watermarked preview print** · **mail-ready PDF** after unlock · per-turn or Pro pricing · not a PM suite.
@@ -33,7 +35,7 @@ Retired: **Homestead** farmhouse mark and “plain dealing” tagline.
 
 - **Chicago RE quant palette:** cream `#f4f0e6` · bark ink `#3d3429` · sage success · **gold accent** `#c9a227`
 - **Quant blue wash:** fact strip, form panels, pricing cards, deadline box (gold left rail) · **Solution:** lines use quant blue
-- **Typography:** **Source Sans 3** + **Source Serif 4** · **`simple-property.css?v=45`** (cache bust via `brand-locale.mjs`)
+- **Typography:** **Source Sans 3** + **Source Serif 4** · **`simple-property.css?v=`** from `brand-locale.mjs` `CSS_VERSION`
 - **Atmosphere:** Chicago **greystone** · slim **castle door** · stronger **weather** · `web/brand/atmosphere.html`
 - **Stripe product tiles:** icon-only 512×512 · door metaphors per SKU
 

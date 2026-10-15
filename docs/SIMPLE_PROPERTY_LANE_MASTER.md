@@ -122,7 +122,7 @@ Receipt Rail **module contract** (server era): `docs/receipt-rail/LANE.md`.
 | If you need… | Read |
 |--------------|------|
 | This page | `docs/SIMPLE_PROPERTY_LANE_MASTER.md` |
-| Brand lock | `docs/CANON.md` · `docs/BRAND.md` |
+| Brand lock | `docs/CANON.md` · `docs/BRAND.md` · `docs/DEPOSIT_DESK_OPERATOR_VOICE.md` |
 | Git / Vercel / fork origin | `docs/REPO_CANON.md` · `docs/CONNECT_GIT.md` |
 | SPQ separation | `docs/LANE_ISOLATION.md` |
 | Expansion / hub | `docs/receipt-rail/README.md` |
@@ -138,7 +138,7 @@ Receipt Rail **module contract** (server era): `docs/receipt-rail/LANE.md`.
 | Track | Status |
 |-------|--------|
 | Program A on `main` | Live · urgency paywall · goal-copy audit on core surfaces |
-| Program B alpha | `/hub` + `/modules` · P1 templates: move-in baseline · move-out condition |
+| Program B alpha | `/hub` + `/modules` · PBS on lock · unit compare · Desk handoff · [roadmap](./receipt-rail/CONDITION_HUB_ROADMAP_2026-10.md) |
 | P1 backend | Org DB · auth · server PDF · Keeper/Portfolio Stripe — **not shipped** |
 | Optional polish | Sitewide nav **App → Deposit Desk** · per-post blog copy pass |
 
