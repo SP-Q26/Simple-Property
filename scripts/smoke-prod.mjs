@@ -26,7 +26,7 @@ const paths = [
       "40 units",
       "765 ILCS",
       "/feedback",
-      "Deposit Desk · start free",
+      "Deposit Desk · free draft",
     ],
     absent: ["Homestead", EM, "spt-door-panel", "Pain:", "Solution:", "link previews"],
     css: true,
