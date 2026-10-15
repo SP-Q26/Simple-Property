@@ -7,6 +7,7 @@ import { wrapFooter, FOOTER_NAV_BLOG_POST } from "./site-footer.mjs";
 import { blogCourtCardHtml } from "./blog-court-card-html.mjs";
 import { ensureBlogGoalCopy } from "./blog-goal-copy.mjs";
 import { HEADER_NAV_BLOCK } from "./site-nav.mjs";
+import { buildSocialMetaBlock } from "./social-share.mjs";
 
 export function stripBlogCourtCard(bodyHtml) {
   return bodyHtml
@@ -32,6 +33,14 @@ function articleShell({
   const proseBody = `${blogCourtCardHtml({ states, cityPreset })}\n${goalBody}`;
   const url = `${SITE}/blog/${slug}`;
   const mod = modified || published;
+  const social = buildSocialMetaBlock({
+    canonicalPath: `/blog/${slug}`,
+    ogTitle: title,
+    ogDescription: description,
+    ogType: "article",
+    articlePublished: published,
+    articleModified: mod,
+  });
   const ld = JSON.stringify(
     articleGraph({
       headline: title,
@@ -49,7 +58,7 @@ function articleShell({
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${title} · Simple Property Tools</title>
   <meta name="description" content="${description.replace(/"/g, "&quot;")}">
-  <link rel="canonical" href="${url}">
+${social}
   <link rel="alternate" type="application/rss+xml" title="Simple Property Tools guides" href="/blog/feed.rss">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">

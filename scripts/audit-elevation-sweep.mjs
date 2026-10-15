@@ -38,6 +38,7 @@ const childAudits = [
   "audit-hub-copy.mjs",
   "audit-receipt-rail-spec.mjs",
   "audit-stripe-sweep.mjs",
+  "audit-route-series.mjs",
 ];
 
 console.log("=== Elevation sweep · child audits ===\n");

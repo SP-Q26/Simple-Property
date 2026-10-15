@@ -13,7 +13,10 @@ const busPath = join(web, "spt-ai-bus.json");
 const bus = JSON.parse(readFileSync(busPath, "utf8"));
 bus.version = 3;
 bus.blog_post_count = count;
-bus.blog_pillars = ["law", "landlord", "renter", "news", "pain", "city"];
+bus.blog_pillars = ["law", "landlord", "renter", "news", "pain", "city", "route"];
+if (bus.door_tiers?.systems_10_20) {
+  bus.door_tiers.systems_10_20 = bus.door_tiers.systems_10_20.replace(/light PM/gi, "portfolio tracking");
+}
 bus.hook = `${BRAND_TAGLINE} · ${STATE_ONLY_COUNT} states + DC deposit packets.`;
 if (!bus.agent_read_order.includes("https://simple-property.com/blog/feed.rss")) {
   bus.agent_read_order.splice(3, 0, "https://simple-property.com/blog/feed.rss");

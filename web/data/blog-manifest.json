@@ -134,6 +134,10 @@
     "metro": {
       "label": "Metro deep dives",
       "audience": "Chicago, DC, and Miami neighborhood operator guides"
+    },
+    "route": {
+      "label": "Product routes",
+      "audience": "SEO clusters tied to /app /pricing /hub /modules /logs /launch-stack"
     }
   },
   "posts": [
@@ -3619,6 +3623,430 @@
       "statutes": [
         "NRS 118A.242"
       ]
+    },
+    {
+      "slug": "small-landlord-deposit-deadlines-beat-fees",
+      "title": "Small landlord deposit deadlines beat penalty fees",
+      "description": "Why mom-and-pop operators lose deposits to clocks, not cleaning costs. Documentation habits from Simple Property Tools. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "home",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "why-spreadsheets-fail-deposit-returns",
+      "title": "Why spreadsheets fail on security deposit returns",
+      "description": "Cells do not send reminders or itemization packets. When to switch to Deposit Desk for turnover. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "home",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-documentation-1-to-40-units",
+      "title": "Deposit documentation for 1 to 40 units",
+      "description": "Same habits from a duplex to a small portfolio: packets, not platform lock-in. Simple Property Tools. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "home",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "chicago-rlto-vs-statewide-illinois-deposits",
+      "title": "Chicago RLTO vs statewide Illinois deposit clocks",
+      "description": "45-day city clock vs 30-day state return after surrender. Toggle in Deposit Desk step 1. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "home",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "competitor-pm-software-deposit-gaps",
+      "title": "What PM software gets wrong about deposits",
+      "description": "Innago, Buildium, and others collect rent; deposit compliance is a side module. Our wedge. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "home",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-five-step-wizard-overview",
+      "title": "Deposit Desk five-step wizard overview",
+      "description": "State, property, move-in, itemization, export. How the /app flow maps to turnover. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-desk",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-move-in-checklist-export",
+      "title": "Deposit Desk move-in checklist and export",
+      "description": "Room tables and notes that survive move-out fights. Step 3 and print. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-desk",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-itemization-step-four",
+      "title": "Deposit Desk itemization step four",
+      "description": "Line items, totals, and withhold letter preview before you mail. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-desk",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-multistate-32-plus-dc",
+      "title": "Deposit Desk in 32 states plus DC",
+      "description": "Wizard state selector and guides per jurisdiction. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-desk",
+      "states": [
+        "IL"
+      ],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-vs-leaserooster-deposits",
+      "title": "Deposit Desk vs LeaseRooster on deposits",
+      "description": "Both focus on deposit lifecycle; compare IL depth, pricing, and packet export. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-desk",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "pricing-per-turn-29-49-vs-pro-subscription",
+      "title": "Per-turn $29 and $49 vs Pro subscription",
+      "description": "When to unlock one packet vs Pro monthly or annual for up to 40 units. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "pricing",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "pricing-deposit-mistake-costs-more-than-pro",
+      "title": "One deposit mistake costs more than Pro",
+      "description": "ROI framing: $22/mo Pro vs a single penalty or dispute hour. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "pricing",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "pricing-condition-hub-keeper-portfolio",
+      "title": "Condition hub Keeper and Portfolio pricing",
+      "description": "$29/mo Keeper for 10 units · $79/mo Portfolio for 40 units and three seats. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "pricing",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "pricing-free-draft-paid-print",
+      "title": "Free draft and paid print unlock",
+      "description": "Build the packet free; pay when you need PDF or print for this turn. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "pricing",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "pricing-vs-free-landlord-apps",
+      "title": "Deposit Desk pricing vs free landlord apps",
+      "description": "Innago and Avail are free for rent; deposit packets are our paid wedge. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "pricing",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "condition-hub-move-in-walkthrough-guide",
+      "title": "Condition hub move-in walkthrough guide",
+      "description": "Room-by-room dated record at lease start. Customer name Condition hub. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "condition-hub",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "condition-hub-move-out-proof-deposit",
+      "title": "Condition hub move-out proof for deposits",
+      "description": "Link walkthrough evidence to withhold lines in Deposit Desk. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "condition-hub",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "condition-hub-wear-vs-damage-photos",
+      "title": "Wear vs damage in Condition hub photos",
+      "description": "Document condition without over-claiming withholds. Operator education. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "condition-hub",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "condition-hub-vs-inspection-apps",
+      "title": "Condition hub vs generic inspection apps",
+      "description": "Turnover-focused walkthroughs plus Deposit Desk export path. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "condition-hub",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "condition-hub-keeper-ten-units",
+      "title": "Condition hub Keeper for ten units",
+      "description": "Keeper plan: walkthroughs plus Deposit Desk print for up to ten doors. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "condition-hub",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "modules-suite-without-pm-bloat",
+      "title": "Simple Property modules without PM bloat",
+      "description": "Deposit Desk plus Condition hub lanes  ·  not a full property management suite. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "modules",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "modules-deposit-desk-and-hub-together",
+      "title": "Deposit Desk and Condition hub together",
+      "description": "Proof at the door plus statutory export. /modules explains the pair. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "modules",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "modules-operator-logs-maintenance-trail",
+      "title": "Operator logs and maintenance trail",
+      "description": "Maintenance notes that support deposit narratives. Links to /logs. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "modules",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "modules-google-calendar-sheets-handoff",
+      "title": "Google Calendar and Sheets handoff",
+      "description": "Export deadlines and ledgers without abandoning Google tools. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "modules",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "modules-what-we-do-not-ship",
+      "title": "What Simple Property Tools does not ship",
+      "description": "No screening, accounting, or e-sign replacement. Scope clarity for buyers. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "modules",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "operator-logs-maintenance-deposit-disputes",
+      "title": "Operator logs for maintenance during deposit disputes",
+      "description": "Show prior repairs and dates when tenants challenge withholds. /logs. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "operator-logs",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "operator-logs-inspection-complaints",
+      "title": "Inspection and complaint logs for small landlords",
+      "description": "Tickets and inspections in one browser trail. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "operator-logs",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "operator-logs-csv-print-audit",
+      "title": "CSV and print audit trail from Operator logs",
+      "description": "Export maintenance history for counsel or insurance. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "operator-logs",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "operator-logs-vs-property-management-tickets",
+      "title": "Operator logs vs PM maintenance tickets",
+      "description": "No suite required for a dated repair list. Compare to Buildium-style tickets. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "operator-logs",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "operator-logs-turnover-weekend-workflow",
+      "title": "Turnover weekend workflow with Operator logs",
+      "description": "Log final repairs, then finish Deposit Desk step 4. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "operator-logs",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "launch-stack-1-to-10-doors-deposits",
+      "title": "Launch stack for 1 to 10 doors · deposits first",
+      "description": "Door-count stack starting with Deposit Desk compliance. /launch-stack. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "launch-stack",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "launch-stack-10-to-20-doors-ledger",
+      "title": "Launch stack for 10 to 20 doors · ledger discipline",
+      "description": "Add Sheets and deadline tracking without enterprise PM. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "launch-stack",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "launch-stack-20-to-40-doors-automation",
+      "title": "Launch stack for 20 to 40 doors · light automation",
+      "description": "Reminders, logs, and Pro cap at forty units. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "launch-stack",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "launch-stack-deposit-desk-turnover-handoff",
+      "title": "Deposit Desk turnover handoff on the stack",
+      "description": "JSON packet handoff and calendar links from launch-stack. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "launch-stack",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "launch-stack-vs-all-in-one-landlord-software",
+      "title": "Launch stack vs all-in-one landlord software",
+      "description": "Why we stack Deposit Desk first instead of Innago or DoorLoop alone. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "launch-stack",
+      "states": [],
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "statutes": []
     }
   ]
 }

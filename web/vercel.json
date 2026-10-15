@@ -1073,6 +1073,146 @@
     {
       "source": "/blog/las-vegas-nevada-deposit-local-guide",
       "destination": "/blog/las-vegas-nevada-deposit-local-guide.html"
+    },
+    {
+      "source": "/blog/small-landlord-deposit-deadlines-beat-fees",
+      "destination": "/blog/small-landlord-deposit-deadlines-beat-fees.html"
+    },
+    {
+      "source": "/blog/why-spreadsheets-fail-deposit-returns",
+      "destination": "/blog/why-spreadsheets-fail-deposit-returns.html"
+    },
+    {
+      "source": "/blog/deposit-documentation-1-to-40-units",
+      "destination": "/blog/deposit-documentation-1-to-40-units.html"
+    },
+    {
+      "source": "/blog/chicago-rlto-vs-statewide-illinois-deposits",
+      "destination": "/blog/chicago-rlto-vs-statewide-illinois-deposits.html"
+    },
+    {
+      "source": "/blog/competitor-pm-software-deposit-gaps",
+      "destination": "/blog/competitor-pm-software-deposit-gaps.html"
+    },
+    {
+      "source": "/blog/deposit-desk-five-step-wizard-overview",
+      "destination": "/blog/deposit-desk-five-step-wizard-overview.html"
+    },
+    {
+      "source": "/blog/deposit-desk-move-in-checklist-export",
+      "destination": "/blog/deposit-desk-move-in-checklist-export.html"
+    },
+    {
+      "source": "/blog/deposit-desk-itemization-step-four",
+      "destination": "/blog/deposit-desk-itemization-step-four.html"
+    },
+    {
+      "source": "/blog/deposit-desk-multistate-32-plus-dc",
+      "destination": "/blog/deposit-desk-multistate-32-plus-dc.html"
+    },
+    {
+      "source": "/blog/deposit-desk-vs-leaserooster-deposits",
+      "destination": "/blog/deposit-desk-vs-leaserooster-deposits.html"
+    },
+    {
+      "source": "/blog/pricing-per-turn-29-49-vs-pro-subscription",
+      "destination": "/blog/pricing-per-turn-29-49-vs-pro-subscription.html"
+    },
+    {
+      "source": "/blog/pricing-deposit-mistake-costs-more-than-pro",
+      "destination": "/blog/pricing-deposit-mistake-costs-more-than-pro.html"
+    },
+    {
+      "source": "/blog/pricing-condition-hub-keeper-portfolio",
+      "destination": "/blog/pricing-condition-hub-keeper-portfolio.html"
+    },
+    {
+      "source": "/blog/pricing-free-draft-paid-print",
+      "destination": "/blog/pricing-free-draft-paid-print.html"
+    },
+    {
+      "source": "/blog/pricing-vs-free-landlord-apps",
+      "destination": "/blog/pricing-vs-free-landlord-apps.html"
+    },
+    {
+      "source": "/blog/condition-hub-move-in-walkthrough-guide",
+      "destination": "/blog/condition-hub-move-in-walkthrough-guide.html"
+    },
+    {
+      "source": "/blog/condition-hub-move-out-proof-deposit",
+      "destination": "/blog/condition-hub-move-out-proof-deposit.html"
+    },
+    {
+      "source": "/blog/condition-hub-wear-vs-damage-photos",
+      "destination": "/blog/condition-hub-wear-vs-damage-photos.html"
+    },
+    {
+      "source": "/blog/condition-hub-vs-inspection-apps",
+      "destination": "/blog/condition-hub-vs-inspection-apps.html"
+    },
+    {
+      "source": "/blog/condition-hub-keeper-ten-units",
+      "destination": "/blog/condition-hub-keeper-ten-units.html"
+    },
+    {
+      "source": "/blog/modules-suite-without-pm-bloat",
+      "destination": "/blog/modules-suite-without-pm-bloat.html"
+    },
+    {
+      "source": "/blog/modules-deposit-desk-and-hub-together",
+      "destination": "/blog/modules-deposit-desk-and-hub-together.html"
+    },
+    {
+      "source": "/blog/modules-operator-logs-maintenance-trail",
+      "destination": "/blog/modules-operator-logs-maintenance-trail.html"
+    },
+    {
+      "source": "/blog/modules-google-calendar-sheets-handoff",
+      "destination": "/blog/modules-google-calendar-sheets-handoff.html"
+    },
+    {
+      "source": "/blog/modules-what-we-do-not-ship",
+      "destination": "/blog/modules-what-we-do-not-ship.html"
+    },
+    {
+      "source": "/blog/operator-logs-maintenance-deposit-disputes",
+      "destination": "/blog/operator-logs-maintenance-deposit-disputes.html"
+    },
+    {
+      "source": "/blog/operator-logs-inspection-complaints",
+      "destination": "/blog/operator-logs-inspection-complaints.html"
+    },
+    {
+      "source": "/blog/operator-logs-csv-print-audit",
+      "destination": "/blog/operator-logs-csv-print-audit.html"
+    },
+    {
+      "source": "/blog/operator-logs-vs-property-management-tickets",
+      "destination": "/blog/operator-logs-vs-property-management-tickets.html"
+    },
+    {
+      "source": "/blog/operator-logs-turnover-weekend-workflow",
+      "destination": "/blog/operator-logs-turnover-weekend-workflow.html"
+    },
+    {
+      "source": "/blog/launch-stack-1-to-10-doors-deposits",
+      "destination": "/blog/launch-stack-1-to-10-doors-deposits.html"
+    },
+    {
+      "source": "/blog/launch-stack-10-to-20-doors-ledger",
+      "destination": "/blog/launch-stack-10-to-20-doors-ledger.html"
+    },
+    {
+      "source": "/blog/launch-stack-20-to-40-doors-automation",
+      "destination": "/blog/launch-stack-20-to-40-doors-automation.html"
+    },
+    {
+      "source": "/blog/launch-stack-deposit-desk-turnover-handoff",
+      "destination": "/blog/launch-stack-deposit-desk-turnover-handoff.html"
+    },
+    {
+      "source": "/blog/launch-stack-vs-all-in-one-landlord-software",
+      "destination": "/blog/launch-stack-vs-all-in-one-landlord-software.html"
     }
   ],
   "crons": [

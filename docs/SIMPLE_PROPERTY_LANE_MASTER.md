@@ -66,6 +66,12 @@ Full table: `docs/receipt-rail/PRICING_40_UNITS.md` · GTM: `docs/PRICING_DIVE_P
 
 ---
 
+## Competitive & SEO
+
+Field research · competitor gaps · route blog series: `docs/COMPETITIVE_FIELD_RESEARCH_2026-10.md` · nomenclature: `docs/NOMENCLATURE.md` · `npm run audit:route-series`.
+
+---
+
 ## Quality gate (ship bar)
 
 From repo root:

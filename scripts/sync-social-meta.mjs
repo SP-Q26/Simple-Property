@@ -53,7 +53,7 @@ const DROP_PAGES = [
   {
     file: "feedback.html",
     path: "/feedback",
-    ogTitle: "Suggest rulesets · Deposit Desk feedback",
+    ogTitle: "Suggest improvements · Deposit Desk feedback",
     ogDescription:
       `Suggest state rules, wizard fields, or guides. ${COVERAGE_LABEL} · Chicago HQ · not legal advice.`,
   },
