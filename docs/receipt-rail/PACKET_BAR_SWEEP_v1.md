@@ -90,6 +90,10 @@ Clipboard and agent exports use this JSON object (markdown body is what operator
 
 ---
 
+## Telemetry
+
+Client emits **`packet_bar_*`** events via `web/lib/spt-telemetry.mjs` (no PII). See [SIMPLE_PROPERTY_TELEMETRY_PBS_v1.md](./SIMPLE_PROPERTY_TELEMETRY_PBS_v1.md).
+
 ## Sister isles (later)
 
 Copy `web/lib/packet-bar.mjs` once into FieldDrop / Berth static trees; swap `brand` · `template_id` · share URL builder. Do not fork button order without bumping to **PBS v2**.

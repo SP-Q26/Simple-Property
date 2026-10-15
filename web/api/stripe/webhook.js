@@ -21,12 +21,13 @@ function readRawBody(req) {
   });
 }
 
-function logEvent(type, payload) {
+function logEvent(name, payload) {
   console.log(
     JSON.stringify({
-      spt_webhook: true,
-      type,
+      spt_telemetry: true,
+      name,
       at: new Date().toISOString(),
+      isles_brand: "deposit_desk",
       ...payload,
     })
   );
@@ -55,10 +56,10 @@ export default async function handler(req, res) {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const record = await recordFromCheckoutSession(session);
-      logEvent("checkout.session.completed", {
+      logEvent("checkout_complete", {
+        sku: session.metadata?.spt_sku || "",
+        stripe_type: "checkout.session.completed",
         session_id: session.id,
-        sku: session.metadata?.spt_sku,
-        customer: record.customer_id,
         kv: Boolean(record.customer_id),
       });
     } else if (
@@ -82,10 +83,12 @@ export default async function handler(req, res) {
       } else {
         await recordFromStripeSubscription(sub, skuHint);
       }
-      logEvent(event.type, {
-        subscription_id: sub.id,
+      const subName =
+        event.type === "customer.subscription.deleted" ? "subscription_deleted" : "subscription_updated";
+      logEvent(subName, {
+        sku: skuHint || "annual",
         status: sub.status,
-        customer: sub.customer,
+        subscription_id: sub.id,
       });
     } else if (event.type === "invoice.paid") {
       const inv = event.data.object;

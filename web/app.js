@@ -20,7 +20,18 @@ import {
   openGoogleCalendar,
 } from "./lib/google-tools.mjs";
 import { buildPacketAiReport, copyTextForAi, buildPrintPacketInnerHtml } from "./lib/packet-report.mjs";
-import { bindPacketBar, buildDepositDeskPbsRow, renderPacketBarHtml } from "./lib/packet-bar.mjs";
+import {
+  bindPacketBar,
+  buildDepositDeskPbsRow,
+  depositDeskVerdict,
+  renderPacketBarHtml,
+} from "./lib/packet-bar.mjs";
+import {
+  trackIsles,
+  trackPacketBar,
+  DEPOSIT_DESK_TEMPLATE_ID,
+  doorBand,
+} from "./lib/spt-telemetry.mjs";
 import {
   buildWizardAgentSnapshot,
   publishWizardAgentSnapshot,
@@ -363,7 +374,18 @@ function isProSubscription() {
 }
 
 function sptTrack(name, data) {
-  if (typeof window.sptTrack === "function") window.sptTrack(name, data || {});
+  trackIsles(name, {
+    ...(data || {}),
+    door_band: doorBand(draft.property?.unitCount),
+  });
+}
+
+function trackWizardStep() {
+  const stepDef = WIZARD_STEPS.find((s) => s.n === step);
+  trackIsles("sp_wizard_step", {
+    step_id: stepDef?.key || String(step),
+    index: step,
+  });
 }
 
 function paywallActionsHtml() {
@@ -840,7 +862,7 @@ function finishWizard() {
     document.getElementById("packet-screen-preview") ||
     document.getElementById("btn-save-packet");
   focus?.scrollIntoView({ behavior: "smooth", block: "center" });
-  sptTrack("wizard_done", { state: draft.property.state || "" });
+  trackIsles("sp_finalize_attempt", { verdict: depositDeskVerdict(draft) });
 }
 
 function bindWizardKeyboard() {
@@ -1608,6 +1630,7 @@ function bindStepEvents() {
         return;
       }
       if (status) status.textContent = "Tenant copy sent.";
+      trackPacketBar("email_tenant");
       draft.tenant.email = to;
       saveDraft(draft);
     } catch {
@@ -1657,8 +1680,7 @@ function triggerWizardPrint(kind) {
   window.__sptPrintKind = isPreview ? "preview" : "final";
   renderPrintPacket(isPreview ? "preview" : "final");
   els.printRoot?.scrollIntoView({ behavior: "smooth", block: "start" });
-  if (isPreview) sptTrack("preview_print", { state: draft.property.state || "" });
-  else sptTrack("final_print", { state: draft.property.state || "" });
+  trackPacketBar("pdf");
   window.print();
 }
 
@@ -1678,6 +1700,11 @@ function bindPacketBarFinalize() {
     },
     onPrint: (mode) => triggerWizardPrint(mode),
     onIcs: () => document.getElementById("btn-ics")?.click(),
+    onFinalizeAttempt: (row) =>
+      trackIsles("sp_finalize_attempt", { verdict: row?.verdict || depositDeskVerdict(draft) }),
+    onFinalizeSuccess: ({ receipt_id_hash, verdict }) =>
+      trackIsles("sp_finalize_success", { receipt_id_hash, verdict }),
+    onFinalizeFail: (reason) => trackIsles("sp_finalize_fail", { reason }),
     onStatus: (msg) => {
       if (els.status) els.status.textContent = msg;
     },
@@ -1782,7 +1809,7 @@ function render() {
       });
     }
   }
-  sptTrack("wizard_step", { step: String(step), state: draft.property.state || "" });
+  trackWizardStep();
   els.prev.disabled = step <= 1;
   if (step >= MAX_STEPS) els.next.textContent = "Done";
   else if (step === 4) els.next.textContent = "Continue to export";
@@ -1881,7 +1908,7 @@ refreshPacketSelect();
       console.warn("spt entitlement", e);
     }
   }
-  sptTrack("wizard_start", { state: draft.property.state || "" });
+  trackIsles("sp_wizard_start", { template_id: DEPOSIT_DESK_TEMPLATE_ID });
   render();
 })();
 

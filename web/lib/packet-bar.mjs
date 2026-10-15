@@ -4,6 +4,7 @@
  */
 import { suggestVerdict } from "./receipt-spine.mjs";
 import { sumPacketDeductions, copyTextForAi } from "./packet-report.mjs";
+import { trackPacketBar, hashReceiptId } from "./spt-telemetry.mjs";
 
 export const PBS_V1 = "pbs_v1";
 export const PBS_TSV_COLUMNS = [
@@ -156,10 +157,13 @@ export function bindPacketBar(root, handlers) {
 
   root.querySelector('[data-pbs="copy-link"]')?.addEventListener("click", async () => {
     const row = await handlers.getRow();
+    handlers.onFinalizeAttempt?.(row);
     try {
       await copyTextForAi(row.share_url);
+      trackPacketBar("copy_link");
       status("Link copied · share with counsel or paste into email.");
     } catch {
+      handlers.onFinalizeFail?.("copy_link");
       status("Could not copy link · allow clipboard access.");
     }
   });
@@ -167,10 +171,15 @@ export function bindPacketBar(root, handlers) {
   root.querySelector('[data-pbs="copy-tsv"]')?.addEventListener("click", async () => {
     const row = await handlers.getRow();
     const line = formatPbsTsvRow(row);
+    handlers.onFinalizeAttempt?.(row);
     try {
       await copyTextForAi(line);
+      trackPacketBar("copy_tsv");
+      const receipt_id_hash = await hashReceiptId(row.receipt_id);
+      handlers.onFinalizeSuccess?.({ receipt_id_hash, verdict: row.verdict });
       status("TSV row copied · paste into Google Sheets (cell A1).");
     } catch {
+      handlers.onFinalizeFail?.("copy_tsv");
       status("Could not copy TSV row.");
     }
   });
@@ -181,6 +190,7 @@ export function bindPacketBar(root, handlers) {
   });
 
   root.querySelector('[data-pbs="ics"]')?.addEventListener("click", () => {
+    trackPacketBar("ics");
     handlers.onIcs?.();
   });
 }

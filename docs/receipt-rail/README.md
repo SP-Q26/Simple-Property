@@ -15,6 +15,7 @@
 | [PRICING_40_UNITS.md](./PRICING_40_UNITS.md) | Keeper / Portfolio unit caps |
 | [CODE_MAP.md](./CODE_MAP.md) | Alpha implementation paths in `web/` |
 | [PACKET_BAR_SWEEP_v1.md](./PACKET_BAR_SWEEP_v1.md) | PBS v1 · finalize toolbar · TSV row · `ai_paste_v1` |
+| [SIMPLE_PROPERTY_TELEMETRY_PBS_v1.md](./SIMPLE_PROPERTY_TELEMETRY_PBS_v1.md) | Funnel + `packet_bar_*` · shared Isles dictionary |
 
 ## Relationship to shipping code today
 

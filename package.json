@@ -8,6 +8,7 @@
     "audit:swarm": "node scripts/audit-swarm.mjs",
     "audit:receipt-rail": "node scripts/audit-receipt-rail-spec.mjs",
     "audit:packet-bar": "node scripts/audit-packet-bar-sweep.mjs",
+    "audit:telemetry": "node scripts/audit-spt-telemetry.mjs",
     "audit:hub-alpha": "node scripts/audit-hub-alpha.mjs",
     "audit:hub-copy": "node scripts/audit-hub-copy.mjs",
     "audit:goal-copy": "node scripts/audit-goal-copy.mjs",
