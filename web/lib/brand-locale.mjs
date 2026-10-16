@@ -19,7 +19,7 @@ export const VALUE_ROI_LINE =
   "Turnover packet in one export · per-turn pricing like screening · Pro when doors stack";
 export const OPERATOR_TEAM_LINE = "Built for landlords who run the doors themselves.";
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 70;
+export const CSS_VERSION = 71;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

@@ -48,6 +48,7 @@ need("css mobile stack @640 pricing cards", css.includes("@media (min-width: 640
 need("css tablet pricing 2-col @720", css.includes("@media (min-width: 720px)") && css.includes("grid-template-columns: repeat(2"));
 need("css desktop pricing 4-col @1024", css.includes("@media (min-width: 1024px)") && css.includes("repeat(4"));
 need("css hero single column default", css.includes(".hero-layout") && css.includes("820px"));
+need("css hero copy stack", css.includes(".hero-copy") && css.includes("align-items: start"));
 need("css iOS safe-area tokens", css.includes("--safe-top") && css.includes("safe-area-inset"));
 need("css tap min height token", css.includes("--tap-min"));
 need("css iOS input 16px mobile", css.includes("@media (max-width: 639px)") && css.includes("font-size: 1rem") && css.includes("input[type=\"text\"]"));

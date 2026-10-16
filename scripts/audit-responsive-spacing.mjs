@@ -32,6 +32,8 @@ need("locale label short copy", nav.includes('"Your state"') && nav.includes('"G
 need("locale map opens desk hint", nav.includes("tap opens Deposit Desk"));
 need("sticky locale bar", css.includes(".locale-bar") && css.includes("position: sticky"));
 need("tablet spacing block present", css.includes("@media (min-width: 640px) and (max-width: 1023px)"));
+need("hero top-align not centered", /\.hero-layout[^}]*align-items:\s*start/.test(css));
+need("hero copy flex gap", css.includes(".hero-copy") && css.includes("gap: var(--space-"));
 
 console.log(fail ? `\nResponsive spacing audit FAILED (${fail})` : "\nResponsive spacing audit OK");
 process.exit(fail ? 1 : 0);
