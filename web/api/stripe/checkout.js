@@ -8,6 +8,7 @@ import {
   siteOrigin,
 } from "../../lib/stripe-catalog.mjs";
 import { PRO_UNITS_MAX } from "../../lib/pro-limits.mjs";
+import { applyLiveE2eDiscount } from "../../lib/stripe-live-e2e-discount.mjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: "2024-11-20.acacia",
@@ -142,7 +143,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const baseParams = buildBaseSessionParams({ sku, catalog, origin, metadata, packetId });
+    const baseParams = applyLiveE2eDiscount(
+      buildBaseSessionParams({ sku, catalog, origin, metadata, packetId }),
+      body,
+    );
     const session = await createCheckoutSession(stripe, baseParams, sku);
     return res.status(200).json({ url: session.url, id: session.id });
   } catch (e) {

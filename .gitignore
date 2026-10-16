@@ -5,3 +5,6 @@ web/.vercel
 web/.env
 web/.env.*
 .tmp-statutes/
+# Operator / cross-lane docs (not Deposit Desk product surface)
+docs/INNSEGALL_*.md
+docs/*_CURSOR_AGENT_1PAGER.md
