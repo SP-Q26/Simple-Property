@@ -20,7 +20,7 @@ Canon: `docs/CANON.md` · brand: `docs/BRAND.md` · quality: `docs/SWARM_AUDIT.m
 | `/pricing` | Plans |
 | `/app` | 5-step packet wizard |
 | `/success` | Post-checkout · unlock export |
-| `/blog` | IL SEO hub (7 guides) |
+| `/blog` | Statute & operator SEO hub |
 
 ## Local dev
 
