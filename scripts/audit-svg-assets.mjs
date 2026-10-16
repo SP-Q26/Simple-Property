@@ -58,9 +58,15 @@ for (const rel of REQUIRED) {
 }
 
 const stripeDir = join(web, "stripe");
+const stripeSvgs = readdirSync(stripeDir).filter((x) => x.endsWith(".svg"));
+for (const f of stripeSvgs) {
+  const svg = readFileSync(join(stripeDir, f), "utf8");
+  need(`${f} v3 radial glow`, svg.includes('id="sptv3-glow"') && svg.includes("radialGradient"));
+  need(`${f} v3 tile radius`, svg.includes('rx="64"'));
+}
 for (const f of readdirSync(stripeDir).filter((x) => x.endsWith(".png"))) {
   const kb = Math.round(statSync(join(stripeDir, f)).size / 1024);
-  need(`${f} png present (${kb} KB)`, kb > 1 && kb < 512);
+  need(`${f} png present (${kb} KB)`, kb >= 8 && kb < 512);
 }
 
 const uploadDir = join(root, "docs/stripe/upload-for-stripe");

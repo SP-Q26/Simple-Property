@@ -1,26 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Deposit Desk Pro annual plan with year on the clock">
-  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
-  <rect x="56" y="56" width="400" height="400" rx="32" fill="#faf7f0" stroke="#4a6741" stroke-opacity="0.35" stroke-width="2"/>
-  <g transform="translate(256 248)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="0" cy="0" r="108" stroke="#c9a227" stroke-width="2.5" stroke-opacity="0.55"/>
-    <circle cx="0" cy="-108" r="4" fill="#c9a227" stroke="none"/>
-    <circle cx="94" cy="-54" r="3" fill="#3b5a78" stroke="none" opacity="0.45"/>
-    <circle cx="94" cy="54" r="3" fill="#3b5a78" stroke="none" opacity="0.45"/>
-    <circle cx="0" cy="108" r="3" fill="#3b5a78" stroke="none" opacity="0.45"/>
-    <circle cx="-94" cy="54" r="3" fill="#3b5a78" stroke="none" opacity="0.45"/>
-    <circle cx="-94" cy="-54" r="3" fill="#3b5a78" stroke="none" opacity="0.45"/>
-    <g transform="translate(-56 12) scale(0.72)" stroke="#3d3429" stroke-width="2.4">
-      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0" opacity="0.9"/>
+  <defs>
+    <radialGradient id="sptv3-glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#4a6f8f"/>
+      <stop offset="52%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a2838"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="64" fill="url(#sptv3-glow)"/>
+  <rect x="40" y="40" width="432" height="432" rx="48" fill="none" stroke="#c9a227" stroke-opacity="0.38" stroke-width="2.5"/>
+  <g transform="translate(256 252)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="0" r="108" stroke="#c9a227" stroke-width="4" stroke-opacity="0.75"/>
+    <circle cx="0" cy="-108" r="6" fill="#c9a227" stroke="none"/>
+    <circle cx="94" cy="-54" r="4.5" fill="#faf7f0" stroke="none" opacity="0.55"/>
+    <circle cx="94" cy="54" r="4.5" fill="#faf7f0" stroke="none" opacity="0.55"/>
+    <circle cx="0" cy="108" r="4.5" fill="#faf7f0" stroke="none" opacity="0.55"/>
+    <circle cx="-94" cy="54" r="4.5" fill="#faf7f0" stroke="none" opacity="0.55"/>
+    <circle cx="-94" cy="-54" r="4.5" fill="#faf7f0" stroke="none" opacity="0.55"/>
+    <g transform="translate(-56 12) scale(0.74)" stroke="#faf7f0" stroke-width="3">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#2c5282" fill-opacity="0.4"/>
       <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
       <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741"/>
     </g>
-    <g transform="translate(8 4) scale(0.86)" stroke="#3d3429" stroke-width="2.2">
-      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+    <g transform="translate(8 4) scale(0.9)" stroke="#faf7f0" stroke-width="2.6">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0" fill-opacity="0.14"/>
       <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
       <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741"/>
-      <circle cx="12" cy="38" r="3" fill="#c9a227" stroke="none"/>
+      <circle cx="12" cy="38" r="4" fill="#c9a227" stroke="none"/>
     </g>
   </g>
-  <path d="M196 392h120" stroke="#4a6741" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
-  <path d="M292 384l12 8-12 8" fill="none" stroke="#4a6741" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  <path d="M188 396h136" stroke="#c9a227" stroke-width="4" stroke-linecap="round" opacity="0.85"/>
+  <path d="M308 388l14 8-14 8" fill="none" stroke="#faf7f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
 </svg>

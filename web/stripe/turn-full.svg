@@ -1,22 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Full tenancy unlock from move-in to move-out">
-  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
-  <rect x="56" y="56" width="400" height="400" rx="32" fill="#faf7f0" stroke="#3b5a78" stroke-opacity="0.28" stroke-width="2"/>
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 230)">
-    <g transform="translate(-72 0)" stroke-width="2.2">
-      <rect x="-20" y="0" width="40" height="58" rx="2" fill="#eef2f6" stroke="#4a6741"/>
+  <defs>
+    <radialGradient id="sptv3-glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#4a6f8f"/>
+      <stop offset="52%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a2838"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="64" fill="url(#sptv3-glow)"/>
+  <rect x="40" y="40" width="432" height="432" rx="48" fill="none" stroke="#c9a227" stroke-opacity="0.38" stroke-width="2.5"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 236)">
+    <g transform="translate(-72 0)" stroke-width="3">
+      <rect x="-20" y="0" width="40" height="58" rx="2" fill="#2c5282" fill-opacity="0.5" stroke="#4a6741"/>
       <path d="M0 0V-10a10 10 0 0 1 20 0V0" stroke="#4a6741"/>
       <path d="M0-6-12 2 0-2 12 2Z" fill="#4a6741" stroke="#4a6741"/>
     </g>
-    <g transform="translate(72 0)" stroke-width="2.2">
-      <rect x="-20" y="0" width="40" height="58" rx="2" fill="#eef2f6" stroke="#7a4038"/>
-      <path d="M0 0V-10a10 10 0 0 1 20 0V0" stroke="#3b5a78"/>
+    <g transform="translate(72 0)" stroke-width="3">
+      <rect x="-20" y="0" width="40" height="58" rx="2" fill="#2c5282" fill-opacity="0.5" stroke="#7a4038"/>
+      <path d="M0 0V-10a10 10 0 0 1 20 0V0" stroke="#faf7f0"/>
       <path d="M0-6-12 2 0-2 12 2Z" fill="#4a6741" stroke="#4a6741"/>
     </g>
-    <path d="M-28 32h56" stroke="#c9a227" stroke-width="3"/>
-    <path d="M20 26l8 6-8 6" stroke="#c9a227" stroke-width="2.5"/>
-    <circle cx="0" cy="32" r="10" fill="#faf7f0" stroke="#3d3429" stroke-width="1.8"/>
-    <path d="M-5 32h10M0 27v10" stroke="#3d3429" stroke-width="1.6"/>
+    <path d="M-28 32h56" stroke="#c9a227" stroke-width="4"/>
+    <path d="M20 26l10 7-10 7" stroke="#c9a227" stroke-width="3.5"/>
+    <circle cx="0" cy="32" r="12" fill="#1a2838" stroke="#faf7f0" stroke-width="2.2"/>
+    <path d="M-6 32h12M0 26v12" stroke="#c9a227" stroke-width="2.2"/>
   </g>
-  <path d="M176 320q80-36 160 0" fill="none" stroke="#3d3429" stroke-width="1.5" stroke-opacity="0.22" stroke-dasharray="5 7"/>
-  <rect x="196" y="340" width="120" height="28" rx="7" fill="#c9a227" fill-opacity="0.18" stroke="#c9a227" stroke-width="1.5" stroke-opacity="0.5"/>
+  <path d="M168 324q88-40 176 0" fill="none" stroke="#c9a227" stroke-width="2" stroke-opacity="0.35" stroke-dasharray="6 8"/>
+  <rect x="188" y="348" width="136" height="32" rx="8" fill="#c9a227" fill-opacity="0.22" stroke="#c9a227" stroke-width="2" stroke-opacity="0.65"/>
 </svg>

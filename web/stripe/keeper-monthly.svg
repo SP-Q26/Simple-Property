@@ -1,21 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Condition hub Keeper monthly for walkthrough units">
   <defs>
-    <linearGradient id="k-card" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#faf7f0"/>
-      <stop offset="1" stop-color="#f4f0e6"/>
-    </linearGradient>
+    <radialGradient id="sptv3-glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#4a6f8f"/>
+      <stop offset="52%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a2838"/>
+    </radialGradient>
   </defs>
-  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
-  <rect x="56" y="56" width="400" height="400" rx="32" fill="url(#k-card)" stroke="#c9a227" stroke-opacity="0.28" stroke-width="2"/>
-  <g transform="translate(200 200)" fill="none" stroke="#3d3429" stroke-width="3" stroke-linecap="round">
-    <rect x="0" y="0" width="112" height="144" rx="10" fill="#faf7f0"/>
-    <path d="M28 36h56M28 64h56M28 92h40" stroke="#4a6741" stroke-width="4"/>
-    <path d="M84 92l12 12l24 -28" stroke="#c9a227" stroke-width="5"/>
+  <rect width="512" height="512" rx="64" fill="url(#sptv3-glow)"/>
+  <rect x="40" y="40" width="432" height="432" rx="48" fill="none" stroke="#c9a227" stroke-opacity="0.38" stroke-width="2.5"/>
+  <g transform="translate(200 196)" fill="none" stroke="#faf7f0" stroke-width="3.5" stroke-linecap="round">
+    <rect x="0" y="0" width="112" height="144" rx="12" fill="#1a2838" fill-opacity="0.55"/>
+    <path d="M28 36h56M28 64h56M28 92h40" stroke="#4a6741" stroke-width="5"/>
+    <path d="M84 92l12 12l24 -28" stroke="#c9a227" stroke-width="6"/>
   </g>
-  <g transform="translate(320 300)" fill="#3b5a78" stroke="none">
-    <circle cx="0" cy="0" r="6"/><circle cx="24" cy="-12" r="6"/><circle cx="48" cy="0" r="6"/>
-    <circle cx="12" cy="24" r="6"/><circle cx="36" cy="24" r="6"/>
+  <g transform="translate(324 296)" fill="#c9a227" stroke="none">
+    <circle cx="0" cy="0" r="7"/><circle cx="26" cy="-14" r="7"/><circle cx="52" cy="0" r="7"/>
+    <circle cx="13" cy="26" r="7"/><circle cx="39" cy="26" r="7"/>
   </g>
-  <rect x="176" y="368" width="160" height="14" rx="7" fill="#eef2f6" stroke="#3b5a78" stroke-width="1.5"/>
-  <rect x="192" y="371" width="48" height="8" rx="4" fill="#4a6741"/>
+  <rect x="168" y="368" width="176" height="18" rx="9" fill="#1a2838" stroke="#c9a227" stroke-opacity="0.5" stroke-width="2"/>
+  <rect x="184" y="372" width="52" height="10" rx="5" fill="#4a6741"/>
 </svg>

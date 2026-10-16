@@ -1,25 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Condition hub Portfolio monthly multi-seat vault">
   <defs>
-    <linearGradient id="p-card" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#faf7f0"/>
-      <stop offset="1" stop-color="#f4f0e6"/>
-    </linearGradient>
+    <radialGradient id="sptv3-glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#4a6f8f"/>
+      <stop offset="52%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a2838"/>
+    </radialGradient>
   </defs>
-  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
-  <rect x="56" y="56" width="400" height="400" rx="32" fill="url(#p-card)" stroke="#c9a227" stroke-opacity="0.28" stroke-width="2"/>
-  <g transform="translate(256 168)" fill="none" stroke="#3d3429" stroke-width="3">
-    <circle cx="-72" cy="0" r="28" fill="#faf7f0"/><circle cx="0" cy="0" r="28" fill="#faf7f0"/><circle cx="72" cy="0" r="28" fill="#faf7f0"/>
-    <path d="M-72 28v20M0 28v20M72 28v20" stroke-linecap="round"/>
+  <rect width="512" height="512" rx="64" fill="url(#sptv3-glow)"/>
+  <rect x="40" y="40" width="432" height="432" rx="48" fill="none" stroke="#c9a227" stroke-opacity="0.38" stroke-width="2.5"/>
+  <g transform="translate(256 172)" fill="none" stroke="#faf7f0" stroke-width="3.5">
+    <circle cx="-72" cy="0" r="30" fill="#2c5282" fill-opacity="0.45"/><circle cx="0" cy="0" r="30" fill="#faf7f0" fill-opacity="0.12"/><circle cx="72" cy="0" r="30" fill="#2c5282" fill-opacity="0.45"/>
+    <path d="M-72 30v22M0 30v22M72 30v22" stroke-linecap="round"/>
   </g>
-  <g transform="translate(256 320)" fill="#4a6741" stroke="#3d3429" stroke-width="2">
-    <rect x="-100" y="-40" width="200" height="120" rx="8" fill="#eef2f6"/>
-    <rect x="-80" y="-20" width="36" height="36" rx="4" fill="#faf7f0"/>
-    <rect x="-32" y="-20" width="36" height="36" rx="4" fill="#faf7f0"/>
-    <rect x="16" y="-20" width="36" height="36" rx="4" fill="#faf7f0"/>
-    <rect x="64" y="-20" width="36" height="36" rx="4" fill="#faf7f0"/>
-    <rect x="-80" y="28" width="36" height="36" rx="4" fill="#faf7f0"/>
-    <rect x="-32" y="28" width="36" height="36" rx="4" fill="#c9a227" fill-opacity="0.35"/>
-    <rect x="16" y="28" width="36" height="36" rx="4" fill="#faf7f0"/>
-    <rect x="64" y="28" width="36" height="36" rx="4" fill="#faf7f0"/>
+  <g transform="translate(256 324)" fill="#4a6741" stroke="#faf7f0" stroke-width="2.5">
+    <rect x="-104" y="-44" width="208" height="124" rx="10" fill="#1a2838" fill-opacity="0.55"/>
+    <rect x="-84" y="-24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
+    <rect x="-36" y="-24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
+    <rect x="12" y="-24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
+    <rect x="60" y="-24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
+    <rect x="-84" y="24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
+    <rect x="-36" y="24" width="36" height="36" rx="4" fill="#c9a227" fill-opacity="0.55"/>
+    <rect x="12" y="24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
+    <rect x="60" y="24" width="36" height="36" rx="4" fill="#2c5282" fill-opacity="0.65"/>
   </g>
 </svg>

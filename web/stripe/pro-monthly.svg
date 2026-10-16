@@ -1,39 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Deposit Desk Pro monthly subscription for many units">
   <defs>
-    <linearGradient id="pm-card" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#faf7f0"/>
-      <stop offset="1" stop-color="#f4f0e6"/>
-    </linearGradient>
+    <radialGradient id="sptv3-glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#4a6f8f"/>
+      <stop offset="52%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a2838"/>
+    </radialGradient>
   </defs>
-  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
-  <rect x="56" y="56" width="400" height="400" rx="32" fill="url(#pm-card)" stroke="#c9a227" stroke-opacity="0.28" stroke-width="2"/>
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 210)">
-    <g transform="translate(-132 18) scale(0.68)" opacity="0.45" stroke="#3d3429" stroke-width="2.8">
-      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+  <rect width="512" height="512" rx="64" fill="url(#sptv3-glow)"/>
+  <rect x="40" y="40" width="432" height="432" rx="48" fill="none" stroke="#c9a227" stroke-opacity="0.38" stroke-width="2.5"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(256 208)">
+    <g transform="translate(-132 22) scale(0.7)" opacity="0.55" stroke="#faf7f0" stroke-width="3.2">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#2c5282" fill-opacity="0.35"/>
       <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
-      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#faf7f0"/>
     </g>
-    <g transform="translate(-44 8) scale(0.82)" opacity="0.65" stroke="#3d3429" stroke-width="2.6">
-      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+    <g transform="translate(-44 10) scale(0.84)" opacity="0.78" stroke="#faf7f0" stroke-width="2.9">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#2c5282" fill-opacity="0.45"/>
       <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
-      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#faf7f0"/>
     </g>
-    <g transform="translate(44 -2) scale(0.94)" opacity="0.85" stroke="#3d3429" stroke-width="2.4">
-      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+    <g transform="translate(44 0) scale(0.96)" opacity="0.92" stroke="#faf7f0" stroke-width="2.6">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0" fill-opacity="0.12"/>
       <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
-      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#faf7f0"/>
     </g>
-    <g transform="translate(132 -12) scale(1.05)" stroke="#3d3429" stroke-width="2.2">
-      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0"/>
+    <g transform="translate(132 -14) scale(1.08)" stroke="#faf7f0" stroke-width="2.4">
+      <rect x="-22" y="0" width="44" height="64" rx="2" fill="#faf7f0" fill-opacity="0.18"/>
       <path d="M0 0V-12a12 12 0 0 1 24 0V0"/>
-      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#3d3429"/>
-      <circle cx="12" cy="38" r="3.2" fill="#c9a227" stroke="none"/>
+      <path d="M0 -8 L-16 0 L0 -4 L16 0 Z" fill="#4a6741" stroke="#faf7f0"/>
+      <circle cx="12" cy="38" r="4" fill="#c9a227" stroke="none"/>
     </g>
   </g>
-  <g transform="translate(256 360)">
-    <rect x="-88" y="-8" width="176" height="16" rx="8" fill="#eef2f6" stroke="#3b5a78" stroke-width="1.5" stroke-opacity="0.5"/>
-    <rect x="-72" y="-4" width="40" height="8" rx="4" fill="#3b5a78"/>
-    <rect x="-20" y="-4" width="40" height="8" rx="4" fill="#c9a227" opacity="0.85"/>
-    <rect x="32" y="-4" width="40" height="8" rx="4" fill="#3b5a78" opacity="0.35"/>
+  <g transform="translate(256 368)">
+    <rect x="-96" y="-10" width="192" height="20" rx="10" fill="#1a2838" stroke="#c9a227" stroke-opacity="0.45" stroke-width="2"/>
+    <rect x="-80" y="-5" width="44" height="10" rx="5" fill="#c9a227"/>
+    <rect x="-24" y="-5" width="44" height="10" rx="5" fill="#faf7f0" fill-opacity="0.85"/>
+    <rect x="32" y="-5" width="44" height="10" rx="5" fill="#4a6741"/>
   </g>
 </svg>

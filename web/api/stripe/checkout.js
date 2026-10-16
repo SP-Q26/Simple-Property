@@ -6,12 +6,17 @@ import {
   priceEnvKeyForSku,
   resolvePriceIdForSku,
   siteOrigin,
+  stripeProductImageUrl,
 } from "../../lib/stripe-catalog.mjs";
 import { PRO_UNITS_MAX } from "../../lib/pro-limits.mjs";
 import { applyLiveE2eDiscount } from "../../lib/stripe-live-e2e-discount.mjs";
+import {
+  createIslesCheckoutSession,
+  ISLES_STRIPE_API_VERSION,
+} from "../../lib/isles-stripe-checkout-branding.mjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2024-11-20.acacia",
+  apiVersion: ISLES_STRIPE_API_VERSION,
 });
 
 function lineItemForSku(sku, opts = {}) {
@@ -83,9 +88,14 @@ async function createCheckoutSession(stripeClient, baseParams, sku) {
   ];
 
   let lastErr;
+  const icon = stripeProductImageUrl(sku);
+  const branding = {
+    display_name: "Deposit Desk",
+    ...(icon ? { icon } : {}),
+  };
   for (const build of attempts) {
     try {
-      return await stripeClient.checkout.sessions.create(build());
+      return await createIslesCheckoutSession(stripeClient, build(), branding);
     } catch (err) {
       lastErr = err;
       console.warn("spt checkout attempt", sku, err?.message || err);

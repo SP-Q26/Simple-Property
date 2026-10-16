@@ -1,19 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Move-out packet unlock with deadline">
-  <rect width="512" height="512" rx="44" fill="#f4f0e6"/>
-  <rect x="56" y="56" width="400" height="400" rx="32" fill="#faf7f0" stroke="#3b5a78" stroke-opacity="0.32" stroke-width="2"/>
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(188 248)">
-    <rect x="0" y="-8" width="52" height="72" rx="2" fill="#eef2f6" stroke="#3b5a78" stroke-width="2.2"/>
-    <path d="M26-8V-20a13 13 0 0 1 26 0V-8" stroke="#3b5a78" stroke-width="2.2"/>
-    <path d="M52 8l36 28v52H52V8z" fill="#faf7f0" stroke="#3d3429" stroke-width="2.2"/>
-    <circle cx="72" cy="44" r="3.5" fill="#c9a227" stroke="none"/>
+  <defs>
+    <radialGradient id="sptv3-glow" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#4a6f8f"/>
+      <stop offset="52%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a2838"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="64" fill="url(#sptv3-glow)"/>
+  <rect x="40" y="40" width="432" height="432" rx="48" fill="none" stroke="#c9a227" stroke-opacity="0.38" stroke-width="2.5"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(184 252)">
+    <rect x="0" y="-8" width="52" height="72" rx="2" fill="#2c5282" fill-opacity="0.45" stroke="#faf7f0" stroke-width="3"/>
+    <path d="M26-8V-20a13 13 0 0 1 26 0V-8" stroke="#faf7f0" stroke-width="3"/>
+    <path d="M52 8l36 28v52H52V8z" fill="#faf7f0" fill-opacity="0.16" stroke="#faf7f0" stroke-width="3"/>
+    <circle cx="72" cy="44" r="5" fill="#c9a227" stroke="none"/>
   </g>
-  <g transform="translate(292 176)" fill="none" stroke="#3d3429" stroke-width="2" stroke-linecap="round">
-    <rect x="0" y="0" width="108" height="136" rx="6" fill="#fff" stroke-opacity="0.85"/>
-    <path d="M16 28h76" opacity="0.35"/>
-    <path d="M16 52h60" opacity="0.35"/>
-    <path d="M16 76h68" opacity="0.35"/>
-    <rect x="16" y="100" width="44" height="22" rx="4" fill="#c9a227" fill-opacity="0.85" stroke="none"/>
+  <g transform="translate(296 172)" fill="none" stroke="#faf7f0" stroke-width="2.5" stroke-linecap="round">
+    <rect x="0" y="0" width="108" height="136" rx="8" fill="#1a2838" fill-opacity="0.55" stroke-opacity="0.9"/>
+    <path d="M16 28h76" opacity="0.45"/>
+    <path d="M16 52h60" opacity="0.45"/>
+    <path d="M16 76h68" opacity="0.45"/>
+    <rect x="16" y="100" width="44" height="24" rx="5" fill="#c9a227" stroke="none"/>
   </g>
-  <path d="M320 108a72 72 0 0 1 72 72" fill="none" stroke="#c9a227" stroke-width="3" stroke-linecap="round"/>
-  <path d="M388 176l8 4-6 8" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M312 100a76 76 0 0 1 76 76" fill="none" stroke="#c9a227" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M384 176l10 5-7 10" fill="none" stroke="#c9a227" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
