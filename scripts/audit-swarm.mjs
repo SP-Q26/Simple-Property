@@ -109,7 +109,7 @@ function scoreBackend() {
     "api/stripe/portal.js",
     "api/auth/magic-link.js",
     "api/reminders/subscribe.js",
-    "api/cron/deadline-reminders.js",
+    "api/cron/[job].js",
   ];
   let s = 100;
   for (const a of apis) if (!existsSync(join(web, a))) s -= 12;

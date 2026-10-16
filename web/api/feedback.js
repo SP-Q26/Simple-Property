@@ -1,6 +1,7 @@
 import { kvZadd, kvConfigured } from "../lib/kv-client.mjs";
 import { resendConfigured, sendResendEmail } from "../lib/resend.mjs";
 import { normalizeEmail } from "../lib/subscription-store.mjs";
+import { recordServerFunnel } from "../lib/server-telemetry.mjs";
 
 const CATEGORIES = new Set(["ruleset", "feature", "wizard", "content", "other"]);
 const MAX_MESSAGE = 4000;
@@ -88,5 +89,10 @@ export default async function handler(req, res) {
     });
   }
 
+  await recordServerFunnel("feedback_submit", {
+    category,
+    stored: Boolean(stored),
+    emailed: mailed,
+  });
   return res.status(200).json({ ok: true, stored: Boolean(stored), emailed: mailed });
 }

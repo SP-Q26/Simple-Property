@@ -67,6 +67,15 @@
 | Event | Payload |
 |-------|---------|
 | `checkout_intent` | `sku`, `page` (optional client mirror via `checkout_click`) |
+| `paywall_view` | `state` |
+| `paywall_urgency` | `days_left`, `state` |
+| `unlock_scroll` | `state` |
+| `purchase_success` | `plan` |
+| `spt_guide_cta_click` | `href`, `page` |
+| `reminder_subscribe` | `scheduled` (server) |
+| `feedback_submit` | `category`, `stored`, `emailed` (server) |
+| `magic_link_request` | `sent` (server) |
+| `hub_spa_view` | `route` |
 | `checkout_complete` | `sku`, `isles_brand: deposit_desk` |
 | `subscription_updated` | `sku`, `status` |
 | `subscription_deleted` | `sku` |

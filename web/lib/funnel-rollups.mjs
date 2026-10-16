@@ -10,13 +10,19 @@ const ALLOWED = new Set([
   "spt_blog_view",
   "spt_start_intent",
   "spt_module_click",
+  "spt_guide_cta_click",
   "sp_wizard_start",
   "sp_wizard_step",
   "sp_finalize_attempt",
   "sp_finalize_success",
   "sp_finalize_fail",
+  "paywall_view",
+  "paywall_urgency",
+  "unlock_scroll",
+  "purchase_success",
   "hub_receipt_finalized",
   "hub_desk_handoff_click",
+  "hub_spa_view",
   "spt_hub_handoff_applied",
   "packet_bar_copy_link",
   "packet_bar_copy_tsv",
@@ -29,6 +35,9 @@ const ALLOWED = new Set([
   "subscription_updated",
   "subscription_deleted",
   "subscription_renewal",
+  "reminder_subscribe",
+  "feedback_submit",
+  "magic_link_request",
 ]);
 
 export function funnelEventAllowed(name) {
@@ -77,13 +86,20 @@ async function readCounter(key) {
  */
 export async function buildFunnelReport(days = 7) {
   const names = [
+    "spt_page_view",
+    "spt_blog_view",
     "spt_start_intent",
     "sp_wizard_start",
     "sp_finalize_success",
+    "paywall_view",
+    "paywall_urgency",
     "checkout_intent",
     "checkout_complete",
+    "purchase_success",
+    "reminder_subscribe",
     "spt_hub_handoff_applied",
     "hub_desk_handoff_click",
+    "hub_receipt_finalized",
   ];
   const totals = {};
   for (const n of names) {

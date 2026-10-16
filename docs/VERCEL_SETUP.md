@@ -9,6 +9,8 @@
 3. Framework: **Other** (static + `/api` serverless)
 4. Production branch: **`main`** · Preview: all other branches + PRs
 
+**Hobby plan:** Vercel allows **at most 12 Serverless Functions** per deployment. This repo consolidates cron jobs into `api/cron/[job].js` and health/traction/funnel report into `api/ops.js` (public URLs unchanged via `vercel.json` rewrites). Gate: `node scripts/audit-vercel-functions.mjs` (must stay ≤ 12).
+
 **Dashboard:** [vercel.com/spq/simple-property](https://vercel.com/spq/simple-property)
 
 **Canonical project name:** `simple-property` only. Do **not** create a second Vercel project for this repo.

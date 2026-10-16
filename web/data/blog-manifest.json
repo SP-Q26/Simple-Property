@@ -159,7 +159,7 @@
       "slug": "chicago-45-day-deposit-deadline",
       "title": "Chicago RLTO 45-day deposit deadline",
       "description": "Chicago RLTO 45 days vs Illinois 30 days after surrender.",
-      "category": "law",
+      "category": "city",
       "states": [
         "IL"
       ],
@@ -885,7 +885,7 @@
       "slug": "indianapolis-indiana-deposit-local-guide",
       "title": "Indianapolis deposit guide · Indiana operators",
       "description": "Indianapolis turnover: 45-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "indianapolis-in",
       "states": [
@@ -901,7 +901,7 @@
       "slug": "fort-wayne-indiana-deposit-local-guide",
       "title": "Fort Wayne deposit guide · Indiana operators",
       "description": "Fort Wayne turnover: 45-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "fort-wayne-in",
       "states": [
@@ -917,7 +917,7 @@
       "slug": "columbus-ohio-deposit-local-guide",
       "title": "Columbus deposit guide · Ohio operators",
       "description": "Columbus turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "columbus-oh",
       "states": [
@@ -933,7 +933,7 @@
       "slug": "cleveland-ohio-deposit-local-guide",
       "title": "Cleveland deposit guide · Ohio operators",
       "description": "Cleveland turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "cleveland-oh",
       "states": [
@@ -949,7 +949,7 @@
       "slug": "cincinnati-ohio-deposit-local-guide",
       "title": "Cincinnati deposit guide · Ohio operators",
       "description": "Cincinnati turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "cincinnati-oh",
       "states": [
@@ -965,7 +965,7 @@
       "slug": "detroit-michigan-deposit-local-guide",
       "title": "Detroit deposit guide · Michigan operators",
       "description": "Detroit turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "detroit-mi",
       "states": [
@@ -981,7 +981,7 @@
       "slug": "grand-rapids-michigan-deposit-local-guide",
       "title": "Grand Rapids deposit guide · Michigan operators",
       "description": "Grand Rapids turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "grand-rapids-mi",
       "states": [
@@ -997,7 +997,7 @@
       "slug": "des-moines-iowa-deposit-local-guide",
       "title": "Des Moines deposit guide · Iowa operators",
       "description": "Des Moines turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "des-moines-ia",
       "states": [
@@ -1013,7 +1013,7 @@
       "slug": "iowa-city-iowa-deposit-local-guide",
       "title": "Iowa City deposit guide · Iowa operators",
       "description": "Iowa City turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "iowa-city-ia",
       "states": [
@@ -1029,7 +1029,7 @@
       "slug": "kansas-city-missouri-deposit-local-guide",
       "title": "Kansas City deposit guide · Missouri operators",
       "description": "Kansas City turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "kansas-city-mo",
       "states": [
@@ -1045,7 +1045,7 @@
       "slug": "st-louis-missouri-deposit-local-guide",
       "title": "St. Louis deposit guide · Missouri operators",
       "description": "St. Louis turnover: 30-day state default, local programs, and Deposit Desk packet habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "cityPreset": "st-louis-mo",
       "states": [
@@ -2247,7 +2247,7 @@
       "slug": "portage-park-three-flat-rlto-deposit-clock",
       "title": "Portage Park three-flat: RLTO deposit clock",
       "description": "RLTO 45-day return on a Portage Park three-flat. Surrender, itemization, export. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "chicago-metro-oct-2026",
       "states": [
@@ -2264,7 +2264,7 @@
       "slug": "logan-square-greystone-two-flat-deposit-photos",
       "title": "Logan Square greystone: deposit photo habits",
       "description": "Greystone two-flat move-out photos that match later withhold lines. Chicago RLTO. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "chicago-metro-oct-2026",
       "states": [
@@ -2281,7 +2281,7 @@
       "slug": "hyde-park-vintage-flat-normal-wear-deposit",
       "title": "Hyde Park vintage flat: wear vs withhold",
       "description": "Plaster, hardwood, and old trim in Hyde Park flats. RLTO itemization habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "chicago-metro-oct-2026",
       "states": [
@@ -2298,7 +2298,7 @@
       "slug": "pilsen-walk-up-keys-mailed-surrender-illinois",
       "title": "Pilsen walk-up: keys by mail, when clock starts",
       "description": "Tenant mailed keys after a Pilsen walk-up lease ended. Surrender vs RLTO clock. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "chicago-metro-oct-2026",
       "states": [
@@ -2315,7 +2315,7 @@
       "slug": "capitol-hill-rowhouse-basement-adu-deposit-clock",
       "title": "Capitol Hill rowhouse ADU: RHCA deposit clock",
       "description": "Basement ADU turnover on Capitol Hill. RHCA 45-day discipline. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "dc-metro-oct-2026",
       "states": [
@@ -2331,7 +2331,7 @@
       "slug": "petworth-english-basement-owner-occupied-deposit",
       "title": "Petworth English basement: RHCA vs owner rules",
       "description": "Owner-occupied Petworth rowhouse with a basement rental. RHCA coverage habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "dc-metro-oct-2026",
       "states": [
@@ -2347,7 +2347,7 @@
       "slug": "columbia-heights-condo-conversion-forwarding-mail",
       "title": "Columbia Heights condo unit: deposit mail proof",
       "description": "Forwarding-address gaps after a condo-conversion rental in Columbia Heights. DC mail proof. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "dc-metro-oct-2026",
       "states": [
@@ -2363,7 +2363,7 @@
       "slug": "shaw-carriage-house-belt-investor-dc-clock",
       "title": "Shaw carriage house: belt investor DC clock",
       "description": "Shaw carriage-house turnover when you also own in MD or VA. RHCA timing. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "dc-metro-oct-2026",
       "states": [
@@ -2379,7 +2379,7 @@
       "slug": "florida-83-49-two-step-miami-condo-deposit",
       "title": "Miami condo: Fla. § 83.49 two-step deposit",
       "description": "Miami condo turnover under Fla. Stat. § 83.49: 15-day full return or claim notice, then 30-day balance. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "miami-metro-oct-2026",
       "states": [
@@ -2396,7 +2396,7 @@
       "slug": "brickell-high-rise-condo-deposit-itemization",
       "title": "Brickell high-rise: condo deposit lines",
       "description": "Brickell tower turnover: HOA fees vs unit withholds under Florida deposit practice. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "miami-metro-oct-2026",
       "states": [
@@ -2412,7 +2412,7 @@
       "slug": "wynwood-loft-hurricane-season-move-out-deposit",
       "title": "Wynwood loft: storm-season move-out deposit",
       "description": "Wynwood loft move-out during hurricane season. Florida 15-day first step habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "miami-metro-oct-2026",
       "states": [
@@ -2428,7 +2428,7 @@
       "slug": "little-havana-duplex-florida-claim-notice-mail",
       "title": "Little Havana duplex: Florida claim notice mail",
       "description": "Little Havana duplex: certified mail habits for Florida deposit claim notice. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "series": "miami-metro-oct-2026",
       "states": [
@@ -3452,7 +3452,7 @@
       "slug": "tampa-florida-deposit-local-guide",
       "title": "Tampa security deposit local guide",
       "description": "Florida § 83.49 turnover habits for Tampa operators. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "FL"
@@ -3468,7 +3468,7 @@
       "slug": "orlando-florida-deposit-local-guide",
       "title": "Orlando security deposit local guide",
       "description": "Central Florida deposit packet habits. Fla. Stat. § 83.49. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "FL"
@@ -3484,7 +3484,7 @@
       "slug": "jacksonville-florida-deposit-local-guide",
       "title": "Jacksonville security deposit local guide",
       "description": "Northeast Florida deposit return habits. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "FL"
@@ -3500,7 +3500,7 @@
       "slug": "atlanta-georgia-deposit-local-guide",
       "title": "Atlanta security deposit local guide",
       "description": "Metro Atlanta deposit clocks and itemization. O.C.G.A. 44-7-34. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "GA"
@@ -3516,7 +3516,7 @@
       "slug": "richmond-virginia-deposit-local-guide",
       "title": "Richmond security deposit local guide",
       "description": "Richmond metro deposit mail and itemization. Va. Code § 55.1-1226. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "VA"
@@ -3532,7 +3532,7 @@
       "slug": "northern-virginia-deposit-local-guide",
       "title": "Northern Virginia security deposit local guide",
       "description": "NoVA belt investor deposit clocks. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "VA"
@@ -3548,7 +3548,7 @@
       "slug": "baltimore-maryland-deposit-local-guide",
       "title": "Baltimore security deposit local guide",
       "description": "Baltimore city deposit return habits. Md. Real Prop. § 8-203. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "MD"
@@ -3564,7 +3564,7 @@
       "slug": "salt-lake-city-utah-deposit-local-guide",
       "title": "Salt Lake City security deposit local guide",
       "description": "Wasatch Front deposit discipline. Utah Code § 57-17-3. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "UT"
@@ -3580,7 +3580,7 @@
       "slug": "new-orleans-louisiana-deposit-local-guide",
       "title": "New Orleans security deposit local guide",
       "description": "Orleans Parish turnover and deposit accounting. La. R.S. 9:3251. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "LA"
@@ -3596,7 +3596,7 @@
       "slug": "seattle-washington-deposit-local-guide",
       "title": "Seattle security deposit local guide",
       "description": "Seattle metro substantiation habits. RCW 59.18.280. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "WA"
@@ -3612,7 +3612,7 @@
       "slug": "las-vegas-nevada-deposit-local-guide",
       "title": "Las Vegas security deposit local guide",
       "description": "Clark County turnover deposit mail habits. NRS 118A.242. Not legal advice.",
-      "category": "city",
+      "category": "metro",
       "intent": "city",
       "states": [
         "NV"

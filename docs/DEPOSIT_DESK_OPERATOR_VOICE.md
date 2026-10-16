@@ -68,9 +68,9 @@ Canon siblings: Ships.one operator voice (SPQ `docs/receipt-rail/SHIPS_ONE_OPERA
 <span class="ps-fix">…</span>
 ```
 
-**Team line** (optional third beat on landings):
+**Team line** (optional on landings):
 
-`Built for landlords who run the doors themselves · not a property management company.`
+`Built for landlords who run the doors themselves.`
 
 **CTA verbs (preferred order):** Open · Start · Walk · Continue · See pricing
 

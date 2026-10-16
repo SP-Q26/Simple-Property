@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v69 · funnel handoff ROI */
+/* Simple Property Tools · Deposit Desk · v70 · tool brevity pass */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -2641,6 +2641,10 @@ main > h1,
 .deadline-box--inline {
   margin: 0 0 var(--space-4);
   padding: var(--space-3) var(--space-4);
+}
+
+.app-intro.is-hidden {
+  display: none;
 }
 
 .app-intro--compact {

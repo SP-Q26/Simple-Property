@@ -3,7 +3,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BRAND_TAG as BRAND_TAG_CHECK } from "../web/lib/brand-locale.mjs";
+import { BRAND_TAG, BRAND_TAGLINE, BRAND_TAG_SHORT } from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const CSS_PATTERN = /simple-property\.css\?v=\d+/;
@@ -29,7 +29,9 @@ for (const file of files) {
     console.error("BRAND FAIL missing brand-mark:", rel);
     fail++;
   }
-  if (!html.includes(BRAND_TAG_CHECK)) {
+  const hasBrandTag =
+    html.includes(BRAND_TAG) || html.includes(BRAND_TAG_SHORT) || html.includes(BRAND_TAGLINE);
+  if (!hasBrandTag) {
     console.error("BRAND FAIL missing brand tag:", rel);
     fail++;
   }
@@ -49,7 +51,7 @@ for (const file of files) {
 
 if (existsSync(join(web, "brand/shell-header.html"))) {
   const shell = readFileSync(join(web, "brand/shell-header.html"), "utf8");
-  if (!shell.includes(BRAND_TAG_CHECK)) {
+  if (!shell.includes(BRAND_TAG) && !shell.includes(BRAND_TAGLINE)) {
     console.error("BRAND FAIL shell-header outdated");
     fail++;
   }

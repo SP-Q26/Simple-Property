@@ -11,7 +11,7 @@
 | **Site nav** | `audit-site-nav` · `sync:site-nav` | Header: Deposit Desk · Logs · Pricing · Condition hub · Stack · Guides · Feedback |
 | **Pricing** | `audit-pricing` | $29/$49 turn · Pro $22/$99 · 40 units · Keeper/Portfolio documented on `/pricing` |
 | **Copy** | `audit-goal-copy` · `audit-pain-copy` · `audit-customer-voice` | Pain → fix → CTA · ROI · no roadmap leaks |
-| **Blog** | `audit-blog-goal-copy` · `apply:blog-goal-copy` | 232 guides · pain · CTA · legal disclaimer |
+| **Blog** | `audit-blog-seo` · `audit-blog-goal-copy` · `apply:blog-goal-copy` · `elevate:blog-metro` | 268 guides · pillars incl. **metro** · pain · CTA · legal disclaimer |
 | **Related / news** | `audit-blog-related` · `apply:blog-related` | `spt-related-guides` per state post · news cross-links |
 | **Hub / Receipt Rail** | `audit-hub-copy` · `audit-hub-alpha` · `audit-receipt-rail-spec` | Condition hub customer voice · alpha spine |
 | **Lane canon** | `SIMPLE_PROPERTY_LANE_MASTER.md` | Program A/B · routes · gates |
@@ -38,7 +38,7 @@ Deep dive: `docs/PRICING_DIVE_PER_TURN.md` · compare: `docs/LANE_COMPARE.md`.
 
 ## Blog corpus
 
-- **232** manifest posts · **4** news/updates · state hub links on checklist/deadline guides.
+- **268** manifest posts · **metro** pillar (neighborhood + local-guide cluster) · state hub links on checklist/deadline guides.
 - Related reading: primary pain guide + checklist/itemization/deadline siblings per state.
 
 ## Maintenance

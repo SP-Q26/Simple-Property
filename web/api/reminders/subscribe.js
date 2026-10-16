@@ -2,6 +2,7 @@ import { scheduleDeadlineReminders } from "../../lib/reminder-store.mjs";
 import { resendConfigured } from "../../lib/resend.mjs";
 import { normalizeEmail } from "../../lib/subscription-store.mjs";
 import { kvConfigured } from "../../lib/kv-client.mjs";
+import { recordServerFunnel } from "../../lib/server-telemetry.mjs";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -48,6 +49,7 @@ export default async function handler(req, res) {
     if (!jobs.length) {
       return res.status(400).json({ error: "no_future_reminder_dates" });
     }
+    await recordServerFunnel("reminder_subscribe", { scheduled: jobs.length });
     return res.status(200).json({ ok: true, scheduled: jobs.length });
   } catch (e) {
     console.error("spt reminders subscribe", e);

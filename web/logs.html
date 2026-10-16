@@ -32,9 +32,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=69">
+  <link rel="stylesheet" href="/simple-property.css?v=70">
 </head>
-<body>
+<body data-spt-page="operator_logs">
   <div class="spt-atmosphere" aria-hidden="true">
     <div class="spt-weather"></div>
     <div class="spt-weather-mist"></div>
@@ -56,7 +56,7 @@
         <img class="brand-mark" src="/favicon.svg" alt="" width="36" height="36">
         <span class="brand-text">
           <span class="brand-word">Simple Property Tools</span>
-          <span class="brand-tag"><span class="brand-tag__desktop">Itemize it. Date it. Never pay the fees. · Founded in Chicago · 32 states + DC</span><span class="brand-tag__mobile">Itemize it. Date it. Never pay the fees. · Founded in Chicago · 32 states + DC</span></span>
+          <span class="brand-tag"><span class="brand-tag__desktop">Itemize it. Date it. Never pay the fees. · 32 states + DC</span><span class="brand-tag__mobile">Itemize it. Date it. Never pay the fees.</span></span>
         </span>
       </a>
       <nav class="header-nav" aria-label="Primary">
@@ -73,9 +73,8 @@
     <main id="main" class="no-print">
       <header class="log-page-head">
         <h1>Operator logs</h1>
-        <p class="ps-problem">“Who said they’d fix the heat?” with no dated trail.</p>
-        <p class="ps-fix">Maintenance, tickets, and inspection notes in this browser · CSV when counsel or insurance asks.</p>
-        <p class="field-hint"><a href="/app">Deposit Desk</a> handles deposit packets · logs handle day-to-day ops. Not legal advice.</p>
+        <p class="ps-fix">Dated maintenance, tickets, and inspection notes in this browser · CSV export when you need a trail.</p>
+        <p class="field-hint"><a href="/app">Deposit Desk</a> for deposit packets · logs for day-to-day ops.</p>
         <p class="hero-actions" style="margin-top:0.75rem">
           <a class="btn btn-primary" href="#log-panel">Start a log entry</a>
           <a class="btn btn-secondary" href="/hub">Room walkthroughs</a>
@@ -119,5 +118,6 @@
   <script type="module" src="/logs.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script src="/sp-events.js" defer></script>
 </body>
 </html>

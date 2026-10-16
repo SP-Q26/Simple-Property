@@ -26,6 +26,10 @@ for (const file of files) {
     console.error("TRACK FAIL missing Speed Insights script:", rel);
     fail++;
   }
+  if (!html.includes("/sp-events.js")) {
+    console.error("TRACK FAIL missing sp-events.js:", rel);
+    fail++;
+  }
 }
 
 console.log(fail ? `Vercel tracking audit FAILED (${fail})` : "Vercel tracking audit OK");

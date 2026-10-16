@@ -34,7 +34,7 @@ need("env example SPT_EMAIL_FROM", envEx.includes("SPT_EMAIL_FROM"));
 for (const route of [
   "api/auth/magic-link.js",
   "api/reminders/subscribe.js",
-  "api/cron/deadline-reminders.js",
+  "api/cron/[job].js",
   "api/feedback.js",
   "api/packet/email-tenant.js",
 ]) {

@@ -3,8 +3,7 @@
  * Canon: docs/DEPOSIT_DESK_OPERATOR_VOICE.md
  */
 
-export const OPERATOR_TEAM_LINE =
-  "Built for landlords who run the doors themselves · not a property management company.";
+export const OPERATOR_TEAM_LINE = "Built for landlords who run the doors themselves.";
 
 export const DEFAULT_PAIN_LEAD_HTML = `<p class="pain-solution-lead"><span class="ps-problem">When turnover stacks up, one missing surrender date or move-in photo becomes the story in a deposit dispute.</span> <span class="ps-fix">Use the facts below, then <strong>Open Deposit Desk</strong> for a dated packet you can print or hand to counsel. Documentation only · not legal advice.</span></p>`;
 

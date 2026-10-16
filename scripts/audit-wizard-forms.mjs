@@ -65,7 +65,7 @@ for (const [step, ids] of Object.entries(wizardFields)) {
   }
 }
 
-need("landlord deferred to export step", appJs.includes("landlord details land on export"));
+need("landlord deferred to export step", /landlord.*export/i.test(appJs) && appJs.includes("wizardStepHead"));
 need("no landlord fields step 1-4", !appJs.match(/id="ll-name"/) || appJs.indexOf('id="ll-name"') > appJs.indexOf("renderStep5"));
 need("tenant name once before export", appJs.indexOf('id="tn-name"') < appJs.indexOf("renderStep5"));
 need("signature autofill landlord", appJs.includes("sig-ll") && appJs.includes("draft.landlord.name"));
@@ -89,9 +89,9 @@ need("feedback agent form marker", feedbackHtml.includes('data-spt-agent-form="f
 need("supported state count documented", SUPPORTED_STATES.length >= 32);
 need(
   "intro flow matches steps",
-  appHtml.includes("Five steps:") &&
-    appHtml.includes("property & state") &&
-    appHtml.includes("withholds") &&
+  appHtml.includes("Five steps") &&
+    appHtml.includes("surrender clock") &&
+    appHtml.includes("line items") &&
     appHtml.includes("move-in proof")
 );
 need("wizard progress rail", appHtml.includes("wizard-progress"));

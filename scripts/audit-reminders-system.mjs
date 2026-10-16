@@ -18,9 +18,9 @@ function need(label, ok, detail = "") {
 }
 
 const paths = [
-  "api/health/services.js",
+  "api/ops.js",
   "api/reminders/subscribe.js",
-  "api/cron/deadline-reminders.js",
+  "api/cron/[job].js",
   "lib/reminder-store.mjs",
   "lib/resend.mjs",
   "lib/kv-client.mjs",
@@ -29,7 +29,7 @@ const paths = [
 for (const p of paths) need(`file ${p}`, existsSync(join(web, p)));
 
 const subscribe = readFileSync(join(web, "api/reminders/subscribe.js"), "utf8");
-const cron = readFileSync(join(web, "api/cron/deadline-reminders.js"), "utf8");
+const cron = readFileSync(join(web, "lib/cron-jobs.mjs"), "utf8");
 const vercel = readFileSync(join(web, "vercel.json"), "utf8");
 const appJs = readFileSync(join(web, "app.js"), "utf8");
 const envEx = readFileSync(join(web, ".env.example"), "utf8");

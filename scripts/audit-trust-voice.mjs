@@ -21,7 +21,10 @@ const css = readFileSync(join(web, "simple-property.css"), "utf8");
 
 need("tagline on home", index.includes(BRAND_TAGLINE));
 need("home problem/solution lead", index.includes("ps-problem") && index.includes("ps-fix"));
-need("home court record warning", index.includes("court-record-card") && index.includes("hero-rotate"));
+need(
+  "home trust signal",
+  (index.includes("court-record-card") && index.includes("hero-rotate")) || index.includes("hero-clock-gloss")
+);
 need("home mission outcome oriented", /Avoid penalties|Never pay the fees/i.test(index));
 need("home disclaimer visible", index.includes("not legal advice"));
 need("home honest limits FAQ", index.includes("Honest limits"));

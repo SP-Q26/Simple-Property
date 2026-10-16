@@ -62,7 +62,7 @@ for (const p of painPosts) {
 painSections += `        </ul>\n      </section>\n`;
 
 const cityPosts = manifest.posts
-  .filter((p) => p.intent === "city" || p.category === "city")
+  .filter((p) => p.category === "city" || (p.intent === "city" && p.category !== "metro"))
   .sort((a, b) => a.title.localeCompare(b.title));
 const chicagoAnchor = manifest.posts.find((p) => p.slug === "chicago-45-day-deposit-deadline");
 
@@ -87,11 +87,30 @@ const metroSeries = [
 let metroSections = `\n      <section class="guides-hub blog-cluster blog-cluster--metro" id="cluster-metro" aria-labelledby="guides-metro">\n`;
 metroSections += `        <h2 id="guides-metro">Metro deep dives</h2>\n`;
 metroSections += `        <p class="muted">Hyper-focused neighborhood guides · Chicago, DC, Miami · plus metro local guides (Tampa, Orlando, Jacksonville, Atlanta, Richmond, NoVA, Baltimore, SLC, New Orleans, Seattle, Vegas). Not legal advice.</p>\n`;
+const metroPosts = manifest.posts.filter((p) => p.category === "metro");
+const metroBySeries = new Map();
+const metroLoose = [];
+for (const p of metroPosts) {
+  if (p.series) {
+    if (!metroBySeries.has(p.series)) metroBySeries.set(p.series, []);
+    metroBySeries.get(p.series).push(p);
+  } else {
+    metroLoose.push(p);
+  }
+}
 for (const { id, label } of metroSeries) {
-  const list = manifest.posts.filter((p) => p.series === id).sort((a, b) => a.title.localeCompare(b.title));
+  const list = (metroBySeries.get(id) || []).sort((a, b) => a.title.localeCompare(b.title));
   if (!list.length) continue;
   metroSections += `        <h3 class="section-label">${label}</h3>\n        <ul class="bullet-tight">\n`;
   for (const p of list) {
+    metroSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+  }
+  metroSections += `        </ul>\n`;
+}
+if (metroLoose.length) {
+  metroLoose.sort((a, b) => a.title.localeCompare(b.title));
+  metroSections += `        <h3 class="section-label">Metro local guides</h3>\n        <ul class="bullet-tight">\n`;
+  for (const p of metroLoose) {
     metroSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
   }
   metroSections += `        </ul>\n`;

@@ -42,8 +42,10 @@ const checks = [
   ["modules.html", "Receipt modules marketing"],
   ["lib/packet-email.mjs", "Tenant email body builder"],
   ["lib/entitlement-verify.mjs", "Pro entitlement verify"],
-  ["api/cron/deadline-reminders.js", "Deadline reminder cron"],
-  ["api/health/services.js", "Platform health probe"],
+  ["api/cron/[job].js", "Cron dispatcher (Hobby fn cap)"],
+  ["api/ops.js", "Ops dispatcher (health · traction · funnel)"],
+  ["lib/cron-jobs.mjs", "Cron job handlers"],
+  ["lib/ops-routes.mjs", "Ops route handlers"],
   ["lib/kv-client.mjs", "KV client"],
   ["lib/subscription-store.mjs", "Subscription KV store"],
   ["lib/entitlement.mjs", "Entitlement signing"],
@@ -58,8 +60,6 @@ const checks = [
   ["sp-feedback.js", "Feedback form client"],
   ["api/feedback.js", "Feedback API"],
   ["api/events.js", "Client analytics beacon"],
-  ["api/funnel/report.js", "Funnel rollup report API"],
-  ["api/cron/funnel-weekly-report.js", "Funnel weekly cron log"],
   ["lib/funnel-rollups.mjs", "Funnel KV rollups"],
   ["lib/hub-desk-handoff.mjs", "Hub to Desk handoff"],
   ["sp-events.js", "Client event bus"],
@@ -125,7 +125,7 @@ if (existsSync(join(web, "node_modules"))) {
 
 console.log(fail ? `Audit FAILED (${fail} P0)` : "Audit OK · proud-ship P0 gates pass");
 if (!fail) {
-  for (const script of ["audit-brand-shell.mjs", "audit-brand-tagline.mjs", "audit-adoption-voice.mjs", "audit-vercel-env-canonical.mjs", "audit-vercel-favicon.mjs", "audit-trust-voice.mjs", "audit-vercel-tracking.mjs", "audit-google-tools.mjs", "audit-packet-reports.mjs", "audit-packet-bar-sweep.mjs", "audit-spt-telemetry.mjs", "audit-funnel-rollups.mjs", "audit-hub-desk-handoff.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-court-record-coverage.mjs", "audit-seo-sweep.mjs", "audit-performance.mjs", "audit-wizard-speed.mjs", "audit-wizard-forms.mjs", "audit-form-flow.mjs", "audit-reminders-system.mjs", "audit-resend-stack.mjs", "audit-agent-snapshot.mjs", "audit-agent-form-fill.mjs", "audit-mcp.mjs", "audit-state-blog-coverage.mjs", "audit-region-expansion-oct-2026.mjs", "audit-ios-brand-spacing.mjs", "audit-responsive-spacing.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-landing-desktop.mjs", "audit-fonts.mjs", "audit-locale-bar-breakpoints.mjs", "audit-statute-urls.mjs", "audit-statute-outbound.mjs", "audit-home-faq.mjs", "audit-state-hub-links.mjs", "audit-pain-copy.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-stripe-sweep.mjs", "audit-receipt-rail-spec.mjs", "audit-hub-alpha.mjs", "audit-hub-copy.mjs", "audit-goal-copy.mjs", "audit-blog-goal-copy.mjs", "audit-site-nav.mjs", "audit-blog-related.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-customer-voice.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs", "audit-box-spacing.mjs", "audit-blog-guide-warnings.mjs", "audit-interactive-states.mjs", "audit-site-footer.mjs", "audit-stack-handoff.mjs"]) {
+  for (const script of ["audit-vercel-functions.mjs", "audit-tool-brevity.mjs", "audit-brand-shell.mjs", "audit-brand-tagline.mjs", "audit-adoption-voice.mjs", "audit-vercel-env-canonical.mjs", "audit-vercel-favicon.mjs", "audit-trust-voice.mjs", "audit-vercel-tracking.mjs", "audit-analytics-coverage.mjs", "audit-google-tools.mjs", "audit-packet-reports.mjs", "audit-packet-bar-sweep.mjs", "audit-spt-telemetry.mjs", "audit-funnel-rollups.mjs", "audit-hub-desk-handoff.mjs", "audit-blog-seo.mjs", "audit-discovery-seo.mjs", "audit-court-record-coverage.mjs", "audit-seo-sweep.mjs", "audit-performance.mjs", "audit-wizard-speed.mjs", "audit-wizard-forms.mjs", "audit-form-flow.mjs", "audit-reminders-system.mjs", "audit-resend-stack.mjs", "audit-agent-snapshot.mjs", "audit-agent-form-fill.mjs", "audit-mcp.mjs", "audit-state-blog-coverage.mjs", "audit-region-expansion-oct-2026.mjs", "audit-ios-brand-spacing.mjs", "audit-responsive-spacing.mjs", "audit-em-dash.mjs", "audit-visual-brand.mjs", "audit-landing-desktop.mjs", "audit-fonts.mjs", "audit-locale-bar-breakpoints.mjs", "audit-statute-urls.mjs", "audit-statute-outbound.mjs", "audit-home-faq.mjs", "audit-state-hub-links.mjs", "audit-pain-copy.mjs", "audit-mobile-responsive.mjs", "audit-pricing.mjs", "audit-stripe-sweep.mjs", "audit-receipt-rail-spec.mjs", "audit-hub-alpha.mjs", "audit-hub-copy.mjs", "audit-goal-copy.mjs", "audit-blog-goal-copy.mjs", "audit-site-nav.mjs", "audit-blog-related.mjs", "audit-swarm.mjs", "audit-links.mjs", "audit-customer-lane.mjs", "audit-customer-voice.mjs", "audit-legal-pages.mjs", "audit-svg-assets.mjs", "audit-branding-copy.mjs", "audit-social-share.mjs", "audit-box-spacing.mjs", "audit-blog-guide-warnings.mjs", "audit-interactive-states.mjs", "audit-site-footer.mjs", "audit-stack-handoff.mjs"]) {
     const r = spawnSync(process.execPath, [join(root, "scripts", script)], { stdio: "inherit" });
     if (r.status !== 0) process.exit(1);
   }

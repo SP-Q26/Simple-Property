@@ -32,9 +32,9 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=69">
+  <link rel="stylesheet" href="/simple-property.css?v=70">
 </head>
-<body>
+<body data-spt-page="feedback">
   <div class="spt-atmosphere" aria-hidden="true">
     <div class="spt-weather"></div>
     <div class="spt-weather-mist"></div>
@@ -72,15 +72,8 @@
     <main id="main" class="section">
       <p class="hero-eyebrow">Help us improve</p>
       <h1>Help us fix your turnover headaches</h1>
-      <p class="ps-problem">Deposit rules vary by state and city. We cannot guess every ordinance or workflow you need.</p>
-      <p class="ps-fix">Tell us what would reduce stress at turnover. We read every note and fold the clearest gaps into guides and the wizard.</p>
-      <p class="field-hint">Not legal advice. We do not provide counsel or guaranteed outcomes. For legal questions, talk to a licensed attorney.</p>
-
-      <div class="form-panel coverage-deferred" style="margin-top:1.25rem">
-        <h2 class="h3">States not in the wizard yet</h2>
-        <p class="field-hint">Deposit Desk covers <strong>32 states + DC</strong> in the wizard (including Florida). Arizona, Texas, Wisconsin, and other states are <strong>not</strong> in the app yet.</p>
-        <p class="field-hint">If search sent you here for an unsupported state, pick category <strong>State or city deposit rules</strong> and tell us your statute or city. Meanwhile use <a href="/blog">guides</a> where we publish, or <a href="/app">start a free packet</a> for supported markets.</p>
-      </div>
+      <p class="ps-fix">Tell us what would speed up turnover · we read every note for guides and wizard updates.</p>
+      <p class="field-hint">Wizard today: <strong>32 states + DC</strong> · need another state? Category <strong>State or city deposit rules</strong> below.</p>
 
       <form id="spt-feedback-form" class="form-panel feedback-form" data-spt-agent-form="feedback" style="max-width:36rem;margin-top:1.5rem">
         <ol class="form-flow-rail" aria-label="Fill in order">
@@ -90,7 +83,7 @@
           <li class="form-flow-rail__item form-flow-rail__item--4">Details</li>
           <li class="form-flow-rail__item form-flow-rail__item--5">Send</li>
         </ol>
-        <p class="form-flow-hint field-hint" id="feedback-flow-hint" role="status">One screen · work top to bottom · agents: match field order below.</p>
+        <p class="form-flow-hint field-hint" id="feedback-flow-hint" role="status">Work top to bottom.</p>
         <label class="field-stack" data-flow-step="1">
           <span>Category</span>
           <select name="category" required>
@@ -119,7 +112,6 @@
       </form>
 
       <p style="margin-top:1.5rem">Prefer email? <a href="mailto:hello@simple-property.com?subject=Deposit%20Desk%20feedback">hello@simple-property.com</a></p>
-      <p class="disclaimer">Documentation software only · not legal advice.</p>
     </main>
     <footer class="site-footer">
       <div class="footer-shell">
@@ -151,5 +143,6 @@
   <script type="module" src="/sp-feedback.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script src="/sp-events.js" defer></script>
 </body>
 </html>

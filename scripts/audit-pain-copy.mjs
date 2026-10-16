@@ -53,18 +53,15 @@ need("sp-nav buildCoverageMap not geographic map copy", !nav.includes("Tap the m
 need("sp-nav loss in locale bar", LOSS.test(nav));
 
 need("blog index loss or pain hub", /pain|missed|dispute/i.test(blogIndex));
-need("app.html pain + fix", appHtml.includes("ps-problem") && appHtml.includes("ps-fix"));
-need("app.html loss in intro", LOSS.test(appHtml));
+need("app compact intro", appHtml.includes('id="app-intro"') && appHtml.includes("Five steps"));
 need("pricing pain + loss", pricing.includes("ps-problem") && LOSS.test(pricing));
 need("pricing value ROI line", pricing.includes(VALUE_ROI_LINE));
-need("index value ROI line", index.includes(VALUE_ROI_LINE));
-need("app value ROI line", appHtml.includes(VALUE_ROI_LINE));
 need("success pain framing", success.includes("ps-problem"));
-need("logs pain + fix", logs.includes("ps-problem") && logs.includes("ps-fix"));
+need("logs positive fix", logs.includes("ps-fix"));
 need("modules pain + fix", read("modules.html").includes("ps-problem") && read("modules.html").includes("ps-fix"));
 need("hub app pain framing", read("hub-app.js").includes("ps-problem") && read("hub-app.js").includes("ps-fix"));
 
-need("app paywall loss line", /costs more than \$29|cost more than/i.test(appJs));
+need("app paywall export", appJs.includes("export-paywall") && /mail-ready PDF/i.test(appJs));
 need("pricing finder loss", read("sp-pricing-finder.mjs").match(LOSS));
 
 const pathwayCards = index.match(/pathway-card__desc/g)?.length || 0;

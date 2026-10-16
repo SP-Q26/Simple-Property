@@ -1,4 +1,4 @@
-/** Lightweight client events · Vercel Web Analytics + /api/events (no PII). */
+/** Lightweight client events · Vercel Web Analytics + /api/events + KV rollups (no PII). */
 (function () {
   "use strict";
 
@@ -17,6 +17,40 @@
     return out;
   }
 
+  function utmDims() {
+    var p = new URLSearchParams(location.search);
+    var out = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) {
+      var v = p.get(k);
+      if (v) out[k] = String(v).slice(0, 64);
+    });
+    return out;
+  }
+
+  function postEvent(name, data) {
+    var body = JSON.stringify({
+      name: name,
+      data: data,
+      path: location.pathname,
+      t: Date.now(),
+    });
+    try {
+      if (navigator.sendBeacon && navigator.sendBeacon("/api/events", body)) return;
+    } catch (e1) {
+      /* ignore */
+    }
+    try {
+      fetch("/api/events", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body,
+        keepalive: true,
+      }).catch(function () {});
+    } catch (e2) {
+      /* ignore */
+    }
+  }
+
   function track(name, props) {
     if (!name) return;
     var data = scrub(props);
@@ -27,19 +61,7 @@
     } catch (e) {
       /* ignore */
     }
-    try {
-      var body = JSON.stringify({
-        name: name,
-        data: data,
-        path: location.pathname,
-        t: Date.now(),
-      });
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon("/api/events", body);
-      }
-    } catch (e2) {
-      /* ignore */
-    }
+    postEvent(name, data);
   }
 
   window.sptTrack = track;
@@ -62,19 +84,40 @@
     track("spt_module_click", { module: mod.getAttribute("data-spt-module") || "" });
   });
 
+  document.addEventListener("click", function (e) {
+    var cta = e.target.closest(".guide-cta a.btn-primary, .hero-actions a.btn-primary");
+    if (!cta || !cta.href) return;
+    var href = cta.getAttribute("href") || "";
+    track("spt_guide_cta_click", {
+      href: href.slice(0, 120),
+      page: location.pathname,
+    });
+  });
+
+  function blogSlugFromPath() {
+    var m = location.pathname.match(/^\/blog\/([^/?#]+)/);
+    if (!m) return "";
+    return m[1].replace(/\.html$/i, "");
+  }
+
   function bootPageTelemetry() {
+    var utm = utmDims();
     var page = document.body && document.body.getAttribute("data-spt-page");
-    if (page) {
-      track("spt_page_view", { page: page, path: location.pathname });
-    }
-    var blogMatch = location.pathname.match(/^\/blog\/([^/]+)\.html$/);
-    if (blogMatch) {
-      track("spt_blog_view", { slug: blogMatch[1] });
+    var slug = blogSlugFromPath();
+    if (slug && slug !== "index") {
+      track("spt_blog_view", Object.assign({ slug: slug }, utm));
+    } else if (page && page !== "blog_post") {
+      track("spt_page_view", Object.assign({ page: page, path: location.pathname }, utm));
+    } else if (location.pathname === "/" || location.pathname === "") {
+      track("spt_page_view", Object.assign({ page: "home", path: "/" }, utm));
     }
     var params = new URLSearchParams(location.search);
     var ref = params.get("ref") || params.get("utm_campaign") || "";
-    if (ref && (page === "app" || location.pathname === "/app")) {
-      track("spt_start_intent", { ref: ref.slice(0, 64) });
+    if (ref && (page === "deposit_desk" || page === "app" || location.pathname === "/app")) {
+      track("spt_start_intent", Object.assign({ ref: ref.slice(0, 64) }, utm));
+    }
+    if (location.pathname === "/hub" || page === "condition_hub") {
+      track("hub_spa_view", { route: (location.hash || "#/").slice(0, 80) });
     }
   }
 
@@ -83,4 +126,9 @@
   } else {
     bootPageTelemetry();
   }
+
+  window.addEventListener("hashchange", function () {
+    if (location.pathname !== "/hub") return;
+    track("hub_spa_view", { route: (location.hash || "#/").slice(0, 80) });
+  });
 })();

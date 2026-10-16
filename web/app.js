@@ -416,7 +416,7 @@ function proBlockMessage(opts = {}) {
       daysLeft === null
         ? ""
         : daysLeft < 0
-          ? `<p class="export-urgency__days">Deadline passed ${Math.abs(daysLeft)} day(s) ago · mail a defensible packet now · not legal advice.</p>`
+          ? `<p class="export-urgency__days">Deadline passed ${Math.abs(daysLeft)} day(s) ago · mail your packet now.</p>`
           : daysLeft === 0
             ? `<p class="export-urgency__days"><strong>Due today.</strong> Unlock before you mail the tenant.</p>`
             : `<p class="export-urgency__days"><strong>${daysLeft} day(s) left.</strong> Unlock before you mail the tenant.</p>`;
@@ -424,38 +424,31 @@ function proBlockMessage(opts = {}) {
       <p class="export-urgency__headline"><strong>Mail-ready PDF</strong> · clock ends ${esc(clockLabel)}</p>
       ${daysLine}
       ${paywallActionsHtml()}
-      <p class="field-hint export-urgency__hint">Watermarked preview stays free below · unlock removes blur for tenant mail · <a href="/pricing">compare plans</a></p>
+      <p class="field-hint export-urgency__hint">Watermarked preview stays free · unlock for tenant mail · <a href="/pricing">plans</a></p>
     </div>`;
   }
   return `<div class="paywall paywall--streamlined" id="export-paywall" role="status">
-      <strong>Unlock mail-ready PDF</strong> · one disputed withhold usually costs more than $29.
-      <p class="field-hint" style="margin:0.5rem 0 0">Preview is free and watermarked · unlock removes blur for tenant mail. Pro also sends a <strong>tenant email copy</strong> · <a href="/pricing">compare plans</a></p>
+      <strong>Unlock mail-ready PDF</strong> · dated packet for tenant mail.
+      <p class="field-hint" style="margin:0.5rem 0 0">Free: deadline · calendar · .ics · Sheets · watermarked preview · Pro adds tenant email copy · <a href="/pricing">plans</a></p>
       ${paywallActionsHtml()}
     </div>`;
-}
-
-function paywallFreeToolsNote() {
-  return `<div class="paywall-free-tools" role="note"><strong>Already free:</strong> deadline math · Calendar · .ics · Sheets export · <strong>watermarked preview print</strong> · copy for AI. Unlock once for a <strong>mail-ready PDF</strong> (no watermark).</div>`;
 }
 
 function renderMailReadyRoute() {
   const mp = draft.mailProof || emptyDraft().mailProof;
   return `<div class="mail-route-panel form-panel" id="mail-ready-route">
-      <p class="section-label">Mail-ready packet route</p>
+      <p class="section-label">Mail packet</p>
       <ol class="mail-route-list">
-        <li>Confirm landlord mailing address, tenant name, surrender date, and withhold lines above.</li>
-        <li><strong>Preview (watermarked)</strong> in the footer · check layout before you pay.</li>
-        <li><strong>Unlock mail-ready PDF</strong> · print or Save as PDF for tenant mail and your files.</li>
-        <li>Mail check and itemization together · log certificate of mailing or tracking below.</li>
+        <li>Confirm addresses, surrender date, and withhold lines.</li>
+        <li>Preview watermarked · unlock · print or Save as PDF.</li>
+        <li>Mail check and itemization · log tracking below.</li>
       </ol>
       <div class="form-grid two mail-proof-grid">
         <div><label for="mail-mailed">Date mailed to tenant</label><input id="mail-mailed" type="date" value="${esc(mp.mailedAt)}" /></div>
         <div><label for="mail-method">Mail method</label><input id="mail-method" type="text" value="${esc(mp.method)}" placeholder="USPS certified, courier, hand delivery" /></div>
         <div style="grid-column:1/-1"><label for="mail-tracking">Tracking or certificate #</label><input id="mail-tracking" type="text" value="${esc(mp.tracking)}" autocomplete="off" /></div>
       </div>
-      <p class="field-hint">Stored in this browser only · appears on your printed packet when filled.</p>
-      <p class="ps-fix">Your attorney will thank you for dated, itemized records. Organized packets cut billable hours when a tenant disputes a withhold.</p>
-      <p class="field-hint">Not legal advice · Deposit Desk does not mail for you · counsel sets strategy.</p>
+      <p class="field-hint">Saved in this browser · prints on your packet when filled.</p>
     </div>`;
 }
 
@@ -960,7 +953,7 @@ function wizardStepHead(title, subtitle, options = {}) {
 function wizardFlowStatusLine() {
   const def = WIZARD_STEPS.find((s) => s.n === step);
   if (!def) return "Autosaved in this browser.";
-  return `Step ${step} of ${MAX_STEPS} · ${def.label} · ${def.focus} · Autosaved in this browser.`;
+  return `Step ${step} of ${MAX_STEPS} · ${def.label} · autosaved.`;
 }
 
 function bindWizardStepNav() {
@@ -975,20 +968,28 @@ function bindWizardStepNav() {
   });
 }
 
+function statuteClockInner(st, pack, preset) {
+  if (preset === "chicago-il") {
+    return `<p class="field-hint">Chicago <strong>45 days</strong> · Illinois <strong>30 days</strong> after surrender · <a href="/blog/chicago-45-day-deposit-deadline">RLTO guide</a>.</p>`;
+  }
+  if (st === "NC") {
+    return `<p class="field-hint"><strong>30-day</strong> interim · <strong>60-day</strong> final when repairs open · <a href="/blog/north-carolina-interim-30-final-60-deposit">NC guide</a>.</p>`;
+  }
+  if (st === "CO") {
+    return `<p class="field-hint">Default <strong>30 days</strong> · lease may allow up to <strong>60</strong> · <a href="/blog/colorado-30-vs-60-day-lease-deposit-clock">CO guide</a>.</p>`;
+  }
+  if (st === "KY") {
+    return `<p class="field-hint">URLTA markets: accounting + damage lists · <strong>${pack.returnDays}-day</strong> export line · <a href="/blog/kentucky-urlta-deposit-demand-and-damage-lists">KY guide</a>.</p>`;
+  }
+  if (st === "FL") {
+    return `<p class="field-hint">§ 83.49 two-step: 15-day notice or return · then 30-day balance · <a href="/blog/florida-83-49-two-step-miami-condo-deposit">FL guide</a>.</p>`;
+  }
+  return `<p class="field-hint"><strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}).</p>`;
+}
+
 function statuteClockDetails(st, pack, preset) {
   const guideLink = overlayGuideLink(st, preset);
-  const inner =
-    preset === "chicago-il"
-      ? `<p class="field-hint">Chicago RLTO: <strong>45 days</strong> after surrender (<a href="${esc(CHICAGO_RLTO_URL)}" rel="noopener noreferrer" target="_blank">city RLTO</a>). Elsewhere in Illinois: <strong>30 days</strong> (${citeLink(st, pack.cite)}).</p>`
-      : st === "NC"
-        ? `<p class="field-hint">${pack.label} (${citeLink(st, pack.cite)}): <strong>30-day</strong> accounting from surrender is the wizard default · interim accounting by day 30 and <strong>final by day 60</strong> when damage scope is still open · see <a href="/blog/north-carolina-interim-30-final-60-deposit">NC guide</a> · confirm with counsel.</p>`
-        : st === "CO"
-          ? `<p class="field-hint">Colorado (${citeLink(st, pack.cite)}): <strong>30 calendar days</strong> after surrender by default · written lease may extend up to <strong>60 days</strong> max · wizard shows ${pack.returnDays}-day export line · confirm lease language with counsel.</p>`
-          : st === "KY"
-            ? `<p class="field-hint">Kentucky (${citeLink(st, pack.cite)}): where URLTA applies, keep separate accounting, signed damage lists, and written refund demand habits · wizard shows <strong>${pack.returnDays}-day</strong> export discipline from surrender · confirm coverage with counsel.</p>`
-            : st === "FL"
-          ? `<p class="field-hint">Florida (${citeLink(st, pack.cite)}): within <strong>15 days</strong> after termination and possession, return the full deposit <strong>or</strong> send written claim notice · then <strong>30 days</strong> after notice for the balance and accounting. Deposit Desk shows a <strong>30-day</strong> export line from surrender for step-two discipline · see <a href="/blog/florida-83-49-two-step-miami-condo-deposit">§ 83.49 two-step guide</a> · confirm with counsel.</p>`
-          : `<p class="field-hint">${pack.label} default: <strong>${pack.returnDays} days</strong> after surrender (${citeLink(st, pack.cite)}). Pick a city above when ordinances or registration may differ · confirm with counsel.</p>`;
+  const inner = statuteClockInner(st, pack, preset);
   return `<details class="statute-details"><summary>${esc(pack.label)} deposit clock (${pack.returnDays}-day default)</summary>${inner}${guideLink}</details>`;
 }
 
@@ -1022,7 +1023,7 @@ function renderStep1() {
         <p class="field-hint" id="prop-city-hint">${cityPresetHint(st, preset)}</p>
       </div>`;
   return `
-    ${wizardStepHead("Rental property", "Start with the unit and state rules · landlord details land on export for your mailed packet.")}
+    ${wizardStepHead("Rental property", "Unit, state, and city preset · landlord block on export.")}
     <div class="form-grid two wizard-flow-grid">
       <div><label for="prop-state">State</label><select id="prop-state">${stateSelectOptions(st)}</select></div>
       ${cityBlock}
@@ -1032,7 +1033,6 @@ function renderStep1() {
       <div><label for="prop-units">Units you manage</label><input id="prop-units" type="number" min="1" max="99" value="${esc(d.property.unitCount)}" aria-describedby="prop-units-hint" /></div>
       <p class="field-hint" id="prop-units-hint" style="grid-column:1/-1">Pro license: up to <strong>${PRO_UNITS_MAX} units</strong> per subscription.</p>
       ${statuteClockDetails(st, pack, preset)}
-      <p class="field-hint step-loss-kicker" style="grid-column:1/-1">Miss the return window or export without move-in proof · dispute cost usually beats $29–$99 tool fees.</p>
     </div>`;
 }
 
@@ -1044,15 +1044,6 @@ function renderStep2() {
     : `<p class="field-hint" role="status">Add surrender below to see your statutory clock.</p>`;
   return `
     ${wizardStepHead("Turnover & clock", "Surrender drives the deadline · deposit and tenant ID the packet.")}
-    ${
-      normalizeStateCode(draft.property.state) === "FL"
-        ? `<p class="turnover-alert field-hint" role="note"><strong>Florida two-step (§ 83.49):</strong> within 15 days after termination, return the full deposit <strong>or</strong> send written claim notice · then 30 days for balance and accounting. <a href="/blog/florida-83-49-two-step-miami-condo-deposit">Two-step guide</a> · confirm with counsel.</p>`
-        : normalizeStateCode(draft.property.state) === "NC"
-          ? `<p class="turnover-alert field-hint" role="note"><strong>North Carolina (§ 42-52):</strong> plan for <strong>30-day</strong> accounting from surrender · if repairs are not final, interim notice by day 30 and <strong>final by day 60</strong> · <a href="/blog/north-carolina-interim-30-final-60-deposit">NC guide</a> · confirm with counsel.</p>`
-          : normalizeStateCode(draft.property.state) === "CO"
-            ? `<p class="turnover-alert field-hint" role="note"><strong>Colorado (§ 38-12-103):</strong> default <strong>30 days</strong> after surrender · lease may allow up to <strong>60 days</strong> · <a href="/blog/colorado-30-vs-60-day-lease-deposit-clock">CO guide</a> · confirm with counsel.</p>`
-            : ""
-    }
     ${clockLine}
     <div class="form-grid two wizard-flow-grid">
       <div class="turnover-priority field-with-action" style="grid-column:1/-1">
@@ -1217,14 +1208,13 @@ function renderStep5() {
     }
     ${renderPmTurnoverHandoffSheet(draft, esc)}
     ${renderMailReadyRoute()}
-    ${!canExportPro() && !showUrgentPaywall ? paywallFreeToolsNote() : ""}
     ${renderItemizationPreview(false)}
     ${renderScreenPacketPreview()}
     ${canExportPro() ? exportEntitlementSection() : showUrgentPaywall ? "" : proBlockMessage()}
     <p style="margin:var(--space-4) 0 var(--space-2)">
       <button type="button" class="btn btn-secondary" id="btn-copy-ai">Copy for AI assistant</button>
     </p>
-    <p class="field-hint">Markdown summary in your clipboard · Dropbox/Drive links included · no photo bytes · paste into ChatGPT, Claude, or any LLM you already pay for. Not legal advice.</p>
+    <p class="field-hint">Markdown summary · photo links included · paste into your AI tool.</p>
     <div class="form-grid two">
       <div><label for="sig-ll">Landlord printed name</label><input id="sig-ll" type="text" value="${esc(draft.signatures.landlordPrinted)}" /></div>
       <div><label for="sig-tn">Tenant printed name</label><input id="sig-tn" type="text" value="${esc(draft.signatures.tenantPrinted)}" /></div>
@@ -1240,7 +1230,7 @@ function renderStep5() {
             ? `<p class="field-hint reminder-urgent-hint" role="status"><strong>Clock is tight.</strong> Schedule reminder emails before you unlock the mail-ready PDF.</p>`
             : ""
         }
-        <p class="field-hint">7 days and 1 day before your deadline · requires Resend + KV on the host (Pro feature on pricing).</p>
+        <p class="field-hint">7 days and 1 day before deadline · Pro on <a href="/pricing">pricing</a>.</p>
         <label class="reminder-pm-toggle field-hint">
           <input type="checkbox" id="rem-use-pm" ${rem.usePmEmail ? "checked" : ""} />
           Property managed · send reminders to PM / property manager email (not landlord above)
@@ -1807,6 +1797,8 @@ function render() {
   bindWizardKeyboard();
   bindWizardStepNav();
   setStepLabels();
+  const appIntro = document.getElementById("app-intro");
+  if (appIntro) appIntro.classList.toggle("is-hidden", step > 1);
   const renders = [renderStep1, renderStep2, renderStep3, renderStep4, renderStep5];
   els.panel.setAttribute("data-wizard-step", String(step));
   const stepDef = WIZARD_STEPS.find((s) => s.n === step);

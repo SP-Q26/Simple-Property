@@ -39,7 +39,10 @@ if (deadline) {
 }
 
 need("public traction json", readFileSync(join(web, "data/public-traction.json"), "utf8").includes("landlordsMin"));
-need("public traction api", readFileSync(join(web, "api/public-traction.js"), "utf8").includes("public-traction.json"));
+need(
+  "public traction api",
+  readFileSync(join(web, "lib/ops-routes.mjs"), "utf8").includes("public-traction.json")
+);
 need("home traction fetch", readFileSync(join(web, "home-boot.js"), "utf8").includes("/data/public-traction.json"));
 
 console.log(fail ? `\nGuide warning audit FAILED (${fail})` : "\nGuide warning audit OK");

@@ -1,6 +1,7 @@
 import { normalizeEmail } from "../../lib/subscription-store.mjs";
 import { createMagicLinkForEmail } from "../../lib/magic-link.mjs";
 import { sendMagicLinkEmail, resendConfigured } from "../../lib/resend.mjs";
+import { recordServerFunnel } from "../../lib/server-telemetry.mjs";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -37,6 +38,7 @@ export default async function handler(req, res) {
     const link = await createMagicLinkForEmail(email);
     if (link) {
       await sendMagicLinkEmail(email, link.token, link.sig);
+      await recordServerFunnel("magic_link_request", { sent: true });
     }
     return res.status(200).json(generic);
   } catch (e) {

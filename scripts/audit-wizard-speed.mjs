@@ -38,7 +38,7 @@ need("step tabs are buttons", appHtml.includes('class="wizard-step"') && appHtml
 need("locale compact on app", appJs.includes("locale-bar--wizard") || readFileSync(join(web, "sp-nav.js"), "utf8").includes("locale-bar--wizard"));
 need("two-button print export", appHtml.includes("btn-print-preview") && appHtml.includes("btn-print-final"));
 need("watermarked print packet", appJs.includes("print-packet--preview") && css.includes(".print-packet--preview"));
-need("mail-ready route copy", appJs.includes("mail-ready-route") && appJs.includes("attorney"));
+need("mail-ready route copy", appJs.includes("mail-ready-route") && appJs.includes("Mail packet"));
 need("turnover deep link", appJs.includes("isTurnoverQuery") && appJs.includes("enableTurnoverMode"));
 need("packet json backup", appJs.includes("PACKET_BACKUP_SCHEMA") && appJs.includes("importPacketBackupObject"));
 need("mail proof fields", appJs.includes("mail-mailed") && appJs.includes("mailProof"));
