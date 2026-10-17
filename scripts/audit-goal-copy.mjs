@@ -5,7 +5,12 @@
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { VALUE_ROI_LINE, OPERATOR_TEAM_LINE } from "../web/lib/brand-locale.mjs";
+import {
+  VALUE_ROI_LINE,
+  VALUE_EXPANSION_LINE,
+  VALUE_AUTOMATION_LINE,
+  OPERATOR_TEAM_LINE,
+} from "../web/lib/brand-locale.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 let fail = 0;
@@ -57,8 +62,13 @@ for (const { rel, bundle = [], compactTool } of SURFACES) {
   }
 }
 
-need("index ROI line", read("index.html").includes(VALUE_ROI_LINE) || read("pricing.html").includes(VALUE_ROI_LINE));
+need("index ROI line", read("index.html").includes(VALUE_ROI_LINE));
 need("pricing ROI line", read("pricing.html").includes(VALUE_ROI_LINE));
+need("index expansion lane", read("index.html").includes(VALUE_EXPANSION_LINE));
+need("launch-stack expansion lane", read("launch-stack.html").includes(VALUE_EXPANSION_LINE));
+need("index automation lane", read("index.html").includes(VALUE_AUTOMATION_LINE));
+need("modules automation lane", read("modules.html").includes(VALUE_AUTOMATION_LINE));
+need("pricing automation lane", read("pricing.html").includes(VALUE_AUTOMATION_LINE));
 need("index team line", read("index.html").includes(OPERATOR_TEAM_LINE));
 
 const jargon = [

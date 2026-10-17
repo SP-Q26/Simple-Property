@@ -31,6 +31,12 @@ need("app packet import", app.includes("importPacketBackupObject") || app.includ
 need("llms handoff PM complement", llms.includes("handoff") || llms.includes("Innago") || llms.includes("Avail"));
 need("llms not PM suite", llms.includes("Not:") && llms.includes("PM"));
 need("innago avail turnover compare post", existsSync(join(web, "blog/deposit-desk-vs-innago-avail-turnover.html")));
+need("deposit software compare post", existsSync(join(web, "blog/deposit-desk-vs-deposit-software.html")));
+
+const index = readFileSync(join(web, "index.html"), "utf8");
+const pricingHtml = readFileSync(join(web, "pricing.html"), "utf8");
+need("home solution stack", index.includes("solution-stack") && index.includes("deposit-desk-vs-innago-avail-turnover"));
+need("pricing stack compare table", pricingHtml.includes("pricing-stack") && pricingHtml.includes("stack-compare-table"));
 
 console.log(fail ? `\nStack handoff audit FAILED (${fail})` : "\nStack handoff audit OK");
 process.exit(fail ? 1 : 0);

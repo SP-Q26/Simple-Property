@@ -17,9 +17,15 @@ export const PRICING_EYEBROW = `Pricing · small landlords · Chicago HQ`;
 /** Turnover speed · fee comparison · lifetime ROI framing (pair with not legal advice on-page). */
 export const VALUE_ROI_LINE =
   "Turnover packet in one export · per-turn pricing like screening · Pro when doors stack";
+/** Door-count expansion · complement PM suites · pair with /launch-stack. */
+export const VALUE_EXPANSION_LINE =
+  "1–10 · deposit packet + files · 10–20 · ledger + light PM · 20–40 · automate rent + reminders";
+/** Lightweight automation without PM bloat · wizard step 5 + Pro. */
+export const VALUE_AUTOMATION_LINE =
+  "Google Calendar · Sheets · .ics · email reminders · packet .json · beside Innago or Avail";
 export const OPERATOR_TEAM_LINE = "Built for landlords who run the doors themselves.";
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 71;
+export const CSS_VERSION = 72;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

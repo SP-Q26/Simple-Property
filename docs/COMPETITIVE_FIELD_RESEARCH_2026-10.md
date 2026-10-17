@@ -1,5 +1,7 @@
 # Competitive field research · deposit & small-landlord lanes (Oct 2026)
 
+**Brand + SEO scoring table:** `docs/COMPETITOR_BRAND_SEO_DIVE_2026-10-17.md`
+
 **Our lane:** Simple Property Tools · **Deposit Desk** (statutory packets) + **Condition hub** (walkthrough proof) · **1–40 doors** · per-turn **$29/$49** or Pro **$22/mo** · not legal advice.
 
 **SEO baseline today:** ~232 guides · state/metro/pain clusters · weak coverage on **route intent** (pricing, hub, modules, logs) until route series ships.

@@ -16,7 +16,7 @@ const manifestPath = join(web, "data", "blog-manifest.json");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const site = manifest.site.replace(/\/$/, "");
 /** Marketing pages last content refresh · bump on sitewide copy/SEO sweeps. */
-const SITE_LASTMOD = "2026-10-11";
+const SITE_LASTMOD = "2026-10-17";
 
 function blogHtmlPath(slug) {
   return join(web, "blog", `${slug}.html`);

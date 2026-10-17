@@ -3805,7 +3805,29 @@
       "routeSeries": "pricing",
       "states": [],
       "published": "2026-10-15",
-      "updated": "2026-10-15",
+      "updated": "2026-10-17",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-vs-innago-avail-turnover",
+      "title": "Deposit Desk vs Innago and Avail at turnover",
+      "description": "Keep free rent tools · add surrender clocks and print packets at move-out. Not legal advice.",
+      "category": "landlord",
+      "intent": "landlord",
+      "states": [],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-desk-vs-deposit-software",
+      "title": "Deposit Desk vs deposit compliance software",
+      "description": "Packet layer vs full deposit back office · per-turn pricing and export you control. Not legal advice.",
+      "category": "landlord",
+      "intent": "landlord",
+      "states": [],
+      "published": "2026-10-17",
+      "updated": "2026-10-17",
       "statutes": []
     },
     {

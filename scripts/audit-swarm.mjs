@@ -6,6 +6,11 @@ import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import {
+  VALUE_ROI_LINE,
+  VALUE_EXPANSION_LINE,
+  VALUE_AUTOMATION_LINE,
+} from "../web/lib/brand-locale.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const web = join(root, "web");
@@ -191,6 +196,44 @@ function scoreDiscoveryLane() {
   return m ? Number(m[1]) : 0;
 }
 
+function scoreRoiLane() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-copy-swarm-lanes.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  if (r.status === 0) return 100;
+  let s = 70;
+  const pricing = read("pricing.html");
+  const index = read("index.html");
+  if (index.includes(VALUE_ROI_LINE) && pricing.includes(VALUE_ROI_LINE)) s += 20;
+  if (/350/.test(pricing)) s += 10;
+  return Math.min(100, s);
+}
+
+function scoreExpansionLane() {
+  let s = 100;
+  const index = read("index.html");
+  const launch = read("launch-stack.html");
+  const llms = read("llms.txt");
+  if (!index.includes(VALUE_EXPANSION_LINE)) s -= 25;
+  if (!launch.includes(VALUE_EXPANSION_LINE)) s -= 25;
+  if (!llms.includes("1–10") || !llms.includes("20–40")) s -= 20;
+  if (!launch.includes("tier-20-40")) s -= 15;
+  return Math.max(0, s);
+}
+
+function scoreAutomationLane() {
+  let s = 100;
+  const index = read("index.html");
+  const pricing = read("pricing.html");
+  const modules = read("modules.html");
+  if (!index.includes(VALUE_AUTOMATION_LINE)) s -= 25;
+  if (!pricing.includes(VALUE_AUTOMATION_LINE)) s -= 25;
+  if (!modules.includes(VALUE_AUTOMATION_LINE)) s -= 25;
+  if (!read("app.js").includes("btn-google-cal")) s -= 15;
+  return Math.max(0, s);
+}
+
 const metrics = [
   ["Brand shell (mark · nav · v7)", scoreBrandShell],
   ["Visual system (tokens · proof)", scoreVisual],
@@ -206,6 +249,9 @@ const metrics = [
   ["Launch stack · door tiers", scoreLaunchStack],
   ["Expansion spec (Receipt Rail canon)", scoreExpansionSpec],
   ["Hub alpha (spine · move-in/out)", scoreHubAlpha],
+  ["ROI lane (counsel vs per-turn)", scoreRoiLane],
+  ["Expansion lane (door tiers)", scoreExpansionLane],
+  ["Automation lane (Calendar · JSON)", scoreAutomationLane],
 ];
 let fail = 0;
 const rows = [];
