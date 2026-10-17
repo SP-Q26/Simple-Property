@@ -2,6 +2,7 @@ import Stripe from "stripe";
 import { upsertSubscriptionRecord } from "../../lib/subscription-store.mjs";
 import { recordFromCheckoutSession, recordFromStripeSubscription } from "../../lib/stripe-entitlement.mjs";
 import { recordFunnelEvent } from "../../lib/funnel-rollups.mjs";
+import { isDepositDeskCheckoutMetadata } from "../../lib/isles-checkout-metadata.mjs";
 
 export const config = {
   api: {
@@ -61,9 +62,17 @@ export default async function handler(req, res) {
   try {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
+      if (!isDepositDeskCheckoutMetadata(session.metadata)) {
+        await logEvent("checkout_ignored_foreign_brand", {
+          isles_brand: session.metadata?.isles_brand || "",
+          session_id: session.id,
+        });
+        return res.status(200).json({ received: true, ignored: true });
+      }
       const record = await recordFromCheckoutSession(session);
       await logEvent("checkout_complete", {
         sku: session.metadata?.spt_sku || "",
+        isles_brand: session.metadata?.isles_brand || "deposit_desk",
         stripe_type: "checkout.session.completed",
         session_id: session.id,
         kv: Boolean(record.customer_id),

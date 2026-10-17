@@ -10,6 +10,7 @@
 | [SIMPLE_PROPERTY_EXPANSION.md](./SIMPLE_PROPERTY_EXPANSION.md) | Product bible · data model · modules · pricing · roadmap gates |
 | [LANE.md](./LANE.md) | Shared **Receipt Rail** grammar (entities, lifecycle, module contract) |
 | [SPEC_AUDIT.md](./SPEC_AUDIT.md) | Spec vs live product audit |
+| [MONEY_PATH_P1.md](./MONEY_PATH_P1.md) | **Attack order** · finalize → PDF → share → Stripe `deposit_desk` (before P2 compare) |
 | [SWARM_DEPLOY_PLAN.md](./SWARM_DEPLOY_PLAN.md) | Parallel lanes · deploy trains 0–4 |
 | [ACHIEVABLE_NOW.md](./ACHIEVABLE_NOW.md) | Live vs alpha vs P1 backend |
 | [PRICING_40_UNITS.md](./PRICING_40_UNITS.md) | Keeper / Portfolio unit caps |

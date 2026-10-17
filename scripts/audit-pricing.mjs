@@ -43,7 +43,8 @@ need("catalog turn_move_out", catalog.includes("turn_move_out"));
 need("catalog turn_full", catalog.includes("turn_full"));
 need(
   "checkout packet_id",
-  read("api/stripe/checkout.js").includes("spt_packet_id") &&
+  read("api/stripe/checkout.js").includes("buildDepositDeskCheckoutMetadata") &&
+    read("lib/isles-checkout-metadata.mjs").includes("spt_packet_id") &&
     read("api/stripe/checkout.js").includes("catalog.mode")
 );
 need("home per-turn model", read("index.html").includes("per turn") || read("index.html").includes("Per turn"));

@@ -14,6 +14,7 @@ import {
   createIslesCheckoutSession,
   ISLES_STRIPE_API_VERSION,
 } from "../../lib/isles-stripe-checkout-branding.mjs";
+import { buildDepositDeskCheckoutMetadata } from "../../lib/isles-checkout-metadata.mjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
   apiVersion: ISLES_STRIPE_API_VERSION,
@@ -131,13 +132,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "packet_id_required" });
   }
 
-  const metadata = {
-    spt_sku: sku,
-    spt_plan: catalog.metadata?.spt_plan || "pro",
-    spt_units_max: catalog.metadata?.spt_units_max || String(PRO_UNITS_MAX),
-    spt_payer: "landlord",
-  };
-  if (packetId) metadata.spt_packet_id = packetId;
+  const metadata = buildDepositDeskCheckoutMetadata(sku, catalog, { packetId });
+  if (!metadata.spt_units_max) metadata.spt_units_max = String(PRO_UNITS_MAX);
 
   const envKey = priceEnvKeyForSku(sku);
   const envPrice = envKey ? (process.env[envKey] || "").trim() : "";

@@ -29,6 +29,7 @@ import {
 import {
   trackIsles,
   trackPacketBar,
+  hashReceiptId,
   DEPOSIT_DESK_TEMPLATE_ID,
   doorBand,
 } from "./lib/spt-telemetry.mjs";
@@ -1689,6 +1690,26 @@ function triggerWizardPrint(kind) {
   renderPrintPacket(isPreview ? "preview" : "final");
   els.printRoot?.scrollIntoView({ behavior: "smooth", block: "start" });
   trackPacketBar("pdf");
+  if (!isPreview && canExportPro()) {
+    void (async () => {
+      try {
+        const deadline = computeDeadline(deadlineInput());
+        const row = await buildDepositDeskPbsRow({
+          draft,
+          deadline,
+          shareUrl: packetReturnUrl(),
+        });
+        const receipt_id_hash = await hashReceiptId(row.receipt_id);
+        trackIsles("sp_finalize_success", {
+          receipt_id_hash,
+          verdict: row.verdict || depositDeskVerdict(draft),
+          via: "print_final",
+        });
+      } catch {
+        /* telemetry only */
+      }
+    })();
+  }
   window.print();
 }
 

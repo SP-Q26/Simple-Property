@@ -52,6 +52,7 @@ need("bible deposit desk mapping", bible.includes("Deposit Desk mapping"));
 need("plan train 0", plan.includes("Train 0"));
 need("plan program A B split", plan.includes("Program A") && plan.includes("Program B"));
 need("plan deploy checklist", plan.includes("audit-receipt-rail-spec"));
+need("money path P1 doc", existsSync(join(docs, "MONEY_PATH_P1.md")));
 
 need("pricing 40 units doc", readDoc("PRICING_40_UNITS.md").includes("40 units"));
 need("achievable now audit", readDoc("ACHIEVABLE_NOW.md").includes("Program A"));
