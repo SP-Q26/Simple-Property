@@ -153,9 +153,9 @@
     if (!snippetData) return;
     var code = activeStateCode();
     if (kickerEl) {
-      kickerEl.textContent = code
-        ? "What " + code + " court records keep showing"
-        : "What court records keep showing";
+      var railLabel = kickerEl.querySelector(".court-record-strip__rail-text");
+      var target = railLabel || kickerEl;
+      target.textContent = code ? "What " + code + " court records" : "What court records";
     }
     if (isHome) {
       if (code) card.setAttribute("data-spt-court-state", code);

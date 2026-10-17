@@ -42,6 +42,12 @@ need(
   "court record rotate motion",
   css.includes("court-record-line-in") && css.includes("prefers-reduced-motion")
 );
+need(
+  "court strip card hover",
+  css.includes(".court-record-card--strip:hover") && css.includes("@media (hover: hover)")
+);
+need("court strip focus-within", css.includes(".court-record-card--strip:focus-within"));
+need("court strip footer link hover", css.includes(".court-record-strip__footer a:hover"));
 need("statute index link hover", css.includes(".locale-bar__statute-index a:hover"));
 
 need("coverage spotlight padding", blockHas(".coverage-spotlight {", "padding: var(--space-6)"));

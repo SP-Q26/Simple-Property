@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=75">
+  <link rel="stylesheet" href="/simple-property.css?v=77">
   <link rel="stylesheet" href="/spt-door-arrival.css?v=3">
     <link rel="preload" href="/lottie/spt-door-arrival-lottie.json?v=3" as="fetch" crossorigin>
   <script src="/spt-door-arrival-lottie.js?v=3" defer></script>
@@ -206,17 +206,21 @@
       <div class="court-record-strip no-print">
         <aside class="court-record-card court-record-card--strip hero-rotate-wrap" role="note" aria-labelledby="court-record-kicker">
           <div class="court-record-strip__layout">
-            <p class="hero-rotate-kicker court-record-strip__rail" id="court-record-kicker">What court records keep showing</p>
-            <p id="hero-rotate" class="hero-rotate-line court-record-strip__line" aria-live="polite">
-              Illinois and Chicago filings still turn on missed 30- and 45-day return windows after surrender, not lease end alone.
+            <p class="hero-rotate-kicker court-record-strip__rail" id="court-record-kicker">
+              <span class="court-record-strip__rail-text">What court records</span>
             </p>
-            <p class="hero-rotate-note court-record-strip__footer">
-              <a href="/legal/deposit-statutes" data-spt-court-source rel="noopener noreferrer">Deposit statutes</a>
-              <span class="court-record-strip__footer-sep" aria-hidden="true">·</span>
-              <a href="/blog">Guides by state</a>
-              <span class="court-record-strip__footer-sep" aria-hidden="true">·</span>
-              <span class="court-record-strip__footer-legal">Patterns only · not legal advice</span>
-            </p>
+            <div class="court-record-strip__stage">
+              <p id="hero-rotate" class="hero-rotate-line court-record-strip__line" aria-live="polite">
+                Illinois and Chicago filings still turn on missed 30- and 45-day return windows after surrender, not lease end alone.
+              </p>
+              <p class="hero-rotate-note court-record-strip__footer">
+                <a href="/legal/deposit-statutes" data-spt-court-source rel="noopener noreferrer">Deposit statutes</a>
+                <span class="court-record-strip__footer-sep" aria-hidden="true">·</span>
+                <a href="/blog">Guides by state</a>
+                <span class="court-record-strip__footer-sep" aria-hidden="true">·</span>
+                <span class="court-record-strip__footer-legal">Patterns only · not legal advice</span>
+              </p>
+            </div>
           </div>
         </aside>
       </div>

@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v75 · court-record strip grid rail + footer */
+/* Simple Property Tools · Deposit Desk · v77 · court-record strip hover */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1435,6 +1435,7 @@ main > h1,
 }
 
 .court-record-card--strip {
+  --court-strip-stage-h: 5.75rem;
   padding: var(--space-2) var(--space-3);
   margin: 0;
   max-width: none;
@@ -1442,52 +1443,79 @@ main > h1,
 
 .court-record-strip__layout {
   display: grid;
-  grid-template-columns: minmax(4.5rem, 6.25rem) minmax(0, 1fr);
-  grid-template-areas:
-    "rail line"
-    "rail foot";
+  grid-template-columns: 4.75rem minmax(0, 1fr);
   column-gap: var(--space-3);
-  row-gap: var(--space-2);
-  align-items: start;
+  align-items: stretch;
   width: 100%;
+  min-height: var(--court-strip-stage-h);
 }
 
 .court-record-strip__rail {
-  grid-area: rail;
-  align-self: stretch;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
+  gap: var(--space-1);
   margin: 0;
-  max-width: 6.25rem;
+  padding: 0;
+  min-height: var(--court-strip-stage-h);
   font-size: 0.58rem;
-  line-height: 1.28;
-  letter-spacing: 0.07em;
+  line-height: 1.22;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.court-record-strip__rail-text {
+  display: block;
+  max-width: 4.5rem;
   text-wrap: balance;
 }
 
 .court-record-card--strip .hero-rotate-kicker::before {
   width: 0.45rem;
   height: 0.45rem;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.court-record-strip__stage {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: var(--court-strip-stage-h);
+  height: var(--court-strip-stage-h);
+  min-width: 0;
 }
 
 .court-record-strip__line {
-  grid-area: line;
+  align-self: center;
   width: 100%;
   max-width: none;
   min-height: 0;
   margin: 0;
+  padding: 0;
   font-size: clamp(0.9rem, 2.4vw, 1.05rem);
-  line-height: 1.42;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.court-record-card--strip .hero-rotate-line {
+  min-height: 0;
 }
 
 .court-record-strip__footer {
-  grid-area: foot;
   justify-self: end;
+  align-self: end;
   margin: 0;
+  padding: 0;
   max-width: 100%;
-  font-size: 0.72rem;
-  line-height: 1.35;
+  font-size: 0.7rem;
+  line-height: 1.3;
   text-align: right;
   color: var(--court-warning-ink);
   opacity: 0.92;
@@ -1516,39 +1544,33 @@ main > h1,
 
 @media (max-width: 639px) {
   .court-record-card--strip {
+    --court-strip-stage-h: 6.5rem;
     padding: var(--space-2) max(var(--space-2), var(--safe-left)) var(--space-2)
       max(var(--space-2), var(--safe-right));
   }
 
   .court-record-strip__layout {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "rail"
-      "line"
-      "foot";
-    row-gap: var(--space-2);
-    column-gap: 0;
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    column-gap: var(--space-2);
   }
 
   .court-record-strip__rail {
-    max-width: none;
-    flex-direction: row;
-    align-items: center;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    padding-bottom: var(--space-1);
-    border-bottom: 1px solid color-mix(in srgb, var(--court-warning-border) 70%, transparent);
+    font-size: 0.54rem;
+    letter-spacing: 0.07em;
+  }
+
+  .court-record-strip__rail-text {
+    max-width: 3.5rem;
   }
 
   .court-record-strip__line {
-    font-size: 0.95rem;
-    line-height: 1.45;
+    font-size: 0.92rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 
   .court-record-strip__footer {
-    justify-self: end;
-    text-align: right;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .court-record-strip__footer-legal {
@@ -1558,33 +1580,36 @@ main > h1,
 
 @media (min-width: 640px) and (max-width: 1023px) {
   .court-record-card--strip {
-    padding: var(--space-2) var(--space-3);
+    --court-strip-stage-h: 5.5rem;
   }
 
   .court-record-strip__layout {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
     column-gap: var(--space-2);
-    row-gap: var(--space-1);
   }
 
-  .court-record-strip__rail {
-    font-size: 0.56rem;
-    max-width: 5.5rem;
+  .court-record-strip__rail-text {
+    max-width: 4.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   .court-record-card--strip {
+    --court-strip-stage-h: 5.85rem;
     padding: var(--space-2) var(--space-4);
   }
 
   .court-record-strip__layout {
+    grid-template-columns: 5rem minmax(0, 1fr);
     column-gap: var(--space-4);
-    row-gap: var(--space-2);
   }
 
   .court-record-strip__rail {
     font-size: 0.6rem;
-    max-width: 6.5rem;
+  }
+
+  .court-record-strip__rail-text {
+    max-width: 4.75rem;
   }
 
   .court-record-strip__line {
@@ -1623,7 +1648,35 @@ main > h1,
   transition:
     box-shadow 0.28s ease,
     border-color 0.28s ease,
-    background 0.28s ease;
+    background 0.28s ease,
+    outline-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .court-record-card:hover,
+  .court-record-card--strip:hover {
+    border-color: color-mix(in srgb, var(--court-warning-accent) 72%, var(--court-warning-border));
+    border-left-color: var(--court-warning-accent);
+    box-shadow:
+      0 4px 16px rgba(139, 58, 58, 0.2),
+      0 0 0 1px color-mix(in srgb, var(--court-warning-accent) 32%, transparent);
+    background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--court-warning-surface) 88%, rgba(154, 69, 69, 0.14)),
+      rgba(122, 64, 56, 0.19)
+    );
+  }
+
+  .court-record-card:hover .hero-rotate-kicker::before,
+  .court-record-card--strip:hover .hero-rotate-kicker::before {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.24);
+  }
+}
+
+.court-record-card--strip:focus-within {
+  outline: 2px solid color-mix(in srgb, var(--court-warning-accent) 50%, var(--quant-blue));
+  outline-offset: 2px;
 }
 
 .court-record-card.is-court-flash {

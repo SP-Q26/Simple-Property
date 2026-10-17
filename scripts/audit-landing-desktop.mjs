@@ -40,7 +40,8 @@ need(
   "home court record strip",
   index.includes("court-record-card--strip") &&
     index.includes('id="hero-rotate"') &&
-    index.includes("court-record-strip__layout")
+    index.includes("court-record-strip__layout") &&
+    index.includes("court-record-strip__stage")
 );
 need("home clock gloss", index.includes("hero-clock-gloss"));
 need("css court record warning", css.includes("--court-warning-surface") && css.includes(".court-record-card"));
