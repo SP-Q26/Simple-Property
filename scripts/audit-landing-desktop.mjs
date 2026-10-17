@@ -36,10 +36,8 @@ need("css desktop landing block", css.includes(".page > main .hero") && css.incl
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
 need("home no tap the map", !index.includes("Tap the map"));
 need("home color bar coverage", /color bar/i.test(index));
-need(
-  "home trust card or clock gloss",
-  (index.includes("court-record-card") && index.includes("hero-rotate")) || index.includes("hero-clock-gloss")
-);
+need("home court record strip", index.includes("court-record-card--strip") && index.includes('id="hero-rotate"'));
+need("home clock gloss", index.includes("hero-clock-gloss"));
 need("css court record warning", css.includes("--court-warning-surface") && css.includes(".court-record-card"));
 need("css court kicker signal", css.includes(".hero-rotate-kicker::before"));
 need("court rotate script", index.includes("court-record-rotate.js"));
