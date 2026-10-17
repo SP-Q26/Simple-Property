@@ -68,6 +68,7 @@ need("mobile ps copy readable", css.includes(".ps-problem") && css.includes("lin
 need("sticky wizard safe bottom", css.includes(".wizard-nav--sticky") && css.includes("safe-bottom"));
 
 const index = read("index.html");
+need("home court strip before hero", orderBefore(index, "court-record-strip", 'class="hero"'));
 need("home hero copy before proof", orderBefore(index, 'class="hero-copy"', 'class="hero-proof"'));
 need("home pathway before solution stack", orderBefore(index, "pathway-deck", "solution-stack"));
 need("home solution stack before guides", orderBefore(index, "solution-stack", "guides-hub"));

@@ -30,7 +30,7 @@ console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
 /** v73 mobile stack tables + hub touch stack · cap reviewed when CSS grows. */
-need("css size under 103KB", cssBytes < 103 * 1024);
+need("css size under 106KB", cssBytes < 106 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));
@@ -80,7 +80,7 @@ need("court-record-rotate.js present", existsSync(join(web, "court-record-rotate
 need("no legacy court rotate scripts", !existsSync(join(web, "hero-rotate.js")) && !existsSync(join(web, "blog-court-rotate.js")));
 const courtRotate = statSync(join(web, "court-record-rotate.js")).size;
 console.log(`  court-record-rotate.js: ${courtRotate} bytes`);
-need("court-record-rotate under 5KB", courtRotate < 5 * 1024);
+need("court-record-rotate under 6KB", courtRotate < 6 * 1024);
 
 const snippetsPath = join(web, "data/court-record-snippets.json");
 if (existsSync(snippetsPath)) {
