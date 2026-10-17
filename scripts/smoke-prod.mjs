@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** Production smoke + post-smoke content checks (run after deploy). */
 import { verifyPageStylesheet } from "./lib/smoke-css-gate.mjs";
+import { verifyCourtStripLive } from "./lib/smoke-court-strip.mjs";
 
 const BASE = process.env.SPT_SMOKE_URL || "https://simple-property.com";
 const EM = "\u2014";
@@ -81,6 +82,10 @@ async function check({ name, path, need, absent, css }) {
   }
   if (css) {
     const ok = await verifyPageStylesheet(BASE, text, name);
+    if (!ok) fail++;
+  }
+  if (name === "home") {
+    const ok = await verifyCourtStripLive(BASE, text, name);
     if (!ok) fail++;
   }
 }

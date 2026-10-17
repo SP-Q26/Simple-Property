@@ -29,8 +29,8 @@ console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
-/** v73 mobile stack tables + hub touch stack · cap reviewed when CSS grows. */
-need("css size under 106KB", cssBytes < 106 * 1024);
+/** v78 court-strip cascade tail at EOF · cap reviewed when CSS grows. */
+need("css size under 110KB", cssBytes < 110 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));

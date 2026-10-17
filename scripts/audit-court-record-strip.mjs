@@ -44,8 +44,13 @@ const rotate = readFileSync(join(web, "court-record-rotate.js"), "utf8");
 need("rotate rail label target", rotate.includes("court-record-strip__rail-text"));
 need(
   "strip card hover state",
-  css.includes(".court-record-card--strip:hover") && css.includes("border-left-color")
+  css.includes(".court-record-card.court-record-card--strip:hover") && css.includes("border-left-color")
 );
+const blogLine = css.indexOf(".hero-rotate-line {");
+const tailOverride = css.indexOf(".court-record-card--strip .court-record-strip__line.hero-rotate-line");
+need("cascade tail after blog line rule", blogLine >= 0 && tailOverride > blogLine);
+need("cascade tail marker", css.includes("Court strip · cascade tail"));
+need("strip line min-height zero tail", /court-record-strip__line\.hero-rotate-line[\s\S]{0,120}min-height:\s*0/.test(css));
 
 console.log(fail ? `audit-court-record-strip FAILED (${fail})` : "audit-court-record-strip OK");
 process.exit(fail ? 1 : 0);
