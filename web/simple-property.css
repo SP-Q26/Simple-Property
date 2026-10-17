@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v72 · solution stack + competitor guides */
+/* Simple Property Tools · Deposit Desk · v73 · mobile extreme spacing + stack tables */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1812,6 +1812,7 @@ main > h1,
 .hero-copy > .hero-clock-gloss,
 .hero-copy > .hero-lead,
 .hero-copy > .hero-team,
+.hero-copy > .value-roi-line,
 .hero-copy > .hero-wedge,
 .hero-copy > .fact-strip,
 .hero-copy > .hero-traction,
@@ -4483,10 +4484,75 @@ table.data-table th {
     font-size: 0.8125rem;
   }
 
-  .tier-table {
+  .tier-table,
+  .stack-compare-table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  .stack-compare-table {
+    font-size: 0.88rem;
+  }
+
+  .pricing-stack {
+    padding: var(--space-4);
+    margin: var(--space-5) 0;
+  }
+
+  .solution-stack {
+    margin: var(--space-5) 0;
+  }
+
+  .stack-lane-grid {
+    gap: var(--space-3);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .field-hint.value-roi-line,
+  .field-hint.automation-lane-line,
+  .field-hint.expansion-lane-line {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .ps-problem,
+  .ps-fix {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .wizard-nav__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .wizard-nav__actions .btn {
+    width: 100%;
+  }
+
+  .form-flow-rail {
+    font-size: 0.8125rem;
+    gap: var(--space-2);
+  }
+
+  .hub-wizard-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hub-wizard-actions .btn {
+    width: 100%;
+  }
+
+  .hub-page .hub-static-intro .btn {
+    width: 100%;
   }
 }
 
@@ -4981,11 +5047,6 @@ table.data-table th {
   border: 1px solid color-mix(in srgb, var(--border) 88%, transparent);
 }
 
-@media (max-width: 639px) {
-  .stack-compare-table {
-    font-size: 0.88rem;
-  }
-}
 
 .hub-wizard-section legend {
   font-weight: 700;

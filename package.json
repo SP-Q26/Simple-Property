@@ -56,6 +56,7 @@
     "audit:visual": "node scripts/audit-visual-brand.mjs",
     "audit:ios": "node scripts/audit-ios-brand-spacing.mjs",
     "audit:mobile": "node scripts/audit-mobile-responsive.mjs",
+    "audit:mobile-extreme": "node scripts/audit-mobile-extreme.mjs",
     "audit:spacing": "node scripts/audit-responsive-spacing.mjs",
     "audit:mcp": "node scripts/audit-mcp.mjs",
     "audit:seo-sweep": "node scripts/audit-seo-sweep.mjs",

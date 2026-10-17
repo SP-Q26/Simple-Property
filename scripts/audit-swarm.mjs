@@ -234,6 +234,14 @@ function scoreAutomationLane() {
   return Math.max(0, s);
 }
 
+function scoreMobileExtreme() {
+  const r = spawnSync(process.execPath, [join(root, "scripts", "audit-mobile-extreme.mjs")], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  return r.status === 0 ? 100 : 0;
+}
+
 const metrics = [
   ["Brand shell (mark · nav · v7)", scoreBrandShell],
   ["Visual system (tokens · proof)", scoreVisual],
@@ -252,6 +260,7 @@ const metrics = [
   ["ROI lane (counsel vs per-turn)", scoreRoiLane],
   ["Expansion lane (door tiers)", scoreExpansionLane],
   ["Automation lane (Calendar · JSON)", scoreAutomationLane],
+  ["Mobile extreme (order · flow · type)", scoreMobileExtreme],
 ];
 let fail = 0;
 const rows = [];
