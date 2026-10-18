@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v78 · court strip cascade tail */
+/* Simple Property Tools · Deposit Desk · v79 · court strip top rail + hover */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1445,33 +1445,32 @@ main > h1,
 }
 
 .court-record-strip__layout {
-  display: grid;
-  grid-template-columns: 4.75rem minmax(0, 1fr);
-  column-gap: var(--space-3);
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
+  gap: var(--space-1);
   width: 100%;
-  min-height: var(--court-strip-stage-h);
 }
 
 .court-record-strip__rail {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--space-1);
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
   margin: 0;
   padding: 0;
-  min-height: var(--court-strip-stage-h);
-  font-size: 0.58rem;
-  line-height: 1.22;
-  letter-spacing: 0.08em;
+  min-height: 0;
+  font-size: 0.72rem;
+  line-height: 1.25;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .court-record-strip__rail-text {
-  display: block;
-  max-width: 4.5rem;
-  text-wrap: balance;
+  display: inline;
+  max-width: none;
+  white-space: normal;
 }
 
 .court-record-card--strip .hero-rotate-kicker::before {
@@ -1552,18 +1551,9 @@ main > h1,
       max(var(--space-2), var(--safe-right));
   }
 
-  .court-record-strip__layout {
-    grid-template-columns: 3.75rem minmax(0, 1fr);
-    column-gap: var(--space-2);
-  }
-
   .court-record-strip__rail {
-    font-size: 0.54rem;
-    letter-spacing: 0.07em;
-  }
-
-  .court-record-strip__rail-text {
-    max-width: 3.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.09em;
   }
 
   .court-record-strip__line {
@@ -1585,34 +1575,12 @@ main > h1,
   .court-record-card--strip {
     --court-strip-stage-h: 5.5rem;
   }
-
-  .court-record-strip__layout {
-    grid-template-columns: 4.5rem minmax(0, 1fr);
-    column-gap: var(--space-2);
-  }
-
-  .court-record-strip__rail-text {
-    max-width: 4.25rem;
-  }
 }
 
 @media (min-width: 1024px) {
   .court-record-card--strip {
     --court-strip-stage-h: 5.85rem;
     padding: var(--space-2) var(--space-4);
-  }
-
-  .court-record-strip__layout {
-    grid-template-columns: 5rem minmax(0, 1fr);
-    column-gap: var(--space-4);
-  }
-
-  .court-record-strip__rail {
-    font-size: 0.6rem;
-  }
-
-  .court-record-strip__rail-text {
-    max-width: 4.75rem;
   }
 
   .court-record-strip__line {
@@ -1652,6 +1620,7 @@ main > h1,
     box-shadow 0.28s ease,
     border-color 0.28s ease,
     background 0.28s ease,
+    transform 0.22s ease,
     outline-color 0.2s ease;
 }
 
@@ -5312,9 +5281,9 @@ table.data-table th {
 /* Court strip · cascade tail (after .hero-rotate-* + breakpoint overrides) */
 .court-record-card--strip .court-record-strip__rail.hero-rotate-kicker {
   margin: 0;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-1);
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .court-record-card--strip .court-record-strip__line.hero-rotate-line {
@@ -5337,26 +5306,54 @@ table.data-table th {
   outline-offset: 2px;
 }
 
+.court-record-card.court-record-card--strip.is-strip-hover {
+  animation: none;
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--court-warning-accent) 88%, var(--court-warning-border));
+  border-left-color: var(--court-warning-accent);
+  border-left-width: 5px;
+  box-shadow:
+    0 10px 28px rgba(139, 58, 58, 0.32),
+    0 0 0 2px color-mix(in srgb, var(--court-warning-accent) 45%, transparent);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--court-warning-surface) 68%, rgba(154, 69, 69, 0.28)),
+    rgba(122, 64, 56, 0.26)
+  );
+}
+
 @media (hover: hover) {
   .court-record-card.court-record-card--strip:hover {
     animation: none;
-    border-color: color-mix(in srgb, var(--court-warning-accent) 82%, var(--court-warning-border));
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--court-warning-accent) 88%, var(--court-warning-border));
     border-left-color: var(--court-warning-accent);
+    border-left-width: 5px;
     box-shadow:
-      0 6px 22px rgba(139, 58, 58, 0.26),
-      0 0 0 1px color-mix(in srgb, var(--court-warning-accent) 38%, transparent);
+      0 10px 28px rgba(139, 58, 58, 0.32),
+      0 0 0 2px color-mix(in srgb, var(--court-warning-accent) 45%, transparent);
     background: linear-gradient(
       145deg,
-      color-mix(in srgb, var(--court-warning-surface) 75%, rgba(154, 69, 69, 0.2)),
-      rgba(122, 64, 56, 0.22)
+      color-mix(in srgb, var(--court-warning-surface) 68%, rgba(154, 69, 69, 0.28)),
+      rgba(122, 64, 56, 0.26)
     );
   }
+}
 
-  .court-record-card.court-record-card--strip:hover .hero-rotate-kicker::before {
-    transform: scale(1.18);
-    box-shadow: 0 0 0 4px rgba(139, 58, 58, 0.28);
+.court-record-card.court-record-card--strip.is-strip-hover .court-record-strip__rail.hero-rotate-kicker::before {
+  transform: scale(1.22);
+  box-shadow: 0 0 0 5px rgba(139, 58, 58, 0.32);
+}
+
+@media (hover: hover) {
+  .court-record-card.court-record-card--strip:hover .hero-rotate-kicker::before,
+  .court-record-card.court-record-card--strip:hover .court-record-strip__rail.hero-rotate-kicker::before {
+    transform: scale(1.22);
+    box-shadow: 0 0 0 5px rgba(139, 58, 58, 0.32);
   }
+}
 
+@media (hover: hover) {
   .prose .court-record-card:hover {
     border-color: color-mix(in srgb, var(--court-warning-accent) 72%, var(--court-warning-border));
     border-left-color: var(--court-warning-accent);

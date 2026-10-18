@@ -44,7 +44,9 @@ need(
 );
 need(
   "court strip card hover",
-  css.includes(".court-record-card.court-record-card--strip:hover") && css.includes("@media (hover: hover)")
+  css.includes(".court-record-card.court-record-card--strip:hover") &&
+    css.includes(".court-record-card--strip.is-strip-hover") &&
+    css.includes("@media (hover: hover)")
 );
 need("court strip focus-within", css.includes(".court-record-card--strip:focus-within"));
 need("court strip footer link hover", css.includes(".court-record-strip__footer a:hover"));

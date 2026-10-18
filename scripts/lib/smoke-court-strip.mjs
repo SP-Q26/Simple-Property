@@ -38,7 +38,12 @@ export async function verifyCourtStripLive(base, html, label = "home") {
   need(
     "strip hover rule",
     css.includes(".court-record-card.court-record-card--strip:hover") &&
+      css.includes("is-strip-hover") &&
       css.includes("border-left-color")
+  );
+  need(
+    "rail horizontal layout",
+    /\.court-record-strip__rail[\s\S]{0,240}flex-direction:\s*row/.test(css)
   );
   need("cascade tail comment", css.includes("Court strip · cascade tail"));
 

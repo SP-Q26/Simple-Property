@@ -35,7 +35,8 @@ need("flow strip before hero", orderBefore("court-record-strip", 'class="hero"')
 need("css fixed stage height", css.includes("--court-strip-stage-h") && css.includes(".court-record-strip__stage"));
 need("css stage line clamp", css.includes(".court-record-strip__line") && css.includes("line-clamp"));
 need("css footer end aligned", css.includes(".court-record-strip__footer") && css.includes("justify-self: end"));
-need("css two column rail stage", css.includes("grid-template-columns: 4.75rem minmax(0, 1fr)"));
+need("css stacked rail above stage", css.includes(".court-record-strip__layout") && /\.court-record-strip__rail[\s\S]{0,220}flex-direction:\s*row/.test(css));
+need("css strip hover class", css.includes(".court-record-card--strip.is-strip-hover"));
 need("phone strip @639", css.includes("@media (max-width: 639px)") && css.includes(".court-record-strip__stage"));
 need("tablet strip band 640-1023", css.includes("@media (min-width: 640px) and (max-width: 1023px)") && css.includes("--court-strip-stage-h"));
 need("desktop strip band 1024", css.includes("@media (min-width: 1024px)") && css.includes(".court-record-strip__stage"));

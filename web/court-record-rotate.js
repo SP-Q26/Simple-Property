@@ -169,6 +169,14 @@
   }
 
   function boot() {
+    if (isHome && card.classList.contains("court-record-card--strip")) {
+      card.addEventListener("pointerenter", function () {
+        card.classList.add("is-strip-hover");
+      });
+      card.addEventListener("pointerleave", function () {
+        card.classList.remove("is-strip-hover");
+      });
+    }
     loadSnippets()
       .then(function (data) {
         snippetData = data;

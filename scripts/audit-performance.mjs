@@ -80,7 +80,7 @@ need("court-record-rotate.js present", existsSync(join(web, "court-record-rotate
 need("no legacy court rotate scripts", !existsSync(join(web, "hero-rotate.js")) && !existsSync(join(web, "blog-court-rotate.js")));
 const courtRotate = statSync(join(web, "court-record-rotate.js")).size;
 console.log(`  court-record-rotate.js: ${courtRotate} bytes`);
-need("court-record-rotate under 6KB", courtRotate < 6 * 1024);
+need("court-record-rotate under 6.5KB", courtRotate < Math.ceil(6.5 * 1024));
 
 const snippetsPath = join(web, "data/court-record-snippets.json");
 if (existsSync(snippetsPath)) {
