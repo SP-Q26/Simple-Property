@@ -155,7 +155,7 @@
     if (kickerEl) {
       var railLabel = kickerEl.querySelector(".court-record-strip__rail-text");
       var target = railLabel || kickerEl;
-      target.textContent = code ? "What " + code + " court records" : "What court records";
+      target.textContent = code ? "The " + code + " court clerk record" : "The court clerk record";
     }
     if (isHome) {
       if (code) card.setAttribute("data-spt-court-state", code);

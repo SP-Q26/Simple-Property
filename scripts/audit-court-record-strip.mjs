@@ -8,6 +8,7 @@ import { CSS_VERSION } from "../web/lib/brand-locale.mjs";
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const index = readFileSync(join(web, "index.html"), "utf8");
 const css = readFileSync(join(web, "simple-property.css"), "utf8");
+const rotate = readFileSync(join(web, "court-record-rotate.js"), "utf8");
 let fail = 0;
 
 function need(label, ok) {
@@ -27,6 +28,8 @@ need(`css v${CSS_VERSION}`, css.includes(`v${CSS_VERSION}`));
 need("strip layout wrapper", index.includes("court-record-strip__layout"));
 need("strip fixed stage", index.includes("court-record-strip__stage"));
 need("strip rail label", index.includes("court-record-strip__rail-text"));
+need("home clerk record kicker", index.includes("The court clerk record"));
+need("rotate clerk record label", rotate.includes("The court clerk record") && rotate.includes("court clerk record"));
 need("strip full-width line in stage", index.includes("court-record-strip__line"));
 need("strip footer links", index.includes("court-record-strip__footer") && index.includes("data-spt-court-source"));
 need("flow rail before stage", orderBefore("court-record-strip__rail", "court-record-strip__stage"));
@@ -41,7 +44,6 @@ need("phone strip @639", css.includes("@media (max-width: 639px)") && css.includ
 need("tablet strip band 640-1023", css.includes("@media (min-width: 640px) and (max-width: 1023px)") && css.includes("--court-strip-stage-h"));
 need("desktop strip band 1024", css.includes("@media (min-width: 1024px)") && css.includes(".court-record-strip__stage"));
 
-const rotate = readFileSync(join(web, "court-record-rotate.js"), "utf8");
 need("rotate rail label target", rotate.includes("court-record-strip__rail-text"));
 need(
   "strip card hover state",

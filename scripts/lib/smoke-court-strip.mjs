@@ -12,6 +12,7 @@ export async function verifyCourtStripLive(base, html, label = "home") {
 
   need("stage markup", html.includes("court-record-strip__stage"));
   need("rail text", html.includes("court-record-strip__rail-text"));
+  need("clerk record kicker", html.includes("The court clerk record"));
   need("footer links", html.includes("court-record-strip__footer"));
 
   const m = html.match(/\/simple-property\.css\?v=(\d+)/);
