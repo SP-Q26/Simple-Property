@@ -46,6 +46,10 @@ need("print preview on screen matches lock", css.includes("body.spt-print-previe
 
 const nav = readFileSync(join(web, "sp-nav.js"), "utf8");
 need("metro nav more tray", nav.includes("METRO_NAV_MORE") && nav.includes("metro-nav-more"));
+need("deposit mail lane module", existsSync(join(web, "lib/deposit-mail-lane.mjs")));
+need("C4 mail lane in step 5", app.includes("renderC4C5MailLane"));
+need("C4 letter copy button", app.includes("btn-copy-c4-letter") && app.includes("buildC4ReturnLetterText"));
+need("packet backup schema v2", app.includes("PACKET_BACKUP_SCHEMA") && app.includes("validatePacketImport"));
 
 console.log(fail ? `audit-packet-reports FAILED (${fail})` : "audit-packet-reports OK");
 process.exit(fail ? 1 : 0);

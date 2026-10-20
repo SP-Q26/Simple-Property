@@ -44,11 +44,16 @@ import {
   consumeConditionHubHandoff,
   renderPmTurnoverHandoffSheet,
 } from "./lib/deposit-desk-handoff-ui.mjs";
+import {
+  PACKET_BACKUP_SCHEMA,
+  validatePacketImport,
+  formatImportWarnings,
+} from "./lib/packet-backup.mjs";
+import { renderC4C5MailLane, buildC4ReturnLetterText } from "./lib/deposit-mail-lane.mjs";
 
 const DRAFT_KEY = "spt_draft";
 const PACKETS_KEY = "spt_saved_packets";
 const TURNOVER_MODE_KEY = "spt_turnover_mode";
-const PACKET_BACKUP_SCHEMA = 1;
 const MAX_STEPS = 5;
 const MAX_PHOTO_BYTES = 400_000;
 const MAX_PHOTOS_TOTAL = 1_200_000;
@@ -208,11 +213,10 @@ function downloadPacketBackup() {
   }
 }
 
-function importPacketBackupObject(parsed) {
-  if (!parsed || parsed.schema !== PACKET_BACKUP_SCHEMA || !parsed.data) {
+function importPacketBackupObject(imported) {
+  if (!imported || typeof imported !== "object") {
     throw new Error("invalid_schema");
   }
-  const imported = parsed.data;
   draft = {
     ...emptyDraft(),
     ...imported,
@@ -1208,6 +1212,7 @@ function renderStep5() {
         : `<div class="deadline-box">Add surrender date on step 2 to calculate deadline.</div>`
     }
     ${renderPmTurnoverHandoffSheet(draft, esc)}
+    ${renderC4C5MailLane(draft, deadline, esc)}
     ${renderMailReadyRoute()}
     ${renderItemizationPreview(false)}
     ${renderScreenPacketPreview()}
@@ -1501,6 +1506,21 @@ function bindStepEvents() {
       }
     } catch {
       if (els.status) els.status.textContent = "Clipboard blocked · allow paste or use Print / PDF.";
+    }
+  });
+  document.getElementById("btn-copy-c4-letter")?.addEventListener("click", async () => {
+    readStepIntoDraft();
+    const deadline = computeDeadline(deadlineInput());
+    const text = buildC4ReturnLetterText(draft, deadline);
+    try {
+      const ok = await copyTextForAi(text);
+      if (els.status) {
+        els.status.textContent = ok
+          ? "C4 letter draft copied · paste into your mail template."
+          : "Copy failed · select text from the letter box.";
+      }
+    } catch {
+      if (els.status) els.status.textContent = "Clipboard blocked · select letter text manually.";
     }
   });
   document.getElementById("btn-ics")?.addEventListener("click", () => {
@@ -1917,7 +1937,27 @@ document.getElementById("packet-import-file")?.addEventListener("change", async 
   try {
     const text = await file.text();
     const parsed = JSON.parse(text);
-    importPacketBackupObject(parsed);
+    const report = validatePacketImport(parsed);
+    if (!report.ok) {
+      if (els.status) {
+        els.status.textContent = report.errors[0] || "Could not import packet file.";
+      }
+      return;
+    }
+    if (report.warnings.length) {
+      const detail = formatImportWarnings(report.warnings);
+      const proceed = window.confirm(
+        `Import packet with ${report.warnings.length} note(s)?\n\n${detail}\n\nContinue import?`
+      );
+      if (!proceed) {
+        if (els.status) els.status.textContent = "Import cancelled · fix the file or fill missing fields after import.";
+        return;
+      }
+    }
+    importPacketBackupObject(report.data);
+    if (els.status && report.warnings.length) {
+      els.status.textContent = `Imported · ${report.warnings.length} field(s) need review before you mail.`;
+    }
   } catch {
     if (els.status) els.status.textContent = "Could not import · use a Deposit Desk packet .json export.";
   }

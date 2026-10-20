@@ -86,6 +86,7 @@ function readFormMaintenance() {
       ? loadEntries(LOG_KEYS.maintenance).find((e) => e.id === editingId)?.createdAt ||
         new Date().toISOString()
       : new Date().toISOString(),
+    ...readPacketCrossRef(),
   };
 }
 
@@ -106,6 +107,7 @@ function readFormTicket() {
       ? loadEntries(LOG_KEYS.tickets).find((e) => e.id === editingId)?.createdAt ||
         new Date().toISOString()
       : new Date().toISOString(),
+    ...readPacketCrossRef(),
   };
 }
 
@@ -125,11 +127,37 @@ function readFormInspection() {
       ? loadEntries(LOG_KEYS.inspections).find((e) => e.id === editingId)?.createdAt ||
         new Date().toISOString()
       : new Date().toISOString(),
+    ...readPacketCrossRef(),
   };
 }
 
 function options(list, selected) {
   return list.map((v) => `<option ${v === selected ? "selected" : ""}>${esc(v)}</option>`).join("");
+}
+
+function packetCrossRefBlock() {
+  return `
+        <div class="form-grid two log-packet-crossref" style="grid-column:1/-1">
+          <p class="section-label" style="grid-column:1/-1;margin:0">Deposit Desk cross-ref (optional · CSV export)</p>
+          <div><label for="log-packet-id">Packet ID</label><input id="log-packet-id" type="text" autocomplete="off" placeholder="From packet .json" /></div>
+          <div><label for="log-surrender-date">Surrender date</label><input id="log-surrender-date" type="date" /></div>
+          <div style="grid-column:1/-1"><label for="log-deposit-held">Deposit held ($)</label><input id="log-deposit-held" type="text" inputmode="decimal" placeholder="Matches Deposit Desk" /></div>
+        </div>`;
+}
+
+function readPacketCrossRef() {
+  return {
+    packetId: document.getElementById("log-packet-id")?.value?.trim() || "",
+    surrenderDate: document.getElementById("log-surrender-date")?.value || "",
+    depositHeld: document.getElementById("log-deposit-held")?.value?.trim() || "",
+  };
+}
+
+function fillPacketCrossRef(entry) {
+  const id = (x) => document.getElementById(x);
+  if (id("log-packet-id")) id("log-packet-id").value = entry.packetId || "";
+  if (id("log-surrender-date")) id("log-surrender-date").value = entry.surrenderDate || "";
+  if (id("log-deposit-held")) id("log-deposit-held").value = entry.depositHeld || "";
 }
 
 function logFormFlowBanner() {
@@ -159,6 +187,7 @@ function renderForm() {
         <div><label for="mnt-status">Status</label><select id="mnt-status">${options(MAINTENANCE_STATUSES, "Open")}</select></div>
         <div class="form-grid" style="grid-column:1/-1"><label for="mnt-notes">Notes</label><textarea id="mnt-notes" rows="2" placeholder="Vendor follow-up, parts ordered…"></textarea></div>
         <div class="form-grid" style="grid-column:1/-1"><label for="mnt-photo-links">Photo / folder links (Dropbox, Drive)</label><input id="mnt-photo-links" type="url" class="external-photo-link" placeholder="Optional share URL · paste in notes too if you prefer" inputmode="url" autocomplete="off" /></div>
+        ${packetCrossRefBlock()}
       </div>
       <div class="log-form-actions">
         <button type="submit" class="btn btn-primary">${editingId ? "Update entry" : "Add maintenance log"}</button>
@@ -181,6 +210,7 @@ function renderForm() {
         <div><label for="tkt-status">Status</label><select id="tkt-status">${options(TICKET_STATUSES, "New")}</select></div>
         <div><label for="tkt-resolved">Resolved date</label><input id="tkt-resolved" type="date" /></div>
         <div class="form-grid" style="grid-column:1/-1"><label for="tkt-photo-links">Photo / folder links (Dropbox, Drive)</label><input id="tkt-photo-links" type="url" class="external-photo-link" placeholder="Optional · damage photos, thread export" inputmode="url" autocomplete="off" /></div>
+        ${packetCrossRefBlock()}
       </div>
       <div class="log-form-actions">
         <button type="submit" class="btn btn-primary">${editingId ? "Update ticket" : "Add ticket"}</button>
@@ -201,6 +231,7 @@ function renderForm() {
         <div class="form-grid" style="grid-column:1/-1"><label for="ins-summary">Summary</label><textarea id="ins-summary" rows="3"></textarea></div>
         <div class="form-grid" style="grid-column:1/-1"><label for="ins-photo-links">Photo / folder links (Dropbox, Drive)</label><input id="ins-photo-links" type="url" class="external-photo-link" placeholder="Inspection photos, 311 attachments" inputmode="url" autocomplete="off" /></div>
         <div><label><input id="ins-follow" type="checkbox" /> Follow-up required</label></div>
+        ${packetCrossRefBlock()}
       </div>
       <div class="log-form-actions">
         <button type="submit" class="btn btn-primary">${editingId ? "Update entry" : "Add log entry"}</button>
@@ -309,6 +340,7 @@ function fillFormForEdit(entry) {
     document.getElementById("mnt-priority").value = entry.priority || "Normal";
     document.getElementById("mnt-notes").value = entry.notes || "";
     document.getElementById("mnt-photo-links").value = entry.photoLinks || "";
+    fillPacketCrossRef(entry);
   } else if (activeTab === "tickets") {
     document.getElementById("tkt-unit").value = entry.unit || "";
     document.getElementById("tkt-date").value = entry.reportedDate || todayIso();
@@ -320,6 +352,7 @@ function fillFormForEdit(entry) {
     document.getElementById("tkt-status").value = entry.status || "New";
     document.getElementById("tkt-resolved").value = entry.resolvedDate || "";
     document.getElementById("tkt-photo-links").value = entry.photoLinks || "";
+    fillPacketCrossRef(entry);
   } else {
     document.getElementById("ins-unit").value = entry.unit || "";
     document.getElementById("ins-date").value = entry.eventDate || todayIso();
@@ -330,6 +363,7 @@ function fillFormForEdit(entry) {
     document.getElementById("ins-follow").checked = Boolean(entry.followUp);
     document.getElementById("ins-ref").value = entry.reference || "";
     document.getElementById("ins-photo-links").value = entry.photoLinks || "";
+    fillPacketCrossRef(entry);
   }
 }
 
@@ -381,8 +415,25 @@ function exportCsv() {
   if (activeTab === "maintenance") {
     downloadCsv(
       "maintenance-log.csv",
-      ["reportedDate", "unit", "category", "description", "vendor", "cost", "status", "priority", "notes", "photoLinks"],
+      [
+        "packetId",
+        "surrenderDate",
+        "depositHeld",
+        "reportedDate",
+        "unit",
+        "category",
+        "description",
+        "vendor",
+        "cost",
+        "status",
+        "priority",
+        "notes",
+        "photoLinks",
+      ],
       entries.map((e) => [
+        e.packetId,
+        e.surrenderDate,
+        e.depositHeld,
         e.reportedDate,
         e.unit,
         e.category,
@@ -398,8 +449,25 @@ function exportCsv() {
   } else if (activeTab === "tickets") {
     downloadCsv(
       "tickets-log.csv",
-      ["reportedDate", "unit", "reportedBy", "channel", "subject", "detail", "assigned", "status", "resolvedDate", "photoLinks"],
+      [
+        "packetId",
+        "surrenderDate",
+        "depositHeld",
+        "reportedDate",
+        "unit",
+        "reportedBy",
+        "channel",
+        "subject",
+        "detail",
+        "assigned",
+        "status",
+        "resolvedDate",
+        "photoLinks",
+      ],
       entries.map((e) => [
+        e.packetId,
+        e.surrenderDate,
+        e.depositHeld,
         e.reportedDate,
         e.unit,
         e.reportedBy,
@@ -415,8 +483,24 @@ function exportCsv() {
   } else {
     downloadCsv(
       "inspections-complaints-log.csv",
-      ["eventDate", "unit", "kind", "party", "summary", "status", "followUp", "reference", "photoLinks"],
+      [
+        "packetId",
+        "surrenderDate",
+        "depositHeld",
+        "eventDate",
+        "unit",
+        "kind",
+        "party",
+        "summary",
+        "status",
+        "followUp",
+        "reference",
+        "photoLinks",
+      ],
       entries.map((e) => [
+        e.packetId,
+        e.surrenderDate,
+        e.depositHeld,
         e.eventDate,
         e.unit,
         e.kind,
