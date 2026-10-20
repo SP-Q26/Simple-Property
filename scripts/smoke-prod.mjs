@@ -40,7 +40,20 @@ const paths = [
     css: true,
   },
   { name: "pricing", path: "/pricing", need: ["pricing-finder", "pricing-cards", "pf-units", "40 units", "Print / Save as PDF"], absent: [EM] },
-  { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance"], absent: [] },
+  {
+    name: "blog_hub",
+    path: "/blog/",
+    need: ['data-spt-page="blog_hub"', "blog-hub-filter.js", "guides-hub"],
+    absent: [EM],
+    css: true,
+  },
+  {
+    name: "deposit_desk",
+    path: "/app",
+    need: ["btn-import-packet", "btn-export-packet", "packet-import-file", 'type="module" src="/app.js"'],
+    absent: [EM],
+  },
+  { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance", 'type="module" src="/logs.js"'], absent: [] },
   { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Never pay the fees"], absent: ["Homestead", EM] },
   { name: "terms", path: "/terms", need: ["Terms of Service", "32 states", 'href="/privacy"'], absent: [EM] },
   { name: "privacy", path: "/privacy", need: ["Privacy Policy", 'href="/terms"'], absent: [EM] },
@@ -105,8 +118,35 @@ async function checkStripePng(name) {
   }
 }
 
+const jsBundles = [
+  { name: "blog-hub-filter", path: "/blog-hub-filter.js", need: ["byHref", "cluster-route"] },
+  { name: "app", path: "/app.js", need: ["validatePacketImport", "btn-copy-c4-letter", "mail-lane-c4c5"] },
+  { name: "logs", path: "/logs.js", need: ["log-packet-id", "readPacketCrossRef", "packetId"] },
+];
+
+async function checkJsBundle({ name, path, need }) {
+  const url = `${BASE.replace(/\/$/, "")}${path}`;
+  const res = await fetch(url, { redirect: "follow" });
+  const text = await res.text();
+  console.log(`HTTP ${res.status} js ${name} ${path}`);
+  if (res.status !== 200) {
+    console.error("  FAIL status");
+    fail++;
+    return;
+  }
+  for (const n of need) {
+    if (!text.includes(n)) {
+      console.error(`  FAIL missing: ${n}`);
+      fail++;
+    } else console.log(`  ok ${n}`);
+  }
+}
+
 console.log("Smoke base:", BASE);
 for (const p of paths) await check(p);
+
+console.log("── Train A+B JS bundles ──");
+for (const b of jsBundles) await checkJsBundle(b);
 
 console.log("── Stripe product images (hosted) ──");
 for (const name of stripePngs) await checkStripePng(name);

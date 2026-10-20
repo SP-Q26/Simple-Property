@@ -6,26 +6,38 @@
   if (!main || main.dataset.sptPage !== "blog_hub") return;
 
   const clusterFromSection = (section) => {
-    if (!section) return "all";
+    if (!section) return "other";
     if (section.classList.contains("blog-cluster--pain")) return "pain";
     if (section.classList.contains("blog-cluster--city")) return "city";
     if (section.classList.contains("blog-cluster--metro")) return "metro";
-    if (section.id === "cluster-state" || section.classList.contains("blog-cluster--state")) return "state";
-    if (section.classList.contains("blog-cluster--compare")) return "compare";
+    if (section.classList.contains("blog-cluster--state") || /^locale-[A-Z]{2}$/.test(section.id || "")) {
+      return "state";
+    }
+    if (section.id === "cluster-route" || section.classList.contains("blog-cluster--compare")) return "compare";
+    if (section.id === "cluster-renter") return "renter";
+    if (section.id === "cluster-news") return "news";
     return "other";
   };
 
-  const entries = [];
-  main.querySelectorAll("section.guides-hub a[href^='/blog/']").forEach((a) => {
+  /** One row per guide URL · toggle every list item that repeats the same href (hub repeats related links). */
+  const byHref = new Map();
+  main.querySelectorAll("a[href^='/blog/']").forEach((a) => {
+    const href = a.getAttribute("href") || "";
+    if (!href || href.includes("feed.rss")) return;
     const section = a.closest("section");
-    entries.push({
-      el: a.closest("li") || a,
-      href: a.getAttribute("href") || "",
-      title: (a.textContent || "").trim(),
-      cluster: clusterFromSection(section),
-    });
+    const row = a.closest("li") || a;
+    const title = (a.textContent || "").trim();
+    const cluster = clusterFromSection(section);
+    const existing = byHref.get(href);
+    if (existing) {
+      existing.elements.push(row);
+      if (title.length > existing.title.length) existing.title = title;
+    } else {
+      byHref.set(href, { href, title, cluster, elements: [row] });
+    }
   });
 
+  const entries = [...byHref.values()];
   if (!entries.length) return;
 
   const toolbar = document.createElement("div");
@@ -40,7 +52,9 @@
       ["city", "Cities"],
       ["metro", "Metro"],
       ["state", "State law"],
-      ["compare", "Compare"],
+      ["compare", "Product"],
+      ["renter", "Renters"],
+      ["news", "News"],
     ]
       .map(
         ([id, label]) =>
@@ -64,7 +78,9 @@
       const clusterOk = activeCluster === "all" || entry.cluster === activeCluster;
       const textOk = !q || entry.title.toLowerCase().includes(q) || entry.href.toLowerCase().includes(q);
       const visible = clusterOk && textOk;
-      if (entry.el) entry.el.style.display = visible ? "" : "none";
+      entry.elements.forEach((el) => {
+        if (el) el.style.display = visible ? "" : "none";
+      });
       if (visible) shown++;
     });
     if (status) {
