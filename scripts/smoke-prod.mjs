@@ -120,7 +120,13 @@ async function checkStripePng(name) {
 
 const jsBundles = [
   { name: "blog-hub-filter", path: "/blog-hub-filter.js", need: ["byHref", "cluster-route"] },
-  { name: "app", path: "/app.js", need: ["validatePacketImport", "btn-copy-c4-letter", "mail-lane-c4c5"] },
+  { name: "app", path: "/app.js", need: ["validatePacketImport", "renderC4C5MailLane", "buildC4ReturnLetterText"] },
+  {
+    name: "deposit-mail-lane",
+    path: "/lib/deposit-mail-lane.mjs",
+    need: ["mail-lane-c4c5", "btn-copy-c4-letter"],
+  },
+  { name: "packet-backup", path: "/lib/packet-backup.mjs", need: ["PACKET_BACKUP_SCHEMA", "validatePacketImport"] },
   { name: "logs", path: "/logs.js", need: ["log-packet-id", "readPacketCrossRef", "packetId"] },
 ];
 
