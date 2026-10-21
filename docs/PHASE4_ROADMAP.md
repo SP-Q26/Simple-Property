@@ -41,10 +41,12 @@ Use this sequence for every **release train**. Skip a step only when the gate be
 
 **In-flight product (phase 4 backlog, lane-only):**
 
-- [ ] Packet schema **v2** + import validation UI (no silent field drop).
+- [x] Packet schema **v2** + import validation UI (no silent field drop).
 - [x] Step 5 **handoff sheet** print block (“from your PM: tenant, unit, deposit, surrender”).
 - [x] Compare post: **Deposit Desk vs Innago/Avail at turnover** (factual, `WEAPONIZE_ACTION_PLAN.md`).
-- [ ] C4/C5 letter merge + certified-mail checklist (documentation templates only).
+- [x] C4/C5 letter merge + certified-mail checklist (documentation templates only).
+- [x] **Operator logs** packet CSV cross-ref + `/logs?packet_id=` handoff from step 5.
+- [x] Guides hub search/filter (`blog-hub-filter.js`).
 
 ### 2 · Stack handoff & positioning copy
 

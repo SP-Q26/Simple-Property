@@ -20,6 +20,10 @@ need("surrenderDate column", logs.includes("surrenderDate"));
 need("depositHeld column", logs.includes("depositHeld"));
 need("cross-ref form", logs.includes("log-packet-id"));
 need("readPacketCrossRef", logs.includes("readPacketCrossRef"));
+need("url packet_id prefill", logs.includes("getPacketHandoffFromUrl") && logs.includes("prefillPacketCrossRefFromUrl"));
+
+const app = readFileSync(join(web, "app.js"), "utf8");
+need("app logs handoff url", app.includes("buildOperatorLogsHandoffUrl"));
 
 console.log(fail ? `audit-logs-packet-columns FAILED (${fail})` : "audit-logs-packet-columns OK");
 process.exit(fail ? 1 : 0);

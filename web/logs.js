@@ -160,6 +160,27 @@ function fillPacketCrossRef(entry) {
   if (id("log-deposit-held")) id("log-deposit-held").value = entry.depositHeld || "";
 }
 
+/** Deposit Desk handoff · /logs?packet_id=…&surrender=…&deposit=… (read once per page load). */
+let packetHandoffFromUrl = null;
+function getPacketHandoffFromUrl() {
+  if (packetHandoffFromUrl) return packetHandoffFromUrl;
+  const params = new URLSearchParams(location.search);
+  packetHandoffFromUrl = {
+    packetId: (params.get("packet_id") || params.get("packetId") || "").trim(),
+    surrenderDate: (params.get("surrender") || params.get("surrender_date") || "").trim(),
+    depositHeld: (params.get("deposit") || params.get("deposit_held") || "").trim(),
+  };
+  return packetHandoffFromUrl;
+}
+
+function prefillPacketCrossRefFromUrl() {
+  if (editingId) return false;
+  const h = getPacketHandoffFromUrl();
+  if (!h.packetId && !h.surrenderDate && !h.depositHeld) return false;
+  fillPacketCrossRef(h);
+  return Boolean(h.packetId);
+}
+
 function logFormFlowBanner() {
   const t = tabs.find((x) => x.id === activeTab) || tabs[0];
   const idx = tabs.findIndex((x) => x.id === activeTab);
@@ -572,9 +593,15 @@ function render() {
   renderList();
   bindList();
   renderPrintBlock();
-  setStatus(
-    `Log ${t.n} of ${tabs.length} · ${t.label} · ${loadEntries(storageKey()).length} entries · filter: "${filterText || "none"}"`
-  );
+  if (!editingId && prefillPacketCrossRefFromUrl() && els.status) {
+    setStatus(
+      "Packet cross-ref from Deposit Desk · finish the log entry and save · CSV export includes packetId."
+    );
+  } else {
+    setStatus(
+      `Log ${t.n} of ${tabs.length} · ${t.label} · ${loadEntries(storageKey()).length} entries · filter: "${filterText || "none"}"`
+    );
+  }
 }
 
 els.filter?.addEventListener("input", (e) => {

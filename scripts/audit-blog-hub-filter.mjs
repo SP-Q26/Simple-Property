@@ -23,6 +23,8 @@ need("blog_hub page marker", index.includes('data-spt-page="blog_hub"'));
 need("filter script", js.includes("blog-hub-search") && js.includes("data-cluster"));
 need("dedupe by href", js.includes("byHref") && js.includes("elements"));
 need("cluster-route compare", js.includes("cluster-route"));
+need("hub product cluster class", index.includes("blog-cluster--compare") && index.includes("cluster-route"));
+need("filter hides empty sections", js.includes("ul.bullet-tight > li"));
 need("toolbar CSS", css.includes(".blog-hub-toolbar"));
 
 console.log(fail ? `audit-blog-hub-filter FAILED (${fail})` : "audit-blog-hub-filter OK");

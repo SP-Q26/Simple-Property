@@ -88,6 +88,12 @@
         ? `Showing ${shown} of ${entries.length} guides`
         : `${entries.length} guides · use search or filters`;
     }
+    main.querySelectorAll("section").forEach((section) => {
+      const lis = section.querySelectorAll("ul.bullet-tight > li");
+      if (!lis.length) return;
+      const anyVisible = [...lis].some((li) => li.style.display !== "none");
+      section.style.display = anyVisible ? "" : "none";
+    });
   }
 
   search.addEventListener("input", applyFilter);

@@ -109,7 +109,7 @@ Checkout: Isles dark chrome + **v3** product tiles (Ships.one-intense parity on 
 
 | P | Action | Owner |
 |---|--------|--------|
-| P0 | Publish **Deposit Desk vs LeaseRooster** (deposit features only; update when their state list changes) | Guides · open |
+| P0 | Publish **Deposit Desk vs LeaseRooster** (deposit features only; update when their state list changes) | **Shipped** · `/blog/deposit-desk-vs-leaserooster-deposits` · linked from `/pricing` |
 | P0 | Publish **Deposit Desk vs Innago / Avail** (deposit lane; link `/pricing`) | **Shipped** · `/blog/deposit-desk-vs-innago-avail-turnover` |
 | P0 | Publish **Deposit Desk vs deposit compliance software** (category lane) | **Shipped** · `/blog/deposit-desk-vs-deposit-software` |
 | P1 | GSC: track `deposit itemization`, `security deposit return`, branded `deposit desk` post route series | Ops |

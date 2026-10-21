@@ -32,6 +32,8 @@ need("llms handoff PM complement", llms.includes("handoff") || llms.includes("In
 need("llms not PM suite", llms.includes("Not:") && llms.includes("PM"));
 need("innago avail turnover compare post", existsSync(join(web, "blog/deposit-desk-vs-innago-avail-turnover.html")));
 need("deposit software compare post", existsSync(join(web, "blog/deposit-desk-vs-deposit-software.html")));
+need("leaserooster compare post", existsSync(join(web, "blog/deposit-desk-vs-leaserooster-deposits.html")));
+need("pricing leaserooster compare link", pricing.includes("deposit-desk-vs-leaserooster-deposits"));
 
 const index = readFileSync(join(web, "index.html"), "utf8");
 const pricingHtml = readFileSync(join(web, "pricing.html"), "utf8");

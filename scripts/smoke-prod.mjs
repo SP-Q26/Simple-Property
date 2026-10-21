@@ -53,7 +53,18 @@ const paths = [
     need: ["btn-import-packet", "btn-export-packet", "packet-import-file", 'type="module" src="/app.js"'],
     absent: [EM],
   },
-  { name: "logs", path: "/logs", need: ["log-tabs", "Operator logs", "maintenance", 'type="module" src="/logs.js"'], absent: [] },
+  {
+    name: "logs",
+    path: "/logs",
+    need: ["log-tabs", "Operator logs", "maintenance", 'type="module" src="/logs.js"'],
+    absent: [],
+  },
+  {
+    name: "compare_leaserooster",
+    path: "/blog/deposit-desk-vs-leaserooster-deposits",
+    need: ["LeaseRooster", "Deposit Desk", "Never pay the fees"],
+    absent: [EM],
+  },
   { name: "blog", path: "/blog/deposit-desk-vs-spreadsheet", need: ["Never pay the fees"], absent: ["Homestead", EM] },
   { name: "terms", path: "/terms", need: ["Terms of Service", "32 states", 'href="/privacy"'], absent: [EM] },
   { name: "privacy", path: "/privacy", need: ["Privacy Policy", 'href="/terms"'], absent: [EM] },
@@ -120,14 +131,22 @@ async function checkStripePng(name) {
 
 const jsBundles = [
   { name: "blog-hub-filter", path: "/blog-hub-filter.js", need: ["byHref", "cluster-route"] },
-  { name: "app", path: "/app.js", need: ["validatePacketImport", "renderC4C5MailLane", "buildC4ReturnLetterText"] },
+  {
+    name: "app",
+    path: "/app.js",
+    need: ["validatePacketImport", "renderC4C5MailLane", "buildC4ReturnLetterText", "buildOperatorLogsHandoffUrl"],
+  },
   {
     name: "deposit-mail-lane",
     path: "/lib/deposit-mail-lane.mjs",
     need: ["mail-lane-c4c5", "btn-copy-c4-letter"],
   },
   { name: "packet-backup", path: "/lib/packet-backup.mjs", need: ["PACKET_BACKUP_SCHEMA", "validatePacketImport"] },
-  { name: "logs", path: "/logs.js", need: ["log-packet-id", "readPacketCrossRef", "packetId"] },
+  {
+    name: "logs",
+    path: "/logs.js",
+    need: ["log-packet-id", "readPacketCrossRef", "packetId", "getPacketHandoffFromUrl"],
+  },
 ];
 
 async function checkJsBundle({ name, path, need }) {

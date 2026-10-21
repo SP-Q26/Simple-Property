@@ -187,6 +187,15 @@ function packetReturnUrl() {
   return u.toString();
 }
 
+function buildOperatorLogsHandoffUrl(d) {
+  const u = new URL("/logs", location.origin);
+  if (d?.id) u.searchParams.set("packet_id", d.id);
+  if (d?.surrenderDate) u.searchParams.set("surrender", d.surrenderDate);
+  const dep = d?.deposit?.amount;
+  if (dep) u.searchParams.set("deposit", String(dep));
+  return `${u.pathname}${u.search}`;
+}
+
 function buildPacketBackup() {
   readStepIntoDraft();
   return {
@@ -1227,6 +1236,7 @@ function renderStep5() {
       <div><label for="sig-date">Document date</label><input id="sig-date" type="date" value="${esc(draft.signatures.date)}" /></div>
     </div>
     <button type="button" class="btn btn-secondary" id="btn-save-packet">Save packet to this browser</button>
+    <p class="field-hint"><a href="${esc(buildOperatorLogsHandoffUrl(draft))}">Log this turnover in Operator logs</a> · packet ID flows to CSV export</p>
     ${
       deadline.deadline
         ? `<div class="form-panel reminder-panel${urgency.urgent ? " reminder-panel--urgent" : ""}" style="margin-top:1rem;border-style:dashed">

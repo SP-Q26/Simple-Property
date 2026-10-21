@@ -77,13 +77,13 @@
 - [x] `audit-stack-handoff.mjs` in `npm run audit`.
 - [x] `llms.txt` handoff + FL in wizard list fix.
 - [x] Homepage FAQ door: “Honest limits” (4 risks + stack).
-- [ ] Blog: Innago vs Avail vs Deposit Desk (turnover only).
+- [x] Blog: Innago vs Avail vs Deposit Desk (turnover only).
 
 ### Phase 1 · Turnover depth (4–6 weeks)
-- Packet schema v2 + import validation UI.
-- Step 5 **Handoff sheet** (print): “From your PM: tenant name, unit, deposit held, move-out date.”
-- C5 certified mail + C4 letter merge (lane map C4/C5).
-- `/logs` CSV columns aligned with packet export (unit id).
+- [x] Packet schema v2 + import validation UI.
+- [x] Step 5 **Handoff sheet** (print): “From your PM: tenant name, unit, deposit held, move-out date.”
+- [x] C5 certified mail + C4 letter merge (lane map C4/C5).
+- [x] `/logs` CSV columns aligned with packet export (packet id · surrender · deposit held).
 
 ### Phase 2 · Tenant lane (light touch)
 - **Tenant packet upload** (no account): landlord sends link; tenant adds forwarding address + optional photo URLs only.
