@@ -15,3 +15,5 @@
 **MCP:** Resend / Stripe plugins are **user-level** in Cursor (`~/.cursor/mcp.json` or Settings → MCP). Config snippets for Deposit Desk live in **`docs/RESEND_MCP_CURSOR.md`** in this repo — not `SPQ/docs/`.
 
 **Full production send:** `docs/FULL_SEND_STRIPE.md` · `npm run full-send`
+
+**Portfolio map (all repos):** `~/SPQ/docs/REPO_HOSTING_MAP.md` when SPQ is cloned locally.
