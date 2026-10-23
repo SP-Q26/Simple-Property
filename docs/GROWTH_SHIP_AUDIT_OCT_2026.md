@@ -27,7 +27,7 @@ npm run train:growth   # content + chrome + all audits + smoke:prod
 npm run smoke:prod
 ```
 
-Until the growth commit is live, expect **one intentional fail**: `paywall-economics` on `/app` and **warnings** for `css v80` vs repo `v81`. After deploy, both must clear.
+Prod smoke checks **`paywall-economics` in `/app.js`** (rendered at step 5, not in static HTML). After deploy, `npm run smoke:prod` must be fully green.
 
 Optional strict CSS: `SPT_SMOKE_STRICT_CSS=1 npm run smoke:prod`.
 

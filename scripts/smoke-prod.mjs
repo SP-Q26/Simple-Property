@@ -55,7 +55,6 @@ const paths = [
       "btn-export-packet",
       "packet-import-file",
       'type="module" src="/app.js"',
-      "paywall-economics",
     ],
     absent: [EM],
   },
@@ -140,7 +139,14 @@ const jsBundles = [
   {
     name: "app",
     path: "/app.js",
-    need: ["validatePacketImport", "renderC4C5MailLane", "buildC4ReturnLetterText", "buildOperatorLogsHandoffUrl"],
+    need: [
+      "validatePacketImport",
+      "renderC4C5MailLane",
+      "buildC4ReturnLetterText",
+      "buildOperatorLogsHandoffUrl",
+      "paywall-economics",
+      "sp_app_open",
+    ],
   },
   {
     name: "deposit-mail-lane",
