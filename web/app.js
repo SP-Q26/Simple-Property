@@ -407,7 +407,8 @@ function trackWizardStep() {
 }
 
 function paywallActionsHtml() {
-  return `<div class="paywall-actions">
+  return `<p class="field-hint paywall-economics">One missed deadline or weak itemization often costs more than $29–49 · counsel organize-the-packet time runs ~$350/hr in major markets.</p>
+      <div class="paywall-actions">
         <button type="button" class="btn btn-primary spt-checkout" data-sku="turn_move_out" data-packet-id="${esc(draft.id)}">Unlock this turn · $29</button>
         <button type="button" class="btn btn-secondary spt-checkout" data-sku="turn_full" data-packet-id="${esc(draft.id)}">Full tenancy · $49</button>
         <a class="btn btn-secondary" href="/pricing">Pro · $22/mo</a>
@@ -736,6 +737,10 @@ function applyPresetStateFromUrl() {
   const params = new URLSearchParams(location.search);
   const urlState = params.get("state");
   let code = urlState;
+  const utmContent = params.get("utm_content");
+  if (!code && utmContent && /^[A-Za-z]{2}$/.test(utmContent)) {
+    code = utmContent;
+  }
   try {
     if (!code) code = sessionStorage.getItem("spt_preset_state");
   } catch {
@@ -2001,6 +2006,14 @@ refreshPacketSelect();
       console.warn("spt entitlement", e);
     }
   }
+  const bootParams = new URLSearchParams(location.search);
+  const attr = typeof window.sptGetAttribution === "function" ? window.sptGetAttribution() : {};
+  trackIsles("sp_app_open", {
+    ref: (bootParams.get("ref") || attr.ref || "").slice(0, 64),
+    utm_source: (attr.utm_source || bootParams.get("utm_source") || "").slice(0, 64),
+    utm_campaign: (attr.utm_campaign || "").slice(0, 64),
+    landing_path: (attr.landing_path || "").slice(0, 120),
+  });
   trackIsles("sp_wizard_start", { template_id: DEPOSIT_DESK_TEMPLATE_ID });
   render();
 })();

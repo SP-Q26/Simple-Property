@@ -19,6 +19,7 @@ const VERCEL_WEB_ANALYTICS = `  <script defer src="/_vercel/insights/script.js">
 const VERCEL_SPEED_INSIGHTS = `  <script defer src="/_vercel/speed-insights/script.js"></script>`;
 /** Client event bus · must load before page boot scripts that call sptTrack */
 const SP_EVENTS = `  <script src="/sp-events.js" defer></script>`;
+const FB_PATHWAY = `  <script src="/spt-fb-pathway.js" defer></script>`;
 
 /** data-spt-page for marketing telemetry (app.html sets deposit_desk separately). */
 const PAGE_ATTR_BY_REL = {
@@ -93,6 +94,9 @@ for (const file of walkHtml(web)) {
   }
   if (html.includes("simple-property.css?v=")) {
     html = html.replace(/simple-property\.css\?v=\d+/g, CSS_LINK);
+  }
+  if (rel === "index.html") {
+    html = injectBeforeBody(html, FB_PATHWAY, "/spt-fb-pathway.js");
   }
   if (html !== before) {
     writeFileSync(file, html);

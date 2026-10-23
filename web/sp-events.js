@@ -17,6 +17,9 @@
     return out;
   }
 
+  var MKT_KEY = "spt_mkt_v1";
+  var MKT_CAPTURED = "spt_mkt_captured";
+
   function utmDims() {
     var p = new URLSearchParams(location.search);
     var out = {};
@@ -24,8 +27,52 @@
       var v = p.get(k);
       if (v) out[k] = String(v).slice(0, 64);
     });
+    var ref = p.get("ref");
+    if (ref) out.ref = String(ref).slice(0, 64);
     return out;
   }
+
+  function readStoredAttribution() {
+    try {
+      var raw = sessionStorage.getItem(MKT_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function writeStoredAttribution(data) {
+    try {
+      sessionStorage.setItem(MKT_KEY, JSON.stringify(data));
+    } catch (e2) {
+      /* ignore */
+    }
+  }
+
+  function captureAttribution() {
+    var incoming = utmDims();
+    var stored = readStoredAttribution();
+    var merged = Object.assign({}, stored);
+    Object.keys(incoming).forEach(function (k) {
+      if (incoming[k] && !merged[k]) merged[k] = incoming[k];
+    });
+    if (!merged.landing_path) merged.landing_path = location.pathname;
+    if (!merged.landing_at) merged.landing_at = Date.now();
+    writeStoredAttribution(merged);
+    try {
+      if (sessionStorage.getItem(MKT_CAPTURED) !== "1") {
+        sessionStorage.setItem(MKT_CAPTURED, "1");
+        track("sp_landing_capture", Object.assign({}, merged, { path: location.pathname }));
+      }
+    } catch (e3) {
+      /* ignore */
+    }
+    return merged;
+  }
+
+  window.sptGetAttribution = function () {
+    return readStoredAttribution();
+  };
 
   function postEvent(name, data) {
     var body = JSON.stringify({
@@ -101,7 +148,7 @@
   }
 
   function bootPageTelemetry() {
-    var utm = utmDims();
+    var utm = captureAttribution();
     var page = document.body && document.body.getAttribute("data-spt-page");
     var slug = blogSlugFromPath();
     if (slug && slug !== "index") {
@@ -112,9 +159,13 @@
       track("spt_page_view", Object.assign({ page: "home", path: "/" }, utm));
     }
     var params = new URLSearchParams(location.search);
-    var ref = params.get("ref") || params.get("utm_campaign") || "";
+    var ref = params.get("ref") || utm.ref || params.get("utm_campaign") || "";
     if (ref && (page === "deposit_desk" || page === "app" || location.pathname === "/app")) {
-      track("spt_start_intent", Object.assign({ ref: ref.slice(0, 64) }, utm));
+      track("spt_start_intent", Object.assign({ ref: String(ref).slice(0, 64) }, utm));
+    }
+    var src = (utm.utm_source || "").toLowerCase();
+    if (src === "facebook" || src === "fb" || src === "instagram") {
+      track("sp_fb_landing", Object.assign({ page: page || "unknown" }, utm));
     }
     if (location.pathname === "/hub" || page === "condition_hub") {
       track("hub_spa_view", { route: (location.hash || "#/").slice(0, 80) });

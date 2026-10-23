@@ -39,7 +39,12 @@ for (const post of manifest.posts) {
   const courtMatch = inner.match(/<!-- spt-court-record -->[\s\S]*?<!-- \/spt-court-record -->/);
   const court = courtMatch ? `${courtMatch[0]}\n` : "";
   const bodyOnly = stripBlogCourtCard(inner);
-  let nextBody = ensureBlogGoalCopy(bodyOnly, { states: post.states, stateLabels });
+  let nextBody = ensureBlogGoalCopy(bodyOnly, {
+    states: post.states,
+    stateLabels,
+    slug: post.slug,
+    routeSeries: post.routeSeries,
+  });
   nextBody = ensureRelatedGuides(nextBody, post, manifest);
   if (nextBody === bodyOnly.trim()) {
     skipped++;

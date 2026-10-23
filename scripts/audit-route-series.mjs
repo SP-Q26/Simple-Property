@@ -15,6 +15,8 @@ const ROUTES = [
   "modules",
   "operator-logs",
   "launch-stack",
+  "compare",
+  "deposit-statutes",
 ];
 
 let fail = 0;

@@ -50,7 +50,13 @@ const paths = [
   {
     name: "deposit_desk",
     path: "/app",
-    need: ["btn-import-packet", "btn-export-packet", "packet-import-file", 'type="module" src="/app.js"'],
+    need: [
+      "btn-import-packet",
+      "btn-export-packet",
+      "packet-import-file",
+      'type="module" src="/app.js"',
+      "paywall-economics",
+    ],
     absent: [EM],
   },
   {

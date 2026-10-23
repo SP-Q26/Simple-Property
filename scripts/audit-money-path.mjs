@@ -46,6 +46,7 @@ need("finalize telemetry", appJs.includes("sp_finalize_attempt") && appJs.includ
 need("final print finalize success", appJs.includes('via: "print_final"'));
 need("mail route panel", appJs.includes("mail-ready-route"));
 need("turn checkout packet id", appJs.includes('data-packet-id="${esc(draft.id)}"'));
+need("paywall economics copy", appJs.includes("paywall-economics"));
 need("checkout binds sp-checkout", appJs.includes("sptStartCheckout"));
 
 need("isles metadata helper", meta.includes("isles_brand") && meta.includes("deposit_desk"));

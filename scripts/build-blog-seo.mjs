@@ -117,6 +117,47 @@ if (metroLoose.length) {
 }
 metroSections += `      </section>\n`;
 
+const comparePosts = manifest.posts
+  .filter((p) => p.routeSeries === "compare")
+  .sort((a, b) => a.title.localeCompare(b.title));
+let compareSections = `\n      <section class="blog-cluster blog-cluster--compare" id="cluster-compare" aria-labelledby="guides-compare">\n`;
+compareSections += `        <h2 id="guides-compare">Compare · turnover tools</h2>\n`;
+compareSections += `        <p class="muted">Objection handling for FB and search · Innago, Avail, spreadsheets, deposit suites · not legal advice.</p>\n`;
+compareSections += `        <ul class="bullet-tight">\n`;
+for (const p of comparePosts) {
+  compareSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+}
+compareSections += `        </ul>\n      </section>\n`;
+
+const statutesPosts = manifest.posts
+  .filter((p) => p.routeSeries === "deposit-statutes")
+  .sort((a, b) => a.title.localeCompare(b.title));
+let statutesSections = "";
+if (statutesPosts.length) {
+  statutesSections = `\n      <section class="blog-cluster blog-cluster--statutes" id="cluster-statutes" aria-labelledby="guides-statutes">\n`;
+  statutesSections += `        <h2 id="guides-statutes">Statute authority</h2>\n`;
+  statutesSections += `        <p class="muted">Links to <a href="/legal/deposit-statutes">deposit statutes</a> · wizard clocks · not legal advice.</p>\n`;
+  statutesSections += `        <ul class="bullet-tight">\n`;
+  for (const p of statutesPosts) {
+    statutesSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+  }
+  statutesSections += `        </ul>\n      </section>\n`;
+}
+
+const routePosts = manifest.posts
+  .filter((p) => p.routeSeries && !["compare", "deposit-statutes"].includes(p.routeSeries))
+  .sort((a, b) => a.title.localeCompare(b.title));
+let routeSections = `\n      <section class="blog-cluster blog-cluster--compare" id="cluster-route" aria-labelledby="guides-routes">\n`;
+routeSections += `        <h2 id="guides-routes">Product routes</h2>\n`;
+routeSections += `        <p class="muted">SEO clusters tied to /app /pricing /hub /modules /logs /launch-stack</p>\n`;
+routeSections += `        <ul class="bullet-tight">\n`;
+for (const p of routePosts) {
+  routeSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+}
+routeSections += `        </ul>\n      </section>\n`;
+
+const growthClusterBlock = `${compareSections}${statutesSections}${routeSections}`;
+
 const stateOrder = manifest.stateOrder?.length ? manifest.stateOrder : SUPPORTED_STATES;
 const stateLabels = manifest.stateLabels || {};
 
@@ -168,6 +209,7 @@ for (const [key, cat] of Object.entries(byCat)) {
   indexSections += "        </ul>\n      </section>\n";
 }
 indexSections += `      </section>\n`;
+indexSections += growthClusterBlock;
 
 const indexPath = join(web, "blog", "index.html");
 let indexHtml = readFileSync(indexPath, "utf8");

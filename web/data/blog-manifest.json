@@ -138,6 +138,10 @@
     "route": {
       "label": "Product routes",
       "audience": "SEO clusters tied to /app /pricing /hub /modules /logs /launch-stack"
+    },
+    "compare": {
+      "label": "Compare · turnover tools",
+      "audience": "Deposit Desk vs spreadsheet, PM apps, inspection apps, deposit software · FB objection handling"
     }
   },
   "posts": [
@@ -292,7 +296,8 @@
       ],
       "published": "2026-08-20",
       "updated": "2026-09-01",
-      "statutes": []
+      "statutes": [],
+      "routeSeries": "compare"
     },
     {
       "slug": "deposit-desk-vs-spreadsheet",
@@ -309,7 +314,8 @@
       ],
       "published": "2026-08-22",
       "updated": "2026-10-08",
-      "statutes": []
+      "statutes": [],
+      "routeSeries": "compare"
     },
     {
       "slug": "landlord-tools-by-door-count",
@@ -413,7 +419,8 @@
       "updated": "2026-10-11",
       "ogImage": "/og/spt-share-coverage-expansion.png",
       "ogImageAlt": "Deposit Desk new state coverage · 32 states + DC color chips · thank you to operator contributors",
-      "statutes": []
+      "statutes": [],
+      "routeSeries": "deposit-desk"
     },
     {
       "slug": "indiana-45-day-deposit-deadline",
@@ -3742,7 +3749,7 @@
       "description": "Both focus on deposit lifecycle; compare IL depth, pricing, and packet export. Not legal advice.",
       "category": "route",
       "intent": "route",
-      "routeSeries": "deposit-desk",
+      "routeSeries": "compare",
       "states": [],
       "published": "2026-10-15",
       "updated": "2026-10-15",
@@ -3817,7 +3824,8 @@
       "states": [],
       "published": "2026-10-17",
       "updated": "2026-10-17",
-      "statutes": []
+      "statutes": [],
+      "routeSeries": "compare"
     },
     {
       "slug": "deposit-desk-vs-deposit-software",
@@ -3828,7 +3836,8 @@
       "states": [],
       "published": "2026-10-17",
       "updated": "2026-10-17",
-      "statutes": []
+      "statutes": [],
+      "routeSeries": "compare"
     },
     {
       "slug": "condition-hub-move-in-walkthrough-guide",
@@ -4076,10 +4085,70 @@
       "description": "Rent tools run the lease month · Deposit Desk runs surrender week · itemization, clock, and mail-ready packet. Not legal advice.",
       "category": "route",
       "intent": "route",
-      "routeSeries": "deposit-desk",
+      "routeSeries": "compare",
       "states": [],
       "published": "2026-10-15",
       "updated": "2026-10-15",
+      "statutes": []
+    },
+    {
+      "slug": "deposit-statute-index-how-to-use",
+      "title": "How to use the deposit statute index",
+      "description": "Official outbound links per wizard state · surrender clocks · not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-statutes",
+      "states": [],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "statutes": []
+    },
+    {
+      "slug": "surrender-date-statute-clock-starts",
+      "title": "When the deposit return clock starts by statute",
+      "description": "Surrender vs lease end · keys · vacancy · documentation habits. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-statutes",
+      "states": [],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "statutes": []
+    },
+    {
+      "slug": "itemization-statute-requirements-overview",
+      "title": "Itemization requirements · statute overview",
+      "description": "Line items, amounts, and mail proof fields operators forget. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-statutes",
+      "states": [],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "statutes": []
+    },
+    {
+      "slug": "multi-state-statute-packs-small-landlord",
+      "title": "Multi-state statute packs for small landlords",
+      "description": "One operator · several states · separate clocks per property. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-statutes",
+      "states": [],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
+      "statutes": []
+    },
+    {
+      "slug": "statute-links-vs-legal-advice-deposit-desk",
+      "title": "Statute links are not legal advice",
+      "description": "How Deposit Desk uses outbound statute URLs · operator responsibility. Not legal advice.",
+      "category": "route",
+      "intent": "route",
+      "routeSeries": "deposit-statutes",
+      "states": [],
+      "published": "2026-10-23",
+      "updated": "2026-10-23",
       "statutes": []
     }
   ]

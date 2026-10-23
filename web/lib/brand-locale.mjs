@@ -25,7 +25,7 @@ export const VALUE_AUTOMATION_LINE =
   "Google Calendar · Sheets · .ics · email reminders · packet .json · beside Innago or Avail";
 export const OPERATOR_TEAM_LINE = "Built for landlords who run the doors themselves.";
 export const MARKETING_STATES_SHORT = `${STATE_ONLY_COUNT} states + DC (see wizard for list)`;
-export const CSS_VERSION = 80;
+export const CSS_VERSION = 81;
 export const WIZARD_TURNOVER_PARAMS = "turnover=1&step=2";
 
 /** Deep link for move-out-first wizard entry. */

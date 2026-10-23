@@ -1237,6 +1237,26 @@
     {
       "source": "/blog/deposit-desk-vs-innago-avail-turnover",
       "destination": "/blog/deposit-desk-vs-innago-avail-turnover.html"
+    },
+    {
+      "source": "/blog/deposit-statute-index-how-to-use",
+      "destination": "/blog/deposit-statute-index-how-to-use.html"
+    },
+    {
+      "source": "/blog/surrender-date-statute-clock-starts",
+      "destination": "/blog/surrender-date-statute-clock-starts.html"
+    },
+    {
+      "source": "/blog/itemization-statute-requirements-overview",
+      "destination": "/blog/itemization-statute-requirements-overview.html"
+    },
+    {
+      "source": "/blog/multi-state-statute-packs-small-landlord",
+      "destination": "/blog/multi-state-statute-packs-small-landlord.html"
+    },
+    {
+      "source": "/blog/statute-links-vs-legal-advice-deposit-desk",
+      "destination": "/blog/statute-links-vs-legal-advice-deposit-desk.html"
     }
   ],
   "crons": [

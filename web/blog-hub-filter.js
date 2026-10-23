@@ -13,7 +13,15 @@
     if (section.classList.contains("blog-cluster--state") || /^locale-[A-Z]{2}$/.test(section.id || "")) {
       return "state";
     }
-    if (section.id === "cluster-route" || section.classList.contains("blog-cluster--compare")) return "compare";
+    if (
+      section.id === "cluster-route" ||
+      section.id === "cluster-compare" ||
+      section.id === "cluster-statutes" ||
+      section.classList.contains("blog-cluster--compare") ||
+      section.classList.contains("blog-cluster--statutes")
+    ) {
+      return "compare";
+    }
     if (section.id === "cluster-renter") return "renter";
     if (section.id === "cluster-news") return "news";
     return "other";

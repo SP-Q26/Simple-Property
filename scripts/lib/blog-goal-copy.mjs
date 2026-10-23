@@ -20,9 +20,21 @@ export function hasPainFraming(html) {
 /**
  * @param {{ stateCode?: string, stateLabel?: string }} opts
  */
-export function guideCtaHtml({ stateCode = "", stateLabel = "" } = {}) {
-  const primaryHref = stateCode ? `/app?state=${stateCode}` : "/app";
-  const primaryLabel = stateCode && stateLabel ? `Open ${stateLabel} packet` : "Open Deposit Desk";
+export function guideCtaHtml({ stateCode = "", stateLabel = "", variant = "" } = {}) {
+  let primaryHref = stateCode ? `/app?state=${stateCode}` : "/app";
+  if (variant === "compare") {
+    const qs = new URLSearchParams({ turnover: "1", ref: "compare" });
+    if (stateCode) qs.set("state", stateCode);
+    primaryHref = `/app?${qs.toString()}`;
+  }
+  const primaryLabel =
+    variant === "compare"
+      ? stateCode && stateLabel
+        ? `Start ${stateLabel} turnover packet`
+        : "Start turnover packet"
+      : stateCode && stateLabel
+        ? `Open ${stateLabel} packet`
+        : "Open Deposit Desk";
   return `<!-- spt-guide-cta -->
 <section class="guide-cta" aria-label="Next step">
   <p class="disclaimer">Not legal advice. Confirm facts and deadlines with qualified counsel.</p>
@@ -54,6 +66,9 @@ export function ensureBlogGoalCopy(bodyHtml, post = {}) {
   const states = post.states || [];
   const stateCode = states[0] || "";
   const stateLabel = stateCode && post.stateLabels ? post.stateLabels[stateCode] || stateCode : "";
+  const slug = post.slug || "";
+  const variant =
+    post.routeSeries === "compare" || /^deposit-desk-vs-/.test(slug) ? "compare" : "";
 
   if (!hasPainFraming(html)) {
     const h1End = html.indexOf("</h1>");
@@ -66,7 +81,7 @@ export function ensureBlogGoalCopy(bodyHtml, post = {}) {
   html = stripLegacyInlineCta(html);
 
   if (!CTA_MARKERS.test(html)) {
-    const cta = guideCtaHtml({ stateCode, stateLabel });
+    const cta = guideCtaHtml({ stateCode, stateLabel, variant });
     const hubNav = html.match(/<nav class="state-hub-links"[\s\S]*?<\/nav>/);
     if (hubNav) {
       const idx = html.indexOf(hubNav[0]) + hubNav[0].length;
@@ -75,7 +90,7 @@ export function ensureBlogGoalCopy(bodyHtml, post = {}) {
       html = `${html}\n\n      ${cta}`;
     }
   } else {
-    html = html.replace(CTA_MARKERS, guideCtaHtml({ stateCode, stateLabel }));
+    html = html.replace(CTA_MARKERS, guideCtaHtml({ stateCode, stateLabel, variant }));
   }
 
   return html.trim();
