@@ -2,6 +2,8 @@
 export const FOOTER_COLLECTIVE = "The Isles Collective";
 export const FOOTER_YEAR = 2026;
 export const FOOTER_WEB_CREDIT = "AJ Nichols";
+export const FOOTER_WEB_CREDIT_URL = "https://ajnichols.com";
+export const FOOTER_CONTACT_EMAIL = "hello@simple-property.com";
 
 export function footerIdentityHtml() {
   return `        <div class="footer-identity">
@@ -10,9 +12,10 @@ export function footerIdentityHtml() {
             <span class="footer-product">Simple Property Tools</span>
           </p>
           <p class="footer-disclaimer">Documentation only · not legal advice</p>
+          <p class="footer-contact"><a class="footer-contact__link" href="mailto:${FOOTER_CONTACT_EMAIL}">${FOOTER_CONTACT_EMAIL}</a></p>
           <p class="footer-collective"><span class="footer-collective__name">${FOOTER_COLLECTIVE}</span> <span class="footer-collective__year">© ${FOOTER_YEAR}</span></p>
           <p class="footer-rights">All rights reserved.</p>
-          <p class="footer-credit">Web by <span class="footer-credit__name">${FOOTER_WEB_CREDIT}</span></p>
+          <p class="footer-credit"><a class="footer-credit__link" href="${FOOTER_WEB_CREDIT_URL}" rel="noopener noreferrer">Web</a> by <span class="footer-credit__name">${FOOTER_WEB_CREDIT}</span></p>
         </div>`;
 }
 
@@ -38,17 +41,17 @@ export const FOOTER_NAV_FULL = `<a href="/app">Deposit Desk</a><a href="/logs">L
         <a href="/terms">Terms</a>
         <a href="/legal">Legal</a>
         <a href="/feedback">Feedback</a>
-        <a href="mailto:hello@simple-property.com">Contact</a>`;
+        <a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;
 
-export const FOOTER_NAV_BLOG_POST = `<a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/">Home</a>`;
+export const FOOTER_NAV_BLOG_POST = `<a href="/blog">Guides</a><a href="/blog/feed.rss">RSS</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/">Home</a><a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;
 
-export const FOOTER_NAV_BLOG_HUB = `<a href="/">Home</a><a href="/app">Deposit Desk</a><a href="/hub">Condition hub</a><a href="/logs">Logs</a><a href="/blog/feed.rss">RSS</a>`;
+export const FOOTER_NAV_BLOG_HUB = `<a href="/">Home</a><a href="/app">Deposit Desk</a><a href="/hub">Condition hub</a><a href="/logs">Logs</a><a href="/blog/feed.rss">RSS</a><a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;
 
-export const FOOTER_NAV_APP = `<a href="/terms">Terms</a><a href="/privacy">Privacy</a>`;
+export const FOOTER_NAV_APP = `<a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;
 
-export const FOOTER_NAV_LOGS = `<a href="/app">Deposit Desk</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a>`;
+export const FOOTER_NAV_LOGS = `<a href="/app">Deposit Desk</a><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;
 
-export const FOOTER_NAV_STATUTES = `<a href="/legal">Legal hub</a><a href="/blog">Guides</a><a href="/">Home</a>`;
+export const FOOTER_NAV_STATUTES = `<a href="/legal">Legal hub</a><a href="/blog">Guides</a><a href="/">Home</a><a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;
 
 /** Hub SPA footer · no self-link to /hub */
 export const FOOTER_NAV_HUB_PAGE = `<a href="/app">Deposit Desk</a><a href="/logs">Logs</a>
@@ -60,4 +63,4 @@ export const FOOTER_NAV_HUB_PAGE = `<a href="/app">Deposit Desk</a><a href="/log
         <a href="/terms">Terms</a>
         <a href="/legal">Legal</a>
         <a href="/feedback">Feedback</a>
-        <a href="mailto:hello@simple-property.com">Contact</a>`;
+        <a href="mailto:${FOOTER_CONTACT_EMAIL}">Contact</a>`;

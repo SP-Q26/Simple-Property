@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v81 · FB pathway · paywall economics */
+/* Simple Property Tools · Deposit Desk · v83 · footer contact email */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -2529,12 +2529,42 @@ main > h1,
   letter-spacing: 0.03em;
 }
 
+.footer-contact {
+  margin: var(--space-1) 0 0;
+  font-size: 0.8rem;
+}
+
+.footer-contact__link {
+  color: var(--quant-blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--quant-blue) 40%, transparent);
+  text-underline-offset: 0.12em;
+}
+
+.footer-contact__link:hover {
+  color: var(--ink);
+}
+
 .footer-credit {
   margin: var(--space-1) 0 0;
   font-size: 0.72rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--muted) 92%, var(--quant-blue));
+}
+
+.footer-credit__link {
+  font-weight: 600;
+  color: var(--quant-blue);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--quant-blue) 45%, transparent);
+  text-underline-offset: 0.14em;
+}
+
+.footer-credit__link:hover {
+  color: var(--ink);
+  text-decoration-color: var(--quant-blue);
 }
 
 .footer-credit__name {

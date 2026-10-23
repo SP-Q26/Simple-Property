@@ -19,6 +19,8 @@ const skipHosts = new Set([
   "innago.com",
   "www.avail.com",
   "avail.com",
+  "ajnichols.com",
+  "www.ajnichols.com",
 ]);
 
 let fail = 0;

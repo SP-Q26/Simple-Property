@@ -2,7 +2,12 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { FOOTER_COLLECTIVE, FOOTER_WEB_CREDIT } from "./lib/site-footer.mjs";
+import {
+  FOOTER_COLLECTIVE,
+  FOOTER_WEB_CREDIT,
+  FOOTER_WEB_CREDIT_URL,
+  FOOTER_CONTACT_EMAIL,
+} from "./lib/site-footer.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const css = readFileSync(join(web, "simple-property.css"), "utf8");
@@ -27,7 +32,12 @@ function walkHtml(dir, out = []) {
 }
 
 need("footer shell css", css.includes(".footer-shell") && css.includes(".footer-collective"));
-need("footer credit css", css.includes(".footer-credit__name"));
+need(
+  "footer credit css",
+  css.includes(".footer-credit__name") &&
+    css.includes(".footer-credit__link") &&
+    css.includes(".footer-contact__link"),
+);
 need("footer gradient rule", css.includes("linear-gradient") && css.includes(".site-footer"));
 
 const pages = walkHtml(web);
@@ -38,10 +48,13 @@ for (const f of pages) {
   if (!h.includes(FOOTER_COLLECTIVE)) missing++;
   if (!h.includes("All rights reserved")) missing++;
   if (!h.includes(FOOTER_WEB_CREDIT)) missing++;
+  if (!h.includes(FOOTER_WEB_CREDIT_URL)) missing++;
+  if (!h.includes(`mailto:${FOOTER_CONTACT_EMAIL}`)) missing++;
+  if (!h.includes(FOOTER_CONTACT_EMAIL)) missing++;
 }
 need("all html footers canonical", missing === 0);
 
-need("index footer", readFileSync(join(web, "index.html"), "utf8").includes("Web by"));
+need("index footer web link", readFileSync(join(web, "index.html"), "utf8").includes(`href="${FOOTER_WEB_CREDIT_URL}"`));
 
 console.log(fail ? `\nSite footer audit FAILED (${fail})` : "\nSite footer audit OK");
 process.exit(fail ? 1 : 0);
