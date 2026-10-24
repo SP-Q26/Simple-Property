@@ -420,7 +420,7 @@ function paywallActionsHtml() {
 function proBlockMessage(opts = {}) {
   if (canExportPro()) return "";
   if (isSubscribed() && !unitsWithinProCap(draft.property.unitCount)) {
-    return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, use <strong>Duplicate last</strong> per building batch, or <a href="mailto:hello@simple-property.com">email us</a> for larger portfolios.</div>`;
+    return `<div class="paywall paywall--streamlined" role="status"><strong>Pro covers up to ${PRO_UNITS_MAX} units.</strong> Lower “units you manage” on step 1, use <strong>Duplicate last</strong> per building batch, or <a href="/feedback">send feedback</a> for larger portfolios.</div>`;
   }
   const urgency = opts.urgency;
   const deadlineIso = opts.deadlineIso || "";

@@ -32,6 +32,19 @@ If you add an app later:
 3. Put the ID in `web/lib/meta-app.mjs` (`FALLBACK_FB_APP_ID`) or Vercel env `SPT_FB_APP_ID`.
 4. `npm run sync:seo` → commit → deploy → scrape again in the Debugger.
 
+### `twitter:site` (optional)
+
+X/Twitter cards work without it. Set when you have a brand handle:
+
+- Vercel env `SPT_TWITTER_SITE` (with or without `@`), or `FALLBACK_TWITTER_SITE` in `web/lib/meta-app.mjs`.
+- `npm run sync:seo` re-injects `<!-- spt-social -->` on drop pages.
+
+### Public contact vs link previews
+
+- **Stripe / support:** `hello@simple-property.com` (canon).
+- **Visible `mailto:`** only in the shared site footer (`scripts/lib/site-footer.mjs` + `sync-site-footer`). Legal pages may show the address as plain text; use `/feedback` in product copy instead of body mailto.
+- Gate: `npm run audit:isles-inboxes` (P1 warns on body mailto; does not affect OG).
+
 After deploy, refresh Facebook cache: [Sharing Debugger](https://developers.facebook.com/tools/debug/) → scrape the blog URL and `/`.
 
 **Drop pages with full OG + Twitter:** `/`, `/app`, `/pricing`, `/launch-stack`, `/feedback`, `/blog`, legal trio, logs/success (noindex but preview-ready).

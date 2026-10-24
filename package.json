@@ -104,7 +104,9 @@
     "sync:seo-statutes": "node scripts/migrate-national-blog-slugs.mjs && node scripts/patch-blog-statute-links.mjs && node scripts/patch-state-hub-links.mjs && node scripts/build-deposit-statutes-page.mjs && node scripts/sync-statute-discovery.mjs && node scripts/fix-blog-meta-descriptions.mjs && node scripts/sync-blog-article-seo.mjs",
     "sync:locale": "node scripts/sync-brand-locale.mjs",
     "smoke:statutes": "node scripts/smoke-statute-urls.mjs",
-    "audit:social": "node scripts/audit-social-share.mjs"
+    "audit:social": "node scripts/audit-social-share.mjs",
+    "audit:isles-inboxes": "node scripts/audit-isles-four-inboxes.mjs",
+    "campaign:seo": "npm run sync:seo && npm run audit:social && npm run audit:isles-inboxes"
   },
   "engines": {
     "node": ">=20"

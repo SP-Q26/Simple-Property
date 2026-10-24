@@ -1,11 +1,11 @@
 /** Canonical Open Graph / Twitter tags for link previews (FB, LinkedIn, iMessage). */
 
-import { FB_APP_ID } from "../../web/lib/meta-app.mjs";
+import { FB_APP_ID, TWITTER_SITE } from "../../web/lib/meta-app.mjs";
 import { STATE_ONLY_COUNT } from "../../web/lib/brand-locale.mjs";
 
 export const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
-export { FB_APP_ID };
+export { FB_APP_ID, TWITTER_SITE };
 export const SITE = "https://simple-property.com";
 export const SITE_NAME = "Simple Property Tools";
 /** Bump when OG PNG art changes so Facebook Debugger picks up fresh previews. */
@@ -71,6 +71,7 @@ export function buildSocialMetaBlock(opts) {
     `  <meta property="og:image:height" content="${OG_IMAGE_HEIGHT}">`,
     `  <meta property="og:image:alt" content="${escapeAttr(imageAlt)}">`,
     `  <meta name="twitter:card" content="summary_large_image">`,
+    ...(TWITTER_SITE ? [`  <meta name="twitter:site" content="${escapeAttr(normalizeTwitterSite(TWITTER_SITE))}">`] : []),
     `  <meta name="twitter:title" content="${escapeAttr(opts.ogTitle)}">`,
     `  <meta name="twitter:description" content="${escapeAttr(opts.ogDescription)}">`,
     `  <meta name="twitter:image" content="${image}">`,
@@ -86,6 +87,12 @@ function iso8601Chicago(isoDate) {
 
 function escapeAttr(s) {
   return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+}
+
+function normalizeTwitterSite(handle) {
+  const t = String(handle).trim();
+  if (!t) return "";
+  return t.startsWith("@") ? t : `@${t}`;
 }
 
 /** Remove injected or legacy social tags before re-sync. */
