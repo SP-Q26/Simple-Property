@@ -35,6 +35,7 @@ const INDEXABLE_PAGES = [
   "pricing.html",
   "blog/index.html",
   "launch-stack.html",
+  "pain.html",
   "legal.html",
   "privacy.html",
   "terms.html",

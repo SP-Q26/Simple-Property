@@ -29,6 +29,11 @@ console.log("── Discovery · lane · SEO audit ──\n");
 
 const index = read("index.html");
 const llms = read("llms.txt");
+if (!llms.includes("/pain")) {
+  ding(4, "llms.txt missing pain hub URL");
+} else {
+  ok("llms pain hub");
+}
 const bus = read("spt-ai-bus.json");
 const discovery = read(".well-known/ai-discovery.json");
 const manifest = JSON.parse(read("data/blog-manifest.json") || "{}");

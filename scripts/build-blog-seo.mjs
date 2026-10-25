@@ -16,7 +16,7 @@ const manifestPath = join(web, "data", "blog-manifest.json");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const site = manifest.site.replace(/\/$/, "");
 /** Marketing pages last content refresh · bump on sitewide copy/SEO sweeps. */
-const SITE_LASTMOD = "2026-10-17";
+const SITE_LASTMOD = "2026-10-25";
 
 function blogHtmlPath(slug) {
   return join(web, "blog", `${slug}.html`);
@@ -52,10 +52,21 @@ const painPosts = manifest.posts
     return a.title.localeCompare(b.title);
   });
 
+const painWavePosts = manifest.posts
+  .filter((p) => p.painWave)
+  .sort((a, b) => (a.published < b.published ? 1 : -1));
+
 let painSections = `\n      <section class="guides-hub blog-cluster--pain" aria-labelledby="guides-pain">\n`;
 painSections += `        <h2 id="guides-pain">When something goes wrong</h2>\n`;
-painSections += `        <p class="muted">Missed clocks, withhold fights, spreadsheet traps · not legal advice.</p>\n`;
-painSections += `        <ul class="bullet-tight">\n`;
+painSections += `        <p class="muted">Missed clocks, withhold fights, spreadsheet traps · <a href="/pain">Pain hub</a> · not legal advice.</p>\n`;
+if (painWavePosts.length) {
+  painSections += `        <h3 class="section-label">New · high-intent pain</h3>\n        <ul class="bullet-tight">\n`;
+  for (const p of painWavePosts) {
+    painSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
+  }
+  painSections += `        </ul>\n`;
+}
+painSections += `        <h3 class="section-label">All pain guides</h3>\n        <ul class="bullet-tight">\n`;
 for (const p of painPosts) {
   painSections += `          <li><a href="/blog/${p.slug}">${p.title}</a></li>\n`;
 }
@@ -227,6 +238,15 @@ const metroStart = "<!-- BLOG_METRO_START -->";
 const metroEnd = "<!-- BLOG_METRO_END -->";
 const painStart = "<!-- BLOG_PAIN_START -->";
 const painEnd = "<!-- BLOG_PAIN_END -->";
+const jumpStart = "<!-- BLOG_JUMP_START -->";
+const jumpEnd = "<!-- BLOG_JUMP_END -->";
+const jumpNav = `<nav class="blog-jump field-hint" aria-label="Guide sections">
+        <a href="/pain">Pain hub</a> ·
+        <a href="#guides-pain">Pain list</a> ·
+        <a href="#guides-cities">Cities</a> ·
+        <a href="#cluster-compare">Compare</a> ·
+        <a href="#cluster-route">Product routes</a>
+      </nav>\n`;
 if (!indexHtml.includes(stateStart)) {
   console.error("blog/index.html missing BLOG_STATE markers");
   process.exit(1);
@@ -242,6 +262,12 @@ if (!indexHtml.includes(cityStart)) {
 if (!indexHtml.includes(metroStart)) {
   console.error("blog/index.html missing BLOG_METRO markers");
   process.exit(1);
+}
+if (indexHtml.includes(jumpStart)) {
+  indexHtml = indexHtml.replace(
+    new RegExp(`${jumpStart}[\\s\\S]*${jumpEnd}`),
+    `${jumpStart}\n      ${jumpNav}      ${jumpEnd}`
+  );
 }
 indexHtml = indexHtml.replace(
   new RegExp(`${painStart}[\\s\\S]*${painEnd}`),
@@ -357,6 +383,7 @@ const staticEntries = [
   { loc: `${site}/pricing`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.9" },
   { loc: `${site}/blog`, lastmod: SITE_LASTMOD, changefreq: "daily", priority: "0.95" },
   { loc: `${site}/launch-stack`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.7" },
+  { loc: `${site}/pain`, lastmod: SITE_LASTMOD, changefreq: "weekly", priority: "0.88" },
   { loc: `${site}/feedback`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.5" },
   { loc: `${site}/legal`, lastmod: SITE_LASTMOD, changefreq: "yearly", priority: "0.4" },
   { loc: `${site}/legal/deposit-statutes`, lastmod: SITE_LASTMOD, changefreq: "monthly", priority: "0.85" },

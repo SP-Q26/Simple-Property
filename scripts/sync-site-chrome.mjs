@@ -27,6 +27,7 @@ const PAGE_ATTR_BY_REL = {
   "pricing.html": "pricing",
   "modules.html": "modules",
   "launch-stack.html": "launch_stack",
+  "pain.html": "pain_hub",
   "logs.html": "operator_logs",
   "feedback.html": "feedback",
   "hub.html": "condition_hub",

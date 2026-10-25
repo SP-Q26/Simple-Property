@@ -39,6 +39,7 @@ try {
   need("ai-bus primary_cta /app", bus.primary_cta?.includes("/app"));
   need("ai-bus wizard_live", bus.wizard_live?.schema === "spt-wizard-snapshot");
   need("ai-bus feedback_form", bus.feedback_form?.schema === "spt-feedback-form");
+  need("ai-bus pain_hub", bus.pain_hub?.includes("/pain"));
 } catch {
   need("ai-bus JSON parse", false);
 }
@@ -57,6 +58,7 @@ try {
   discovery = JSON.parse(read(".well-known/ai-discovery.json"));
   need("ai-discovery blog_feed endpoint", Boolean(discovery.endpoints?.blog_feed));
   need("ai-discovery read_order has blog", (discovery.read_order || []).some((u) => u.includes("/blog")));
+  need("ai-discovery pain_hub endpoint", Boolean(discovery.endpoints?.pain_hub));
 } catch {
   need("ai-discovery JSON parse", false);
 }

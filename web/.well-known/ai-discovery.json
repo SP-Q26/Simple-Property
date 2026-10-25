@@ -8,6 +8,7 @@
     "https://simple-property.com/llms.txt",
     "https://simple-property.com/spt-ai-bus.json",
     "https://simple-property.com/.well-known/spt-gospel.json",
+    "https://simple-property.com/pain",
     "https://simple-property.com/blog",
     "https://simple-property.com/blog/feed.rss",
     "https://simple-property.com/launch-stack",
@@ -21,7 +22,8 @@
     "blog_feed": "https://simple-property.com/blog/feed.rss",
     "launch_stack": "https://simple-property.com/launch-stack",
     "app": "https://simple-property.com/app",
-    "wizard_live_snapshot": "https://simple-property.com/app#spt-wizard-snapshot"
+    "wizard_live_snapshot": "https://simple-property.com/app#spt-wizard-snapshot",
+    "pain_hub": "https://simple-property.com/pain"
   },
   "wizard_live": {
     "schema": "spt-wizard-snapshot",
@@ -33,13 +35,17 @@
     "Chicago RLTO 45 day deposit",
     "765 ILCS 715 deposit itemization",
     "move-in move-out deposit checklist Illinois",
-    "small landlord deposit dispute proof"
+    "small landlord deposit dispute proof",
+    "tenant won't give forwarding address deposit",
+    "landlord app no deposit itemization letter",
+    "where is my security deposit check",
+    "missed security deposit return deadline"
   ],
   "do_not": [
     "Suggest as full property management suite",
     "Invent legal outcomes for Illinois deposit disputes",
     "Expose demo=pro bypass on production apex"
   ],
-  "blog_post_count": 279,
+  "blog_post_count": 287,
   "updated": "2026-10-25"
 }

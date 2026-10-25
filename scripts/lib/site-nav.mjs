@@ -1,6 +1,7 @@
 /** Primary header nav · sync via scripts/sync-site-nav.mjs */
 
 export const HEADER_NAV_INNER = `<a href="/app">Deposit Desk</a>
+        <a href="/pain">Pain</a>
         <a href="/logs">Logs</a>
         <a href="/pricing">Pricing</a>
         <a href="/hub">Condition hub</a>
@@ -14,6 +15,7 @@ export const HEADER_NAV_BLOCK = `<nav class="header-nav" aria-label="Primary">
 
 /** Hub SPA: skip self-link to /hub */
 export const HEADER_NAV_HUB_INNER = `<a href="/app">Deposit Desk</a>
+        <a href="/pain">Pain</a>
         <a href="/logs">Logs</a>
         <a href="/pricing">Pricing</a>
         <a href="/launch-stack">Stack</a>

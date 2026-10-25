@@ -4201,6 +4201,106 @@
       "category": "pain",
       "intent": "landlord",
       "states": []
+    },
+    {
+      "slug": "tenant-wont-give-forwarding-address-deposit",
+      "title": "Tenant won't give a forwarding address for the deposit",
+      "description": "Clocks that wait on written address · what operators document anyway. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "landlord-app-no-deposit-itemization-letter",
+      "title": "Your landlord app has no deposit itemization letter",
+      "description": "Innago, Avail, TurboTenant, and suites stop at the ledger · finish the packet at turnover. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "lease-ended-tenant-still-in-unit-deposit-clock",
+      "title": "Lease ended but tenant still in the unit · deposit clock",
+      "description": "Surrender vs holdover · why lease end on paper is not enough. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "tenant-texted-where-is-my-deposit-check",
+      "title": "Tenant texted: where is my deposit check?",
+      "description": "First reply habits · itemization before excuses · export proof. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "texas-security-deposit-return-30-day-packet",
+      "title": "Texas 30-day security deposit return packet",
+      "description": "Surrender clock · itemized deductions · mail habits for Texas operators. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "TX"
+      ],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "california-21-day-deposit-late-still-itemize",
+      "title": "California 21-day deposit deadline · late but itemize now",
+      "description": "Forfeit fear vs silent landlords · line items and mail proof. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [
+        "CA"
+      ],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "zillow-rental-manager-deposit-return-gap",
+      "title": "Zillow Rental Manager and the deposit return gap",
+      "description": "Listings and rent collection vs move-out itemization letter. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
+    },
+    {
+      "slug": "roommate-moved-out-deposit-split-landlord",
+      "title": "One roommate moved out · split the deposit?",
+      "description": "Partial turnover documentation when co-tenants change. Not legal advice.",
+      "category": "pain",
+      "intent": "pain",
+      "states": [],
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "painWave": true
     }
   ]
 }

@@ -131,6 +131,10 @@
       "destination": "/launch-stack.html"
     },
     {
+      "source": "/pain",
+      "destination": "/pain.html"
+    },
+    {
       "source": "/feedback",
       "destination": "/feedback.html"
     },
@@ -1273,6 +1277,38 @@
     {
       "source": "/blog/eight-unit-multi-state-deposit-stack",
       "destination": "/blog/eight-unit-multi-state-deposit-stack.html"
+    },
+    {
+      "source": "/blog/tenant-wont-give-forwarding-address-deposit",
+      "destination": "/blog/tenant-wont-give-forwarding-address-deposit.html"
+    },
+    {
+      "source": "/blog/landlord-app-no-deposit-itemization-letter",
+      "destination": "/blog/landlord-app-no-deposit-itemization-letter.html"
+    },
+    {
+      "source": "/blog/lease-ended-tenant-still-in-unit-deposit-clock",
+      "destination": "/blog/lease-ended-tenant-still-in-unit-deposit-clock.html"
+    },
+    {
+      "source": "/blog/tenant-texted-where-is-my-deposit-check",
+      "destination": "/blog/tenant-texted-where-is-my-deposit-check.html"
+    },
+    {
+      "source": "/blog/texas-security-deposit-return-30-day-packet",
+      "destination": "/blog/texas-security-deposit-return-30-day-packet.html"
+    },
+    {
+      "source": "/blog/california-21-day-deposit-late-still-itemize",
+      "destination": "/blog/california-21-day-deposit-late-still-itemize.html"
+    },
+    {
+      "source": "/blog/zillow-rental-manager-deposit-return-gap",
+      "destination": "/blog/zillow-rental-manager-deposit-return-gap.html"
+    },
+    {
+      "source": "/blog/roommate-moved-out-deposit-split-landlord",
+      "destination": "/blog/roommate-moved-out-deposit-split-landlord.html"
     }
   ],
   "crons": [

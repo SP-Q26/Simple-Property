@@ -8,6 +8,8 @@
 |----------|-----|
 | Default turnover | `https://simple-property.com/app?state=IL&turnover=1&ref=fb&utm_source=facebook&utm_medium=paid` |
 | Compare objection | `https://simple-property.com/blog/deposit-desk-vs-innago-avail-turnover` → CTA goes to `/app?turnover=1&ref=compare` |
+| Pain / fear creative | `https://simple-property.com/pain` → `/app?turnover=1&ref=pain-hub` |
+| SimplifyEm / free app | `/blog/deposit-desk-vs-simplifyem-turnover` · `/blog/deposit-desk-vs-turbotenant-tenantcloud-turnover` |
 | Pricing anchor | `https://simple-property.com/pricing?utm_source=facebook` |
 | Statute trust | `https://simple-property.com/legal/deposit-statutes` |
 
