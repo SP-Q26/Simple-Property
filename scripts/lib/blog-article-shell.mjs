@@ -69,7 +69,7 @@ ${social}
   <link rel="stylesheet" href="/simple-property.css?v=${CSS_VERSION}">
   <script type="application/ld+json">${ld}</script>
 </head>
-<body>
+<body data-spt-page="blog_post">
 ${atmosphereBlock}
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page">
@@ -92,6 +92,7 @@ ${proseBody}
   <script src="/court-record-rotate.js" defer></script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script src="/sp-events.js" defer></script>
 </body>
 </html>
 `;

@@ -14,6 +14,8 @@ const COMPARE_SLUGS = [
   "deposit-desk-vs-innago-avail-turnover",
   "deposit-desk-vs-leaserooster-deposits",
   "deposit-desk-vs-deposit-software",
+  "deposit-desk-vs-simplifyem-turnover",
+  "deposit-desk-vs-turbotenant-tenantcloud-turnover",
 ];
 
 const HOME_SLUGS = [

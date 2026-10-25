@@ -1257,6 +1257,22 @@
     {
       "source": "/blog/statute-links-vs-legal-advice-deposit-desk",
       "destination": "/blog/statute-links-vs-legal-advice-deposit-desk.html"
+    },
+    {
+      "source": "/blog/deposit-desk-vs-simplifyem-turnover",
+      "destination": "/blog/deposit-desk-vs-simplifyem-turnover.html"
+    },
+    {
+      "source": "/blog/deposit-desk-vs-turbotenant-tenantcloud-turnover",
+      "destination": "/blog/deposit-desk-vs-turbotenant-tenantcloud-turnover.html"
+    },
+    {
+      "source": "/blog/chicago-deposit-paperwork-without-lawyer",
+      "destination": "/blog/chicago-deposit-paperwork-without-lawyer.html"
+    },
+    {
+      "source": "/blog/eight-unit-multi-state-deposit-stack",
+      "destination": "/blog/eight-unit-multi-state-deposit-stack.html"
     }
   ],
   "crons": [

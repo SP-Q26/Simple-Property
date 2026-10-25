@@ -25,6 +25,7 @@ console.log("── Growth train Oct 2026 ──\n");
 
 run("assign-compare-route-series.mjs", "tag compare routeSeries");
 run("generate-route-series-statutes-oct-2026.mjs", "statutes route series");
+run("generate-ai-discovery-content-oct-2026.mjs", "AI discovery compare + Chicago hub");
 run("apply-blog-goal-copy.mjs", "goal copy + compare CTAs");
 run("build-blog-seo.mjs", "blog hub + sitemap + vercel rewrites");
 run("sync-site-chrome.mjs", "site chrome + analytics");

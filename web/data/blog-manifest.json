@@ -3690,7 +3690,7 @@
       "routeSeries": "home",
       "states": [],
       "published": "2026-10-15",
-      "updated": "2026-10-15",
+      "updated": "2026-10-25",
       "statutes": []
     },
     {
@@ -4150,6 +4150,57 @@
       "published": "2026-10-23",
       "updated": "2026-10-23",
       "statutes": []
+    },
+    {
+      "slug": "deposit-desk-vs-simplifyem-turnover",
+      "title": "Deposit Desk vs SimplifyEm at turnover",
+      "description": "Suite pricing vs per-turn deposit packets · when to keep SimplifyEm and add Deposit Desk. Not legal advice.",
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "category": "landlord",
+      "intent": "landlord",
+      "routeSeries": "compare",
+      "states": []
+    },
+    {
+      "slug": "deposit-desk-vs-turbotenant-tenantcloud-turnover",
+      "title": "Deposit Desk vs TurboTenant and TenantCloud at turnover",
+      "description": "Free and low-cost PM apps vs deposit-native packets · dual stack at move-out. Not legal advice.",
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "category": "landlord",
+      "intent": "landlord",
+      "routeSeries": "compare",
+      "states": []
+    },
+    {
+      "slug": "chicago-deposit-paperwork-without-lawyer",
+      "title": "Chicago deposit paperwork without hiring a lawyer",
+      "description": "RLTO clocks, itemization, and packet habits for small landlords · software is not counsel. Not legal advice.",
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [
+        "765 ILCS 715/",
+        "Chicago RLTO"
+      ],
+      "category": "city",
+      "intent": "landlord",
+      "states": [
+        "IL"
+      ]
+    },
+    {
+      "slug": "eight-unit-multi-state-deposit-stack",
+      "title": "Eight units in three states · deposit stack",
+      "description": "Pro subscription vs per-turn unlock · separate clocks per property. Not legal advice.",
+      "published": "2026-10-25",
+      "updated": "2026-10-25",
+      "statutes": [],
+      "category": "pain",
+      "intent": "landlord",
+      "states": []
     }
   ]
 }
