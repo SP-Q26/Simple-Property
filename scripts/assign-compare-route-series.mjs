@@ -35,11 +35,16 @@ const DEPOSIT_DESK_SLUGS = [
 ];
 
 let n = 0;
+let c = 0;
 for (const post of manifest.posts) {
   if (!COMPARE_SLUGS.includes(post.slug)) continue;
   if (post.routeSeries !== "compare") {
     post.routeSeries = "compare";
     n++;
+  }
+  if (post.category !== "compare") {
+    post.category = "compare";
+    c++;
   }
 }
 
@@ -70,5 +75,5 @@ for (const post of manifest.posts) {
 
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 console.log(
-  `compare ${COMPARE_SLUGS.length} · ${n} updated · home ${HOME_SLUGS.length} · ${h} fixed · deposit-desk ${d} fixed`,
+  `compare ${COMPARE_SLUGS.length} · route ${n} · category ${c} · home ${HOME_SLUGS.length} · ${h} fixed · deposit-desk ${d} fixed`,
 );

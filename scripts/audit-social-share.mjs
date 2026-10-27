@@ -63,6 +63,7 @@ const dropPages = [
   "app.html",
   "pricing.html",
   "launch-stack.html",
+  "pain.html",
   "feedback.html",
   "modules.html",
   "hub.html",

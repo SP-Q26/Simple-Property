@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v83 · footer contact email */
+/* Simple Property Tools · Deposit Desk · v84 · pain hub spacing */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -1867,7 +1867,24 @@ main > h1,
 
 @media (min-width: 960px) {
   .pathway-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .blog-jump {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.35rem;
+  }
+
+  .blog-jump a {
+    display: inline-block;
+  }
+
+  .hero-pulse__meta {
+    font-size: 0.8rem;
+    line-height: 1.45;
   }
 }
 

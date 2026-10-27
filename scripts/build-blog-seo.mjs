@@ -337,10 +337,19 @@ const hubLd = {
     {
       "@type": "ItemList",
       numberOfItems: Math.min(24, manifest.posts.length),
-      itemListElement: [...manifest.posts]
-        .sort((a, b) => (a.published < b.published ? 1 : -1))
-        .slice(0, 24)
-        .map((p, i) => ({
+      itemListElement: (() => {
+        const seen = new Set();
+        const out = [];
+        const add = (p) => {
+          if (!p || seen.has(p.slug)) return;
+          seen.add(p.slug);
+          out.push(p);
+        };
+        for (const p of manifest.posts.filter((x) => x.painWave)) add(p);
+        for (const p of manifest.posts.filter((x) => x.routeSeries === "compare")) add(p);
+        for (const p of [...manifest.posts].sort((a, b) => (a.published < b.published ? 1 : -1))) add(p);
+        return out.slice(0, 24);
+      })().map((p, i) => ({
           "@type": "ListItem",
           position: i + 1,
           url: `${site}/blog/${p.slug}`,

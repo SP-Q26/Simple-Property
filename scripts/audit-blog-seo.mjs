@@ -47,7 +47,7 @@ for (const f of htmlFiles) {
   check(`manifest row ${slug}`, manifestSlugs.has(slug));
 }
 
-for (const key of ["law", "landlord", "renter", "news", "pain", "city", "metro", "route"]) {
+for (const key of ["law", "landlord", "renter", "news", "pain", "city", "metro", "route", "compare"]) {
   const min =
     key === "pain"
       ? 6
@@ -57,8 +57,13 @@ for (const key of ["law", "landlord", "renter", "news", "pain", "city", "metro",
           ? 2
           : key === "route"
             ? 2
-            : 2;
-  const n = posts.filter((p) => p.category === key).length;
+            : key === "compare"
+              ? 2
+              : 2;
+  const n =
+    key === "compare"
+      ? posts.filter((p) => p.category === key || p.routeSeries === "compare").length
+      : posts.filter((p) => p.category === key).length;
   check(`pillar ${key} ≥ ${min} posts`, n >= min, `count=${n}`);
 }
 
@@ -91,7 +96,9 @@ for (const key of Object.keys(cats)) {
   const indexOk =
     index.includes(`id="cluster-${key}"`) ||
     (key === "city" && index.includes("guides-cities")) ||
-    (key === "metro" && index.includes("guides-metro"));
+    (key === "metro" && index.includes("guides-metro")) ||
+    (key === "compare" && index.includes("cluster-compare")) ||
+    (key === "pain" && index.includes("guides-pain"));
   check(`index cluster ${key}`, indexOk);
 }
 
@@ -118,7 +125,11 @@ if (lawWatch < 2) score -= 5;
 if (dupLd > 0) score -= 10;
 if (!read("blog/feed.rss")) score -= 15;
 for (const key of Object.keys(cats)) {
-  if (posts.filter((p) => p.category === key).length < 2) score -= 5;
+  const n =
+    key === "compare"
+      ? posts.filter((p) => p.category === key || p.routeSeries === "compare").length
+      : posts.filter((p) => p.category === key).length;
+  if (n < 2) score -= 5;
 }
 score = Math.max(0, score);
 

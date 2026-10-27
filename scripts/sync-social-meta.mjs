@@ -51,6 +51,13 @@ const DROP_PAGES = [
       `Set up deposit compliance at 1–10 doors · ledger at 10–20 · automation at 20–40. ${COVERAGE_LABEL} · not legal advice.`,
   },
   {
+    file: "pain.html",
+    path: "/pain",
+    ogTitle: "Deposit pain hub · missed deadlines & disputes",
+    ogDescription:
+      `Tenant texts, PM app gaps, missed clocks · guides then Deposit Desk packet export. ${COVERAGE_LABEL}. Not legal advice.`,
+  },
+  {
     file: "feedback.html",
     path: "/feedback",
     ogTitle: "Suggest improvements · Deposit Desk feedback",

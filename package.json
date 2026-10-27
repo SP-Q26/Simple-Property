@@ -6,6 +6,7 @@
   "scripts": {
     "audit": "node scripts/audit-spt-web.mjs",
     "audit:swarm": "node scripts/audit-swarm.mjs",
+    "audit:full-site": "node scripts/audit-full-site-oct-2026.mjs",
     "audit:receipt-rail": "node scripts/audit-receipt-rail-spec.mjs",
     "audit:packet-bar": "node scripts/audit-packet-bar-sweep.mjs",
     "audit:telemetry": "node scripts/audit-spt-telemetry.mjs",

@@ -26,6 +26,7 @@ const ROUTES = new Set([
   "/hub",
   "/modules",
   "/feedback",
+  "/pain",
   "/blog",
   "/blog/feed.rss",
   "/privacy",
