@@ -3,13 +3,15 @@
  * OG link-preview art from deposit-rules (30/45 chips · all wizard states + DC).
  * Run before export-og-share-images.mjs · npm run sync:seo
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { STATE_PACKS, SUPPORTED_STATES } from "../web/lib/deposit-rules.mjs";
 import { BRAND_TAGLINE, STATE_ONLY_COUNT } from "../web/lib/brand-locale.mjs";
 
 const ogDir = join(dirname(fileURLToPath(import.meta.url)), "..", "web", "og");
+const brandPng = join(dirname(fileURLToPath(import.meta.url)), "..", "web", "brand", "spt-logo-mark-256.png");
+const LOGO_B64 = readFileSync(brandPng).toString("base64");
 const COVERAGE_LABEL = `${STATE_ONLY_COUNT} states + DC`;
 
 function chipMarkup(x, y, code) {
@@ -37,21 +39,9 @@ function chipGrid(startX, startY, cols, chipW, gap) {
   return out;
 }
 
-function doorSceneMini() {
-  return `  <g transform="translate(720, 88) scale(0.92)">
-  <rect x="0" y="0" width="56" height="420" fill="#7a4038" fill-opacity="0.12" rx="3"/>
-  <rect x="344" y="0" width="56" height="420" fill="#7a4038" fill-opacity="0.12" rx="3"/>
-  <rect x="48" y="24" width="304" height="376" rx="5" fill="#3d3429" fill-opacity="0.05" stroke="#3d3429" stroke-width="1.5" stroke-opacity="0.35"/>
-  <rect x="56" y="32" width="288" height="360" rx="4" fill="#3d3429" fill-opacity="0.08" stroke="#3d3429" stroke-width="2.25"/>
-  <rect x="68" y="44" width="120" height="336" rx="2" fill="url(#door-light)" stroke="#3d3429" stroke-width="2"/>
-  <path d="M188 44 L188 380" stroke="#3d3429" stroke-width="2"/>
-  <path d="M68 44 L188 112 L188 312 L68 380 Z" fill="#faf7f0" stroke="#3d3429" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M188 112 L320 44 L320 380 L188 312 Z" fill="#4a6741" fill-opacity="0.38" stroke="#3d3429" stroke-width="2"/>
-  <circle cx="176" cy="214" r="5" fill="#c9a227" stroke="#3d3429" stroke-width="1"/>
-  <text x="128" y="222" text-anchor="middle" fill="#3d3429" font-family="Georgia, serif" font-size="38" font-weight="600">SP</text>
-  <path d="M188 44 L320 44" stroke="#c9a227" stroke-width="4" stroke-linecap="round"/>
-  <rect x="332" y="168" width="8" height="88" rx="2" fill="#c9a227" fill-opacity="0.35"/>
-</g>`;
+/** Artist door-notebook mark (import-brand-logo.mjs). */
+function logoMarkBlock() {
+  return `  <image href="data:image/png;base64,${LOGO_B64}" x="748" y="88" width="340" height="340" preserveAspectRatio="xMidYMid meet"/>`;
 }
 
 /** Highlight box with even padding (OG safe zone). */
@@ -142,7 +132,7 @@ ${highlightPill(72, 212, 580, ["Paperwork ready.", "Lower cleanup cost if counse
 ${featuredMetroChips(326)}
   <text x="72" y="400" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="16">Surrender · deadline · itemize · preview free · mail-ready PDF</text>
   <text x="72" y="428" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="14">Not legal advice · documentation only</text>
-${doorSceneMini()}`;
+${logoMarkBlock()}`;
 
 const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia, serif" font-size="40" font-weight="600">${COVERAGE_LABEL}</text>
   <text x="72" y="152" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="22">New metros: Tampa · Atlanta · Seattle · Vegas · DMV · more</text>
@@ -152,7 +142,7 @@ const coverageBody = `  <text x="72" y="108" fill="#3d3429" font-family="Georgia
   <text x="72" y="258" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="16">Not legal advice · documentation only</text>
 ${legend(72, 278)}
 ${chipGrid(72, 302, 11, 36, 5)}
-${doorSceneMini()}`;
+${logoMarkBlock()}`;
 
 const cardBody = `  <text x="88" y="148" fill="#3d3429" font-family="Georgia, serif" font-size="46" font-weight="600">Simple Property Tools</text>
   <text x="88" y="198" fill="#6b5c4a" font-family="system-ui,sans-serif" font-size="24">Deposit Desk · ${COVERAGE_LABEL}</text>

@@ -9,13 +9,13 @@ export { FB_APP_ID, TWITTER_SITE };
 export const SITE = "https://simple-property.com";
 export const SITE_NAME = "Simple Property Tools";
 /** Bump when OG PNG art changes so Facebook Debugger picks up fresh previews. */
-export const OG_CACHE_VERSION = "20261011b";
+export const OG_CACHE_VERSION = "20261027a";
 export const OG_IMAGE_PATH = "/og/spt-share-door.png";
 export const OG_IMAGE_COVERAGE_PATH = "/og/spt-share-coverage-expansion.png";
 export const OG_IMAGE = `${SITE}${OG_IMAGE_PATH}?v=${OG_CACHE_VERSION}`;
 export const OG_IMAGE_COVERAGE = `${SITE}${OG_IMAGE_COVERAGE_PATH}?v=${OG_CACHE_VERSION}`;
 export const OG_IMAGE_ALT =
-  `Deposit Desk · paperwork ready · ${COVERAGE_LABEL} · Founded in Chicago · not legal advice`;
+  `Simple Property Tools · door-notebook mark · Deposit Desk · ${COVERAGE_LABEL} · not legal advice`;
 export const OG_IMAGE_COVERAGE_ALT =
   `Deposit Desk new state coverage · ${COVERAGE_LABEL} color chips · thank you to operator contributors`;
 export const OG_IMAGE_WIDTH = "1200";

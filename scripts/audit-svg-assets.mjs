@@ -76,11 +76,12 @@ for (const f of readdirSync(stripeDir).filter((x) => x.endsWith(".png"))) {
 }
 
 const favicon = readFileSync(join(web, "favicon.svg"), "utf8");
-need("favicon door hinges", favicon.includes("door-hinge"));
-need("favicon rim lock", favicon.includes("door-rim-lock"));
-need("favicon no padlock arch", !favicon.includes('d="M26-8V-20'));
+need("favicon artist mark label", /door notebook mark/i.test(favicon));
+need("favicon raster embed", favicon.includes("data:image/png;base64"));
+need("favicon viewBox 32", favicon.includes('viewBox="0 0 32 32"'));
 need("favicon no tiny text", !favicon.includes("<text"));
-need("favicon greystone palette", favicon.includes("#3d3429") && favicon.includes("#c9a227"));
+need("brand logo master jpg", existsSync(join(root, "docs/brand/spt-logo-mark-v1.jpg")));
+need("brand logo 512 png", existsSync(join(web, "brand/spt-logo-mark-512.png")));
 const og = readFileSync(join(web, "og/spt-card.svg"), "utf8");
 need("OG coverage chips on card", (og.match(/class="coverage-chip"/g) || []).length === SUPPORTED_STATES.length);
 need("OG card coverage copy", og.includes(`${STATE_ONLY_COUNT} states + DC`));

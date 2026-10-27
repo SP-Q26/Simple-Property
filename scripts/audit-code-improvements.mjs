@@ -83,6 +83,8 @@ for (const p of walkJs(web)) {
 need("no stray js over 120KB (ex vendor)", huge === 0, huge ? `${huge} file(s)` : "");
 
 need("vercel.json present", existsSync(join(web, "vercel.json")));
+need("brand logo master", existsSync(join(root, "docs/brand/spt-logo-mark-v1.jpg")));
+need("favicon embeds mark", read("favicon.svg").includes("data:image/png;base64"));
 
 console.log(fail ? `\nCode improvements audit FAILED (${fail})` : "\nCode improvements audit OK");
 process.exit(fail ? 1 : 0);
