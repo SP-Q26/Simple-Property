@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v84 · pain hub spacing */
+/* Simple Property Tools · Deposit Desk · v85 · FAQ layout + defer paint */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -3548,11 +3548,113 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   margin-bottom: var(--space-4);
 }
 
+/* Home · below-fold sections skip layout until near viewport */
+.home-defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 28rem;
+}
+
 /* FAQ · greystone door accordions (matches hero entry) */
+.faq-doors-layout {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .faq-doors-layout {
+    grid-template-columns: minmax(10.5rem, 12rem) minmax(0, 1fr);
+    column-gap: var(--space-6);
+  }
+}
+
+.faq-doors-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.faq-doors-jump-wrap {
+  min-width: 0;
+}
+
+@media (max-width: 1023px) {
+  .faq-doors-jump {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: var(--space-2);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .faq-doors-jump li {
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .faq-doors-jump {
+    position: sticky;
+    top: calc(var(--space-6) + env(safe-area-inset-top, 0px));
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--gold-hairline);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+  }
+}
+
+.faq-doors-jump a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.faq-doors-jump a:hover {
+  border-color: var(--beam-gold);
+  background: color-mix(in srgb, var(--beam-gold) 8%, var(--surface));
+}
+
+.faq-doors-jump a:focus-visible {
+  outline: 2px solid var(--beam-gold);
+  outline-offset: 2px;
+}
+
+.faq-doors-panels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.faq-doors-group__title {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
 .faq-doors {
   display: grid;
   gap: var(--space-4);
   max-width: none;
+  align-items: start;
 }
 
 @media (min-width: 640px) {
@@ -3561,9 +3663,13 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1200px) {
   .faq-doors {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .faq-door--wide {
+    grid-column: 1 / -1;
   }
 }
 
@@ -3575,6 +3681,7 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.72);
   box-shadow: 0 4px 14px rgba(59, 90, 120, 0.08);
+  contain: layout style;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 

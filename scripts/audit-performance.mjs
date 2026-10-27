@@ -29,14 +29,16 @@ console.log("── Performance audit ──\n");
 console.log(`css bytes: ${cssBytes}`);
 
 need(`css v${CSS_VERSION} header comment`, css.includes(`v${CSS_VERSION}`));
-/** v78 court-strip cascade tail at EOF · cap reviewed when CSS grows. */
-need("css size under 110KB", cssBytes < 110 * 1024);
+/** v85 FAQ layout + defer paint · cap reviewed when CSS grows. */
+need("css size under 115KB", cssBytes < 115 * 1024);
 need("body background scroll (no fixed jank)", css.includes("background-attachment: scroll"));
 need("atmosphere contain strict", css.includes("contain: strict"));
 need("interior atmosphere trim", css.includes("body:has(.pricing-page)"));
 need("hero/wizard door scene off", css.includes("body:has(.wizard-steps) .spt-door-scene"));
 need("wizard weather off", css.includes("body:has(.wizard-steps) .spt-weather"));
 need("reduced motion hides door", css.includes(".spt-door-scene") && css.includes("prefers-reduced-motion"));
+need("home defer paint", css.includes(".home-defer-paint") && css.includes("content-visibility"));
+need("faq door contain", css.includes(".faq-door") && css.includes("contain: layout"));
 need("mobile locale bar no backdrop blur", /max-width: 1023px[\s\S]*\.locale-bar[\s\S]*backdrop-filter: none/.test(css));
 need("fonts display=swap in brand", read("lib/brand-locale.mjs").includes("display=swap"));
 

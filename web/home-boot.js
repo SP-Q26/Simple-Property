@@ -55,8 +55,62 @@
 
   window.addEventListener("spt-preset-state", applyCtas);
 
+  function wireFaqDoors() {
+    var root = document.getElementById("home-faq");
+    if (!root) return;
+    var doors = root.querySelectorAll("details.faq-door");
+    if (!doors.length) return;
+
+    doors.forEach(function (door) {
+      door.addEventListener("toggle", function () {
+        if (!door.open) return;
+        doors.forEach(function (other) {
+          if (other !== door && other.open) other.open = false;
+        });
+      });
+    });
+
+    root.querySelectorAll(".faq-doors-jump a[href^='#']").forEach(function (link) {
+      link.addEventListener("click", function (ev) {
+        var id = (link.getAttribute("href") || "").slice(1);
+        var target = id ? document.getElementById(id) : null;
+        if (!target) return;
+        ev.preventDefault();
+        openFaqGroup(id, true);
+      });
+    });
+
+    function openFaqGroup(id, smooth) {
+      var group = id ? document.getElementById(id) : null;
+      if (!group || !root.contains(group)) return;
+      var first = group.querySelector("details.faq-door");
+      if (first) {
+        doors.forEach(function (d) {
+          if (d !== first) d.open = false;
+        });
+        first.open = true;
+      }
+      if (smooth) {
+        group.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (history.replaceState) history.replaceState(null, "", "#" + id);
+      }
+    }
+
+    function openFaqFromHash() {
+      var id = (location.hash || "").replace(/^#/, "");
+      if (!id || id.indexOf("faq-") !== 0) return;
+      openFaqGroup(id, false);
+      var group = document.getElementById(id);
+      if (group) group.scrollIntoView({ block: "start" });
+    }
+
+    openFaqFromHash();
+    window.addEventListener("hashchange", openFaqFromHash);
+  }
+
   function boot() {
     applyCtas();
+    wireFaqDoors();
     if ("requestIdleCallback" in window) {
       requestIdleCallback(loadTraction, { timeout: 2000 });
     } else {

@@ -7,7 +7,17 @@ import { ARRIVAL_CHROME_VER } from "./lib/door-arrival-canon.mjs";
 
 const web = join(dirname(fileURLToPath(import.meta.url)), "..", "web");
 const ver = String(ARRIVAL_CHROME_VER);
-const preload = `  <link rel="preload" href="/lottie/spt-door-arrival-lottie.json?v=${ver}" as="fetch" crossorigin>`;
+const preload = `  <link rel="preload" id="spt-lottie-preload" href="/lottie/spt-door-arrival-lottie.json?v=${ver}" as="fetch" crossorigin>
+  <script>
+(function () {
+  try {
+    if (sessionStorage.getItem("spt_door_arrival_seen") === "1") {
+      var el = document.getElementById("spt-lottie-preload");
+      if (el) el.remove();
+    }
+  } catch (e) {}
+})();
+  </script>`;
 
 for (const page of ["index.html", "app.html"]) {
   const path = join(web, page);

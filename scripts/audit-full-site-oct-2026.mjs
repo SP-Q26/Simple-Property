@@ -27,6 +27,7 @@ const STEPS = [
   ["audit-court-record-strip.mjs", "court strip"],
   ["audit-blog-goal-copy.mjs", "blog goal copy"],
   ["audit-swarm.mjs", "swarm scoreboard"],
+  ["audit-code-improvements.mjs", "code health"],
   ["audit-spt-web.mjs", "proud-ship P0"],
 ];
 

@@ -6,7 +6,6 @@
   "use strict";
 
   if (global.__sptDoorArrivalBoot) return;
-  global.__sptDoorArrivalBoot = true;
 
   var PLAYER = "/vendor/dotlottie-player.mjs";
   var ASSET_JSON = "/lottie/spt-door-arrival-lottie.json";
@@ -34,6 +33,9 @@
     }
     return true;
   }
+
+  global.__sptDoorArrivalBoot = true;
+  if (!shouldPlay()) return;
 
   function markSeen() {
     try {

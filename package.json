@@ -45,6 +45,7 @@
     "elevate:blog-metro": "node scripts/elevate-blog-metro-taxonomy.mjs && node scripts/build-blog-seo.mjs && node scripts/sync-mcp-discovery.mjs",
     "build-court-snippets": "node scripts/build-court-record-snippets.mjs",
     "audit:perf": "node scripts/audit-performance.mjs",
+    "audit:code": "node scripts/audit-code-improvements.mjs",
     "generate-blog-p0": "node scripts/generate-state-blog-p0.mjs",
     "generate-state-expansion": "node scripts/generate-state-expansion-blogs.mjs",
     "generate-state-sep-2026": "node scripts/generate-state-operator-sep-2026.mjs && node scripts/build-blog-seo.mjs && node scripts/sync-social-meta.mjs",

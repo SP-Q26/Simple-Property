@@ -38,11 +38,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/simple-property.css?v=84">
+  <link rel="stylesheet" href="/simple-property.css?v=85">
   <link rel="stylesheet" href="/spt-door-arrival.css?v=3">
-    <link rel="preload" href="/lottie/spt-door-arrival-lottie.json?v=3" as="fetch" crossorigin>
+    <link rel="preload" id="spt-lottie-preload" href="/lottie/spt-door-arrival-lottie.json?v=3" as="fetch" crossorigin>
+  <script>
+(function () {
+  try {
+    if (sessionStorage.getItem("spt_door_arrival_seen") === "1") {
+      var el = document.getElementById("spt-lottie-preload");
+      if (el) el.remove();
+    }
+  } catch (e) {}
+})();
+  </script>
+    <link rel="preload" id="spt-lottie-preload" href="/lottie/spt-door-arrival-lottie.json?v=3" as="fetch" crossorigin>
+  <script>
+(function () {
+  try {
+    if (sessionStorage.getItem("spt_door_arrival_seen") === "1") {
+      var el = document.getElementById("spt-lottie-preload");
+      if (el) el.remove();
+    }
+  } catch (e) {}
+})();
+  </script>
   <script src="/spt-door-arrival-lottie.js?v=3" defer></script>
-  <link rel="preload" href="/data/court-record-snippets.json" as="fetch" crossorigin>
+  <link rel="preload" href="/data/court-record-snippets.json" as="fetch" crossorigin fetchpriority="low">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -469,7 +490,7 @@
         <p class="field-hint">Works with the <strong>Google Calendar</strong> and <strong>Sheets</strong> you already use · adds surrender math and export.</p>
       </section>
 
-      <section class="section" aria-labelledby="launch-scale-title">
+      <section class="section home-defer-paint" aria-labelledby="launch-scale-title">
         <p class="section-label">Launch</p>
         <h2 id="launch-scale-title">Scale tools before headaches compound</h2>
         <p class="ps-problem">At 10+ doors, memory and group texts stop working.</p>
@@ -477,11 +498,24 @@
         <p class="field-hint expansion-lane-line">1–10 · deposit packet + files · 10–20 · ledger + light PM · 20–40 · automate rent + reminders</p>
       </section>
 
-      <section class="section" aria-labelledby="faq-title">
+      <section class="section home-defer-paint" aria-labelledby="faq-title" id="home-faq">
         <p class="section-label">FAQ</p>
         <h2 id="faq-title">Ten doors · quick answers</h2>
         <p class="field-hint faq-intro">Each question opens like the entry door · deposit clocks, pricing, and what Deposit Desk is (and is not). Not legal advice.</p>
-        <div class="faq faq-doors">
+        <div class="faq faq-doors-layout">
+          <nav class="faq-doors-jump-wrap" aria-label="FAQ topics">
+            <ul class="faq-doors-jump">
+              <li><a href="#faq-clocks">Clocks</a></li>
+              <li><a href="#faq-product">Product</a></li>
+              <li><a href="#faq-disputes">Disputes</a></li>
+              <li><a href="#faq-stacks">Stacks</a></li>
+              <li><a href="#faq-trust">Trust</a></li>
+            </ul>
+          </nav>
+          <div class="faq-doors-panels">
+            <div class="faq-doors-group" id="faq-clocks">
+              <h3 class="faq-doors-group__title">Clocks &amp; deadlines</h3>
+              <div class="faq-doors">
           <details class="faq-door">
             <summary>When does the deposit return clock start?</summary>
             <div class="faq-door__room">
@@ -501,6 +535,17 @@
             </div>
           </details>
           <details class="faq-door">
+            <summary>Missed the deposit return deadline?</summary>
+            <div class="faq-door__room">
+            <p>Lock a defensible surrender date, itemize withholds by line (not one lump “cleaning”), and export a dated packet · late documentation beats silence. Start with <a href="/blog/missed-illinois-deposit-deadline-what-now">Illinois missed deadline</a>, <a href="/blog/missed-deposit-deadline-small-landlord-multi-state">multi-state roundup</a>, or your state cluster on <a href="/blog">Guides</a>. Confirm penalties with counsel.</p>
+            </div>
+          </details>
+              </div>
+            </div>
+            <div class="faq-doors-group" id="faq-product">
+              <h3 class="faq-doors-group__title">Product &amp; pricing</h3>
+              <div class="faq-doors">
+          <details class="faq-door">
             <summary>Per turn or Pro subscription?</summary>
             <div class="faq-door__room">
             <p><strong>Draft free</strong> in the browser. <strong>Per turn:</strong> $29 move-out print unlock or $49 full tenancy on one packet · often passed through like screening. <strong>Pro:</strong> $22/mo or $99/yr · unlimited print · up to 40 units · best when several turns stack each year. Full math on <a href="/pricing">Pricing</a>.</p>
@@ -513,23 +558,27 @@
             </div>
           </details>
           <details class="faq-door">
-            <summary>Missed the deposit return deadline?</summary>
+            <summary>Spreadsheet or Deposit Desk?</summary>
             <div class="faq-door__room">
-            <p>Lock a defensible surrender date, itemize withholds by line (not one lump “cleaning”), and export a dated packet · late documentation beats silence. Start with <a href="/blog/missed-illinois-deposit-deadline-what-now">Illinois missed deadline</a>, <a href="/blog/missed-deposit-deadline-small-landlord-multi-state">multi-state roundup</a>, or your state cluster on <a href="/blog">Guides</a>. Confirm penalties with counsel.</p>
+            <p>Sheets work for one door · they break when surrender dates and cites differ across units in the same week. Compare <a href="/blog/deposit-desk-vs-spreadsheet">packet vs spreadsheet</a> and <a href="/blog/excel-deposit-spreadsheet-mistakes-illinois">Excel mistakes</a>.</p>
             </div>
           </details>
+              </div>
+            </div>
+            <div class="faq-doors-group" id="faq-disputes">
+              <h3 class="faq-doors-group__title">Disputes &amp; proof</h3>
+              <div class="faq-doors">
           <details class="faq-door">
             <summary>Tenant disputing the withhold?</summary>
             <div class="faq-door__room">
             <p>Move-in room logs, dated photos, and line-item withholds beat email arguments. See <a href="/blog/tenant-disputes-security-deposit-illinois">deposit dispute guide</a>, <a href="/blog/normal-wear-vs-damage-illinois">wear vs damage</a>, and <a href="/blog/forgot-move-in-photos-deposit-dispute-illinois">no move-in photos</a>.</p>
             </div>
           </details>
-          <details class="faq-door">
-            <summary>Spreadsheet or Deposit Desk?</summary>
-            <div class="faq-door__room">
-            <p>Sheets work for one door · they break when surrender dates and cites differ across units in the same week. Compare <a href="/blog/deposit-desk-vs-spreadsheet">packet vs spreadsheet</a> and <a href="/blog/excel-deposit-spreadsheet-mistakes-illinois">Excel mistakes</a>.</p>
+              </div>
             </div>
-          </details>
+            <div class="faq-doors-group" id="faq-stacks">
+              <h3 class="faq-doors-group__title">Stacks &amp; workflows</h3>
+              <div class="faq-doors">
           <details class="faq-door">
             <summary>Already on Innago, SimplifyEm, or TurboTenant?</summary>
             <div class="faq-door__room">
@@ -548,7 +597,12 @@
             <p>Product feedback goes to <a href="/feedback">/feedback</a> · support at <a href="mailto:hello@simple-property.com">hello@simple-property.com</a>. We do not maintain a third-party review wall · share compare guides or your packet workflow if you refer another operator.</p>
             </div>
           </details>
-          <details class="faq-door">
+              </div>
+            </div>
+            <div class="faq-doors-group" id="faq-trust">
+              <h3 class="faq-doors-group__title">Trust &amp; limits</h3>
+              <div class="faq-doors">
+          <details class="faq-door faq-door--wide">
             <summary>Honest limits · what we do not replace</summary>
             <div class="faq-door__room">
             <p><strong>Four things to plan for:</strong> (1) No tenant maintenance portal · photos and withholds stay on your discipline, not a plumber ticket queue. (2) Rent and screening stay in your PM suite or bank · we do not collect monthly rent. (3) Two systems at turnover · copy surrender date, deposit held, and forwarding address from Avail, Innago, or your ledger into <a href="/app">Deposit Desk</a> (or import <strong>packet .json</strong>). (4) Not legal advice · ~$350/hr counsel time is for judgment; $29–49/turn is for organized packets. Stack map: <a href="/launch-stack">tools by door count</a>.</p>
@@ -560,6 +614,9 @@
             <p>No. Simple Property Tools helps you <strong>document</strong> dates, itemization, and deadlines. Statute labels and outbound links are convenience only · verify every requirement with licensed counsel in your state. See <a href="/legal">Legal hub</a> and <a href="/terms">Terms</a>.</p>
             </div>
           </details>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
