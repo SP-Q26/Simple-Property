@@ -38,6 +38,9 @@ need("guide pills hover+active+focus", css.includes(".guides-hub .guide-pills a:
 need("btn hover+active+focus", css.includes(".btn:active") && css.includes(".btn:focus-visible"));
 need("header nav hover", css.includes(".header-nav a:hover"));
 need("faq door summary tap", css.includes(".faq-door summary:hover") && css.includes(".faq-door summary:focus-visible"));
+need("faq jump pill active", css.includes(".faq-doors-jump a.is-active"));
+need("faq notebook shell css", css.includes(".faq-doors-shell") && css.includes(".faq-section__head"));
+need("faq no 3d door summary", !css.includes("perspective(520px)"));
 need(
   "court record rotate motion",
   css.includes("court-record-line-in") && css.includes("prefers-reduced-motion")

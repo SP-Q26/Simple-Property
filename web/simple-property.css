@@ -1,4 +1,4 @@
-/* Simple Property Tools · Deposit Desk · v85 · FAQ layout + defer paint */
+/* Simple Property Tools · Deposit Desk · v86 · FAQ notebook refresh */
 :root {
   --bg: #f4f0e6;
   --surface: #faf7f0;
@@ -3545,7 +3545,40 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
 
 .faq-intro {
   max-width: 42rem;
-  margin-bottom: var(--space-4);
+  margin: 0;
+}
+
+.faq-section__head {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  max-width: 40rem;
+}
+
+.faq-section__mark {
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(59, 90, 120, 0.12);
+}
+
+.faq-section__head h2 {
+  margin: 0 0 var(--space-2);
+}
+
+@media (max-width: 639px) {
+  .faq-section__head {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: none;
+  }
+
+  .faq-section__mark {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 }
 
 /* Home · below-fold sections skip layout until near viewport */
@@ -3554,7 +3587,21 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   contain-intrinsic-size: auto 28rem;
 }
 
-/* FAQ · greystone door accordions (matches hero entry) */
+/* FAQ · notebook packet accordions (pathway-card family) */
+.faq-doors-shell {
+  padding: var(--space-4);
+  border: 1px solid var(--gold-hairline);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 92%, #fff);
+  box-shadow: 0 2px 12px rgba(59, 90, 120, 0.06);
+}
+
+@media (min-width: 640px) {
+  .faq-doors-shell {
+    padding: var(--space-5);
+  }
+}
+
 .faq-doors-layout {
   display: grid;
   gap: var(--space-5);
@@ -3563,7 +3610,7 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
 
 @media (min-width: 1024px) {
   .faq-doors-layout {
-    grid-template-columns: minmax(10.5rem, 12rem) minmax(0, 1fr);
+    grid-template-columns: minmax(9.5rem, 11rem) minmax(0, 1fr);
     column-gap: var(--space-6);
   }
 }
@@ -3571,8 +3618,8 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
 .faq-doors-jump {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
-  margin: 0 0 var(--space-2);
+  gap: var(--space-2);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -3587,11 +3634,14 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
     overflow-x: auto;
     overscroll-behavior-x: contain;
     padding-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
   }
 
   .faq-doors-jump li {
     flex-shrink: 0;
+    scroll-snap-align: start;
   }
 }
 
@@ -3600,38 +3650,54 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
     position: sticky;
     top: calc(var(--space-6) + env(safe-area-inset-top, 0px));
     flex-direction: column;
-    flex-wrap: nowrap;
-    margin: 0;
+    gap: var(--space-2);
     padding: var(--space-3);
-    border: 1px solid var(--gold-hairline);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    background: rgba(255, 255, 255, 0.65);
   }
 }
 
 .faq-doors-jump a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: var(--tap-min);
   padding: var(--space-2) var(--space-3);
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
-  color: var(--ink);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+  color: var(--quant-blue);
+  border: 1px solid var(--gold-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color var(--ease-interactive), background-color var(--ease-interactive), box-shadow var(--ease-interactive);
+  -webkit-tap-highlight-color: rgba(201, 162, 39, 0.22);
 }
 
 .faq-doors-jump a:hover {
   border-color: var(--beam-gold);
-  background: color-mix(in srgb, var(--beam-gold) 8%, var(--surface));
+  background: rgba(255, 252, 245, 0.98);
+  box-shadow: 0 2px 8px rgba(59, 90, 120, 0.08);
+}
+
+.faq-doors-jump a:active {
+  border-color: var(--beam-gold);
 }
 
 .faq-doors-jump a:focus-visible {
-  outline: 2px solid var(--beam-gold);
+  outline: 2px solid var(--quant-blue);
   outline-offset: 2px;
+}
+
+.faq-doors-jump a.is-active {
+  border-color: var(--beam-gold);
+  background: color-mix(in srgb, var(--beam-gold) 14%, var(--surface));
+  color: var(--ink);
 }
 
 .faq-doors-panels {
@@ -3641,139 +3707,113 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   min-width: 0;
 }
 
+.faq-doors-group {
+  scroll-margin-top: calc(var(--space-8) + env(safe-area-inset-top, 0px));
+}
+
 .faq-doors-group__title {
   margin: 0 0 var(--space-3);
+  padding-bottom: var(--space-2);
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  border-bottom: 2px solid color-mix(in srgb, var(--beam-gold) 45%, transparent);
 }
 
 .faq-doors {
-  display: grid;
-  gap: var(--space-4);
-  max-width: none;
-  align-items: start;
-}
-
-@media (min-width: 640px) {
-  .faq-doors {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1200px) {
-  .faq-doors {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .faq-door--wide {
-    grid-column: 1 / -1;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 48rem;
 }
 
 .faq-door {
-  position: relative;
   margin: 0;
-  padding: var(--space-3) var(--space-3) var(--space-4);
   border: 1px solid var(--gold-hairline);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 4px 14px rgba(59, 90, 120, 0.08);
+  background: rgba(255, 255, 255, 0.78);
   contain: layout style;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.faq-door::before {
-  content: "";
-  position: absolute;
-  top: var(--space-2);
-  left: 12%;
-  right: 12%;
-  height: 0.55rem;
-  border: 1px solid rgba(61, 52, 41, 0.22);
-  border-bottom: none;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  background: linear-gradient(180deg, rgba(212, 208, 200, 0.95), rgba(200, 196, 188, 0.5));
-  pointer-events: none;
+  overflow: hidden;
+  transition: border-color var(--ease-interactive), box-shadow var(--ease-interactive);
 }
 
 .faq-door[open] {
   border-color: var(--beam-gold);
-  box-shadow: 0 8px 22px rgba(59, 90, 120, 0.14);
+  box-shadow: 0 4px 16px rgba(59, 90, 120, 0.1);
 }
 
 .faq-door summary {
-  position: relative;
   list-style: none;
   display: flex;
   align-items: center;
+  gap: var(--space-3);
   min-height: var(--tap-min);
-  margin-top: var(--space-4);
-  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   line-height: 1.35;
+  color: var(--ink);
   cursor: pointer;
   touch-action: manipulation;
-  border: 1px solid rgba(61, 52, 41, 0.28);
-  border-radius: 2px;
-  background: linear-gradient(180deg, #5a6169 0%, #454b52 42%, #3a4046 100%);
-  color: rgba(236, 238, 242, 0.95);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    inset 3px 0 0 rgba(201, 162, 39, 0.55);
-  transform-origin: left center;
-  transition: transform 0.2s ease, box-shadow 0.15s ease;
+  transition: background-color var(--ease-interactive), color var(--ease-interactive);
 }
 
 .faq-door summary::-webkit-details-marker {
   display: none;
 }
 
+.faq-door summary::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.35rem;
+  height: 1.25rem;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--beam-gold) 70%, var(--quant-blue));
+  opacity: 0.85;
+}
+
 .faq-door summary::after {
   content: "";
   flex-shrink: 0;
   margin-left: auto;
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #f0d890, var(--beam-gold) 55%, #9a7a28);
-  box-shadow: 0 0 0 1px rgba(61, 52, 41, 0.35);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform var(--ease-interactive), border-color var(--ease-interactive);
+}
+
+.faq-door[open] summary::after {
+  transform: rotate(-135deg);
+  border-color: var(--beam-gold);
 }
 
 .faq-door summary:hover {
-  filter: brightness(1.04);
+  background: color-mix(in srgb, var(--beam-gold) 6%, transparent);
 }
 
 .faq-door summary:active {
-  transform: perspective(520px) rotateY(-4deg);
+  background: color-mix(in srgb, var(--beam-gold) 10%, transparent);
 }
 
 .faq-door summary:focus-visible {
-  outline: 2px solid var(--beam-gold);
-  outline-offset: 2px;
-}
-
-.faq-door[open] summary {
-  transform: perspective(520px) rotateY(-11deg);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 3px 0 0 rgba(201, 162, 39, 0.75),
-    4px 0 12px rgba(0, 0, 0, 0.12);
+  outline: 2px solid var(--quant-blue);
+  outline-offset: -2px;
 }
 
 .faq-door__room {
-  margin-top: var(--space-3);
-  padding: var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  background: color-mix(in srgb, var(--quant-blue-surface) 35%, var(--surface));
+  padding: 0 var(--space-4) var(--space-4);
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--quant-blue-surface) 28%, var(--surface));
 }
 
 .faq-door__room p {
-  margin: 0;
+  margin: var(--space-3) 0 0;
+  font-size: 0.92rem;
   line-height: 1.55;
   color: var(--text);
 }
@@ -3782,10 +3822,12 @@ body.spt-print-preview #print-packet.print-packet--preview .print-preview-banner
   text-underline-offset: 0.12em;
 }
 
+.faq-door--wide .faq-door__room p {
+  max-width: 52rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .faq-door summary,
-  .faq-door[open] summary {
-    transform: none;
+  .faq-door summary::after {
     transition: none;
   }
 }

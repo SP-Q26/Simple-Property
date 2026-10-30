@@ -106,6 +106,31 @@
 
     openFaqFromHash();
     window.addEventListener("hashchange", openFaqFromHash);
+
+    var jumpLinks = root.querySelectorAll(".faq-doors-jump a[href^='#']");
+    var groups = root.querySelectorAll(".faq-doors-group[id]");
+    if ("IntersectionObserver" in window && groups.length && jumpLinks.length) {
+      var byId = {};
+      jumpLinks.forEach(function (link) {
+        var id = (link.getAttribute("href") || "").slice(1);
+        if (id) byId[id] = link;
+      });
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var id = entry.target.id;
+            jumpLinks.forEach(function (l) {
+              l.classList.toggle("is-active", l === byId[id]);
+            });
+          });
+        },
+        { rootMargin: "-20% 0px -55% 0px", threshold: 0 }
+      );
+      groups.forEach(function (g) {
+        observer.observe(g);
+      });
+    }
   }
 
   function boot() {

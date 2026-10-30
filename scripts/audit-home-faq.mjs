@@ -26,6 +26,7 @@ need("FAQ legal advice item", index.includes("Is this legal advice?"));
 need("FAQ no stale Wisconsin", !index.includes("Wisconsin and other states are not in the app"));
 need("FAQ door panels", index.includes("faq-doors") && index.includes("faq-door"));
 need("FAQ topic jump nav", index.includes("faq-doors-jump") && index.includes("faq-doors-layout"));
+need("FAQ notebook shell", index.includes("faq-section") && index.includes("faq-doors-shell"));
 need("FAQ ten doors heading", index.includes("Ten doors"));
 need("FAQ honest limits door", index.includes("Honest limits"));
 need("FAQ launch-stack handoff link", index.includes("/launch-stack"));

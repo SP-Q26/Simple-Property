@@ -28,6 +28,7 @@ const STEPS = [
   ["audit-blog-goal-copy.mjs", "blog goal copy"],
   ["audit-swarm.mjs", "swarm scoreboard"],
   ["audit-code-improvements.mjs", "code health"],
+  ["audit-site-experience-oct-2026.mjs", "site experience"],
   ["audit-spt-web.mjs", "proud-ship P0"],
 ];
 
